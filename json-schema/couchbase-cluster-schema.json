@@ -1,0 +1,283 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://couchbase.com/schemas/couchbase/cluster.json",
+  "title": "Couchbase Cluster Configuration",
+  "description": "Schema representing a Couchbase cluster including nodes, services, server groups, and configuration settings.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Human-readable name for the cluster"
+    },
+    "uuid": {
+      "type": "string",
+      "description": "Unique identifier for the cluster"
+    },
+    "nodes": {
+      "type": "array",
+      "description": "List of nodes in the cluster",
+      "items": {
+        "$ref": "#/$defs/Node"
+      }
+    },
+    "serverGroups": {
+      "type": "array",
+      "description": "Server groups for rack-zone awareness",
+      "items": {
+        "$ref": "#/$defs/ServerGroup"
+      }
+    },
+    "ramQuota": {
+      "type": "object",
+      "description": "RAM quota allocations per service in megabytes",
+      "properties": {
+        "dataService": {
+          "type": "integer",
+          "description": "RAM quota for the Data service in megabytes",
+          "minimum": 256
+        },
+        "indexService": {
+          "type": "integer",
+          "description": "RAM quota for the Index service in megabytes",
+          "minimum": 256
+        },
+        "searchService": {
+          "type": "integer",
+          "description": "RAM quota for the Search service in megabytes",
+          "minimum": 256
+        },
+        "analyticsService": {
+          "type": "integer",
+          "description": "RAM quota for the Analytics service in megabytes",
+          "minimum": 1024
+        },
+        "eventingService": {
+          "type": "integer",
+          "description": "RAM quota for the Eventing service in megabytes",
+          "minimum": 256
+        }
+      }
+    },
+    "autoCompaction": {
+      "$ref": "#/$defs/AutoCompactionSettings"
+    },
+    "autoFailover": {
+      "$ref": "#/$defs/AutoFailoverSettings"
+    }
+  },
+  "$defs": {
+    "Node": {
+      "type": "object",
+      "description": "A node in the Couchbase cluster",
+      "required": [
+        "hostname"
+      ],
+      "properties": {
+        "hostname": {
+          "type": "string",
+          "description": "Hostname or IP address with port"
+        },
+        "status": {
+          "type": "string",
+          "description": "Health status of the node",
+          "enum": [
+            "healthy",
+            "unhealthy",
+            "warmup"
+          ]
+        },
+        "clusterMembership": {
+          "type": "string",
+          "description": "Cluster membership state of the node",
+          "enum": [
+            "active",
+            "inactiveAdded",
+            "inactiveFailed"
+          ]
+        },
+        "services": {
+          "type": "array",
+          "description": "Services running on the node",
+          "items": {
+            "type": "string",
+            "enum": [
+              "kv",
+              "n1ql",
+              "index",
+              "fts",
+              "cbas",
+              "eventing",
+              "backup"
+            ]
+          },
+          "minItems": 1
+        },
+        "version": {
+          "type": "string",
+          "description": "Couchbase Server version installed on the node"
+        },
+        "os": {
+          "type": "string",
+          "description": "Operating system of the node"
+        },
+        "cpuCount": {
+          "type": "integer",
+          "description": "Number of CPU cores on the node",
+          "minimum": 1
+        },
+        "memoryTotal": {
+          "type": "integer",
+          "description": "Total memory on the node in bytes"
+        },
+        "memoryFree": {
+          "type": "integer",
+          "description": "Free memory on the node in bytes"
+        },
+        "addressFamily": {
+          "type": "string",
+          "description": "Network address family",
+          "enum": [
+            "inet",
+            "inet6",
+            "inet6only"
+          ]
+        },
+        "nodeEncryption": {
+          "type": "boolean",
+          "description": "Whether node-to-node encryption is enabled"
+        }
+      }
+    },
+    "ServerGroup": {
+      "type": "object",
+      "description": "A server group for rack-zone awareness",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the server group"
+        },
+        "uri": {
+          "type": "string",
+          "description": "URI path to the server group resource"
+        },
+        "nodes": {
+          "type": "array",
+          "description": "Nodes assigned to this server group",
+          "items": {
+            "$ref": "#/$defs/Node"
+          }
+        }
+      }
+    },
+    "AutoCompactionSettings": {
+      "type": "object",
+      "description": "Auto-compaction settings for the cluster",
+      "properties": {
+        "databaseFragmentationThreshold": {
+          "type": "object",
+          "properties": {
+            "percentage": {
+              "type": "integer",
+              "description": "Fragmentation percentage trigger",
+              "minimum": 2,
+              "maximum": 100
+            },
+            "size": {
+              "type": "integer",
+              "description": "Fragmentation size trigger in bytes",
+              "minimum": 1048576
+            }
+          }
+        },
+        "viewFragmentationThreshold": {
+          "type": "object",
+          "properties": {
+            "percentage": {
+              "type": "integer",
+              "description": "View fragmentation percentage trigger",
+              "minimum": 2,
+              "maximum": 100
+            },
+            "size": {
+              "type": "integer",
+              "description": "View fragmentation size trigger in bytes",
+              "minimum": 1048576
+            }
+          }
+        },
+        "parallelDBAndViewCompaction": {
+          "type": "boolean",
+          "description": "Whether to run database and view compaction in parallel"
+        },
+        "allowedTimePeriod": {
+          "type": "object",
+          "description": "Time window during which compaction is allowed",
+          "properties": {
+            "fromHour": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 23
+            },
+            "fromMinute": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 59
+            },
+            "toHour": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 23
+            },
+            "toMinute": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 59
+            },
+            "abortOutside": {
+              "type": "boolean",
+              "description": "Whether to abort compaction outside the time window"
+            }
+          }
+        }
+      }
+    },
+    "AutoFailoverSettings": {
+      "type": "object",
+      "description": "Auto-failover settings for the cluster",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Whether auto-failover is enabled"
+        },
+        "timeout": {
+          "type": "integer",
+          "description": "Number of seconds to wait before auto-failover triggers",
+          "minimum": 5,
+          "maximum": 3600
+        },
+        "maxCount": {
+          "type": "integer",
+          "description": "Maximum number of auto-failovers before requiring manual reset",
+          "minimum": 1
+        },
+        "failoverOnDataDiskIssues": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Whether to failover on data disk issues"
+            },
+            "timePeriod": {
+              "type": "integer",
+              "description": "Time period in seconds to wait for disk issue resolution",
+              "minimum": 5
+            }
+          }
+        }
+      }
+    }
+  }
+}

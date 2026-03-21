@@ -1,0 +1,642 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Query Service REST API
+  description: >-
+    The Couchbase Query Service REST API enables developers to execute SQL++
+    (formerly N1QL) queries against Couchbase Server and manage query service
+    settings. It supports ad-hoc queries, prepared statements, and
+    request-level parameter configuration. The API provides endpoints for
+    query execution, monitoring active requests, and managing query service
+    configuration across cluster nodes.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+externalDocs:
+  description: Couchbase Query Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+servers:
+  - url: https://localhost:8093
+    description: Query Service (default port)
+  - url: https://localhost:18093
+    description: Query Service (SSL)
+tags:
+  - name: Query Execution
+    description: >-
+      Endpoints for executing SQL++ queries and managing query results.
+  - name: Query Admin
+    description: >-
+      Endpoints for administrative operations on the Query service including
+      monitoring active requests, completed requests, and prepared statements.
+  - name: Query Settings
+    description: >-
+      Endpoints for configuring Query service settings at the node and
+      cluster level.
+security:
+  - basicAuth: []
+paths:
+  /query/service:
+    get:
+      operationId: executeQueryGet
+      summary: Execute a SQL++ query via GET
+      description: >-
+        Executes a SQL++ query specified as a query parameter. This endpoint
+        is intended for situations where use of the POST method is restricted.
+      tags:
+        - Query Execution
+      parameters:
+        - name: statement
+          in: query
+          required: true
+          description: The SQL++ statement to execute
+          schema:
+            type: string
+        - name: timeout
+          in: query
+          required: false
+          description: Maximum execution time for the query (e.g., 10s, 5m)
+          schema:
+            type: string
+        - name: readonly
+          in: query
+          required: false
+          description: Whether to restrict the query to read-only operations
+          schema:
+            type: boolean
+        - name: pretty
+          in: query
+          required: false
+          description: Whether to format the query results with indentation
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Query executed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResult'
+        '400':
+          description: Invalid query syntax or parameters
+        '401':
+          description: Unauthorized access
+    post:
+      operationId: executeQueryPost
+      summary: Execute a SQL++ query via POST
+      description: >-
+        Executes a SQL++ query specified in the request body. Supports both
+        application/json and application/x-www-form-urlencoded content types.
+        This is the primary method for executing queries and supports all
+        query parameters including named and positional parameters.
+      tags:
+        - Query Execution
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/QueryRequest'
+      responses:
+        '200':
+          description: Query executed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResult'
+        '400':
+          description: Invalid query syntax or parameters
+        '401':
+          description: Unauthorized access
+  /admin/active_requests:
+    get:
+      operationId: listActiveRequests
+      summary: List active query requests
+      description: >-
+        Returns the list of currently active query requests on the node,
+        including their statement text, execution time, and request ID.
+      tags:
+        - Query Admin
+      responses:
+        '200':
+          description: Successful retrieval of active requests
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ActiveRequest'
+        '401':
+          description: Unauthorized access
+  /admin/active_requests/{requestId}:
+    get:
+      operationId: getActiveRequest
+      summary: Get an active request
+      description: >-
+        Returns details about a specific active query request.
+      tags:
+        - Query Admin
+      parameters:
+        - $ref: '#/components/parameters/requestId'
+      responses:
+        '200':
+          description: Successful retrieval of active request details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActiveRequest'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Request not found
+    delete:
+      operationId: cancelActiveRequest
+      summary: Cancel an active request
+      description: >-
+        Cancels a specific active query request by its request ID.
+      tags:
+        - Query Admin
+      parameters:
+        - $ref: '#/components/parameters/requestId'
+      responses:
+        '200':
+          description: Request cancelled successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Request not found
+  /admin/completed_requests:
+    get:
+      operationId: listCompletedRequests
+      summary: List completed query requests
+      description: >-
+        Returns the list of recently completed query requests on the node,
+        including their statement text, execution time, and result count.
+      tags:
+        - Query Admin
+      responses:
+        '200':
+          description: Successful retrieval of completed requests
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CompletedRequest'
+        '401':
+          description: Unauthorized access
+  /admin/prepareds:
+    get:
+      operationId: listPreparedStatements
+      summary: List prepared statements
+      description: >-
+        Returns the list of prepared statements cached on the node.
+      tags:
+        - Query Admin
+      responses:
+        '200':
+          description: Successful retrieval of prepared statements
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PreparedStatement'
+        '401':
+          description: Unauthorized access
+  /admin/prepareds/{name}:
+    get:
+      operationId: getPreparedStatement
+      summary: Get a prepared statement
+      description: >-
+        Returns details about a specific prepared statement.
+      tags:
+        - Query Admin
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: The name of the prepared statement
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of prepared statement
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PreparedStatement'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Prepared statement not found
+    delete:
+      operationId: deletePreparedStatement
+      summary: Delete a prepared statement
+      description: >-
+        Removes a specific prepared statement from the cache.
+      tags:
+        - Query Admin
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: The name of the prepared statement
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Prepared statement deleted successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Prepared statement not found
+  /admin/indexes/active_requests:
+    get:
+      operationId: listActiveIndexRequests
+      summary: List active index requests
+      description: >-
+        Returns the list of active index request operations being processed
+        by the Query service.
+      tags:
+        - Query Admin
+      responses:
+        '200':
+          description: Successful retrieval of active index requests
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          description: Unauthorized access
+  /admin/settings:
+    get:
+      operationId: getQuerySettings
+      summary: Get query service settings
+      description: >-
+        Returns the current settings for the Query service node, including
+        timeout values, memory quotas, and logging configuration.
+      tags:
+        - Query Settings
+      responses:
+        '200':
+          description: Successful retrieval of query settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuerySettings'
+        '401':
+          description: Unauthorized access
+    post:
+      operationId: updateQuerySettings
+      summary: Update query service settings
+      description: >-
+        Updates the configuration settings for the Query service node.
+      tags:
+        - Query Settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuerySettings'
+      responses:
+        '200':
+          description: Query settings updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuerySettings'
+        '400':
+          description: Invalid settings
+        '401':
+          description: Unauthorized access
+  /admin/vitals:
+    get:
+      operationId: getQueryVitals
+      summary: Get query service vitals
+      description: >-
+        Returns vital statistics for the Query service node including
+        request counts, error counts, and resource utilization.
+      tags:
+        - Query Admin
+      responses:
+        '200':
+          description: Successful retrieval of query service vitals
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryVitals'
+        '401':
+          description: Unauthorized access
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic Authentication using Couchbase Server credentials.
+  parameters:
+    requestId:
+      name: requestId
+      in: path
+      required: true
+      description: The unique identifier of the query request
+      schema:
+        type: string
+  schemas:
+    QueryRequest:
+      type: object
+      description: SQL++ query execution request
+      required:
+        - statement
+      properties:
+        statement:
+          type: string
+          description: The SQL++ statement to execute
+        timeout:
+          type: string
+          description: Maximum execution time (e.g., 10s, 5m)
+        readonly:
+          type: boolean
+          description: Whether to restrict to read-only operations
+        pretty:
+          type: boolean
+          description: Whether to format results with indentation
+        scan_consistency:
+          type: string
+          description: Consistency requirement for the query
+          enum:
+            - not_bounded
+            - at_plus
+            - request_plus
+            - statement_plus
+        args:
+          type: array
+          description: Positional parameters for the query
+          items: {}
+        prepared:
+          type: string
+          description: Name of a prepared statement to execute
+        client_context_id:
+          type: string
+          description: Client-provided context identifier for tracking
+        max_parallelism:
+          type: string
+          description: Maximum parallelism for the query
+        metrics:
+          type: boolean
+          description: Whether to include metrics in the response
+    QueryResult:
+      type: object
+      description: SQL++ query execution result
+      properties:
+        requestID:
+          type: string
+          description: Unique identifier for the request
+        clientContextID:
+          type: string
+          description: Client-provided context identifier
+        signature:
+          type: object
+          description: Schema signature of the results
+        results:
+          type: array
+          description: Array of result documents
+          items: {}
+        status:
+          type: string
+          description: Query execution status
+          enum:
+            - success
+            - running
+            - errors
+            - completed
+            - stopped
+            - timeout
+            - fatal
+        metrics:
+          type: object
+          description: Query execution metrics
+          properties:
+            elapsedTime:
+              type: string
+              description: Total elapsed time
+            executionTime:
+              type: string
+              description: Execution time excluding fetch
+            resultCount:
+              type: integer
+              description: Number of results returned
+            resultSize:
+              type: integer
+              description: Size of results in bytes
+            mutationCount:
+              type: integer
+              description: Number of mutations performed
+            errorCount:
+              type: integer
+              description: Number of errors encountered
+            warningCount:
+              type: integer
+              description: Number of warnings generated
+        errors:
+          type: array
+          description: List of errors if any occurred
+          items:
+            type: object
+            properties:
+              code:
+                type: integer
+                description: Error code
+              msg:
+                type: string
+                description: Error message
+        warnings:
+          type: array
+          description: List of warnings if any
+          items:
+            type: object
+            properties:
+              code:
+                type: integer
+                description: Warning code
+              msg:
+                type: string
+                description: Warning message
+    ActiveRequest:
+      type: object
+      description: An active query request
+      properties:
+        requestId:
+          type: string
+          description: Unique identifier for the request
+        statement:
+          type: string
+          description: The SQL++ statement being executed
+        requestTime:
+          type: string
+          description: Time when the request was received
+        elapsedTime:
+          type: string
+          description: Time elapsed since the request started
+        executionTime:
+          type: string
+          description: Time spent executing the query
+        state:
+          type: string
+          description: Current state of the request
+        scanConsistency:
+          type: string
+          description: Consistency level of the query
+        clientContextID:
+          type: string
+          description: Client-provided context identifier
+    CompletedRequest:
+      type: object
+      description: A completed query request
+      properties:
+        requestId:
+          type: string
+          description: Unique identifier for the request
+        statement:
+          type: string
+          description: The SQL++ statement that was executed
+        requestTime:
+          type: string
+          description: Time when the request was received
+        elapsedTime:
+          type: string
+          description: Total elapsed time for the request
+        resultCount:
+          type: integer
+          description: Number of results returned
+        resultSize:
+          type: integer
+          description: Size of results in bytes
+        errorCount:
+          type: integer
+          description: Number of errors encountered
+        state:
+          type: string
+          description: Final state of the request
+    PreparedStatement:
+      type: object
+      description: A cached prepared statement
+      properties:
+        name:
+          type: string
+          description: Name of the prepared statement
+        statement:
+          type: string
+          description: The original SQL++ statement
+        uses:
+          type: integer
+          description: Number of times the prepared statement has been used
+        lastUse:
+          type: string
+          description: Time of last use
+    QuerySettings:
+      type: object
+      description: Query service configuration settings
+      properties:
+        queryTmpSpaceDir:
+          type: string
+          description: Directory for temporary query files
+        queryTmpSpaceSize:
+          type: integer
+          description: Maximum temporary space size in megabytes
+        queryPipelineBatch:
+          type: integer
+          description: Number of items in a batch for pipeline execution
+        queryPipelineCap:
+          type: integer
+          description: Maximum number of items in the pipeline queue
+        queryScanCap:
+          type: integer
+          description: Maximum buffer size for index scans
+        queryTimeout:
+          type: string
+          description: Default timeout for queries (e.g., 0s for unlimited)
+        queryPreparedLimit:
+          type: integer
+          description: Maximum number of prepared statements to cache
+        queryCompletedLimit:
+          type: integer
+          description: Maximum number of completed requests to keep
+        queryCompletedThreshold:
+          type: integer
+          description: >-
+            Minimum execution time in milliseconds for a request to be
+            added to the completed requests log
+        queryLogLevel:
+          type: string
+          description: Log level for the Query service
+          enum:
+            - debug
+            - trace
+            - info
+            - warn
+            - error
+            - severe
+            - none
+        queryMaxParallelism:
+          type: integer
+          description: Maximum parallelism for query execution
+        queryN1QLFeatCtrl:
+          type: integer
+          description: Feature control flags for N1QL
+    QueryVitals:
+      type: object
+      description: Query service vital statistics
+      properties:
+        uptime:
+          type: string
+          description: Time since the query service started
+        local.time:
+          type: string
+          description: Local time on the node
+        version:
+          type: string
+          description: Version of the query engine
+        total.threads:
+          type: integer
+          description: Total number of threads
+        cores:
+          type: integer
+          description: Number of CPU cores
+        gc_num:
+          type: integer
+          description: Number of garbage collections
+        gc_pause_time:
+          type: string
+          description: Total garbage collection pause time
+        gc_pause_percent:
+          type: string
+          description: Percentage of time spent in GC
+        memory_usage:
+          type: integer
+          description: Current memory usage in bytes
+        total_memory_system:
+          type: integer
+          description: Total system memory available
+        request.completed.count:
+          type: integer
+          description: Total number of completed requests
+        request.active.count:
+          type: integer
+          description: Number of currently active requests
+        request.per.sec.1min:
+          type: number
+          description: Requests per second over the last minute
+        request.per.sec.5min:
+          type: number
+          description: Requests per second over the last 5 minutes
+        request.per.sec.15min:
+          type: number
+          description: Requests per second over the last 15 minutes

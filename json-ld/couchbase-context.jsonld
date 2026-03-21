@@ -1,0 +1,214 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "cb": "https://couchbase.com/ns/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Cluster": {
+      "@id": "cb:Cluster",
+      "@context": {
+        "name": "schema:name",
+        "uuid": "cb:uuid",
+        "nodes": {
+          "@id": "cb:nodes",
+          "@container": "@set"
+        },
+        "serverGroups": {
+          "@id": "cb:serverGroups",
+          "@container": "@set"
+        },
+        "version": "schema:softwareVersion",
+        "description": "schema:description"
+      }
+    },
+
+    "Node": {
+      "@id": "cb:Node",
+      "@context": {
+        "hostname": "cb:hostname",
+        "status": "cb:status",
+        "clusterMembership": "cb:clusterMembership",
+        "services": {
+          "@id": "cb:services",
+          "@container": "@set"
+        },
+        "version": "schema:softwareVersion",
+        "os": "schema:operatingSystem",
+        "memoryTotal": "cb:memoryTotal",
+        "memoryFree": "cb:memoryFree"
+      }
+    },
+
+    "Bucket": {
+      "@id": "cb:Bucket",
+      "@context": {
+        "name": "schema:name",
+        "bucketType": "cb:bucketType",
+        "ramQuota": "cb:ramQuota",
+        "replicaNumber": "cb:replicaNumber",
+        "evictionPolicy": "cb:evictionPolicy",
+        "conflictResolutionType": "cb:conflictResolutionType",
+        "durabilityMinLevel": "cb:durabilityMinLevel",
+        "itemCount": "cb:itemCount",
+        "scopes": {
+          "@id": "cb:scopes",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "Scope": {
+      "@id": "cb:Scope",
+      "@context": {
+        "name": "schema:name",
+        "collections": {
+          "@id": "cb:collections",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "Collection": {
+      "@id": "cb:Collection",
+      "@context": {
+        "name": "schema:name",
+        "maxTTL": "cb:maxTTL"
+      }
+    },
+
+    "Document": {
+      "@id": "cb:Document",
+      "@context": {
+        "documentId": "dcterms:identifier",
+        "revision": "cb:revision",
+        "expiry": {
+          "@id": "cb:expiry",
+          "@type": "xsd:dateTime"
+        },
+        "deleted": "cb:deleted",
+        "channels": {
+          "@id": "cb:channels",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "SearchIndex": {
+      "@id": "cb:SearchIndex",
+      "@context": {
+        "name": "schema:name",
+        "sourceName": "cb:sourceName",
+        "indexType": "cb:indexType",
+        "documentCount": "cb:documentCount",
+        "uuid": "cb:uuid"
+      }
+    },
+
+    "EventingFunction": {
+      "@id": "cb:EventingFunction",
+      "@context": {
+        "name": "schema:name",
+        "appcode": "cb:appcode",
+        "deploymentStatus": "cb:deploymentStatus",
+        "processingStatus": "cb:processingStatus",
+        "sourceBucket": "cb:sourceBucket",
+        "metadataBucket": "cb:metadataBucket"
+      }
+    },
+
+    "Replication": {
+      "@id": "cb:Replication",
+      "@context": {
+        "replicationId": "dcterms:identifier",
+        "sourceBucket": "cb:sourceBucket",
+        "targetBucket": "cb:targetBucket",
+        "targetCluster": {
+          "@id": "cb:targetCluster",
+          "@type": "@id"
+        },
+        "replicationType": "cb:replicationType",
+        "compressionType": "cb:compressionType",
+        "filterExpression": "cb:filterExpression"
+      }
+    },
+
+    "BackupRepository": {
+      "@id": "cb:BackupRepository",
+      "@context": {
+        "name": "schema:name",
+        "planName": "cb:planName",
+        "state": "cb:state",
+        "archive": {
+          "@id": "cb:archive",
+          "@type": "@id"
+        },
+        "backups": {
+          "@id": "cb:backups",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "User": {
+      "@id": "cb:User",
+      "@context": {
+        "username": "schema:name",
+        "email": "schema:email",
+        "domain": "cb:domain",
+        "roles": {
+          "@id": "cb:roles",
+          "@container": "@set"
+        },
+        "channels": {
+          "@id": "cb:channels",
+          "@container": "@set"
+        },
+        "disabled": "cb:disabled"
+      }
+    },
+
+    "Organization": {
+      "@id": "cb:Organization",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "organizationId": "dcterms:identifier",
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "modifiedAt": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Project": {
+      "@id": "cb:Project",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "projectId": "dcterms:identifier",
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "SyncGatewayDatabase": {
+      "@id": "cb:SyncGatewayDatabase",
+      "@context": {
+        "name": "schema:name",
+        "bucket": "cb:bucket",
+        "syncFunction": "cb:syncFunction",
+        "importFilter": "cb:importFilter",
+        "state": "cb:state",
+        "deltaSyncEnabled": "cb:deltaSyncEnabled"
+      }
+    }
+  }
+}

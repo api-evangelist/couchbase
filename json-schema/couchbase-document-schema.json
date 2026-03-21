@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://couchbase.com/schemas/couchbase/document.json",
+  "title": "Couchbase Document",
+  "description": "Schema representing a Couchbase document with metadata fields used across Server, Sync Gateway, and Capella APIs.",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Unique document identifier within the bucket or collection"
+    },
+    "_rev": {
+      "type": "string",
+      "description": "Revision identifier in Sync Gateway format (generation-digest)",
+      "pattern": "^\\d+-[a-f0-9]+$"
+    },
+    "_deleted": {
+      "type": "boolean",
+      "description": "Indicates whether the document is a deletion tombstone",
+      "default": false
+    },
+    "_exp": {
+      "type": "integer",
+      "description": "Document expiration time as a Unix timestamp in seconds (0 means no expiry)",
+      "minimum": 0
+    },
+    "_attachments": {
+      "type": "object",
+      "description": "Map of attachment names to attachment metadata",
+      "additionalProperties": {
+        "$ref": "#/$defs/Attachment"
+      }
+    },
+    "_sync": {
+      "type": "object",
+      "description": "Sync Gateway metadata (internal, not typically user-facing)",
+      "properties": {
+        "rev": {
+          "type": "string",
+          "description": "Current revision"
+        },
+        "sequence": {
+          "type": "integer",
+          "description": "Sync sequence number"
+        },
+        "recent_sequences": {
+          "type": "array",
+          "description": "Recent sequence numbers",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "history": {
+          "type": "object",
+          "description": "Revision history"
+        },
+        "channels": {
+          "type": "object",
+          "description": "Channel assignments for this document"
+        },
+        "access": {
+          "type": "object",
+          "description": "User access grants from this document"
+        },
+        "role_access": {
+          "type": "object",
+          "description": "Role access grants from this document"
+        }
+      }
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "Attachment": {
+      "type": "object",
+      "description": "Document attachment metadata",
+      "properties": {
+        "content_type": {
+          "type": "string",
+          "description": "MIME type of the attachment"
+        },
+        "digest": {
+          "type": "string",
+          "description": "Content digest hash of the attachment"
+        },
+        "length": {
+          "type": "integer",
+          "description": "Size of the attachment in bytes",
+          "minimum": 0
+        },
+        "revpos": {
+          "type": "integer",
+          "description": "Revision generation when the attachment was added",
+          "minimum": 1
+        },
+        "stub": {
+          "type": "boolean",
+          "description": "Whether this is a stub reference (true) or contains inline data (false)"
+        },
+        "data": {
+          "type": "string",
+          "description": "Base64-encoded attachment data (only present when not a stub)",
+          "contentEncoding": "base64"
+        }
+      },
+      "required": [
+        "content_type",
+        "length"
+      ]
+    }
+  }
+}

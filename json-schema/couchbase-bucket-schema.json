@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://couchbase.com/schemas/couchbase/bucket.json",
+  "title": "Couchbase Bucket Configuration",
+  "description": "Schema representing a Couchbase Server bucket configuration, including type, memory allocation, replication, and eviction settings.",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the bucket",
+      "maxLength": 100,
+      "pattern": "^[a-zA-Z0-9._%-]+$"
+    },
+    "bucketType": {
+      "type": "string",
+      "description": "Type of the bucket determining storage behavior",
+      "enum": [
+        "couchbase",
+        "memcached",
+        "ephemeral"
+      ],
+      "default": "couchbase"
+    },
+    "ramQuota": {
+      "type": "integer",
+      "description": "RAM quota allocated to the bucket in megabytes",
+      "minimum": 100
+    },
+    "replicaNumber": {
+      "type": "integer",
+      "description": "Number of replica copies maintained across the cluster",
+      "minimum": 0,
+      "maximum": 3,
+      "default": 1
+    },
+    "replicaIndex": {
+      "type": "boolean",
+      "description": "Whether to replicate view indexes to replica nodes",
+      "default": false
+    },
+    "conflictResolutionType": {
+      "type": "string",
+      "description": "Strategy for resolving document conflicts during XDCR replication",
+      "enum": [
+        "seqno",
+        "lww"
+      ],
+      "default": "seqno"
+    },
+    "evictionPolicy": {
+      "type": "string",
+      "description": "Policy for evicting items from memory when RAM quota is exceeded",
+      "enum": [
+        "valueOnly",
+        "fullEviction",
+        "noEviction",
+        "nruEviction"
+      ]
+    },
+    "durabilityMinLevel": {
+      "type": "string",
+      "description": "Minimum durability level required for write operations",
+      "enum": [
+        "none",
+        "majority",
+        "majorityAndPersistActive",
+        "persistToMajority"
+      ],
+      "default": "none"
+    },
+    "maxTTL": {
+      "type": "integer",
+      "description": "Maximum time-to-live for documents in seconds (0 means no maximum)",
+      "minimum": 0,
+      "default": 0
+    },
+    "compressionMode": {
+      "type": "string",
+      "description": "Compression mode for stored documents",
+      "enum": [
+        "off",
+        "passive",
+        "active"
+      ],
+      "default": "passive"
+    },
+    "flushEnabled": {
+      "type": "boolean",
+      "description": "Whether the flush all operation is enabled on the bucket",
+      "default": false
+    },
+    "storageBackend": {
+      "type": "string",
+      "description": "Storage engine backend for the bucket",
+      "enum": [
+        "couchstore",
+        "magma"
+      ],
+      "default": "couchstore"
+    },
+    "scopes": {
+      "type": "array",
+      "description": "Scopes defined within the bucket",
+      "items": {
+        "$ref": "#/$defs/Scope"
+      }
+    }
+  },
+  "$defs": {
+    "Scope": {
+      "type": "object",
+      "description": "A scope within a bucket that contains collections",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the scope"
+        },
+        "uid": {
+          "type": "string",
+          "description": "Unique identifier for the scope"
+        },
+        "collections": {
+          "type": "array",
+          "description": "Collections within the scope",
+          "items": {
+            "$ref": "#/$defs/Collection"
+          }
+        }
+      }
+    },
+    "Collection": {
+      "type": "object",
+      "description": "A collection within a scope",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the collection"
+        },
+        "uid": {
+          "type": "string",
+          "description": "Unique identifier for the collection"
+        },
+        "maxTTL": {
+          "type": "integer",
+          "description": "Maximum TTL for documents in the collection in seconds",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

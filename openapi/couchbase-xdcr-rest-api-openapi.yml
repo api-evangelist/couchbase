@@ -1,0 +1,493 @@
+openapi: 3.1.0
+info:
+  title: Couchbase XDCR REST API
+  description: >-
+    The Couchbase XDCR (Cross Data Center Replication) REST API enables
+    configuration and management of data replication between Couchbase
+    clusters across different data centers. It provides endpoints for creating
+    replication references, configuring replication streams, monitoring
+    replication statistics, and managing replication settings. XDCR supports
+    both unidirectional and bidirectional replication for high availability
+    and disaster recovery scenarios.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+externalDocs:
+  description: Couchbase XDCR REST API Documentation
+  url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+servers:
+  - url: https://localhost:8091
+    description: Couchbase Server (default port)
+  - url: https://localhost:18091
+    description: Couchbase Server (SSL)
+tags:
+  - name: Cluster References
+    description: >-
+      Endpoints for managing remote cluster references used as XDCR targets.
+  - name: Replications
+    description: >-
+      Endpoints for creating, managing, and deleting XDCR replication streams.
+  - name: Replication Settings
+    description: >-
+      Endpoints for configuring replication-level and global XDCR settings.
+  - name: Replication Statistics
+    description: >-
+      Endpoints for monitoring replication progress and performance statistics.
+security:
+  - basicAuth: []
+paths:
+  /pools/default/remoteClusters:
+    get:
+      operationId: listRemoteClusters
+      summary: List remote cluster references
+      description: >-
+        Returns the list of all remote cluster references configured for
+        XDCR replication.
+      tags:
+        - Cluster References
+      responses:
+        '200':
+          description: Successful retrieval of remote cluster references
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RemoteClusterReference'
+        '401':
+          description: Unauthorized access
+    post:
+      operationId: createRemoteCluster
+      summary: Create a remote cluster reference
+      description: >-
+        Creates a new remote cluster reference that can be used as a target
+        for XDCR replications.
+      tags:
+        - Cluster References
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RemoteClusterCreateRequest'
+      responses:
+        '200':
+          description: Remote cluster reference created successfully
+        '400':
+          description: Invalid cluster reference configuration
+        '401':
+          description: Unauthorized access
+  /pools/default/remoteClusters/{clusterName}:
+    put:
+      operationId: updateRemoteCluster
+      summary: Update a remote cluster reference
+      description: >-
+        Updates the configuration of an existing remote cluster reference.
+      tags:
+        - Cluster References
+      parameters:
+        - $ref: '#/components/parameters/clusterName'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RemoteClusterCreateRequest'
+      responses:
+        '200':
+          description: Remote cluster reference updated successfully
+        '400':
+          description: Invalid cluster reference configuration
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Remote cluster reference not found
+    delete:
+      operationId: deleteRemoteCluster
+      summary: Delete a remote cluster reference
+      description: >-
+        Deletes the specified remote cluster reference. All replications
+        using this reference must be deleted first.
+      tags:
+        - Cluster References
+      parameters:
+        - $ref: '#/components/parameters/clusterName'
+      responses:
+        '200':
+          description: Remote cluster reference deleted successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Remote cluster reference not found
+  /controller/createReplication:
+    post:
+      operationId: createReplication
+      summary: Create an XDCR replication
+      description: >-
+        Creates a new XDCR replication stream from a source bucket to a
+        target bucket on a remote cluster.
+      tags:
+        - Replications
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ReplicationCreateRequest'
+      responses:
+        '200':
+          description: Replication created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Replication ID
+        '400':
+          description: Invalid replication configuration
+        '401':
+          description: Unauthorized access
+  /controller/cancelXDCR/{replicationId}:
+    delete:
+      operationId: deleteReplication
+      summary: Delete an XDCR replication
+      description: >-
+        Deletes the specified XDCR replication stream, stopping all data
+        replication for that stream.
+      tags:
+        - Replications
+      parameters:
+        - $ref: '#/components/parameters/replicationId'
+      responses:
+        '200':
+          description: Replication deleted successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Replication not found
+  /settings/replications:
+    get:
+      operationId: getGlobalReplicationSettings
+      summary: Get global XDCR settings
+      description: >-
+        Returns the global default settings for all XDCR replications.
+      tags:
+        - Replication Settings
+      responses:
+        '200':
+          description: Successful retrieval of global replication settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReplicationSettings'
+        '401':
+          description: Unauthorized access
+    post:
+      operationId: updateGlobalReplicationSettings
+      summary: Update global XDCR settings
+      description: >-
+        Updates the global default settings applied to all XDCR replications.
+      tags:
+        - Replication Settings
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ReplicationSettings'
+      responses:
+        '200':
+          description: Global replication settings updated successfully
+        '400':
+          description: Invalid settings
+        '401':
+          description: Unauthorized access
+  /settings/replications/{replicationId}:
+    get:
+      operationId: getReplicationSettings
+      summary: Get replication-specific settings
+      description: >-
+        Returns the settings for a specific XDCR replication stream.
+      tags:
+        - Replication Settings
+      parameters:
+        - $ref: '#/components/parameters/replicationId'
+      responses:
+        '200':
+          description: Successful retrieval of replication settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReplicationSettings'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Replication not found
+    post:
+      operationId: updateReplicationSettings
+      summary: Update replication-specific settings
+      description: >-
+        Updates the settings for a specific XDCR replication stream,
+        overriding the global defaults.
+      tags:
+        - Replication Settings
+      parameters:
+        - $ref: '#/components/parameters/replicationId'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ReplicationSettings'
+      responses:
+        '200':
+          description: Replication settings updated successfully
+        '400':
+          description: Invalid settings
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Replication not found
+  /pools/default/buckets/{bucketName}/stats/{statName}:
+    get:
+      operationId: getReplicationStats
+      summary: Get XDCR replication statistics
+      description: >-
+        Returns statistics for XDCR replications on a specific bucket,
+        including items replicated, replication latency, and bandwidth usage.
+      tags:
+        - Replication Statistics
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          description: The name of the source bucket
+          schema:
+            type: string
+        - name: statName
+          in: path
+          required: true
+          description: >-
+            The specific statistic to retrieve (e.g.,
+            replications/{replicationId}/docs_written)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of replication statistics
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Bucket or statistic not found
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic Authentication using Couchbase Server administrator
+        credentials.
+  parameters:
+    clusterName:
+      name: clusterName
+      in: path
+      required: true
+      description: The name of the remote cluster reference
+      schema:
+        type: string
+    replicationId:
+      name: replicationId
+      in: path
+      required: true
+      description: >-
+        The XDCR replication ID in the format
+        {remoteClusterUUID}/{sourceBucket}/{targetBucket}
+      schema:
+        type: string
+  schemas:
+    RemoteClusterReference:
+      type: object
+      description: Remote cluster reference for XDCR
+      properties:
+        name:
+          type: string
+          description: Name of the remote cluster reference
+        uuid:
+          type: string
+          description: UUID of the remote cluster
+        hostname:
+          type: string
+          description: Hostname and port of the remote cluster
+        username:
+          type: string
+          description: Administrator username for the remote cluster
+        uri:
+          type: string
+          description: URI for accessing this cluster reference
+        deleted:
+          type: boolean
+          description: Whether the reference is marked for deletion
+        demandEncryption:
+          type: boolean
+          description: Whether encryption is required
+        encryptionType:
+          type: string
+          description: Type of encryption used
+          enum:
+            - none
+            - half
+            - full
+    RemoteClusterCreateRequest:
+      type: object
+      description: Request to create or update a remote cluster reference
+      required:
+        - name
+        - hostname
+        - username
+        - password
+      properties:
+        name:
+          type: string
+          description: Name for the remote cluster reference
+        hostname:
+          type: string
+          description: Hostname and port of the remote cluster
+        username:
+          type: string
+          description: Administrator username on the remote cluster
+        password:
+          type: string
+          description: Administrator password on the remote cluster
+        demandEncryption:
+          type: integer
+          description: Whether to require encryption (0 or 1)
+          enum:
+            - 0
+            - 1
+        encryptionType:
+          type: string
+          description: Type of encryption to use
+          enum:
+            - none
+            - half
+            - full
+        certificate:
+          type: string
+          description: CA certificate for the remote cluster in PEM format
+    ReplicationCreateRequest:
+      type: object
+      description: Request to create an XDCR replication
+      required:
+        - fromBucket
+        - toCluster
+        - toBucket
+        - replicationType
+      properties:
+        fromBucket:
+          type: string
+          description: Name of the source bucket
+        toCluster:
+          type: string
+          description: Name of the remote cluster reference
+        toBucket:
+          type: string
+          description: Name of the target bucket on the remote cluster
+        replicationType:
+          type: string
+          description: Type of replication
+          enum:
+            - continuous
+        filterExpression:
+          type: string
+          description: Regular expression filter for document IDs
+        compressionType:
+          type: string
+          description: Compression type for replication data
+          enum:
+            - None
+            - Auto
+            - Snappy
+        priority:
+          type: string
+          description: Replication priority
+          enum:
+            - High
+            - Medium
+            - Low
+    ReplicationSettings:
+      type: object
+      description: XDCR replication settings
+      properties:
+        checkpointInterval:
+          type: integer
+          description: Interval between checkpoints in seconds
+          minimum: 60
+          maximum: 14400
+        docBatchSizeKb:
+          type: integer
+          description: Document batch size in kilobytes
+          minimum: 10
+          maximum: 10000
+        failureRestartInterval:
+          type: integer
+          description: Interval before restarting after failure in seconds
+          minimum: 1
+          maximum: 300
+        filterExpression:
+          type: string
+          description: Regular expression filter for document IDs
+        logLevel:
+          type: string
+          description: Log level for the replication
+          enum:
+            - Error
+            - Warn
+            - Info
+            - Debug
+            - Trace
+        networkUsageLimit:
+          type: integer
+          description: Network usage limit in MB per second (0 for unlimited)
+          minimum: 0
+        optimisticReplicationThreshold:
+          type: integer
+          description: >-
+            Document size threshold in bytes for optimistic replication
+          minimum: 0
+        sourceNozzlePerNode:
+          type: integer
+          description: Number of source nozzles per node
+          minimum: 1
+          maximum: 100
+        targetNozzlePerNode:
+          type: integer
+          description: Number of target nozzles per node
+          minimum: 1
+          maximum: 100
+        statsInterval:
+          type: integer
+          description: Interval for statistics updates in milliseconds
+          minimum: 200
+          maximum: 600000
+        compressionType:
+          type: string
+          description: Compression type for replicated data
+          enum:
+            - None
+            - Auto
+            - Snappy
+        priority:
+          type: string
+          description: Replication priority
+          enum:
+            - High
+            - Medium
+            - Low
