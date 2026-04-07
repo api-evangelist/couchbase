@@ -22,21 +22,21 @@ servers:
   - url: https://localhost:18095
     description: Analytics Service (SSL)
 tags:
-  - name: Analytics Query
-    description: >-
-      Endpoints for executing SQL++ analytics queries and retrieving results.
   - name: Analytics Admin
     description: >-
       Endpoints for administering and monitoring the Analytics service.
-  - name: Analytics Settings
-    description: >-
-      Endpoints for configuring Analytics service settings.
   - name: Analytics Configuration
     description: >-
       Endpoints for configuring Analytics nodes and clusters.
   - name: Analytics Library
     description: >-
       Endpoints for managing JavaScript libraries used for user-defined functions.
+  - name: Analytics Query
+    description: >-
+      Endpoints for executing SQL++ analytics queries and retrieving results.
+  - name: Analytics Settings
+    description: >-
+      Endpoints for configuring Analytics service settings.
 security:
   - basicAuth: []
 paths:

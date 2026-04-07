@@ -21,24 +21,24 @@ servers:
   - url: https://localhost:4984
     description: Sync Gateway Public REST API (default port)
 tags:
-  - name: Server
+  - name: Authentication
     description: >-
-      Endpoints for retrieving server-level information.
+      Endpoints for user authentication and session management.
+  - name: Changes
+    description: >-
+      Endpoints for monitoring document changes and subscribing to change feeds.
   - name: Database
     description: >-
       Endpoints for retrieving database information.
   - name: Documents
     description: >-
       Endpoints for creating, reading, updating, and deleting documents.
-  - name: Changes
-    description: >-
-      Endpoints for monitoring document changes and subscribing to change feeds.
-  - name: Authentication
-    description: >-
-      Endpoints for user authentication and session management.
   - name: Local Documents
     description: >-
       Endpoints for managing local documents used by replication checkpoints.
+  - name: Server
+    description: >-
+      Endpoints for retrieving server-level information.
 security:
   - basicAuth: []
   - sessionAuth: []

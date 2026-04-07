@@ -21,24 +21,24 @@ servers:
   - url: https://localhost:4985
     description: Sync Gateway Admin REST API (default port)
 tags:
-  - name: Server
-    description: >-
-      Endpoints for managing the Sync Gateway server instance.
   - name: Database Management
     description: >-
       Endpoints for creating, configuring, and managing databases.
-  - name: User Management
-    description: >-
-      Endpoints for managing Sync Gateway users and their access permissions.
-  - name: Role Management
-    description: >-
-      Endpoints for managing roles and their channel assignments.
-  - name: Replication
-    description: >-
-      Endpoints for configuring inter-Sync Gateway replications.
   - name: Monitoring
     description: >-
       Endpoints for monitoring Sync Gateway health and performance.
+  - name: Replication
+    description: >-
+      Endpoints for configuring inter-Sync Gateway replications.
+  - name: Role Management
+    description: >-
+      Endpoints for managing roles and their channel assignments.
+  - name: Server
+    description: >-
+      Endpoints for managing the Sync Gateway server instance.
+  - name: User Management
+    description: >-
+      Endpoints for managing Sync Gateway users and their access permissions.
 security:
   - basicAuth: []
 paths:

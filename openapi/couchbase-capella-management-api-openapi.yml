@@ -21,26 +21,6 @@ servers:
   - url: https://cloudapi.cloud.couchbase.com
     description: Couchbase Capella Cloud API
 tags:
-  - name: Organizations
-    description: >-
-      Endpoints for managing Capella organizations.
-  - name: Projects
-    description: >-
-      Endpoints for creating, listing, updating, and deleting projects within
-      an organization.
-  - name: Clusters
-    description: >-
-      Endpoints for provisioning, managing, and scaling Capella database
-      clusters.
-  - name: Buckets
-    description: >-
-      Endpoints for managing buckets within Capella clusters.
-  - name: Scopes and Collections
-    description: >-
-      Endpoints for managing scopes and collections within Capella buckets.
-  - name: Database Credentials
-    description: >-
-      Endpoints for managing database access credentials for clusters.
   - name: Allowed CIDRs
     description: >-
       Endpoints for managing allowed IP addresses and CIDR ranges for
@@ -49,12 +29,29 @@ tags:
     description: >-
       Endpoints for managing API keys used to authenticate with the
       Management API.
+  - name: Buckets
+    description: >-
+      Endpoints for managing buckets within Capella clusters.
+  - name: Clusters
+    description: >-
+      Endpoints for provisioning, managing, and scaling Capella database
+      clusters.
+  - name: Database Credentials
+    description: >-
+      Endpoints for managing database access credentials for clusters.
+  - name: Organizations
+    description: >-
+      Endpoints for managing Capella organizations.
+  - name: Projects
+    description: >-
+      Endpoints for creating, listing, updating, and deleting projects within
+      an organization.
+  - name: Scopes and Collections
+    description: >-
+      Endpoints for managing scopes and collections within Capella buckets.
   - name: Users
     description: >-
       Endpoints for managing users within a Capella organization.
-  - name: App Services
-    description: >-
-      Endpoints for managing Capella App Services deployments.
 security:
   - bearerAuth: []
 paths:

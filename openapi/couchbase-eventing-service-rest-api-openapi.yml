@@ -22,26 +22,26 @@ servers:
   - url: https://localhost:18096
     description: Eventing Service (SSL)
 tags:
+  - name: Configuration
+    description: >-
+      Endpoints for configuring Eventing Service settings.
   - name: Functions
     description: >-
       Endpoints for creating, retrieving, updating, and deleting Eventing
       Functions.
+  - name: Import Export
+    description: >-
+      Endpoints for importing and exporting Eventing Function definitions.
   - name: Lifecycle
     description: >-
       Endpoints for deploying, undeploying, pausing, and resuming Eventing
       Functions.
-  - name: Import Export
-    description: >-
-      Endpoints for importing and exporting Eventing Function definitions.
-  - name: Statistics
-    description: >-
-      Endpoints for monitoring Eventing Function execution statistics and status.
-  - name: Configuration
-    description: >-
-      Endpoints for configuring Eventing Service settings.
   - name: Logging
     description: >-
       Endpoints for retrieving Eventing Function application logs.
+  - name: Statistics
+    description: >-
+      Endpoints for monitoring Eventing Function execution statistics and status.
 security:
   - basicAuth: []
 paths:

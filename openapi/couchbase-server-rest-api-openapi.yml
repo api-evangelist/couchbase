@@ -22,21 +22,28 @@ servers:
   - url: https://localhost:18091
     description: Couchbase Server (SSL)
 tags:
-  - name: Cluster
-    description: >-
-      Endpoints for managing Couchbase Server clusters, including cluster
-      initialization, configuration, and information retrieval.
-  - name: Nodes
-    description: >-
-      Endpoints for managing individual server nodes, including adding nodes,
-      failover, recovery, and rebalance operations.
-  - name: Server Groups
-    description: >-
-      Endpoints for managing server groups for rack-zone awareness.
   - name: Buckets
     description: >-
       Endpoints for creating, configuring, and managing buckets used to store
       data in Couchbase Server.
+  - name: Cluster
+    description: >-
+      Endpoints for managing Couchbase Server clusters, including cluster
+      initialization, configuration, and information retrieval.
+  - name: Compaction
+    description: >-
+      Endpoints for managing auto-compaction settings and triggering compaction
+      operations.
+  - name: Index Service
+    description: >-
+      Endpoints for managing the Global Secondary Index service.
+  - name: Logs
+    description: >-
+      Endpoints for collecting and managing diagnostic logs.
+  - name: Nodes
+    description: >-
+      Endpoints for managing individual server nodes, including adding nodes,
+      failover, recovery, and rebalance operations.
   - name: Scopes and Collections
     description: >-
       Endpoints for managing scopes and collections within buckets.
@@ -44,19 +51,9 @@ tags:
     description: >-
       Endpoints for managing security settings, users, roles, certificates,
       and audit configurations.
-  - name: Views
+  - name: Server Groups
     description: >-
-      Endpoints for managing MapReduce views on Couchbase buckets.
-  - name: Index Service
-    description: >-
-      Endpoints for managing the Global Secondary Index service.
-  - name: Compaction
-    description: >-
-      Endpoints for managing auto-compaction settings and triggering compaction
-      operations.
-  - name: Logs
-    description: >-
-      Endpoints for collecting and managing diagnostic logs.
+      Endpoints for managing server groups for rack-zone awareness.
   - name: Settings
     description: >-
       Endpoints for managing server-wide settings and configuration parameters.

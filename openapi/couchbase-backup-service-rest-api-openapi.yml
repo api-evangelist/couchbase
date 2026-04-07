@@ -25,19 +25,19 @@ tags:
   - name: Cluster
     description: >-
       Endpoints for managing cluster-level backup configuration.
-  - name: Repositories
+  - name: Data
     description: >-
-      Endpoints for creating, managing, and querying backup repositories.
+      Endpoints for triggering backup and restore data operations.
   - name: Plans
     description: >-
       Endpoints for managing backup plans that define backup schedules and
       data retention policies.
+  - name: Repositories
+    description: >-
+      Endpoints for creating, managing, and querying backup repositories.
   - name: Tasks
     description: >-
       Endpoints for monitoring and managing backup and restore tasks.
-  - name: Data
-    description: >-
-      Endpoints for triggering backup and restore data operations.
 security:
   - basicAuth: []
 paths:

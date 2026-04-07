@@ -28,18 +28,18 @@ tags:
   - name: Database Administration
     description: >-
       Endpoints for managing database configurations within App Services.
-  - name: User Management
-    description: >-
-      Endpoints for managing users and their access permissions.
-  - name: Role Management
-    description: >-
-      Endpoints for managing roles and their channel assignments.
-  - name: Replication
-    description: >-
-      Endpoints for managing inter-Sync Gateway replications.
   - name: Monitoring
     description: >-
       Endpoints for monitoring App Services health and performance.
+  - name: Replication
+    description: >-
+      Endpoints for managing inter-Sync Gateway replications.
+  - name: Role Management
+    description: >-
+      Endpoints for managing roles and their channel assignments.
+  - name: User Management
+    description: >-
+      Endpoints for managing users and their access permissions.
 security:
   - basicAuth: []
 paths:

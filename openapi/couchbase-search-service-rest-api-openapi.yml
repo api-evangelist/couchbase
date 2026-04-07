@@ -26,12 +26,12 @@ tags:
     description: >-
       Endpoints for creating, retrieving, updating, and deleting Full Text
       Search index definitions.
-  - name: Search Queries
-    description: >-
-      Endpoints for executing full-text search queries against search indexes.
   - name: Search Monitoring
     description: >-
       Endpoints for monitoring search index statistics and service status.
+  - name: Search Queries
+    description: >-
+      Endpoints for executing full-text search queries against search indexes.
 security:
   - basicAuth: []
 paths:

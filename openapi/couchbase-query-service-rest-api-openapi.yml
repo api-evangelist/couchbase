@@ -22,13 +22,13 @@ servers:
   - url: https://localhost:18093
     description: Query Service (SSL)
 tags:
-  - name: Query Execution
-    description: >-
-      Endpoints for executing SQL++ queries and managing query results.
   - name: Query Admin
     description: >-
       Endpoints for administrative operations on the Query service including
       monitoring active requests, completed requests, and prepared statements.
+  - name: Query Execution
+    description: >-
+      Endpoints for executing SQL++ queries and managing query results.
   - name: Query Settings
     description: >-
       Endpoints for configuring Query service settings at the node and

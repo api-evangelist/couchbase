@@ -26,15 +26,15 @@ tags:
   - name: Cluster References
     description: >-
       Endpoints for managing remote cluster references used as XDCR targets.
-  - name: Replications
-    description: >-
-      Endpoints for creating, managing, and deleting XDCR replication streams.
   - name: Replication Settings
     description: >-
       Endpoints for configuring replication-level and global XDCR settings.
   - name: Replication Statistics
     description: >-
       Endpoints for monitoring replication progress and performance statistics.
+  - name: Replications
+    description: >-
+      Endpoints for creating, managing, and deleting XDCR replication streams.
 security:
   - basicAuth: []
 paths:

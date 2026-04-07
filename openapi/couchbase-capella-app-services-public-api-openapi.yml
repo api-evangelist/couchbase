@@ -25,21 +25,18 @@ servers:
         default: example.apps.cloud.couchbase.com
         description: The App Services endpoint URL
 tags:
+  - name: Authentication
+    description: >-
+      Endpoints for user authentication and session management.
+  - name: Changes
+    description: >-
+      Endpoints for monitoring document changes and subscribing to change feeds.
   - name: Database
     description: >-
       Endpoints for retrieving database information.
   - name: Documents
     description: >-
       Endpoints for creating, reading, updating, and deleting documents.
-  - name: Changes
-    description: >-
-      Endpoints for monitoring document changes and subscribing to change feeds.
-  - name: Authentication
-    description: >-
-      Endpoints for user authentication and session management.
-  - name: Replication
-    description: >-
-      Endpoints for managing document replication between clients and the server.
 security:
   - basicAuth: []
   - sessionAuth: []
