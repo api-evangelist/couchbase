@@ -1,5 +1,6 @@
 aid: couchbase
-url: https://raw.githubusercontent.com/api-evangelist/couchbase/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/couchbase/refs/heads/main/apis.yml
 apis:
   - aid: couchbase:server-rest-api
     name: Couchbase Server REST API
@@ -9,7 +10,8 @@ apis:
       - Clusters
       - Buckets
       - Administration
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://localhost:8091
     humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
     properties:
@@ -32,11 +34,14 @@ apis:
       - Query
       - SQL++
       - N1QL
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://localhost:8093
-    humanURL: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+    humanURL: 
+      https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
     properties:
-      - url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+      - url: 
+          https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
         type: Documentation
       - url: openapi/couchbase-query-service-rest-api-openapi.yml
         type: OpenAPI
@@ -54,11 +59,14 @@ apis:
       - Database
       - Analytics
       - SQL++
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://localhost:8095
-    humanURL: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+    humanURL: 
+      https://docs.couchbase.com/server/current/analytics/rest-analytics.html
     properties:
-      - url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+      - url: 
+          https://docs.couchbase.com/server/current/analytics/rest-analytics.html
         type: Documentation
       - url: openapi/couchbase-analytics-service-rest-api-openapi.yml
         type: OpenAPI
@@ -76,7 +84,8 @@ apis:
       - Database
       - Full-Text Search
       - Indexing
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://localhost:8094
     humanURL: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
     properties:
@@ -98,11 +107,14 @@ apis:
       - Database
       - Eventing
       - Serverless Functions
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://localhost:8096
-    humanURL: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+    humanURL: 
+      https://docs.couchbase.com/server/current/eventing/eventing-api.html
     properties:
-      - url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+      - url: 
+          https://docs.couchbase.com/server/current/eventing/eventing-api.html
         type: Documentation
       - url: openapi/couchbase-eventing-service-rest-api-openapi.yml
         type: OpenAPI
@@ -120,11 +132,14 @@ apis:
       - Database
       - Backup
       - Disaster Recovery
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://localhost:8097
-    humanURL: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+    humanURL: 
+      https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
     properties:
-      - url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+      - url: 
+          https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
         type: Documentation
       - url: openapi/couchbase-backup-service-rest-api-openapi.yml
         type: OpenAPI
@@ -142,11 +157,14 @@ apis:
       - Database
       - Replication
       - Cross Data Center
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://localhost:8091
-    humanURL: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+    humanURL: 
+      https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
     properties:
-      - url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+      - url: 
+          https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
         type: Documentation
       - url: openapi/couchbase-xdcr-rest-api-openapi.yml
         type: OpenAPI
@@ -166,11 +184,14 @@ apis:
       - Cloud
       - DBaaS
       - Management
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://cloudapi.cloud.couchbase.com
-    humanURL: https://docs.couchbase.com/cloud/management-api-reference/index.html
+    humanURL: 
+      https://docs.couchbase.com/cloud/management-api-reference/index.html
     properties:
-      - url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+      - url: 
+          https://docs.couchbase.com/cloud/management-api-reference/index.html
         type: Documentation
       - url: openapi/couchbase-capella-management-api-openapi.yml
         type: OpenAPI
@@ -190,11 +211,14 @@ apis:
       - Cloud
       - Mobile
       - Sync
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+    humanURL: 
+      https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
     properties:
-      - url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+      - url: 
+          https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
         type: Documentation
       - url: openapi/couchbase-capella-app-services-public-api-openapi.yml
         type: OpenAPI
@@ -214,11 +238,14 @@ apis:
       - Cloud
       - Mobile
       - Administration
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+    humanURL: 
+      https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
     properties:
-      - url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+      - url: 
+          https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
         type: Documentation
       - url: openapi/couchbase-capella-app-services-admin-api-openapi.yml
         type: OpenAPI
@@ -238,7 +265,8 @@ apis:
       - Mobile
       - Sync
       - Gateway
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://localhost:4984
     humanURL: https://docs.couchbase.com/sync-gateway/current/rest-api.html
     properties:
@@ -262,9 +290,11 @@ apis:
       - Mobile
       - Sync
       - Administration
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://localhost:4985
-    humanURL: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+    humanURL: 
+      https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
     properties:
       - url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
         type: Documentation
@@ -288,3 +318,5 @@ common:
   - type: JSONSchema
     url: json-schema/couchbase-cluster-schema.json
 modified: '2026-03-20'
+description: >-
+  The REST API supports the management of Couchbase-Server clusters.
