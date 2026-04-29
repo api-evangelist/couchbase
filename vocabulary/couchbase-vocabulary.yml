@@ -1,0 +1,69 @@
+name: Couchbase Vocabulary
+description: >-
+  Controlled vocabulary of Couchbase concepts spanning the on-premises Server,
+  Capella database-as-a-service, Sync Gateway, and App Services product lines.
+url: https://docs.couchbase.com/
+version: '1.0'
+modified: '2026-04-28'
+concepts:
+  - name: Cluster
+    description: A set of one or more Couchbase Server nodes that work together to provide a scalable database service.
+  - name: Node
+    description: A single Couchbase Server instance running on a machine or container that hosts one or more services.
+  - name: Bucket
+    description: A logical container for data in Couchbase Server, analogous to a database, partitioned across nodes.
+  - name: Scope
+    description: A namespace within a bucket that groups related collections for multi-tenant or modular data design.
+  - name: Collection
+    description: A container of documents within a scope, similar to a table in a relational database.
+  - name: Document
+    description: A JSON, binary, or sub-document value stored in Couchbase identified by a unique key.
+  - name: Vbucket
+    description: A logical partition of data inside a bucket distributed across nodes for horizontal scalability.
+  - name: Service
+    description: A capability hosted by a Couchbase node such as Data, Query, Index, Search, Analytics, or Eventing.
+  - name: SQL++ (N1QL)
+    description: Couchbase's SQL-family query language for JSON documents (formerly named N1QL).
+  - name: GSI
+    description: Global Secondary Index used by the Query service to accelerate predicate-driven queries.
+  - name: FTS Index
+    description: A full-text search index managed by the Search service supporting fuzzy, faceted, geo, and vector queries.
+  - name: Eventing Function
+    description: Server-side JavaScript function deployed in the Eventing service that responds to data mutations or timers.
+  - name: XDCR
+    description: Cross Data Center Replication that asynchronously replicates data between buckets in different clusters.
+  - name: Sync Gateway
+    description: Middleware that synchronizes documents between Couchbase Server and Couchbase Lite mobile/edge clients.
+  - name: Couchbase Lite
+    description: Embedded NoSQL database for iOS, Android, .NET, Java, and C that synchronizes via Sync Gateway.
+  - name: Capella
+    description: Couchbase's fully managed database-as-a-service offering across AWS, Azure, and Google Cloud.
+  - name: App Services
+    description: Capella's managed service for mobile and edge data sync, equivalent to a cloud-hosted Sync Gateway.
+  - name: Backup Service
+    description: Couchbase Enterprise service that orchestrates scheduled backup, restore, and repository management.
+services:
+  - name: Data
+    port: 8091
+    description: Key-value data service exposed by Couchbase Server.
+  - name: Query
+    port: 8093
+    description: SQL++ query service for ad-hoc and prepared queries.
+  - name: Search
+    port: 8094
+    description: Full-text and vector search service.
+  - name: Analytics
+    port: 8095
+    description: Analytics service for complex SQL++ analytics over operational data.
+  - name: Eventing
+    port: 8096
+    description: Server-side JavaScript eventing service.
+  - name: Backup
+    port: 8097
+    description: Backup service for scheduled backup, restore, and repository management.
+  - name: Sync Gateway Public
+    port: 4984
+    description: Public REST API for mobile and edge clients to sync via Sync Gateway.
+  - name: Sync Gateway Admin
+    port: 4985
+    description: Administrative REST API for configuring Sync Gateway databases, users, and replications.

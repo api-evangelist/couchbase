@@ -1,0 +1,33 @@
+extends: ["spectral:oas"]
+documentationUrl: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+rules:
+  couchbase-query-info-title:
+    description: API title must mention Query Service.
+    given: "$.info.title"
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        match: "Query"
+  couchbase-query-default-server:
+    description: Servers must reference port 8093 by default.
+    given: "$.servers[*].url"
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "8093"
+  couchbase-query-operation-id:
+    description: Every operation must define an operationId.
+    given: "$.paths.*.*"
+    severity: error
+    then:
+      field: operationId
+      function: truthy
+  couchbase-query-operation-tags:
+    description: Every operation must define at least one tag.
+    given: "$.paths.*.*"
+    severity: error
+    then:
+      field: tags
+      function: truthy

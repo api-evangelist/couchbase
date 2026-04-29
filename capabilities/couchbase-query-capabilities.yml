@@ -1,0 +1,40 @@
+name: Couchbase Query Service Capabilities
+description: >-
+  Workflow capabilities exposed by the Couchbase Query (SQL++) Service REST
+  API for ad-hoc query execution, prepared statements, and request management.
+url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+version: '1.0'
+modified: '2026-04-28'
+api: Couchbase Query Service REST API
+baseURL: https://localhost:8093
+capabilities:
+  - name: Query Execution
+    description: Submit SQL++ queries against buckets, scopes, and collections.
+    inputs:
+      - SQL++ statement
+      - named or positional parameters
+    outputs:
+      - JSON result set
+      - query metrics
+  - name: Prepared Statements
+    description: Prepare, cache, and execute parameterised SQL++ queries.
+    inputs:
+      - SQL++ statement
+    outputs:
+      - prepared plan
+  - name: Active Request Management
+    description: List, monitor, and cancel currently running queries.
+    inputs:
+      - request id
+    outputs:
+      - request metadata
+useCases:
+  - name: Application Query Layer
+    description: Application services execute parameterised SQL++ queries to read and write JSON documents.
+    capabilities:
+      - Query Execution
+      - Prepared Statements
+  - name: Long-Running Query Governance
+    description: SREs cancel runaway queries and tune timeouts to protect cluster resources.
+    capabilities:
+      - Active Request Management

@@ -1,0 +1,33 @@
+extends: ["spectral:oas"]
+documentationUrl: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+rules:
+  couchbase-search-info-title:
+    description: API title must mention Search Service.
+    given: "$.info.title"
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        match: "Search"
+  couchbase-search-default-server:
+    description: Servers must reference port 8094 by default.
+    given: "$.servers[*].url"
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "8094"
+  couchbase-search-operation-id:
+    description: Every operation must define an operationId.
+    given: "$.paths.*.*"
+    severity: error
+    then:
+      field: operationId
+      function: truthy
+  couchbase-search-operation-tags:
+    description: Every operation must define at least one tag.
+    given: "$.paths.*.*"
+    severity: error
+    then:
+      field: tags
+      function: truthy

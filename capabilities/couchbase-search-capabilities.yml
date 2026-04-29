@@ -1,0 +1,34 @@
+name: Couchbase Search Service Capabilities
+description: >-
+  Workflow capabilities exposed by the Couchbase Search Service REST API for
+  full-text and vector index management and search query execution.
+url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+version: '1.0'
+modified: '2026-04-28'
+api: Couchbase Search Service REST API
+baseURL: https://localhost:8094
+capabilities:
+  - name: Full Text Index Management
+    description: Define, update, delete, and inspect full text and vector indexes.
+    inputs:
+      - index definition
+      - mapping rules
+    outputs:
+      - index status
+  - name: Search Query Execution
+    description: Run text, fuzzy, faceted, geo, and vector search queries against indexes.
+    inputs:
+      - search query
+      - facet definitions
+    outputs:
+      - hits, snippets, facets
+useCases:
+  - name: Search-Powered UX
+    description: Power application search bars with fuzzy matching, faceted filters, and highlighting.
+    capabilities:
+      - Search Query Execution
+  - name: Vector Search
+    description: Index and query vector embeddings for retrieval-augmented generation workloads.
+    capabilities:
+      - Full Text Index Management
+      - Search Query Execution
