@@ -1,0 +1,98 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Couchbase
+providerId: couchbase
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - NoSQL
+  - Database
+  - DBaaS
+description: 'Couchbase Capella tiers: Free / Basic / Developer Pro / Enterprise.'
+sources:
+  - https://www.couchbase.com/pricing/
+plans:
+  - id: couchbase-free
+    name: Free
+    type: freemium
+    description: 1 node, 8GB capacity.
+    entries:
+      - label: Node hours
+        name: node_hours
+        type: quota
+        metric: hour
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: 1 node, 8 GB capacity
+      - name: SQL++
+      - name: Search
+      - name: Mobile sync
+      - name: Forum support
+  - id: couchbase-basic
+    name: Basic
+    type: paid
+    description: From $0.15/hr per node.
+    entries:
+      - label: Per node-hour
+        name: node_hour
+        type: metered
+        metric: hour
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.15'
+        userMultiplied: false
+    elements:
+      - name: Single AZ
+      - name: 24-hour backup interval
+      - name: 99.5% uptime SLA (multi-node)
+      - name: Forum support
+  - id: couchbase-developer-pro
+    name: Developer Pro
+    type: paid
+    description: From $0.35/hr per node.
+    entries:
+      - label: Per node-hour
+        name: node_hour
+        type: metered
+        metric: hour
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.35'
+        userMultiplied: false
+    elements:
+      - name: Multi-AZ (3 nodes)
+      - name: Up to 1-hour backup interval
+      - name: 8-hour response 24x7
+      - name: 99.99% uptime SLA
+  - id: couchbase-enterprise
+    name: Enterprise
+    type: enterprise
+    description: From $0.49/hr per node; minimum 3-node cluster.
+    entries:
+      - label: Per node-hour
+        name: node_hour
+        type: metered
+        metric: hour
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.49'
+        userMultiplied: false
+    elements:
+      - name: 3-node minimum
+      - name: Multi-AZ
+      - name: Customer-managed encryption keys
+      - name: 30-min response 24x7
+      - name: 99.99% uptime SLA

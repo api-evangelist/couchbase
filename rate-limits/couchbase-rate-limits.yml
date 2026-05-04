@@ -1,0 +1,33 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Couchbase
+providerId: couchbase
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Rate Limiting
+  - Database
+description: Couchbase Capella Management API rate limits.
+sources:
+  - https://www.couchbase.com/pricing/
+  - https://docs.couchbase.com/cloud/management-api-reference/intro.html
+headers:
+  retryAfter: Retry-After
+responseCodes:
+  throttled: 429
+limits:
+  - name: Management API
+    scope: organization
+    metric: requests_per_minute
+    limit: 600
+    timeFrame: minute
+  - name: Cluster throughput
+    scope: cluster
+    metric: requests_per_second
+    limit: scales with node count
+  - name: App Services concurrent users
+    scope: service
+    metric: concurrent
+    limit: varies by tier
