@@ -1,6 +1,6 @@
 aid: couchbase
 name: Couchbase
-x-type: company
+kind: company
 description: Couchbase is a distributed, document-oriented NoSQL cloud database platform that combines
   the flexibility of JSON, the power of SQL++ querying, and the performance of an in-memory key-value
   store. The Couchbase product line includes Couchbase Server (self-managed), Couchbase Capella (fully
@@ -297,7 +297,7 @@ common:
     url: https://www.couchbase.com/forums/
   - type: Support
     url: https://support.couchbase.com/
-  - type: Status
+  - type: StatusPage
     url: https://status.couchbase.com/
   - type: GitHubOrganization
     url: https://github.com/couchbase
