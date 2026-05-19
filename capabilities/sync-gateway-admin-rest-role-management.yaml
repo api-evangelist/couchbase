@@ -1,0 +1,198 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase Sync Gateway Admin REST API — Role Management
+  description: 'Couchbase Sync Gateway Admin REST API — Role Management. 5 operations. Lead operation: List all roles. Self-contained
+    Naftiko capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Role Management
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sync-gateway-admin-rest-role-management
+    baseUri: https://localhost:4985
+    description: Couchbase Sync Gateway Admin REST API — Role Management business capability. Self-contained, no shared references.
+    resources:
+    - name: db-_role
+      path: /{db}/_role/
+      operations:
+      - name: listroles
+        method: GET
+        description: List all roles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createrole
+        method: POST
+        description: Create a role
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: db-_role-roleName
+      path: /{db}/_role/{roleName}
+      operations:
+      - name: getrole
+        method: GET
+        description: Get role details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updaterole
+        method: PUT
+        description: Update a role
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleterole
+        method: DELETE
+        description: Delete a role
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.COUCHBASE_USER}}'
+      password: '{{env.COUCHBASE_PASS}}'
+  exposes:
+  - type: rest
+    namespace: sync-gateway-admin-rest-role-management-rest
+    port: 8080
+    description: REST adapter for Couchbase Sync Gateway Admin REST API — Role Management. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/{db}/role
+      name: db-role
+      description: REST surface for db-_role.
+      operations:
+      - method: GET
+        name: listroles
+        description: List all roles
+        call: sync-gateway-admin-rest-role-management.listroles
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createrole
+        description: Create a role
+        call: sync-gateway-admin-rest-role-management.createrole
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{db}/role/{rolename}
+      name: db-role-rolename
+      description: REST surface for db-_role-roleName.
+      operations:
+      - method: GET
+        name: getrole
+        description: Get role details
+        call: sync-gateway-admin-rest-role-management.getrole
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updaterole
+        description: Update a role
+        call: sync-gateway-admin-rest-role-management.updaterole
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleterole
+        description: Delete a role
+        call: sync-gateway-admin-rest-role-management.deleterole
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sync-gateway-admin-rest-role-management-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase Sync Gateway Admin REST API — Role Management. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: list-all-roles
+      description: List all roles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sync-gateway-admin-rest-role-management.listroles
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-role
+      description: Create a role
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: sync-gateway-admin-rest-role-management.createrole
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-role-details
+      description: Get role details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sync-gateway-admin-rest-role-management.getrole
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-role
+      description: Update a role
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: sync-gateway-admin-rest-role-management.updaterole
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-role
+      description: Delete a role
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: sync-gateway-admin-rest-role-management.deleterole
+      outputParameters:
+      - type: object
+        mapping: $.

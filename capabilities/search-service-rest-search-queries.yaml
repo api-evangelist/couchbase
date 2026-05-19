@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase Search Service REST API — Search Queries
+  description: 'Couchbase Search Service REST API — Search Queries. 1 operations. Lead operation: Query a search index. Self-contained
+    Naftiko capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Search Queries
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: search-service-rest-search-queries
+    baseUri: https://localhost:8094
+    description: Couchbase Search Service REST API — Search Queries business capability. Self-contained, no shared references.
+    resources:
+    - name: api-index-indexName-query
+      path: /api/index/{indexName}/query
+      operations:
+      - name: querysearchindex
+        method: POST
+        description: Query a search index
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.COUCHBASE_USER}}'
+      password: '{{env.COUCHBASE_PASS}}'
+  exposes:
+  - type: rest
+    namespace: search-service-rest-search-queries-rest
+    port: 8080
+    description: REST adapter for Couchbase Search Service REST API — Search Queries. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/index/{indexname}/query
+      name: api-index-indexname-query
+      description: REST surface for api-index-indexName-query.
+      operations:
+      - method: POST
+        name: querysearchindex
+        description: Query a search index
+        call: search-service-rest-search-queries.querysearchindex
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: search-service-rest-search-queries-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase Search Service REST API — Search Queries. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: query-search-index
+      description: Query a search index
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: search-service-rest-search-queries.querysearchindex
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

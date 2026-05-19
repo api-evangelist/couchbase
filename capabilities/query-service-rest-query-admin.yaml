@@ -1,0 +1,333 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase Query Service REST API — Query Admin
+  description: 'Couchbase Query Service REST API — Query Admin. 9 operations. Lead operation: List active query requests.
+    Self-contained Naftiko capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Query Admin
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: query-service-rest-query-admin
+    baseUri: https://localhost:8093
+    description: Couchbase Query Service REST API — Query Admin business capability. Self-contained, no shared references.
+    resources:
+    - name: admin-active_requests
+      path: /admin/active_requests
+      operations:
+      - name: listactiverequests
+        method: GET
+        description: List active query requests
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: admin-active_requests-requestId
+      path: /admin/active_requests/{requestId}
+      operations:
+      - name: getactiverequest
+        method: GET
+        description: Get an active request
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: cancelactiverequest
+        method: DELETE
+        description: Cancel an active request
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: admin-completed_requests
+      path: /admin/completed_requests
+      operations:
+      - name: listcompletedrequests
+        method: GET
+        description: List completed query requests
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: admin-indexes-active_requests
+      path: /admin/indexes/active_requests
+      operations:
+      - name: listactiveindexrequests
+        method: GET
+        description: List active index requests
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: admin-prepareds
+      path: /admin/prepareds
+      operations:
+      - name: listpreparedstatements
+        method: GET
+        description: List prepared statements
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: admin-prepareds-name
+      path: /admin/prepareds/{name}
+      operations:
+      - name: getpreparedstatement
+        method: GET
+        description: Get a prepared statement
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: The name of the prepared statement
+          required: true
+      - name: deletepreparedstatement
+        method: DELETE
+        description: Delete a prepared statement
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: The name of the prepared statement
+          required: true
+    - name: admin-vitals
+      path: /admin/vitals
+      operations:
+      - name: getqueryvitals
+        method: GET
+        description: Get query service vitals
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.COUCHBASE_USER}}'
+      password: '{{env.COUCHBASE_PASS}}'
+  exposes:
+  - type: rest
+    namespace: query-service-rest-query-admin-rest
+    port: 8080
+    description: REST adapter for Couchbase Query Service REST API — Query Admin. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/admin/active-requests
+      name: admin-active-requests
+      description: REST surface for admin-active_requests.
+      operations:
+      - method: GET
+        name: listactiverequests
+        description: List active query requests
+        call: query-service-rest-query-admin.listactiverequests
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/active-requests/{requestid}
+      name: admin-active-requests-requestid
+      description: REST surface for admin-active_requests-requestId.
+      operations:
+      - method: GET
+        name: getactiverequest
+        description: Get an active request
+        call: query-service-rest-query-admin.getactiverequest
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: cancelactiverequest
+        description: Cancel an active request
+        call: query-service-rest-query-admin.cancelactiverequest
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/completed-requests
+      name: admin-completed-requests
+      description: REST surface for admin-completed_requests.
+      operations:
+      - method: GET
+        name: listcompletedrequests
+        description: List completed query requests
+        call: query-service-rest-query-admin.listcompletedrequests
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/indexes/active-requests
+      name: admin-indexes-active-requests
+      description: REST surface for admin-indexes-active_requests.
+      operations:
+      - method: GET
+        name: listactiveindexrequests
+        description: List active index requests
+        call: query-service-rest-query-admin.listactiveindexrequests
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/prepareds
+      name: admin-prepareds
+      description: REST surface for admin-prepareds.
+      operations:
+      - method: GET
+        name: listpreparedstatements
+        description: List prepared statements
+        call: query-service-rest-query-admin.listpreparedstatements
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/prepareds/{name}
+      name: admin-prepareds-name
+      description: REST surface for admin-prepareds-name.
+      operations:
+      - method: GET
+        name: getpreparedstatement
+        description: Get a prepared statement
+        call: query-service-rest-query-admin.getpreparedstatement
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletepreparedstatement
+        description: Delete a prepared statement
+        call: query-service-rest-query-admin.deletepreparedstatement
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/vitals
+      name: admin-vitals
+      description: REST surface for admin-vitals.
+      operations:
+      - method: GET
+        name: getqueryvitals
+        description: Get query service vitals
+        call: query-service-rest-query-admin.getqueryvitals
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: query-service-rest-query-admin-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase Query Service REST API — Query Admin. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-active-query-requests
+      description: List active query requests
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: query-service-rest-query-admin.listactiverequests
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-active-request
+      description: Get an active request
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: query-service-rest-query-admin.getactiverequest
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cancel-active-request
+      description: Cancel an active request
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: query-service-rest-query-admin.cancelactiverequest
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-completed-query-requests
+      description: List completed query requests
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: query-service-rest-query-admin.listcompletedrequests
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-active-index-requests
+      description: List active index requests
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: query-service-rest-query-admin.listactiveindexrequests
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-prepared-statements
+      description: List prepared statements
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: query-service-rest-query-admin.listpreparedstatements
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-prepared-statement
+      description: Get a prepared statement
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: query-service-rest-query-admin.getpreparedstatement
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-prepared-statement
+      description: Delete a prepared statement
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: query-service-rest-query-admin.deletepreparedstatement
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-query-service-vitals
+      description: Get query service vitals
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: query-service-rest-query-admin.getqueryvitals
+      outputParameters:
+      - type: object
+        mapping: $.

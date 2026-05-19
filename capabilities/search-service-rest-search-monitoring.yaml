@@ -1,0 +1,167 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase Search Service REST API — Search Monitoring
+  description: 'Couchbase Search Service REST API — Search Monitoring. 4 operations. Lead operation: Get document count for
+    a search index. Self-contained Naftiko capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Search Monitoring
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: search-service-rest-search-monitoring
+    baseUri: https://localhost:8094
+    description: Couchbase Search Service REST API — Search Monitoring business capability. Self-contained, no shared references.
+    resources:
+    - name: api-index-indexName-count
+      path: /api/index/{indexName}/count
+      operations:
+      - name: getsearchindexdoccount
+        method: GET
+        description: Get document count for a search index
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-nsstats
+      path: /api/nsstats
+      operations:
+      - name: getsearchnamespacestats
+        method: GET
+        description: Get namespace-level search statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-stats
+      path: /api/stats
+      operations:
+      - name: getsearchstats
+        method: GET
+        description: Get search service statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-stats-index-indexName
+      path: /api/stats/index/{indexName}
+      operations:
+      - name: getsearchindexstats
+        method: GET
+        description: Get statistics for a search index
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.COUCHBASE_USER}}'
+      password: '{{env.COUCHBASE_PASS}}'
+  exposes:
+  - type: rest
+    namespace: search-service-rest-search-monitoring-rest
+    port: 8080
+    description: REST adapter for Couchbase Search Service REST API — Search Monitoring. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/index/{indexname}/count
+      name: api-index-indexname-count
+      description: REST surface for api-index-indexName-count.
+      operations:
+      - method: GET
+        name: getsearchindexdoccount
+        description: Get document count for a search index
+        call: search-service-rest-search-monitoring.getsearchindexdoccount
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/nsstats
+      name: api-nsstats
+      description: REST surface for api-nsstats.
+      operations:
+      - method: GET
+        name: getsearchnamespacestats
+        description: Get namespace-level search statistics
+        call: search-service-rest-search-monitoring.getsearchnamespacestats
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/stats
+      name: api-stats
+      description: REST surface for api-stats.
+      operations:
+      - method: GET
+        name: getsearchstats
+        description: Get search service statistics
+        call: search-service-rest-search-monitoring.getsearchstats
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/stats/index/{indexname}
+      name: api-stats-index-indexname
+      description: REST surface for api-stats-index-indexName.
+      operations:
+      - method: GET
+        name: getsearchindexstats
+        description: Get statistics for a search index
+        call: search-service-rest-search-monitoring.getsearchindexstats
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: search-service-rest-search-monitoring-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase Search Service REST API — Search Monitoring. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: get-document-count-search-index
+      description: Get document count for a search index
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: search-service-rest-search-monitoring.getsearchindexdoccount
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-namespace-level-search-statistics
+      description: Get namespace-level search statistics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: search-service-rest-search-monitoring.getsearchnamespacestats
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-search-service-statistics
+      description: Get search service statistics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: search-service-rest-search-monitoring.getsearchstats
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-statistics-search-index
+      description: Get statistics for a search index
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: search-service-rest-search-monitoring.getsearchindexstats
+      outputParameters:
+      - type: object
+        mapping: $.

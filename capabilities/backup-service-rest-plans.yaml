@@ -1,0 +1,163 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase Backup Service REST API — Plans
+  description: 'Couchbase Backup Service REST API — Plans. 4 operations. Lead operation: List backup plans. Self-contained
+    Naftiko capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Plans
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: backup-service-rest-plans
+    baseUri: https://localhost:8097
+    description: Couchbase Backup Service REST API — Plans business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-plan
+      path: /api/v1/plan
+      operations:
+      - name: listbackupplans
+        method: GET
+        description: List backup plans
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-plan-planName
+      path: /api/v1/plan/{planName}
+      operations:
+      - name: getbackupplan
+        method: GET
+        description: Get backup plan details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createorupdatebackupplan
+        method: POST
+        description: Create or update a backup plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletebackupplan
+        method: DELETE
+        description: Delete a backup plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.COUCHBASE_USER}}'
+      password: '{{env.COUCHBASE_PASS}}'
+  exposes:
+  - type: rest
+    namespace: backup-service-rest-plans-rest
+    port: 8080
+    description: REST adapter for Couchbase Backup Service REST API — Plans. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/v1/plan
+      name: api-v1-plan
+      description: REST surface for api-v1-plan.
+      operations:
+      - method: GET
+        name: listbackupplans
+        description: List backup plans
+        call: backup-service-rest-plans.listbackupplans
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/plan/{planname}
+      name: api-v1-plan-planname
+      description: REST surface for api-v1-plan-planName.
+      operations:
+      - method: GET
+        name: getbackupplan
+        description: Get backup plan details
+        call: backup-service-rest-plans.getbackupplan
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createorupdatebackupplan
+        description: Create or update a backup plan
+        call: backup-service-rest-plans.createorupdatebackupplan
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletebackupplan
+        description: Delete a backup plan
+        call: backup-service-rest-plans.deletebackupplan
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: backup-service-rest-plans-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase Backup Service REST API — Plans. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-backup-plans
+      description: List backup plans
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: backup-service-rest-plans.listbackupplans
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-backup-plan-details
+      description: Get backup plan details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: backup-service-rest-plans.getbackupplan
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-update-backup-plan
+      description: Create or update a backup plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: backup-service-rest-plans.createorupdatebackupplan
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-backup-plan
+      description: Delete a backup plan
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: backup-service-rest-plans.deletebackupplan
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase Capella Management API — Organizations
+  description: 'Couchbase Capella Management API — Organizations. 2 operations. Lead operation: List organizations. Self-contained
+    Naftiko capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Organizations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: capella-management-organizations
+    baseUri: https://cloudapi.cloud.couchbase.com
+    description: Couchbase Capella Management API — Organizations business capability. Self-contained, no shared references.
+    resources:
+    - name: v4-organizations
+      path: /v4/organizations
+      operations:
+      - name: listorganizations
+        method: GET
+        description: List organizations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v4-organizations-organizationId
+      path: /v4/organizations/{organizationId}
+      operations:
+      - name: getorganization
+        method: GET
+        description: Get organization details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.COUCHBASE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: capella-management-organizations-rest
+    port: 8080
+    description: REST adapter for Couchbase Capella Management API — Organizations. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v4/organizations
+      name: v4-organizations
+      description: REST surface for v4-organizations.
+      operations:
+      - method: GET
+        name: listorganizations
+        description: List organizations
+        call: capella-management-organizations.listorganizations
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v4/organizations/{organizationid}
+      name: v4-organizations-organizationid
+      description: REST surface for v4-organizations-organizationId.
+      operations:
+      - method: GET
+        name: getorganization
+        description: Get organization details
+        call: capella-management-organizations.getorganization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: capella-management-organizations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase Capella Management API — Organizations. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: list-organizations
+      description: List organizations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: capella-management-organizations.listorganizations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-organization-details
+      description: Get organization details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: capella-management-organizations.getorganization
+      outputParameters:
+      - type: object
+        mapping: $.

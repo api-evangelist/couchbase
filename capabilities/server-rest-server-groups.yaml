@@ -1,0 +1,106 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase Server REST API — Server Groups
+  description: 'Couchbase Server REST API — Server Groups. 2 operations. Lead operation: List server groups. Self-contained
+    Naftiko capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Server Groups
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: server-rest-server-groups
+    baseUri: https://localhost:8091
+    description: Couchbase Server REST API — Server Groups business capability. Self-contained, no shared references.
+    resources:
+    - name: pools-default-serverGroups
+      path: /pools/default/serverGroups
+      operations:
+      - name: listservergroups
+        method: GET
+        description: List server groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createservergroup
+        method: POST
+        description: Create a server group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.COUCHBASE_USER}}'
+      password: '{{env.COUCHBASE_PASS}}'
+  exposes:
+  - type: rest
+    namespace: server-rest-server-groups-rest
+    port: 8080
+    description: REST adapter for Couchbase Server REST API — Server Groups. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/pools/default/servergroups
+      name: pools-default-servergroups
+      description: REST surface for pools-default-serverGroups.
+      operations:
+      - method: GET
+        name: listservergroups
+        description: List server groups
+        call: server-rest-server-groups.listservergroups
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createservergroup
+        description: Create a server group
+        call: server-rest-server-groups.createservergroup
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: server-rest-server-groups-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase Server REST API — Server Groups. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-server-groups
+      description: List server groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-rest-server-groups.listservergroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-server-group
+      description: Create a server group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: server-rest-server-groups.createservergroup
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

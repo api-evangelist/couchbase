@@ -1,0 +1,148 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase Server REST API — Scopes and Collections
+  description: 'Couchbase Server REST API — Scopes and Collections. 3 operations. Lead operation: List scopes in a bucket.
+    Self-contained Naftiko capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Scopes and Collections
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: server-rest-scopes-and-collections
+    baseUri: https://localhost:8091
+    description: Couchbase Server REST API — Scopes and Collections business capability. Self-contained, no shared references.
+    resources:
+    - name: pools-default-buckets-bucketName-scopes
+      path: /pools/default/buckets/{bucketName}/scopes
+      operations:
+      - name: listscopes
+        method: GET
+        description: List scopes in a bucket
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createscope
+        method: POST
+        description: Create a scope
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: pools-default-buckets-bucketName-scopes-scopeName-collections
+      path: /pools/default/buckets/{bucketName}/scopes/{scopeName}/collections
+      operations:
+      - name: createcollection
+        method: POST
+        description: Create a collection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.COUCHBASE_USER}}'
+      password: '{{env.COUCHBASE_PASS}}'
+  exposes:
+  - type: rest
+    namespace: server-rest-scopes-and-collections-rest
+    port: 8080
+    description: REST adapter for Couchbase Server REST API — Scopes and Collections. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/pools/default/buckets/{bucketname}/scopes
+      name: pools-default-buckets-bucketname-scopes
+      description: REST surface for pools-default-buckets-bucketName-scopes.
+      operations:
+      - method: GET
+        name: listscopes
+        description: List scopes in a bucket
+        call: server-rest-scopes-and-collections.listscopes
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createscope
+        description: Create a scope
+        call: server-rest-scopes-and-collections.createscope
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pools/default/buckets/{bucketname}/scopes/{scopename}/collections
+      name: pools-default-buckets-bucketname-scopes-scopename-collections
+      description: REST surface for pools-default-buckets-bucketName-scopes-scopeName-collections.
+      operations:
+      - method: POST
+        name: createcollection
+        description: Create a collection
+        call: server-rest-scopes-and-collections.createcollection
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: server-rest-scopes-and-collections-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase Server REST API — Scopes and Collections. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: list-scopes-bucket
+      description: List scopes in a bucket
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-rest-scopes-and-collections.listscopes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-scope
+      description: Create a scope
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: server-rest-scopes-and-collections.createscope
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-collection
+      description: Create a collection
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: server-rest-scopes-and-collections.createcollection
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

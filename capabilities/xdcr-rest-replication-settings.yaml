@@ -1,0 +1,173 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase XDCR REST API — Replication Settings
+  description: 'Couchbase XDCR REST API — Replication Settings. 4 operations. Lead operation: Get global XDCR settings. Self-contained
+    Naftiko capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Replication Settings
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: xdcr-rest-replication-settings
+    baseUri: https://localhost:8091
+    description: Couchbase XDCR REST API — Replication Settings business capability. Self-contained, no shared references.
+    resources:
+    - name: settings-replications
+      path: /settings/replications
+      operations:
+      - name: getglobalreplicationsettings
+        method: GET
+        description: Get global XDCR settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateglobalreplicationsettings
+        method: POST
+        description: Update global XDCR settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: settings-replications-replicationId
+      path: /settings/replications/{replicationId}
+      operations:
+      - name: getreplicationsettings
+        method: GET
+        description: Get replication-specific settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatereplicationsettings
+        method: POST
+        description: Update replication-specific settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.COUCHBASE_USER}}'
+      password: '{{env.COUCHBASE_PASS}}'
+  exposes:
+  - type: rest
+    namespace: xdcr-rest-replication-settings-rest
+    port: 8080
+    description: REST adapter for Couchbase XDCR REST API — Replication Settings. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/settings/replications
+      name: settings-replications
+      description: REST surface for settings-replications.
+      operations:
+      - method: GET
+        name: getglobalreplicationsettings
+        description: Get global XDCR settings
+        call: xdcr-rest-replication-settings.getglobalreplicationsettings
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updateglobalreplicationsettings
+        description: Update global XDCR settings
+        call: xdcr-rest-replication-settings.updateglobalreplicationsettings
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/settings/replications/{replicationid}
+      name: settings-replications-replicationid
+      description: REST surface for settings-replications-replicationId.
+      operations:
+      - method: GET
+        name: getreplicationsettings
+        description: Get replication-specific settings
+        call: xdcr-rest-replication-settings.getreplicationsettings
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updatereplicationsettings
+        description: Update replication-specific settings
+        call: xdcr-rest-replication-settings.updatereplicationsettings
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: xdcr-rest-replication-settings-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase XDCR REST API — Replication Settings. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-global-xdcr-settings
+      description: Get global XDCR settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: xdcr-rest-replication-settings.getglobalreplicationsettings
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-global-xdcr-settings
+      description: Update global XDCR settings
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: xdcr-rest-replication-settings.updateglobalreplicationsettings
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-replication-specific-settings
+      description: Get replication-specific settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: xdcr-rest-replication-settings.getreplicationsettings
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-replication-specific-settings
+      description: Update replication-specific settings
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: xdcr-rest-replication-settings.updatereplicationsettings
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

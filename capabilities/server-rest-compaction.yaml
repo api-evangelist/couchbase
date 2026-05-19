@@ -1,0 +1,106 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase Server REST API — Compaction
+  description: 'Couchbase Server REST API — Compaction. 2 operations. Lead operation: Get auto-compaction settings. Self-contained
+    Naftiko capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Compaction
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: server-rest-compaction
+    baseUri: https://localhost:8091
+    description: Couchbase Server REST API — Compaction business capability. Self-contained, no shared references.
+    resources:
+    - name: settings-autoCompaction
+      path: /settings/autoCompaction
+      operations:
+      - name: getautocompaction
+        method: GET
+        description: Get auto-compaction settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateautocompaction
+        method: POST
+        description: Update auto-compaction settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.COUCHBASE_USER}}'
+      password: '{{env.COUCHBASE_PASS}}'
+  exposes:
+  - type: rest
+    namespace: server-rest-compaction-rest
+    port: 8080
+    description: REST adapter for Couchbase Server REST API — Compaction. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/settings/autocompaction
+      name: settings-autocompaction
+      description: REST surface for settings-autoCompaction.
+      operations:
+      - method: GET
+        name: getautocompaction
+        description: Get auto-compaction settings
+        call: server-rest-compaction.getautocompaction
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updateautocompaction
+        description: Update auto-compaction settings
+        call: server-rest-compaction.updateautocompaction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: server-rest-compaction-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase Server REST API — Compaction. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-auto-compaction-settings
+      description: Get auto-compaction settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-rest-compaction.getautocompaction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-auto-compaction-settings
+      description: Update auto-compaction settings
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: server-rest-compaction.updateautocompaction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

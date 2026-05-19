@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase Capella Management API — Users
+  description: 'Couchbase Capella Management API — Users. 1 operations. Lead operation: List organization users. Self-contained
+    Naftiko capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: capella-management-users
+    baseUri: https://cloudapi.cloud.couchbase.com
+    description: Couchbase Capella Management API — Users business capability. Self-contained, no shared references.
+    resources:
+    - name: v4-organizations-organizationId-users
+      path: /v4/organizations/{organizationId}/users
+      operations:
+      - name: listcapellausers
+        method: GET
+        description: List organization users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.COUCHBASE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: capella-management-users-rest
+    port: 8080
+    description: REST adapter for Couchbase Capella Management API — Users. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v4/organizations/{organizationid}/users
+      name: v4-organizations-organizationid-users
+      description: REST surface for v4-organizations-organizationId-users.
+      operations:
+      - method: GET
+        name: listcapellausers
+        description: List organization users
+        call: capella-management-users.listcapellausers
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: capella-management-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase Capella Management API — Users. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-organization-users
+      description: List organization users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: capella-management-users.listcapellausers
+      outputParameters:
+      - type: object
+        mapping: $.

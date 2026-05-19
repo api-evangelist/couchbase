@@ -1,0 +1,103 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase Eventing Service REST API — Statistics
+  description: 'Couchbase Eventing Service REST API — Statistics. 2 operations. Lead operation: Get Eventing Function statistics.
+    Self-contained Naftiko capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Statistics
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: eventing-service-rest-statistics
+    baseUri: https://localhost:8096
+    description: Couchbase Eventing Service REST API — Statistics business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-stats
+      path: /api/v1/stats
+      operations:
+      - name: geteventingstats
+        method: GET
+        description: Get Eventing Function statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-status
+      path: /api/v1/status
+      operations:
+      - name: geteventingstatus
+        method: GET
+        description: Get Eventing Service status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.COUCHBASE_USER}}'
+      password: '{{env.COUCHBASE_PASS}}'
+  exposes:
+  - type: rest
+    namespace: eventing-service-rest-statistics-rest
+    port: 8080
+    description: REST adapter for Couchbase Eventing Service REST API — Statistics. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/v1/stats
+      name: api-v1-stats
+      description: REST surface for api-v1-stats.
+      operations:
+      - method: GET
+        name: geteventingstats
+        description: Get Eventing Function statistics
+        call: eventing-service-rest-statistics.geteventingstats
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/status
+      name: api-v1-status
+      description: REST surface for api-v1-status.
+      operations:
+      - method: GET
+        name: geteventingstatus
+        description: Get Eventing Service status
+        call: eventing-service-rest-statistics.geteventingstatus
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: eventing-service-rest-statistics-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase Eventing Service REST API — Statistics. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: get-eventing-function-statistics
+      description: Get Eventing Function statistics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: eventing-service-rest-statistics.geteventingstats
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-eventing-service-status
+      description: Get Eventing Service status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: eventing-service-rest-statistics.geteventingstatus
+      outputParameters:
+      - type: object
+        mapping: $.

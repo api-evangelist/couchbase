@@ -1,0 +1,88 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase XDCR REST API — Replication Statistics
+  description: 'Couchbase XDCR REST API — Replication Statistics. 1 operations. Lead operation: Get XDCR replication statistics.
+    Self-contained Naftiko capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Replication Statistics
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: xdcr-rest-replication-statistics
+    baseUri: https://localhost:8091
+    description: Couchbase XDCR REST API — Replication Statistics business capability. Self-contained, no shared references.
+    resources:
+    - name: pools-default-buckets-bucketName-stats-statName
+      path: /pools/default/buckets/{bucketName}/stats/{statName}
+      operations:
+      - name: getreplicationstats
+        method: GET
+        description: Get XDCR replication statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: bucketName
+          in: path
+          type: string
+          description: The name of the source bucket
+          required: true
+        - name: statName
+          in: path
+          type: string
+          description: The specific statistic to retrieve (e.g., replications/{replicationId}/docs_written)
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.COUCHBASE_USER}}'
+      password: '{{env.COUCHBASE_PASS}}'
+  exposes:
+  - type: rest
+    namespace: xdcr-rest-replication-statistics-rest
+    port: 8080
+    description: REST adapter for Couchbase XDCR REST API — Replication Statistics. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/pools/default/buckets/{bucketname}/stats/{statname}
+      name: pools-default-buckets-bucketname-stats-statname
+      description: REST surface for pools-default-buckets-bucketName-stats-statName.
+      operations:
+      - method: GET
+        name: getreplicationstats
+        description: Get XDCR replication statistics
+        call: xdcr-rest-replication-statistics.getreplicationstats
+        with:
+          bucketName: rest.bucketName
+          statName: rest.statName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: xdcr-rest-replication-statistics-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase XDCR REST API — Replication Statistics. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: get-xdcr-replication-statistics
+      description: Get XDCR replication statistics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: xdcr-rest-replication-statistics.getreplicationstats
+      with:
+        bucketName: tools.bucketName
+        statName: tools.statName
+      outputParameters:
+      - type: object
+        mapping: $.

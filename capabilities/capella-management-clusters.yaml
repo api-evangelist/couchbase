@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase Capella Management API — Clusters
+  description: 'Couchbase Capella Management API — Clusters. 5 operations. Lead operation: List clusters. Self-contained Naftiko
+    capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Clusters
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: capella-management-clusters
+    baseUri: https://cloudapi.cloud.couchbase.com
+    description: Couchbase Capella Management API — Clusters business capability. Self-contained, no shared references.
+    resources:
+    - name: v4-organizations-organizationId-projects-projectId-clusters
+      path: /v4/organizations/{organizationId}/projects/{projectId}/clusters
+      operations:
+      - name: listclusters
+        method: GET
+        description: List clusters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcluster
+        method: POST
+        description: Create a cluster
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v4-organizations-organizationId-projects-projectId-clusters-clusterId
+      path: /v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}
+      operations:
+      - name: getcluster
+        method: GET
+        description: Get cluster details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatecluster
+        method: PUT
+        description: Update a cluster
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletecluster
+        method: DELETE
+        description: Delete a cluster
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.COUCHBASE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: capella-management-clusters-rest
+    port: 8080
+    description: REST adapter for Couchbase Capella Management API — Clusters. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v4/organizations/{organizationid}/projects/{projectid}/clusters
+      name: v4-organizations-organizationid-projects-projectid-clusters
+      description: REST surface for v4-organizations-organizationId-projects-projectId-clusters.
+      operations:
+      - method: GET
+        name: listclusters
+        description: List clusters
+        call: capella-management-clusters.listclusters
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcluster
+        description: Create a cluster
+        call: capella-management-clusters.createcluster
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v4/organizations/{organizationid}/projects/{projectid}/clusters/{clusterid}
+      name: v4-organizations-organizationid-projects-projectid-clusters-clusterid
+      description: REST surface for v4-organizations-organizationId-projects-projectId-clusters-clusterId.
+      operations:
+      - method: GET
+        name: getcluster
+        description: Get cluster details
+        call: capella-management-clusters.getcluster
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatecluster
+        description: Update a cluster
+        call: capella-management-clusters.updatecluster
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecluster
+        description: Delete a cluster
+        call: capella-management-clusters.deletecluster
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: capella-management-clusters-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase Capella Management API — Clusters. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-clusters
+      description: List clusters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: capella-management-clusters.listclusters
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-cluster
+      description: Create a cluster
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: capella-management-clusters.createcluster
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-cluster-details
+      description: Get cluster details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: capella-management-clusters.getcluster
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-cluster
+      description: Update a cluster
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: capella-management-clusters.updatecluster
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-cluster
+      description: Delete a cluster
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: capella-management-clusters.deletecluster
+      outputParameters:
+      - type: object
+        mapping: $.

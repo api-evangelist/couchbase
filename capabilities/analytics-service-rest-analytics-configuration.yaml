@@ -1,0 +1,174 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase Analytics Service REST API — Analytics Configuration
+  description: 'Couchbase Analytics Service REST API — Analytics Configuration. 4 operations. Lead operation: Get analytics
+    node configuration. Self-contained Naftiko capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Analytics Configuration
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: analytics-service-rest-analytics-configuration
+    baseUri: https://localhost:8095
+    description: Couchbase Analytics Service REST API — Analytics Configuration business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: analytics-config-node
+      path: /analytics/config/node
+      operations:
+      - name: getanalyticsnodeconfig
+        method: GET
+        description: Get analytics node configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateanalyticsnodeconfig
+        method: PUT
+        description: Update analytics node configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: analytics-config-service
+      path: /analytics/config/service
+      operations:
+      - name: getanalyticsserviceconfig
+        method: GET
+        description: Get analytics service configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateanalyticsserviceconfig
+        method: PUT
+        description: Update analytics service configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.COUCHBASE_USER}}'
+      password: '{{env.COUCHBASE_PASS}}'
+  exposes:
+  - type: rest
+    namespace: analytics-service-rest-analytics-configuration-rest
+    port: 8080
+    description: REST adapter for Couchbase Analytics Service REST API — Analytics Configuration. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/analytics/config/node
+      name: analytics-config-node
+      description: REST surface for analytics-config-node.
+      operations:
+      - method: GET
+        name: getanalyticsnodeconfig
+        description: Get analytics node configuration
+        call: analytics-service-rest-analytics-configuration.getanalyticsnodeconfig
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateanalyticsnodeconfig
+        description: Update analytics node configuration
+        call: analytics-service-rest-analytics-configuration.updateanalyticsnodeconfig
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/analytics/config/service
+      name: analytics-config-service
+      description: REST surface for analytics-config-service.
+      operations:
+      - method: GET
+        name: getanalyticsserviceconfig
+        description: Get analytics service configuration
+        call: analytics-service-rest-analytics-configuration.getanalyticsserviceconfig
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateanalyticsserviceconfig
+        description: Update analytics service configuration
+        call: analytics-service-rest-analytics-configuration.updateanalyticsserviceconfig
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: analytics-service-rest-analytics-configuration-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase Analytics Service REST API — Analytics Configuration. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: get-analytics-node-configuration
+      description: Get analytics node configuration
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: analytics-service-rest-analytics-configuration.getanalyticsnodeconfig
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-analytics-node-configuration
+      description: Update analytics node configuration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: analytics-service-rest-analytics-configuration.updateanalyticsnodeconfig
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-analytics-service-configuration
+      description: Get analytics service configuration
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: analytics-service-rest-analytics-configuration.getanalyticsserviceconfig
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-analytics-service-configuration
+      description: Update analytics service configuration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: analytics-service-rest-analytics-configuration.updateanalyticsserviceconfig
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

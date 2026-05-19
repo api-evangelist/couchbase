@@ -1,0 +1,103 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase Capella App Services Admin API — Monitoring
+  description: 'Couchbase Capella App Services Admin API — Monitoring. 2 operations. Lead operation: Get runtime statistics.
+    Self-contained Naftiko capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Monitoring
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: capella-app-services-admin-monitoring
+    baseUri: https://{appEndpoint}:4985
+    description: Couchbase Capella App Services Admin API — Monitoring business capability. Self-contained, no shared references.
+    resources:
+    - name: _expvar
+      path: /_expvar
+      operations:
+      - name: getexpvar
+        method: GET
+        description: Get runtime statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: _status
+      path: /_status
+      operations:
+      - name: getstatus
+        method: GET
+        description: Get server status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.COUCHBASE_USER}}'
+      password: '{{env.COUCHBASE_PASS}}'
+  exposes:
+  - type: rest
+    namespace: capella-app-services-admin-monitoring-rest
+    port: 8080
+    description: REST adapter for Couchbase Capella App Services Admin API — Monitoring. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/expvar
+      name: expvar
+      description: REST surface for _expvar.
+      operations:
+      - method: GET
+        name: getexpvar
+        description: Get runtime statistics
+        call: capella-app-services-admin-monitoring.getexpvar
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/status
+      name: status
+      description: REST surface for _status.
+      operations:
+      - method: GET
+        name: getstatus
+        description: Get server status
+        call: capella-app-services-admin-monitoring.getstatus
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: capella-app-services-admin-monitoring-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase Capella App Services Admin API — Monitoring. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: get-runtime-statistics
+      description: Get runtime statistics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: capella-app-services-admin-monitoring.getexpvar
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-server-status
+      description: Get server status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: capella-app-services-admin-monitoring.getstatus
+      outputParameters:
+      - type: object
+        mapping: $.

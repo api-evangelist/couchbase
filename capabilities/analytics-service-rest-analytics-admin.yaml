@@ -1,0 +1,167 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase Analytics Service REST API — Analytics Admin
+  description: 'Couchbase Analytics Service REST API — Analytics Admin. 4 operations. Lead operation: Get analytics cluster
+    status. Self-contained Naftiko capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Analytics Admin
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: analytics-service-rest-analytics-admin
+    baseUri: https://localhost:8095
+    description: Couchbase Analytics Service REST API — Analytics Admin business capability. Self-contained, no shared references.
+    resources:
+    - name: analytics-cluster
+      path: /analytics/cluster
+      operations:
+      - name: getanalyticsclusterstatus
+        method: GET
+        description: Get analytics cluster status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: analytics-cluster-restart
+      path: /analytics/cluster/restart
+      operations:
+      - name: restartanalyticscluster
+        method: POST
+        description: Restart analytics cluster
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: analytics-node-agg-stats-remaining
+      path: /analytics/node/agg/stats/remaining
+      operations:
+      - name: getanalyticsremainingmutations
+        method: GET
+        description: Get remaining mutations to be synced
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: analytics-status-ingestion
+      path: /analytics/status/ingestion
+      operations:
+      - name: getanalyticsingestionstatus
+        method: GET
+        description: Get analytics data ingestion status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.COUCHBASE_USER}}'
+      password: '{{env.COUCHBASE_PASS}}'
+  exposes:
+  - type: rest
+    namespace: analytics-service-rest-analytics-admin-rest
+    port: 8080
+    description: REST adapter for Couchbase Analytics Service REST API — Analytics Admin. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/analytics/cluster
+      name: analytics-cluster
+      description: REST surface for analytics-cluster.
+      operations:
+      - method: GET
+        name: getanalyticsclusterstatus
+        description: Get analytics cluster status
+        call: analytics-service-rest-analytics-admin.getanalyticsclusterstatus
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/analytics/cluster/restart
+      name: analytics-cluster-restart
+      description: REST surface for analytics-cluster-restart.
+      operations:
+      - method: POST
+        name: restartanalyticscluster
+        description: Restart analytics cluster
+        call: analytics-service-rest-analytics-admin.restartanalyticscluster
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/analytics/node/agg/stats/remaining
+      name: analytics-node-agg-stats-remaining
+      description: REST surface for analytics-node-agg-stats-remaining.
+      operations:
+      - method: GET
+        name: getanalyticsremainingmutations
+        description: Get remaining mutations to be synced
+        call: analytics-service-rest-analytics-admin.getanalyticsremainingmutations
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/analytics/status/ingestion
+      name: analytics-status-ingestion
+      description: REST surface for analytics-status-ingestion.
+      operations:
+      - method: GET
+        name: getanalyticsingestionstatus
+        description: Get analytics data ingestion status
+        call: analytics-service-rest-analytics-admin.getanalyticsingestionstatus
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: analytics-service-rest-analytics-admin-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase Analytics Service REST API — Analytics Admin. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: get-analytics-cluster-status
+      description: Get analytics cluster status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: analytics-service-rest-analytics-admin.getanalyticsclusterstatus
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: restart-analytics-cluster
+      description: Restart analytics cluster
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: analytics-service-rest-analytics-admin.restartanalyticscluster
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-remaining-mutations-be-synced
+      description: Get remaining mutations to be synced
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: analytics-service-rest-analytics-admin.getanalyticsremainingmutations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-analytics-data-ingestion-status
+      description: Get analytics data ingestion status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: analytics-service-rest-analytics-admin.getanalyticsingestionstatus
+      outputParameters:
+      - type: object
+        mapping: $.

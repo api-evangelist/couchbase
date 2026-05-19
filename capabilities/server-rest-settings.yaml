@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase Server REST API — Settings
+  description: 'Couchbase Server REST API — Settings. 1 operations. Lead operation: Configure web settings. Self-contained
+    Naftiko capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Settings
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: server-rest-settings
+    baseUri: https://localhost:8091
+    description: Couchbase Server REST API — Settings business capability. Self-contained, no shared references.
+    resources:
+    - name: settings-web
+      path: /settings/web
+      operations:
+      - name: configurewebsettings
+        method: POST
+        description: Configure web settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.COUCHBASE_USER}}'
+      password: '{{env.COUCHBASE_PASS}}'
+  exposes:
+  - type: rest
+    namespace: server-rest-settings-rest
+    port: 8080
+    description: REST adapter for Couchbase Server REST API — Settings. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/settings/web
+      name: settings-web
+      description: REST surface for settings-web.
+      operations:
+      - method: POST
+        name: configurewebsettings
+        description: Configure web settings
+        call: server-rest-settings.configurewebsettings
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: server-rest-settings-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase Server REST API — Settings. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: configure-web-settings
+      description: Configure web settings
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: server-rest-settings.configurewebsettings
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

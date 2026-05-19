@@ -1,0 +1,106 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase Query Service REST API — Query Settings
+  description: 'Couchbase Query Service REST API — Query Settings. 2 operations. Lead operation: Get query service settings.
+    Self-contained Naftiko capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Query Settings
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: query-service-rest-query-settings
+    baseUri: https://localhost:8093
+    description: Couchbase Query Service REST API — Query Settings business capability. Self-contained, no shared references.
+    resources:
+    - name: admin-settings
+      path: /admin/settings
+      operations:
+      - name: getquerysettings
+        method: GET
+        description: Get query service settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatequerysettings
+        method: POST
+        description: Update query service settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.COUCHBASE_USER}}'
+      password: '{{env.COUCHBASE_PASS}}'
+  exposes:
+  - type: rest
+    namespace: query-service-rest-query-settings-rest
+    port: 8080
+    description: REST adapter for Couchbase Query Service REST API — Query Settings. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/admin/settings
+      name: admin-settings
+      description: REST surface for admin-settings.
+      operations:
+      - method: GET
+        name: getquerysettings
+        description: Get query service settings
+        call: query-service-rest-query-settings.getquerysettings
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updatequerysettings
+        description: Update query service settings
+        call: query-service-rest-query-settings.updatequerysettings
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: query-service-rest-query-settings-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase Query Service REST API — Query Settings. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: get-query-service-settings
+      description: Get query service settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: query-service-rest-query-settings.getquerysettings
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-query-service-settings
+      description: Update query service settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: query-service-rest-query-settings.updatequerysettings
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

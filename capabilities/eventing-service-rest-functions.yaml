@@ -1,0 +1,163 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Couchbase Eventing Service REST API — Functions
+  description: 'Couchbase Eventing Service REST API — Functions. 4 operations. Lead operation: List all Eventing Functions.
+    Self-contained Naftiko capability covering one Couchbase business surface.'
+  tags:
+  - Couchbase
+  - Functions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COUCHBASE_API_KEY: COUCHBASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: eventing-service-rest-functions
+    baseUri: https://localhost:8096
+    description: Couchbase Eventing Service REST API — Functions business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-functions
+      path: /api/v1/functions
+      operations:
+      - name: listeventingfunctions
+        method: GET
+        description: List all Eventing Functions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-functions-functionName
+      path: /api/v1/functions/{functionName}
+      operations:
+      - name: geteventingfunction
+        method: GET
+        description: Get an Eventing Function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createorupdateeventingfunction
+        method: POST
+        description: Create or update an Eventing Function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteeventingfunction
+        method: DELETE
+        description: Delete an Eventing Function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.COUCHBASE_USER}}'
+      password: '{{env.COUCHBASE_PASS}}'
+  exposes:
+  - type: rest
+    namespace: eventing-service-rest-functions-rest
+    port: 8080
+    description: REST adapter for Couchbase Eventing Service REST API — Functions. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/v1/functions
+      name: api-v1-functions
+      description: REST surface for api-v1-functions.
+      operations:
+      - method: GET
+        name: listeventingfunctions
+        description: List all Eventing Functions
+        call: eventing-service-rest-functions.listeventingfunctions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/functions/{functionname}
+      name: api-v1-functions-functionname
+      description: REST surface for api-v1-functions-functionName.
+      operations:
+      - method: GET
+        name: geteventingfunction
+        description: Get an Eventing Function
+        call: eventing-service-rest-functions.geteventingfunction
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createorupdateeventingfunction
+        description: Create or update an Eventing Function
+        call: eventing-service-rest-functions.createorupdateeventingfunction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteeventingfunction
+        description: Delete an Eventing Function
+        call: eventing-service-rest-functions.deleteeventingfunction
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: eventing-service-rest-functions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Couchbase Eventing Service REST API — Functions. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: list-all-eventing-functions
+      description: List all Eventing Functions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: eventing-service-rest-functions.listeventingfunctions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-eventing-function
+      description: Get an Eventing Function
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: eventing-service-rest-functions.geteventingfunction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-update-eventing-function
+      description: Create or update an Eventing Function
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: eventing-service-rest-functions.createorupdateeventingfunction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-eventing-function
+      description: Delete an Eventing Function
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: eventing-service-rest-functions.deleteeventingfunction
+      outputParameters:
+      - type: object
+        mapping: $.
