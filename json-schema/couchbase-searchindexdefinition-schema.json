@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SearchIndexDefinition",
+  "title": "SearchIndexDefinition",
+  "type": "object",
+  "description": "Full Text Search index definition",
+  "required": [
+    "name",
+    "type",
+    "sourceName"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the search index"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of the index",
+      "enum": [
+        "fulltext-index",
+        "fulltext-alias"
+      ]
+    },
+    "sourceName": {
+      "type": "string",
+      "description": "Name of the source bucket"
+    },
+    "sourceType": {
+      "type": "string",
+      "description": "Type of the data source",
+      "default": "couchbase"
+    },
+    "sourceUUID": {
+      "type": "string",
+      "description": "UUID of the source bucket"
+    },
+    "planParams": {
+      "type": "object",
+      "description": "Index partition and replication plan",
+      "properties": {
+        "maxPartitionsPerPIndex": {
+          "type": "integer",
+          "description": "Maximum partitions per index partition"
+        },
+        "numReplicas": {
+          "type": "integer",
+          "description": "Number of index replicas",
+          "minimum": 0
+        },
+        "indexPartitions": {
+          "type": "integer",
+          "description": "Number of index partitions"
+        }
+      }
+    },
+    "params": {
+      "type": "object",
+      "description": "Index configuration parameters",
+      "properties": {
+        "mapping": {
+          "type": "object",
+          "description": "Type mapping configuration",
+          "properties": {
+            "default_mapping": {
+              "type": "object",
+              "description": "Default type mapping",
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "description": "Whether the default mapping is enabled"
+                },
+                "dynamic": {
+                  "type": "boolean",
+                  "description": "Whether to dynamically index all fields"
+                }
+              }
+            },
+            "types": {
+              "type": "object",
+              "description": "Named type mappings",
+              "additionalProperties": {
+                "type": "object"
+              }
+            },
+            "default_analyzer": {
+              "type": "string",
+              "description": "Default analyzer for the index"
+            },
+            "default_type": {
+              "type": "string",
+              "description": "Default type for documents"
+            }
+          }
+        },
+        "doc_config": {
+          "type": "object",
+          "description": "Document configuration",
+          "properties": {
+            "mode": {
+              "type": "string",
+              "description": "Document type identification mode",
+              "enum": [
+                "scope.collection.type_field",
+                "scope.collection.docid_prefix",
+                "scope.collection.docid_regexp",
+                "type_field",
+                "docid_prefix",
+                "docid_regexp"
+              ]
+            }
+          }
+        },
+        "store": {
+          "type": "object",
+          "description": "Store configuration",
+          "properties": {
+            "indexType": {
+              "type": "string",
+              "description": "Index storage type",
+              "enum": [
+                "scorch"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "uuid": {
+      "type": "string",
+      "description": "UUID of the index"
+    }
+  }
+}

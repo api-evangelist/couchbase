@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DatabaseConfig",
+  "title": "DatabaseConfig",
+  "type": "object",
+  "description": "Database configuration",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Database name"
+    },
+    "bucket": {
+      "type": "string",
+      "description": "Couchbase Server bucket name"
+    },
+    "sync": {
+      "type": "string",
+      "description": "JavaScript sync function code"
+    },
+    "import_filter": {
+      "type": "string",
+      "description": "JavaScript import filter function code"
+    },
+    "enable_shared_bucket_access": {
+      "type": "boolean",
+      "description": "Whether to enable shared bucket access with SDKs"
+    },
+    "import_docs": {
+      "type": "boolean",
+      "description": "Whether to auto-import documents from the bucket"
+    },
+    "num_index_replicas": {
+      "type": "integer",
+      "description": "Number of GSI index replicas"
+    },
+    "delta_sync": {
+      "type": "object",
+      "description": "Delta sync configuration",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Whether delta sync is enabled"
+        },
+        "rev_max_age_seconds": {
+          "type": "integer",
+          "description": "Maximum age for revision deltas in seconds"
+        }
+      }
+    },
+    "guest": {
+      "type": "object",
+      "description": "Guest (unauthenticated) user configuration",
+      "properties": {
+        "disabled": {
+          "type": "boolean",
+          "description": "Whether the guest user is disabled"
+        },
+        "admin_channels": {
+          "type": "array",
+          "description": "Admin channels for the guest user",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

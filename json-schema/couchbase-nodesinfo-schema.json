@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NodesInfo",
+  "title": "NodesInfo",
+  "type": "object",
+  "description": "Information about cluster nodes",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "description": "List of nodes",
+      "items": {
+        "$ref": "#/components/schemas/Node"
+      }
+    }
+  }
+}

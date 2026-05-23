@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/QuerySettings",
+  "title": "QuerySettings",
+  "type": "object",
+  "description": "Query service configuration settings",
+  "properties": {
+    "queryTmpSpaceDir": {
+      "type": "string",
+      "description": "Directory for temporary query files"
+    },
+    "queryTmpSpaceSize": {
+      "type": "integer",
+      "description": "Maximum temporary space size in megabytes"
+    },
+    "queryPipelineBatch": {
+      "type": "integer",
+      "description": "Number of items in a batch for pipeline execution"
+    },
+    "queryPipelineCap": {
+      "type": "integer",
+      "description": "Maximum number of items in the pipeline queue"
+    },
+    "queryScanCap": {
+      "type": "integer",
+      "description": "Maximum buffer size for index scans"
+    },
+    "queryTimeout": {
+      "type": "string",
+      "description": "Default timeout for queries (e.g., 0s for unlimited)"
+    },
+    "queryPreparedLimit": {
+      "type": "integer",
+      "description": "Maximum number of prepared statements to cache"
+    },
+    "queryCompletedLimit": {
+      "type": "integer",
+      "description": "Maximum number of completed requests to keep"
+    },
+    "queryCompletedThreshold": {
+      "type": "integer",
+      "description": "Minimum execution time in milliseconds for a request to be added to the completed requests log"
+    },
+    "queryLogLevel": {
+      "type": "string",
+      "description": "Log level for the Query service",
+      "enum": [
+        "debug",
+        "trace",
+        "info",
+        "warn",
+        "error",
+        "severe",
+        "none"
+      ]
+    },
+    "queryMaxParallelism": {
+      "type": "integer",
+      "description": "Maximum parallelism for query execution"
+    },
+    "queryN1QLFeatCtrl": {
+      "type": "integer",
+      "description": "Feature control flags for N1QL"
+    }
+  }
+}

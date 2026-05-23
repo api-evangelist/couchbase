@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ApiKeyCreateRequest",
+  "title": "ApiKeyCreateRequest",
+  "type": "object",
+  "description": "Request to create an API key",
+  "required": [
+    "name",
+    "organizationRoles"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name for the API key"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the API key"
+    },
+    "expiry": {
+      "type": "number",
+      "description": "Expiry time in days (0 for no expiry)"
+    },
+    "organizationRoles": {
+      "type": "array",
+      "description": "Organization-level roles",
+      "items": {
+        "type": "string",
+        "enum": [
+          "organizationOwner",
+          "organizationMember",
+          "projectCreator"
+        ]
+      }
+    },
+    "resources": {
+      "type": "array",
+      "description": "Project-specific role assignments",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Project UUID"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "projectOwner",
+                "projectManager",
+                "projectViewer",
+                "projectDataReaderWriter",
+                "projectDataReader"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "allowedCIDRs": {
+      "type": "array",
+      "description": "CIDRs allowed to use this API key",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

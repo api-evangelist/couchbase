@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Project",
+  "title": "Project",
+  "type": "object",
+  "description": "Capella project within an organization",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Project UUID"
+    },
+    "name": {
+      "type": "string",
+      "description": "Project name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Project description"
+    },
+    "audit": {
+      "$ref": "#/components/schemas/AuditInfo"
+    }
+  }
+}

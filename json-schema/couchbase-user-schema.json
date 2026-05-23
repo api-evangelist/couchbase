@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/User",
+  "title": "User",
+  "type": "object",
+  "description": "User account information",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Username"
+    },
+    "name": {
+      "type": "string",
+      "description": "Full name of the user"
+    },
+    "domain": {
+      "type": "string",
+      "description": "Authentication domain",
+      "enum": [
+        "local",
+        "external"
+      ]
+    },
+    "roles": {
+      "type": "array",
+      "description": "List of roles assigned to the user",
+      "items": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string",
+            "description": "Role name"
+          },
+          "bucket_name": {
+            "type": "string",
+            "description": "Bucket the role applies to"
+          },
+          "scope_name": {
+            "type": "string",
+            "description": "Scope the role applies to"
+          },
+          "collection_name": {
+            "type": "string",
+            "description": "Collection the role applies to"
+          }
+        }
+      }
+    }
+  }
+}

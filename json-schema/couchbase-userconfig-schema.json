@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserConfig",
+  "title": "UserConfig",
+  "type": "object",
+  "description": "User configuration for creation or update",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Username"
+    },
+    "password": {
+      "type": "string",
+      "description": "User password"
+    },
+    "admin_channels": {
+      "type": "array",
+      "description": "Admin-assigned channels",
+      "items": {
+        "type": "string"
+      }
+    },
+    "admin_roles": {
+      "type": "array",
+      "description": "Admin-assigned roles",
+      "items": {
+        "type": "string"
+      }
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "User email address"
+    },
+    "disabled": {
+      "type": "boolean",
+      "description": "Whether the user account is disabled"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/IndexSettings",
+  "title": "IndexSettings",
+  "type": "object",
+  "description": "Index service configuration",
+  "properties": {
+    "storageMode": {
+      "type": "string",
+      "description": "Index storage mode",
+      "enum": [
+        "plasma",
+        "memory_optimized",
+        "forestdb"
+      ]
+    },
+    "indexerThreads": {
+      "type": "integer",
+      "description": "Number of indexer threads"
+    },
+    "memorySnapshotInterval": {
+      "type": "integer",
+      "description": "Memory snapshot interval in milliseconds"
+    },
+    "stableSnapshotInterval": {
+      "type": "integer",
+      "description": "Stable snapshot interval in milliseconds"
+    },
+    "logLevel": {
+      "type": "string",
+      "description": "Log level for the index service",
+      "enum": [
+        "silent",
+        "fatal",
+        "error",
+        "warn",
+        "info",
+        "verbose",
+        "timing",
+        "debug",
+        "trace"
+      ]
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ServiceGroup",
+  "title": "ServiceGroup",
+  "type": "object",
+  "description": "Service group within a cluster",
+  "properties": {
+    "node": {
+      "type": "object",
+      "description": "Node configuration",
+      "properties": {
+        "compute": {
+          "type": "object",
+          "description": "Compute instance configuration",
+          "properties": {
+            "cpu": {
+              "type": "integer",
+              "description": "Number of CPU cores"
+            },
+            "ram": {
+              "type": "integer",
+              "description": "RAM in gigabytes"
+            }
+          }
+        },
+        "disk": {
+          "type": "object",
+          "description": "Disk storage configuration",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "Disk type",
+              "enum": [
+                "gp3",
+                "io2",
+                "P6",
+                "P10",
+                "P15",
+                "P20",
+                "P30",
+                "P40",
+                "P50",
+                "pd-ssd"
+              ]
+            },
+            "storage": {
+              "type": "integer",
+              "description": "Storage size in gigabytes"
+            },
+            "iops": {
+              "type": "integer",
+              "description": "IOPS for the disk"
+            }
+          }
+        }
+      }
+    },
+    "numOfNodes": {
+      "type": "integer",
+      "description": "Number of nodes in the service group",
+      "minimum": 3
+    },
+    "services": {
+      "type": "array",
+      "description": "Services enabled on the nodes",
+      "items": {
+        "type": "string",
+        "enum": [
+          "data",
+          "index",
+          "query",
+          "search",
+          "analytics",
+          "eventing"
+        ]
+      }
+    }
+  }
+}

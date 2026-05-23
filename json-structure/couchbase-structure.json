@@ -1,0 +1,389 @@
+{
+  "provider": "Couchbase",
+  "providerId": "couchbase",
+  "kind": "json-structure",
+  "description": "Structural overview of the Couchbase API surface; extracted from openapi/.",
+  "schemaCount": 19,
+  "operationCount": 27,
+  "schemas": [
+    {
+      "name": "Organization",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "Project",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ProjectCreateRequest",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "name"
+      ]
+    },
+    {
+      "name": "Cluster",
+      "type": "object",
+      "propertyCount": 11,
+      "required": []
+    },
+    {
+      "name": "ClusterCreateRequest",
+      "type": "object",
+      "propertyCount": 7,
+      "required": [
+        "name",
+        "cloudProvider",
+        "serviceGroups",
+        "availability",
+        "support"
+      ]
+    },
+    {
+      "name": "ClusterUpdateRequest",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ServiceGroup",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "CapellaBucket",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "CapellaBucketCreateRequest",
+      "type": "object",
+      "propertyCount": 8,
+      "required": [
+        "name",
+        "memoryAllocationInMb"
+      ]
+    },
+    {
+      "name": "CapellaBucketUpdateRequest",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "CapellaScope",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "AllowedCIDR",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "AllowedCIDRCreateRequest",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "cidr"
+      ]
+    },
+    {
+      "name": "DatabaseCredential",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "DatabaseCredentialCreateRequest",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "name",
+        "password",
+        "access"
+      ]
+    },
+    {
+      "name": "ApiKeyCreateRequest",
+      "type": "object",
+      "propertyCount": 6,
+      "required": [
+        "name",
+        "organizationRoles"
+      ]
+    },
+    {
+      "name": "ApiKeyCreateResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "PaginatedResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "AuditInfo",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/v4/organizations",
+      "operationId": "listOrganizations",
+      "summary": "List organizations",
+      "tags": [
+        "Organizations"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v4/organizations/{organizationId}",
+      "operationId": "getOrganization",
+      "summary": "Get organization details",
+      "tags": [
+        "Organizations"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v4/organizations/{organizationId}/projects",
+      "operationId": "listProjects",
+      "summary": "List projects",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v4/organizations/{organizationId}/projects",
+      "operationId": "createProject",
+      "summary": "Create a project",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}",
+      "operationId": "getProject",
+      "summary": "Get project details",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}",
+      "operationId": "updateProject",
+      "summary": "Update a project",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}",
+      "operationId": "deleteProject",
+      "summary": "Delete a project",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}/clusters",
+      "operationId": "listClusters",
+      "summary": "List clusters",
+      "tags": [
+        "Clusters"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}/clusters",
+      "operationId": "createCluster",
+      "summary": "Create a cluster",
+      "tags": [
+        "Clusters"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}",
+      "operationId": "getCluster",
+      "summary": "Get cluster details",
+      "tags": [
+        "Clusters"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}",
+      "operationId": "updateCluster",
+      "summary": "Update a cluster",
+      "tags": [
+        "Clusters"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}",
+      "operationId": "deleteCluster",
+      "summary": "Delete a cluster",
+      "tags": [
+        "Clusters"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/buckets",
+      "operationId": "listCapellaBuckets",
+      "summary": "List buckets in a cluster",
+      "tags": [
+        "Buckets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/buckets",
+      "operationId": "createCapellaBucket",
+      "summary": "Create a bucket",
+      "tags": [
+        "Buckets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/buckets/{bucketId}",
+      "operationId": "getCapellaBucket",
+      "summary": "Get bucket details",
+      "tags": [
+        "Buckets"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/buckets/{bucketId}",
+      "operationId": "updateCapellaBucket",
+      "summary": "Update a bucket",
+      "tags": [
+        "Buckets"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/buckets/{bucketId}",
+      "operationId": "deleteCapellaBucket",
+      "summary": "Delete a bucket",
+      "tags": [
+        "Buckets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/buckets/{bucketId}/scopes",
+      "operationId": "listCapellaScopes",
+      "summary": "List scopes in a bucket",
+      "tags": [
+        "Scopes and Collections"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/buckets/{bucketId}/scopes",
+      "operationId": "createCapellaScope",
+      "summary": "Create a scope",
+      "tags": [
+        "Scopes and Collections"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/allowedCIDRs",
+      "operationId": "listAllowedCIDRs",
+      "summary": "List allowed CIDRs",
+      "tags": [
+        "Allowed CIDRs"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/allowedCIDRs",
+      "operationId": "addAllowedCIDR",
+      "summary": "Add an allowed CIDR",
+      "tags": [
+        "Allowed CIDRs"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/allowedCIDRs/{allowedCIDRId}",
+      "operationId": "deleteAllowedCIDR",
+      "summary": "Delete an allowed CIDR",
+      "tags": [
+        "Allowed CIDRs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/users",
+      "operationId": "listDatabaseCredentials",
+      "summary": "List database credentials",
+      "tags": [
+        "Database Credentials"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/users",
+      "operationId": "createDatabaseCredential",
+      "summary": "Create database credentials",
+      "tags": [
+        "Database Credentials"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v4/organizations/{organizationId}/apikeys",
+      "operationId": "listApiKeys",
+      "summary": "List API keys",
+      "tags": [
+        "API Keys"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v4/organizations/{organizationId}/apikeys",
+      "operationId": "createApiKey",
+      "summary": "Create an API key",
+      "tags": [
+        "API Keys"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v4/organizations/{organizationId}/users",
+      "operationId": "listCapellaUsers",
+      "summary": "List organization users",
+      "tags": [
+        "Users"
+      ]
+    }
+  ]
+}

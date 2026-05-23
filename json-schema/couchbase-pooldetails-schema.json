@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PoolDetails",
+  "title": "PoolDetails",
+  "type": "object",
+  "description": "Detailed information about the default pool",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the pool"
+    },
+    "clusterName": {
+      "type": "string",
+      "description": "Human-readable cluster name"
+    },
+    "nodes": {
+      "type": "array",
+      "description": "List of nodes in the cluster",
+      "items": {
+        "$ref": "#/components/schemas/Node"
+      }
+    },
+    "storageTotals": {
+      "type": "object",
+      "description": "Aggregate storage statistics",
+      "properties": {
+        "ram": {
+          "type": "object",
+          "properties": {
+            "total": {
+              "type": "integer",
+              "description": "Total RAM in bytes"
+            },
+            "used": {
+              "type": "integer",
+              "description": "Used RAM in bytes"
+            }
+          }
+        },
+        "hdd": {
+          "type": "object",
+          "properties": {
+            "total": {
+              "type": "integer",
+              "description": "Total disk space in bytes"
+            },
+            "used": {
+              "type": "integer",
+              "description": "Used disk space in bytes"
+            }
+          }
+        }
+      }
+    },
+    "rebalanceStatus": {
+      "type": "string",
+      "description": "Current rebalance status"
+    }
+  }
+}

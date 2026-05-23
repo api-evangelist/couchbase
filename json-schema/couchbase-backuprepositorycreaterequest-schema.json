@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BackupRepositoryCreateRequest",
+  "title": "BackupRepositoryCreateRequest",
+  "type": "object",
+  "description": "Request to create a backup repository",
+  "required": [
+    "plan",
+    "archive"
+  ],
+  "properties": {
+    "plan": {
+      "type": "string",
+      "description": "Name of the backup plan to use"
+    },
+    "archive": {
+      "type": "string",
+      "description": "Path to the backup archive location"
+    },
+    "bucket_name": {
+      "type": "string",
+      "description": "Cloud storage bucket name (for cloud backups)"
+    }
+  }
+}

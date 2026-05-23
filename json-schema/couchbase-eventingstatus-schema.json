@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventingStatus",
+  "title": "EventingStatus",
+  "type": "object",
+  "description": "Status of all Eventing Functions",
+  "properties": {
+    "num_eventing_nodes": {
+      "type": "integer",
+      "description": "Number of nodes running the Eventing service"
+    },
+    "apps": {
+      "type": "array",
+      "description": "Status of each Eventing Function",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Function name"
+          },
+          "composite_status": {
+            "type": "string",
+            "description": "Overall status of the function",
+            "enum": [
+              "undeployed",
+              "deploying",
+              "deployed",
+              "undeploying",
+              "paused",
+              "pausing"
+            ]
+          },
+          "deployment_status": {
+            "type": "boolean",
+            "description": "Whether the function is deployed"
+          },
+          "processing_status": {
+            "type": "boolean",
+            "description": "Whether the function is processing"
+          },
+          "num_deployed_nodes": {
+            "type": "integer",
+            "description": "Number of nodes where the function is deployed"
+          },
+          "function_scope": {
+            "type": "object",
+            "description": "Scope of the function",
+            "properties": {
+              "bucket": {
+                "type": "string"
+              },
+              "scope": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

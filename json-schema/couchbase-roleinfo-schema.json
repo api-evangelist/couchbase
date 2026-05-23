@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RoleInfo",
+  "title": "RoleInfo",
+  "type": "object",
+  "description": "Role information",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Role name"
+    },
+    "admin_channels": {
+      "type": "array",
+      "description": "Admin-assigned channels",
+      "items": {
+        "type": "string"
+      }
+    },
+    "all_channels": {
+      "type": "array",
+      "description": "All channels accessible through this role",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

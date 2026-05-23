@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RemoteClusterCreateRequest",
+  "title": "RemoteClusterCreateRequest",
+  "type": "object",
+  "description": "Request to create or update a remote cluster reference",
+  "required": [
+    "name",
+    "hostname",
+    "username",
+    "password"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name for the remote cluster reference"
+    },
+    "hostname": {
+      "type": "string",
+      "description": "Hostname and port of the remote cluster"
+    },
+    "username": {
+      "type": "string",
+      "description": "Administrator username on the remote cluster"
+    },
+    "password": {
+      "type": "string",
+      "description": "Administrator password on the remote cluster"
+    },
+    "demandEncryption": {
+      "type": "integer",
+      "description": "Whether to require encryption (0 or 1)",
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "encryptionType": {
+      "type": "string",
+      "description": "Type of encryption to use",
+      "enum": [
+        "none",
+        "half",
+        "full"
+      ]
+    },
+    "certificate": {
+      "type": "string",
+      "description": "CA certificate for the remote cluster in PEM format"
+    }
+  }
+}

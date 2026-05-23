@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CapellaScope",
+  "title": "CapellaScope",
+  "type": "object",
+  "description": "Scope within a Capella bucket",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Scope name"
+    },
+    "collections": {
+      "type": "array",
+      "description": "Collections within the scope",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Collection name"
+          },
+          "maxTTL": {
+            "type": "integer",
+            "description": "Maximum TTL in seconds"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ClusterCreateRequest",
+  "title": "ClusterCreateRequest",
+  "type": "object",
+  "description": "Request to create a new cluster",
+  "required": [
+    "name",
+    "cloudProvider",
+    "serviceGroups",
+    "availability",
+    "support"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Cluster name",
+      "maxLength": 256
+    },
+    "description": {
+      "type": "string",
+      "description": "Cluster description"
+    },
+    "cloudProvider": {
+      "type": "object",
+      "required": [
+        "type",
+        "region",
+        "cidr"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "aws",
+            "azure",
+            "gcp"
+          ]
+        },
+        "region": {
+          "type": "string",
+          "description": "Cloud region identifier"
+        },
+        "cidr": {
+          "type": "string",
+          "description": "CIDR block for the cluster"
+        }
+      }
+    },
+    "couchbaseServer": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "Desired Couchbase Server version"
+        }
+      }
+    },
+    "serviceGroups": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ServiceGroup"
+      }
+    },
+    "availability": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "single",
+            "multi"
+          ]
+        }
+      }
+    },
+    "support": {
+      "type": "object",
+      "required": [
+        "plan",
+        "timezone"
+      ],
+      "properties": {
+        "plan": {
+          "type": "string",
+          "enum": [
+            "basic",
+            "developer pro",
+            "enterprise"
+          ]
+        },
+        "timezone": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

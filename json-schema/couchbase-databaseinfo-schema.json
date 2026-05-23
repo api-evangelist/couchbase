@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DatabaseInfo",
+  "title": "DatabaseInfo",
+  "type": "object",
+  "description": "Database information",
+  "properties": {
+    "db_name": {
+      "type": "string",
+      "description": "Name of the database"
+    },
+    "update_seq": {
+      "type": "integer",
+      "description": "Current update sequence number"
+    },
+    "committed_update_seq": {
+      "type": "integer",
+      "description": "Committed update sequence number"
+    },
+    "instance_start_time": {
+      "type": "integer",
+      "description": "Instance start time in microseconds since epoch"
+    },
+    "compact_running": {
+      "type": "boolean",
+      "description": "Whether compaction is currently running"
+    },
+    "state": {
+      "type": "string",
+      "description": "Database state",
+      "enum": [
+        "Online",
+        "Offline"
+      ]
+    }
+  }
+}

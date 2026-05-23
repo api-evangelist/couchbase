@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReplicationCreateRequest",
+  "title": "ReplicationCreateRequest",
+  "type": "object",
+  "description": "Request to create an XDCR replication",
+  "required": [
+    "fromBucket",
+    "toCluster",
+    "toBucket",
+    "replicationType"
+  ],
+  "properties": {
+    "fromBucket": {
+      "type": "string",
+      "description": "Name of the source bucket"
+    },
+    "toCluster": {
+      "type": "string",
+      "description": "Name of the remote cluster reference"
+    },
+    "toBucket": {
+      "type": "string",
+      "description": "Name of the target bucket on the remote cluster"
+    },
+    "replicationType": {
+      "type": "string",
+      "description": "Type of replication",
+      "enum": [
+        "continuous"
+      ]
+    },
+    "filterExpression": {
+      "type": "string",
+      "description": "Regular expression filter for document IDs"
+    },
+    "compressionType": {
+      "type": "string",
+      "description": "Compression type for replication data",
+      "enum": [
+        "None",
+        "Auto",
+        "Snappy"
+      ]
+    },
+    "priority": {
+      "type": "string",
+      "description": "Replication priority",
+      "enum": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    }
+  }
+}

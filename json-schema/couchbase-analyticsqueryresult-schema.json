@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AnalyticsQueryResult",
+  "title": "AnalyticsQueryResult",
+  "type": "object",
+  "description": "Analytics query execution result",
+  "properties": {
+    "requestID": {
+      "type": "string",
+      "description": "Unique identifier for the request"
+    },
+    "clientContextID": {
+      "type": "string",
+      "description": "Client-provided context identifier"
+    },
+    "signature": {
+      "type": "object",
+      "description": "Schema signature of the results"
+    },
+    "results": {
+      "type": "array",
+      "description": "Array of result documents",
+      "items": {}
+    },
+    "status": {
+      "type": "string",
+      "description": "Query execution status",
+      "enum": [
+        "success",
+        "running",
+        "errors",
+        "completed",
+        "stopped",
+        "timeout",
+        "fatal"
+      ]
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Query execution metrics",
+      "properties": {
+        "elapsedTime": {
+          "type": "string",
+          "description": "Total elapsed time"
+        },
+        "executionTime": {
+          "type": "string",
+          "description": "Execution time"
+        },
+        "resultCount": {
+          "type": "integer",
+          "description": "Number of results returned"
+        },
+        "resultSize": {
+          "type": "integer",
+          "description": "Size of results in bytes"
+        },
+        "processedObjects": {
+          "type": "integer",
+          "description": "Number of objects processed"
+        },
+        "errorCount": {
+          "type": "integer",
+          "description": "Number of errors encountered"
+        },
+        "warningCount": {
+          "type": "integer",
+          "description": "Number of warnings generated"
+        }
+      }
+    },
+    "errors": {
+      "type": "array",
+      "description": "List of errors if any occurred",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Error code"
+          },
+          "msg": {
+            "type": "string",
+            "description": "Error message"
+          }
+        }
+      }
+    }
+  }
+}

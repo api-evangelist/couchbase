@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BucketCreateRequest",
+  "title": "BucketCreateRequest",
+  "type": "object",
+  "description": "Request body for creating a new bucket",
+  "required": [
+    "name",
+    "ramQuota"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the bucket",
+      "maxLength": 100
+    },
+    "bucketType": {
+      "type": "string",
+      "description": "Type of the bucket",
+      "enum": [
+        "couchbase",
+        "memcached",
+        "ephemeral"
+      ],
+      "default": "couchbase"
+    },
+    "ramQuota": {
+      "type": "integer",
+      "description": "RAM quota in megabytes",
+      "minimum": 100
+    },
+    "replicaNumber": {
+      "type": "integer",
+      "description": "Number of replicas",
+      "minimum": 0,
+      "maximum": 3,
+      "default": 1
+    },
+    "conflictResolutionType": {
+      "type": "string",
+      "description": "Conflict resolution mechanism",
+      "enum": [
+        "seqno",
+        "lww"
+      ],
+      "default": "seqno"
+    },
+    "evictionPolicy": {
+      "type": "string",
+      "description": "Eviction policy",
+      "enum": [
+        "valueOnly",
+        "fullEviction",
+        "noEviction",
+        "nruEviction"
+      ]
+    },
+    "flushEnabled": {
+      "type": "integer",
+      "description": "Whether flush is enabled (0 or 1)",
+      "enum": [
+        0,
+        1
+      ],
+      "default": 0
+    }
+  }
+}

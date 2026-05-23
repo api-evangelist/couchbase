@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SessionResponse",
+  "title": "SessionResponse",
+  "type": "object",
+  "description": "Session creation response",
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "description": "Session identifier"
+    },
+    "expires": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Session expiration time"
+    },
+    "cookie_name": {
+      "type": "string",
+      "description": "Name of the session cookie"
+    }
+  }
+}

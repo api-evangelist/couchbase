@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DocumentResponse",
+  "title": "DocumentResponse",
+  "type": "object",
+  "description": "Response after creating or updating a document",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Document ID"
+    },
+    "rev": {
+      "type": "string",
+      "description": "New revision ID"
+    },
+    "ok": {
+      "type": "boolean",
+      "description": "Whether the operation succeeded"
+    }
+  }
+}

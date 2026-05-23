@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ClusterUpdateRequest",
+  "title": "ClusterUpdateRequest",
+  "type": "object",
+  "description": "Request to update an existing cluster",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Cluster name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Cluster description"
+    },
+    "serviceGroups": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ServiceGroup"
+      }
+    },
+    "support": {
+      "type": "object",
+      "properties": {
+        "plan": {
+          "type": "string",
+          "enum": [
+            "basic",
+            "developer pro",
+            "enterprise"
+          ]
+        },
+        "timezone": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

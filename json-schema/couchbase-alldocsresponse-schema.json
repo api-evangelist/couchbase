@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AllDocsResponse",
+  "title": "AllDocsResponse",
+  "type": "object",
+  "description": "Response for _all_docs request",
+  "properties": {
+    "rows": {
+      "type": "array",
+      "description": "Array of document entries",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Document ID"
+          },
+          "key": {
+            "type": "string",
+            "description": "Document key"
+          },
+          "value": {
+            "type": "object",
+            "properties": {
+              "rev": {
+                "type": "string",
+                "description": "Current revision ID"
+              }
+            }
+          },
+          "doc": {
+            "type": "object",
+            "description": "Full document body (if include_docs=true)"
+          }
+        }
+      }
+    },
+    "total_rows": {
+      "type": "integer",
+      "description": "Total number of rows"
+    },
+    "update_seq": {
+      "type": "integer",
+      "description": "Current update sequence"
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SearchQueryResult",
+  "title": "SearchQueryResult",
+  "type": "object",
+  "description": "Full-text search query result",
+  "properties": {
+    "status": {
+      "type": "object",
+      "description": "Query execution status",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Total number of search partitions queried"
+        },
+        "failed": {
+          "type": "integer",
+          "description": "Number of partitions that failed"
+        },
+        "successful": {
+          "type": "integer",
+          "description": "Number of partitions that succeeded"
+        },
+        "errors": {
+          "type": "object",
+          "description": "Error messages from failed partitions"
+        }
+      }
+    },
+    "total_hits": {
+      "type": "integer",
+      "description": "Total number of matching documents"
+    },
+    "max_score": {
+      "type": "number",
+      "description": "Maximum relevance score"
+    },
+    "took": {
+      "type": "integer",
+      "description": "Time taken in nanoseconds"
+    },
+    "hits": {
+      "type": "array",
+      "description": "Array of matching documents",
+      "items": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "string",
+            "description": "Index partition that matched"
+          },
+          "id": {
+            "type": "string",
+            "description": "Document ID"
+          },
+          "score": {
+            "type": "number",
+            "description": "Relevance score"
+          },
+          "fields": {
+            "type": "object",
+            "description": "Requested field values"
+          },
+          "fragments": {
+            "type": "object",
+            "description": "Highlighted fragments",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "sort": {
+            "type": "array",
+            "description": "Sort values",
+            "items": {}
+          }
+        }
+      }
+    },
+    "facets": {
+      "type": "object",
+      "description": "Faceted results",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string",
+            "description": "Facet field name"
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total count"
+          },
+          "missing": {
+            "type": "integer",
+            "description": "Count of documents without this field"
+          },
+          "other": {
+            "type": "integer",
+            "description": "Count not represented in terms"
+          },
+          "terms": {
+            "type": "array",
+            "description": "Facet term values",
+            "items": {
+              "type": "object",
+              "properties": {
+                "term": {
+                  "type": "string",
+                  "description": "Facet value"
+                },
+                "count": {
+                  "type": "integer",
+                  "description": "Number of documents with this value"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

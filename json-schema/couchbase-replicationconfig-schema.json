@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReplicationConfig",
+  "title": "ReplicationConfig",
+  "type": "object",
+  "description": "Inter-Sync Gateway replication configuration",
+  "properties": {
+    "replication_id": {
+      "type": "string",
+      "description": "Replication identifier"
+    },
+    "remote": {
+      "type": "string",
+      "description": "URL of the remote Sync Gateway"
+    },
+    "direction": {
+      "type": "string",
+      "description": "Replication direction",
+      "enum": [
+        "push",
+        "pull",
+        "pushAndPull"
+      ]
+    },
+    "continuous": {
+      "type": "boolean",
+      "description": "Whether the replication runs continuously"
+    },
+    "filter": {
+      "type": "string",
+      "description": "Filter function for the replication",
+      "enum": [
+        "sync_gateway/bychannel"
+      ]
+    },
+    "query_params": {
+      "type": "object",
+      "description": "Parameters for the filter function",
+      "properties": {
+        "channels": {
+          "type": "array",
+          "description": "Channel names to replicate",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "conflict_resolution_type": {
+      "type": "string",
+      "description": "Conflict resolution strategy",
+      "enum": [
+        "default",
+        "localWins",
+        "remoteWins",
+        "custom"
+      ]
+    },
+    "custom_conflict_resolver": {
+      "type": "string",
+      "description": "JavaScript custom conflict resolver function"
+    },
+    "max_backoff_time": {
+      "type": "integer",
+      "description": "Maximum backoff time for retries in minutes"
+    },
+    "initial_state": {
+      "type": "string",
+      "description": "Initial state of the replication",
+      "enum": [
+        "running",
+        "stopped"
+      ]
+    },
+    "state": {
+      "type": "string",
+      "description": "Current state of the replication",
+      "enum": [
+        "running",
+        "stopped",
+        "error",
+        "reconnecting",
+        "starting"
+      ]
+    }
+  }
+}

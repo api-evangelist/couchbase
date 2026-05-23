@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaginatedResponse",
+  "title": "PaginatedResponse",
+  "type": "object",
+  "description": "Paginated response wrapper",
+  "properties": {
+    "cursor": {
+      "type": "object",
+      "description": "Pagination cursor information",
+      "properties": {
+        "pages": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "type": "integer",
+              "description": "Current page number"
+            },
+            "next": {
+              "type": "integer",
+              "description": "Next page number"
+            },
+            "previous": {
+              "type": "integer",
+              "description": "Previous page number"
+            },
+            "last": {
+              "type": "integer",
+              "description": "Last page number"
+            },
+            "perPage": {
+              "type": "integer",
+              "description": "Items per page"
+            },
+            "totalItems": {
+              "type": "integer",
+              "description": "Total number of items"
+            }
+          }
+        }
+      }
+    },
+    "data": {
+      "type": "array",
+      "description": "List of items",
+      "items": {}
+    }
+  }
+}

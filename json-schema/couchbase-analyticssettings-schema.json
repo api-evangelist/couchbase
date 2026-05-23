@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AnalyticsSettings",
+  "title": "AnalyticsSettings",
+  "type": "object",
+  "description": "Cluster-level analytics settings",
+  "properties": {
+    "numReplicas": {
+      "type": "integer",
+      "description": "Number of Analytics replicas",
+      "minimum": 0,
+      "maximum": 3
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventingConfig",
+  "title": "EventingConfig",
+  "type": "object",
+  "description": "Eventing Service configuration",
+  "properties": {
+    "enable_debugger": {
+      "type": "boolean",
+      "description": "Whether the debugger is enabled"
+    },
+    "ram_quota": {
+      "type": "integer",
+      "description": "RAM quota for the Eventing service in megabytes"
+    }
+  }
+}

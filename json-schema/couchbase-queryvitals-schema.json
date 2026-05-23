@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/QueryVitals",
+  "title": "QueryVitals",
+  "type": "object",
+  "description": "Query service vital statistics",
+  "properties": {
+    "uptime": {
+      "type": "string",
+      "description": "Time since the query service started"
+    },
+    "local.time": {
+      "type": "string",
+      "description": "Local time on the node"
+    },
+    "version": {
+      "type": "string",
+      "description": "Version of the query engine"
+    },
+    "total.threads": {
+      "type": "integer",
+      "description": "Total number of threads"
+    },
+    "cores": {
+      "type": "integer",
+      "description": "Number of CPU cores"
+    },
+    "gc_num": {
+      "type": "integer",
+      "description": "Number of garbage collections"
+    },
+    "gc_pause_time": {
+      "type": "string",
+      "description": "Total garbage collection pause time"
+    },
+    "gc_pause_percent": {
+      "type": "string",
+      "description": "Percentage of time spent in GC"
+    },
+    "memory_usage": {
+      "type": "integer",
+      "description": "Current memory usage in bytes"
+    },
+    "total_memory_system": {
+      "type": "integer",
+      "description": "Total system memory available"
+    },
+    "request.completed.count": {
+      "type": "integer",
+      "description": "Total number of completed requests"
+    },
+    "request.active.count": {
+      "type": "integer",
+      "description": "Number of currently active requests"
+    },
+    "request.per.sec.1min": {
+      "type": "number",
+      "description": "Requests per second over the last minute"
+    },
+    "request.per.sec.5min": {
+      "type": "number",
+      "description": "Requests per second over the last 5 minutes"
+    },
+    "request.per.sec.15min": {
+      "type": "number",
+      "description": "Requests per second over the last 15 minutes"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BackupPlan",
+  "title": "BackupPlan",
+  "type": "object",
+  "description": "Backup plan definition",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the backup plan"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the backup plan"
+    },
+    "services": {
+      "type": "array",
+      "description": "Services to back up",
+      "items": {
+        "type": "string",
+        "enum": [
+          "data",
+          "gsi",
+          "views",
+          "ft",
+          "eventing",
+          "cbas"
+        ]
+      }
+    },
+    "default": {
+      "type": "boolean",
+      "description": "Whether this is the default plan"
+    },
+    "tasks": {
+      "type": "array",
+      "description": "Scheduled tasks in the plan",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Task name"
+          },
+          "task_type": {
+            "type": "string",
+            "description": "Type of task",
+            "enum": [
+              "BACKUP",
+              "MERGE"
+            ]
+          },
+          "full_backup": {
+            "type": "boolean",
+            "description": "Whether to perform a full backup"
+          },
+          "schedule": {
+            "type": "object",
+            "description": "Task schedule configuration",
+            "properties": {
+              "job_type": {
+                "type": "string",
+                "description": "Schedule type"
+              },
+              "frequency": {
+                "type": "integer",
+                "description": "Frequency value"
+              },
+              "period": {
+                "type": "string",
+                "description": "Frequency period",
+                "enum": [
+                  "MINUTES",
+                  "HOURS",
+                  "DAYS",
+                  "WEEKS",
+                  "MONDAY",
+                  "TUESDAY",
+                  "WEDNESDAY",
+                  "THURSDAY",
+                  "FRIDAY",
+                  "SATURDAY",
+                  "SUNDAY"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

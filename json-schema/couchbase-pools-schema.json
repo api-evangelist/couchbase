@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Pools",
+  "title": "Pools",
+  "type": "object",
+  "description": "Cluster pool information",
+  "properties": {
+    "isAdminCreds": {
+      "type": "boolean",
+      "description": "Whether admin credentials are being used"
+    },
+    "isROAdminCreds": {
+      "type": "boolean",
+      "description": "Whether read-only admin credentials are being used"
+    },
+    "isEnterprise": {
+      "type": "boolean",
+      "description": "Whether this is an Enterprise Edition cluster"
+    },
+    "implementationVersion": {
+      "type": "string",
+      "description": "The version of the Couchbase Server implementation"
+    },
+    "uuid": {
+      "type": "string",
+      "description": "The unique identifier for the cluster"
+    },
+    "pools": {
+      "type": "array",
+      "description": "List of available pools",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Pool name"
+          },
+          "uri": {
+            "type": "string",
+            "description": "URI to access pool details"
+          },
+          "streamingUri": {
+            "type": "string",
+            "description": "URI for streaming pool updates"
+          }
+        }
+      }
+    }
+  }
+}

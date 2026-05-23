@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AnalyticsQueryRequest",
+  "title": "AnalyticsQueryRequest",
+  "type": "object",
+  "description": "Analytics query execution request",
+  "required": [
+    "statement"
+  ],
+  "properties": {
+    "statement": {
+      "type": "string",
+      "description": "The SQL++ analytics statement to execute"
+    },
+    "pretty": {
+      "type": "boolean",
+      "description": "Whether to format the results with indentation"
+    },
+    "readonly": {
+      "type": "boolean",
+      "description": "Whether to restrict to read-only operations"
+    },
+    "client_context_id": {
+      "type": "string",
+      "description": "Client-provided context identifier for request tracking"
+    },
+    "timeout": {
+      "type": "string",
+      "description": "Maximum execution time for the query (e.g., 10s, 5m)"
+    },
+    "scan_consistency": {
+      "type": "string",
+      "description": "Consistency requirement for the query",
+      "enum": [
+        "not_bounded",
+        "request_plus"
+      ]
+    },
+    "args": {
+      "type": "array",
+      "description": "Positional parameters for the query",
+      "items": {}
+    }
+  }
+}

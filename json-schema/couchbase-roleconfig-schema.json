@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RoleConfig",
+  "title": "RoleConfig",
+  "type": "object",
+  "description": "Role configuration",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Role name"
+    },
+    "admin_channels": {
+      "type": "array",
+      "description": "Admin-assigned channels for this role",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AutoCompactionSettings",
+  "title": "AutoCompactionSettings",
+  "type": "object",
+  "description": "Auto-compaction configuration",
+  "properties": {
+    "databaseFragmentationThreshold": {
+      "type": "object",
+      "properties": {
+        "percentage": {
+          "type": "integer",
+          "description": "Database fragmentation percentage threshold"
+        },
+        "size": {
+          "type": "integer",
+          "description": "Database fragmentation size threshold in bytes"
+        }
+      }
+    },
+    "viewFragmentationThreshold": {
+      "type": "object",
+      "properties": {
+        "percentage": {
+          "type": "integer",
+          "description": "View fragmentation percentage threshold"
+        },
+        "size": {
+          "type": "integer",
+          "description": "View fragmentation size threshold in bytes"
+        }
+      }
+    },
+    "parallelDBAndViewCompaction": {
+      "type": "boolean",
+      "description": "Whether to run database and view compaction in parallel"
+    }
+  }
+}

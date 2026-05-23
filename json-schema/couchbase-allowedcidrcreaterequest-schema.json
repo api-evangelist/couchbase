@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AllowedCIDRCreateRequest",
+  "title": "AllowedCIDRCreateRequest",
+  "type": "object",
+  "description": "Request to add an allowed CIDR",
+  "required": [
+    "cidr"
+  ],
+  "properties": {
+    "cidr": {
+      "type": "string",
+      "description": "IP address or CIDR range to allow"
+    },
+    "comment": {
+      "type": "string",
+      "description": "Optional comment describing the entry"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Optional expiration for temporary access"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BucketUpdateRequest",
+  "title": "BucketUpdateRequest",
+  "type": "object",
+  "description": "Request body for updating a bucket",
+  "properties": {
+    "ramQuota": {
+      "type": "integer",
+      "description": "RAM quota in megabytes",
+      "minimum": 100
+    },
+    "replicaNumber": {
+      "type": "integer",
+      "description": "Number of replicas",
+      "minimum": 0,
+      "maximum": 3
+    },
+    "flushEnabled": {
+      "type": "integer",
+      "description": "Whether flush is enabled (0 or 1)",
+      "enum": [
+        0,
+        1
+      ]
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CompletedRequest",
+  "title": "CompletedRequest",
+  "type": "object",
+  "description": "A completed query request",
+  "properties": {
+    "requestId": {
+      "type": "string",
+      "description": "Unique identifier for the request"
+    },
+    "statement": {
+      "type": "string",
+      "description": "The SQL++ statement that was executed"
+    },
+    "requestTime": {
+      "type": "string",
+      "description": "Time when the request was received"
+    },
+    "elapsedTime": {
+      "type": "string",
+      "description": "Total elapsed time for the request"
+    },
+    "resultCount": {
+      "type": "integer",
+      "description": "Number of results returned"
+    },
+    "resultSize": {
+      "type": "integer",
+      "description": "Size of results in bytes"
+    },
+    "errorCount": {
+      "type": "integer",
+      "description": "Number of errors encountered"
+    },
+    "state": {
+      "type": "string",
+      "description": "Final state of the request"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ActiveRequest",
+  "title": "ActiveRequest",
+  "type": "object",
+  "description": "An active query request",
+  "properties": {
+    "requestId": {
+      "type": "string",
+      "description": "Unique identifier for the request"
+    },
+    "statement": {
+      "type": "string",
+      "description": "The SQL++ statement being executed"
+    },
+    "requestTime": {
+      "type": "string",
+      "description": "Time when the request was received"
+    },
+    "elapsedTime": {
+      "type": "string",
+      "description": "Time elapsed since the request started"
+    },
+    "executionTime": {
+      "type": "string",
+      "description": "Time spent executing the query"
+    },
+    "state": {
+      "type": "string",
+      "description": "Current state of the request"
+    },
+    "scanConsistency": {
+      "type": "string",
+      "description": "Consistency level of the query"
+    },
+    "clientContextID": {
+      "type": "string",
+      "description": "Client-provided context identifier"
+    }
+  }
+}

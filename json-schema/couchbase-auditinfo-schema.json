@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AuditInfo",
+  "title": "AuditInfo",
+  "type": "object",
+  "description": "Audit timestamps",
+  "properties": {
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "modifiedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last modification timestamp"
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "User who created the resource"
+    },
+    "modifiedBy": {
+      "type": "string",
+      "description": "User who last modified the resource"
+    },
+    "version": {
+      "type": "integer",
+      "description": "Resource version number"
+    }
+  }
+}

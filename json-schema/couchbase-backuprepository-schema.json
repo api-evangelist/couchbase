@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BackupRepository",
+  "title": "BackupRepository",
+  "type": "object",
+  "description": "Backup repository configuration and status",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Repository identifier"
+    },
+    "plan_name": {
+      "type": "string",
+      "description": "Name of the associated backup plan"
+    },
+    "state": {
+      "type": "string",
+      "description": "Current state of the repository",
+      "enum": [
+        "active",
+        "paused",
+        "archived",
+        "imported"
+      ]
+    },
+    "archive": {
+      "type": "string",
+      "description": "Path to the backup archive location"
+    },
+    "bucket": {
+      "type": "object",
+      "description": "Cloud storage bucket configuration",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Bucket name"
+        },
+        "provider": {
+          "type": "string",
+          "description": "Cloud provider"
+        }
+      }
+    },
+    "backups": {
+      "type": "array",
+      "description": "List of backups in the repository",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date the backup was taken"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of backup",
+            "enum": [
+              "FULL",
+              "INCR"
+            ]
+          },
+          "complete": {
+            "type": "boolean",
+            "description": "Whether the backup completed successfully"
+          },
+          "buckets": {
+            "type": "array",
+            "description": "Buckets included in the backup",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Bucket name"
+                },
+                "items": {
+                  "type": "integer",
+                  "description": "Number of items backed up"
+                },
+                "mutations": {
+                  "type": "integer",
+                  "description": "Number of mutations backed up"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

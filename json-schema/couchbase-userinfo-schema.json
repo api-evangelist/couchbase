@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserInfo",
+  "title": "UserInfo",
+  "type": "object",
+  "description": "User information",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Username"
+    },
+    "admin_channels": {
+      "type": "array",
+      "description": "Admin-assigned channels",
+      "items": {
+        "type": "string"
+      }
+    },
+    "admin_roles": {
+      "type": "array",
+      "description": "Admin-assigned roles",
+      "items": {
+        "type": "string"
+      }
+    },
+    "all_channels": {
+      "type": "array",
+      "description": "All channels accessible by the user",
+      "items": {
+        "type": "string"
+      }
+    },
+    "roles": {
+      "type": "array",
+      "description": "All roles assigned to the user",
+      "items": {
+        "type": "string"
+      }
+    },
+    "email": {
+      "type": "string",
+      "description": "User email address"
+    },
+    "disabled": {
+      "type": "boolean",
+      "description": "Whether the user account is disabled"
+    }
+  }
+}

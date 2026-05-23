@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Organization",
+  "title": "Organization",
+  "type": "object",
+  "description": "Capella organization",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Organization UUID"
+    },
+    "name": {
+      "type": "string",
+      "description": "Organization name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Organization description"
+    },
+    "preferences": {
+      "type": "object",
+      "description": "Organization preferences"
+    },
+    "audit": {
+      "$ref": "#/components/schemas/AuditInfo"
+    }
+  }
+}

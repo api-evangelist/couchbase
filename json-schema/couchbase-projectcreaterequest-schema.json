@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProjectCreateRequest",
+  "title": "ProjectCreateRequest",
+  "type": "object",
+  "description": "Request to create or update a project",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Project name",
+      "maxLength": 128
+    },
+    "description": {
+      "type": "string",
+      "description": "Project description",
+      "maxLength": 1024
+    }
+  }
+}

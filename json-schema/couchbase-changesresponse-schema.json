@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ChangesResponse",
+  "title": "ChangesResponse",
+  "type": "object",
+  "description": "Changes feed response",
+  "properties": {
+    "results": {
+      "type": "array",
+      "description": "Array of changes",
+      "items": {
+        "type": "object",
+        "properties": {
+          "seq": {
+            "description": "Sequence number"
+          },
+          "id": {
+            "type": "string",
+            "description": "Document ID"
+          },
+          "changes": {
+            "type": "array",
+            "description": "List of revision changes",
+            "items": {
+              "type": "object",
+              "properties": {
+                "rev": {
+                  "type": "string",
+                  "description": "Revision ID"
+                }
+              }
+            }
+          },
+          "deleted": {
+            "type": "boolean",
+            "description": "Whether the document was deleted"
+          },
+          "doc": {
+            "type": "object",
+            "description": "Document body (if include_docs=true)"
+          }
+        }
+      }
+    },
+    "last_seq": {
+      "description": "Last sequence number in the response"
+    },
+    "pending": {
+      "type": "integer",
+      "description": "Number of pending changes"
+    }
+  }
+}

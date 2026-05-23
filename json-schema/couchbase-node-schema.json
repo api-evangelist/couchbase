@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Node",
+  "title": "Node",
+  "type": "object",
+  "description": "Information about a cluster node",
+  "properties": {
+    "hostname": {
+      "type": "string",
+      "description": "Node hostname and port"
+    },
+    "status": {
+      "type": "string",
+      "description": "Node status",
+      "enum": [
+        "healthy",
+        "unhealthy",
+        "warmup"
+      ]
+    },
+    "clusterMembership": {
+      "type": "string",
+      "description": "Cluster membership status",
+      "enum": [
+        "active",
+        "inactiveAdded",
+        "inactiveFailed"
+      ]
+    },
+    "services": {
+      "type": "array",
+      "description": "List of services running on the node",
+      "items": {
+        "type": "string",
+        "enum": [
+          "kv",
+          "n1ql",
+          "index",
+          "fts",
+          "cbas",
+          "eventing",
+          "backup"
+        ]
+      }
+    },
+    "os": {
+      "type": "string",
+      "description": "Operating system of the node"
+    },
+    "version": {
+      "type": "string",
+      "description": "Couchbase Server version on the node"
+    },
+    "memoryTotal": {
+      "type": "integer",
+      "description": "Total memory on the node in bytes"
+    },
+    "memoryFree": {
+      "type": "integer",
+      "description": "Free memory on the node in bytes"
+    }
+  }
+}

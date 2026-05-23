@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AnalyticsNodeConfig",
+  "title": "AnalyticsNodeConfig",
+  "type": "object",
+  "description": "Analytics node-level configuration",
+  "properties": {
+    "storageBuffercachePagesize": {
+      "type": "integer",
+      "description": "Buffer cache page size in bytes"
+    },
+    "storageBuffercacheSize": {
+      "type": "integer",
+      "description": "Buffer cache size in bytes"
+    },
+    "storageMemorycomponentNumcomponents": {
+      "type": "integer",
+      "description": "Number of memory components"
+    }
+  }
+}

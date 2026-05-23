@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AnalyticsServiceConfig",
+  "title": "AnalyticsServiceConfig",
+  "type": "object",
+  "description": "Analytics service configuration",
+  "properties": {
+    "activeMemoryGlobalBudget": {
+      "type": "integer",
+      "description": "Global memory budget in bytes"
+    },
+    "activeStopTimeout": {
+      "type": "integer",
+      "description": "Timeout for stopping active operations in seconds"
+    },
+    "activeSuspendTimeout": {
+      "type": "integer",
+      "description": "Timeout for suspending active operations in seconds"
+    },
+    "analyticsBroadcastDcpStateMutationCount": {
+      "type": "integer",
+      "description": "DCP state mutation broadcast count"
+    },
+    "compilerFrameLimit": {
+      "type": "integer",
+      "description": "Maximum number of frames in a query plan"
+    },
+    "compilerGroupmemory": {
+      "type": "integer",
+      "description": "Memory allocated for groupby operations in bytes"
+    },
+    "compilerJoinmemory": {
+      "type": "integer",
+      "description": "Memory allocated for join operations in bytes"
+    },
+    "compilerSortmemory": {
+      "type": "integer",
+      "description": "Memory allocated for sort operations in bytes"
+    },
+    "logLevel": {
+      "type": "string",
+      "description": "Log level for the Analytics service",
+      "enum": [
+        "DEBUG",
+        "TRACE",
+        "INFO",
+        "WARN",
+        "ERROR",
+        "FATAL"
+      ]
+    }
+  }
+}

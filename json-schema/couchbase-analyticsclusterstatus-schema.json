@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AnalyticsClusterStatus",
+  "title": "AnalyticsClusterStatus",
+  "type": "object",
+  "description": "Analytics cluster status information",
+  "properties": {
+    "state": {
+      "type": "string",
+      "description": "Overall state of the Analytics cluster",
+      "enum": [
+        "ACTIVE",
+        "UNUSABLE",
+        "RECOVERING"
+      ]
+    },
+    "nodes": {
+      "type": "array",
+      "description": "List of Analytics nodes and their states",
+      "items": {
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "type": "string",
+            "description": "Node identifier"
+          },
+          "state": {
+            "type": "string",
+            "description": "State of the individual node"
+          },
+          "partitions": {
+            "type": "array",
+            "description": "Data partitions on the node",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  }
+}

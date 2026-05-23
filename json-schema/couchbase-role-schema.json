@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Role",
+  "title": "Role",
+  "type": "object",
+  "description": "Available role definition",
+  "properties": {
+    "role": {
+      "type": "string",
+      "description": "Role identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable role name"
+    },
+    "desc": {
+      "type": "string",
+      "description": "Description of the role"
+    },
+    "bucket_name": {
+      "type": "string",
+      "description": "Bucket constraint for the role"
+    }
+  }
+}

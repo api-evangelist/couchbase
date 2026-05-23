@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReplicationSettings",
+  "title": "ReplicationSettings",
+  "type": "object",
+  "description": "XDCR replication settings",
+  "properties": {
+    "checkpointInterval": {
+      "type": "integer",
+      "description": "Interval between checkpoints in seconds",
+      "minimum": 60,
+      "maximum": 14400
+    },
+    "docBatchSizeKb": {
+      "type": "integer",
+      "description": "Document batch size in kilobytes",
+      "minimum": 10,
+      "maximum": 10000
+    },
+    "failureRestartInterval": {
+      "type": "integer",
+      "description": "Interval before restarting after failure in seconds",
+      "minimum": 1,
+      "maximum": 300
+    },
+    "filterExpression": {
+      "type": "string",
+      "description": "Regular expression filter for document IDs"
+    },
+    "logLevel": {
+      "type": "string",
+      "description": "Log level for the replication",
+      "enum": [
+        "Error",
+        "Warn",
+        "Info",
+        "Debug",
+        "Trace"
+      ]
+    },
+    "networkUsageLimit": {
+      "type": "integer",
+      "description": "Network usage limit in MB per second (0 for unlimited)",
+      "minimum": 0
+    },
+    "optimisticReplicationThreshold": {
+      "type": "integer",
+      "description": "Document size threshold in bytes for optimistic replication",
+      "minimum": 0
+    },
+    "sourceNozzlePerNode": {
+      "type": "integer",
+      "description": "Number of source nozzles per node",
+      "minimum": 1,
+      "maximum": 100
+    },
+    "targetNozzlePerNode": {
+      "type": "integer",
+      "description": "Number of target nozzles per node",
+      "minimum": 1,
+      "maximum": 100
+    },
+    "statsInterval": {
+      "type": "integer",
+      "description": "Interval for statistics updates in milliseconds",
+      "minimum": 200,
+      "maximum": 600000
+    },
+    "compressionType": {
+      "type": "string",
+      "description": "Compression type for replicated data",
+      "enum": [
+        "None",
+        "Auto",
+        "Snappy"
+      ]
+    },
+    "priority": {
+      "type": "string",
+      "description": "Replication priority",
+      "enum": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    }
+  }
+}

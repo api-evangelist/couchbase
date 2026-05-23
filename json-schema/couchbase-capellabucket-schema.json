@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CapellaBucket",
+  "title": "CapellaBucket",
+  "type": "object",
+  "description": "Bucket in a Capella cluster",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Bucket ID"
+    },
+    "name": {
+      "type": "string",
+      "description": "Bucket name"
+    },
+    "type": {
+      "type": "string",
+      "description": "Bucket type",
+      "enum": [
+        "couchbase",
+        "ephemeral"
+      ]
+    },
+    "memoryAllocationInMb": {
+      "type": "integer",
+      "description": "Memory allocation in megabytes"
+    },
+    "bucketConflictResolution": {
+      "type": "string",
+      "description": "Conflict resolution type",
+      "enum": [
+        "seqno",
+        "lww"
+      ]
+    },
+    "durabilityLevel": {
+      "type": "string",
+      "description": "Minimum durability level",
+      "enum": [
+        "none",
+        "majority",
+        "majorityAndPersistActive",
+        "persistToMajority"
+      ]
+    },
+    "replicas": {
+      "type": "integer",
+      "description": "Number of replicas",
+      "minimum": 1,
+      "maximum": 3
+    },
+    "flush": {
+      "type": "boolean",
+      "description": "Whether flush is enabled"
+    },
+    "timeToLiveInSeconds": {
+      "type": "integer",
+      "description": "Default TTL in seconds (0 for no expiry)"
+    },
+    "stats": {
+      "type": "object",
+      "description": "Bucket statistics",
+      "properties": {
+        "itemCount": {
+          "type": "integer",
+          "description": "Number of items"
+        },
+        "memoryUsedInMib": {
+          "type": "integer",
+          "description": "Memory used in MiB"
+        }
+      }
+    }
+  }
+}

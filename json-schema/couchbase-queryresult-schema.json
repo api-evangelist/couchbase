@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/QueryResult",
+  "title": "QueryResult",
+  "type": "object",
+  "description": "SQL++ query execution result",
+  "properties": {
+    "requestID": {
+      "type": "string",
+      "description": "Unique identifier for the request"
+    },
+    "clientContextID": {
+      "type": "string",
+      "description": "Client-provided context identifier"
+    },
+    "signature": {
+      "type": "object",
+      "description": "Schema signature of the results"
+    },
+    "results": {
+      "type": "array",
+      "description": "Array of result documents",
+      "items": {}
+    },
+    "status": {
+      "type": "string",
+      "description": "Query execution status",
+      "enum": [
+        "success",
+        "running",
+        "errors",
+        "completed",
+        "stopped",
+        "timeout",
+        "fatal"
+      ]
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Query execution metrics",
+      "properties": {
+        "elapsedTime": {
+          "type": "string",
+          "description": "Total elapsed time"
+        },
+        "executionTime": {
+          "type": "string",
+          "description": "Execution time excluding fetch"
+        },
+        "resultCount": {
+          "type": "integer",
+          "description": "Number of results returned"
+        },
+        "resultSize": {
+          "type": "integer",
+          "description": "Size of results in bytes"
+        },
+        "mutationCount": {
+          "type": "integer",
+          "description": "Number of mutations performed"
+        },
+        "errorCount": {
+          "type": "integer",
+          "description": "Number of errors encountered"
+        },
+        "warningCount": {
+          "type": "integer",
+          "description": "Number of warnings generated"
+        }
+      }
+    },
+    "errors": {
+      "type": "array",
+      "description": "List of errors if any occurred",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Error code"
+          },
+          "msg": {
+            "type": "string",
+            "description": "Error message"
+          }
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "description": "List of warnings if any",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Warning code"
+          },
+          "msg": {
+            "type": "string",
+            "description": "Warning message"
+          }
+        }
+      }
+    }
+  }
+}

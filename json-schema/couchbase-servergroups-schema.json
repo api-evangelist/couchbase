@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ServerGroups",
+  "title": "ServerGroups",
+  "type": "object",
+  "description": "Server groups configuration",
+  "properties": {
+    "groups": {
+      "type": "array",
+      "description": "List of server groups",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the server group"
+          },
+          "uri": {
+            "type": "string",
+            "description": "URI for the server group"
+          },
+          "nodes": {
+            "type": "array",
+            "description": "Nodes in the server group",
+            "items": {
+              "$ref": "#/components/schemas/Node"
+            }
+          }
+        }
+      }
+    }
+  }
+}

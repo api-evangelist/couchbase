@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RestoreRequest",
+  "title": "RestoreRequest",
+  "type": "object",
+  "description": "Restore operation request",
+  "properties": {
+    "target": {
+      "type": "string",
+      "description": "Target cluster for the restore"
+    },
+    "start": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Start date for the restore range"
+    },
+    "end": {
+      "type": "string",
+      "format": "date-time",
+      "description": "End date for the restore range"
+    },
+    "include_buckets": {
+      "type": "array",
+      "description": "Buckets to include in the restore",
+      "items": {
+        "type": "string"
+      }
+    },
+    "exclude_buckets": {
+      "type": "array",
+      "description": "Buckets to exclude from the restore",
+      "items": {
+        "type": "string"
+      }
+    },
+    "map_data": {
+      "type": "string",
+      "description": "Bucket mapping for restoring to a different bucket name"
+    },
+    "auto_create_buckets": {
+      "type": "boolean",
+      "description": "Whether to auto-create buckets that do not exist"
+    },
+    "auto_remove_collections": {
+      "type": "boolean",
+      "description": "Whether to remove collections not in the backup"
+    }
+  }
+}

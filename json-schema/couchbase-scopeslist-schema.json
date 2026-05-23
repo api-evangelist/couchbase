@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ScopesList",
+  "title": "ScopesList",
+  "type": "object",
+  "description": "List of scopes in a bucket",
+  "properties": {
+    "uid": {
+      "type": "string",
+      "description": "Unique identifier for the manifest"
+    },
+    "scopes": {
+      "type": "array",
+      "description": "List of scopes",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the scope"
+          },
+          "uid": {
+            "type": "string",
+            "description": "Unique identifier for the scope"
+          },
+          "collections": {
+            "type": "array",
+            "description": "Collections within the scope",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Name of the collection"
+                },
+                "uid": {
+                  "type": "string",
+                  "description": "Unique identifier for the collection"
+                },
+                "maxTTL": {
+                  "type": "integer",
+                  "description": "Maximum TTL for documents in seconds"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

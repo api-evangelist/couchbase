@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SearchIndexList",
+  "title": "SearchIndexList",
+  "type": "object",
+  "description": "List of all search index definitions",
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "Response status"
+    },
+    "indexDefs": {
+      "type": "object",
+      "description": "Container for index definitions",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "description": "UUID of the index definitions set"
+        },
+        "indexDefs": {
+          "type": "object",
+          "description": "Map of index name to index definition",
+          "additionalProperties": {
+            "$ref": "#/components/schemas/SearchIndexDefinition"
+          }
+        }
+      }
+    }
+  }
+}

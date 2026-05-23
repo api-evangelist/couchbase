@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RemoteClusterReference",
+  "title": "RemoteClusterReference",
+  "type": "object",
+  "description": "Remote cluster reference for XDCR",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the remote cluster reference"
+    },
+    "uuid": {
+      "type": "string",
+      "description": "UUID of the remote cluster"
+    },
+    "hostname": {
+      "type": "string",
+      "description": "Hostname and port of the remote cluster"
+    },
+    "username": {
+      "type": "string",
+      "description": "Administrator username for the remote cluster"
+    },
+    "uri": {
+      "type": "string",
+      "description": "URI for accessing this cluster reference"
+    },
+    "deleted": {
+      "type": "boolean",
+      "description": "Whether the reference is marked for deletion"
+    },
+    "demandEncryption": {
+      "type": "boolean",
+      "description": "Whether encryption is required"
+    },
+    "encryptionType": {
+      "type": "string",
+      "description": "Type of encryption used",
+      "enum": [
+        "none",
+        "half",
+        "full"
+      ]
+    }
+  }
+}

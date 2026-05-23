@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ServerStatus",
+  "title": "ServerStatus",
+  "type": "object",
+  "description": "Sync Gateway server status",
+  "properties": {
+    "couchdb": {
+      "type": "string",
+      "description": "CouchDB compatibility string"
+    },
+    "vendor": {
+      "type": "object",
+      "description": "Vendor information",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Vendor name"
+        },
+        "version": {
+          "type": "string",
+          "description": "Sync Gateway version"
+        }
+      }
+    },
+    "version": {
+      "type": "string",
+      "description": "Full version string"
+    },
+    "databases": {
+      "type": "object",
+      "description": "Database states",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "type": "string",
+            "description": "Database state",
+            "enum": [
+              "Online",
+              "Offline"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "description": "Database name"
+          }
+        }
+      }
+    }
+  }
+}

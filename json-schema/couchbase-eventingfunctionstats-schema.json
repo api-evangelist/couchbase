@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventingFunctionStats",
+  "title": "EventingFunctionStats",
+  "type": "object",
+  "description": "Execution statistics for an Eventing Function",
+  "properties": {
+    "function_name": {
+      "type": "string",
+      "description": "Name of the function"
+    },
+    "execution_stats": {
+      "type": "object",
+      "description": "Execution statistics",
+      "properties": {
+        "on_update_success": {
+          "type": "integer",
+          "description": "Successful OnUpdate handler invocations"
+        },
+        "on_update_failure": {
+          "type": "integer",
+          "description": "Failed OnUpdate handler invocations"
+        },
+        "on_delete_success": {
+          "type": "integer",
+          "description": "Successful OnDelete handler invocations"
+        },
+        "on_delete_failure": {
+          "type": "integer",
+          "description": "Failed OnDelete handler invocations"
+        },
+        "timer_callback_success": {
+          "type": "integer",
+          "description": "Successful timer callback invocations"
+        },
+        "timer_callback_failure": {
+          "type": "integer",
+          "description": "Failed timer callback invocations"
+        }
+      }
+    },
+    "failure_stats": {
+      "type": "object",
+      "description": "Failure statistics",
+      "properties": {
+        "timeout_count": {
+          "type": "integer",
+          "description": "Number of handler timeouts"
+        },
+        "n1ql_op_exception_count": {
+          "type": "integer",
+          "description": "Number of N1QL operation exceptions"
+        }
+      }
+    }
+  }
+}

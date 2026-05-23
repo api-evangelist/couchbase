@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PreparedStatement",
+  "title": "PreparedStatement",
+  "type": "object",
+  "description": "A cached prepared statement",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the prepared statement"
+    },
+    "statement": {
+      "type": "string",
+      "description": "The original SQL++ statement"
+    },
+    "uses": {
+      "type": "integer",
+      "description": "Number of times the prepared statement has been used"
+    },
+    "lastUse": {
+      "type": "string",
+      "description": "Time of last use"
+    }
+  }
+}
