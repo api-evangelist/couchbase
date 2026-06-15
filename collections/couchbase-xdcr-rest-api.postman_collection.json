@@ -1,0 +1,3845 @@
+{
+  "item": [
+    {
+      "id": "ebe491b7-e819-46f7-a072-3bc19b6fa784",
+      "name": "Cluster References",
+      "description": {
+        "content": "Endpoints for managing remote cluster references used as XDCR targets.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc3a1ad4-c3c7-48a6-bd09-7668909e0633",
+          "name": "List remote cluster references",
+          "request": {
+            "name": "List remote cluster references",
+            "description": {
+              "content": "Returns the list of all remote cluster references configured for XDCR replication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                "default",
+                "remoteClusters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e523ee01-e44d-4960-9852-4b4a9929cebb",
+              "name": "Successful retrieval of remote cluster references",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "default",
+                    "remoteClusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"uuid\": \"string\",\n    \"hostname\": \"string\",\n    \"username\": \"string\",\n    \"uri\": \"string\",\n    \"deleted\": false,\n    \"demandEncryption\": false,\n    \"encryptionType\": \"none\"\n  },\n  {\n    \"name\": \"string\",\n    \"uuid\": \"string\",\n    \"hostname\": \"string\",\n    \"username\": \"string\",\n    \"uri\": \"string\",\n    \"deleted\": true,\n    \"demandEncryption\": true,\n    \"encryptionType\": \"full\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67e3c87b-f45c-4bff-a3c8-5ea5a7795fec",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "default",
+                    "remoteClusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f67e7ddf-c21b-4bb4-a5c1-aab5f45dd94c",
+          "name": "Create a remote cluster reference",
+          "request": {
+            "name": "Create a remote cluster reference",
+            "description": {
+              "content": "Creates a new remote cluster reference that can be used as a target for XDCR replications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                "default",
+                "remoteClusters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) Name for the remote cluster reference"
+                },
+                {
+                  "disabled": false,
+                  "key": "hostname",
+                  "value": "<string>",
+                  "description": "(Required) Hostname and port of the remote cluster"
+                },
+                {
+                  "disabled": false,
+                  "key": "username",
+                  "value": "<string>",
+                  "description": "(Required) Administrator username on the remote cluster"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "(Required) Administrator password on the remote cluster"
+                },
+                {
+                  "disabled": false,
+                  "key": "demandEncryption",
+                  "value": "<integer>",
+                  "description": "Whether to require encryption (0 or 1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "encryptionType",
+                  "value": "<string>",
+                  "description": "Type of encryption to use"
+                },
+                {
+                  "disabled": false,
+                  "key": "certificate",
+                  "value": "<string>",
+                  "description": "CA certificate for the remote cluster in PEM format"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6e939e31-4b5d-497f-840e-b150e75bfadf",
+              "name": "Remote cluster reference created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "default",
+                    "remoteClusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name for the remote cluster reference",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Hostname and port of the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "hostname",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administrator username on the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administrator password on the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to require encryption (0 or 1)",
+                        "type": "text/plain"
+                      },
+                      "key": "demandEncryption",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Type of encryption to use",
+                        "type": "text/plain"
+                      },
+                      "key": "encryptionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "CA certificate for the remote cluster in PEM format",
+                        "type": "text/plain"
+                      },
+                      "key": "certificate",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8b4a77c1-34f3-4aa6-a3bb-86306d17e52b",
+              "name": "Invalid cluster reference configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "default",
+                    "remoteClusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name for the remote cluster reference",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Hostname and port of the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "hostname",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administrator username on the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administrator password on the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to require encryption (0 or 1)",
+                        "type": "text/plain"
+                      },
+                      "key": "demandEncryption",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Type of encryption to use",
+                        "type": "text/plain"
+                      },
+                      "key": "encryptionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "CA certificate for the remote cluster in PEM format",
+                        "type": "text/plain"
+                      },
+                      "key": "certificate",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "963c7f41-d768-4718-a8d5-dc01cf1bda1b",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "default",
+                    "remoteClusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name for the remote cluster reference",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Hostname and port of the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "hostname",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administrator username on the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administrator password on the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to require encryption (0 or 1)",
+                        "type": "text/plain"
+                      },
+                      "key": "demandEncryption",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Type of encryption to use",
+                        "type": "text/plain"
+                      },
+                      "key": "encryptionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "CA certificate for the remote cluster in PEM format",
+                        "type": "text/plain"
+                      },
+                      "key": "certificate",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c24c4705-f878-4c6c-819c-8de1b3c729ab",
+          "name": "Update a remote cluster reference",
+          "request": {
+            "name": "Update a remote cluster reference",
+            "description": {
+              "content": "Updates the configuration of an existing remote cluster reference.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                "default",
+                "remoteClusters",
+                ":clusterName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clusterName",
+                  "description": "(Required) The name of the remote cluster reference"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) Name for the remote cluster reference"
+                },
+                {
+                  "disabled": false,
+                  "key": "hostname",
+                  "value": "<string>",
+                  "description": "(Required) Hostname and port of the remote cluster"
+                },
+                {
+                  "disabled": false,
+                  "key": "username",
+                  "value": "<string>",
+                  "description": "(Required) Administrator username on the remote cluster"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "(Required) Administrator password on the remote cluster"
+                },
+                {
+                  "disabled": false,
+                  "key": "demandEncryption",
+                  "value": "<integer>",
+                  "description": "Whether to require encryption (0 or 1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "encryptionType",
+                  "value": "<string>",
+                  "description": "Type of encryption to use"
+                },
+                {
+                  "disabled": false,
+                  "key": "certificate",
+                  "value": "<string>",
+                  "description": "CA certificate for the remote cluster in PEM format"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5c850ee8-edaf-4f43-8c8b-3f551ce3c167",
+              "name": "Remote cluster reference updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "default",
+                    "remoteClusters",
+                    ":clusterName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterName",
+                      "description": "(Required) The name of the remote cluster reference"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name for the remote cluster reference",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Hostname and port of the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "hostname",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administrator username on the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administrator password on the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to require encryption (0 or 1)",
+                        "type": "text/plain"
+                      },
+                      "key": "demandEncryption",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Type of encryption to use",
+                        "type": "text/plain"
+                      },
+                      "key": "encryptionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "CA certificate for the remote cluster in PEM format",
+                        "type": "text/plain"
+                      },
+                      "key": "certificate",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "07dcea17-944d-499f-9334-e2579eda593e",
+              "name": "Invalid cluster reference configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "default",
+                    "remoteClusters",
+                    ":clusterName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterName",
+                      "description": "(Required) The name of the remote cluster reference"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name for the remote cluster reference",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Hostname and port of the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "hostname",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administrator username on the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administrator password on the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to require encryption (0 or 1)",
+                        "type": "text/plain"
+                      },
+                      "key": "demandEncryption",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Type of encryption to use",
+                        "type": "text/plain"
+                      },
+                      "key": "encryptionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "CA certificate for the remote cluster in PEM format",
+                        "type": "text/plain"
+                      },
+                      "key": "certificate",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2c90fbea-afad-4070-aae3-13910ef9ab0e",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "default",
+                    "remoteClusters",
+                    ":clusterName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterName",
+                      "description": "(Required) The name of the remote cluster reference"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name for the remote cluster reference",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Hostname and port of the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "hostname",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administrator username on the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administrator password on the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to require encryption (0 or 1)",
+                        "type": "text/plain"
+                      },
+                      "key": "demandEncryption",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Type of encryption to use",
+                        "type": "text/plain"
+                      },
+                      "key": "encryptionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "CA certificate for the remote cluster in PEM format",
+                        "type": "text/plain"
+                      },
+                      "key": "certificate",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e6b180ef-55b7-49c5-aa85-5e1c3903b5e2",
+              "name": "Remote cluster reference not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "default",
+                    "remoteClusters",
+                    ":clusterName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterName",
+                      "description": "(Required) The name of the remote cluster reference"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name for the remote cluster reference",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Hostname and port of the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "hostname",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administrator username on the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administrator password on the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to require encryption (0 or 1)",
+                        "type": "text/plain"
+                      },
+                      "key": "demandEncryption",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Type of encryption to use",
+                        "type": "text/plain"
+                      },
+                      "key": "encryptionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "CA certificate for the remote cluster in PEM format",
+                        "type": "text/plain"
+                      },
+                      "key": "certificate",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d307c5b-0f3c-4615-8057-67043d0072ff",
+          "name": "Delete a remote cluster reference",
+          "request": {
+            "name": "Delete a remote cluster reference",
+            "description": {
+              "content": "Deletes the specified remote cluster reference. All replications using this reference must be deleted first.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                "default",
+                "remoteClusters",
+                ":clusterName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clusterName",
+                  "description": "(Required) The name of the remote cluster reference"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6314f4a8-8355-4399-b0a7-1624b82acbc3",
+              "name": "Remote cluster reference deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "default",
+                    "remoteClusters",
+                    ":clusterName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterName",
+                      "description": "(Required) The name of the remote cluster reference"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "220c1258-cd42-4e86-a199-9294205c4bd0",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "default",
+                    "remoteClusters",
+                    ":clusterName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterName",
+                      "description": "(Required) The name of the remote cluster reference"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b0706ced-a0b6-48ae-9319-773780fe907f",
+              "name": "Remote cluster reference not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "default",
+                    "remoteClusters",
+                    ":clusterName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterName",
+                      "description": "(Required) The name of the remote cluster reference"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3c27235a-0bbb-425d-aa35-bf524b1e65c5",
+      "name": "Replication Settings",
+      "description": {
+        "content": "Endpoints for configuring replication-level and global XDCR settings.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e631bec2-210e-4769-a102-4ef308e875e6",
+          "name": "Get global XDCR settings",
+          "request": {
+            "name": "Get global XDCR settings",
+            "description": {
+              "content": "Returns the global default settings for all XDCR replications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "settings",
+                "replications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f063190d-5be2-4188-aa6e-39ea390c68ed",
+              "name": "Successful retrieval of global replication settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "replications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"checkpointInterval\": 1065,\n  \"docBatchSizeKb\": 4676,\n  \"failureRestartInterval\": 163,\n  \"filterExpression\": \"string\",\n  \"logLevel\": \"Trace\",\n  \"networkUsageLimit\": 3099,\n  \"optimisticReplicationThreshold\": 4265,\n  \"sourceNozzlePerNode\": 33,\n  \"targetNozzlePerNode\": 50,\n  \"statsInterval\": 84824,\n  \"compressionType\": \"None\",\n  \"priority\": \"High\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "994db3d8-9bc1-4afe-b0db-12c1a098c1b8",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "replications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b368d06f-2483-48a5-aca5-6d7ee2fdcb80",
+          "name": "Update global XDCR settings",
+          "request": {
+            "name": "Update global XDCR settings",
+            "description": {
+              "content": "Updates the global default settings applied to all XDCR replications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "settings",
+                "replications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "checkpointInterval",
+                  "value": "<integer>",
+                  "description": "Interval between checkpoints in seconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "docBatchSizeKb",
+                  "value": "<integer>",
+                  "description": "Document batch size in kilobytes"
+                },
+                {
+                  "disabled": false,
+                  "key": "failureRestartInterval",
+                  "value": "<integer>",
+                  "description": "Interval before restarting after failure in seconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "filterExpression",
+                  "value": "<string>",
+                  "description": "Regular expression filter for document IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "logLevel",
+                  "value": "<string>",
+                  "description": "Log level for the replication"
+                },
+                {
+                  "disabled": false,
+                  "key": "networkUsageLimit",
+                  "value": "<integer>",
+                  "description": "Network usage limit in MB per second (0 for unlimited)"
+                },
+                {
+                  "disabled": false,
+                  "key": "optimisticReplicationThreshold",
+                  "value": "<integer>",
+                  "description": "Document size threshold in bytes for optimistic replication"
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceNozzlePerNode",
+                  "value": "<integer>",
+                  "description": "Number of source nozzles per node"
+                },
+                {
+                  "disabled": false,
+                  "key": "targetNozzlePerNode",
+                  "value": "<integer>",
+                  "description": "Number of target nozzles per node"
+                },
+                {
+                  "disabled": false,
+                  "key": "statsInterval",
+                  "value": "<integer>",
+                  "description": "Interval for statistics updates in milliseconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "compressionType",
+                  "value": "<string>",
+                  "description": "Compression type for replicated data"
+                },
+                {
+                  "disabled": false,
+                  "key": "priority",
+                  "value": "<string>",
+                  "description": "Replication priority"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0474e8c7-6448-4741-b71b-4acbc68aa6ae",
+              "name": "Global replication settings updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "replications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval between checkpoints in seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "checkpointInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Document batch size in kilobytes",
+                        "type": "text/plain"
+                      },
+                      "key": "docBatchSizeKb",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval before restarting after failure in seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "failureRestartInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Regular expression filter for document IDs",
+                        "type": "text/plain"
+                      },
+                      "key": "filterExpression",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Log level for the replication",
+                        "type": "text/plain"
+                      },
+                      "key": "logLevel",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Network usage limit in MB per second (0 for unlimited)",
+                        "type": "text/plain"
+                      },
+                      "key": "networkUsageLimit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Document size threshold in bytes for optimistic replication",
+                        "type": "text/plain"
+                      },
+                      "key": "optimisticReplicationThreshold",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of source nozzles per node",
+                        "type": "text/plain"
+                      },
+                      "key": "sourceNozzlePerNode",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of target nozzles per node",
+                        "type": "text/plain"
+                      },
+                      "key": "targetNozzlePerNode",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval for statistics updates in milliseconds",
+                        "type": "text/plain"
+                      },
+                      "key": "statsInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Compression type for replicated data",
+                        "type": "text/plain"
+                      },
+                      "key": "compressionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Replication priority",
+                        "type": "text/plain"
+                      },
+                      "key": "priority",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dc35a133-6b8d-470e-b26a-4dee16f755d4",
+              "name": "Invalid settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "replications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval between checkpoints in seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "checkpointInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Document batch size in kilobytes",
+                        "type": "text/plain"
+                      },
+                      "key": "docBatchSizeKb",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval before restarting after failure in seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "failureRestartInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Regular expression filter for document IDs",
+                        "type": "text/plain"
+                      },
+                      "key": "filterExpression",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Log level for the replication",
+                        "type": "text/plain"
+                      },
+                      "key": "logLevel",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Network usage limit in MB per second (0 for unlimited)",
+                        "type": "text/plain"
+                      },
+                      "key": "networkUsageLimit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Document size threshold in bytes for optimistic replication",
+                        "type": "text/plain"
+                      },
+                      "key": "optimisticReplicationThreshold",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of source nozzles per node",
+                        "type": "text/plain"
+                      },
+                      "key": "sourceNozzlePerNode",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of target nozzles per node",
+                        "type": "text/plain"
+                      },
+                      "key": "targetNozzlePerNode",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval for statistics updates in milliseconds",
+                        "type": "text/plain"
+                      },
+                      "key": "statsInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Compression type for replicated data",
+                        "type": "text/plain"
+                      },
+                      "key": "compressionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Replication priority",
+                        "type": "text/plain"
+                      },
+                      "key": "priority",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b5bc5c9a-05a5-432d-b790-cac55b57b062",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "replications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval between checkpoints in seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "checkpointInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Document batch size in kilobytes",
+                        "type": "text/plain"
+                      },
+                      "key": "docBatchSizeKb",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval before restarting after failure in seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "failureRestartInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Regular expression filter for document IDs",
+                        "type": "text/plain"
+                      },
+                      "key": "filterExpression",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Log level for the replication",
+                        "type": "text/plain"
+                      },
+                      "key": "logLevel",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Network usage limit in MB per second (0 for unlimited)",
+                        "type": "text/plain"
+                      },
+                      "key": "networkUsageLimit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Document size threshold in bytes for optimistic replication",
+                        "type": "text/plain"
+                      },
+                      "key": "optimisticReplicationThreshold",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of source nozzles per node",
+                        "type": "text/plain"
+                      },
+                      "key": "sourceNozzlePerNode",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of target nozzles per node",
+                        "type": "text/plain"
+                      },
+                      "key": "targetNozzlePerNode",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval for statistics updates in milliseconds",
+                        "type": "text/plain"
+                      },
+                      "key": "statsInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Compression type for replicated data",
+                        "type": "text/plain"
+                      },
+                      "key": "compressionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Replication priority",
+                        "type": "text/plain"
+                      },
+                      "key": "priority",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e4592fb-0f78-41c1-b016-23d8eaae0bd7",
+          "name": "Get replication-specific settings",
+          "request": {
+            "name": "Get replication-specific settings",
+            "description": {
+              "content": "Returns the settings for a specific XDCR replication stream.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "settings",
+                "replications",
+                ":replicationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "replicationId",
+                  "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40637bdc-f7b5-4f63-b529-2a5f5b2537c7",
+              "name": "Successful retrieval of replication settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "replications",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"checkpointInterval\": 1065,\n  \"docBatchSizeKb\": 4676,\n  \"failureRestartInterval\": 163,\n  \"filterExpression\": \"string\",\n  \"logLevel\": \"Trace\",\n  \"networkUsageLimit\": 3099,\n  \"optimisticReplicationThreshold\": 4265,\n  \"sourceNozzlePerNode\": 33,\n  \"targetNozzlePerNode\": 50,\n  \"statsInterval\": 84824,\n  \"compressionType\": \"None\",\n  \"priority\": \"High\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7d49860-42ac-4908-bbe5-bfe6f1a0a8fd",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "replications",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5c0a9db-0ceb-4c74-9c98-c20899eb8f7d",
+              "name": "Replication not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "replications",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89ae0551-53a0-4d30-8ec7-9a1087989cdc",
+          "name": "Update replication-specific settings",
+          "request": {
+            "name": "Update replication-specific settings",
+            "description": {
+              "content": "Updates the settings for a specific XDCR replication stream, overriding the global defaults.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "settings",
+                "replications",
+                ":replicationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "replicationId",
+                  "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "checkpointInterval",
+                  "value": "<integer>",
+                  "description": "Interval between checkpoints in seconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "docBatchSizeKb",
+                  "value": "<integer>",
+                  "description": "Document batch size in kilobytes"
+                },
+                {
+                  "disabled": false,
+                  "key": "failureRestartInterval",
+                  "value": "<integer>",
+                  "description": "Interval before restarting after failure in seconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "filterExpression",
+                  "value": "<string>",
+                  "description": "Regular expression filter for document IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "logLevel",
+                  "value": "<string>",
+                  "description": "Log level for the replication"
+                },
+                {
+                  "disabled": false,
+                  "key": "networkUsageLimit",
+                  "value": "<integer>",
+                  "description": "Network usage limit in MB per second (0 for unlimited)"
+                },
+                {
+                  "disabled": false,
+                  "key": "optimisticReplicationThreshold",
+                  "value": "<integer>",
+                  "description": "Document size threshold in bytes for optimistic replication"
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceNozzlePerNode",
+                  "value": "<integer>",
+                  "description": "Number of source nozzles per node"
+                },
+                {
+                  "disabled": false,
+                  "key": "targetNozzlePerNode",
+                  "value": "<integer>",
+                  "description": "Number of target nozzles per node"
+                },
+                {
+                  "disabled": false,
+                  "key": "statsInterval",
+                  "value": "<integer>",
+                  "description": "Interval for statistics updates in milliseconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "compressionType",
+                  "value": "<string>",
+                  "description": "Compression type for replicated data"
+                },
+                {
+                  "disabled": false,
+                  "key": "priority",
+                  "value": "<string>",
+                  "description": "Replication priority"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fad4f18f-7dfd-4973-9f41-ad019e93b1ff",
+              "name": "Replication settings updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "replications",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval between checkpoints in seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "checkpointInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Document batch size in kilobytes",
+                        "type": "text/plain"
+                      },
+                      "key": "docBatchSizeKb",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval before restarting after failure in seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "failureRestartInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Regular expression filter for document IDs",
+                        "type": "text/plain"
+                      },
+                      "key": "filterExpression",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Log level for the replication",
+                        "type": "text/plain"
+                      },
+                      "key": "logLevel",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Network usage limit in MB per second (0 for unlimited)",
+                        "type": "text/plain"
+                      },
+                      "key": "networkUsageLimit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Document size threshold in bytes for optimistic replication",
+                        "type": "text/plain"
+                      },
+                      "key": "optimisticReplicationThreshold",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of source nozzles per node",
+                        "type": "text/plain"
+                      },
+                      "key": "sourceNozzlePerNode",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of target nozzles per node",
+                        "type": "text/plain"
+                      },
+                      "key": "targetNozzlePerNode",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval for statistics updates in milliseconds",
+                        "type": "text/plain"
+                      },
+                      "key": "statsInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Compression type for replicated data",
+                        "type": "text/plain"
+                      },
+                      "key": "compressionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Replication priority",
+                        "type": "text/plain"
+                      },
+                      "key": "priority",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "888dc5f8-2522-4270-b01a-916636eb6018",
+              "name": "Invalid settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "replications",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval between checkpoints in seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "checkpointInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Document batch size in kilobytes",
+                        "type": "text/plain"
+                      },
+                      "key": "docBatchSizeKb",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval before restarting after failure in seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "failureRestartInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Regular expression filter for document IDs",
+                        "type": "text/plain"
+                      },
+                      "key": "filterExpression",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Log level for the replication",
+                        "type": "text/plain"
+                      },
+                      "key": "logLevel",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Network usage limit in MB per second (0 for unlimited)",
+                        "type": "text/plain"
+                      },
+                      "key": "networkUsageLimit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Document size threshold in bytes for optimistic replication",
+                        "type": "text/plain"
+                      },
+                      "key": "optimisticReplicationThreshold",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of source nozzles per node",
+                        "type": "text/plain"
+                      },
+                      "key": "sourceNozzlePerNode",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of target nozzles per node",
+                        "type": "text/plain"
+                      },
+                      "key": "targetNozzlePerNode",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval for statistics updates in milliseconds",
+                        "type": "text/plain"
+                      },
+                      "key": "statsInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Compression type for replicated data",
+                        "type": "text/plain"
+                      },
+                      "key": "compressionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Replication priority",
+                        "type": "text/plain"
+                      },
+                      "key": "priority",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7d20fbdc-9e9f-45d5-b427-3b0a4716f89f",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "replications",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval between checkpoints in seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "checkpointInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Document batch size in kilobytes",
+                        "type": "text/plain"
+                      },
+                      "key": "docBatchSizeKb",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval before restarting after failure in seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "failureRestartInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Regular expression filter for document IDs",
+                        "type": "text/plain"
+                      },
+                      "key": "filterExpression",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Log level for the replication",
+                        "type": "text/plain"
+                      },
+                      "key": "logLevel",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Network usage limit in MB per second (0 for unlimited)",
+                        "type": "text/plain"
+                      },
+                      "key": "networkUsageLimit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Document size threshold in bytes for optimistic replication",
+                        "type": "text/plain"
+                      },
+                      "key": "optimisticReplicationThreshold",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of source nozzles per node",
+                        "type": "text/plain"
+                      },
+                      "key": "sourceNozzlePerNode",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of target nozzles per node",
+                        "type": "text/plain"
+                      },
+                      "key": "targetNozzlePerNode",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval for statistics updates in milliseconds",
+                        "type": "text/plain"
+                      },
+                      "key": "statsInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Compression type for replicated data",
+                        "type": "text/plain"
+                      },
+                      "key": "compressionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Replication priority",
+                        "type": "text/plain"
+                      },
+                      "key": "priority",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d2fb7fc3-9771-4040-a0d5-817761f6d34c",
+              "name": "Replication not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "replications",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval between checkpoints in seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "checkpointInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Document batch size in kilobytes",
+                        "type": "text/plain"
+                      },
+                      "key": "docBatchSizeKb",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval before restarting after failure in seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "failureRestartInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Regular expression filter for document IDs",
+                        "type": "text/plain"
+                      },
+                      "key": "filterExpression",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Log level for the replication",
+                        "type": "text/plain"
+                      },
+                      "key": "logLevel",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Network usage limit in MB per second (0 for unlimited)",
+                        "type": "text/plain"
+                      },
+                      "key": "networkUsageLimit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Document size threshold in bytes for optimistic replication",
+                        "type": "text/plain"
+                      },
+                      "key": "optimisticReplicationThreshold",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of source nozzles per node",
+                        "type": "text/plain"
+                      },
+                      "key": "sourceNozzlePerNode",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of target nozzles per node",
+                        "type": "text/plain"
+                      },
+                      "key": "targetNozzlePerNode",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Interval for statistics updates in milliseconds",
+                        "type": "text/plain"
+                      },
+                      "key": "statsInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Compression type for replicated data",
+                        "type": "text/plain"
+                      },
+                      "key": "compressionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Replication priority",
+                        "type": "text/plain"
+                      },
+                      "key": "priority",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "219ed2a3-338d-42ae-bba1-da37a27aa5f6",
+      "name": "Replication Statistics",
+      "description": {
+        "content": "Endpoints for monitoring replication progress and performance statistics.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b51567de-36dc-4ef1-a2e5-9c51f47e7cb7",
+          "name": "Get XDCR replication statistics",
+          "request": {
+            "name": "Get XDCR replication statistics",
+            "description": {
+              "content": "Returns statistics for XDCR replications on a specific bucket, including items replicated, replication latency, and bandwidth usage.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                "default",
+                "buckets",
+                ":bucketName",
+                "stats",
+                ":statName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bucketName",
+                  "description": "(Required) The name of the source bucket"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "statName",
+                  "description": "(Required) The specific statistic to retrieve (e.g., replications/{replicationId}/docs_written)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1dea1f16-04ff-48fa-bb2b-7e649dbb0c8e",
+              "name": "Successful retrieval of replication statistics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "default",
+                    "buckets",
+                    ":bucketName",
+                    "stats",
+                    ":statName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucketName",
+                      "description": "(Required) The name of the source bucket"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "statName",
+                      "description": "(Required) The specific statistic to retrieve (e.g., replications/{replicationId}/docs_written)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95a358d8-fc9a-4799-a570-02520f3f6919",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "default",
+                    "buckets",
+                    ":bucketName",
+                    "stats",
+                    ":statName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucketName",
+                      "description": "(Required) The name of the source bucket"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "statName",
+                      "description": "(Required) The specific statistic to retrieve (e.g., replications/{replicationId}/docs_written)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fa0ccb4b-8355-4115-b3b4-314166558284",
+              "name": "Bucket or statistic not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "default",
+                    "buckets",
+                    ":bucketName",
+                    "stats",
+                    ":statName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucketName",
+                      "description": "(Required) The name of the source bucket"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "statName",
+                      "description": "(Required) The specific statistic to retrieve (e.g., replications/{replicationId}/docs_written)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "19e49083-ff08-4a37-8512-6809d68e8d5b",
+      "name": "Replications",
+      "description": {
+        "content": "Endpoints for creating, managing, and deleting XDCR replication streams.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7212da47-4d65-4f0c-9496-4056d9f10035",
+          "name": "Create an XDCR replication",
+          "request": {
+            "name": "Create an XDCR replication",
+            "description": {
+              "content": "Creates a new XDCR replication stream from a source bucket to a target bucket on a remote cluster.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "controller",
+                "createReplication"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "fromBucket",
+                  "value": "<string>",
+                  "description": "(Required) Name of the source bucket"
+                },
+                {
+                  "disabled": false,
+                  "key": "toCluster",
+                  "value": "<string>",
+                  "description": "(Required) Name of the remote cluster reference"
+                },
+                {
+                  "disabled": false,
+                  "key": "toBucket",
+                  "value": "<string>",
+                  "description": "(Required) Name of the target bucket on the remote cluster"
+                },
+                {
+                  "disabled": false,
+                  "key": "replicationType",
+                  "value": "<string>",
+                  "description": "(Required) Type of replication"
+                },
+                {
+                  "disabled": false,
+                  "key": "filterExpression",
+                  "value": "<string>",
+                  "description": "Regular expression filter for document IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "compressionType",
+                  "value": "<string>",
+                  "description": "Compression type for replication data"
+                },
+                {
+                  "disabled": false,
+                  "key": "priority",
+                  "value": "<string>",
+                  "description": "Replication priority"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b109ec82-e8b3-4c8b-b7ca-870ceb9f93c6",
+              "name": "Replication created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "controller",
+                    "createReplication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name of the source bucket",
+                        "type": "text/plain"
+                      },
+                      "key": "fromBucket",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name of the remote cluster reference",
+                        "type": "text/plain"
+                      },
+                      "key": "toCluster",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name of the target bucket on the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "toBucket",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Type of replication",
+                        "type": "text/plain"
+                      },
+                      "key": "replicationType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Regular expression filter for document IDs",
+                        "type": "text/plain"
+                      },
+                      "key": "filterExpression",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Compression type for replication data",
+                        "type": "text/plain"
+                      },
+                      "key": "compressionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Replication priority",
+                        "type": "text/plain"
+                      },
+                      "key": "priority",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d263d22e-72c6-44eb-9775-25a0064b076f",
+              "name": "Invalid replication configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "controller",
+                    "createReplication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name of the source bucket",
+                        "type": "text/plain"
+                      },
+                      "key": "fromBucket",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name of the remote cluster reference",
+                        "type": "text/plain"
+                      },
+                      "key": "toCluster",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name of the target bucket on the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "toBucket",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Type of replication",
+                        "type": "text/plain"
+                      },
+                      "key": "replicationType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Regular expression filter for document IDs",
+                        "type": "text/plain"
+                      },
+                      "key": "filterExpression",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Compression type for replication data",
+                        "type": "text/plain"
+                      },
+                      "key": "compressionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Replication priority",
+                        "type": "text/plain"
+                      },
+                      "key": "priority",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "418f5a6c-53c1-4143-b209-0a6621e4812c",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "controller",
+                    "createReplication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name of the source bucket",
+                        "type": "text/plain"
+                      },
+                      "key": "fromBucket",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name of the remote cluster reference",
+                        "type": "text/plain"
+                      },
+                      "key": "toCluster",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name of the target bucket on the remote cluster",
+                        "type": "text/plain"
+                      },
+                      "key": "toBucket",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Type of replication",
+                        "type": "text/plain"
+                      },
+                      "key": "replicationType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Regular expression filter for document IDs",
+                        "type": "text/plain"
+                      },
+                      "key": "filterExpression",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Compression type for replication data",
+                        "type": "text/plain"
+                      },
+                      "key": "compressionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Replication priority",
+                        "type": "text/plain"
+                      },
+                      "key": "priority",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "384cf274-6cf6-45c2-84ab-f0c9d51c478c",
+          "name": "Delete an XDCR replication",
+          "request": {
+            "name": "Delete an XDCR replication",
+            "description": {
+              "content": "Deletes the specified XDCR replication stream, stopping all data replication for that stream.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "controller",
+                "cancelXDCR",
+                ":replicationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "replicationId",
+                  "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47d0f490-d309-4630-ba61-59fd05fbac01",
+              "name": "Replication deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "controller",
+                    "cancelXDCR",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "825477e9-5dd3-4dbb-8c4d-9e94587a6a49",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "controller",
+                    "cancelXDCR",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f0f1fdfb-6f6f-4505-93cd-14c1dfd589ba",
+              "name": "Replication not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "controller",
+                    "cancelXDCR",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://localhost:8091",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "485b0474-ea1e-48c0-8319-3c47c47fc4de",
+    "name": "Couchbase XDCR REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Couchbase XDCR (Cross Data Center Replication) REST API enables configuration and management of data replication between Couchbase clusters across different data centers. It provides endpoints for creating replication references, configuring replication streams, monitoring replication statistics, and managing replication settings. XDCR supports both unidirectional and bidirectional replication for high availability and disaster recovery scenarios.\n\nContact Support:\n Name: Couchbase Support",
+      "type": "text/plain"
+    }
+  }
+}

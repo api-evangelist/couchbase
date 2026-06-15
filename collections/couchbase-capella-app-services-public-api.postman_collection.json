@@ -1,0 +1,3131 @@
+{
+  "item": [
+    {
+      "id": "0cbc2c48-5705-4f4c-9d96-c4a7453ab217",
+      "name": "Authentication",
+      "description": {
+        "content": "Endpoints for user authentication and session management.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d547cb3c-e284-4fa1-806c-876f97eb9625",
+          "name": "Create a user session",
+          "request": {
+            "name": "Create a user session",
+            "description": {
+              "content": "Authenticates a user and creates a new session. Returns a session cookie that can be used for subsequent requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db",
+                "_session"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database (keyspace)"
+                },
+                {
+                  "description": "The App Services endpoint URL",
+                  "type": "any",
+                  "value": "{{appEndpoint}}",
+                  "key": "appEndpoint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c1e6d88a-5968-4c50-8202-65d2259566cd",
+              "name": "Session created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"session_id\": \"string\",\n  \"expires\": \"1971-01-31T01:10:48.623Z\",\n  \"cookie_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f75d73b-81a2-4acd-8a5c-dd0585051f25",
+              "name": "Invalid credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d2ba31d-49e7-45b5-9316-c2d6f726d104",
+          "name": "Delete current session",
+          "request": {
+            "name": "Delete current session",
+            "description": {
+              "content": "Invalidates the current user session.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db",
+                "_session"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database (keyspace)"
+                },
+                {
+                  "description": "The App Services endpoint URL",
+                  "type": "any",
+                  "value": "{{appEndpoint}}",
+                  "key": "appEndpoint"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c0bed52b-d35c-4d46-a3fc-7a8787352867",
+              "name": "Session deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "acf05d37-8fea-4993-adb4-8a006f96b810",
+              "name": "No active session",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3799410-2f78-4aee-936a-6c0dbf203129",
+          "name": "Initiate OpenID Connect authentication",
+          "request": {
+            "name": "Initiate OpenID Connect authentication",
+            "description": {
+              "content": "Initiates the OpenID Connect authentication flow by redirecting the user to the configured identity provider.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db",
+                "_oidc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>",
+                  "description": "Name of the OIDC provider"
+                },
+                {
+                  "disabled": false,
+                  "key": "offline",
+                  "value": "<boolean>",
+                  "description": "Whether to request a refresh token"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database (keyspace)"
+                },
+                {
+                  "description": "The App Services endpoint URL",
+                  "type": "any",
+                  "value": "{{appEndpoint}}",
+                  "key": "appEndpoint"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "515bc131-c906-4a3f-8045-43f2cfa2fe0e",
+              "name": "Redirect to identity provider",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_oidc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offline",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "86189b0f-c3ff-4a0a-8d33-b0c51db9c153",
+              "name": "OIDC not configured",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_oidc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offline",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed4d6c60-8a5a-48cb-b229-2e24ed972436",
+          "name": "OpenID Connect callback",
+          "request": {
+            "name": "OpenID Connect callback",
+            "description": {
+              "content": "Handles the callback from the identity provider after user authentication and creates a Sync Gateway session.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db",
+                "_oidc_callback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "(Required) Authorization code from the identity provider"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "State parameter for CSRF protection"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database (keyspace)"
+                },
+                {
+                  "description": "The App Services endpoint URL",
+                  "type": "any",
+                  "value": "{{appEndpoint}}",
+                  "key": "appEndpoint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "246c3a74-c6bc-469b-ab13-d333a190fa65",
+              "name": "Authentication successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_oidc_callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"session_id\": \"string\",\n  \"expires\": \"1971-01-31T01:10:48.623Z\",\n  \"cookie_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84ead72c-5eaa-401a-87b0-01d5aa6b58db",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_oidc_callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "21866ac3-8879-46f6-805b-5fcc4fedc7e0",
+      "name": "Changes",
+      "description": {
+        "content": "Endpoints for monitoring document changes and subscribing to change feeds.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "59329cd9-0be1-4aa9-8615-13b4daa336a4",
+          "name": "Get changes feed",
+          "request": {
+            "name": "Get changes feed",
+            "description": {
+              "content": "Returns a list of changes made to documents in the database in sequence order. Supports long-polling, continuous, and one-shot modes for real-time synchronization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db",
+                "_changes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "since",
+                  "value": "<string>",
+                  "description": "Sequence number to start from"
+                },
+                {
+                  "disabled": false,
+                  "key": "feed",
+                  "value": "<string>",
+                  "description": "Type of changes feed"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "Filter function to apply"
+                },
+                {
+                  "disabled": false,
+                  "key": "channels",
+                  "value": "<string>",
+                  "description": "Comma-separated list of channel names to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_docs",
+                  "value": "<boolean>",
+                  "description": "Whether to include document bodies"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of changes to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "heartbeat",
+                  "value": "<integer>",
+                  "description": "Heartbeat interval in milliseconds for continuous feed"
+                },
+                {
+                  "disabled": false,
+                  "key": "timeout",
+                  "value": "<integer>",
+                  "description": "Timeout in milliseconds for longpoll feed"
+                },
+                {
+                  "disabled": false,
+                  "key": "style",
+                  "value": "<string>",
+                  "description": "Whether to return all leaf revisions"
+                },
+                {
+                  "disabled": false,
+                  "key": "active_only",
+                  "value": "<boolean>",
+                  "description": "Whether to exclude deleted documents"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database (keyspace)"
+                },
+                {
+                  "description": "The App Services endpoint URL",
+                  "type": "any",
+                  "value": "{{appEndpoint}}",
+                  "key": "appEndpoint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d6c3557c-31a8-4550-8b46-24ac06169d33",
+              "name": "Successful retrieval of changes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "since",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feed",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "channels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_docs",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "heartbeat",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "style",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active_only",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"seq\": {},\n      \"id\": \"string\",\n      \"changes\": [\n        {\n          \"rev\": \"string\"\n        },\n        {\n          \"rev\": \"string\"\n        }\n      ],\n      \"deleted\": false,\n      \"doc\": {}\n    },\n    {\n      \"seq\": {},\n      \"id\": \"string\",\n      \"changes\": [\n        {\n          \"rev\": \"string\"\n        },\n        {\n          \"rev\": \"string\"\n        }\n      ],\n      \"deleted\": false,\n      \"doc\": {}\n    }\n  ],\n  \"last_seq\": {},\n  \"pending\": 3357\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02b04f33-0a5a-4dcd-9ad2-63b15c83318f",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "since",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feed",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "channels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_docs",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "heartbeat",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "style",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active_only",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a65326f-bbef-49cb-87f3-2df3ef0fb53e",
+          "name": "Get changes feed via POST",
+          "request": {
+            "name": "Get changes feed via POST",
+            "description": {
+              "content": "Returns changes feed with parameters specified in the request body. Identical to the GET endpoint but allows for complex filter parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db",
+                "_changes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database (keyspace)"
+                },
+                {
+                  "description": "The App Services endpoint URL",
+                  "type": "any",
+                  "value": "{{appEndpoint}}",
+                  "key": "appEndpoint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"since\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"channels\": \"<string>\",\n  \"include_docs\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"feed\": \"<string>\",\n  \"active_only\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bf270bf4-ae93-4cc1-9dfa-5cce9c2219c4",
+              "name": "Successful retrieval of changes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"since\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"channels\": \"<string>\",\n  \"include_docs\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"feed\": \"<string>\",\n  \"active_only\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"seq\": {},\n      \"id\": \"string\",\n      \"changes\": [\n        {\n          \"rev\": \"string\"\n        },\n        {\n          \"rev\": \"string\"\n        }\n      ],\n      \"deleted\": false,\n      \"doc\": {}\n    },\n    {\n      \"seq\": {},\n      \"id\": \"string\",\n      \"changes\": [\n        {\n          \"rev\": \"string\"\n        },\n        {\n          \"rev\": \"string\"\n        }\n      ],\n      \"deleted\": false,\n      \"doc\": {}\n    }\n  ],\n  \"last_seq\": {},\n  \"pending\": 3357\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5fe4b85c-c6d5-459c-9756-af893b402a31",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"since\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"channels\": \"<string>\",\n  \"include_docs\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"feed\": \"<string>\",\n  \"active_only\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "800bb44a-6da6-489e-9801-5ff717febac0",
+      "name": "Database",
+      "description": {
+        "content": "Endpoints for retrieving database information.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0fb58b12-ab55-4755-a60f-8b46b4a81e00",
+          "name": "Get database information",
+          "request": {
+            "name": "Get database information",
+            "description": {
+              "content": "Returns information about the specified database including its name, update sequence, and instance start time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database (keyspace)"
+                },
+                {
+                  "description": "The App Services endpoint URL",
+                  "type": "any",
+                  "value": "{{appEndpoint}}",
+                  "key": "appEndpoint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc96d4db-7c55-46bd-ae17-fa693fb7868d",
+              "name": "Successful retrieval of database information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"db_name\": \"string\",\n  \"update_seq\": 2072,\n  \"committed_update_seq\": 4995,\n  \"instance_start_time\": 4791,\n  \"compact_running\": false,\n  \"state\": \"Offline\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be9f4bd9-35b0-42eb-a0e7-c3def501624f",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ae7c0091-5f47-49d6-bf3f-6c33ded09470",
+              "name": "Database not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "715db7fb-654e-4cb4-b00e-4ae91eb5801e",
+      "name": "Documents",
+      "description": {
+        "content": "Endpoints for creating, reading, updating, and deleting documents.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fcbc9490-0977-4ea9-89d6-d57e6b6bd699",
+          "name": "Get all documents",
+          "request": {
+            "name": "Get all documents",
+            "description": {
+              "content": "Returns all documents in the database. By default, only the document ID and revision are included. Use include_docs=true to include the full document body.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db",
+                "_all_docs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_docs",
+                  "value": "false",
+                  "description": "Whether to include document bodies in the response"
+                },
+                {
+                  "disabled": false,
+                  "key": "channels",
+                  "value": "<string>",
+                  "description": "Filter results by channel name"
+                },
+                {
+                  "disabled": false,
+                  "key": "keys",
+                  "value": "<string>",
+                  "description": "Array of document IDs to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "startkey",
+                  "value": "<string>",
+                  "description": "Start key for the range to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "endkey",
+                  "value": "<string>",
+                  "description": "End key for the range to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database (keyspace)"
+                },
+                {
+                  "description": "The App Services endpoint URL",
+                  "type": "any",
+                  "value": "{{appEndpoint}}",
+                  "key": "appEndpoint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d516fb4-907a-49a7-9b80-cd5b4d5dbbf7",
+              "name": "Successful retrieval of documents",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_all_docs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_docs",
+                      "value": "false"
+                    },
+                    {
+                      "key": "channels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keys",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startkey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endkey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"key\": \"string\",\n      \"value\": {\n        \"rev\": \"string\"\n      },\n      \"doc\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"key\": \"string\",\n      \"value\": {\n        \"rev\": \"string\"\n      },\n      \"doc\": {}\n    }\n  ],\n  \"total_rows\": 379,\n  \"update_seq\": 533\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c07ce386-451d-49bc-ab00-463848d4ff11",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_all_docs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_docs",
+                      "value": "false"
+                    },
+                    {
+                      "key": "channels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keys",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startkey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endkey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff95ce40-d7bd-4739-9b5a-2ec8047cda69",
+          "name": "Get a document",
+          "request": {
+            "name": "Get a document",
+            "description": {
+              "content": "Retrieves a document from the database by its document ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db",
+                ":docId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "rev",
+                  "value": "<string>",
+                  "description": "Specific revision to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "revs",
+                  "value": "<boolean>",
+                  "description": "Whether to include revision history"
+                },
+                {
+                  "disabled": false,
+                  "key": "open_revs",
+                  "value": "<string>",
+                  "description": "Array of revision IDs or \"all\" to get all leaf revisions"
+                },
+                {
+                  "disabled": false,
+                  "key": "attachments",
+                  "value": "<boolean>",
+                  "description": "Whether to include attachment data"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database (keyspace)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "docId",
+                  "description": "(Required) The document ID"
+                },
+                {
+                  "description": "The App Services endpoint URL",
+                  "type": "any",
+                  "value": "{{appEndpoint}}",
+                  "key": "appEndpoint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fcbbd99c-838f-42e9-bc05-0136d2c441ff",
+              "name": "Successful retrieval of the document",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    ":docId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rev",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "revs",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "open_revs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attachments",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "docId",
+                      "description": "(Required) The document ID"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_id\": \"string\",\n  \"_rev\": \"string\",\n  \"_deleted\": false,\n  \"_revisions\": {\n    \"ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"start\": 6551\n  },\n  \"_attachments\": {\n    \"key_0\": {\n      \"content_type\": \"string\",\n      \"digest\": \"string\",\n      \"length\": 8198,\n      \"revpos\": 5895,\n      \"stub\": false\n    }\n  },\n  \"key_0\": 4087.6540485395963,\n  \"key_1\": 9752.10677163215\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92f72f96-3dd4-4bbd-9ca2-09b300a3ae36",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    ":docId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rev",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "revs",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "open_revs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attachments",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "docId",
+                      "description": "(Required) The document ID"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c01ef134-e0c7-4fd8-aae0-792753a4a5d1",
+              "name": "Document not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    ":docId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rev",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "revs",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "open_revs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attachments",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "docId",
+                      "description": "(Required) The document ID"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3508f7f0-507c-472f-9924-4720dae90f3e",
+          "name": "Create or update a document",
+          "request": {
+            "name": "Create or update a document",
+            "description": {
+              "content": "Creates a new document or updates an existing document. For updates, the current revision ID must be included in the request body as _rev.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db",
+                ":docId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "rev",
+                  "value": "<string>",
+                  "description": "Current revision for updates"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database (keyspace)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "docId",
+                  "description": "(Required) The document ID"
+                },
+                {
+                  "description": "The App Services endpoint URL",
+                  "type": "any",
+                  "value": "{{appEndpoint}}",
+                  "key": "appEndpoint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8180be27-2d3e-40ef-8698-256166cdafd0",
+              "name": "Document created or updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    ":docId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rev",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "docId",
+                      "description": "(Required) The document ID"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"rev\": \"string\",\n  \"ok\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c81d83b2-cc9d-428f-858d-8cd23678f0c6",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    ":docId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rev",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "docId",
+                      "description": "(Required) The document ID"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "52cba7bd-2b70-4c65-ad48-7f91099b076f",
+              "name": "Conflict due to revision mismatch",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    ":docId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rev",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "docId",
+                      "description": "(Required) The document ID"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "485eb306-9807-45a1-a89b-f1d1e3b671e3",
+          "name": "Delete a document",
+          "request": {
+            "name": "Delete a document",
+            "description": {
+              "content": "Deletes a document by creating a tombstone revision. The current revision must be specified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db",
+                ":docId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "rev",
+                  "value": "<string>",
+                  "description": "(Required) Current revision of the document"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database (keyspace)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "docId",
+                  "description": "(Required) The document ID"
+                },
+                {
+                  "description": "The App Services endpoint URL",
+                  "type": "any",
+                  "value": "{{appEndpoint}}",
+                  "key": "appEndpoint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6db3da44-d08d-4714-b2ba-d76a76ca0a64",
+              "name": "Document deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    ":docId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rev",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "docId",
+                      "description": "(Required) The document ID"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"rev\": \"string\",\n  \"ok\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "781a8d6a-6fc8-4768-b44a-81ab10dbcebf",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    ":docId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rev",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "docId",
+                      "description": "(Required) The document ID"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "91008357-87e0-4d8e-bc86-fa4c8fa7e566",
+              "name": "Document not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    ":docId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rev",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "docId",
+                      "description": "(Required) The document ID"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ce71f300-ab6f-4a27-a793-24b9ef348371",
+              "name": "Conflict due to revision mismatch",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    ":docId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rev",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "docId",
+                      "description": "(Required) The document ID"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c8a6a48-5ab1-4d47-8465-8290fcf92b12",
+          "name": "Create or update multiple documents",
+          "request": {
+            "name": "Create or update multiple documents",
+            "description": {
+              "content": "Creates or updates multiple documents in a single request. This is the primary endpoint used by Couchbase Lite for push replication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db",
+                "_bulk_docs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database (keyspace)"
+                },
+                {
+                  "description": "The App Services endpoint URL",
+                  "type": "any",
+                  "value": "{{appEndpoint}}",
+                  "key": "appEndpoint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"docs\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"new_edits\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "86284af7-2a2d-4d8e-8bdf-b4b499041371",
+              "name": "Documents processed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_bulk_docs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"docs\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"new_edits\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"rev\": \"string\",\n    \"ok\": true\n  },\n  {\n    \"id\": \"string\",\n    \"rev\": \"string\",\n    \"ok\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db5e2f94-f51f-407d-9e43-c0714768a93b",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_bulk_docs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"docs\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"new_edits\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59c543af-a2b7-4216-aadb-61f77f78e895",
+          "name": "Get multiple documents",
+          "request": {
+            "name": "Get multiple documents",
+            "description": {
+              "content": "Retrieves multiple documents by ID in a single request. This is the primary endpoint used by Couchbase Lite for pull replication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db",
+                "_bulk_get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "attachments",
+                  "value": "<boolean>",
+                  "description": "Whether to include attachments"
+                },
+                {
+                  "disabled": false,
+                  "key": "revs",
+                  "value": "<boolean>",
+                  "description": "Whether to include revision history"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database (keyspace)"
+                },
+                {
+                  "description": "The App Services endpoint URL",
+                  "type": "any",
+                  "value": "{{appEndpoint}}",
+                  "key": "appEndpoint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"docs\": [\n    {\n      \"id\": \"<string>\",\n      \"rev\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"rev\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "834a2508-10b7-4eea-895e-6a714b796d25",
+              "name": "Successful retrieval of documents",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_bulk_get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attachments",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "revs",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"docs\": [\n    {\n      \"id\": \"<string>\",\n      \"rev\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"rev\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37d2934e-f15a-4dea-be0f-087ef6912f74",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_bulk_get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attachments",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "revs",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    },
+                    {
+                      "description": "The App Services endpoint URL",
+                      "type": "any",
+                      "value": "{{appEndpoint}}",
+                      "key": "appEndpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"docs\": [\n    {\n      \"id\": \"<string>\",\n      \"rev\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"rev\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The App Services endpoint URL",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "example.apps.cloud.couchbase.com",
+      "key": "appEndpoint"
+    },
+    {
+      "type": "string",
+      "value": "https://{{appEndpoint}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5b75a156-bef9-4f60-9659-f8b309c25369",
+    "name": "Couchbase Capella App Services Public API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Couchbase Capella App Services Public API provides REST endpoints for mobile and edge application data synchronization with Couchbase Capella. It enables developers to manage document access, handle user authentication, and synchronize data between mobile devices and the cloud database. The API supports operations for reading and writing documents through Sync Gateway, managing changes feeds, and handling replication for offline-first mobile applications.\n\nContact Support:\n Name: Couchbase Support",
+      "type": "text/plain"
+    }
+  }
+}

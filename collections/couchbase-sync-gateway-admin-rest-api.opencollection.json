@@ -1,0 +1,726 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Sync Gateway Admin REST API",
+    "version": "3.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Server",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all databases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:4985/_all_dbs"
+          },
+          "docs": "Returns the names of all databases configured on the Sync Gateway instance."
+        },
+        {
+          "info": {
+            "name": "Get server configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:4985/_config"
+          },
+          "docs": "Returns the complete Sync Gateway server configuration."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Database Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get database configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:4985/:db/_config",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ]
+          },
+          "docs": "Returns the complete configuration of the specified database including sync function, import filter, and security settings."
+        },
+        {
+          "info": {
+            "name": "Create a database",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:4985/:db/_config",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new database with the specified configuration. The database name is taken from the URL path."
+        },
+        {
+          "info": {
+            "name": "Update database configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:4985/:db/_config",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration of the specified database."
+        },
+        {
+          "info": {
+            "name": "Delete a database",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:4985/:db/_config",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ]
+          },
+          "docs": "Deletes the specified database configuration from Sync Gateway."
+        },
+        {
+          "info": {
+            "name": "Get sync function",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:4985/:db/_config/sync",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ]
+          },
+          "docs": "Returns the current sync function for the database."
+        },
+        {
+          "info": {
+            "name": "Update sync function",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:4985/:db/_config/sync",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ]
+          },
+          "docs": "Updates the sync function for the database. The sync function controls channel routing and access grants for documents."
+        },
+        {
+          "info": {
+            "name": "Take database offline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:4985/:db/_offline",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ]
+          },
+          "docs": "Takes the specified database offline, preventing client access."
+        },
+        {
+          "info": {
+            "name": "Bring database online",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:4985/:db/_online",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Brings the specified database back online."
+        },
+        {
+          "info": {
+            "name": "Resync database",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:4985/:db/_resync",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ]
+          },
+          "docs": "Reprocesses all documents through the sync function. Required after sync function changes to apply to existing documents."
+        },
+        {
+          "info": {
+            "name": "Compact database",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:4985/:db/_compact",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ]
+          },
+          "docs": "Removes obsolete revision bodies and attachment data from the database to reclaim storage space."
+        },
+        {
+          "info": {
+            "name": "Purge documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:4985/:db/_purge",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Permanently removes documents from the database. Unlike deletion, purged documents leave no tombstone and are not replicated."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "User Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:4985/:db/_user/",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ]
+          },
+          "docs": "Returns the list of all users configured for the database."
+        },
+        {
+          "info": {
+            "name": "Create a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:4985/:db/_user/",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new user with the specified credentials, roles, and channel assignments."
+        },
+        {
+          "info": {
+            "name": "Get user details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:4985/:db/_user/:userName",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "userName",
+                "value": "",
+                "type": "path",
+                "description": "The username"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a user including their roles, channels, and admin channels."
+        },
+        {
+          "info": {
+            "name": "Update a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:4985/:db/_user/:userName",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "userName",
+                "value": "",
+                "type": "path",
+                "description": "The username"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a user's configuration including password, roles, and channels."
+        },
+        {
+          "info": {
+            "name": "Delete a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:4985/:db/_user/:userName",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "userName",
+                "value": "",
+                "type": "path",
+                "description": "The username"
+              }
+            ]
+          },
+          "docs": "Deletes the specified user."
+        },
+        {
+          "info": {
+            "name": "Create a session for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:4985/:db/_user/:userName/_session",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "userName",
+                "value": "",
+                "type": "path",
+                "description": "The username"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new session for the specified user with an optional expiration time and channel override."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Role Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:4985/:db/_role/",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ]
+          },
+          "docs": "Returns the list of all roles configured for the database."
+        },
+        {
+          "info": {
+            "name": "Create a role",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:4985/:db/_role/",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new role with the specified channel assignments."
+        },
+        {
+          "info": {
+            "name": "Get role details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:4985/:db/_role/:roleName",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "roleName",
+                "value": "",
+                "type": "path",
+                "description": "The role name"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific role."
+        },
+        {
+          "info": {
+            "name": "Update a role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:4985/:db/_role/:roleName",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "roleName",
+                "value": "",
+                "type": "path",
+                "description": "The role name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a role's channel assignments."
+        },
+        {
+          "info": {
+            "name": "Delete a role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:4985/:db/_role/:roleName",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "roleName",
+                "value": "",
+                "type": "path",
+                "description": "The role name"
+              }
+            ]
+          },
+          "docs": "Deletes the specified role."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Replication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List replications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:4985/:db/_replication/",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ]
+          },
+          "docs": "Returns all configured inter-Sync Gateway replications."
+        },
+        {
+          "info": {
+            "name": "Create a replication",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:4985/:db/_replication/",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new inter-Sync Gateway replication."
+        },
+        {
+          "info": {
+            "name": "Get replication details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:4985/:db/_replication/:replicationId",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "replicationId",
+                "value": "",
+                "type": "path",
+                "description": "The replication identifier"
+              }
+            ]
+          },
+          "docs": "Returns the configuration and status of a specific replication."
+        },
+        {
+          "info": {
+            "name": "Update a replication",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:4985/:db/_replication/:replicationId",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "replicationId",
+                "value": "",
+                "type": "path",
+                "description": "The replication identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration of an existing replication."
+        },
+        {
+          "info": {
+            "name": "Delete a replication",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:4985/:db/_replication/:replicationId",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "replicationId",
+                "value": "",
+                "type": "path",
+                "description": "The replication identifier"
+              }
+            ]
+          },
+          "docs": "Deletes the specified replication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Monitoring",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get runtime statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:4985/_expvar"
+          },
+          "docs": "Returns runtime statistics for the Sync Gateway instance."
+        },
+        {
+          "info": {
+            "name": "Get server status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:4985/_status"
+          },
+          "docs": "Returns the status of the Sync Gateway server and its databases."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

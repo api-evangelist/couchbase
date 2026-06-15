@@ -1,0 +1,645 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Server REST API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cluster",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get cluster information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8091/pools"
+          },
+          "docs": "Returns basic information about the cluster including the list of pools, UUID, and implementation version."
+        },
+        {
+          "info": {
+            "name": "Get default pool details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8091/pools/default"
+          },
+          "docs": "Returns detailed information about the default pool including cluster name, storage totals, RAM quotas, node list, and bucket information."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Buckets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all buckets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8091/pools/default/buckets"
+          },
+          "docs": "Returns a list of all buckets in the cluster with their configuration details, including RAM quotas, replica settings, and item counts."
+        },
+        {
+          "info": {
+            "name": "Create a new bucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8091/pools/default/buckets",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Creates a new bucket with the specified configuration including name, type, RAM quota, replica count, and other settings."
+        },
+        {
+          "info": {
+            "name": "Get bucket details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8091/pools/default/buckets/:bucketName",
+            "params": [
+              {
+                "name": "bucketName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the bucket"
+              }
+            ]
+          },
+          "docs": "Returns detailed configuration and statistics for a specific bucket."
+        },
+        {
+          "info": {
+            "name": "Update bucket settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8091/pools/default/buckets/:bucketName",
+            "params": [
+              {
+                "name": "bucketName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the bucket"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Updates the configuration of an existing bucket, such as RAM quota, authentication type, and replica settings."
+        },
+        {
+          "info": {
+            "name": "Delete a bucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8091/pools/default/buckets/:bucketName",
+            "params": [
+              {
+                "name": "bucketName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the bucket"
+              }
+            ]
+          },
+          "docs": "Deletes the specified bucket and all of its data from the cluster."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Scopes and Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List scopes in a bucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8091/pools/default/buckets/:bucketName/scopes",
+            "params": [
+              {
+                "name": "bucketName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the bucket"
+              }
+            ]
+          },
+          "docs": "Returns the list of all scopes and their collections within the specified bucket."
+        },
+        {
+          "info": {
+            "name": "Create a scope",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8091/pools/default/buckets/:bucketName/scopes",
+            "params": [
+              {
+                "name": "bucketName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the bucket"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "name",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Creates a new scope within the specified bucket."
+        },
+        {
+          "info": {
+            "name": "Create a collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8091/pools/default/buckets/:bucketName/scopes/:scopeName/collections",
+            "params": [
+              {
+                "name": "bucketName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the bucket"
+              },
+              {
+                "name": "scopeName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the scope"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "name",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Creates a new collection within the specified scope and bucket."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Nodes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get nodes information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8091/pools/nodes"
+          },
+          "docs": "Returns information about all nodes in the cluster, including their services, status, and system resources."
+        },
+        {
+          "info": {
+            "name": "Add a node to the cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8091/controller/addNode",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "hostname",
+                  "value": ""
+                },
+                {
+                  "name": "services",
+                  "value": ""
+                },
+                {
+                  "name": "user",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Adds a new node to the cluster. The node must be configured and reachable before it can be added."
+        },
+        {
+          "info": {
+            "name": "Rebalance the cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8091/controller/rebalance",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "knownNodes",
+                  "value": ""
+                },
+                {
+                  "name": "ejectedNodes",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Initiates a rebalance operation to redistribute data across the cluster nodes after adding or removing nodes."
+        },
+        {
+          "info": {
+            "name": "Fail over a node",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8091/controller/failOver",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "otpNode",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Initiates a hard failover for the specified node, removing it from the cluster immediately."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Server Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List server groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8091/pools/default/serverGroups"
+          },
+          "docs": "Returns the list of server groups and their member nodes for rack-zone awareness configuration."
+        },
+        {
+          "info": {
+            "name": "Create a server group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8091/pools/default/serverGroups",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "name",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Creates a new server group for rack-zone awareness."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Configure web settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8091/settings/web",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "username",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "value": ""
+                },
+                {
+                  "name": "port",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Configures the cluster web console settings including the admin username, password, and port."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Compaction",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get auto-compaction settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8091/settings/autoCompaction"
+          },
+          "docs": "Returns the current auto-compaction settings for the cluster."
+        },
+        {
+          "info": {
+            "name": "Update auto-compaction settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8091/settings/autoCompaction",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Updates the auto-compaction settings for the cluster including database and view fragmentation thresholds and compaction intervals."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Security",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8091/settings/rbac/users"
+          },
+          "docs": "Returns the list of all users configured in the cluster with their roles and authentication domains."
+        },
+        {
+          "info": {
+            "name": "Get user details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8091/settings/rbac/users/:domain/:username",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path",
+                "description": "The authentication domain (local or external)"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The username of the user"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific user including their roles and authentication configuration."
+        },
+        {
+          "info": {
+            "name": "Create or update a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:8091/settings/rbac/users/:domain/:username",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path",
+                "description": "The authentication domain (local or external)"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The username of the user"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "password",
+                  "value": ""
+                },
+                {
+                  "name": "roles",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Creates a new user or updates an existing user with the specified roles and authentication settings."
+        },
+        {
+          "info": {
+            "name": "Delete a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8091/settings/rbac/users/:domain/:username",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path",
+                "description": "The authentication domain (local or external)"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The username of the user"
+              }
+            ]
+          },
+          "docs": "Deletes the specified user from the cluster."
+        },
+        {
+          "info": {
+            "name": "List available roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8091/settings/rbac/roles"
+          },
+          "docs": "Returns the list of all available roles in the cluster that can be assigned to users."
+        },
+        {
+          "info": {
+            "name": "Get cluster certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8091/pools/default/certificate"
+          },
+          "docs": "Returns the cluster CA certificate in PEM format."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Index Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get index service settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8091/settings/indexes"
+          },
+          "docs": "Returns the current configuration settings for the Index service."
+        },
+        {
+          "info": {
+            "name": "Update index service settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8091/settings/indexes",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Updates the configuration settings for the Index service including storage mode and memory allocation."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Logs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get diagnostic information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8091/diag"
+          },
+          "docs": "Returns diagnostic information for the cluster including logs and system statistics useful for troubleshooting."
+        },
+        {
+          "info": {
+            "name": "Start log collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8091/controller/startLogsCollection",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "nodes",
+                  "value": ""
+                },
+                {
+                  "name": "logRedactionLevel",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Initiates the collection of diagnostic logs across cluster nodes for analysis and troubleshooting."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,331 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Eventing Service REST API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Functions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all Eventing Functions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8096/api/v1/functions"
+          },
+          "docs": "Returns the definitions of all Eventing Functions including their source code, bindings, and deployment settings."
+        },
+        {
+          "info": {
+            "name": "Get an Eventing Function",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8096/api/v1/functions/:functionName",
+            "params": [
+              {
+                "name": "functionName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Eventing Function"
+              }
+            ]
+          },
+          "docs": "Returns the definition of a specific Eventing Function including its source code, bindings, and deployment settings."
+        },
+        {
+          "info": {
+            "name": "Create or update an Eventing Function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8096/api/v1/functions/:functionName",
+            "params": [
+              {
+                "name": "functionName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Eventing Function"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Eventing Function or updates an existing one with the provided definition. The function name in the URL must match the appname in the request body."
+        },
+        {
+          "info": {
+            "name": "Delete an Eventing Function",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8096/api/v1/functions/:functionName",
+            "params": [
+              {
+                "name": "functionName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Eventing Function"
+              }
+            ]
+          },
+          "docs": "Deletes the specified Eventing Function. Only functions in undeployed state can be deleted."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Lifecycle",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Deploy an Eventing Function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8096/api/v1/functions/:functionName/deploy",
+            "params": [
+              {
+                "name": "functionName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Eventing Function"
+              }
+            ]
+          },
+          "docs": "Deploys an undeployed Eventing Function, starting it to process document mutations and execute its handler code."
+        },
+        {
+          "info": {
+            "name": "Undeploy an Eventing Function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8096/api/v1/functions/:functionName/undeploy",
+            "params": [
+              {
+                "name": "functionName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Eventing Function"
+              }
+            ]
+          },
+          "docs": "Undeploys a deployed Eventing Function, stopping it from processing document mutations."
+        },
+        {
+          "info": {
+            "name": "Pause an Eventing Function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8096/api/v1/functions/:functionName/pause",
+            "params": [
+              {
+                "name": "functionName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Eventing Function"
+              }
+            ]
+          },
+          "docs": "Pauses a deployed Eventing Function and creates a DCP checkpoint so that on a subsequent resume no mutations will be lost."
+        },
+        {
+          "info": {
+            "name": "Resume an Eventing Function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8096/api/v1/functions/:functionName/resume",
+            "params": [
+              {
+                "name": "functionName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Eventing Function"
+              }
+            ]
+          },
+          "docs": "Resumes a paused Eventing Function from its DCP checkpoint, continuing to process mutations from where it left off."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Import Export",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Export all Eventing Functions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8096/api/v1/export"
+          },
+          "docs": "Exports all Eventing Function definitions. Exported functions are always set to undeployed state at the time of export."
+        },
+        {
+          "info": {
+            "name": "Export a specific Eventing Function",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8096/api/v1/export/:functionName",
+            "params": [
+              {
+                "name": "functionName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Eventing Function"
+              }
+            ]
+          },
+          "docs": "Exports the definition of a specific Eventing Function in undeployed state."
+        },
+        {
+          "info": {
+            "name": "Import Eventing Functions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8096/api/v1/import",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Imports Eventing Function definitions. Imported functions always start in undeployed state regardless of the setting values in the import data."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Statistics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Eventing Service status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8096/api/v1/status"
+          },
+          "docs": "Returns the deployment status and processing status of all Eventing Functions."
+        },
+        {
+          "info": {
+            "name": "Get Eventing Function statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8096/api/v1/stats"
+          },
+          "docs": "Returns execution statistics for all Eventing Functions including mutation processing counts, failure counts, and timing information."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Logging",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Eventing Function application log",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8096/api/v1/functions/:functionName/applog",
+            "params": [
+              {
+                "name": "functionName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Eventing Function"
+              },
+              {
+                "name": "aggregate",
+                "value": "",
+                "type": "query",
+                "description": "Whether to aggregate logs from all nodes"
+              }
+            ]
+          },
+          "docs": "Returns the most recent application log messages generated by the specified Eventing Function via the log() function in handler code."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Eventing Service configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8096/api/v1/config"
+          },
+          "docs": "Returns the current configuration settings for the Eventing Service."
+        },
+        {
+          "info": {
+            "name": "Update Eventing Service configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8096/api/v1/config",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration settings for the Eventing Service."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

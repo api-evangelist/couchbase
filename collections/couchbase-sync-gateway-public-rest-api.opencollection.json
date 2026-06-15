@@ -1,0 +1,529 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Sync Gateway Public REST API",
+    "version": "3.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Server",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get server information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:4984/"
+          },
+          "docs": "Returns information about the Sync Gateway server instance."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Database",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get database information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:4984/:db",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ]
+          },
+          "docs": "Returns information about the specified database."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:4984/:db/:docId",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "docId",
+                "value": "",
+                "type": "path",
+                "description": "The document ID"
+              },
+              {
+                "name": "rev",
+                "value": "",
+                "type": "query",
+                "description": "Specific revision ID to retrieve"
+              },
+              {
+                "name": "revs",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include revision history"
+              },
+              {
+                "name": "open_revs",
+                "value": "",
+                "type": "query",
+                "description": "Retrieve all leaf revisions or specific revision IDs"
+              },
+              {
+                "name": "attachments",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include inline attachment data"
+              },
+              {
+                "name": "show_exp",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include document expiry information"
+              }
+            ]
+          },
+          "docs": "Retrieves a document from the database by its document ID."
+        },
+        {
+          "info": {
+            "name": "Create or update a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:4984/:db/:docId",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "docId",
+                "value": "",
+                "type": "path",
+                "description": "The document ID"
+              },
+              {
+                "name": "rev",
+                "value": "",
+                "type": "query",
+                "description": "Current revision ID for update operations"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new document or updates an existing one. For updates, the current revision must be specified either as a query parameter or in the request body as _rev."
+        },
+        {
+          "info": {
+            "name": "Delete a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:4984/:db/:docId",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "docId",
+                "value": "",
+                "type": "path",
+                "description": "The document ID"
+              },
+              {
+                "name": "rev",
+                "value": "",
+                "type": "query",
+                "description": "Current revision ID of the document"
+              }
+            ]
+          },
+          "docs": "Deletes a document by adding a tombstone revision. The current revision must be specified."
+        },
+        {
+          "info": {
+            "name": "Get all documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:4984/:db/_all_docs",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "include_docs",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include document bodies"
+              },
+              {
+                "name": "channels",
+                "value": "",
+                "type": "query",
+                "description": "Filter by channel name"
+              },
+              {
+                "name": "startkey",
+                "value": "",
+                "type": "query",
+                "description": "Start key for range"
+              },
+              {
+                "name": "endkey",
+                "value": "",
+                "type": "query",
+                "description": "End key for range"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results"
+              }
+            ]
+          },
+          "docs": "Returns all documents accessible to the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Create or update multiple documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:4984/:db/_bulk_docs",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates multiple documents in a single request. This is the primary endpoint used by Couchbase Lite push replication."
+        },
+        {
+          "info": {
+            "name": "Get multiple documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:4984/:db/_bulk_get",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "attachments",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include attachments"
+              },
+              {
+                "name": "revs",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include revision history"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves multiple documents by their IDs in a single request. This is the primary endpoint used by Couchbase Lite pull replication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Changes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get changes feed",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:4984/:db/_changes",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Sequence number to start from"
+              },
+              {
+                "name": "feed",
+                "value": "",
+                "type": "query",
+                "description": "Type of changes feed"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter function"
+              },
+              {
+                "name": "channels",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of channels to filter by"
+              },
+              {
+                "name": "include_docs",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include document bodies"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of changes to return"
+              },
+              {
+                "name": "heartbeat",
+                "value": "",
+                "type": "query",
+                "description": "Heartbeat interval in milliseconds"
+              },
+              {
+                "name": "timeout",
+                "value": "",
+                "type": "query",
+                "description": "Timeout for longpoll in milliseconds"
+              },
+              {
+                "name": "style",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return all leaf revisions"
+              },
+              {
+                "name": "active_only",
+                "value": "",
+                "type": "query",
+                "description": "Whether to exclude deleted documents"
+              }
+            ]
+          },
+          "docs": "Returns a sorted list of changes made to documents in the database. Supports normal, longpoll, continuous, and websocket feed types for real-time synchronization."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a user session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:4984/:db/_session",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Authenticates a user and creates a new session cookie."
+        },
+        {
+          "info": {
+            "name": "Delete current session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:4984/:db/_session",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ]
+          },
+          "docs": "Invalidates the current user session."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Local Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a local document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:4984/:db/_local/:localDocId",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "localDocId",
+                "value": "",
+                "type": "path",
+                "description": "Local document ID"
+              }
+            ]
+          },
+          "docs": "Retrieves a local document. Local documents are not replicated and are used internally for replication checkpoints."
+        },
+        {
+          "info": {
+            "name": "Create or update a local document",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:4984/:db/_local/:localDocId",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "localDocId",
+                "value": "",
+                "type": "path",
+                "description": "Local document ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates a local document. Local documents are not replicated and are used for replication checkpoints."
+        },
+        {
+          "info": {
+            "name": "Delete a local document",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:4984/:db/_local/:localDocId",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "localDocId",
+                "value": "",
+                "type": "path",
+                "description": "Local document ID"
+              },
+              {
+                "name": "rev",
+                "value": "",
+                "type": "query",
+                "description": "Current revision of the local document"
+              }
+            ]
+          },
+          "docs": "Deletes a local document."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

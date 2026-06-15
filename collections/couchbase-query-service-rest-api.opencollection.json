@@ -1,0 +1,250 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Query Service REST API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Query Execution",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute a SQL++ query via GET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8093/query/service",
+            "params": [
+              {
+                "name": "statement",
+                "value": "",
+                "type": "query",
+                "description": "The SQL++ statement to execute"
+              },
+              {
+                "name": "timeout",
+                "value": "",
+                "type": "query",
+                "description": "Maximum execution time for the query (e.g., 10s, 5m)"
+              },
+              {
+                "name": "readonly",
+                "value": "",
+                "type": "query",
+                "description": "Whether to restrict the query to read-only operations"
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Whether to format the query results with indentation"
+              }
+            ]
+          },
+          "docs": "Executes a SQL++ query specified as a query parameter. This endpoint is intended for situations where use of the POST method is restricted."
+        },
+        {
+          "info": {
+            "name": "Execute a SQL++ query via POST",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8093/query/service",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes a SQL++ query specified in the request body. Supports both application/json and application/x-www-form-urlencoded content types. This is the primary method for executing queries and supports all query parameters including named and positional parameters."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Query Admin",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List active query requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8093/admin/active_requests"
+          },
+          "docs": "Returns the list of currently active query requests on the node, including their statement text, execution time, and request ID."
+        },
+        {
+          "info": {
+            "name": "Get an active request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8093/admin/active_requests/:requestId",
+            "params": [
+              {
+                "name": "requestId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the query request"
+              }
+            ]
+          },
+          "docs": "Returns details about a specific active query request."
+        },
+        {
+          "info": {
+            "name": "Cancel an active request",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8093/admin/active_requests/:requestId",
+            "params": [
+              {
+                "name": "requestId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the query request"
+              }
+            ]
+          },
+          "docs": "Cancels a specific active query request by its request ID."
+        },
+        {
+          "info": {
+            "name": "List completed query requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8093/admin/completed_requests"
+          },
+          "docs": "Returns the list of recently completed query requests on the node, including their statement text, execution time, and result count."
+        },
+        {
+          "info": {
+            "name": "List prepared statements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8093/admin/prepareds"
+          },
+          "docs": "Returns the list of prepared statements cached on the node."
+        },
+        {
+          "info": {
+            "name": "Get a prepared statement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8093/admin/prepareds/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the prepared statement"
+              }
+            ]
+          },
+          "docs": "Returns details about a specific prepared statement."
+        },
+        {
+          "info": {
+            "name": "Delete a prepared statement",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8093/admin/prepareds/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the prepared statement"
+              }
+            ]
+          },
+          "docs": "Removes a specific prepared statement from the cache."
+        },
+        {
+          "info": {
+            "name": "List active index requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8093/admin/indexes/active_requests"
+          },
+          "docs": "Returns the list of active index request operations being processed by the Query service."
+        },
+        {
+          "info": {
+            "name": "Get query service vitals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8093/admin/vitals"
+          },
+          "docs": "Returns vital statistics for the Query service node including request counts, error counts, and resource utilization."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Query Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get query service settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8093/admin/settings"
+          },
+          "docs": "Returns the current settings for the Query service node, including timeout values, memory quotas, and logging configuration."
+        },
+        {
+          "info": {
+            "name": "Update query service settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8093/admin/settings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration settings for the Query service node."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

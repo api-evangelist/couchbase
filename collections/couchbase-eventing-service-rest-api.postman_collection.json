@@ -1,0 +1,2972 @@
+{
+  "item": [
+    {
+      "id": "3569047b-0d02-43e1-8323-2b30d2cd5909",
+      "name": "Configuration",
+      "description": {
+        "content": "Endpoints for configuring Eventing Service settings.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b3ce99b8-3c86-4171-9b27-03d4b5abc78a",
+          "name": "Get Eventing Service configuration",
+          "request": {
+            "name": "Get Eventing Service configuration",
+            "description": {
+              "content": "Returns the current configuration settings for the Eventing Service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b80898ab-72de-44f4-9ed8-421af6af68cc",
+              "name": "Successful retrieval of Eventing configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"enable_debugger\": true,\n  \"ram_quota\": 5556\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d845d5af-2746-4327-9e6e-0661a8cfc9d6",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86bcad3f-b6ac-423c-b2a8-30ef952096fa",
+          "name": "Update Eventing Service configuration",
+          "request": {
+            "name": "Update Eventing Service configuration",
+            "description": {
+              "content": "Updates the configuration settings for the Eventing Service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"enable_debugger\": \"<boolean>\",\n  \"ram_quota\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5bb71da7-c435-4755-9dc2-973b9827acb2",
+              "name": "Configuration updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enable_debugger\": \"<boolean>\",\n  \"ram_quota\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0ee5d515-f34d-4489-a42d-e11b7f674d84",
+              "name": "Invalid configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enable_debugger\": \"<boolean>\",\n  \"ram_quota\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "38cad8b3-3036-4b6b-8ae1-50260f4053fe",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enable_debugger\": \"<boolean>\",\n  \"ram_quota\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "b4c8febc-1251-4437-9c5f-752a39dc37a5",
+      "name": "Functions",
+      "description": {
+        "content": "Endpoints for creating, retrieving, updating, and deleting Eventing Functions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "473ac073-063a-498b-b039-f0a4febb5d75",
+          "name": "List all Eventing Functions",
+          "request": {
+            "name": "List all Eventing Functions",
+            "description": {
+              "content": "Returns the definitions of all Eventing Functions including their source code, bindings, and deployment settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "functions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb584e6f-b446-4f27-a5d5-64a935eb2c4b",
+              "name": "Successful retrieval of function list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"appname\": \"string\",\n    \"appcode\": \"string\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"r\"\n        },\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"r\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"no-auth\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": false\n        },\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"no-auth\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": true\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        }\n      ],\n      \"source_bucket\": \"string\",\n      \"source_scope\": \"string\",\n      \"source_collection\": \"string\",\n      \"metadata_bucket\": \"string\",\n      \"metadata_scope\": \"string\",\n      \"metadata_collection\": \"string\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"everything\",\n      \"deployment_status\": true,\n      \"processing_status\": false,\n      \"log_level\": \"ERROR\",\n      \"language_compatibility\": \"string\",\n      \"execution_timeout\": 875,\n      \"timer_context_size\": 1803,\n      \"worker_count\": 7416,\n      \"num_timer_partitions\": 7520\n    },\n    \"function_scope\": {\n      \"bucket\": \"string\",\n      \"scope\": \"string\"\n    }\n  },\n  {\n    \"appname\": \"string\",\n    \"appcode\": \"string\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"rw\"\n        },\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"rw\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"digest\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": true\n        },\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"bearer\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": false\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        }\n      ],\n      \"source_bucket\": \"string\",\n      \"source_scope\": \"string\",\n      \"source_collection\": \"string\",\n      \"metadata_bucket\": \"string\",\n      \"metadata_scope\": \"string\",\n      \"metadata_collection\": \"string\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"everything\",\n      \"deployment_status\": false,\n      \"processing_status\": false,\n      \"log_level\": \"INFO\",\n      \"language_compatibility\": \"string\",\n      \"execution_timeout\": 1685,\n      \"timer_context_size\": 9024,\n      \"worker_count\": 5674,\n      \"num_timer_partitions\": 8644\n    },\n    \"function_scope\": {\n      \"bucket\": \"string\",\n      \"scope\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1090dfa9-917c-4f22-a301-f9b0f0cb3787",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b32d5e97-d877-4102-a12b-76e8705cf0b8",
+          "name": "Get an Eventing Function",
+          "request": {
+            "name": "Get an Eventing Function",
+            "description": {
+              "content": "Returns the definition of a specific Eventing Function including its source code, bindings, and deployment settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "functions",
+                ":functionName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "functionName",
+                  "description": "(Required) The name of the Eventing Function"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ad42ef9e-58d3-4f13-87a9-ff52ac0724a5",
+              "name": "Successful retrieval of function definition",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"appname\": \"string\",\n  \"appcode\": \"string\",\n  \"depcfg\": {\n    \"buckets\": [\n      {\n        \"alias\": \"string\",\n        \"bucket_name\": \"string\",\n        \"scope_name\": \"string\",\n        \"collection_name\": \"string\",\n        \"access\": \"rw\"\n      },\n      {\n        \"alias\": \"string\",\n        \"bucket_name\": \"string\",\n        \"scope_name\": \"string\",\n        \"collection_name\": \"string\",\n        \"access\": \"r\"\n      }\n    ],\n    \"curl\": [\n      {\n        \"hostname\": \"string\",\n        \"value\": \"string\",\n        \"auth_type\": \"no-auth\",\n        \"allow_cookies\": true,\n        \"validate_ssl_certificate\": true\n      },\n      {\n        \"hostname\": \"string\",\n        \"value\": \"string\",\n        \"auth_type\": \"bearer\",\n        \"allow_cookies\": true,\n        \"validate_ssl_certificate\": true\n      }\n    ],\n    \"constants\": [\n      {\n        \"value\": \"string\",\n        \"literal\": \"string\"\n      },\n      {\n        \"value\": \"string\",\n        \"literal\": \"string\"\n      }\n    ],\n    \"source_bucket\": \"string\",\n    \"source_scope\": \"string\",\n    \"source_collection\": \"string\",\n    \"metadata_bucket\": \"string\",\n    \"metadata_scope\": \"string\",\n    \"metadata_collection\": \"string\"\n  },\n  \"settings\": {\n    \"dcp_stream_boundary\": \"from_now\",\n    \"deployment_status\": true,\n    \"processing_status\": false,\n    \"log_level\": \"DEBUG\",\n    \"language_compatibility\": \"string\",\n    \"execution_timeout\": 8477,\n    \"timer_context_size\": 8548,\n    \"worker_count\": 425,\n    \"num_timer_partitions\": 6589\n  },\n  \"function_scope\": {\n    \"bucket\": \"string\",\n    \"scope\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e91cfce2-60fa-485f-ba31-43d4205ab2b8",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "04e321bc-62db-41d0-823f-141e5e0a803f",
+              "name": "Function not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0647c12c-c393-4a97-8bce-97d92a6f9b4b",
+          "name": "Create or update an Eventing Function",
+          "request": {
+            "name": "Create or update an Eventing Function",
+            "description": {
+              "content": "Creates a new Eventing Function or updates an existing one with the provided definition. The function name in the URL must match the appname in the request body.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "functions",
+                ":functionName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "functionName",
+                  "description": "(Required) The name of the Eventing Function"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"appname\": \"<string>\",\n  \"appcode\": \"<string>\",\n  \"depcfg\": {\n    \"buckets\": [\n      {\n        \"alias\": \"<string>\",\n        \"bucket_name\": \"<string>\",\n        \"scope_name\": \"<string>\",\n        \"collection_name\": \"<string>\",\n        \"access\": \"<string>\"\n      },\n      {\n        \"alias\": \"<string>\",\n        \"bucket_name\": \"<string>\",\n        \"scope_name\": \"<string>\",\n        \"collection_name\": \"<string>\",\n        \"access\": \"<string>\"\n      }\n    ],\n    \"curl\": [\n      {\n        \"hostname\": \"<string>\",\n        \"value\": \"<string>\",\n        \"auth_type\": \"<string>\",\n        \"allow_cookies\": \"<boolean>\",\n        \"validate_ssl_certificate\": \"<boolean>\"\n      },\n      {\n        \"hostname\": \"<string>\",\n        \"value\": \"<string>\",\n        \"auth_type\": \"<string>\",\n        \"allow_cookies\": \"<boolean>\",\n        \"validate_ssl_certificate\": \"<boolean>\"\n      }\n    ],\n    \"constants\": [\n      {\n        \"value\": \"<string>\",\n        \"literal\": \"<string>\"\n      },\n      {\n        \"value\": \"<string>\",\n        \"literal\": \"<string>\"\n      }\n    ],\n    \"source_bucket\": \"<string>\",\n    \"source_scope\": \"<string>\",\n    \"source_collection\": \"<string>\",\n    \"metadata_bucket\": \"<string>\",\n    \"metadata_scope\": \"<string>\",\n    \"metadata_collection\": \"<string>\"\n  },\n  \"settings\": {\n    \"dcp_stream_boundary\": \"<string>\",\n    \"deployment_status\": \"<boolean>\",\n    \"processing_status\": \"<boolean>\",\n    \"log_level\": \"<string>\",\n    \"language_compatibility\": \"<string>\",\n    \"execution_timeout\": \"<integer>\",\n    \"timer_context_size\": \"<integer>\",\n    \"worker_count\": \"<integer>\",\n    \"num_timer_partitions\": \"<integer>\"\n  },\n  \"function_scope\": {\n    \"bucket\": \"<string>\",\n    \"scope\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d7ba0f11-ce99-46d0-ad38-71c3aea1d2fb",
+              "name": "Function created or updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"appname\": \"<string>\",\n  \"appcode\": \"<string>\",\n  \"depcfg\": {\n    \"buckets\": [\n      {\n        \"alias\": \"<string>\",\n        \"bucket_name\": \"<string>\",\n        \"scope_name\": \"<string>\",\n        \"collection_name\": \"<string>\",\n        \"access\": \"<string>\"\n      },\n      {\n        \"alias\": \"<string>\",\n        \"bucket_name\": \"<string>\",\n        \"scope_name\": \"<string>\",\n        \"collection_name\": \"<string>\",\n        \"access\": \"<string>\"\n      }\n    ],\n    \"curl\": [\n      {\n        \"hostname\": \"<string>\",\n        \"value\": \"<string>\",\n        \"auth_type\": \"<string>\",\n        \"allow_cookies\": \"<boolean>\",\n        \"validate_ssl_certificate\": \"<boolean>\"\n      },\n      {\n        \"hostname\": \"<string>\",\n        \"value\": \"<string>\",\n        \"auth_type\": \"<string>\",\n        \"allow_cookies\": \"<boolean>\",\n        \"validate_ssl_certificate\": \"<boolean>\"\n      }\n    ],\n    \"constants\": [\n      {\n        \"value\": \"<string>\",\n        \"literal\": \"<string>\"\n      },\n      {\n        \"value\": \"<string>\",\n        \"literal\": \"<string>\"\n      }\n    ],\n    \"source_bucket\": \"<string>\",\n    \"source_scope\": \"<string>\",\n    \"source_collection\": \"<string>\",\n    \"metadata_bucket\": \"<string>\",\n    \"metadata_scope\": \"<string>\",\n    \"metadata_collection\": \"<string>\"\n  },\n  \"settings\": {\n    \"dcp_stream_boundary\": \"<string>\",\n    \"deployment_status\": \"<boolean>\",\n    \"processing_status\": \"<boolean>\",\n    \"log_level\": \"<string>\",\n    \"language_compatibility\": \"<string>\",\n    \"execution_timeout\": \"<integer>\",\n    \"timer_context_size\": \"<integer>\",\n    \"worker_count\": \"<integer>\",\n    \"num_timer_partitions\": \"<integer>\"\n  },\n  \"function_scope\": {\n    \"bucket\": \"<string>\",\n    \"scope\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f8b69808-8ec1-4fa6-b77b-94d91625f59a",
+              "name": "Invalid function definition",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"appname\": \"<string>\",\n  \"appcode\": \"<string>\",\n  \"depcfg\": {\n    \"buckets\": [\n      {\n        \"alias\": \"<string>\",\n        \"bucket_name\": \"<string>\",\n        \"scope_name\": \"<string>\",\n        \"collection_name\": \"<string>\",\n        \"access\": \"<string>\"\n      },\n      {\n        \"alias\": \"<string>\",\n        \"bucket_name\": \"<string>\",\n        \"scope_name\": \"<string>\",\n        \"collection_name\": \"<string>\",\n        \"access\": \"<string>\"\n      }\n    ],\n    \"curl\": [\n      {\n        \"hostname\": \"<string>\",\n        \"value\": \"<string>\",\n        \"auth_type\": \"<string>\",\n        \"allow_cookies\": \"<boolean>\",\n        \"validate_ssl_certificate\": \"<boolean>\"\n      },\n      {\n        \"hostname\": \"<string>\",\n        \"value\": \"<string>\",\n        \"auth_type\": \"<string>\",\n        \"allow_cookies\": \"<boolean>\",\n        \"validate_ssl_certificate\": \"<boolean>\"\n      }\n    ],\n    \"constants\": [\n      {\n        \"value\": \"<string>\",\n        \"literal\": \"<string>\"\n      },\n      {\n        \"value\": \"<string>\",\n        \"literal\": \"<string>\"\n      }\n    ],\n    \"source_bucket\": \"<string>\",\n    \"source_scope\": \"<string>\",\n    \"source_collection\": \"<string>\",\n    \"metadata_bucket\": \"<string>\",\n    \"metadata_scope\": \"<string>\",\n    \"metadata_collection\": \"<string>\"\n  },\n  \"settings\": {\n    \"dcp_stream_boundary\": \"<string>\",\n    \"deployment_status\": \"<boolean>\",\n    \"processing_status\": \"<boolean>\",\n    \"log_level\": \"<string>\",\n    \"language_compatibility\": \"<string>\",\n    \"execution_timeout\": \"<integer>\",\n    \"timer_context_size\": \"<integer>\",\n    \"worker_count\": \"<integer>\",\n    \"num_timer_partitions\": \"<integer>\"\n  },\n  \"function_scope\": {\n    \"bucket\": \"<string>\",\n    \"scope\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "87bfff76-610a-4eac-8d1a-0531c5bad7fc",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"appname\": \"<string>\",\n  \"appcode\": \"<string>\",\n  \"depcfg\": {\n    \"buckets\": [\n      {\n        \"alias\": \"<string>\",\n        \"bucket_name\": \"<string>\",\n        \"scope_name\": \"<string>\",\n        \"collection_name\": \"<string>\",\n        \"access\": \"<string>\"\n      },\n      {\n        \"alias\": \"<string>\",\n        \"bucket_name\": \"<string>\",\n        \"scope_name\": \"<string>\",\n        \"collection_name\": \"<string>\",\n        \"access\": \"<string>\"\n      }\n    ],\n    \"curl\": [\n      {\n        \"hostname\": \"<string>\",\n        \"value\": \"<string>\",\n        \"auth_type\": \"<string>\",\n        \"allow_cookies\": \"<boolean>\",\n        \"validate_ssl_certificate\": \"<boolean>\"\n      },\n      {\n        \"hostname\": \"<string>\",\n        \"value\": \"<string>\",\n        \"auth_type\": \"<string>\",\n        \"allow_cookies\": \"<boolean>\",\n        \"validate_ssl_certificate\": \"<boolean>\"\n      }\n    ],\n    \"constants\": [\n      {\n        \"value\": \"<string>\",\n        \"literal\": \"<string>\"\n      },\n      {\n        \"value\": \"<string>\",\n        \"literal\": \"<string>\"\n      }\n    ],\n    \"source_bucket\": \"<string>\",\n    \"source_scope\": \"<string>\",\n    \"source_collection\": \"<string>\",\n    \"metadata_bucket\": \"<string>\",\n    \"metadata_scope\": \"<string>\",\n    \"metadata_collection\": \"<string>\"\n  },\n  \"settings\": {\n    \"dcp_stream_boundary\": \"<string>\",\n    \"deployment_status\": \"<boolean>\",\n    \"processing_status\": \"<boolean>\",\n    \"log_level\": \"<string>\",\n    \"language_compatibility\": \"<string>\",\n    \"execution_timeout\": \"<integer>\",\n    \"timer_context_size\": \"<integer>\",\n    \"worker_count\": \"<integer>\",\n    \"num_timer_partitions\": \"<integer>\"\n  },\n  \"function_scope\": {\n    \"bucket\": \"<string>\",\n    \"scope\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b340849-ec35-4b56-b699-67867eaf91a4",
+          "name": "Delete an Eventing Function",
+          "request": {
+            "name": "Delete an Eventing Function",
+            "description": {
+              "content": "Deletes the specified Eventing Function. Only functions in undeployed state can be deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "functions",
+                ":functionName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "functionName",
+                  "description": "(Required) The name of the Eventing Function"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f86c9ecc-a1a6-4110-a489-b5e87ecfa709",
+              "name": "Function deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8d70e1fa-4b3b-4c92-b870-d4cdacf2777a",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b6260228-34ee-49b5-b6fe-a99c04fdcb71",
+              "name": "Function not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "28847f90-0f97-438d-9325-9ba0993749cc",
+              "name": "Function is deployed and cannot be deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0131f313-9180-442e-9e82-046ca95252f9",
+      "name": "Import Export",
+      "description": {
+        "content": "Endpoints for importing and exporting Eventing Function definitions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0f0c18af-db03-4921-a2c9-035d68663761",
+          "name": "Export all Eventing Functions",
+          "request": {
+            "name": "Export all Eventing Functions",
+            "description": {
+              "content": "Exports all Eventing Function definitions. Exported functions are always set to undeployed state at the time of export.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ddcd45b4-7df3-42ea-9cb3-c5b201abde96",
+              "name": "Functions exported successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"appname\": \"string\",\n    \"appcode\": \"string\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"r\"\n        },\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"r\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"no-auth\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": false\n        },\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"no-auth\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": true\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        }\n      ],\n      \"source_bucket\": \"string\",\n      \"source_scope\": \"string\",\n      \"source_collection\": \"string\",\n      \"metadata_bucket\": \"string\",\n      \"metadata_scope\": \"string\",\n      \"metadata_collection\": \"string\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"everything\",\n      \"deployment_status\": true,\n      \"processing_status\": false,\n      \"log_level\": \"ERROR\",\n      \"language_compatibility\": \"string\",\n      \"execution_timeout\": 875,\n      \"timer_context_size\": 1803,\n      \"worker_count\": 7416,\n      \"num_timer_partitions\": 7520\n    },\n    \"function_scope\": {\n      \"bucket\": \"string\",\n      \"scope\": \"string\"\n    }\n  },\n  {\n    \"appname\": \"string\",\n    \"appcode\": \"string\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"rw\"\n        },\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"rw\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"digest\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": true\n        },\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"bearer\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": false\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        }\n      ],\n      \"source_bucket\": \"string\",\n      \"source_scope\": \"string\",\n      \"source_collection\": \"string\",\n      \"metadata_bucket\": \"string\",\n      \"metadata_scope\": \"string\",\n      \"metadata_collection\": \"string\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"everything\",\n      \"deployment_status\": false,\n      \"processing_status\": false,\n      \"log_level\": \"INFO\",\n      \"language_compatibility\": \"string\",\n      \"execution_timeout\": 1685,\n      \"timer_context_size\": 9024,\n      \"worker_count\": 5674,\n      \"num_timer_partitions\": 8644\n    },\n    \"function_scope\": {\n      \"bucket\": \"string\",\n      \"scope\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43008094-3570-45b0-b045-75087a56b91b",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aba740fa-8fae-483c-8ecb-c94a635ea1b9",
+          "name": "Export a specific Eventing Function",
+          "request": {
+            "name": "Export a specific Eventing Function",
+            "description": {
+              "content": "Exports the definition of a specific Eventing Function in undeployed state.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "export",
+                ":functionName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "functionName",
+                  "description": "(Required) The name of the Eventing Function"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3d79fb3e-ce32-4e3e-8961-d4f704a4d7c7",
+              "name": "Function exported successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "export",
+                    ":functionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"appname\": \"string\",\n  \"appcode\": \"string\",\n  \"depcfg\": {\n    \"buckets\": [\n      {\n        \"alias\": \"string\",\n        \"bucket_name\": \"string\",\n        \"scope_name\": \"string\",\n        \"collection_name\": \"string\",\n        \"access\": \"rw\"\n      },\n      {\n        \"alias\": \"string\",\n        \"bucket_name\": \"string\",\n        \"scope_name\": \"string\",\n        \"collection_name\": \"string\",\n        \"access\": \"r\"\n      }\n    ],\n    \"curl\": [\n      {\n        \"hostname\": \"string\",\n        \"value\": \"string\",\n        \"auth_type\": \"no-auth\",\n        \"allow_cookies\": true,\n        \"validate_ssl_certificate\": true\n      },\n      {\n        \"hostname\": \"string\",\n        \"value\": \"string\",\n        \"auth_type\": \"bearer\",\n        \"allow_cookies\": true,\n        \"validate_ssl_certificate\": true\n      }\n    ],\n    \"constants\": [\n      {\n        \"value\": \"string\",\n        \"literal\": \"string\"\n      },\n      {\n        \"value\": \"string\",\n        \"literal\": \"string\"\n      }\n    ],\n    \"source_bucket\": \"string\",\n    \"source_scope\": \"string\",\n    \"source_collection\": \"string\",\n    \"metadata_bucket\": \"string\",\n    \"metadata_scope\": \"string\",\n    \"metadata_collection\": \"string\"\n  },\n  \"settings\": {\n    \"dcp_stream_boundary\": \"from_now\",\n    \"deployment_status\": true,\n    \"processing_status\": false,\n    \"log_level\": \"DEBUG\",\n    \"language_compatibility\": \"string\",\n    \"execution_timeout\": 8477,\n    \"timer_context_size\": 8548,\n    \"worker_count\": 425,\n    \"num_timer_partitions\": 6589\n  },\n  \"function_scope\": {\n    \"bucket\": \"string\",\n    \"scope\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e095a03-6a15-476a-bd19-4f60a3eea335",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "export",
+                    ":functionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "51565a35-3acf-42c6-ba92-6bc50de91938",
+              "name": "Function not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "export",
+                    ":functionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a39c80c6-a3d9-4d0b-a255-28205b767392",
+          "name": "Import Eventing Functions",
+          "request": {
+            "name": "Import Eventing Functions",
+            "description": {
+              "content": "Imports Eventing Function definitions. Imported functions always start in undeployed state regardless of the setting values in the import data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "import"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"appname\": \"<string>\",\n    \"appcode\": \"<string>\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"<string>\",\n          \"bucket_name\": \"<string>\",\n          \"scope_name\": \"<string>\",\n          \"collection_name\": \"<string>\",\n          \"access\": \"<string>\"\n        },\n        {\n          \"alias\": \"<string>\",\n          \"bucket_name\": \"<string>\",\n          \"scope_name\": \"<string>\",\n          \"collection_name\": \"<string>\",\n          \"access\": \"<string>\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"<string>\",\n          \"value\": \"<string>\",\n          \"auth_type\": \"<string>\",\n          \"allow_cookies\": \"<boolean>\",\n          \"validate_ssl_certificate\": \"<boolean>\"\n        },\n        {\n          \"hostname\": \"<string>\",\n          \"value\": \"<string>\",\n          \"auth_type\": \"<string>\",\n          \"allow_cookies\": \"<boolean>\",\n          \"validate_ssl_certificate\": \"<boolean>\"\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"<string>\",\n          \"literal\": \"<string>\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"literal\": \"<string>\"\n        }\n      ],\n      \"source_bucket\": \"<string>\",\n      \"source_scope\": \"<string>\",\n      \"source_collection\": \"<string>\",\n      \"metadata_bucket\": \"<string>\",\n      \"metadata_scope\": \"<string>\",\n      \"metadata_collection\": \"<string>\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"<string>\",\n      \"deployment_status\": \"<boolean>\",\n      \"processing_status\": \"<boolean>\",\n      \"log_level\": \"<string>\",\n      \"language_compatibility\": \"<string>\",\n      \"execution_timeout\": \"<integer>\",\n      \"timer_context_size\": \"<integer>\",\n      \"worker_count\": \"<integer>\",\n      \"num_timer_partitions\": \"<integer>\"\n    },\n    \"function_scope\": {\n      \"bucket\": \"<string>\",\n      \"scope\": \"<string>\"\n    }\n  },\n  {\n    \"appname\": \"<string>\",\n    \"appcode\": \"<string>\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"<string>\",\n          \"bucket_name\": \"<string>\",\n          \"scope_name\": \"<string>\",\n          \"collection_name\": \"<string>\",\n          \"access\": \"<string>\"\n        },\n        {\n          \"alias\": \"<string>\",\n          \"bucket_name\": \"<string>\",\n          \"scope_name\": \"<string>\",\n          \"collection_name\": \"<string>\",\n          \"access\": \"<string>\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"<string>\",\n          \"value\": \"<string>\",\n          \"auth_type\": \"<string>\",\n          \"allow_cookies\": \"<boolean>\",\n          \"validate_ssl_certificate\": \"<boolean>\"\n        },\n        {\n          \"hostname\": \"<string>\",\n          \"value\": \"<string>\",\n          \"auth_type\": \"<string>\",\n          \"allow_cookies\": \"<boolean>\",\n          \"validate_ssl_certificate\": \"<boolean>\"\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"<string>\",\n          \"literal\": \"<string>\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"literal\": \"<string>\"\n        }\n      ],\n      \"source_bucket\": \"<string>\",\n      \"source_scope\": \"<string>\",\n      \"source_collection\": \"<string>\",\n      \"metadata_bucket\": \"<string>\",\n      \"metadata_scope\": \"<string>\",\n      \"metadata_collection\": \"<string>\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"<string>\",\n      \"deployment_status\": \"<boolean>\",\n      \"processing_status\": \"<boolean>\",\n      \"log_level\": \"<string>\",\n      \"language_compatibility\": \"<string>\",\n      \"execution_timeout\": \"<integer>\",\n      \"timer_context_size\": \"<integer>\",\n      \"worker_count\": \"<integer>\",\n      \"num_timer_partitions\": \"<integer>\"\n    },\n    \"function_scope\": {\n      \"bucket\": \"<string>\",\n      \"scope\": \"<string>\"\n    }\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b48ee979-8890-49af-8182-9747fe3271ce",
+              "name": "Functions imported successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"appname\": \"string\",\n    \"appcode\": \"string\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"r\"\n        },\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"r\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"digest\",\n          \"allow_cookies\": true,\n          \"validate_ssl_certificate\": false\n        },\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"bearer\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": false\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        }\n      ],\n      \"source_bucket\": \"string\",\n      \"source_scope\": \"string\",\n      \"source_collection\": \"string\",\n      \"metadata_bucket\": \"string\",\n      \"metadata_scope\": \"string\",\n      \"metadata_collection\": \"string\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"everything\",\n      \"deployment_status\": false,\n      \"processing_status\": false,\n      \"log_level\": \"WARNING\",\n      \"language_compatibility\": \"string\",\n      \"execution_timeout\": 5117,\n      \"timer_context_size\": 2444,\n      \"worker_count\": 8741,\n      \"num_timer_partitions\": 4444\n    },\n    \"function_scope\": {\n      \"bucket\": \"string\",\n      \"scope\": \"string\"\n    }\n  },\n  {\n    \"appname\": \"string\",\n    \"appcode\": \"string\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"rw\"\n        },\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"r\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"basic\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": true\n        },\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"digest\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": true\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        }\n      ],\n      \"source_bucket\": \"string\",\n      \"source_scope\": \"string\",\n      \"source_collection\": \"string\",\n      \"metadata_bucket\": \"string\",\n      \"metadata_scope\": \"string\",\n      \"metadata_collection\": \"string\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"from_now\",\n      \"deployment_status\": false,\n      \"processing_status\": true,\n      \"log_level\": \"WARNING\",\n      \"language_compatibility\": \"string\",\n      \"execution_timeout\": 1609,\n      \"timer_context_size\": 4019,\n      \"worker_count\": 3690,\n      \"num_timer_partitions\": 5252\n    },\n    \"function_scope\": {\n      \"bucket\": \"string\",\n      \"scope\": \"string\"\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1ee6e03e-dc45-4e7f-9833-0d2dab2f3c04",
+              "name": "Invalid function definitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"appname\": \"string\",\n    \"appcode\": \"string\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"r\"\n        },\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"r\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"digest\",\n          \"allow_cookies\": true,\n          \"validate_ssl_certificate\": false\n        },\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"bearer\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": false\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        }\n      ],\n      \"source_bucket\": \"string\",\n      \"source_scope\": \"string\",\n      \"source_collection\": \"string\",\n      \"metadata_bucket\": \"string\",\n      \"metadata_scope\": \"string\",\n      \"metadata_collection\": \"string\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"everything\",\n      \"deployment_status\": false,\n      \"processing_status\": false,\n      \"log_level\": \"WARNING\",\n      \"language_compatibility\": \"string\",\n      \"execution_timeout\": 5117,\n      \"timer_context_size\": 2444,\n      \"worker_count\": 8741,\n      \"num_timer_partitions\": 4444\n    },\n    \"function_scope\": {\n      \"bucket\": \"string\",\n      \"scope\": \"string\"\n    }\n  },\n  {\n    \"appname\": \"string\",\n    \"appcode\": \"string\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"rw\"\n        },\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"r\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"basic\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": true\n        },\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"digest\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": true\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        }\n      ],\n      \"source_bucket\": \"string\",\n      \"source_scope\": \"string\",\n      \"source_collection\": \"string\",\n      \"metadata_bucket\": \"string\",\n      \"metadata_scope\": \"string\",\n      \"metadata_collection\": \"string\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"from_now\",\n      \"deployment_status\": false,\n      \"processing_status\": true,\n      \"log_level\": \"WARNING\",\n      \"language_compatibility\": \"string\",\n      \"execution_timeout\": 1609,\n      \"timer_context_size\": 4019,\n      \"worker_count\": 3690,\n      \"num_timer_partitions\": 5252\n    },\n    \"function_scope\": {\n      \"bucket\": \"string\",\n      \"scope\": \"string\"\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "efa3103e-12f1-4f77-a9e3-4436fcf213ab",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"appname\": \"string\",\n    \"appcode\": \"string\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"r\"\n        },\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"r\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"digest\",\n          \"allow_cookies\": true,\n          \"validate_ssl_certificate\": false\n        },\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"bearer\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": false\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        }\n      ],\n      \"source_bucket\": \"string\",\n      \"source_scope\": \"string\",\n      \"source_collection\": \"string\",\n      \"metadata_bucket\": \"string\",\n      \"metadata_scope\": \"string\",\n      \"metadata_collection\": \"string\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"everything\",\n      \"deployment_status\": false,\n      \"processing_status\": false,\n      \"log_level\": \"WARNING\",\n      \"language_compatibility\": \"string\",\n      \"execution_timeout\": 5117,\n      \"timer_context_size\": 2444,\n      \"worker_count\": 8741,\n      \"num_timer_partitions\": 4444\n    },\n    \"function_scope\": {\n      \"bucket\": \"string\",\n      \"scope\": \"string\"\n    }\n  },\n  {\n    \"appname\": \"string\",\n    \"appcode\": \"string\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"rw\"\n        },\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"r\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"basic\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": true\n        },\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"digest\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": true\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        }\n      ],\n      \"source_bucket\": \"string\",\n      \"source_scope\": \"string\",\n      \"source_collection\": \"string\",\n      \"metadata_bucket\": \"string\",\n      \"metadata_scope\": \"string\",\n      \"metadata_collection\": \"string\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"from_now\",\n      \"deployment_status\": false,\n      \"processing_status\": true,\n      \"log_level\": \"WARNING\",\n      \"language_compatibility\": \"string\",\n      \"execution_timeout\": 1609,\n      \"timer_context_size\": 4019,\n      \"worker_count\": 3690,\n      \"num_timer_partitions\": 5252\n    },\n    \"function_scope\": {\n      \"bucket\": \"string\",\n      \"scope\": \"string\"\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "15c5ee8f-3216-40a5-8969-1e7a1880286c",
+      "name": "Lifecycle",
+      "description": {
+        "content": "Endpoints for deploying, undeploying, pausing, and resuming Eventing Functions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6e83f7f5-a574-4bb1-bd4f-7a7439ccbfe1",
+          "name": "Deploy an Eventing Function",
+          "request": {
+            "name": "Deploy an Eventing Function",
+            "description": {
+              "content": "Deploys an undeployed Eventing Function, starting it to process document mutations and execute its handler code.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "functions",
+                ":functionName",
+                "deploy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "functionName",
+                  "description": "(Required) The name of the Eventing Function"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "42310835-d163-463d-97ea-8c3cb7b5775a",
+              "name": "Function deployment initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName",
+                    "deploy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "22c82380-deb0-459b-9925-a5e437e99459",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName",
+                    "deploy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "093e5526-3238-4aea-8628-02a4ecdb2dc8",
+              "name": "Function not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName",
+                    "deploy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16c384c4-f5ec-4847-90ad-621ae348b472",
+          "name": "Undeploy an Eventing Function",
+          "request": {
+            "name": "Undeploy an Eventing Function",
+            "description": {
+              "content": "Undeploys a deployed Eventing Function, stopping it from processing document mutations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "functions",
+                ":functionName",
+                "undeploy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "functionName",
+                  "description": "(Required) The name of the Eventing Function"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61715b81-8eeb-4d3e-8415-4f577fc5efed",
+              "name": "Function undeployment initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName",
+                    "undeploy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aefaa3ed-4c4b-48f1-aebe-64b27638cebb",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName",
+                    "undeploy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3163485e-ba13-4d94-a0f6-6124e4fc7b36",
+              "name": "Function not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName",
+                    "undeploy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16e8b719-4840-4e7c-9e41-1f11126e9874",
+          "name": "Pause an Eventing Function",
+          "request": {
+            "name": "Pause an Eventing Function",
+            "description": {
+              "content": "Pauses a deployed Eventing Function and creates a DCP checkpoint so that on a subsequent resume no mutations will be lost.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "functions",
+                ":functionName",
+                "pause"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "functionName",
+                  "description": "(Required) The name of the Eventing Function"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab0cd5fc-aecd-43ea-be54-59f5cf0f9d07",
+              "name": "Function paused successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName",
+                    "pause"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eea5c4af-fd5f-4b31-a647-91d18abded50",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName",
+                    "pause"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "32408327-d953-4da1-b3f2-e7e1cbd35662",
+              "name": "Function not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName",
+                    "pause"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3084ccae-505b-4094-b439-1b1c7b851db3",
+          "name": "Resume an Eventing Function",
+          "request": {
+            "name": "Resume an Eventing Function",
+            "description": {
+              "content": "Resumes a paused Eventing Function from its DCP checkpoint, continuing to process mutations from where it left off.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "functions",
+                ":functionName",
+                "resume"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "functionName",
+                  "description": "(Required) The name of the Eventing Function"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84b984b1-4a82-45dc-85eb-173d3bfdf1d2",
+              "name": "Function resumed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c4018276-5444-46a1-87ed-29fd6d7d6812",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "20fba120-329f-408d-b7c7-2711f20f0b76",
+              "name": "Function not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6e74f7bd-a4e4-47fb-97b6-56c57c0465d2",
+      "name": "Logging",
+      "description": {
+        "content": "Endpoints for retrieving Eventing Function application logs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5c2a2c3a-fa63-484a-b06f-30ee6db03d1a",
+          "name": "Get Eventing Function application log",
+          "request": {
+            "name": "Get Eventing Function application log",
+            "description": {
+              "content": "Returns the most recent application log messages generated by the specified Eventing Function via the log() function in handler code.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "functions",
+                ":functionName",
+                "applog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "aggregate",
+                  "value": "true",
+                  "description": "Whether to aggregate logs from all nodes"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "functionName",
+                  "description": "(Required) The name of the Eventing Function"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d4d7da22-4e23-4bae-a348-d8c1e759621c",
+              "name": "Successful retrieval of application log",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName",
+                    "applog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "aggregate",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60a13b3a-4557-44c8-890b-2ccfddf87aca",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName",
+                    "applog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "aggregate",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3092f9c1-03fb-4148-bd2a-6f2210b31963",
+              "name": "Function not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "functions",
+                    ":functionName",
+                    "applog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "aggregate",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "28ee0113-2798-4358-8ecf-3b0e3774518f",
+      "name": "Statistics",
+      "description": {
+        "content": "Endpoints for monitoring Eventing Function execution statistics and status.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bcdea796-ce73-4e86-95d2-636c5bd46ba2",
+          "name": "Get Eventing Service status",
+          "request": {
+            "name": "Get Eventing Service status",
+            "description": {
+              "content": "Returns the deployment status and processing status of all Eventing Functions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88244fa9-2d8c-48be-bb98-7b80e721d136",
+              "name": "Successful retrieval of Eventing status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"num_eventing_nodes\": 3403,\n  \"apps\": [\n    {\n      \"name\": \"string\",\n      \"composite_status\": \"undeploying\",\n      \"deployment_status\": true,\n      \"processing_status\": true,\n      \"num_deployed_nodes\": 9940,\n      \"function_scope\": {\n        \"bucket\": \"string\",\n        \"scope\": \"string\"\n      }\n    },\n    {\n      \"name\": \"string\",\n      \"composite_status\": \"paused\",\n      \"deployment_status\": false,\n      \"processing_status\": false,\n      \"num_deployed_nodes\": 3055,\n      \"function_scope\": {\n        \"bucket\": \"string\",\n        \"scope\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d5910fd-a2e6-40d3-9613-99c4eb6507f1",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88d2fbd5-416a-457e-be06-ea4ece75251b",
+          "name": "Get Eventing Function statistics",
+          "request": {
+            "name": "Get Eventing Function statistics",
+            "description": {
+              "content": "Returns execution statistics for all Eventing Functions including mutation processing counts, failure counts, and timing information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7734882a-af1b-4d26-9295-6b98ba7ac44f",
+              "name": "Successful retrieval of function statistics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"function_name\": \"string\",\n    \"execution_stats\": {\n      \"on_update_success\": 1295,\n      \"on_update_failure\": 329,\n      \"on_delete_success\": 6824,\n      \"on_delete_failure\": 8675,\n      \"timer_callback_success\": 6244,\n      \"timer_callback_failure\": 4928\n    },\n    \"failure_stats\": {\n      \"timeout_count\": 7101,\n      \"n1ql_op_exception_count\": 345\n    }\n  },\n  {\n    \"function_name\": \"string\",\n    \"execution_stats\": {\n      \"on_update_success\": 4738,\n      \"on_update_failure\": 608,\n      \"on_delete_success\": 2154,\n      \"on_delete_failure\": 5540,\n      \"timer_callback_success\": 5758,\n      \"timer_callback_failure\": 5859\n    },\n    \"failure_stats\": {\n      \"timeout_count\": 8087,\n      \"n1ql_op_exception_count\": 4610\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "134dd6c9-a0e2-4cbc-a9b9-ee261a796078",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://localhost:8096",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cc7b2bc6-da0a-40f5-95d9-c7c0246c7186",
+    "name": "Couchbase Eventing Service REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Couchbase Eventing Service REST API provides methods for deploying and managing Eventing Functions that respond to data changes in real time. Eventing Functions allow developers to write server-side JavaScript logic triggered by document mutations, timers, or external events. The API supports creating, deploying, pausing, and undeploying functions, as well as monitoring their execution status and statistics.\n\nContact Support:\n Name: Couchbase Support",
+      "type": "text/plain"
+    }
+  }
+}

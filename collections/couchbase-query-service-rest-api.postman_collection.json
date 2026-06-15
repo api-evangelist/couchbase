@@ -1,0 +1,2465 @@
+{
+  "item": [
+    {
+      "id": "3a0ecdae-826c-4286-8320-a8ea10cdb8ed",
+      "name": "Query Admin",
+      "description": {
+        "content": "Endpoints for administrative operations on the Query service including monitoring active requests, completed requests, and prepared statements.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7dc6d217-c3e8-4911-8661-c71f886cb4bd",
+          "name": "List active query requests",
+          "request": {
+            "name": "List active query requests",
+            "description": {
+              "content": "Returns the list of currently active query requests on the node, including their statement text, execution time, and request ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "admin",
+                "active_requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f6561e7a-0412-48e5-a13a-38e19579a941",
+              "name": "Successful retrieval of active requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "active_requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"requestId\": \"string\",\n    \"statement\": \"string\",\n    \"requestTime\": \"string\",\n    \"elapsedTime\": \"string\",\n    \"executionTime\": \"string\",\n    \"state\": \"string\",\n    \"scanConsistency\": \"string\",\n    \"clientContextID\": \"string\"\n  },\n  {\n    \"requestId\": \"string\",\n    \"statement\": \"string\",\n    \"requestTime\": \"string\",\n    \"elapsedTime\": \"string\",\n    \"executionTime\": \"string\",\n    \"state\": \"string\",\n    \"scanConsistency\": \"string\",\n    \"clientContextID\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de75ca56-df2b-4d4e-bf01-6529e09eb43e",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "active_requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7c6e50b-e1ad-491f-9036-7c1fbad6c457",
+          "name": "Get an active request",
+          "request": {
+            "name": "Get an active request",
+            "description": {
+              "content": "Returns details about a specific active query request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "admin",
+                "active_requests",
+                ":requestId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "requestId",
+                  "description": "(Required) The unique identifier of the query request"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2074b05c-5630-4cde-b604-cd30a67996eb",
+              "name": "Successful retrieval of active request details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "active_requests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) The unique identifier of the query request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"string\",\n  \"statement\": \"string\",\n  \"requestTime\": \"string\",\n  \"elapsedTime\": \"string\",\n  \"executionTime\": \"string\",\n  \"state\": \"string\",\n  \"scanConsistency\": \"string\",\n  \"clientContextID\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cbeb64f-54c1-426d-80b0-62bf59263e70",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "active_requests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) The unique identifier of the query request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "30eb5788-8cea-4108-8ad0-6fa983ee8b98",
+              "name": "Request not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "active_requests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) The unique identifier of the query request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd6dd821-ff0f-4720-96da-0cb47b91723b",
+          "name": "Cancel an active request",
+          "request": {
+            "name": "Cancel an active request",
+            "description": {
+              "content": "Cancels a specific active query request by its request ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "admin",
+                "active_requests",
+                ":requestId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "requestId",
+                  "description": "(Required) The unique identifier of the query request"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7b1516f9-65c5-4384-899d-f1ae7d219c80",
+              "name": "Request cancelled successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "active_requests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) The unique identifier of the query request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cbb34bd7-66d3-4136-bbd9-534a6649b0d5",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "active_requests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) The unique identifier of the query request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "329bb78f-58b1-4523-ac05-86f95b08b84e",
+              "name": "Request not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "active_requests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) The unique identifier of the query request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9ecd16a-461a-435f-867d-49df6cd5a55d",
+          "name": "List completed query requests",
+          "request": {
+            "name": "List completed query requests",
+            "description": {
+              "content": "Returns the list of recently completed query requests on the node, including their statement text, execution time, and result count.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "admin",
+                "completed_requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69070d2f-1875-4d99-8888-0288a421da2a",
+              "name": "Successful retrieval of completed requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "completed_requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"requestId\": \"string\",\n    \"statement\": \"string\",\n    \"requestTime\": \"string\",\n    \"elapsedTime\": \"string\",\n    \"resultCount\": 6000,\n    \"resultSize\": 8499,\n    \"errorCount\": 7000,\n    \"state\": \"string\"\n  },\n  {\n    \"requestId\": \"string\",\n    \"statement\": \"string\",\n    \"requestTime\": \"string\",\n    \"elapsedTime\": \"string\",\n    \"resultCount\": 816,\n    \"resultSize\": 1044,\n    \"errorCount\": 6874,\n    \"state\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09d93719-f3cc-4bb5-8152-8d1494782fee",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "completed_requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "073e9188-9a7c-47db-9dbf-ac10d8aa5dbc",
+          "name": "List prepared statements",
+          "request": {
+            "name": "List prepared statements",
+            "description": {
+              "content": "Returns the list of prepared statements cached on the node.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "admin",
+                "prepareds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2f3a9527-0120-4883-8cdb-cb3e7c5ec53c",
+              "name": "Successful retrieval of prepared statements",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "prepareds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"statement\": \"string\",\n    \"uses\": 7038,\n    \"lastUse\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"statement\": \"string\",\n    \"uses\": 7470,\n    \"lastUse\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "005cbfcb-5417-4faa-8931-a7c781198481",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "prepareds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e4db902c-108d-41db-9269-09176bab5269",
+          "name": "Get a prepared statement",
+          "request": {
+            "name": "Get a prepared statement",
+            "description": {
+              "content": "Returns details about a specific prepared statement.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "admin",
+                "prepareds",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) The name of the prepared statement"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "babad348-da89-41f6-8d6e-644a5b6a4e07",
+              "name": "Successful retrieval of prepared statement",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "prepareds",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) The name of the prepared statement"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"statement\": \"string\",\n  \"uses\": 3580,\n  \"lastUse\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a65003f7-59b1-478e-a70a-eaeff2501172",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "prepareds",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) The name of the prepared statement"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "48e03b28-76f3-462d-a56c-e39736651990",
+              "name": "Prepared statement not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "prepareds",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) The name of the prepared statement"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6e806eb-06a1-44ef-8a96-d2da612e7fee",
+          "name": "Delete a prepared statement",
+          "request": {
+            "name": "Delete a prepared statement",
+            "description": {
+              "content": "Removes a specific prepared statement from the cache.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "admin",
+                "prepareds",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) The name of the prepared statement"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a0bcd621-8276-414d-ac4e-2b80f5e3d054",
+              "name": "Prepared statement deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "prepareds",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) The name of the prepared statement"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f99834b2-e5a2-4ba1-ac83-02c25eee3784",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "prepareds",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) The name of the prepared statement"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bb0a51d2-1d5f-428e-9979-59f878ee1cee",
+              "name": "Prepared statement not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "prepareds",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) The name of the prepared statement"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7369dc9d-069a-42ec-aea5-0664d4b1039f",
+          "name": "List active index requests",
+          "request": {
+            "name": "List active index requests",
+            "description": {
+              "content": "Returns the list of active index request operations being processed by the Query service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "admin",
+                "indexes",
+                "active_requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2763a276-4cf9-428e-9ee7-e015dd8c35c8",
+              "name": "Successful retrieval of active index requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "indexes",
+                    "active_requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f8ed61c-2fb0-4ceb-839c-d5b7e6b737b5",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "indexes",
+                    "active_requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9163be98-74c9-43ad-a532-229dbef1b18e",
+          "name": "Get query service vitals",
+          "request": {
+            "name": "Get query service vitals",
+            "description": {
+              "content": "Returns vital statistics for the Query service node including request counts, error counts, and resource utilization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "admin",
+                "vitals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ae3f83c-c670-476a-a066-0c7a46f303a6",
+              "name": "Successful retrieval of query service vitals",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "vitals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uptime\": \"string\",\n  \"local.time\": \"string\",\n  \"version\": \"string\",\n  \"total.threads\": 1718,\n  \"cores\": 15,\n  \"gc_num\": 8738,\n  \"gc_pause_time\": \"string\",\n  \"gc_pause_percent\": \"string\",\n  \"memory_usage\": 682,\n  \"total_memory_system\": 7632,\n  \"request.completed.count\": 1335,\n  \"request.active.count\": 4650,\n  \"request.per.sec.1min\": 144.59900362387535,\n  \"request.per.sec.5min\": 8913.855650362697,\n  \"request.per.sec.15min\": 3227.247236222821\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9b042dc-69e9-4f06-a02f-0dbc6b493b06",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "vitals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "8dac8d67-38bb-4794-ab4a-70ce280ec1a1",
+      "name": "Query Execution",
+      "description": {
+        "content": "Endpoints for executing SQL++ queries and managing query results.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "655aab11-1826-49e8-b8c8-43f10234f309",
+          "name": "Execute a SQL++ query via GET",
+          "request": {
+            "name": "Execute a SQL++ query via GET",
+            "description": {
+              "content": "Executes a SQL++ query specified as a query parameter. This endpoint is intended for situations where use of the POST method is restricted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query",
+                "service"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "statement",
+                  "value": "<string>",
+                  "description": "(Required) The SQL++ statement to execute"
+                },
+                {
+                  "disabled": false,
+                  "key": "timeout",
+                  "value": "<string>",
+                  "description": "Maximum execution time for the query (e.g., 10s, 5m)"
+                },
+                {
+                  "disabled": false,
+                  "key": "readonly",
+                  "value": "<boolean>",
+                  "description": "Whether to restrict the query to read-only operations"
+                },
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "<boolean>",
+                  "description": "Whether to format the query results with indentation"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f706216-59b9-4e41-8126-1b244c5b6f16",
+              "name": "Query executed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "statement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "readonly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestID\": \"string\",\n  \"clientContextID\": \"string\",\n  \"signature\": {},\n  \"status\": \"errors\",\n  \"metrics\": {\n    \"elapsedTime\": \"string\",\n    \"executionTime\": \"string\",\n    \"resultCount\": 2736,\n    \"resultSize\": 3756,\n    \"mutationCount\": 6615,\n    \"errorCount\": 5553,\n    \"warningCount\": 1047\n  },\n  \"errors\": [\n    {\n      \"code\": 9338,\n      \"msg\": \"string\"\n    },\n    {\n      \"code\": 3542,\n      \"msg\": \"string\"\n    }\n  ],\n  \"warnings\": [\n    {\n      \"code\": 5641,\n      \"msg\": \"string\"\n    },\n    {\n      \"code\": 252,\n      \"msg\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "600d397d-7287-4676-8b62-6d22652b3455",
+              "name": "Invalid query syntax or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "statement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "readonly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f0f79336-0cde-483a-866d-eeb7548a6d91",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "statement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "readonly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0534fef-fe83-4f8f-bbf2-4e19ca910ccb",
+          "name": "Execute a SQL++ query via POST",
+          "request": {
+            "name": "Execute a SQL++ query via POST",
+            "description": {
+              "content": "Executes a SQL++ query specified in the request body. Supports both application/json and application/x-www-form-urlencoded content types. This is the primary method for executing queries and supports all query parameters including named and positional parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query",
+                "service"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "statement",
+                  "value": "<string>",
+                  "description": "(Required) The SQL++ statement to execute"
+                },
+                {
+                  "disabled": false,
+                  "key": "timeout",
+                  "value": "<string>",
+                  "description": "Maximum execution time (e.g., 10s, 5m)"
+                },
+                {
+                  "disabled": false,
+                  "key": "readonly",
+                  "value": "<boolean>",
+                  "description": "Whether to restrict to read-only operations"
+                },
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "<boolean>",
+                  "description": "Whether to format results with indentation"
+                },
+                {
+                  "disabled": false,
+                  "key": "scan_consistency",
+                  "value": "<string>",
+                  "description": "Consistency requirement for the query"
+                },
+                {
+                  "disabled": false,
+                  "key": "prepared",
+                  "value": "<string>",
+                  "description": "Name of a prepared statement to execute"
+                },
+                {
+                  "disabled": false,
+                  "key": "client_context_id",
+                  "value": "<string>",
+                  "description": "Client-provided context identifier for tracking"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_parallelism",
+                  "value": "<string>",
+                  "description": "Maximum parallelism for the query"
+                },
+                {
+                  "disabled": false,
+                  "key": "metrics",
+                  "value": "<boolean>",
+                  "description": "Whether to include metrics in the response"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2412349e-a0de-4dfe-85be-281fbc19d9b8",
+              "name": "Query executed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The SQL++ statement to execute",
+                        "type": "text/plain"
+                      },
+                      "key": "statement",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Maximum execution time (e.g., 10s, 5m)",
+                        "type": "text/plain"
+                      },
+                      "key": "timeout",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to restrict to read-only operations",
+                        "type": "text/plain"
+                      },
+                      "key": "readonly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to format results with indentation",
+                        "type": "text/plain"
+                      },
+                      "key": "pretty",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Consistency requirement for the query",
+                        "type": "text/plain"
+                      },
+                      "key": "scan_consistency",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Name of a prepared statement to execute",
+                        "type": "text/plain"
+                      },
+                      "key": "prepared",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Client-provided context identifier for tracking",
+                        "type": "text/plain"
+                      },
+                      "key": "client_context_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Maximum parallelism for the query",
+                        "type": "text/plain"
+                      },
+                      "key": "max_parallelism",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to include metrics in the response",
+                        "type": "text/plain"
+                      },
+                      "key": "metrics",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestID\": \"string\",\n  \"clientContextID\": \"string\",\n  \"signature\": {},\n  \"status\": \"errors\",\n  \"metrics\": {\n    \"elapsedTime\": \"string\",\n    \"executionTime\": \"string\",\n    \"resultCount\": 2736,\n    \"resultSize\": 3756,\n    \"mutationCount\": 6615,\n    \"errorCount\": 5553,\n    \"warningCount\": 1047\n  },\n  \"errors\": [\n    {\n      \"code\": 9338,\n      \"msg\": \"string\"\n    },\n    {\n      \"code\": 3542,\n      \"msg\": \"string\"\n    }\n  ],\n  \"warnings\": [\n    {\n      \"code\": 5641,\n      \"msg\": \"string\"\n    },\n    {\n      \"code\": 252,\n      \"msg\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "beeb1a48-a92b-4fcd-abd8-01519543f87e",
+              "name": "Invalid query syntax or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The SQL++ statement to execute",
+                        "type": "text/plain"
+                      },
+                      "key": "statement",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Maximum execution time (e.g., 10s, 5m)",
+                        "type": "text/plain"
+                      },
+                      "key": "timeout",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to restrict to read-only operations",
+                        "type": "text/plain"
+                      },
+                      "key": "readonly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to format results with indentation",
+                        "type": "text/plain"
+                      },
+                      "key": "pretty",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Consistency requirement for the query",
+                        "type": "text/plain"
+                      },
+                      "key": "scan_consistency",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Name of a prepared statement to execute",
+                        "type": "text/plain"
+                      },
+                      "key": "prepared",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Client-provided context identifier for tracking",
+                        "type": "text/plain"
+                      },
+                      "key": "client_context_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Maximum parallelism for the query",
+                        "type": "text/plain"
+                      },
+                      "key": "max_parallelism",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to include metrics in the response",
+                        "type": "text/plain"
+                      },
+                      "key": "metrics",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "910521e9-3591-4436-bb5f-c7f1672a83e3",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The SQL++ statement to execute",
+                        "type": "text/plain"
+                      },
+                      "key": "statement",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Maximum execution time (e.g., 10s, 5m)",
+                        "type": "text/plain"
+                      },
+                      "key": "timeout",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to restrict to read-only operations",
+                        "type": "text/plain"
+                      },
+                      "key": "readonly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to format results with indentation",
+                        "type": "text/plain"
+                      },
+                      "key": "pretty",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Consistency requirement for the query",
+                        "type": "text/plain"
+                      },
+                      "key": "scan_consistency",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Name of a prepared statement to execute",
+                        "type": "text/plain"
+                      },
+                      "key": "prepared",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Client-provided context identifier for tracking",
+                        "type": "text/plain"
+                      },
+                      "key": "client_context_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Maximum parallelism for the query",
+                        "type": "text/plain"
+                      },
+                      "key": "max_parallelism",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to include metrics in the response",
+                        "type": "text/plain"
+                      },
+                      "key": "metrics",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5cfd98da-37fa-44bd-8e02-a7b741d31f07",
+      "name": "Query Settings",
+      "description": {
+        "content": "Endpoints for configuring Query service settings at the node and cluster level.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8a2bde2d-4ca3-49d5-8586-e8365debfc88",
+          "name": "Get query service settings",
+          "request": {
+            "name": "Get query service settings",
+            "description": {
+              "content": "Returns the current settings for the Query service node, including timeout values, memory quotas, and logging configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "admin",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eee39b09-9963-4bd5-a444-e5b609e47ed2",
+              "name": "Successful retrieval of query settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"queryTmpSpaceDir\": \"string\",\n  \"queryTmpSpaceSize\": 1257,\n  \"queryPipelineBatch\": 7900,\n  \"queryPipelineCap\": 1711,\n  \"queryScanCap\": 6712,\n  \"queryTimeout\": \"string\",\n  \"queryPreparedLimit\": 3870,\n  \"queryCompletedLimit\": 5389,\n  \"queryCompletedThreshold\": 2152,\n  \"queryLogLevel\": \"warn\",\n  \"queryMaxParallelism\": 2782,\n  \"queryN1QLFeatCtrl\": 8253\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5491af91-2427-41fa-a454-5d9a775c76a5",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd67023f-8084-4822-85b7-d80dad594129",
+          "name": "Update query service settings",
+          "request": {
+            "name": "Update query service settings",
+            "description": {
+              "content": "Updates the configuration settings for the Query service node.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "admin",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"queryTmpSpaceDir\": \"<string>\",\n  \"queryTmpSpaceSize\": \"<integer>\",\n  \"queryPipelineBatch\": \"<integer>\",\n  \"queryPipelineCap\": \"<integer>\",\n  \"queryScanCap\": \"<integer>\",\n  \"queryTimeout\": \"<string>\",\n  \"queryPreparedLimit\": \"<integer>\",\n  \"queryCompletedLimit\": \"<integer>\",\n  \"queryCompletedThreshold\": \"<integer>\",\n  \"queryLogLevel\": \"<string>\",\n  \"queryMaxParallelism\": \"<integer>\",\n  \"queryN1QLFeatCtrl\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "02017c6b-e4dd-4266-af90-b117de2a1643",
+              "name": "Query settings updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"queryTmpSpaceDir\": \"<string>\",\n  \"queryTmpSpaceSize\": \"<integer>\",\n  \"queryPipelineBatch\": \"<integer>\",\n  \"queryPipelineCap\": \"<integer>\",\n  \"queryScanCap\": \"<integer>\",\n  \"queryTimeout\": \"<string>\",\n  \"queryPreparedLimit\": \"<integer>\",\n  \"queryCompletedLimit\": \"<integer>\",\n  \"queryCompletedThreshold\": \"<integer>\",\n  \"queryLogLevel\": \"<string>\",\n  \"queryMaxParallelism\": \"<integer>\",\n  \"queryN1QLFeatCtrl\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"queryTmpSpaceDir\": \"string\",\n  \"queryTmpSpaceSize\": 1257,\n  \"queryPipelineBatch\": 7900,\n  \"queryPipelineCap\": 1711,\n  \"queryScanCap\": 6712,\n  \"queryTimeout\": \"string\",\n  \"queryPreparedLimit\": 3870,\n  \"queryCompletedLimit\": 5389,\n  \"queryCompletedThreshold\": 2152,\n  \"queryLogLevel\": \"warn\",\n  \"queryMaxParallelism\": 2782,\n  \"queryN1QLFeatCtrl\": 8253\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f0e7e00-8bed-4719-8924-bdf2fbd5722e",
+              "name": "Invalid settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"queryTmpSpaceDir\": \"<string>\",\n  \"queryTmpSpaceSize\": \"<integer>\",\n  \"queryPipelineBatch\": \"<integer>\",\n  \"queryPipelineCap\": \"<integer>\",\n  \"queryScanCap\": \"<integer>\",\n  \"queryTimeout\": \"<string>\",\n  \"queryPreparedLimit\": \"<integer>\",\n  \"queryCompletedLimit\": \"<integer>\",\n  \"queryCompletedThreshold\": \"<integer>\",\n  \"queryLogLevel\": \"<string>\",\n  \"queryMaxParallelism\": \"<integer>\",\n  \"queryN1QLFeatCtrl\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3ebcf4a6-d407-45b9-a25f-29b060cea99a",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"queryTmpSpaceDir\": \"<string>\",\n  \"queryTmpSpaceSize\": \"<integer>\",\n  \"queryPipelineBatch\": \"<integer>\",\n  \"queryPipelineCap\": \"<integer>\",\n  \"queryScanCap\": \"<integer>\",\n  \"queryTimeout\": \"<string>\",\n  \"queryPreparedLimit\": \"<integer>\",\n  \"queryCompletedLimit\": \"<integer>\",\n  \"queryCompletedThreshold\": \"<integer>\",\n  \"queryLogLevel\": \"<string>\",\n  \"queryMaxParallelism\": \"<integer>\",\n  \"queryN1QLFeatCtrl\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://localhost:8093",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6006eb57-f9c0-4929-80e4-962bb51dd31d",
+    "name": "Couchbase Query Service REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Couchbase Query Service REST API enables developers to execute SQL++ (formerly N1QL) queries against Couchbase Server and manage query service settings. It supports ad-hoc queries, prepared statements, and request-level parameter configuration. The API provides endpoints for query execution, monitoring active requests, and managing query service configuration across cluster nodes.\n\nContact Support:\n Name: Couchbase Support",
+      "type": "text/plain"
+    }
+  }
+}

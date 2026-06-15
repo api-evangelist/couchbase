@@ -1,0 +1,244 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase XDCR REST API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cluster References",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List remote cluster references",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8091/pools/default/remoteClusters"
+          },
+          "docs": "Returns the list of all remote cluster references configured for XDCR replication."
+        },
+        {
+          "info": {
+            "name": "Create a remote cluster reference",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8091/pools/default/remoteClusters",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Creates a new remote cluster reference that can be used as a target for XDCR replications."
+        },
+        {
+          "info": {
+            "name": "Update a remote cluster reference",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:8091/pools/default/remoteClusters/:clusterName",
+            "params": [
+              {
+                "name": "clusterName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the remote cluster reference"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Updates the configuration of an existing remote cluster reference."
+        },
+        {
+          "info": {
+            "name": "Delete a remote cluster reference",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8091/pools/default/remoteClusters/:clusterName",
+            "params": [
+              {
+                "name": "clusterName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the remote cluster reference"
+              }
+            ]
+          },
+          "docs": "Deletes the specified remote cluster reference. All replications using this reference must be deleted first."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Replications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an XDCR replication",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8091/controller/createReplication",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Creates a new XDCR replication stream from a source bucket to a target bucket on a remote cluster."
+        },
+        {
+          "info": {
+            "name": "Delete an XDCR replication",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8091/controller/cancelXDCR/:replicationId",
+            "params": [
+              {
+                "name": "replicationId",
+                "value": "",
+                "type": "path",
+                "description": "The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+              }
+            ]
+          },
+          "docs": "Deletes the specified XDCR replication stream, stopping all data replication for that stream."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Replication Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get global XDCR settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8091/settings/replications"
+          },
+          "docs": "Returns the global default settings for all XDCR replications."
+        },
+        {
+          "info": {
+            "name": "Update global XDCR settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8091/settings/replications",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Updates the global default settings applied to all XDCR replications."
+        },
+        {
+          "info": {
+            "name": "Get replication-specific settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8091/settings/replications/:replicationId",
+            "params": [
+              {
+                "name": "replicationId",
+                "value": "",
+                "type": "path",
+                "description": "The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+              }
+            ]
+          },
+          "docs": "Returns the settings for a specific XDCR replication stream."
+        },
+        {
+          "info": {
+            "name": "Update replication-specific settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8091/settings/replications/:replicationId",
+            "params": [
+              {
+                "name": "replicationId",
+                "value": "",
+                "type": "path",
+                "description": "The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Updates the settings for a specific XDCR replication stream, overriding the global defaults."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Replication Statistics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get XDCR replication statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8091/pools/default/buckets/:bucketName/stats/:statName",
+            "params": [
+              {
+                "name": "bucketName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the source bucket"
+              },
+              {
+                "name": "statName",
+                "value": "",
+                "type": "path",
+                "description": "The specific statistic to retrieve (e.g., replications/{replicationId}/docs_written)"
+              }
+            ]
+          },
+          "docs": "Returns statistics for XDCR replications on a specific bucket, including items replicated, replication latency, and bandwidth usage."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

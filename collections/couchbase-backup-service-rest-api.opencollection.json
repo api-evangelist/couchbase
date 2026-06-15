@@ -1,0 +1,355 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Backup Service REST API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cluster",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get backup cluster information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8097/api/v1/cluster/self"
+          },
+          "docs": "Returns information about the current cluster from the perspective of the Backup Service, including the list of repositories and plans."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Repositories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List active backup repositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8097/api/v1/cluster/self/repository/active"
+          },
+          "docs": "Returns the list of active backup repositories configured for the cluster."
+        },
+        {
+          "info": {
+            "name": "Get active repository details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8097/api/v1/cluster/self/repository/active/:repositoryId",
+            "params": [
+              {
+                "name": "repositoryId",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup repository"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific active backup repository including backup names, dates, buckets, items, and mutations."
+        },
+        {
+          "info": {
+            "name": "Create an active backup repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8097/api/v1/cluster/self/repository/active/:repositoryId",
+            "params": [
+              {
+                "name": "repositoryId",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup repository"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new active backup repository with the specified configuration including the backup plan and storage location."
+        },
+        {
+          "info": {
+            "name": "Delete an active repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8097/api/v1/cluster/self/repository/active/:repositoryId",
+            "params": [
+              {
+                "name": "repositoryId",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup repository"
+              }
+            ]
+          },
+          "docs": "Deletes the specified active backup repository. The repository must not have any running tasks."
+        },
+        {
+          "info": {
+            "name": "List imported backup repositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8097/api/v1/cluster/self/repository/imported"
+          },
+          "docs": "Returns the list of imported backup repositories."
+        },
+        {
+          "info": {
+            "name": "List archived backup repositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8097/api/v1/cluster/self/repository/archived"
+          },
+          "docs": "Returns the list of archived backup repositories."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List backup plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8097/api/v1/plan"
+          },
+          "docs": "Returns the list of all backup plans configured for the cluster."
+        },
+        {
+          "info": {
+            "name": "Get backup plan details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8097/api/v1/plan/:planName",
+            "params": [
+              {
+                "name": "planName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup plan"
+              }
+            ]
+          },
+          "docs": "Returns information about a specific backup plan including the services for which data is backed up, and the scheduled tasks."
+        },
+        {
+          "info": {
+            "name": "Create or update a backup plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8097/api/v1/plan/:planName",
+            "params": [
+              {
+                "name": "planName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup plan"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new backup plan or updates an existing one with the specified schedule, services, and retention settings."
+        },
+        {
+          "info": {
+            "name": "Delete a backup plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8097/api/v1/plan/:planName",
+            "params": [
+              {
+                "name": "planName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup plan"
+              }
+            ]
+          },
+          "docs": "Deletes the specified backup plan. The plan must not be in use by any active repository."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get repository task history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8097/api/v1/cluster/self/repository/active/:repositoryId/taskHistory",
+            "params": [
+              {
+                "name": "repositoryId",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup repository"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The earliest date for returned tasks"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of tasks to return"
+              },
+              {
+                "name": "task_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by task name"
+              }
+            ]
+          },
+          "docs": "Returns the history of backup and restore tasks for the specified active repository, including task types, statuses, and timing."
+        },
+        {
+          "info": {
+            "name": "Pause repository tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8097/api/v1/cluster/self/repository/active/:repositoryId/pause",
+            "params": [
+              {
+                "name": "repositoryId",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup repository"
+              }
+            ]
+          },
+          "docs": "Pauses all scheduled tasks for the specified active repository."
+        },
+        {
+          "info": {
+            "name": "Resume repository tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8097/api/v1/cluster/self/repository/active/:repositoryId/resume",
+            "params": [
+              {
+                "name": "repositoryId",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup repository"
+              }
+            ]
+          },
+          "docs": "Resumes all paused tasks for the specified active repository."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Trigger an immediate backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8097/api/v1/cluster/self/repository/active/:repositoryId/backup",
+            "params": [
+              {
+                "name": "repositoryId",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup repository"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Triggers an immediate one-off backup for the specified active repository, independent of the scheduled backup plan."
+        },
+        {
+          "info": {
+            "name": "Restore from a backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8097/api/v1/cluster/self/repository/active/:repositoryId/restore",
+            "params": [
+              {
+                "name": "repositoryId",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup repository"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates a restore operation from the specified backup repository, allowing you to restore specific buckets or all data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

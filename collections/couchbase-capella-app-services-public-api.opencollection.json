@@ -1,0 +1,502 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Capella App Services Public API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Database",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get database information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{appEndpoint}/:db",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              }
+            ]
+          },
+          "docs": "Returns information about the specified database including its name, update sequence, and instance start time."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{appEndpoint}/:db/_all_docs",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              },
+              {
+                "name": "include_docs",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include document bodies in the response"
+              },
+              {
+                "name": "channels",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by channel name"
+              },
+              {
+                "name": "keys",
+                "value": "",
+                "type": "query",
+                "description": "Array of document IDs to retrieve"
+              },
+              {
+                "name": "startkey",
+                "value": "",
+                "type": "query",
+                "description": "Start key for the range to return"
+              },
+              {
+                "name": "endkey",
+                "value": "",
+                "type": "query",
+                "description": "End key for the range to return"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return"
+              }
+            ]
+          },
+          "docs": "Returns all documents in the database. By default, only the document ID and revision are included. Use include_docs=true to include the full document body."
+        },
+        {
+          "info": {
+            "name": "Get a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{appEndpoint}/:db/:docId",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              },
+              {
+                "name": "docId",
+                "value": "",
+                "type": "path",
+                "description": "The document ID"
+              },
+              {
+                "name": "rev",
+                "value": "",
+                "type": "query",
+                "description": "Specific revision to retrieve"
+              },
+              {
+                "name": "revs",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include revision history"
+              },
+              {
+                "name": "open_revs",
+                "value": "",
+                "type": "query",
+                "description": "Array of revision IDs or \"all\" to get all leaf revisions"
+              },
+              {
+                "name": "attachments",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include attachment data"
+              }
+            ]
+          },
+          "docs": "Retrieves a document from the database by its document ID."
+        },
+        {
+          "info": {
+            "name": "Create or update a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{appEndpoint}/:db/:docId",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              },
+              {
+                "name": "docId",
+                "value": "",
+                "type": "path",
+                "description": "The document ID"
+              },
+              {
+                "name": "rev",
+                "value": "",
+                "type": "query",
+                "description": "Current revision for updates"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new document or updates an existing document. For updates, the current revision ID must be included in the request body as _rev."
+        },
+        {
+          "info": {
+            "name": "Delete a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{appEndpoint}/:db/:docId",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              },
+              {
+                "name": "docId",
+                "value": "",
+                "type": "path",
+                "description": "The document ID"
+              },
+              {
+                "name": "rev",
+                "value": "",
+                "type": "query",
+                "description": "Current revision of the document"
+              }
+            ]
+          },
+          "docs": "Deletes a document by creating a tombstone revision. The current revision must be specified."
+        },
+        {
+          "info": {
+            "name": "Create or update multiple documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{appEndpoint}/:db/_bulk_docs",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates multiple documents in a single request. This is the primary endpoint used by Couchbase Lite for push replication."
+        },
+        {
+          "info": {
+            "name": "Get multiple documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{appEndpoint}/:db/_bulk_get",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              },
+              {
+                "name": "attachments",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include attachments"
+              },
+              {
+                "name": "revs",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include revision history"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves multiple documents by ID in a single request. This is the primary endpoint used by Couchbase Lite for pull replication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Changes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get changes feed",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{appEndpoint}/:db/_changes",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Sequence number to start from"
+              },
+              {
+                "name": "feed",
+                "value": "",
+                "type": "query",
+                "description": "Type of changes feed"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter function to apply"
+              },
+              {
+                "name": "channels",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of channel names to filter by"
+              },
+              {
+                "name": "include_docs",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include document bodies"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of changes to return"
+              },
+              {
+                "name": "heartbeat",
+                "value": "",
+                "type": "query",
+                "description": "Heartbeat interval in milliseconds for continuous feed"
+              },
+              {
+                "name": "timeout",
+                "value": "",
+                "type": "query",
+                "description": "Timeout in milliseconds for longpoll feed"
+              },
+              {
+                "name": "style",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return all leaf revisions"
+              },
+              {
+                "name": "active_only",
+                "value": "",
+                "type": "query",
+                "description": "Whether to exclude deleted documents"
+              }
+            ]
+          },
+          "docs": "Returns a list of changes made to documents in the database in sequence order. Supports long-polling, continuous, and one-shot modes for real-time synchronization."
+        },
+        {
+          "info": {
+            "name": "Get changes feed via POST",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{appEndpoint}/:db/_changes",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns changes feed with parameters specified in the request body. Identical to the GET endpoint but allows for complex filter parameters."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a user session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{appEndpoint}/:db/_session",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Authenticates a user and creates a new session. Returns a session cookie that can be used for subsequent requests."
+        },
+        {
+          "info": {
+            "name": "Delete current session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{appEndpoint}/:db/_session",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              }
+            ]
+          },
+          "docs": "Invalidates the current user session."
+        },
+        {
+          "info": {
+            "name": "Initiate OpenID Connect authentication",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{appEndpoint}/:db/_oidc",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query",
+                "description": "Name of the OIDC provider"
+              },
+              {
+                "name": "offline",
+                "value": "",
+                "type": "query",
+                "description": "Whether to request a refresh token"
+              }
+            ]
+          },
+          "docs": "Initiates the OpenID Connect authentication flow by redirecting the user to the configured identity provider."
+        },
+        {
+          "info": {
+            "name": "OpenID Connect callback",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{appEndpoint}/:db/_oidc_callback",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "Authorization code from the identity provider"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State parameter for CSRF protection"
+              }
+            ]
+          },
+          "docs": "Handles the callback from the identity provider after user authentication and creates a Sync Gateway session."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

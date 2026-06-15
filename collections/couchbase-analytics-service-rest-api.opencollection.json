@@ -1,0 +1,244 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Analytics Query",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute an analytics query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/analytics/service",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes a SQL++ analytics query against the Analytics service. The endpoint implements the same HTTP interface as the Couchbase Query service but targets the Analytics engine for complex analytical workloads."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Analytics Admin",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get remaining mutations to be synced",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/analytics/node/agg/stats/remaining"
+          },
+          "docs": "Returns the number of mutations that have not yet been synced to the Analytics service from the Data service. Useful for monitoring data ingestion progress."
+        },
+        {
+          "info": {
+            "name": "Get analytics data ingestion status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/analytics/status/ingestion"
+          },
+          "docs": "Returns the current status of data ingestion from Couchbase Server into the Analytics service, including details about each dataset and its synchronization state."
+        },
+        {
+          "info": {
+            "name": "Get analytics cluster status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/analytics/cluster"
+          },
+          "docs": "Returns the status of the Analytics cluster including information about all Analytics nodes and their states."
+        },
+        {
+          "info": {
+            "name": "Restart analytics cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/analytics/cluster/restart"
+          },
+          "docs": "Restarts the Analytics service across all nodes in the cluster."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Analytics Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get analytics service configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/analytics/config/service"
+          },
+          "docs": "Returns the current configuration of the Analytics service."
+        },
+        {
+          "info": {
+            "name": "Update analytics service configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:8095/analytics/config/service",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration settings for the Analytics service."
+        },
+        {
+          "info": {
+            "name": "Get analytics node configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/analytics/config/node"
+          },
+          "docs": "Returns the configuration of the current Analytics node."
+        },
+        {
+          "info": {
+            "name": "Update analytics node configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:8095/analytics/config/node",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration settings for the current Analytics node."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Analytics Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get analytics settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/settings/analytics"
+          },
+          "docs": "Returns the current cluster-level Analytics service settings."
+        },
+        {
+          "info": {
+            "name": "Update analytics settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/settings/analytics",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Updates the cluster-level Analytics service settings."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Analytics Library",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create or update a library",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:8095/analytics/library/:scope/:name",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "path",
+                "description": "The scope of the library"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the library"
+              }
+            ]
+          },
+          "docs": "Creates or updates a JavaScript library that can be used to define SQL++ user-defined functions in the Analytics service."
+        },
+        {
+          "info": {
+            "name": "Delete a library",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8095/analytics/library/:scope/:name",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "path",
+                "description": "The scope of the library"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the library"
+              }
+            ]
+          },
+          "docs": "Deletes a JavaScript library from the Analytics service."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,927 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Capella Management API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations"
+          },
+          "docs": "Returns the list of organizations the authenticated API key has access to."
+        },
+        {
+          "info": {
+            "name": "Get organization details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific organization."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "perPage",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page"
+              }
+            ]
+          },
+          "docs": "Returns the list of projects within the specified organization."
+        },
+        {
+          "info": {
+            "name": "Create a project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new project within the specified organization."
+        },
+        {
+          "info": {
+            "name": "Get project details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific project."
+        },
+        {
+          "info": {
+            "name": "Update a project",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration of an existing project."
+        },
+        {
+          "info": {
+            "name": "Delete a project",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              }
+            ]
+          },
+          "docs": "Deletes the specified project. All resources within the project must be deleted first."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Clusters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId/clusters",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "perPage",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page"
+              }
+            ]
+          },
+          "docs": "Returns the list of database clusters within the specified project."
+        },
+        {
+          "info": {
+            "name": "Create a cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId/clusters",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Provisions a new Couchbase Capella database cluster in the specified project. You can configure the cloud provider, region, instance type, storage, and services."
+        },
+        {
+          "info": {
+            "name": "Get cluster details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific cluster including its configuration, status, and connection string."
+        },
+        {
+          "info": {
+            "name": "Update a cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration of an existing cluster, such as scaling the number of nodes or changing the support plan."
+        },
+        {
+          "info": {
+            "name": "Delete a cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              }
+            ]
+          },
+          "docs": "Deletes the specified cluster and all its data. This action is irreversible."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Buckets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List buckets in a cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              }
+            ]
+          },
+          "docs": "Returns the list of buckets within the specified Capella cluster."
+        },
+        {
+          "info": {
+            "name": "Create a bucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new bucket within the specified Capella cluster."
+        },
+        {
+          "info": {
+            "name": "Get bucket details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              },
+              {
+                "name": "bucketId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the bucket"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific bucket in a Capella cluster."
+        },
+        {
+          "info": {
+            "name": "Update a bucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              },
+              {
+                "name": "bucketId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the bucket"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration of an existing bucket in a Capella cluster."
+        },
+        {
+          "info": {
+            "name": "Delete a bucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              },
+              {
+                "name": "bucketId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the bucket"
+              }
+            ]
+          },
+          "docs": "Deletes the specified bucket and all its data from the Capella cluster."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Scopes and Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List scopes in a bucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId/scopes",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              },
+              {
+                "name": "bucketId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the bucket"
+              }
+            ]
+          },
+          "docs": "Returns the list of scopes within the specified bucket."
+        },
+        {
+          "info": {
+            "name": "Create a scope",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId/scopes",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              },
+              {
+                "name": "bucketId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the bucket"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new scope within the specified bucket."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Allowed CIDRs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List allowed CIDRs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              }
+            ]
+          },
+          "docs": "Returns the list of allowed IP addresses and CIDR ranges for the specified cluster."
+        },
+        {
+          "info": {
+            "name": "Add an allowed CIDR",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds an allowed IP address or CIDR range for the specified cluster."
+        },
+        {
+          "info": {
+            "name": "Delete an allowed CIDR",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs/:allowedCIDRId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              },
+              {
+                "name": "allowedCIDRId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the allowed CIDR to delete"
+              }
+            ]
+          },
+          "docs": "Removes an allowed IP address or CIDR range from the specified cluster."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Database Credentials",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List database credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/users",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              }
+            ]
+          },
+          "docs": "Returns the list of database access credentials configured for the specified cluster."
+        },
+        {
+          "info": {
+            "name": "Create database credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/users",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates new database access credentials for the specified cluster."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "API Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List API keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/apikeys",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "perPage",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page"
+              }
+            ]
+          },
+          "docs": "Returns the list of API keys configured for the organization."
+        },
+        {
+          "info": {
+            "name": "Create an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/apikeys",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new API key for authenticating with the Management API."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List organization users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudapi.cloud.couchbase.com/v4/organizations/:organizationId/users",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "perPage",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page"
+              }
+            ]
+          },
+          "docs": "Returns the list of users in the specified organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
