@@ -1,0 +1,26 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.couchbase.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jul 22 20:03:55 2026 GMT
+  hsts: false
+- host: docs.couchbase.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 15 23:59:59 2026 GMT
+  hsts: false
+- host: cloudapi.cloud.couchbase.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 13 00:14:43 2026 GMT
+  hsts: null
+domains:
+- domain: couchbase.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine

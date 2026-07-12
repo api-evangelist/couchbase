@@ -1,0 +1,45 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/couchbase-analytics-service-rest-api-openapi.yml, openapi/couchbase-backup-service-rest-api-openapi.yml,
+  openapi/couchbase-capella-app-services-admin-api-openapi.yml, openapi/couchbase-capella-app-services-public-api-openapi.yml,
+  openapi/couchbase-capella-management-api-openapi.yml, openapi/couchbase-eventing-service-rest-api-openapi.yml,
+  openapi/couchbase-query-service-rest-api-openapi.yml, openapi/couchbase-search-service-rest-api-openapi.yml,
+  openapi/couchbase-server-rest-api-openapi.yml, openapi/couchbase-sync-gateway-admin-rest-api-openapi.yml,
+  openapi/couchbase-sync-gateway-public-rest-api-openapi.yml, openapi/couchbase-xdcr-rest-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - cookie
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic Authentication using Couchbase Server credentials.
+  sources:
+  - openapi/couchbase-analytics-service-rest-api-openapi.yml
+  - openapi/couchbase-backup-service-rest-api-openapi.yml
+  - openapi/couchbase-capella-app-services-admin-api-openapi.yml
+  - openapi/couchbase-capella-app-services-public-api-openapi.yml
+  - openapi/couchbase-eventing-service-rest-api-openapi.yml
+  - openapi/couchbase-query-service-rest-api-openapi.yml
+  - openapi/couchbase-search-service-rest-api-openapi.yml
+  - openapi/couchbase-server-rest-api-openapi.yml
+  - openapi/couchbase-sync-gateway-admin-rest-api-openapi.yml
+  - openapi/couchbase-sync-gateway-public-rest-api-openapi.yml
+  - openapi/couchbase-xdcr-rest-api-openapi.yml
+- name: sessionAuth
+  type: apiKey
+  in: cookie
+  parameter: SyncGatewaySession
+  description: Session cookie authentication obtained from the _session endpoint.
+  sources:
+  - openapi/couchbase-capella-app-services-public-api-openapi.yml
+  - openapi/couchbase-sync-gateway-public-rest-api-openapi.yml
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Bearer token authentication using a Capella API key secret.
+  sources:
+  - openapi/couchbase-capella-management-api-openapi.yml

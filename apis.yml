@@ -286,6 +286,10 @@ apis:
       - NoSQL
       - Sync
 common:
+  - type: DomainSecurity
+    url: security/couchbase-domain-security.yml
+  - type: Authentication
+    url: authentication/couchbase-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/couchbase
   - type: Website
