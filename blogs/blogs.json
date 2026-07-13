@@ -2,11 +2,13 @@
   "repo": "couchbase",
   "feeds": [
     {
-      "source": "https://www.couchbase.com/blog/",
+      "source": "https://www.couchbase.com/pricing/",
+      "feed_url": "https://www.couchbase.com/pricing/",
+      "title": "",
       "saved": 0,
-      "error": "HTTP 403 Forbidden on all attempts"
+      "method": "none"
     }
   ],
-  "fetched": "2026-06-27T12:34:09Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "post_count": 0
 }
