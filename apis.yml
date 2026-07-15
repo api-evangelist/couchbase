@@ -286,6 +286,8 @@ apis:
       - NoSQL
       - Sync
 common:
+  - type: AgenticAccess
+    url: agentic-access/couchbase-agentic-access.yml
   - type: DomainSecurity
     url: security/couchbase-domain-security.yml
   - type: Authentication
