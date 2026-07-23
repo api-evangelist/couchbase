@@ -1,0 +1,151 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Analytics Configuration API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Analytics Configuration
+  description: Endpoints for configuring Analytics nodes and clusters.
+paths:
+  /analytics/config/service:
+    get:
+      operationId: getAnalyticsServiceConfig
+      summary: Get analytics service configuration
+      description: Returns the current configuration of the Analytics service.
+      tags:
+      - Analytics Configuration
+      responses:
+        '200':
+          description: Successful retrieval of service configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsServiceConfig'
+        '401':
+          description: Unauthorized access
+    put:
+      operationId: updateAnalyticsServiceConfig
+      summary: Update analytics service configuration
+      description: Updates the configuration settings for the Analytics service.
+      tags:
+      - Analytics Configuration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnalyticsServiceConfig'
+      responses:
+        '200':
+          description: Configuration updated successfully
+        '400':
+          description: Invalid configuration
+        '401':
+          description: Unauthorized access
+  /analytics/config/node:
+    get:
+      operationId: getAnalyticsNodeConfig
+      summary: Get analytics node configuration
+      description: Returns the configuration of the current Analytics node.
+      tags:
+      - Analytics Configuration
+      responses:
+        '200':
+          description: Successful retrieval of node configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsNodeConfig'
+        '401':
+          description: Unauthorized access
+    put:
+      operationId: updateAnalyticsNodeConfig
+      summary: Update analytics node configuration
+      description: Updates the configuration settings for the current Analytics node.
+      tags:
+      - Analytics Configuration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnalyticsNodeConfig'
+      responses:
+        '200':
+          description: Node configuration updated successfully
+        '400':
+          description: Invalid configuration
+        '401':
+          description: Unauthorized access
+components:
+  schemas:
+    AnalyticsServiceConfig:
+      type: object
+      description: Analytics service configuration
+      properties:
+        activeMemoryGlobalBudget:
+          type: integer
+          description: Global memory budget in bytes
+        activeStopTimeout:
+          type: integer
+          description: Timeout for stopping active operations in seconds
+        activeSuspendTimeout:
+          type: integer
+          description: Timeout for suspending active operations in seconds
+        analyticsBroadcastDcpStateMutationCount:
+          type: integer
+          description: DCP state mutation broadcast count
+        compilerFrameLimit:
+          type: integer
+          description: Maximum number of frames in a query plan
+        compilerGroupmemory:
+          type: integer
+          description: Memory allocated for groupby operations in bytes
+        compilerJoinmemory:
+          type: integer
+          description: Memory allocated for join operations in bytes
+        compilerSortmemory:
+          type: integer
+          description: Memory allocated for sort operations in bytes
+        logLevel:
+          type: string
+          description: Log level for the Analytics service
+          enum:
+          - DEBUG
+          - TRACE
+          - INFO
+          - WARN
+          - ERROR
+          - FATAL
+    AnalyticsNodeConfig:
+      type: object
+      description: Analytics node-level configuration
+      properties:
+        storageBuffercachePagesize:
+          type: integer
+          description: Buffer cache page size in bytes
+        storageBuffercacheSize:
+          type: integer
+          description: Buffer cache size in bytes
+        storageMemorycomponentNumcomponents:
+          type: integer
+          description: Number of memory components
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

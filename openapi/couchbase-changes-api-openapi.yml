@@ -1,0 +1,209 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Changes API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Changes
+  description: Endpoints for monitoring document changes and subscribing to change feeds.
+paths:
+  /{db}/_changes:
+    get:
+      operationId: getChanges
+      summary: Get changes feed
+      description: Returns a list of changes made to documents in the database in sequence order. Supports long-polling, continuous, and one-shot modes for real-time synchronization.
+      tags:
+      - Changes
+      parameters:
+      - $ref: '#/components/parameters/db'
+      - name: since
+        in: query
+        required: false
+        description: Sequence number to start from
+        schema:
+          type: string
+      - name: feed
+        in: query
+        required: false
+        description: Type of changes feed
+        schema:
+          type: string
+          enum:
+          - normal
+          - longpoll
+          - continuous
+          - websocket
+      - name: filter
+        in: query
+        required: false
+        description: Filter function to apply
+        schema:
+          type: string
+          enum:
+          - sync_gateway/bychannel
+      - name: channels
+        in: query
+        required: false
+        description: Comma-separated list of channel names to filter by
+        schema:
+          type: string
+      - name: include_docs
+        in: query
+        required: false
+        description: Whether to include document bodies
+        schema:
+          type: boolean
+      - name: limit
+        in: query
+        required: false
+        description: Maximum number of changes to return
+        schema:
+          type: integer
+      - name: heartbeat
+        in: query
+        required: false
+        description: Heartbeat interval in milliseconds for continuous feed
+        schema:
+          type: integer
+      - name: timeout
+        in: query
+        required: false
+        description: Timeout in milliseconds for longpoll feed
+        schema:
+          type: integer
+      - name: style
+        in: query
+        required: false
+        description: Whether to return all leaf revisions
+        schema:
+          type: string
+          enum:
+          - main_only
+          - all_docs
+      - name: active_only
+        in: query
+        required: false
+        description: Whether to exclude deleted documents
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful retrieval of changes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChangesResponse'
+        '401':
+          description: Unauthorized access
+    post:
+      operationId: postChanges
+      summary: Get changes feed via POST
+      description: Returns changes feed with parameters specified in the request body. Identical to the GET endpoint but allows for complex filter parameters.
+      tags:
+      - Changes
+      parameters:
+      - $ref: '#/components/parameters/db'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                since:
+                  type: string
+                  description: Sequence number to start from
+                filter:
+                  type: string
+                  description: Filter function name
+                channels:
+                  type: string
+                  description: Channel names to filter by
+                include_docs:
+                  type: boolean
+                  description: Whether to include document bodies
+                limit:
+                  type: integer
+                  description: Maximum number of changes
+                feed:
+                  type: string
+                  enum:
+                  - normal
+                  - longpoll
+                  - continuous
+                active_only:
+                  type: boolean
+                  description: Exclude deleted documents
+      responses:
+        '200':
+          description: Successful retrieval of changes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChangesResponse'
+        '401':
+          description: Unauthorized access
+components:
+  schemas:
+    ChangesResponse:
+      type: object
+      description: Changes feed response
+      properties:
+        results:
+          type: array
+          description: Array of changes
+          items:
+            type: object
+            properties:
+              seq:
+                description: Sequence number
+              id:
+                type: string
+                description: Document ID
+              changes:
+                type: array
+                description: List of revision changes
+                items:
+                  type: object
+                  properties:
+                    rev:
+                      type: string
+                      description: Revision ID
+              deleted:
+                type: boolean
+                description: Whether the document was deleted
+              doc:
+                type: object
+                description: Document body (if include_docs=true)
+        last_seq:
+          description: Last sequence number in the response
+        pending:
+          type: integer
+          description: Number of pending changes
+  parameters:
+    db:
+      name: db
+      in: path
+      required: true
+      description: The name of the database (keyspace)
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

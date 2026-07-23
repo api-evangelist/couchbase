@@ -1,0 +1,117 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Query Settings API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Query Settings
+  description: Endpoints for configuring Query service settings at the node and cluster level.
+paths:
+  /admin/settings:
+    get:
+      operationId: getQuerySettings
+      summary: Get query service settings
+      description: Returns the current settings for the Query service node, including timeout values, memory quotas, and logging configuration.
+      tags:
+      - Query Settings
+      responses:
+        '200':
+          description: Successful retrieval of query settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuerySettings'
+        '401':
+          description: Unauthorized access
+    post:
+      operationId: updateQuerySettings
+      summary: Update query service settings
+      description: Updates the configuration settings for the Query service node.
+      tags:
+      - Query Settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuerySettings'
+      responses:
+        '200':
+          description: Query settings updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuerySettings'
+        '400':
+          description: Invalid settings
+        '401':
+          description: Unauthorized access
+components:
+  schemas:
+    QuerySettings:
+      type: object
+      description: Query service configuration settings
+      properties:
+        queryTmpSpaceDir:
+          type: string
+          description: Directory for temporary query files
+        queryTmpSpaceSize:
+          type: integer
+          description: Maximum temporary space size in megabytes
+        queryPipelineBatch:
+          type: integer
+          description: Number of items in a batch for pipeline execution
+        queryPipelineCap:
+          type: integer
+          description: Maximum number of items in the pipeline queue
+        queryScanCap:
+          type: integer
+          description: Maximum buffer size for index scans
+        queryTimeout:
+          type: string
+          description: Default timeout for queries (e.g., 0s for unlimited)
+        queryPreparedLimit:
+          type: integer
+          description: Maximum number of prepared statements to cache
+        queryCompletedLimit:
+          type: integer
+          description: Maximum number of completed requests to keep
+        queryCompletedThreshold:
+          type: integer
+          description: Minimum execution time in milliseconds for a request to be added to the completed requests log
+        queryLogLevel:
+          type: string
+          description: Log level for the Query service
+          enum:
+          - debug
+          - trace
+          - info
+          - warn
+          - error
+          - severe
+          - none
+        queryMaxParallelism:
+          type: integer
+          description: Maximum parallelism for query execution
+        queryN1QLFeatCtrl:
+          type: integer
+          description: Feature control flags for N1QL
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

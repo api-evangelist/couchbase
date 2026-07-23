@@ -1,0 +1,257 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs User Management API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: User Management
+  description: Endpoints for managing users and their access permissions.
+paths:
+  /{db}/_user/:
+    get:
+      operationId: listUsers
+      summary: List all users
+      description: Returns the list of all users configured for the specified database.
+      tags:
+      - User Management
+      parameters:
+      - $ref: '#/components/parameters/db'
+      responses:
+        '200':
+          description: Successful retrieval of user list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '401':
+          description: Unauthorized access
+    post:
+      operationId: createUser
+      summary: Create a user
+      description: Creates a new user for the specified database with the given credentials and channel assignments.
+      tags:
+      - User Management
+      parameters:
+      - $ref: '#/components/parameters/db'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserConfig'
+      responses:
+        '201':
+          description: User created successfully
+        '400':
+          description: Invalid user configuration
+        '401':
+          description: Unauthorized access
+        '409':
+          description: User already exists
+  /{db}/_user/{userName}:
+    get:
+      operationId: getUser
+      summary: Get user details
+      description: Returns detailed information about a specific user including their roles, channels, and admin channels.
+      tags:
+      - User Management
+      parameters:
+      - $ref: '#/components/parameters/db'
+      - $ref: '#/components/parameters/userName'
+      responses:
+        '200':
+          description: Successful retrieval of user details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfo'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: User not found
+    put:
+      operationId: updateUser
+      summary: Update a user
+      description: Updates the configuration of an existing user including their password, roles, and channel assignments.
+      tags:
+      - User Management
+      parameters:
+      - $ref: '#/components/parameters/db'
+      - $ref: '#/components/parameters/userName'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserConfig'
+      responses:
+        '200':
+          description: User updated successfully
+        '400':
+          description: Invalid user configuration
+        '401':
+          description: Unauthorized access
+        '404':
+          description: User not found
+    delete:
+      operationId: deleteUser
+      summary: Delete a user
+      description: Deletes the specified user from the database.
+      tags:
+      - User Management
+      parameters:
+      - $ref: '#/components/parameters/db'
+      - $ref: '#/components/parameters/userName'
+      responses:
+        '200':
+          description: User deleted successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: User not found
+  /{db}/_user/{userName}/_session:
+    post:
+      operationId: createUserSession
+      summary: Create a session for a user
+      description: Creates a new session for the specified user with an optional expiration time and channel override.
+      tags:
+      - User Management
+      parameters:
+      - $ref: '#/components/parameters/db_2'
+      - $ref: '#/components/parameters/userName'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ttl:
+                  type: integer
+                  description: Session time-to-live in seconds
+      responses:
+        '200':
+          description: Session created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  session_id:
+                    type: string
+                  expires:
+                    type: string
+                    format: date-time
+                  cookie_name:
+                    type: string
+        '401':
+          description: Unauthorized access
+        '404':
+          description: User not found
+components:
+  schemas:
+    UserInfo:
+      type: object
+      description: User information
+      properties:
+        name:
+          type: string
+          description: Username
+        admin_channels:
+          type: array
+          description: Admin-assigned channels
+          items:
+            type: string
+        admin_roles:
+          type: array
+          description: Admin-assigned roles
+          items:
+            type: string
+        all_channels:
+          type: array
+          description: All channels accessible by the user
+          items:
+            type: string
+        roles:
+          type: array
+          description: All roles assigned to the user
+          items:
+            type: string
+        email:
+          type: string
+          description: User email address
+        disabled:
+          type: boolean
+          description: Whether the user account is disabled
+    UserConfig:
+      type: object
+      description: User configuration for creation or update
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Username
+        password:
+          type: string
+          description: User password
+        admin_channels:
+          type: array
+          description: Admin-assigned channels
+          items:
+            type: string
+        admin_roles:
+          type: array
+          description: Admin-assigned roles
+          items:
+            type: string
+        email:
+          type: string
+          format: email
+          description: User email address
+        disabled:
+          type: boolean
+          description: Whether the user account is disabled
+  parameters:
+    db:
+      name: db
+      in: path
+      required: true
+      description: The name of the database
+      schema:
+        type: string
+    userName:
+      name: userName
+      in: path
+      required: true
+      description: The username
+      schema:
+        type: string
+    db_2:
+      name: db
+      in: path
+      required: true
+      description: The database name
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

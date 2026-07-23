@@ -1,0 +1,229 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Repositories API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Repositories
+  description: Endpoints for creating, managing, and querying backup repositories.
+paths:
+  /api/v1/cluster/self/repository/active:
+    get:
+      operationId: listActiveRepositories
+      summary: List active backup repositories
+      description: Returns the list of active backup repositories configured for the cluster.
+      tags:
+      - Repositories
+      responses:
+        '200':
+          description: Successful retrieval of active repositories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BackupRepository'
+        '401':
+          description: Unauthorized access
+  /api/v1/cluster/self/repository/active/{repositoryId}:
+    get:
+      operationId: getActiveRepository
+      summary: Get active repository details
+      description: Returns detailed information about a specific active backup repository including backup names, dates, buckets, items, and mutations.
+      tags:
+      - Repositories
+      parameters:
+      - $ref: '#/components/parameters/repositoryId'
+      responses:
+        '200':
+          description: Successful retrieval of repository details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackupRepository'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Repository not found
+    post:
+      operationId: createActiveRepository
+      summary: Create an active backup repository
+      description: Creates a new active backup repository with the specified configuration including the backup plan and storage location.
+      tags:
+      - Repositories
+      parameters:
+      - $ref: '#/components/parameters/repositoryId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BackupRepositoryCreateRequest'
+      responses:
+        '200':
+          description: Repository created successfully
+        '400':
+          description: Invalid repository configuration
+        '401':
+          description: Unauthorized access
+    delete:
+      operationId: deleteActiveRepository
+      summary: Delete an active repository
+      description: Deletes the specified active backup repository. The repository must not have any running tasks.
+      tags:
+      - Repositories
+      parameters:
+      - $ref: '#/components/parameters/repositoryId'
+      responses:
+        '200':
+          description: Repository deleted successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Repository not found
+  /api/v1/cluster/self/repository/imported:
+    get:
+      operationId: listImportedRepositories
+      summary: List imported backup repositories
+      description: Returns the list of imported backup repositories.
+      tags:
+      - Repositories
+      responses:
+        '200':
+          description: Successful retrieval of imported repositories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BackupRepository'
+        '401':
+          description: Unauthorized access
+  /api/v1/cluster/self/repository/archived:
+    get:
+      operationId: listArchivedRepositories
+      summary: List archived backup repositories
+      description: Returns the list of archived backup repositories.
+      tags:
+      - Repositories
+      responses:
+        '200':
+          description: Successful retrieval of archived repositories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BackupRepository'
+        '401':
+          description: Unauthorized access
+components:
+  schemas:
+    BackupRepository:
+      type: object
+      description: Backup repository configuration and status
+      properties:
+        id:
+          type: string
+          description: Repository identifier
+        plan_name:
+          type: string
+          description: Name of the associated backup plan
+        state:
+          type: string
+          description: Current state of the repository
+          enum:
+          - active
+          - paused
+          - archived
+          - imported
+        archive:
+          type: string
+          description: Path to the backup archive location
+        bucket:
+          type: object
+          description: Cloud storage bucket configuration
+          properties:
+            name:
+              type: string
+              description: Bucket name
+            provider:
+              type: string
+              description: Cloud provider
+        backups:
+          type: array
+          description: List of backups in the repository
+          items:
+            type: object
+            properties:
+              date:
+                type: string
+                format: date-time
+                description: Date the backup was taken
+              type:
+                type: string
+                description: Type of backup
+                enum:
+                - FULL
+                - INCR
+              complete:
+                type: boolean
+                description: Whether the backup completed successfully
+              buckets:
+                type: array
+                description: Buckets included in the backup
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: Bucket name
+                    items:
+                      type: integer
+                      description: Number of items backed up
+                    mutations:
+                      type: integer
+                      description: Number of mutations backed up
+    BackupRepositoryCreateRequest:
+      type: object
+      description: Request to create a backup repository
+      required:
+      - plan
+      - archive
+      properties:
+        plan:
+          type: string
+          description: Name of the backup plan to use
+        archive:
+          type: string
+          description: Path to the backup archive location
+        bucket_name:
+          type: string
+          description: Cloud storage bucket name (for cloud backups)
+  parameters:
+    repositoryId:
+      name: repositoryId
+      in: path
+      required: true
+      description: The name of the backup repository
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

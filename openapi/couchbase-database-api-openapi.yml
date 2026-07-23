@@ -1,0 +1,83 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Database API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Database
+  description: Endpoints for retrieving database information.
+paths:
+  /{db}:
+    get:
+      operationId: getDatabaseInfo
+      summary: Get database information
+      description: Returns information about the specified database including its name, update sequence, and instance start time.
+      tags:
+      - Database
+      parameters:
+      - $ref: '#/components/parameters/db'
+      responses:
+        '200':
+          description: Successful retrieval of database information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseInfo'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Database not found
+components:
+  schemas:
+    DatabaseInfo:
+      type: object
+      description: Database information
+      properties:
+        db_name:
+          type: string
+          description: Name of the database
+        update_seq:
+          type: integer
+          description: Current update sequence number
+        committed_update_seq:
+          type: integer
+          description: Committed update sequence number
+        instance_start_time:
+          type: integer
+          description: Instance start time in microseconds since epoch
+        compact_running:
+          type: boolean
+          description: Whether compaction is currently running
+        state:
+          type: string
+          description: Database state
+          enum:
+          - Online
+          - Offline
+  parameters:
+    db:
+      name: db
+      in: path
+      required: true
+      description: The name of the database (keyspace)
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

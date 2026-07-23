@@ -1,0 +1,538 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Buckets API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Buckets
+  description: Endpoints for managing buckets within Capella clusters.
+paths:
+  /v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/buckets:
+    get:
+      operationId: listCapellaBuckets
+      summary: List buckets in a cluster
+      description: Returns the list of buckets within the specified Capella cluster.
+      tags:
+      - Buckets
+      parameters:
+      - $ref: '#/components/parameters/organizationId'
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/clusterId'
+      responses:
+        '200':
+          description: Successful retrieval of buckets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CapellaBucket'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Cluster not found
+        '429':
+          description: Rate limit exceeded
+    post:
+      operationId: createCapellaBucket
+      summary: Create a bucket
+      description: Creates a new bucket within the specified Capella cluster.
+      tags:
+      - Buckets
+      parameters:
+      - $ref: '#/components/parameters/organizationId'
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/clusterId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CapellaBucketCreateRequest'
+      responses:
+        '201':
+          description: Bucket created successfully
+        '400':
+          description: Invalid bucket configuration
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Cluster not found
+        '429':
+          description: Rate limit exceeded
+  /v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/buckets/{bucketId}:
+    get:
+      operationId: getCapellaBucket
+      summary: Get bucket details
+      description: Returns detailed information about a specific bucket in a Capella cluster.
+      tags:
+      - Buckets
+      parameters:
+      - $ref: '#/components/parameters/organizationId'
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/clusterId'
+      - $ref: '#/components/parameters/bucketId'
+      responses:
+        '200':
+          description: Successful retrieval of bucket details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CapellaBucket'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Bucket not found
+        '429':
+          description: Rate limit exceeded
+    put:
+      operationId: updateCapellaBucket
+      summary: Update a bucket
+      description: Updates the configuration of an existing bucket in a Capella cluster.
+      tags:
+      - Buckets
+      parameters:
+      - $ref: '#/components/parameters/organizationId'
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/clusterId'
+      - $ref: '#/components/parameters/bucketId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CapellaBucketUpdateRequest'
+      responses:
+        '204':
+          description: Bucket updated successfully
+        '400':
+          description: Invalid bucket configuration
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Bucket not found
+        '429':
+          description: Rate limit exceeded
+    delete:
+      operationId: deleteCapellaBucket
+      summary: Delete a bucket
+      description: Deletes the specified bucket and all its data from the Capella cluster.
+      tags:
+      - Buckets
+      parameters:
+      - $ref: '#/components/parameters/organizationId'
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/clusterId'
+      - $ref: '#/components/parameters/bucketId'
+      responses:
+        '204':
+          description: Bucket deleted successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Bucket not found
+        '429':
+          description: Rate limit exceeded
+  /pools/default/buckets:
+    get:
+      operationId: listBuckets
+      summary: List all buckets
+      description: Returns a list of all buckets in the cluster with their configuration details, including RAM quotas, replica settings, and item counts.
+      tags:
+      - Buckets
+      responses:
+        '200':
+          description: Successful retrieval of bucket list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bucket'
+        '401':
+          description: Unauthorized access
+    post:
+      operationId: createBucket
+      summary: Create a new bucket
+      description: Creates a new bucket with the specified configuration including name, type, RAM quota, replica count, and other settings.
+      tags:
+      - Buckets
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BucketCreateRequest'
+      responses:
+        '202':
+          description: Bucket creation accepted
+        '400':
+          description: Invalid bucket configuration
+        '401':
+          description: Unauthorized access
+  /pools/default/buckets/{bucketName}:
+    get:
+      operationId: getBucket
+      summary: Get bucket details
+      description: Returns detailed configuration and statistics for a specific bucket.
+      tags:
+      - Buckets
+      parameters:
+      - $ref: '#/components/parameters/bucketName'
+      responses:
+        '200':
+          description: Successful retrieval of bucket details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bucket'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Bucket not found
+    post:
+      operationId: updateBucket
+      summary: Update bucket settings
+      description: Updates the configuration of an existing bucket, such as RAM quota, authentication type, and replica settings.
+      tags:
+      - Buckets
+      parameters:
+      - $ref: '#/components/parameters/bucketName'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BucketUpdateRequest'
+      responses:
+        '200':
+          description: Bucket updated successfully
+        '400':
+          description: Invalid bucket configuration
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Bucket not found
+    delete:
+      operationId: deleteBucket
+      summary: Delete a bucket
+      description: Deletes the specified bucket and all of its data from the cluster.
+      tags:
+      - Buckets
+      parameters:
+      - $ref: '#/components/parameters/bucketName'
+      responses:
+        '200':
+          description: Bucket deleted successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Bucket not found
+components:
+  schemas:
+    CapellaBucketCreateRequest:
+      type: object
+      description: Request to create a Capella bucket
+      required:
+      - name
+      - memoryAllocationInMb
+      properties:
+        name:
+          type: string
+          description: Bucket name
+        type:
+          type: string
+          description: Bucket type
+          enum:
+          - couchbase
+          - ephemeral
+          default: couchbase
+        memoryAllocationInMb:
+          type: integer
+          description: Memory allocation in megabytes
+          minimum: 100
+        bucketConflictResolution:
+          type: string
+          enum:
+          - seqno
+          - lww
+          default: seqno
+        durabilityLevel:
+          type: string
+          enum:
+          - none
+          - majority
+          - majorityAndPersistActive
+          - persistToMajority
+          default: none
+        replicas:
+          type: integer
+          minimum: 1
+          maximum: 3
+          default: 1
+        flush:
+          type: boolean
+          default: false
+        timeToLiveInSeconds:
+          type: integer
+          default: 0
+    BucketUpdateRequest:
+      type: object
+      description: Request body for updating a bucket
+      properties:
+        ramQuota:
+          type: integer
+          description: RAM quota in megabytes
+          minimum: 100
+        replicaNumber:
+          type: integer
+          description: Number of replicas
+          minimum: 0
+          maximum: 3
+        flushEnabled:
+          type: integer
+          description: Whether flush is enabled (0 or 1)
+          enum:
+          - 0
+          - 1
+    BucketCreateRequest:
+      type: object
+      description: Request body for creating a new bucket
+      required:
+      - name
+      - ramQuota
+      properties:
+        name:
+          type: string
+          description: Name of the bucket
+          maxLength: 100
+        bucketType:
+          type: string
+          description: Type of the bucket
+          enum:
+          - couchbase
+          - memcached
+          - ephemeral
+          default: couchbase
+        ramQuota:
+          type: integer
+          description: RAM quota in megabytes
+          minimum: 100
+        replicaNumber:
+          type: integer
+          description: Number of replicas
+          minimum: 0
+          maximum: 3
+          default: 1
+        conflictResolutionType:
+          type: string
+          description: Conflict resolution mechanism
+          enum:
+          - seqno
+          - lww
+          default: seqno
+        evictionPolicy:
+          type: string
+          description: Eviction policy
+          enum:
+          - valueOnly
+          - fullEviction
+          - noEviction
+          - nruEviction
+        flushEnabled:
+          type: integer
+          description: Whether flush is enabled (0 or 1)
+          enum:
+          - 0
+          - 1
+          default: 0
+    Bucket:
+      type: object
+      description: Bucket configuration and statistics
+      properties:
+        name:
+          type: string
+          description: Name of the bucket
+        bucketType:
+          type: string
+          description: Type of the bucket
+          enum:
+          - membase
+          - memcached
+          - ephemeral
+        authType:
+          type: string
+          description: Authentication type for the bucket
+        ramQuota:
+          type: integer
+          description: RAM quota for the bucket in bytes
+        replicaNumber:
+          type: integer
+          description: Number of replicas
+          minimum: 0
+          maximum: 3
+        replicaIndex:
+          type: boolean
+          description: Whether to replicate indexes
+        conflictResolutionType:
+          type: string
+          description: Conflict resolution mechanism
+          enum:
+          - seqno
+          - lww
+        evictionPolicy:
+          type: string
+          description: Eviction policy for the bucket
+          enum:
+          - valueOnly
+          - fullEviction
+          - noEviction
+          - nruEviction
+        durabilityMinLevel:
+          type: string
+          description: Minimum durability level for the bucket
+          enum:
+          - none
+          - majority
+          - majorityAndPersistActive
+          - persistToMajority
+        itemCount:
+          type: integer
+          description: Number of items in the bucket
+    CapellaBucketUpdateRequest:
+      type: object
+      description: Request to update a Capella bucket
+      properties:
+        memoryAllocationInMb:
+          type: integer
+          description: Memory allocation in megabytes
+        durabilityLevel:
+          type: string
+          enum:
+          - none
+          - majority
+          - majorityAndPersistActive
+          - persistToMajority
+        replicas:
+          type: integer
+          minimum: 1
+          maximum: 3
+        flush:
+          type: boolean
+        timeToLiveInSeconds:
+          type: integer
+    CapellaBucket:
+      type: object
+      description: Bucket in a Capella cluster
+      properties:
+        id:
+          type: string
+          description: Bucket ID
+        name:
+          type: string
+          description: Bucket name
+        type:
+          type: string
+          description: Bucket type
+          enum:
+          - couchbase
+          - ephemeral
+        memoryAllocationInMb:
+          type: integer
+          description: Memory allocation in megabytes
+        bucketConflictResolution:
+          type: string
+          description: Conflict resolution type
+          enum:
+          - seqno
+          - lww
+        durabilityLevel:
+          type: string
+          description: Minimum durability level
+          enum:
+          - none
+          - majority
+          - majorityAndPersistActive
+          - persistToMajority
+        replicas:
+          type: integer
+          description: Number of replicas
+          minimum: 1
+          maximum: 3
+        flush:
+          type: boolean
+          description: Whether flush is enabled
+        timeToLiveInSeconds:
+          type: integer
+          description: Default TTL in seconds (0 for no expiry)
+        stats:
+          type: object
+          description: Bucket statistics
+          properties:
+            itemCount:
+              type: integer
+              description: Number of items
+            memoryUsedInMib:
+              type: integer
+              description: Memory used in MiB
+  parameters:
+    bucketName:
+      name: bucketName
+      in: path
+      required: true
+      description: The name of the bucket
+      schema:
+        type: string
+    projectId:
+      name: projectId
+      in: path
+      required: true
+      description: The UUID of the project
+      schema:
+        type: string
+        format: uuid
+    bucketId:
+      name: bucketId
+      in: path
+      required: true
+      description: The ID of the bucket
+      schema:
+        type: string
+    clusterId:
+      name: clusterId
+      in: path
+      required: true
+      description: The UUID of the cluster
+      schema:
+        type: string
+        format: uuid
+    organizationId:
+      name: organizationId
+      in: path
+      required: true
+      description: The UUID of the organization
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

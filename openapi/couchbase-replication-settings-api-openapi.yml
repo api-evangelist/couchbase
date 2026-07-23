@@ -1,0 +1,184 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Replication Settings API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Replication Settings
+  description: Endpoints for configuring replication-level and global XDCR settings.
+paths:
+  /settings/replications:
+    get:
+      operationId: getGlobalReplicationSettings
+      summary: Get global XDCR settings
+      description: Returns the global default settings for all XDCR replications.
+      tags:
+      - Replication Settings
+      responses:
+        '200':
+          description: Successful retrieval of global replication settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReplicationSettings'
+        '401':
+          description: Unauthorized access
+    post:
+      operationId: updateGlobalReplicationSettings
+      summary: Update global XDCR settings
+      description: Updates the global default settings applied to all XDCR replications.
+      tags:
+      - Replication Settings
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ReplicationSettings'
+      responses:
+        '200':
+          description: Global replication settings updated successfully
+        '400':
+          description: Invalid settings
+        '401':
+          description: Unauthorized access
+  /settings/replications/{replicationId}:
+    get:
+      operationId: getReplicationSettings
+      summary: Get replication-specific settings
+      description: Returns the settings for a specific XDCR replication stream.
+      tags:
+      - Replication Settings
+      parameters:
+      - $ref: '#/components/parameters/replicationId'
+      responses:
+        '200':
+          description: Successful retrieval of replication settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReplicationSettings'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Replication not found
+    post:
+      operationId: updateReplicationSettings
+      summary: Update replication-specific settings
+      description: Updates the settings for a specific XDCR replication stream, overriding the global defaults.
+      tags:
+      - Replication Settings
+      parameters:
+      - $ref: '#/components/parameters/replicationId'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ReplicationSettings'
+      responses:
+        '200':
+          description: Replication settings updated successfully
+        '400':
+          description: Invalid settings
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Replication not found
+components:
+  parameters:
+    replicationId:
+      name: replicationId
+      in: path
+      required: true
+      description: The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}
+      schema:
+        type: string
+  schemas:
+    ReplicationSettings:
+      type: object
+      description: XDCR replication settings
+      properties:
+        checkpointInterval:
+          type: integer
+          description: Interval between checkpoints in seconds
+          minimum: 60
+          maximum: 14400
+        docBatchSizeKb:
+          type: integer
+          description: Document batch size in kilobytes
+          minimum: 10
+          maximum: 10000
+        failureRestartInterval:
+          type: integer
+          description: Interval before restarting after failure in seconds
+          minimum: 1
+          maximum: 300
+        filterExpression:
+          type: string
+          description: Regular expression filter for document IDs
+        logLevel:
+          type: string
+          description: Log level for the replication
+          enum:
+          - Error
+          - Warn
+          - Info
+          - Debug
+          - Trace
+        networkUsageLimit:
+          type: integer
+          description: Network usage limit in MB per second (0 for unlimited)
+          minimum: 0
+        optimisticReplicationThreshold:
+          type: integer
+          description: Document size threshold in bytes for optimistic replication
+          minimum: 0
+        sourceNozzlePerNode:
+          type: integer
+          description: Number of source nozzles per node
+          minimum: 1
+          maximum: 100
+        targetNozzlePerNode:
+          type: integer
+          description: Number of target nozzles per node
+          minimum: 1
+          maximum: 100
+        statsInterval:
+          type: integer
+          description: Interval for statistics updates in milliseconds
+          minimum: 200
+          maximum: 600000
+        compressionType:
+          type: string
+          description: Compression type for replicated data
+          enum:
+          - None
+          - Auto
+          - Snappy
+        priority:
+          type: string
+          description: Replication priority
+          enum:
+          - High
+          - Medium
+          - Low
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

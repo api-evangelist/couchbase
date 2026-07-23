@@ -1,0 +1,90 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Analytics Library API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Analytics Library
+  description: Endpoints for managing JavaScript libraries used for user-defined functions.
+paths:
+  /analytics/library/{scope}/{name}:
+    put:
+      operationId: createOrUpdateLibrary
+      summary: Create or update a library
+      description: Creates or updates a JavaScript library that can be used to define SQL++ user-defined functions in the Analytics service.
+      tags:
+      - Analytics Library
+      parameters:
+      - name: scope
+        in: path
+        required: true
+        description: The scope of the library
+        schema:
+          type: string
+      - name: name
+        in: path
+        required: true
+        description: The name of the library
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+              description: The JavaScript library code
+      responses:
+        '200':
+          description: Library created or updated successfully
+        '400':
+          description: Invalid library code
+        '401':
+          description: Unauthorized access
+    delete:
+      operationId: deleteLibrary
+      summary: Delete a library
+      description: Deletes a JavaScript library from the Analytics service.
+      tags:
+      - Analytics Library
+      parameters:
+      - name: scope
+        in: path
+        required: true
+        description: The scope of the library
+        schema:
+          type: string
+      - name: name
+        in: path
+        required: true
+        description: The name of the library
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Library deleted successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Library not found
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

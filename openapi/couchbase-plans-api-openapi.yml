@@ -1,0 +1,180 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Plans API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Plans
+  description: Endpoints for managing backup plans that define backup schedules and data retention policies.
+paths:
+  /api/v1/plan:
+    get:
+      operationId: listBackupPlans
+      summary: List backup plans
+      description: Returns the list of all backup plans configured for the cluster.
+      tags:
+      - Plans
+      responses:
+        '200':
+          description: Successful retrieval of backup plans
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BackupPlan'
+        '401':
+          description: Unauthorized access
+  /api/v1/plan/{planName}:
+    get:
+      operationId: getBackupPlan
+      summary: Get backup plan details
+      description: Returns information about a specific backup plan including the services for which data is backed up, and the scheduled tasks.
+      tags:
+      - Plans
+      parameters:
+      - $ref: '#/components/parameters/planName'
+      responses:
+        '200':
+          description: Successful retrieval of backup plan details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackupPlan'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Plan not found
+    post:
+      operationId: createOrUpdateBackupPlan
+      summary: Create or update a backup plan
+      description: Creates a new backup plan or updates an existing one with the specified schedule, services, and retention settings.
+      tags:
+      - Plans
+      parameters:
+      - $ref: '#/components/parameters/planName'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BackupPlan'
+      responses:
+        '200':
+          description: Plan created or updated successfully
+        '400':
+          description: Invalid plan configuration
+        '401':
+          description: Unauthorized access
+    delete:
+      operationId: deleteBackupPlan
+      summary: Delete a backup plan
+      description: Deletes the specified backup plan. The plan must not be in use by any active repository.
+      tags:
+      - Plans
+      parameters:
+      - $ref: '#/components/parameters/planName'
+      responses:
+        '200':
+          description: Plan deleted successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Plan not found
+components:
+  schemas:
+    BackupPlan:
+      type: object
+      description: Backup plan definition
+      properties:
+        name:
+          type: string
+          description: Name of the backup plan
+        description:
+          type: string
+          description: Description of the backup plan
+        services:
+          type: array
+          description: Services to back up
+          items:
+            type: string
+            enum:
+            - data
+            - gsi
+            - views
+            - ft
+            - eventing
+            - cbas
+        default:
+          type: boolean
+          description: Whether this is the default plan
+        tasks:
+          type: array
+          description: Scheduled tasks in the plan
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Task name
+              task_type:
+                type: string
+                description: Type of task
+                enum:
+                - BACKUP
+                - MERGE
+              full_backup:
+                type: boolean
+                description: Whether to perform a full backup
+              schedule:
+                type: object
+                description: Task schedule configuration
+                properties:
+                  job_type:
+                    type: string
+                    description: Schedule type
+                  frequency:
+                    type: integer
+                    description: Frequency value
+                  period:
+                    type: string
+                    description: Frequency period
+                    enum:
+                    - MINUTES
+                    - HOURS
+                    - DAYS
+                    - WEEKS
+                    - MONDAY
+                    - TUESDAY
+                    - WEDNESDAY
+                    - THURSDAY
+                    - FRIDAY
+                    - SATURDAY
+                    - SUNDAY
+  parameters:
+    planName:
+      name: planName
+      in: path
+      required: true
+      description: The name of the backup plan
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

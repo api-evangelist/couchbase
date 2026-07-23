@@ -1,0 +1,101 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Lifecycle API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Lifecycle
+  description: Endpoints for deploying, undeploying, pausing, and resuming Eventing Functions.
+paths:
+  /api/v1/functions/{functionName}/deploy:
+    post:
+      operationId: deployEventingFunction
+      summary: Deploy an Eventing Function
+      description: Deploys an undeployed Eventing Function, starting it to process document mutations and execute its handler code.
+      tags:
+      - Lifecycle
+      parameters:
+      - $ref: '#/components/parameters/functionName'
+      responses:
+        '200':
+          description: Function deployment initiated
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Function not found
+  /api/v1/functions/{functionName}/undeploy:
+    post:
+      operationId: undeployEventingFunction
+      summary: Undeploy an Eventing Function
+      description: Undeploys a deployed Eventing Function, stopping it from processing document mutations.
+      tags:
+      - Lifecycle
+      parameters:
+      - $ref: '#/components/parameters/functionName'
+      responses:
+        '200':
+          description: Function undeployment initiated
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Function not found
+  /api/v1/functions/{functionName}/pause:
+    post:
+      operationId: pauseEventingFunction
+      summary: Pause an Eventing Function
+      description: Pauses a deployed Eventing Function and creates a DCP checkpoint so that on a subsequent resume no mutations will be lost.
+      tags:
+      - Lifecycle
+      parameters:
+      - $ref: '#/components/parameters/functionName'
+      responses:
+        '200':
+          description: Function paused successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Function not found
+  /api/v1/functions/{functionName}/resume:
+    post:
+      operationId: resumeEventingFunction
+      summary: Resume an Eventing Function
+      description: Resumes a paused Eventing Function from its DCP checkpoint, continuing to process mutations from where it left off.
+      tags:
+      - Lifecycle
+      parameters:
+      - $ref: '#/components/parameters/functionName'
+      responses:
+        '200':
+          description: Function resumed successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Function not found
+components:
+  parameters:
+    functionName:
+      name: functionName
+      in: path
+      required: true
+      description: The name of the Eventing Function
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

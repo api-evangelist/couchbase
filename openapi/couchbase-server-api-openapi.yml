@@ -1,0 +1,92 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Server API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Server
+  description: Endpoints for managing the Sync Gateway server instance.
+paths:
+  /_all_dbs:
+    get:
+      operationId: listDatabases
+      summary: List all databases
+      description: Returns the names of all databases configured on the Sync Gateway instance.
+      tags:
+      - Server
+      responses:
+        '200':
+          description: Successful retrieval of database list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '401':
+          description: Unauthorized access
+  /_config:
+    get:
+      operationId: getServerConfig
+      summary: Get server configuration
+      description: Returns the complete Sync Gateway server configuration.
+      tags:
+      - Server
+      responses:
+        '200':
+          description: Successful retrieval of server configuration
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized access
+  /:
+    get:
+      operationId: getServerInfo
+      summary: Get server information
+      description: Returns information about the Sync Gateway server instance.
+      tags:
+      - Server
+      security: []
+      responses:
+        '200':
+          description: Successful retrieval of server information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  couchdb:
+                    type: string
+                    description: CouchDB compatibility string
+                  vendor:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      version:
+                        type: string
+                  version:
+                    type: string
+                    description: Sync Gateway version
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

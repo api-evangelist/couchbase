@@ -1,0 +1,155 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Authentication API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Authentication
+  description: Endpoints for user authentication and session management.
+paths:
+  /{db}/_session:
+    post:
+      operationId: createSession
+      summary: Create a user session
+      description: Authenticates a user and creates a new session. Returns a session cookie that can be used for subsequent requests.
+      tags:
+      - Authentication
+      parameters:
+      - $ref: '#/components/parameters/db'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - password
+              properties:
+                name:
+                  type: string
+                  description: Username
+                password:
+                  type: string
+                  description: User password
+      responses:
+        '200':
+          description: Session created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionResponse'
+        '401':
+          description: Invalid credentials
+    delete:
+      operationId: deleteSession
+      summary: Delete current session
+      description: Invalidates the current user session.
+      tags:
+      - Authentication
+      parameters:
+      - $ref: '#/components/parameters/db'
+      responses:
+        '200':
+          description: Session deleted successfully
+        '401':
+          description: No active session
+  /{db}/_oidc:
+    get:
+      operationId: oidcAuthenticate
+      summary: Initiate OpenID Connect authentication
+      description: Initiates the OpenID Connect authentication flow by redirecting the user to the configured identity provider.
+      tags:
+      - Authentication
+      parameters:
+      - $ref: '#/components/parameters/db'
+      - name: provider
+        in: query
+        required: false
+        description: Name of the OIDC provider
+        schema:
+          type: string
+      - name: offline
+        in: query
+        required: false
+        description: Whether to request a refresh token
+        schema:
+          type: boolean
+      responses:
+        '302':
+          description: Redirect to identity provider
+        '500':
+          description: OIDC not configured
+  /{db}/_oidc_callback:
+    get:
+      operationId: oidcCallback
+      summary: OpenID Connect callback
+      description: Handles the callback from the identity provider after user authentication and creates a Sync Gateway session.
+      tags:
+      - Authentication
+      parameters:
+      - $ref: '#/components/parameters/db'
+      - name: code
+        in: query
+        required: true
+        description: Authorization code from the identity provider
+        schema:
+          type: string
+      - name: state
+        in: query
+        required: false
+        description: State parameter for CSRF protection
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionResponse'
+        '401':
+          description: Authentication failed
+components:
+  parameters:
+    db:
+      name: db
+      in: path
+      required: true
+      description: The name of the database (keyspace)
+      schema:
+        type: string
+  schemas:
+    SessionResponse:
+      type: object
+      description: Session creation response
+      properties:
+        session_id:
+          type: string
+          description: Session identifier
+        expires:
+          type: string
+          format: date-time
+          description: Session expiration time
+        cookie_name:
+          type: string
+          description: Name of the session cookie
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

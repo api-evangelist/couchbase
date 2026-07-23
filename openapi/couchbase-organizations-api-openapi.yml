@@ -1,0 +1,124 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Organizations API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Organizations
+  description: Endpoints for managing Capella organizations.
+paths:
+  /v4/organizations:
+    get:
+      operationId: listOrganizations
+      summary: List organizations
+      description: Returns the list of organizations the authenticated API key has access to.
+      tags:
+      - Organizations
+      responses:
+        '200':
+          description: Successful retrieval of organizations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Organization'
+        '401':
+          description: Unauthorized access
+        '429':
+          description: Rate limit exceeded
+  /v4/organizations/{organizationId}:
+    get:
+      operationId: getOrganization
+      summary: Get organization details
+      description: Returns detailed information about a specific organization.
+      tags:
+      - Organizations
+      parameters:
+      - $ref: '#/components/parameters/organizationId'
+      responses:
+        '200':
+          description: Successful retrieval of organization details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Organization not found
+        '429':
+          description: Rate limit exceeded
+components:
+  schemas:
+    AuditInfo:
+      type: object
+      description: Audit timestamps
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        modifiedAt:
+          type: string
+          format: date-time
+          description: Last modification timestamp
+        createdBy:
+          type: string
+          description: User who created the resource
+        modifiedBy:
+          type: string
+          description: User who last modified the resource
+        version:
+          type: integer
+          description: Resource version number
+    Organization:
+      type: object
+      description: Capella organization
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Organization UUID
+        name:
+          type: string
+          description: Organization name
+        description:
+          type: string
+          description: Organization description
+        preferences:
+          type: object
+          description: Organization preferences
+        audit:
+          $ref: '#/components/schemas/AuditInfo'
+  parameters:
+    organizationId:
+      name: organizationId
+      in: path
+      required: true
+      description: The UUID of the organization
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

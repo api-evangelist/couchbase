@@ -1,0 +1,238 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Database Administration API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Database Administration
+  description: Endpoints for managing database configurations within App Services.
+paths:
+  /{db}/_config:
+    get:
+      operationId: getDatabaseConfig
+      summary: Get database configuration
+      description: Returns the full configuration of the specified database including sync function, import filter, and other settings.
+      tags:
+      - Database Administration
+      parameters:
+      - $ref: '#/components/parameters/db'
+      responses:
+        '200':
+          description: Successful retrieval of database configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseConfig'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Database not found
+    put:
+      operationId: updateDatabaseConfig
+      summary: Update database configuration
+      description: Updates the configuration of the specified database. This can include changes to the sync function, import filter, and other settings.
+      tags:
+      - Database Administration
+      parameters:
+      - $ref: '#/components/parameters/db'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatabaseConfig'
+      responses:
+        '200':
+          description: Database configuration updated successfully
+        '400':
+          description: Invalid configuration
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Database not found
+  /{db}/_config/sync:
+    get:
+      operationId: getSyncFunction
+      summary: Get sync function
+      description: Returns the current sync function for the specified database.
+      tags:
+      - Database Administration
+      parameters:
+      - $ref: '#/components/parameters/db'
+      responses:
+        '200':
+          description: Successful retrieval of sync function
+          content:
+            text/plain:
+              schema:
+                type: string
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Database not found
+    put:
+      operationId: updateSyncFunction
+      summary: Update sync function
+      description: Updates the sync function for the specified database. The sync function controls document routing to channels and access grants.
+      tags:
+      - Database Administration
+      parameters:
+      - $ref: '#/components/parameters/db'
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+              description: JavaScript sync function code
+      responses:
+        '200':
+          description: Sync function updated successfully
+        '400':
+          description: Invalid sync function
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Database not found
+  /{db}/_offline:
+    post:
+      operationId: takeDatabaseOffline
+      summary: Take database offline
+      description: Takes the specified database offline, preventing any client access.
+      tags:
+      - Database Administration
+      parameters:
+      - $ref: '#/components/parameters/db'
+      responses:
+        '200':
+          description: Database taken offline successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Database not found
+  /{db}/_online:
+    post:
+      operationId: bringDatabaseOnline
+      summary: Bring database online
+      description: Brings the specified database back online after being taken offline.
+      tags:
+      - Database Administration
+      parameters:
+      - $ref: '#/components/parameters/db'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                delay:
+                  type: integer
+                  description: Delay in seconds before bringing the database online
+      responses:
+        '200':
+          description: Database brought online successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Database not found
+  /{db}/_resync:
+    post:
+      operationId: resyncDatabase
+      summary: Resync database
+      description: Reprocesses all documents through the sync function. This is required after updating the sync function to apply changes to existing documents.
+      tags:
+      - Database Administration
+      parameters:
+      - $ref: '#/components/parameters/db'
+      responses:
+        '200':
+          description: Resync completed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  changes_processed:
+                    type: integer
+                    description: Number of documents reprocessed
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Database not found
+components:
+  schemas:
+    DatabaseConfig:
+      type: object
+      description: Database configuration
+      properties:
+        name:
+          type: string
+          description: Database name
+        bucket:
+          type: string
+          description: Couchbase Server bucket name
+        sync:
+          type: string
+          description: JavaScript sync function code
+        import_filter:
+          type: string
+          description: JavaScript import filter function code
+        enable_shared_bucket_access:
+          type: boolean
+          description: Whether to enable shared bucket access with SDKs
+        import_docs:
+          type: boolean
+          description: Whether to auto-import documents from the bucket
+        num_index_replicas:
+          type: integer
+          description: Number of GSI index replicas
+        delta_sync:
+          type: object
+          description: Delta sync configuration
+          properties:
+            enabled:
+              type: boolean
+              description: Whether delta sync is enabled
+            rev_max_age_seconds:
+              type: integer
+              description: Maximum age for revision deltas in seconds
+        guest:
+          type: object
+          description: Guest (unauthenticated) user configuration
+          properties:
+            disabled:
+              type: boolean
+              description: Whether the guest user is disabled
+            admin_channels:
+              type: array
+              description: Admin channels for the guest user
+              items:
+                type: string
+  parameters:
+    db:
+      name: db
+      in: path
+      required: true
+      description: The name of the database
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

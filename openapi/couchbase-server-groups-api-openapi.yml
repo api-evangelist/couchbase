@@ -1,0 +1,138 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Server Groups API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Server Groups
+  description: Endpoints for managing server groups for rack-zone awareness.
+paths:
+  /pools/default/serverGroups:
+    get:
+      operationId: listServerGroups
+      summary: List server groups
+      description: Returns the list of server groups and their member nodes for rack-zone awareness configuration.
+      tags:
+      - Server Groups
+      responses:
+        '200':
+          description: Successful retrieval of server groups
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerGroups'
+        '401':
+          description: Unauthorized access
+    post:
+      operationId: createServerGroup
+      summary: Create a server group
+      description: Creates a new server group for rack-zone awareness.
+      tags:
+      - Server Groups
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  description: The name of the server group
+      responses:
+        '200':
+          description: Server group created successfully
+        '400':
+          description: Invalid server group name
+        '401':
+          description: Unauthorized access
+components:
+  schemas:
+    ServerGroups:
+      type: object
+      description: Server groups configuration
+      properties:
+        groups:
+          type: array
+          description: List of server groups
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Name of the server group
+              uri:
+                type: string
+                description: URI for the server group
+              nodes:
+                type: array
+                description: Nodes in the server group
+                items:
+                  $ref: '#/components/schemas/Node'
+    Node:
+      type: object
+      description: Information about a cluster node
+      properties:
+        hostname:
+          type: string
+          description: Node hostname and port
+        status:
+          type: string
+          description: Node status
+          enum:
+          - healthy
+          - unhealthy
+          - warmup
+        clusterMembership:
+          type: string
+          description: Cluster membership status
+          enum:
+          - active
+          - inactiveAdded
+          - inactiveFailed
+        services:
+          type: array
+          description: List of services running on the node
+          items:
+            type: string
+            enum:
+            - kv
+            - n1ql
+            - index
+            - fts
+            - cbas
+            - eventing
+            - backup
+        os:
+          type: string
+          description: Operating system of the node
+        version:
+          type: string
+          description: Couchbase Server version on the node
+        memoryTotal:
+          type: integer
+          description: Total memory on the node in bytes
+        memoryFree:
+          type: integer
+          description: Free memory on the node in bytes
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

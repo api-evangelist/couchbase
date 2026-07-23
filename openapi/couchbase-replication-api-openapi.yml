@@ -1,0 +1,210 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Replication API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Replication
+  description: Endpoints for managing inter-Sync Gateway replications.
+paths:
+  /{db}/_replication/:
+    get:
+      operationId: listReplications
+      summary: List replications
+      description: Returns the list of all inter-Sync Gateway replications configured for the specified database.
+      tags:
+      - Replication
+      parameters:
+      - $ref: '#/components/parameters/db'
+      responses:
+        '200':
+          description: Successful retrieval of replications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReplicationConfig'
+        '401':
+          description: Unauthorized access
+    post:
+      operationId: createReplication
+      summary: Create a replication
+      description: Creates a new inter-Sync Gateway replication for the specified database.
+      tags:
+      - Replication
+      parameters:
+      - $ref: '#/components/parameters/db'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReplicationConfig'
+      responses:
+        '201':
+          description: Replication created successfully
+        '400':
+          description: Invalid replication configuration
+        '401':
+          description: Unauthorized access
+  /{db}/_replication/{replicationId}:
+    get:
+      operationId: getReplication
+      summary: Get replication details
+      description: Returns detailed information about a specific replication.
+      tags:
+      - Replication
+      parameters:
+      - $ref: '#/components/parameters/db'
+      - $ref: '#/components/parameters/replicationId'
+      responses:
+        '200':
+          description: Successful retrieval of replication details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReplicationConfig'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Replication not found
+    put:
+      operationId: updateReplication
+      summary: Update a replication
+      description: Updates the configuration of an existing replication.
+      tags:
+      - Replication
+      parameters:
+      - $ref: '#/components/parameters/db'
+      - $ref: '#/components/parameters/replicationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReplicationConfig'
+      responses:
+        '200':
+          description: Replication updated successfully
+        '400':
+          description: Invalid replication configuration
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Replication not found
+    delete:
+      operationId: deleteReplication
+      summary: Delete a replication
+      description: Deletes the specified replication.
+      tags:
+      - Replication
+      parameters:
+      - $ref: '#/components/parameters/db'
+      - $ref: '#/components/parameters/replicationId'
+      responses:
+        '200':
+          description: Replication deleted successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Replication not found
+components:
+  parameters:
+    replicationId:
+      name: replicationId
+      in: path
+      required: true
+      description: The replication identifier
+      schema:
+        type: string
+    db:
+      name: db
+      in: path
+      required: true
+      description: The name of the database
+      schema:
+        type: string
+  schemas:
+    ReplicationConfig:
+      type: object
+      description: Inter-Sync Gateway replication configuration
+      properties:
+        replication_id:
+          type: string
+          description: Replication identifier
+        remote:
+          type: string
+          description: URL of the remote Sync Gateway
+        direction:
+          type: string
+          description: Replication direction
+          enum:
+          - push
+          - pull
+          - pushAndPull
+        continuous:
+          type: boolean
+          description: Whether the replication runs continuously
+        filter:
+          type: string
+          description: Filter function for the replication
+          enum:
+          - sync_gateway/bychannel
+        query_params:
+          type: object
+          description: Parameters for the filter function
+          properties:
+            channels:
+              type: array
+              description: Channel names to replicate
+              items:
+                type: string
+        conflict_resolution_type:
+          type: string
+          description: Conflict resolution strategy
+          enum:
+          - default
+          - localWins
+          - remoteWins
+          - custom
+        custom_conflict_resolver:
+          type: string
+          description: JavaScript custom conflict resolver function
+        max_backoff_time:
+          type: integer
+          description: Maximum backoff time for retries in minutes
+        initial_state:
+          type: string
+          description: Initial state of the replication
+          enum:
+          - running
+          - stopped
+        state:
+          type: string
+          description: Current state of the replication
+          enum:
+          - running
+          - stopped
+          - error
+          - reconnecting
+          - starting
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

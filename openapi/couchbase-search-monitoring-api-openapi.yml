@@ -1,0 +1,119 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Search Monitoring API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Search Monitoring
+  description: Endpoints for monitoring search index statistics and service status.
+paths:
+  /api/index/{indexName}/count:
+    get:
+      operationId: getSearchIndexDocCount
+      summary: Get document count for a search index
+      description: Returns the number of documents that have been indexed by the specified Full Text Search index.
+      tags:
+      - Search Monitoring
+      parameters:
+      - $ref: '#/components/parameters/indexName'
+      responses:
+        '200':
+          description: Successful retrieval of document count
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Response status
+                  count:
+                    type: integer
+                    description: Number of indexed documents
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Index not found
+  /api/stats:
+    get:
+      operationId: getSearchStats
+      summary: Get search service statistics
+      description: Returns aggregate statistics for the Search service and all indexes on the node.
+      tags:
+      - Search Monitoring
+      responses:
+        '200':
+          description: Successful retrieval of search statistics
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '401':
+          description: Unauthorized access
+  /api/stats/index/{indexName}:
+    get:
+      operationId: getSearchIndexStats
+      summary: Get statistics for a search index
+      description: Returns detailed statistics for a specific search index including document count, mutation throughput, and query performance metrics.
+      tags:
+      - Search Monitoring
+      parameters:
+      - $ref: '#/components/parameters/indexName'
+      responses:
+        '200':
+          description: Successful retrieval of index statistics
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Index not found
+  /api/nsstats:
+    get:
+      operationId: getSearchNamespaceStats
+      summary: Get namespace-level search statistics
+      description: Returns namespace-level statistics for the Search service that can be consumed by monitoring systems like Prometheus.
+      tags:
+      - Search Monitoring
+      responses:
+        '200':
+          description: Successful retrieval of namespace statistics
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '401':
+          description: Unauthorized access
+components:
+  parameters:
+    indexName:
+      name: indexName
+      in: path
+      required: true
+      description: The name of the Full Text Search index
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

@@ -1,0 +1,217 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Security API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Security
+  description: Endpoints for managing security settings, users, roles, certificates, and audit configurations.
+paths:
+  /settings/rbac/users:
+    get:
+      operationId: listUsers
+      summary: List all users
+      description: Returns the list of all users configured in the cluster with their roles and authentication domains.
+      tags:
+      - Security
+      responses:
+        '200':
+          description: Successful retrieval of user list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized access
+  /settings/rbac/users/{domain}/{username}:
+    get:
+      operationId: getUser
+      summary: Get user details
+      description: Returns detailed information about a specific user including their roles and authentication configuration.
+      tags:
+      - Security
+      parameters:
+      - $ref: '#/components/parameters/domain'
+      - $ref: '#/components/parameters/username'
+      responses:
+        '200':
+          description: Successful retrieval of user details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: User not found
+    put:
+      operationId: createOrUpdateUser
+      summary: Create or update a user
+      description: Creates a new user or updates an existing user with the specified roles and authentication settings.
+      tags:
+      - Security
+      parameters:
+      - $ref: '#/components/parameters/domain'
+      - $ref: '#/components/parameters/username'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  description: User password (required for local domain)
+                roles:
+                  type: string
+                  description: Comma-separated list of roles
+                name:
+                  type: string
+                  description: Full name of the user
+      responses:
+        '200':
+          description: User created or updated successfully
+        '400':
+          description: Invalid user configuration
+        '401':
+          description: Unauthorized access
+    delete:
+      operationId: deleteUser
+      summary: Delete a user
+      description: Deletes the specified user from the cluster.
+      tags:
+      - Security
+      parameters:
+      - $ref: '#/components/parameters/domain'
+      - $ref: '#/components/parameters/username'
+      responses:
+        '200':
+          description: User deleted successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: User not found
+  /settings/rbac/roles:
+    get:
+      operationId: listRoles
+      summary: List available roles
+      description: Returns the list of all available roles in the cluster that can be assigned to users.
+      tags:
+      - Security
+      responses:
+        '200':
+          description: Successful retrieval of available roles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Role'
+        '401':
+          description: Unauthorized access
+  /pools/default/certificate:
+    get:
+      operationId: getClusterCertificate
+      summary: Get cluster certificate
+      description: Returns the cluster CA certificate in PEM format.
+      tags:
+      - Security
+      responses:
+        '200':
+          description: Successful retrieval of cluster certificate
+          content:
+            text/plain:
+              schema:
+                type: string
+components:
+  schemas:
+    Role:
+      type: object
+      description: Available role definition
+      properties:
+        role:
+          type: string
+          description: Role identifier
+        name:
+          type: string
+          description: Human-readable role name
+        desc:
+          type: string
+          description: Description of the role
+        bucket_name:
+          type: string
+          description: Bucket constraint for the role
+    User:
+      type: object
+      description: User account information
+      properties:
+        id:
+          type: string
+          description: Username
+        name:
+          type: string
+          description: Full name of the user
+        domain:
+          type: string
+          description: Authentication domain
+          enum:
+          - local
+          - external
+        roles:
+          type: array
+          description: List of roles assigned to the user
+          items:
+            type: object
+            properties:
+              role:
+                type: string
+                description: Role name
+              bucket_name:
+                type: string
+                description: Bucket the role applies to
+              scope_name:
+                type: string
+                description: Scope the role applies to
+              collection_name:
+                type: string
+                description: Collection the role applies to
+  parameters:
+    domain:
+      name: domain
+      in: path
+      required: true
+      description: The authentication domain (local or external)
+      schema:
+        type: string
+        enum:
+        - local
+        - external
+    username:
+      name: username
+      in: path
+      required: true
+      description: The username of the user
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

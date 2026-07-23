@@ -1,0 +1,261 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Functions API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Functions
+  description: Endpoints for creating, retrieving, updating, and deleting Eventing Functions.
+paths:
+  /api/v1/functions:
+    get:
+      operationId: listEventingFunctions
+      summary: List all Eventing Functions
+      description: Returns the definitions of all Eventing Functions including their source code, bindings, and deployment settings.
+      tags:
+      - Functions
+      responses:
+        '200':
+          description: Successful retrieval of function list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventingFunction'
+        '401':
+          description: Unauthorized access
+  /api/v1/functions/{functionName}:
+    get:
+      operationId: getEventingFunction
+      summary: Get an Eventing Function
+      description: Returns the definition of a specific Eventing Function including its source code, bindings, and deployment settings.
+      tags:
+      - Functions
+      parameters:
+      - $ref: '#/components/parameters/functionName'
+      responses:
+        '200':
+          description: Successful retrieval of function definition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventingFunction'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Function not found
+    post:
+      operationId: createOrUpdateEventingFunction
+      summary: Create or update an Eventing Function
+      description: Creates a new Eventing Function or updates an existing one with the provided definition. The function name in the URL must match the appname in the request body.
+      tags:
+      - Functions
+      parameters:
+      - $ref: '#/components/parameters/functionName'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventingFunction'
+      responses:
+        '200':
+          description: Function created or updated successfully
+        '400':
+          description: Invalid function definition
+        '401':
+          description: Unauthorized access
+    delete:
+      operationId: deleteEventingFunction
+      summary: Delete an Eventing Function
+      description: Deletes the specified Eventing Function. Only functions in undeployed state can be deleted.
+      tags:
+      - Functions
+      parameters:
+      - $ref: '#/components/parameters/functionName'
+      responses:
+        '200':
+          description: Function deleted successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Function not found
+        '422':
+          description: Function is deployed and cannot be deleted
+components:
+  parameters:
+    functionName:
+      name: functionName
+      in: path
+      required: true
+      description: The name of the Eventing Function
+      schema:
+        type: string
+  schemas:
+    EventingFunction:
+      type: object
+      description: Eventing Function definition
+      required:
+      - appname
+      - appcode
+      properties:
+        appname:
+          type: string
+          description: Name of the Eventing Function
+        appcode:
+          type: string
+          description: JavaScript handler code for the function
+        depcfg:
+          type: object
+          description: Dependency configuration including bindings
+          properties:
+            buckets:
+              type: array
+              description: Bucket bindings for the function
+              items:
+                type: object
+                properties:
+                  alias:
+                    type: string
+                    description: Alias name used in handler code
+                  bucket_name:
+                    type: string
+                    description: Name of the bound bucket
+                  scope_name:
+                    type: string
+                    description: Name of the scope
+                  collection_name:
+                    type: string
+                    description: Name of the collection
+                  access:
+                    type: string
+                    description: Access level for the bucket binding
+                    enum:
+                    - r
+                    - rw
+            curl:
+              type: array
+              description: cURL bindings for external HTTP calls
+              items:
+                type: object
+                properties:
+                  hostname:
+                    type: string
+                    description: URL of the external endpoint
+                  value:
+                    type: string
+                    description: Alias name used in handler code
+                  auth_type:
+                    type: string
+                    description: Authentication type
+                    enum:
+                    - no-auth
+                    - basic
+                    - bearer
+                    - digest
+                  allow_cookies:
+                    type: boolean
+                    description: Whether to allow cookies
+                  validate_ssl_certificate:
+                    type: boolean
+                    description: Whether to validate SSL certificates
+            constants:
+              type: array
+              description: Constant bindings
+              items:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    description: Alias name
+                  literal:
+                    type: string
+                    description: Constant value
+            source_bucket:
+              type: string
+              description: Source bucket for mutations
+            source_scope:
+              type: string
+              description: Source scope for mutations
+            source_collection:
+              type: string
+              description: Source collection for mutations
+            metadata_bucket:
+              type: string
+              description: Metadata bucket for checkpoints
+            metadata_scope:
+              type: string
+              description: Metadata scope for checkpoints
+            metadata_collection:
+              type: string
+              description: Metadata collection for checkpoints
+        settings:
+          type: object
+          description: Function deployment settings
+          properties:
+            dcp_stream_boundary:
+              type: string
+              description: Starting point for processing mutations
+              enum:
+              - everything
+              - from_now
+            deployment_status:
+              type: boolean
+              description: Whether the function is deployed
+            processing_status:
+              type: boolean
+              description: Whether the function is processing mutations
+            log_level:
+              type: string
+              description: Log level for the function
+              enum:
+              - INFO
+              - ERROR
+              - WARNING
+              - DEBUG
+              - TRACE
+            language_compatibility:
+              type: string
+              description: Language compatibility version
+            execution_timeout:
+              type: integer
+              description: Maximum execution time for a single handler invocation in seconds
+            timer_context_size:
+              type: integer
+              description: Maximum size of timer context in bytes
+            worker_count:
+              type: integer
+              description: Number of worker threads
+            num_timer_partitions:
+              type: integer
+              description: Number of timer partitions
+        function_scope:
+          type: object
+          description: Scope of the function definition
+          properties:
+            bucket:
+              type: string
+              description: Bucket for the function scope
+            scope:
+              type: string
+              description: Scope name
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

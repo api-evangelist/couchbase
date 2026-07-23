@@ -1,0 +1,121 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Analytics Admin API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Analytics Admin
+  description: Endpoints for administering and monitoring the Analytics service.
+paths:
+  /analytics/node/agg/stats/remaining:
+    get:
+      operationId: getAnalyticsRemainingMutations
+      summary: Get remaining mutations to be synced
+      description: Returns the number of mutations that have not yet been synced to the Analytics service from the Data service. Useful for monitoring data ingestion progress.
+      tags:
+      - Analytics Admin
+      responses:
+        '200':
+          description: Successful retrieval of remaining mutation counts
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  description: Remaining mutations per dataset
+        '401':
+          description: Unauthorized access
+  /analytics/status/ingestion:
+    get:
+      operationId: getAnalyticsIngestionStatus
+      summary: Get analytics data ingestion status
+      description: Returns the current status of data ingestion from Couchbase Server into the Analytics service, including details about each dataset and its synchronization state.
+      tags:
+      - Analytics Admin
+      responses:
+        '200':
+          description: Successful retrieval of ingestion status
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized access
+  /analytics/cluster:
+    get:
+      operationId: getAnalyticsClusterStatus
+      summary: Get analytics cluster status
+      description: Returns the status of the Analytics cluster including information about all Analytics nodes and their states.
+      tags:
+      - Analytics Admin
+      responses:
+        '200':
+          description: Successful retrieval of cluster status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsClusterStatus'
+        '401':
+          description: Unauthorized access
+  /analytics/cluster/restart:
+    post:
+      operationId: restartAnalyticsCluster
+      summary: Restart analytics cluster
+      description: Restarts the Analytics service across all nodes in the cluster.
+      tags:
+      - Analytics Admin
+      responses:
+        '202':
+          description: Restart initiated successfully
+        '401':
+          description: Unauthorized access
+components:
+  schemas:
+    AnalyticsClusterStatus:
+      type: object
+      description: Analytics cluster status information
+      properties:
+        state:
+          type: string
+          description: Overall state of the Analytics cluster
+          enum:
+          - ACTIVE
+          - UNUSABLE
+          - RECOVERING
+        nodes:
+          type: array
+          description: List of Analytics nodes and their states
+          items:
+            type: object
+            properties:
+              nodeId:
+                type: string
+                description: Node identifier
+              state:
+                type: string
+                description: State of the individual node
+              partitions:
+                type: array
+                description: Data partitions on the node
+                items:
+                  type: object
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

@@ -1,0 +1,327 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Query Admin API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Query Admin
+  description: Endpoints for administrative operations on the Query service including monitoring active requests, completed requests, and prepared statements.
+paths:
+  /admin/active_requests:
+    get:
+      operationId: listActiveRequests
+      summary: List active query requests
+      description: Returns the list of currently active query requests on the node, including their statement text, execution time, and request ID.
+      tags:
+      - Query Admin
+      responses:
+        '200':
+          description: Successful retrieval of active requests
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ActiveRequest'
+        '401':
+          description: Unauthorized access
+  /admin/active_requests/{requestId}:
+    get:
+      operationId: getActiveRequest
+      summary: Get an active request
+      description: Returns details about a specific active query request.
+      tags:
+      - Query Admin
+      parameters:
+      - $ref: '#/components/parameters/requestId'
+      responses:
+        '200':
+          description: Successful retrieval of active request details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActiveRequest'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Request not found
+    delete:
+      operationId: cancelActiveRequest
+      summary: Cancel an active request
+      description: Cancels a specific active query request by its request ID.
+      tags:
+      - Query Admin
+      parameters:
+      - $ref: '#/components/parameters/requestId'
+      responses:
+        '200':
+          description: Request cancelled successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Request not found
+  /admin/completed_requests:
+    get:
+      operationId: listCompletedRequests
+      summary: List completed query requests
+      description: Returns the list of recently completed query requests on the node, including their statement text, execution time, and result count.
+      tags:
+      - Query Admin
+      responses:
+        '200':
+          description: Successful retrieval of completed requests
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CompletedRequest'
+        '401':
+          description: Unauthorized access
+  /admin/prepareds:
+    get:
+      operationId: listPreparedStatements
+      summary: List prepared statements
+      description: Returns the list of prepared statements cached on the node.
+      tags:
+      - Query Admin
+      responses:
+        '200':
+          description: Successful retrieval of prepared statements
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PreparedStatement'
+        '401':
+          description: Unauthorized access
+  /admin/prepareds/{name}:
+    get:
+      operationId: getPreparedStatement
+      summary: Get a prepared statement
+      description: Returns details about a specific prepared statement.
+      tags:
+      - Query Admin
+      parameters:
+      - name: name
+        in: path
+        required: true
+        description: The name of the prepared statement
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of prepared statement
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PreparedStatement'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Prepared statement not found
+    delete:
+      operationId: deletePreparedStatement
+      summary: Delete a prepared statement
+      description: Removes a specific prepared statement from the cache.
+      tags:
+      - Query Admin
+      parameters:
+      - name: name
+        in: path
+        required: true
+        description: The name of the prepared statement
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Prepared statement deleted successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Prepared statement not found
+  /admin/indexes/active_requests:
+    get:
+      operationId: listActiveIndexRequests
+      summary: List active index requests
+      description: Returns the list of active index request operations being processed by the Query service.
+      tags:
+      - Query Admin
+      responses:
+        '200':
+          description: Successful retrieval of active index requests
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          description: Unauthorized access
+  /admin/vitals:
+    get:
+      operationId: getQueryVitals
+      summary: Get query service vitals
+      description: Returns vital statistics for the Query service node including request counts, error counts, and resource utilization.
+      tags:
+      - Query Admin
+      responses:
+        '200':
+          description: Successful retrieval of query service vitals
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryVitals'
+        '401':
+          description: Unauthorized access
+components:
+  schemas:
+    CompletedRequest:
+      type: object
+      description: A completed query request
+      properties:
+        requestId:
+          type: string
+          description: Unique identifier for the request
+        statement:
+          type: string
+          description: The SQL++ statement that was executed
+        requestTime:
+          type: string
+          description: Time when the request was received
+        elapsedTime:
+          type: string
+          description: Total elapsed time for the request
+        resultCount:
+          type: integer
+          description: Number of results returned
+        resultSize:
+          type: integer
+          description: Size of results in bytes
+        errorCount:
+          type: integer
+          description: Number of errors encountered
+        state:
+          type: string
+          description: Final state of the request
+    QueryVitals:
+      type: object
+      description: Query service vital statistics
+      properties:
+        uptime:
+          type: string
+          description: Time since the query service started
+        local.time:
+          type: string
+          description: Local time on the node
+        version:
+          type: string
+          description: Version of the query engine
+        total.threads:
+          type: integer
+          description: Total number of threads
+        cores:
+          type: integer
+          description: Number of CPU cores
+        gc_num:
+          type: integer
+          description: Number of garbage collections
+        gc_pause_time:
+          type: string
+          description: Total garbage collection pause time
+        gc_pause_percent:
+          type: string
+          description: Percentage of time spent in GC
+        memory_usage:
+          type: integer
+          description: Current memory usage in bytes
+        total_memory_system:
+          type: integer
+          description: Total system memory available
+        request.completed.count:
+          type: integer
+          description: Total number of completed requests
+        request.active.count:
+          type: integer
+          description: Number of currently active requests
+        request.per.sec.1min:
+          type: number
+          description: Requests per second over the last minute
+        request.per.sec.5min:
+          type: number
+          description: Requests per second over the last 5 minutes
+        request.per.sec.15min:
+          type: number
+          description: Requests per second over the last 15 minutes
+    PreparedStatement:
+      type: object
+      description: A cached prepared statement
+      properties:
+        name:
+          type: string
+          description: Name of the prepared statement
+        statement:
+          type: string
+          description: The original SQL++ statement
+        uses:
+          type: integer
+          description: Number of times the prepared statement has been used
+        lastUse:
+          type: string
+          description: Time of last use
+    ActiveRequest:
+      type: object
+      description: An active query request
+      properties:
+        requestId:
+          type: string
+          description: Unique identifier for the request
+        statement:
+          type: string
+          description: The SQL++ statement being executed
+        requestTime:
+          type: string
+          description: Time when the request was received
+        elapsedTime:
+          type: string
+          description: Time elapsed since the request started
+        executionTime:
+          type: string
+          description: Time spent executing the query
+        state:
+          type: string
+          description: Current state of the request
+        scanConsistency:
+          type: string
+          description: Consistency level of the query
+        clientContextID:
+          type: string
+          description: Client-provided context identifier
+  parameters:
+    requestId:
+      name: requestId
+      in: path
+      required: true
+      description: The unique identifier of the query request
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

@@ -1,0 +1,386 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Documents API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Documents
+  description: Endpoints for creating, reading, updating, and deleting documents.
+paths:
+  /{db}/_all_docs:
+    get:
+      operationId: getAllDocs
+      summary: Get all documents
+      description: Returns all documents in the database. By default, only the document ID and revision are included. Use include_docs=true to include the full document body.
+      tags:
+      - Documents
+      parameters:
+      - $ref: '#/components/parameters/db'
+      - name: include_docs
+        in: query
+        required: false
+        description: Whether to include document bodies in the response
+        schema:
+          type: boolean
+          default: false
+      - name: channels
+        in: query
+        required: false
+        description: Filter results by channel name
+        schema:
+          type: string
+      - name: keys
+        in: query
+        required: false
+        description: Array of document IDs to retrieve
+        schema:
+          type: string
+      - name: startkey
+        in: query
+        required: false
+        description: Start key for the range to return
+        schema:
+          type: string
+      - name: endkey
+        in: query
+        required: false
+        description: End key for the range to return
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        description: Maximum number of results to return
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful retrieval of documents
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllDocsResponse'
+        '401':
+          description: Unauthorized access
+  /{db}/{docId}:
+    get:
+      operationId: getDocument
+      summary: Get a document
+      description: Retrieves a document from the database by its document ID.
+      tags:
+      - Documents
+      parameters:
+      - $ref: '#/components/parameters/db'
+      - $ref: '#/components/parameters/docId'
+      - name: rev
+        in: query
+        required: false
+        description: Specific revision to retrieve
+        schema:
+          type: string
+      - name: revs
+        in: query
+        required: false
+        description: Whether to include revision history
+        schema:
+          type: boolean
+      - name: open_revs
+        in: query
+        required: false
+        description: Array of revision IDs or "all" to get all leaf revisions
+        schema:
+          type: string
+      - name: attachments
+        in: query
+        required: false
+        description: Whether to include attachment data
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful retrieval of the document
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Document'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Document not found
+    put:
+      operationId: putDocument
+      summary: Create or update a document
+      description: Creates a new document or updates an existing document. For updates, the current revision ID must be included in the request body as _rev.
+      tags:
+      - Documents
+      parameters:
+      - $ref: '#/components/parameters/db'
+      - $ref: '#/components/parameters/docId'
+      - name: rev
+        in: query
+        required: false
+        description: Current revision for updates
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: The document body
+      responses:
+        '200':
+          description: Document created or updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentResponse'
+        '401':
+          description: Unauthorized access
+        '409':
+          description: Conflict due to revision mismatch
+    delete:
+      operationId: deleteDocument
+      summary: Delete a document
+      description: Deletes a document by creating a tombstone revision. The current revision must be specified.
+      tags:
+      - Documents
+      parameters:
+      - $ref: '#/components/parameters/db'
+      - $ref: '#/components/parameters/docId'
+      - name: rev
+        in: query
+        required: true
+        description: Current revision of the document
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Document deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentResponse'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Document not found
+        '409':
+          description: Conflict due to revision mismatch
+  /{db}/_bulk_docs:
+    post:
+      operationId: bulkDocs
+      summary: Create or update multiple documents
+      description: Creates or updates multiple documents in a single request. This is the primary endpoint used by Couchbase Lite for push replication.
+      tags:
+      - Documents
+      parameters:
+      - $ref: '#/components/parameters/db'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - docs
+              properties:
+                docs:
+                  type: array
+                  description: Array of documents to create or update
+                  items:
+                    type: object
+                new_edits:
+                  type: boolean
+                  description: Whether to assign new revision IDs
+                  default: true
+      responses:
+        '201':
+          description: Documents processed successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocumentResponse'
+        '401':
+          description: Unauthorized access
+  /{db}/_bulk_get:
+    post:
+      operationId: bulkGet
+      summary: Get multiple documents
+      description: Retrieves multiple documents by ID in a single request. This is the primary endpoint used by Couchbase Lite for pull replication.
+      tags:
+      - Documents
+      parameters:
+      - $ref: '#/components/parameters/db'
+      - name: attachments
+        in: query
+        required: false
+        description: Whether to include attachments
+        schema:
+          type: boolean
+      - name: revs
+        in: query
+        required: false
+        description: Whether to include revision history
+        schema:
+          type: boolean
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - docs
+              properties:
+                docs:
+                  type: array
+                  description: Array of document identifiers
+                  items:
+                    type: object
+                    required:
+                    - id
+                    properties:
+                      id:
+                        type: string
+                        description: Document ID
+                      rev:
+                        type: string
+                        description: Specific revision to retrieve
+      responses:
+        '200':
+          description: Successful retrieval of documents
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized access
+components:
+  schemas:
+    Document:
+      type: object
+      description: A Sync Gateway document
+      properties:
+        _id:
+          type: string
+          description: Document ID
+        _rev:
+          type: string
+          description: Current revision ID
+        _deleted:
+          type: boolean
+          description: Whether the document is deleted
+        _revisions:
+          type: object
+          description: Revision history
+          properties:
+            ids:
+              type: array
+              items:
+                type: string
+            start:
+              type: integer
+        _attachments:
+          type: object
+          description: Document attachments
+          additionalProperties:
+            type: object
+            properties:
+              content_type:
+                type: string
+                description: MIME type of the attachment
+              digest:
+                type: string
+                description: Content digest
+              length:
+                type: integer
+                description: Attachment size in bytes
+              revpos:
+                type: integer
+                description: Revision position
+              stub:
+                type: boolean
+                description: Whether this is a stub reference
+      additionalProperties: true
+    AllDocsResponse:
+      type: object
+      description: Response for _all_docs request
+      properties:
+        rows:
+          type: array
+          description: Array of document entries
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: Document ID
+              key:
+                type: string
+                description: Document key
+              value:
+                type: object
+                properties:
+                  rev:
+                    type: string
+                    description: Current revision ID
+              doc:
+                type: object
+                description: Full document body (if include_docs=true)
+        total_rows:
+          type: integer
+          description: Total number of rows
+        update_seq:
+          type: integer
+          description: Current update sequence
+    DocumentResponse:
+      type: object
+      description: Response after creating or updating a document
+      properties:
+        id:
+          type: string
+          description: Document ID
+        rev:
+          type: string
+          description: New revision ID
+        ok:
+          type: boolean
+          description: Whether the operation succeeded
+  parameters:
+    db:
+      name: db
+      in: path
+      required: true
+      description: The name of the database (keyspace)
+      schema:
+        type: string
+    docId:
+      name: docId
+      in: path
+      required: true
+      description: The document ID
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

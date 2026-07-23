@@ -1,0 +1,122 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Replications API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Replications
+  description: Endpoints for creating, managing, and deleting XDCR replication streams.
+paths:
+  /controller/createReplication:
+    post:
+      operationId: createReplication
+      summary: Create an XDCR replication
+      description: Creates a new XDCR replication stream from a source bucket to a target bucket on a remote cluster.
+      tags:
+      - Replications
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ReplicationCreateRequest'
+      responses:
+        '200':
+          description: Replication created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Replication ID
+        '400':
+          description: Invalid replication configuration
+        '401':
+          description: Unauthorized access
+  /controller/cancelXDCR/{replicationId}:
+    delete:
+      operationId: deleteReplication
+      summary: Delete an XDCR replication
+      description: Deletes the specified XDCR replication stream, stopping all data replication for that stream.
+      tags:
+      - Replications
+      parameters:
+      - $ref: '#/components/parameters/replicationId'
+      responses:
+        '200':
+          description: Replication deleted successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Replication not found
+components:
+  parameters:
+    replicationId:
+      name: replicationId
+      in: path
+      required: true
+      description: The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}
+      schema:
+        type: string
+  schemas:
+    ReplicationCreateRequest:
+      type: object
+      description: Request to create an XDCR replication
+      required:
+      - fromBucket
+      - toCluster
+      - toBucket
+      - replicationType
+      properties:
+        fromBucket:
+          type: string
+          description: Name of the source bucket
+        toCluster:
+          type: string
+          description: Name of the remote cluster reference
+        toBucket:
+          type: string
+          description: Name of the target bucket on the remote cluster
+        replicationType:
+          type: string
+          description: Type of replication
+          enum:
+          - continuous
+        filterExpression:
+          type: string
+          description: Regular expression filter for document IDs
+        compressionType:
+          type: string
+          description: Compression type for replication data
+          enum:
+          - None
+          - Auto
+          - Snappy
+        priority:
+          type: string
+          description: Replication priority
+          enum:
+          - High
+          - Medium
+          - Low
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

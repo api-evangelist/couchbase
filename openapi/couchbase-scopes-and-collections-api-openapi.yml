@@ -1,0 +1,271 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Scopes and Collections API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Scopes and Collections
+  description: Endpoints for managing scopes and collections within Capella buckets.
+paths:
+  /v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/buckets/{bucketId}/scopes:
+    get:
+      operationId: listCapellaScopes
+      summary: List scopes in a bucket
+      description: Returns the list of scopes within the specified bucket.
+      tags:
+      - Scopes and Collections
+      parameters:
+      - $ref: '#/components/parameters/organizationId'
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/clusterId'
+      - $ref: '#/components/parameters/bucketId'
+      responses:
+        '200':
+          description: Successful retrieval of scopes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CapellaScope'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Bucket not found
+        '429':
+          description: Rate limit exceeded
+    post:
+      operationId: createCapellaScope
+      summary: Create a scope
+      description: Creates a new scope within the specified bucket.
+      tags:
+      - Scopes and Collections
+      parameters:
+      - $ref: '#/components/parameters/organizationId'
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/clusterId'
+      - $ref: '#/components/parameters/bucketId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  description: The name of the scope to create
+      responses:
+        '201':
+          description: Scope created successfully
+        '400':
+          description: Invalid scope configuration
+        '401':
+          description: Unauthorized access
+        '429':
+          description: Rate limit exceeded
+  /pools/default/buckets/{bucketName}/scopes:
+    get:
+      operationId: listScopes
+      summary: List scopes in a bucket
+      description: Returns the list of all scopes and their collections within the specified bucket.
+      tags:
+      - Scopes and Collections
+      parameters:
+      - $ref: '#/components/parameters/bucketName'
+      responses:
+        '200':
+          description: Successful retrieval of scopes list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScopesList'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Bucket not found
+    post:
+      operationId: createScope
+      summary: Create a scope
+      description: Creates a new scope within the specified bucket.
+      tags:
+      - Scopes and Collections
+      parameters:
+      - $ref: '#/components/parameters/bucketName'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  description: The name of the scope to create
+      responses:
+        '200':
+          description: Scope created successfully
+        '400':
+          description: Invalid scope name
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Bucket not found
+  /pools/default/buckets/{bucketName}/scopes/{scopeName}/collections:
+    post:
+      operationId: createCollection
+      summary: Create a collection
+      description: Creates a new collection within the specified scope and bucket.
+      tags:
+      - Scopes and Collections
+      parameters:
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/scopeName'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  description: The name of the collection to create
+      responses:
+        '200':
+          description: Collection created successfully
+        '400':
+          description: Invalid collection name
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Bucket or scope not found
+components:
+  parameters:
+    bucketName:
+      name: bucketName
+      in: path
+      required: true
+      description: The name of the bucket
+      schema:
+        type: string
+    projectId:
+      name: projectId
+      in: path
+      required: true
+      description: The UUID of the project
+      schema:
+        type: string
+        format: uuid
+    bucketId:
+      name: bucketId
+      in: path
+      required: true
+      description: The ID of the bucket
+      schema:
+        type: string
+    scopeName:
+      name: scopeName
+      in: path
+      required: true
+      description: The name of the scope
+      schema:
+        type: string
+    clusterId:
+      name: clusterId
+      in: path
+      required: true
+      description: The UUID of the cluster
+      schema:
+        type: string
+        format: uuid
+    organizationId:
+      name: organizationId
+      in: path
+      required: true
+      description: The UUID of the organization
+      schema:
+        type: string
+        format: uuid
+  schemas:
+    ScopesList:
+      type: object
+      description: List of scopes in a bucket
+      properties:
+        uid:
+          type: string
+          description: Unique identifier for the manifest
+        scopes:
+          type: array
+          description: List of scopes
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Name of the scope
+              uid:
+                type: string
+                description: Unique identifier for the scope
+              collections:
+                type: array
+                description: Collections within the scope
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: Name of the collection
+                    uid:
+                      type: string
+                      description: Unique identifier for the collection
+                    maxTTL:
+                      type: integer
+                      description: Maximum TTL for documents in seconds
+    CapellaScope:
+      type: object
+      description: Scope within a Capella bucket
+      properties:
+        name:
+          type: string
+          description: Scope name
+        collections:
+          type: array
+          description: Collections within the scope
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Collection name
+              maxTTL:
+                type: integer
+                description: Maximum TTL in seconds
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

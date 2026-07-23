@@ -1,0 +1,194 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Allowed CIDRs
+  description: Endpoints for managing allowed IP addresses and CIDR ranges for cluster access.
+paths:
+  /v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/allowedCIDRs:
+    get:
+      operationId: listAllowedCIDRs
+      summary: List allowed CIDRs
+      description: Returns the list of allowed IP addresses and CIDR ranges for the specified cluster.
+      tags:
+      - Allowed CIDRs
+      parameters:
+      - $ref: '#/components/parameters/organizationId'
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/clusterId'
+      responses:
+        '200':
+          description: Successful retrieval of allowed CIDRs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AllowedCIDR'
+        '401':
+          description: Unauthorized access
+        '429':
+          description: Rate limit exceeded
+    post:
+      operationId: addAllowedCIDR
+      summary: Add an allowed CIDR
+      description: Adds an allowed IP address or CIDR range for the specified cluster.
+      tags:
+      - Allowed CIDRs
+      parameters:
+      - $ref: '#/components/parameters/organizationId'
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/clusterId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AllowedCIDRCreateRequest'
+      responses:
+        '201':
+          description: Allowed CIDR added successfully
+        '400':
+          description: Invalid CIDR configuration
+        '401':
+          description: Unauthorized access
+        '429':
+          description: Rate limit exceeded
+  /v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/allowedCIDRs/{allowedCIDRId}:
+    delete:
+      operationId: deleteAllowedCIDR
+      summary: Delete an allowed CIDR
+      description: Removes an allowed IP address or CIDR range from the specified cluster.
+      tags:
+      - Allowed CIDRs
+      parameters:
+      - $ref: '#/components/parameters/organizationId'
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/clusterId'
+      - name: allowedCIDRId
+        in: path
+        required: true
+        description: The ID of the allowed CIDR to delete
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '204':
+          description: Allowed CIDR deleted successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Allowed CIDR not found
+        '429':
+          description: Rate limit exceeded
+components:
+  schemas:
+    AllowedCIDRCreateRequest:
+      type: object
+      description: Request to add an allowed CIDR
+      required:
+      - cidr
+      properties:
+        cidr:
+          type: string
+          description: IP address or CIDR range to allow
+        comment:
+          type: string
+          description: Optional comment describing the entry
+        expiresAt:
+          type: string
+          format: date-time
+          description: Optional expiration for temporary access
+    AllowedCIDR:
+      type: object
+      description: Allowed IP/CIDR for cluster access
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Allowed CIDR UUID
+        cidr:
+          type: string
+          description: IP address or CIDR range
+        comment:
+          type: string
+          description: Optional comment
+        expiresAt:
+          type: string
+          format: date-time
+          description: Expiration date for temporary access
+        status:
+          type: string
+          description: Status of the allowed CIDR
+        audit:
+          $ref: '#/components/schemas/AuditInfo'
+    AuditInfo:
+      type: object
+      description: Audit timestamps
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        modifiedAt:
+          type: string
+          format: date-time
+          description: Last modification timestamp
+        createdBy:
+          type: string
+          description: User who created the resource
+        modifiedBy:
+          type: string
+          description: User who last modified the resource
+        version:
+          type: integer
+          description: Resource version number
+  parameters:
+    projectId:
+      name: projectId
+      in: path
+      required: true
+      description: The UUID of the project
+      schema:
+        type: string
+        format: uuid
+    clusterId:
+      name: clusterId
+      in: path
+      required: true
+      description: The UUID of the cluster
+      schema:
+        type: string
+        format: uuid
+    organizationId:
+      name: organizationId
+      in: path
+      required: true
+      description: The UUID of the organization
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

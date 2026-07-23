@@ -1,0 +1,189 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Nodes API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Nodes
+  description: Endpoints for managing individual server nodes, including adding nodes, failover, recovery, and rebalance operations.
+paths:
+  /pools/nodes:
+    get:
+      operationId: getNodes
+      summary: Get nodes information
+      description: Returns information about all nodes in the cluster, including their services, status, and system resources.
+      tags:
+      - Nodes
+      responses:
+        '200':
+          description: Successful retrieval of node information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodesInfo'
+        '401':
+          description: Unauthorized access
+  /controller/addNode:
+    post:
+      operationId: addNode
+      summary: Add a node to the cluster
+      description: Adds a new node to the cluster. The node must be configured and reachable before it can be added.
+      tags:
+      - Nodes
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - hostname
+              properties:
+                hostname:
+                  type: string
+                  description: The hostname or IP address of the node to add
+                services:
+                  type: string
+                  description: Comma-separated list of services to enable on the node (kv, n1ql, index, fts, cbas, eventing, backup)
+                user:
+                  type: string
+                  description: Administrator username for the node
+                password:
+                  type: string
+                  description: Administrator password for the node
+      responses:
+        '200':
+          description: Node added successfully
+        '400':
+          description: Invalid node configuration
+        '401':
+          description: Unauthorized access
+  /controller/rebalance:
+    post:
+      operationId: rebalanceCluster
+      summary: Rebalance the cluster
+      description: Initiates a rebalance operation to redistribute data across the cluster nodes after adding or removing nodes.
+      tags:
+      - Nodes
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                knownNodes:
+                  type: string
+                  description: Comma-separated list of known node OTP names
+                ejectedNodes:
+                  type: string
+                  description: Comma-separated list of node OTP names to eject
+      responses:
+        '200':
+          description: Rebalance initiated successfully
+        '400':
+          description: Invalid rebalance configuration
+        '401':
+          description: Unauthorized access
+  /controller/failOver:
+    post:
+      operationId: failOverNode
+      summary: Fail over a node
+      description: Initiates a hard failover for the specified node, removing it from the cluster immediately.
+      tags:
+      - Nodes
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - otpNode
+              properties:
+                otpNode:
+                  type: string
+                  description: The OTP name of the node to fail over
+      responses:
+        '200':
+          description: Failover initiated successfully
+        '400':
+          description: Invalid failover request
+        '401':
+          description: Unauthorized access
+components:
+  schemas:
+    NodesInfo:
+      type: object
+      description: Information about cluster nodes
+      properties:
+        nodes:
+          type: array
+          description: List of nodes
+          items:
+            $ref: '#/components/schemas/Node'
+    Node:
+      type: object
+      description: Information about a cluster node
+      properties:
+        hostname:
+          type: string
+          description: Node hostname and port
+        status:
+          type: string
+          description: Node status
+          enum:
+          - healthy
+          - unhealthy
+          - warmup
+        clusterMembership:
+          type: string
+          description: Cluster membership status
+          enum:
+          - active
+          - inactiveAdded
+          - inactiveFailed
+        services:
+          type: array
+          description: List of services running on the node
+          items:
+            type: string
+            enum:
+            - kv
+            - n1ql
+            - index
+            - fts
+            - cbas
+            - eventing
+            - backup
+        os:
+          type: string
+          description: Operating system of the node
+        version:
+          type: string
+          description: Couchbase Server version on the node
+        memoryTotal:
+          type: integer
+          description: Total memory on the node in bytes
+        memoryFree:
+          type: integer
+          description: Free memory on the node in bytes
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

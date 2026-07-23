@@ -1,0 +1,180 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Role Management API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Role Management
+  description: Endpoints for managing roles and their channel assignments.
+paths:
+  /{db}/_role/:
+    get:
+      operationId: listRoles
+      summary: List all roles
+      description: Returns the list of all roles configured for the specified database.
+      tags:
+      - Role Management
+      parameters:
+      - $ref: '#/components/parameters/db'
+      responses:
+        '200':
+          description: Successful retrieval of role list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '401':
+          description: Unauthorized access
+    post:
+      operationId: createRole
+      summary: Create a role
+      description: Creates a new role for the specified database with the given channel assignments.
+      tags:
+      - Role Management
+      parameters:
+      - $ref: '#/components/parameters/db'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleConfig'
+      responses:
+        '201':
+          description: Role created successfully
+        '400':
+          description: Invalid role configuration
+        '401':
+          description: Unauthorized access
+        '409':
+          description: Role already exists
+  /{db}/_role/{roleName}:
+    get:
+      operationId: getRole
+      summary: Get role details
+      description: Returns detailed information about a specific role including its channel assignments.
+      tags:
+      - Role Management
+      parameters:
+      - $ref: '#/components/parameters/db'
+      - $ref: '#/components/parameters/roleName'
+      responses:
+        '200':
+          description: Successful retrieval of role details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleInfo'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Role not found
+    put:
+      operationId: updateRole
+      summary: Update a role
+      description: Updates the configuration of an existing role including its channel assignments.
+      tags:
+      - Role Management
+      parameters:
+      - $ref: '#/components/parameters/db'
+      - $ref: '#/components/parameters/roleName'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleConfig'
+      responses:
+        '200':
+          description: Role updated successfully
+        '400':
+          description: Invalid role configuration
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Role not found
+    delete:
+      operationId: deleteRole
+      summary: Delete a role
+      description: Deletes the specified role from the database.
+      tags:
+      - Role Management
+      parameters:
+      - $ref: '#/components/parameters/db'
+      - $ref: '#/components/parameters/roleName'
+      responses:
+        '200':
+          description: Role deleted successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Role not found
+components:
+  parameters:
+    roleName:
+      name: roleName
+      in: path
+      required: true
+      description: The role name
+      schema:
+        type: string
+    db:
+      name: db
+      in: path
+      required: true
+      description: The name of the database
+      schema:
+        type: string
+  schemas:
+    RoleInfo:
+      type: object
+      description: Role information
+      properties:
+        name:
+          type: string
+          description: Role name
+        admin_channels:
+          type: array
+          description: Admin-assigned channels
+          items:
+            type: string
+        all_channels:
+          type: array
+          description: All channels accessible through this role
+          items:
+            type: string
+    RoleConfig:
+      type: object
+      description: Role configuration
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Role name
+        admin_channels:
+          type: array
+          description: Admin-assigned channels for this role
+          items:
+            type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html

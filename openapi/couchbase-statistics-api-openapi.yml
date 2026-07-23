@@ -1,0 +1,146 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Analytics Service REST Allowed CIDRs Statistics API
+  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+servers:
+- url: https://localhost:8095
+  description: Analytics Service (default port)
+- url: https://localhost:18095
+  description: Analytics Service (SSL)
+security:
+- basicAuth: []
+tags:
+- name: Statistics
+  description: Endpoints for monitoring Eventing Function execution statistics and status.
+paths:
+  /api/v1/status:
+    get:
+      operationId: getEventingStatus
+      summary: Get Eventing Service status
+      description: Returns the deployment status and processing status of all Eventing Functions.
+      tags:
+      - Statistics
+      responses:
+        '200':
+          description: Successful retrieval of Eventing status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventingStatus'
+        '401':
+          description: Unauthorized access
+  /api/v1/stats:
+    get:
+      operationId: getEventingStats
+      summary: Get Eventing Function statistics
+      description: Returns execution statistics for all Eventing Functions including mutation processing counts, failure counts, and timing information.
+      tags:
+      - Statistics
+      responses:
+        '200':
+          description: Successful retrieval of function statistics
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventingFunctionStats'
+        '401':
+          description: Unauthorized access
+components:
+  schemas:
+    EventingFunctionStats:
+      type: object
+      description: Execution statistics for an Eventing Function
+      properties:
+        function_name:
+          type: string
+          description: Name of the function
+        execution_stats:
+          type: object
+          description: Execution statistics
+          properties:
+            on_update_success:
+              type: integer
+              description: Successful OnUpdate handler invocations
+            on_update_failure:
+              type: integer
+              description: Failed OnUpdate handler invocations
+            on_delete_success:
+              type: integer
+              description: Successful OnDelete handler invocations
+            on_delete_failure:
+              type: integer
+              description: Failed OnDelete handler invocations
+            timer_callback_success:
+              type: integer
+              description: Successful timer callback invocations
+            timer_callback_failure:
+              type: integer
+              description: Failed timer callback invocations
+        failure_stats:
+          type: object
+          description: Failure statistics
+          properties:
+            timeout_count:
+              type: integer
+              description: Number of handler timeouts
+            n1ql_op_exception_count:
+              type: integer
+              description: Number of N1QL operation exceptions
+    EventingStatus:
+      type: object
+      description: Status of all Eventing Functions
+      properties:
+        num_eventing_nodes:
+          type: integer
+          description: Number of nodes running the Eventing service
+        apps:
+          type: array
+          description: Status of each Eventing Function
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Function name
+              composite_status:
+                type: string
+                description: Overall status of the function
+                enum:
+                - undeployed
+                - deploying
+                - deployed
+                - undeploying
+                - paused
+                - pausing
+              deployment_status:
+                type: boolean
+                description: Whether the function is deployed
+              processing_status:
+                type: boolean
+                description: Whether the function is processing
+              num_deployed_nodes:
+                type: integer
+                description: Number of nodes where the function is deployed
+              function_scope:
+                type: object
+                description: Scope of the function
+                properties:
+                  bucket:
+                    type: string
+                  scope:
+                    type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Couchbase Server credentials.
+externalDocs:
+  description: Couchbase Analytics Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
