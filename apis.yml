@@ -9,7 +9,20 @@ description: >-
   Couchbase exposes a comprehensive set of REST APIs covering cluster administration, SQL++ query execution, full-text
   and vector search, analytics, eventing, backup, cross data center replication, and Capella management.
 url: https://raw.githubusercontent.com/api-evangelist/couchbase/refs/heads/main/apis.yml
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/couchbase.png
 type: Index
 access: Public
 position: Provider
@@ -36,255 +49,2929 @@ created: '2025-03-01'
 modified: '2026-05-19'
 specificationVersion: '0.20'
 apis:
-  - aid: couchbase:couchbase-server-rest-api
-    name: Couchbase Server REST API
-    description: >-
-      The Couchbase Server REST API provides programmatic access to manage and configure Couchbase Server clusters. It
-      includes endpoints for cluster management, bucket operations, node administration, security settings, and server
-      configuration. The API enables automation of deployment, monitoring, and maintenance tasks for Couchbase Server
-      instances across distributed environments.
-    humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
-    baseURL: https://localhost:8091
-    properties:
-      - type: Documentation
-        url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
-      - type: OpenAPI
-        url: openapi/couchbase-server-rest-api-openapi.yml
-      - type: Rules
-        url: rules/couchbase-server-rules.yml
-      - type: Capabilities
-        url: capabilities/couchbase-server-capabilities.yml
-    tags:
-      - Administration
-      - Buckets
-      - Clusters
-      - Database
-      - NoSQL
-  - aid: couchbase:couchbase-query-service-rest-api
-    name: Couchbase Query Service REST API
-    description: >-
-      The Couchbase Query Service REST API enables developers to execute SQL++ (formerly N1QL) queries against Couchbase
-      Server and manage query service settings. It supports ad-hoc queries, prepared statements, and request-level
-      parameter configuration. The API provides endpoints for query execution, monitoring active requests, and managing
-      query service configuration across cluster nodes.
-    humanURL: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
-    baseURL: https://localhost:8093
-    properties:
-      - type: Documentation
-        url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
-      - type: OpenAPI
-        url: openapi/couchbase-query-service-rest-api-openapi.yml
-      - type: Rules
-        url: rules/couchbase-query-rules.yml
-      - type: Capabilities
-        url: capabilities/couchbase-query-capabilities.yml
-    tags:
-      - Database
-      - N1QL
-      - NoSQL
-      - Query
-      - SQL++
-  - aid: couchbase:couchbase-analytics-service-rest-api
-    name: Couchbase Analytics Service REST API
-    description: >-
-      The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical
-      queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for
-      analytics, management of links to external data sources, and configuration of user-defined libraries. The service
-      enables real-time analytics on JSON data alongside transactional workloads.
-    humanURL: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
-    baseURL: https://localhost:8095
-    properties:
-      - type: Documentation
-        url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
-      - type: OpenAPI
-        url: openapi/couchbase-analytics-service-rest-api-openapi.yml
-    tags:
-      - Analytics
-      - Database
-      - NoSQL
-      - SQL++
-  - aid: couchbase:couchbase-search-service-rest-api
-    name: Couchbase Search Service REST API
-    description: >-
-      The Couchbase Search Service REST API allows developers to create, manage, and query Full Text Indexes on
-      Couchbase Server. It supports full-text search queries with features like fuzzy matching, faceted search,
-      highlighting, and geospatial queries. The API provides endpoints for index definition, index management, and
-      executing search queries across JSON documents stored in Couchbase buckets.
-    humanURL: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
-    baseURL: https://localhost:8094
-    properties:
-      - type: Documentation
-        url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
-      - type: OpenAPI
-        url: openapi/couchbase-search-service-rest-api-openapi.yml
-      - type: Rules
-        url: rules/couchbase-search-rules.yml
-      - type: Capabilities
-        url: capabilities/couchbase-search-capabilities.yml
-    tags:
-      - Database
-      - Full-Text Search
-      - Indexing
-      - NoSQL
-      - Vector Search
-  - aid: couchbase:couchbase-eventing-service-rest-api
-    name: Couchbase Eventing Service REST API
-    description: >-
-      The Couchbase Eventing Service REST API provides methods for deploying and managing Eventing Functions that
-      respond to data changes in real time. Eventing Functions allow developers to write server-side JavaScript logic
-      triggered by document mutations, timers, or external events.
-    humanURL: https://docs.couchbase.com/server/current/eventing/eventing-api.html
-    baseURL: https://localhost:8096
-    properties:
-      - type: Documentation
-        url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
-      - type: OpenAPI
-        url: openapi/couchbase-eventing-service-rest-api-openapi.yml
-    tags:
-      - Database
-      - Eventing
-      - NoSQL
-      - Serverless Functions
-  - aid: couchbase:couchbase-backup-service-rest-api
-    name: Couchbase Backup Service REST API
-    description: >-
-      The Couchbase Backup Service REST API supports management of the Backup Service for Couchbase Server, providing
-      endpoints for cluster configuration, repository management, backup plans, task scheduling, and data operations.
-    humanURL: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
-    baseURL: https://localhost:8097
-    properties:
-      - type: Documentation
-        url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
-      - type: OpenAPI
-        url: openapi/couchbase-backup-service-rest-api-openapi.yml
-    tags:
-      - Backup
-      - Database
-      - Disaster Recovery
-      - NoSQL
-  - aid: couchbase:couchbase-xdcr-rest-api
-    name: Couchbase XDCR REST API
-    description: >-
-      The Couchbase XDCR (Cross Data Center Replication) REST API enables configuration and management of data
-      replication between Couchbase clusters across different data centers. It provides endpoints for creating
-      replication references, configuring replication streams, monitoring replication statistics, and managing
-      replication settings.
-    humanURL: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
-    baseURL: https://localhost:8091
-    properties:
-      - type: Documentation
-        url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
-      - type: OpenAPI
-        url: openapi/couchbase-xdcr-rest-api-openapi.yml
-    tags:
-      - Cross Data Center
-      - Database
-      - NoSQL
-      - Replication
-  - aid: couchbase:couchbase-capella-management-api
-    name: Couchbase Capella Management API
-    description: >-
-      The Couchbase Capella Management API is a REST API for provisioning, deploying, and configuring Couchbase Capella
-      database-as-a-service deployments across AWS, Azure, and Google Cloud. It enables programmatic management of
-      clusters, buckets, users, and organizations using API key authentication.
-    humanURL: https://docs.couchbase.com/cloud/management-api-reference/index.html
-    baseURL: https://cloudapi.cloud.couchbase.com
-    properties:
-      - type: Documentation
-        url: https://docs.couchbase.com/cloud/management-api-reference/index.html
-      - type: OpenAPI
-        url: openapi/couchbase-capella-management-api-openapi.yml
-      - type: Rules
-        url: rules/couchbase-capella-management-rules.yml
-      - type: Capabilities
-        url: capabilities/couchbase-capella-management-capabilities.yml
-    tags:
-      - Capella
-      - Cloud
-      - Database
-      - DBaaS
-      - Management
-      - NoSQL
-  - aid: couchbase:couchbase-capella-app-services-public-api
-    name: Couchbase Capella App Services Public API
-    description: >-
-      The Couchbase Capella App Services Public API provides REST endpoints for mobile and edge application data
-      synchronization with Couchbase Capella. It enables developers to manage document access, handle user
-      authentication, and synchronize data between mobile devices and the cloud database.
-    humanURL: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
-    properties:
-      - type: Documentation
-        url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
-      - type: OpenAPI
-        url: openapi/couchbase-capella-app-services-public-api-openapi.yml
-    tags:
-      - App Services
-      - Capella
-      - Cloud
-      - Mobile
-      - NoSQL
-      - Sync
-  - aid: couchbase:couchbase-capella-app-services-admin-api
-    name: Couchbase Capella App Services Admin API
-    description: >-
-      The Couchbase Capella App Services Admin API provides administrative REST endpoints for managing Sync Gateway
-      configurations within Couchbase Capella. It enables administrators to manage databases, users, roles, sync
-      functions, and replication settings for mobile data synchronization.
-    humanURL: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
-    properties:
-      - type: Documentation
-        url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
-      - type: OpenAPI
-        url: openapi/couchbase-capella-app-services-admin-api-openapi.yml
-    tags:
-      - Administration
-      - App Services
-      - Capella
-      - Cloud
-      - Mobile
-      - NoSQL
-  - aid: couchbase:couchbase-sync-gateway-public-rest-api
-    name: Couchbase Sync Gateway Public REST API
-    description: >-
-      The Couchbase Sync Gateway Public REST API provides endpoints for mobile and edge clients to synchronize data with
-      Couchbase Server through the Sync Gateway middleware. It supports document CRUD operations, changes feeds for
-      real-time data synchronization, and user authentication.
-    humanURL: https://docs.couchbase.com/sync-gateway/current/rest-api.html
-    baseURL: https://localhost:4984
-    properties:
-      - type: Documentation
-        url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
-      - type: OpenAPI
-        url: openapi/couchbase-sync-gateway-public-rest-api-openapi.yml
-      - type: Rules
-        url: rules/couchbase-sync-gateway-rules.yml
-      - type: Capabilities
-        url: capabilities/couchbase-sync-gateway-capabilities.yml
-    tags:
-      - Database
-      - Gateway
-      - Mobile
-      - NoSQL
-      - Sync
-  - aid: couchbase:couchbase-sync-gateway-admin-rest-api
-    name: Couchbase Sync Gateway Admin REST API
-    description: >-
-      The Couchbase Sync Gateway Admin REST API provides administrative endpoints for configuring and managing Sync
-      Gateway instances. It supports database management, user and role administration, sync function configuration, and
-      replication setup.
-    humanURL: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
-    baseURL: https://localhost:4985
-    properties:
-      - type: Documentation
-        url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
-      - type: OpenAPI
-        url: openapi/couchbase-sync-gateway-admin-rest-api-openapi.yml
-    tags:
-      - Administration
-      - Database
-      - Mobile
-      - NoSQL
-      - Sync
+- aid: couchbase:couchbase-allowed-cidrs-api
+  name: Couchbase Allowed CIDRs API
+  description: Endpoints for managing allowed IP addresses and CIDR ranges for cluster access.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Allowed CIDRs
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-allowed-cidrs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-analytics-admin-api
+  name: Couchbase Analytics Admin API
+  description: Endpoints for administering and monitoring the Analytics service.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Analytics Admin
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-analytics-admin-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-analytics-configuration-api
+  name: Couchbase Analytics Configuration API
+  description: Endpoints for configuring Analytics nodes and clusters.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Analytics Configuration
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-analytics-configuration-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-analytics-library-api
+  name: Couchbase Analytics Library API
+  description: Endpoints for managing JavaScript libraries used for user-defined functions.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Analytics Library
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-analytics-library-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-analytics-query-api
+  name: Couchbase Analytics Query API
+  description: Endpoints for executing SQL++ analytics queries and retrieving results.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Analytics Query
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-analytics-query-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-analytics-settings-api
+  name: Couchbase Analytics Settings API
+  description: Endpoints for configuring Analytics service settings.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Analytics Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-analytics-settings-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-api-keys-api
+  name: Couchbase API Keys API
+  description: Endpoints for managing API keys used to authenticate with the Management API.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - API Keys
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-api-keys-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-authentication-api
+  name: Couchbase Authentication API
+  description: Endpoints for user authentication and session management.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-buckets-api
+  name: Couchbase Buckets API
+  description: Endpoints for managing buckets within Capella clusters.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Buckets
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-buckets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-changes-api
+  name: Couchbase Changes API
+  description: Endpoints for monitoring document changes and subscribing to change feeds.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Changes
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-changes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-cluster-api
+  name: Couchbase Cluster API
+  description: Endpoints for managing cluster-level backup configuration.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Cluster
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-cluster-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-cluster-references-api
+  name: Couchbase Cluster References API
+  description: Endpoints for managing remote cluster references used as XDCR targets.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Cluster References
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-cluster-references-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-clusters-api
+  name: Couchbase Clusters API
+  description: Endpoints for provisioning, managing, and scaling Capella database clusters.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Clusters
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-clusters-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-compaction-api
+  name: Couchbase Compaction API
+  description: Endpoints for managing auto-compaction settings and triggering compaction operations.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Compaction
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-compaction-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-configuration-api
+  name: Couchbase Configuration API
+  description: Endpoints for configuring Eventing Service settings.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Configuration
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-configuration-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-data-api
+  name: Couchbase Data API
+  description: Endpoints for triggering backup and restore data operations.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Data
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-data-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-database-administration-api
+  name: Couchbase Database Administration API
+  description: Endpoints for managing database configurations within App Services.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Database Administration
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-database-administration-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-database-api
+  name: Couchbase Database API
+  description: Endpoints for retrieving database information.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Database
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-database-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-database-credentials-api
+  name: Couchbase Database Credentials API
+  description: Endpoints for managing database access credentials for clusters.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Database Credentials
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-database-credentials-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-database-management-api
+  name: Couchbase Database Management API
+  description: Endpoints for creating, configuring, and managing databases.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Database Management
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-database-management-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-documents-api
+  name: Couchbase Documents API
+  description: Endpoints for creating, reading, updating, and deleting documents.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-documents-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-functions-api
+  name: Couchbase Functions API
+  description: Endpoints for creating, retrieving, updating, and deleting Eventing Functions.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Functions
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-functions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-import-export-api
+  name: Couchbase Import Export API
+  description: Endpoints for importing and exporting Eventing Function definitions.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Import Export
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-import-export-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-index-service-api
+  name: Couchbase Index Service API
+  description: Endpoints for managing the Global Secondary Index service.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Index Service
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-index-service-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-lifecycle-api
+  name: Couchbase Lifecycle API
+  description: Endpoints for deploying, undeploying, pausing, and resuming Eventing Functions.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Lifecycle
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-lifecycle-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-local-documents-api
+  name: Couchbase Local Documents API
+  description: Endpoints for managing local documents used by replication checkpoints.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Local Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-local-documents-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-logging-api
+  name: Couchbase Logging API
+  description: Endpoints for retrieving Eventing Function application logs.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Logging
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-logging-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-logs-api
+  name: Couchbase Logs API
+  description: Endpoints for collecting and managing diagnostic logs.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-logs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-monitoring-api
+  name: Couchbase Monitoring API
+  description: Endpoints for monitoring App Services health and performance.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Monitoring
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-monitoring-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-nodes-api
+  name: Couchbase Nodes API
+  description: >-
+    Endpoints for managing individual server nodes, including adding nodes, failover, recovery, and rebalance
+    operations.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Nodes
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-nodes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-organizations-api
+  name: Couchbase Organizations API
+  description: Endpoints for managing Capella organizations.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-plans-api
+  name: Couchbase Plans API
+  description: >-
+    Endpoints for managing backup plans that define backup schedules and data retention policies.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-plans-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-projects-api
+  name: Couchbase Projects API
+  description: Endpoints for creating, listing, updating, and deleting projects within an organization.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-projects-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-query-admin-api
+  name: Couchbase Query Admin API
+  description: >-
+    Endpoints for administrative operations on the Query service including monitoring active requests,
+    completed requests, and prepared statements.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Query Admin
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-query-admin-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-query-execution-api
+  name: Couchbase Query Execution API
+  description: Endpoints for executing SQL++ queries and managing query results.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Query Execution
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-query-execution-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-query-settings-api
+  name: Couchbase Query Settings API
+  description: Endpoints for configuring Query service settings at the node and cluster level.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Query Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-query-settings-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-replication-api
+  name: Couchbase Replication API
+  description: Endpoints for managing inter-Sync Gateway replications.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Replication
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-replication-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-replication-settings-api
+  name: Couchbase Replication Settings API
+  description: Endpoints for configuring replication-level and global XDCR settings.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Replication Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-replication-settings-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-replication-statistics-api
+  name: Couchbase Replication Statistics API
+  description: Endpoints for monitoring replication progress and performance statistics.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Replication Statistics
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-replication-statistics-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-replications-api
+  name: Couchbase Replications API
+  description: Endpoints for creating, managing, and deleting XDCR replication streams.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Replications
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-replications-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-repositories-api
+  name: Couchbase Repositories API
+  description: Endpoints for creating, managing, and querying backup repositories.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Repositories
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-repositories-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-role-management-api
+  name: Couchbase Role Management API
+  description: Endpoints for managing roles and their channel assignments.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Role Management
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-role-management-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-scopes-and-collections-api
+  name: Couchbase Scopes and Collections API
+  description: Endpoints for managing scopes and collections within Capella buckets.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Scopes and Collections
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-scopes-and-collections-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-search-indexes-api
+  name: Couchbase Search Indexes API
+  description: >-
+    Endpoints for creating, retrieving, updating, and deleting Full Text Search index definitions.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Search Indexes
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-search-indexes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-search-monitoring-api
+  name: Couchbase Search Monitoring API
+  description: Endpoints for monitoring search index statistics and service status.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Search Monitoring
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-search-monitoring-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-search-queries-api
+  name: Couchbase Search Queries API
+  description: Endpoints for executing full-text search queries against search indexes.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Search Queries
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-search-queries-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-security-api
+  name: Couchbase Security API
+  description: >-
+    Endpoints for managing security settings, users, roles, certificates, and audit configurations.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Security
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-security-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-server-api
+  name: Couchbase Server API
+  description: Endpoints for managing the Sync Gateway server instance.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Server
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-server-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-server-groups-api
+  name: Couchbase Server Groups API
+  description: Endpoints for managing server groups for rack-zone awareness.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Server Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-server-groups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-settings-api
+  name: Couchbase Settings API
+  description: Endpoints for managing server-wide settings and configuration parameters.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-settings-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-statistics-api
+  name: Couchbase Statistics API
+  description: Endpoints for monitoring Eventing Function execution statistics and status.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Statistics
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-statistics-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-tasks-api
+  name: Couchbase Tasks API
+  description: Endpoints for monitoring and managing backup and restore tasks.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-user-management-api
+  name: Couchbase User Management API
+  description: Endpoints for managing users and their access permissions.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - User Management
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-user-management-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+- aid: couchbase:couchbase-users-api
+  name: Couchbase Users API
+  description: Endpoints for managing users within a Capella organization.
+  humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  baseURL: https://localhost:8091
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/couchbase-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+  - type: Rules
+    url: rules/couchbase-server-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-server-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
+  - type: Rules
+    url: rules/couchbase-query-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-query-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
+  - type: Rules
+    url: rules/couchbase-search-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-search-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html
+  - type: Documentation
+    url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/management-api-reference/index.html
+  - type: Rules
+    url: rules/couchbase-capella-management-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-capella-management-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
+  - type: Documentation
+    url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
+  - type: Rules
+    url: rules/couchbase-sync-gateway-rules.yml
+  - type: Capabilities
+    url: capabilities/couchbase-sync-gateway-capabilities.yml
+  - type: Documentation
+    url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 common:
   - type: AgenticAccess
     url: agentic-access/couchbase-agentic-access.yml
