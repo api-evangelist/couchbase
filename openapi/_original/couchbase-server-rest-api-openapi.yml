@@ -1,0 +1,1183 @@
+openapi: 3.1.0
+info:
+  title: Couchbase Server REST API
+  description: >-
+    The Couchbase Server REST API provides programmatic access to manage and
+    configure Couchbase Server clusters. It includes endpoints for cluster
+    management, bucket operations, node administration, security settings,
+    and server configuration. The API enables automation of deployment,
+    monitoring, and maintenance tasks for Couchbase Server instances across
+    distributed environments.
+  version: '7.6'
+  contact:
+    name: Couchbase Support
+    url: https://support.couchbase.com
+  termsOfService: https://www.couchbase.com/terms-of-use
+externalDocs:
+  description: Couchbase Server REST API Documentation
+  url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
+servers:
+  - url: https://localhost:8091
+    description: Couchbase Server (default port)
+  - url: https://localhost:18091
+    description: Couchbase Server (SSL)
+tags:
+  - name: Buckets
+    description: >-
+      Endpoints for creating, configuring, and managing buckets used to store
+      data in Couchbase Server.
+  - name: Cluster
+    description: >-
+      Endpoints for managing Couchbase Server clusters, including cluster
+      initialization, configuration, and information retrieval.
+  - name: Compaction
+    description: >-
+      Endpoints for managing auto-compaction settings and triggering compaction
+      operations.
+  - name: Index Service
+    description: >-
+      Endpoints for managing the Global Secondary Index service.
+  - name: Logs
+    description: >-
+      Endpoints for collecting and managing diagnostic logs.
+  - name: Nodes
+    description: >-
+      Endpoints for managing individual server nodes, including adding nodes,
+      failover, recovery, and rebalance operations.
+  - name: Scopes and Collections
+    description: >-
+      Endpoints for managing scopes and collections within buckets.
+  - name: Security
+    description: >-
+      Endpoints for managing security settings, users, roles, certificates,
+      and audit configurations.
+  - name: Server Groups
+    description: >-
+      Endpoints for managing server groups for rack-zone awareness.
+  - name: Settings
+    description: >-
+      Endpoints for managing server-wide settings and configuration parameters.
+security:
+  - basicAuth: []
+paths:
+  /pools:
+    get:
+      operationId: getPools
+      summary: Get cluster information
+      description: >-
+        Returns basic information about the cluster including the list of pools,
+        UUID, and implementation version.
+      tags:
+        - Cluster
+      responses:
+        '200':
+          description: Successful retrieval of cluster pool information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pools'
+        '401':
+          description: Unauthorized access
+  /pools/default:
+    get:
+      operationId: getPoolDefault
+      summary: Get default pool details
+      description: >-
+        Returns detailed information about the default pool including cluster
+        name, storage totals, RAM quotas, node list, and bucket information.
+      tags:
+        - Cluster
+      responses:
+        '200':
+          description: Successful retrieval of default pool details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PoolDetails'
+        '401':
+          description: Unauthorized access
+  /pools/default/buckets:
+    get:
+      operationId: listBuckets
+      summary: List all buckets
+      description: >-
+        Returns a list of all buckets in the cluster with their configuration
+        details, including RAM quotas, replica settings, and item counts.
+      tags:
+        - Buckets
+      responses:
+        '200':
+          description: Successful retrieval of bucket list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bucket'
+        '401':
+          description: Unauthorized access
+    post:
+      operationId: createBucket
+      summary: Create a new bucket
+      description: >-
+        Creates a new bucket with the specified configuration including name,
+        type, RAM quota, replica count, and other settings.
+      tags:
+        - Buckets
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BucketCreateRequest'
+      responses:
+        '202':
+          description: Bucket creation accepted
+        '400':
+          description: Invalid bucket configuration
+        '401':
+          description: Unauthorized access
+  /pools/default/buckets/{bucketName}:
+    get:
+      operationId: getBucket
+      summary: Get bucket details
+      description: >-
+        Returns detailed configuration and statistics for a specific bucket.
+      tags:
+        - Buckets
+      parameters:
+        - $ref: '#/components/parameters/bucketName'
+      responses:
+        '200':
+          description: Successful retrieval of bucket details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bucket'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Bucket not found
+    post:
+      operationId: updateBucket
+      summary: Update bucket settings
+      description: >-
+        Updates the configuration of an existing bucket, such as RAM quota,
+        authentication type, and replica settings.
+      tags:
+        - Buckets
+      parameters:
+        - $ref: '#/components/parameters/bucketName'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BucketUpdateRequest'
+      responses:
+        '200':
+          description: Bucket updated successfully
+        '400':
+          description: Invalid bucket configuration
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Bucket not found
+    delete:
+      operationId: deleteBucket
+      summary: Delete a bucket
+      description: >-
+        Deletes the specified bucket and all of its data from the cluster.
+      tags:
+        - Buckets
+      parameters:
+        - $ref: '#/components/parameters/bucketName'
+      responses:
+        '200':
+          description: Bucket deleted successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Bucket not found
+  /pools/default/buckets/{bucketName}/scopes:
+    get:
+      operationId: listScopes
+      summary: List scopes in a bucket
+      description: >-
+        Returns the list of all scopes and their collections within the
+        specified bucket.
+      tags:
+        - Scopes and Collections
+      parameters:
+        - $ref: '#/components/parameters/bucketName'
+      responses:
+        '200':
+          description: Successful retrieval of scopes list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScopesList'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Bucket not found
+    post:
+      operationId: createScope
+      summary: Create a scope
+      description: >-
+        Creates a new scope within the specified bucket.
+      tags:
+        - Scopes and Collections
+      parameters:
+        - $ref: '#/components/parameters/bucketName'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  description: The name of the scope to create
+      responses:
+        '200':
+          description: Scope created successfully
+        '400':
+          description: Invalid scope name
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Bucket not found
+  /pools/default/buckets/{bucketName}/scopes/{scopeName}/collections:
+    post:
+      operationId: createCollection
+      summary: Create a collection
+      description: >-
+        Creates a new collection within the specified scope and bucket.
+      tags:
+        - Scopes and Collections
+      parameters:
+        - $ref: '#/components/parameters/bucketName'
+        - $ref: '#/components/parameters/scopeName'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  description: The name of the collection to create
+      responses:
+        '200':
+          description: Collection created successfully
+        '400':
+          description: Invalid collection name
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Bucket or scope not found
+  /pools/nodes:
+    get:
+      operationId: getNodes
+      summary: Get nodes information
+      description: >-
+        Returns information about all nodes in the cluster, including
+        their services, status, and system resources.
+      tags:
+        - Nodes
+      responses:
+        '200':
+          description: Successful retrieval of node information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodesInfo'
+        '401':
+          description: Unauthorized access
+  /controller/addNode:
+    post:
+      operationId: addNode
+      summary: Add a node to the cluster
+      description: >-
+        Adds a new node to the cluster. The node must be configured and
+        reachable before it can be added.
+      tags:
+        - Nodes
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - hostname
+              properties:
+                hostname:
+                  type: string
+                  description: The hostname or IP address of the node to add
+                services:
+                  type: string
+                  description: >-
+                    Comma-separated list of services to enable on the node
+                    (kv, n1ql, index, fts, cbas, eventing, backup)
+                user:
+                  type: string
+                  description: Administrator username for the node
+                password:
+                  type: string
+                  description: Administrator password for the node
+      responses:
+        '200':
+          description: Node added successfully
+        '400':
+          description: Invalid node configuration
+        '401':
+          description: Unauthorized access
+  /controller/rebalance:
+    post:
+      operationId: rebalanceCluster
+      summary: Rebalance the cluster
+      description: >-
+        Initiates a rebalance operation to redistribute data across the
+        cluster nodes after adding or removing nodes.
+      tags:
+        - Nodes
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                knownNodes:
+                  type: string
+                  description: Comma-separated list of known node OTP names
+                ejectedNodes:
+                  type: string
+                  description: Comma-separated list of node OTP names to eject
+      responses:
+        '200':
+          description: Rebalance initiated successfully
+        '400':
+          description: Invalid rebalance configuration
+        '401':
+          description: Unauthorized access
+  /controller/failOver:
+    post:
+      operationId: failOverNode
+      summary: Fail over a node
+      description: >-
+        Initiates a hard failover for the specified node, removing it from
+        the cluster immediately.
+      tags:
+        - Nodes
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - otpNode
+              properties:
+                otpNode:
+                  type: string
+                  description: The OTP name of the node to fail over
+      responses:
+        '200':
+          description: Failover initiated successfully
+        '400':
+          description: Invalid failover request
+        '401':
+          description: Unauthorized access
+  /pools/default/serverGroups:
+    get:
+      operationId: listServerGroups
+      summary: List server groups
+      description: >-
+        Returns the list of server groups and their member nodes for
+        rack-zone awareness configuration.
+      tags:
+        - Server Groups
+      responses:
+        '200':
+          description: Successful retrieval of server groups
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerGroups'
+        '401':
+          description: Unauthorized access
+    post:
+      operationId: createServerGroup
+      summary: Create a server group
+      description: >-
+        Creates a new server group for rack-zone awareness.
+      tags:
+        - Server Groups
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  description: The name of the server group
+      responses:
+        '200':
+          description: Server group created successfully
+        '400':
+          description: Invalid server group name
+        '401':
+          description: Unauthorized access
+  /settings/web:
+    post:
+      operationId: configureWebSettings
+      summary: Configure web settings
+      description: >-
+        Configures the cluster web console settings including the admin
+        username, password, and port.
+      tags:
+        - Settings
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: Administrator username
+                password:
+                  type: string
+                  description: Administrator password
+                port:
+                  type: integer
+                  description: Web console port
+      responses:
+        '200':
+          description: Web settings updated successfully
+        '401':
+          description: Unauthorized access
+  /settings/autoCompaction:
+    get:
+      operationId: getAutoCompaction
+      summary: Get auto-compaction settings
+      description: >-
+        Returns the current auto-compaction settings for the cluster.
+      tags:
+        - Compaction
+      responses:
+        '200':
+          description: Successful retrieval of auto-compaction settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoCompactionSettings'
+        '401':
+          description: Unauthorized access
+    post:
+      operationId: updateAutoCompaction
+      summary: Update auto-compaction settings
+      description: >-
+        Updates the auto-compaction settings for the cluster including
+        database and view fragmentation thresholds and compaction intervals.
+      tags:
+        - Compaction
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AutoCompactionSettings'
+      responses:
+        '200':
+          description: Auto-compaction settings updated successfully
+        '400':
+          description: Invalid compaction settings
+        '401':
+          description: Unauthorized access
+  /settings/rbac/users:
+    get:
+      operationId: listUsers
+      summary: List all users
+      description: >-
+        Returns the list of all users configured in the cluster with their
+        roles and authentication domains.
+      tags:
+        - Security
+      responses:
+        '200':
+          description: Successful retrieval of user list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized access
+  /settings/rbac/users/{domain}/{username}:
+    get:
+      operationId: getUser
+      summary: Get user details
+      description: >-
+        Returns detailed information about a specific user including their
+        roles and authentication configuration.
+      tags:
+        - Security
+      parameters:
+        - $ref: '#/components/parameters/domain'
+        - $ref: '#/components/parameters/username'
+      responses:
+        '200':
+          description: Successful retrieval of user details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized access
+        '404':
+          description: User not found
+    put:
+      operationId: createOrUpdateUser
+      summary: Create or update a user
+      description: >-
+        Creates a new user or updates an existing user with the specified
+        roles and authentication settings.
+      tags:
+        - Security
+      parameters:
+        - $ref: '#/components/parameters/domain'
+        - $ref: '#/components/parameters/username'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  description: User password (required for local domain)
+                roles:
+                  type: string
+                  description: Comma-separated list of roles
+                name:
+                  type: string
+                  description: Full name of the user
+      responses:
+        '200':
+          description: User created or updated successfully
+        '400':
+          description: Invalid user configuration
+        '401':
+          description: Unauthorized access
+    delete:
+      operationId: deleteUser
+      summary: Delete a user
+      description: >-
+        Deletes the specified user from the cluster.
+      tags:
+        - Security
+      parameters:
+        - $ref: '#/components/parameters/domain'
+        - $ref: '#/components/parameters/username'
+      responses:
+        '200':
+          description: User deleted successfully
+        '401':
+          description: Unauthorized access
+        '404':
+          description: User not found
+  /settings/rbac/roles:
+    get:
+      operationId: listRoles
+      summary: List available roles
+      description: >-
+        Returns the list of all available roles in the cluster that can be
+        assigned to users.
+      tags:
+        - Security
+      responses:
+        '200':
+          description: Successful retrieval of available roles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Role'
+        '401':
+          description: Unauthorized access
+  /pools/default/certificate:
+    get:
+      operationId: getClusterCertificate
+      summary: Get cluster certificate
+      description: >-
+        Returns the cluster CA certificate in PEM format.
+      tags:
+        - Security
+      responses:
+        '200':
+          description: Successful retrieval of cluster certificate
+          content:
+            text/plain:
+              schema:
+                type: string
+  /settings/indexes:
+    get:
+      operationId: getIndexSettings
+      summary: Get index service settings
+      description: >-
+        Returns the current configuration settings for the Index service.
+      tags:
+        - Index Service
+      responses:
+        '200':
+          description: Successful retrieval of index settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IndexSettings'
+        '401':
+          description: Unauthorized access
+    post:
+      operationId: updateIndexSettings
+      summary: Update index service settings
+      description: >-
+        Updates the configuration settings for the Index service including
+        storage mode and memory allocation.
+      tags:
+        - Index Service
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/IndexSettings'
+      responses:
+        '200':
+          description: Index settings updated successfully
+        '400':
+          description: Invalid index settings
+        '401':
+          description: Unauthorized access
+  /diag:
+    get:
+      operationId: getDiagnostics
+      summary: Get diagnostic information
+      description: >-
+        Returns diagnostic information for the cluster including logs and
+        system statistics useful for troubleshooting.
+      tags:
+        - Logs
+      responses:
+        '200':
+          description: Successful retrieval of diagnostic information
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized access
+  /controller/startLogsCollection:
+    post:
+      operationId: startLogCollection
+      summary: Start log collection
+      description: >-
+        Initiates the collection of diagnostic logs across cluster nodes
+        for analysis and troubleshooting.
+      tags:
+        - Logs
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                nodes:
+                  type: string
+                  description: >-
+                    Comma-separated list of node addresses to collect logs from
+                logRedactionLevel:
+                  type: string
+                  enum:
+                    - none
+                    - partial
+                  description: Level of log redaction for sensitive data
+      responses:
+        '200':
+          description: Log collection started successfully
+        '401':
+          description: Unauthorized access
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic Authentication using Couchbase Server administrator
+        credentials.
+  parameters:
+    bucketName:
+      name: bucketName
+      in: path
+      required: true
+      description: The name of the bucket
+      schema:
+        type: string
+    scopeName:
+      name: scopeName
+      in: path
+      required: true
+      description: The name of the scope
+      schema:
+        type: string
+    domain:
+      name: domain
+      in: path
+      required: true
+      description: The authentication domain (local or external)
+      schema:
+        type: string
+        enum:
+          - local
+          - external
+    username:
+      name: username
+      in: path
+      required: true
+      description: The username of the user
+      schema:
+        type: string
+  schemas:
+    Pools:
+      type: object
+      description: Cluster pool information
+      properties:
+        isAdminCreds:
+          type: boolean
+          description: Whether admin credentials are being used
+        isROAdminCreds:
+          type: boolean
+          description: Whether read-only admin credentials are being used
+        isEnterprise:
+          type: boolean
+          description: Whether this is an Enterprise Edition cluster
+        implementationVersion:
+          type: string
+          description: The version of the Couchbase Server implementation
+        uuid:
+          type: string
+          description: The unique identifier for the cluster
+        pools:
+          type: array
+          description: List of available pools
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Pool name
+              uri:
+                type: string
+                description: URI to access pool details
+              streamingUri:
+                type: string
+                description: URI for streaming pool updates
+    PoolDetails:
+      type: object
+      description: Detailed information about the default pool
+      properties:
+        name:
+          type: string
+          description: Name of the pool
+        clusterName:
+          type: string
+          description: Human-readable cluster name
+        nodes:
+          type: array
+          description: List of nodes in the cluster
+          items:
+            $ref: '#/components/schemas/Node'
+        storageTotals:
+          type: object
+          description: Aggregate storage statistics
+          properties:
+            ram:
+              type: object
+              properties:
+                total:
+                  type: integer
+                  description: Total RAM in bytes
+                used:
+                  type: integer
+                  description: Used RAM in bytes
+            hdd:
+              type: object
+              properties:
+                total:
+                  type: integer
+                  description: Total disk space in bytes
+                used:
+                  type: integer
+                  description: Used disk space in bytes
+        rebalanceStatus:
+          type: string
+          description: Current rebalance status
+    Node:
+      type: object
+      description: Information about a cluster node
+      properties:
+        hostname:
+          type: string
+          description: Node hostname and port
+        status:
+          type: string
+          description: Node status
+          enum:
+            - healthy
+            - unhealthy
+            - warmup
+        clusterMembership:
+          type: string
+          description: Cluster membership status
+          enum:
+            - active
+            - inactiveAdded
+            - inactiveFailed
+        services:
+          type: array
+          description: List of services running on the node
+          items:
+            type: string
+            enum:
+              - kv
+              - n1ql
+              - index
+              - fts
+              - cbas
+              - eventing
+              - backup
+        os:
+          type: string
+          description: Operating system of the node
+        version:
+          type: string
+          description: Couchbase Server version on the node
+        memoryTotal:
+          type: integer
+          description: Total memory on the node in bytes
+        memoryFree:
+          type: integer
+          description: Free memory on the node in bytes
+    Bucket:
+      type: object
+      description: Bucket configuration and statistics
+      properties:
+        name:
+          type: string
+          description: Name of the bucket
+        bucketType:
+          type: string
+          description: Type of the bucket
+          enum:
+            - membase
+            - memcached
+            - ephemeral
+        authType:
+          type: string
+          description: Authentication type for the bucket
+        ramQuota:
+          type: integer
+          description: RAM quota for the bucket in bytes
+        replicaNumber:
+          type: integer
+          description: Number of replicas
+          minimum: 0
+          maximum: 3
+        replicaIndex:
+          type: boolean
+          description: Whether to replicate indexes
+        conflictResolutionType:
+          type: string
+          description: Conflict resolution mechanism
+          enum:
+            - seqno
+            - lww
+        evictionPolicy:
+          type: string
+          description: Eviction policy for the bucket
+          enum:
+            - valueOnly
+            - fullEviction
+            - noEviction
+            - nruEviction
+        durabilityMinLevel:
+          type: string
+          description: Minimum durability level for the bucket
+          enum:
+            - none
+            - majority
+            - majorityAndPersistActive
+            - persistToMajority
+        itemCount:
+          type: integer
+          description: Number of items in the bucket
+    BucketCreateRequest:
+      type: object
+      description: Request body for creating a new bucket
+      required:
+        - name
+        - ramQuota
+      properties:
+        name:
+          type: string
+          description: Name of the bucket
+          maxLength: 100
+        bucketType:
+          type: string
+          description: Type of the bucket
+          enum:
+            - couchbase
+            - memcached
+            - ephemeral
+          default: couchbase
+        ramQuota:
+          type: integer
+          description: RAM quota in megabytes
+          minimum: 100
+        replicaNumber:
+          type: integer
+          description: Number of replicas
+          minimum: 0
+          maximum: 3
+          default: 1
+        conflictResolutionType:
+          type: string
+          description: Conflict resolution mechanism
+          enum:
+            - seqno
+            - lww
+          default: seqno
+        evictionPolicy:
+          type: string
+          description: Eviction policy
+          enum:
+            - valueOnly
+            - fullEviction
+            - noEviction
+            - nruEviction
+        flushEnabled:
+          type: integer
+          description: Whether flush is enabled (0 or 1)
+          enum:
+            - 0
+            - 1
+          default: 0
+    BucketUpdateRequest:
+      type: object
+      description: Request body for updating a bucket
+      properties:
+        ramQuota:
+          type: integer
+          description: RAM quota in megabytes
+          minimum: 100
+        replicaNumber:
+          type: integer
+          description: Number of replicas
+          minimum: 0
+          maximum: 3
+        flushEnabled:
+          type: integer
+          description: Whether flush is enabled (0 or 1)
+          enum:
+            - 0
+            - 1
+    ScopesList:
+      type: object
+      description: List of scopes in a bucket
+      properties:
+        uid:
+          type: string
+          description: Unique identifier for the manifest
+        scopes:
+          type: array
+          description: List of scopes
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Name of the scope
+              uid:
+                type: string
+                description: Unique identifier for the scope
+              collections:
+                type: array
+                description: Collections within the scope
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: Name of the collection
+                    uid:
+                      type: string
+                      description: Unique identifier for the collection
+                    maxTTL:
+                      type: integer
+                      description: Maximum TTL for documents in seconds
+    NodesInfo:
+      type: object
+      description: Information about cluster nodes
+      properties:
+        nodes:
+          type: array
+          description: List of nodes
+          items:
+            $ref: '#/components/schemas/Node'
+    ServerGroups:
+      type: object
+      description: Server groups configuration
+      properties:
+        groups:
+          type: array
+          description: List of server groups
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Name of the server group
+              uri:
+                type: string
+                description: URI for the server group
+              nodes:
+                type: array
+                description: Nodes in the server group
+                items:
+                  $ref: '#/components/schemas/Node'
+    User:
+      type: object
+      description: User account information
+      properties:
+        id:
+          type: string
+          description: Username
+        name:
+          type: string
+          description: Full name of the user
+        domain:
+          type: string
+          description: Authentication domain
+          enum:
+            - local
+            - external
+        roles:
+          type: array
+          description: List of roles assigned to the user
+          items:
+            type: object
+            properties:
+              role:
+                type: string
+                description: Role name
+              bucket_name:
+                type: string
+                description: Bucket the role applies to
+              scope_name:
+                type: string
+                description: Scope the role applies to
+              collection_name:
+                type: string
+                description: Collection the role applies to
+    Role:
+      type: object
+      description: Available role definition
+      properties:
+        role:
+          type: string
+          description: Role identifier
+        name:
+          type: string
+          description: Human-readable role name
+        desc:
+          type: string
+          description: Description of the role
+        bucket_name:
+          type: string
+          description: Bucket constraint for the role
+    AutoCompactionSettings:
+      type: object
+      description: Auto-compaction configuration
+      properties:
+        databaseFragmentationThreshold:
+          type: object
+          properties:
+            percentage:
+              type: integer
+              description: Database fragmentation percentage threshold
+            size:
+              type: integer
+              description: Database fragmentation size threshold in bytes
+        viewFragmentationThreshold:
+          type: object
+          properties:
+            percentage:
+              type: integer
+              description: View fragmentation percentage threshold
+            size:
+              type: integer
+              description: View fragmentation size threshold in bytes
+        parallelDBAndViewCompaction:
+          type: boolean
+          description: Whether to run database and view compaction in parallel
+    IndexSettings:
+      type: object
+      description: Index service configuration
+      properties:
+        storageMode:
+          type: string
+          description: Index storage mode
+          enum:
+            - plasma
+            - memory_optimized
+            - forestdb
+        indexerThreads:
+          type: integer
+          description: Number of indexer threads
+        memorySnapshotInterval:
+          type: integer
+          description: Memory snapshot interval in milliseconds
+        stableSnapshotInterval:
+          type: integer
+          description: Stable snapshot interval in milliseconds
+        logLevel:
+          type: string
+          description: Log level for the index service
+          enum:
+            - silent
+            - fatal
+            - error
+            - warn
+            - info
+            - verbose
+            - timing
+            - debug
+            - trace
