@@ -63,22 +63,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -89,8 +83,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -99,8 +91,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-analytics-admin-api
@@ -117,22 +107,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -143,8 +127,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -153,8 +135,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-analytics-configuration-api
@@ -171,22 +151,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -197,8 +171,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -207,8 +179,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-analytics-library-api
@@ -225,22 +195,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -251,8 +215,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -261,8 +223,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-analytics-query-api
@@ -279,22 +239,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -305,8 +259,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -315,8 +267,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-analytics-settings-api
@@ -333,22 +283,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -359,8 +303,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -369,8 +311,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-api-keys-api
@@ -387,22 +327,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -413,8 +347,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -423,8 +355,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-authentication-api
@@ -441,22 +371,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -467,8 +391,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -477,8 +399,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-buckets-api
@@ -495,22 +415,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -521,8 +435,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -531,8 +443,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-changes-api
@@ -549,22 +459,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -575,8 +479,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -585,8 +487,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-cluster-api
@@ -603,22 +503,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -629,8 +523,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -639,8 +531,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-cluster-references-api
@@ -657,22 +547,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -683,8 +567,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -693,8 +575,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-clusters-api
@@ -711,22 +591,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -737,8 +611,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -747,8 +619,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-compaction-api
@@ -765,22 +635,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -791,8 +655,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -801,8 +663,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-configuration-api
@@ -819,22 +679,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -845,8 +699,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -855,8 +707,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-data-api
@@ -873,22 +723,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -899,8 +743,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -909,8 +751,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-database-administration-api
@@ -927,22 +767,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -953,8 +787,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -963,8 +795,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-database-api
@@ -981,22 +811,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -1007,8 +831,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -1017,8 +839,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-database-credentials-api
@@ -1035,22 +855,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -1061,8 +875,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -1071,8 +883,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-database-management-api
@@ -1089,22 +899,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -1115,8 +919,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -1125,8 +927,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-documents-api
@@ -1143,22 +943,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -1169,8 +963,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -1179,8 +971,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-functions-api
@@ -1197,22 +987,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -1223,8 +1007,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -1233,8 +1015,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-import-export-api
@@ -1251,22 +1031,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -1277,8 +1051,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -1287,8 +1059,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-index-service-api
@@ -1305,22 +1075,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -1331,8 +1095,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -1341,8 +1103,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-lifecycle-api
@@ -1359,22 +1119,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -1385,8 +1139,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -1395,8 +1147,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-local-documents-api
@@ -1413,22 +1163,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -1439,8 +1183,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -1449,8 +1191,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-logging-api
@@ -1467,22 +1207,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -1493,8 +1227,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -1503,8 +1235,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-logs-api
@@ -1521,22 +1251,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -1547,8 +1271,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -1557,8 +1279,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-monitoring-api
@@ -1575,22 +1295,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -1601,8 +1315,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -1611,8 +1323,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-nodes-api
@@ -1631,22 +1341,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -1657,8 +1361,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -1667,8 +1369,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-organizations-api
@@ -1685,22 +1385,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -1711,8 +1405,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -1721,8 +1413,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-plans-api
@@ -1740,22 +1430,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -1766,8 +1450,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -1776,8 +1458,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-projects-api
@@ -1794,22 +1474,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -1820,8 +1494,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -1830,8 +1502,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-query-admin-api
@@ -1850,22 +1520,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -1876,8 +1540,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -1886,8 +1548,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-query-execution-api
@@ -1904,22 +1564,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -1930,8 +1584,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -1940,8 +1592,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-query-settings-api
@@ -1958,22 +1608,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -1984,8 +1628,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -1994,8 +1636,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-replication-api
@@ -2012,22 +1652,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -2038,8 +1672,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -2048,8 +1680,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-replication-settings-api
@@ -2066,22 +1696,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -2092,8 +1716,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -2102,8 +1724,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-replication-statistics-api
@@ -2120,22 +1740,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -2146,8 +1760,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -2156,8 +1768,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-replications-api
@@ -2174,22 +1784,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -2200,8 +1804,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -2210,8 +1812,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-repositories-api
@@ -2228,22 +1828,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -2254,8 +1848,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -2264,8 +1856,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-role-management-api
@@ -2282,22 +1872,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -2308,8 +1892,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -2318,8 +1900,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-scopes-and-collections-api
@@ -2336,22 +1916,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -2362,8 +1936,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -2372,8 +1944,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-search-indexes-api
@@ -2391,22 +1961,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -2417,8 +1981,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -2427,8 +1989,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-search-monitoring-api
@@ -2445,22 +2005,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -2471,8 +2025,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -2481,8 +2033,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-search-queries-api
@@ -2499,22 +2049,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -2525,8 +2069,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -2535,8 +2077,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-security-api
@@ -2554,22 +2094,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -2580,8 +2114,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -2590,8 +2122,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-server-api
@@ -2608,22 +2138,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -2634,8 +2158,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -2644,8 +2166,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-server-groups-api
@@ -2662,22 +2182,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -2688,8 +2202,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -2698,8 +2210,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-settings-api
@@ -2716,22 +2226,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -2742,8 +2246,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -2752,8 +2254,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-statistics-api
@@ -2770,22 +2270,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -2796,8 +2290,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -2806,8 +2298,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-tasks-api
@@ -2824,22 +2314,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -2850,8 +2334,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -2860,8 +2342,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-user-management-api
@@ -2878,22 +2358,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -2904,8 +2378,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -2914,8 +2386,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-users-api
@@ -2932,22 +2402,16 @@ apis:
     url: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   - type: Rules
     url: rules/couchbase-server-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-server-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html
   - type: Rules
     url: rules/couchbase-query-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-query-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
   - type: Documentation
     url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html
   - type: Rules
     url: rules/couchbase-search-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-search-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/server/current/eventing/eventing-api.html
   - type: Documentation
@@ -2958,8 +2422,6 @@ apis:
     url: https://docs.couchbase.com/cloud/management-api-reference/index.html
   - type: Rules
     url: rules/couchbase-capella-management-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-capella-management-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html
   - type: Documentation
@@ -2968,8 +2430,6 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api.html
   - type: Rules
     url: rules/couchbase-sync-gateway-rules.yml
-  - type: Capabilities
-    url: capabilities/couchbase-sync-gateway-capabilities.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 common:
