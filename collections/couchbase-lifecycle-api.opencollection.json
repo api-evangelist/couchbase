@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Lifecycle API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lifecycle",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Deploy an Eventing Function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/api/v1/functions/:functionName/deploy",
+            "params": [
+              {
+                "name": "functionName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Eventing Function"
+              }
+            ]
+          },
+          "docs": "Deploys an undeployed Eventing Function, starting it to process document mutations and execute its handler code."
+        },
+        {
+          "info": {
+            "name": "Undeploy an Eventing Function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/api/v1/functions/:functionName/undeploy",
+            "params": [
+              {
+                "name": "functionName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Eventing Function"
+              }
+            ]
+          },
+          "docs": "Undeploys a deployed Eventing Function, stopping it from processing document mutations."
+        },
+        {
+          "info": {
+            "name": "Pause an Eventing Function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/api/v1/functions/:functionName/pause",
+            "params": [
+              {
+                "name": "functionName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Eventing Function"
+              }
+            ]
+          },
+          "docs": "Pauses a deployed Eventing Function and creates a DCP checkpoint so that on a subsequent resume no mutations will be lost."
+        },
+        {
+          "info": {
+            "name": "Resume an Eventing Function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/api/v1/functions/:functionName/resume",
+            "params": [
+              {
+                "name": "functionName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Eventing Function"
+              }
+            ]
+          },
+          "docs": "Resumes a paused Eventing Function from its DCP checkpoint, continuing to process mutations from where it left off."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

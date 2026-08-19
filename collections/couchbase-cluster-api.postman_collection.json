@@ -1,0 +1,408 @@
+{
+  "item": [
+    {
+      "id": "525f9a22-d885-4910-b4f6-f81ddf327a14",
+      "name": "Cluster",
+      "description": {
+        "content": "Endpoints for managing cluster-level backup configuration.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d0e24a89-d166-40fb-8235-95da26b34105",
+          "name": "Get backup cluster information",
+          "request": {
+            "name": "Get backup cluster information",
+            "description": {
+              "content": "Returns information about the current cluster from the perspective of the Backup Service, including the list of repositories and plans.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "cluster",
+                "self"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "95ca81b2-5181-4620-88d1-90eb4283f6af",
+              "name": "Successful retrieval of cluster backup information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "cluster",
+                    "self"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"repositories\": [\n    \"string\",\n    \"string\"\n  ],\n  \"plans\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08743da4-1d80-41fe-b0fd-31482f4921fd",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "cluster",
+                    "self"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd2740b1-d64b-4c3c-bd8b-a248647cd26e",
+          "name": "Get cluster information",
+          "request": {
+            "name": "Get cluster information",
+            "description": {
+              "content": "Returns basic information about the cluster including the list of pools, UUID, and implementation version.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5fe9c311-4c61-4e8d-bd48-abf87838e555",
+              "name": "Successful retrieval of cluster pool information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"isAdminCreds\": true,\n  \"isROAdminCreds\": true,\n  \"isEnterprise\": true,\n  \"implementationVersion\": \"string\",\n  \"uuid\": \"string\",\n  \"pools\": [\n    {\n      \"name\": \"string\",\n      \"uri\": \"string\",\n      \"streamingUri\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"uri\": \"string\",\n      \"streamingUri\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "495dd73b-28dc-4cdb-8c1e-5e8afd91eb8e",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9292484d-c4da-4f3c-a090-766839d7efaf",
+          "name": "Get default pool details",
+          "request": {
+            "name": "Get default pool details",
+            "description": {
+              "content": "Returns detailed information about the default pool including cluster name, storage totals, RAM quotas, node list, and bucket information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                "default"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "383b76b2-7728-49b4-b02e-6f5475203850",
+              "name": "Successful retrieval of default pool details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "default"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"clusterName\": \"string\",\n  \"nodes\": [\n    {\n      \"hostname\": \"string\",\n      \"status\": \"unhealthy\",\n      \"clusterMembership\": \"inactiveAdded\",\n      \"services\": [\n        \"backup\",\n        \"index\"\n      ],\n      \"os\": \"string\",\n      \"version\": \"string\",\n      \"memoryTotal\": 7317,\n      \"memoryFree\": 2820\n    },\n    {\n      \"hostname\": \"string\",\n      \"status\": \"warmup\",\n      \"clusterMembership\": \"inactiveAdded\",\n      \"services\": [\n        \"index\",\n        \"index\"\n      ],\n      \"os\": \"string\",\n      \"version\": \"string\",\n      \"memoryTotal\": 7555,\n      \"memoryFree\": 7152\n    }\n  ],\n  \"storageTotals\": {\n    \"ram\": {\n      \"total\": 4252,\n      \"used\": 6235\n    },\n    \"hdd\": {\n      \"total\": 2368,\n      \"used\": 8139\n    }\n  },\n  \"rebalanceStatus\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8aac25eb-b490-403d-a41c-06a1fafc8735",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "default"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://localhost:8095",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4e9dca8a-319d-4977-9d54-91bb1cbaea71",
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Cluster API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
+      "type": "text/plain"
+    }
+  }
+}

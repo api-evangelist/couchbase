@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Replications API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Replications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an XDCR replication",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/controller/createReplication",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Creates a new XDCR replication stream from a source bucket to a target bucket on a remote cluster."
+        },
+        {
+          "info": {
+            "name": "Delete an XDCR replication",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8095/controller/cancelXDCR/:replicationId",
+            "params": [
+              {
+                "name": "replicationId",
+                "value": "",
+                "type": "path",
+                "description": "The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+              }
+            ]
+          },
+          "docs": "Deletes the specified XDCR replication stream, stopping all data replication for that stream."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

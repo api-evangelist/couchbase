@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Analytics Query API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Analytics Query",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute an analytics query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/analytics/service",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes a SQL++ analytics query against the Analytics service. The endpoint implements the same HTTP interface as the Couchbase Query service but targets the Analytics engine for complex analytical workloads."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

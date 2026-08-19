@@ -1,0 +1,1768 @@
+{
+  "item": [
+    {
+      "id": "6ce64e3a-f305-40a7-93aa-4c195b092936",
+      "name": "Clusters",
+      "description": {
+        "content": "Endpoints for provisioning, managing, and scaling Capella database clusters.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4490ca1a-fa65-4e9a-8e3d-5d7c0e6c763e",
+          "name": "List clusters",
+          "request": {
+            "name": "List clusters",
+            "description": {
+              "content": "Returns the list of database clusters within the specified project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "organizations",
+                ":organizationId",
+                "projects",
+                ":projectId",
+                "clusters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "perPage",
+                  "value": "25",
+                  "description": "Number of items per page"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) The UUID of the organization"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "projectId",
+                  "description": "(Required) The UUID of the project"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f49df3b1-9192-4ad7-b2b7-d2dd40d08eb8",
+              "name": "Successful retrieval of clusters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cursor\": {\n    \"pages\": {\n      \"page\": 4183,\n      \"next\": 5842,\n      \"previous\": 6639,\n      \"last\": 8947,\n      \"perPage\": 2438,\n      \"totalItems\": 9878\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86c00b32-5cc5-445d-9b72-4fb2c16498cf",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "24da2379-72c3-4d3a-ba7f-d9ac2a9c698d",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5d518620-6d30-443c-9cf8-59aa61864af0",
+          "name": "Create a cluster",
+          "request": {
+            "name": "Create a cluster",
+            "description": {
+              "content": "Provisions a new Couchbase Capella database cluster in the specified project. You can configure the cloud provider, region, instance type, storage, and services.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "organizations",
+                ":organizationId",
+                "projects",
+                ":projectId",
+                "clusters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) The UUID of the organization"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "projectId",
+                  "description": "(Required) The UUID of the project"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"cloudProvider\": {\n    \"type\": \"<string>\",\n    \"region\": \"<string>\",\n    \"cidr\": \"<string>\"\n  },\n  \"serviceGroups\": [\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": \"<integer>\",\n          \"ram\": \"<integer>\"\n        },\n        \"disk\": {\n          \"type\": \"<string>\",\n          \"storage\": \"<integer>\",\n          \"iops\": \"<integer>\"\n        }\n      },\n      \"numOfNodes\": \"<integer>\",\n      \"services\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": \"<integer>\",\n          \"ram\": \"<integer>\"\n        },\n        \"disk\": {\n          \"type\": \"<string>\",\n          \"storage\": \"<integer>\",\n          \"iops\": \"<integer>\"\n        }\n      },\n      \"numOfNodes\": \"<integer>\",\n      \"services\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"availability\": {\n    \"type\": \"<string>\"\n  },\n  \"support\": {\n    \"plan\": \"<string>\",\n    \"timezone\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"couchbaseServer\": {\n    \"version\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0410e543-bd1a-4b76-b418-602a65cea2fe",
+              "name": "Cluster creation initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"cloudProvider\": {\n    \"type\": \"<string>\",\n    \"region\": \"<string>\",\n    \"cidr\": \"<string>\"\n  },\n  \"serviceGroups\": [\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 1818,\n          \"ram\": 2062\n        },\n        \"disk\": {\n          \"type\": \"P15\",\n          \"storage\": 3152,\n          \"iops\": 5519\n        }\n      },\n      \"numOfNodes\": 7035,\n      \"services\": [\n        \"index\",\n        \"analytics\"\n      ]\n    },\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 3324,\n          \"ram\": 8051\n        },\n        \"disk\": {\n          \"type\": \"P10\",\n          \"storage\": 8673,\n          \"iops\": 6410\n        }\n      },\n      \"numOfNodes\": 1145,\n      \"services\": [\n        \"query\",\n        \"index\"\n      ]\n    }\n  ],\n  \"availability\": {\n    \"type\": \"<string>\"\n  },\n  \"support\": {\n    \"plan\": \"<string>\",\n    \"timezone\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"couchbaseServer\": {\n    \"version\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e8e5b1c7-161d-3ee4-f13e-c5718af27e1e\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"cloudProvider\": {\n    \"type\": \"azure\",\n    \"region\": \"string\",\n    \"cidr\": \"string\"\n  },\n  \"couchbaseServer\": {\n    \"version\": \"string\"\n  },\n  \"serviceGroups\": [\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 7564,\n          \"ram\": 3733\n        },\n        \"disk\": {\n          \"type\": \"P15\",\n          \"storage\": 9234,\n          \"iops\": 2098\n        }\n      },\n      \"numOfNodes\": 2329,\n      \"services\": [\n        \"analytics\",\n        \"query\"\n      ]\n    },\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 7115,\n          \"ram\": 9108\n        },\n        \"disk\": {\n          \"type\": \"P10\",\n          \"storage\": 6054,\n          \"iops\": 9514\n        }\n      },\n      \"numOfNodes\": 2399,\n      \"services\": [\n        \"data\",\n        \"query\"\n      ]\n    }\n  ],\n  \"availability\": {\n    \"type\": \"single\"\n  },\n  \"support\": {\n    \"plan\": \"enterprise\",\n    \"timezone\": \"string\"\n  },\n  \"currentState\": \"draft\",\n  \"connectionString\": \"string\",\n  \"audit\": {\n    \"createdAt\": \"1962-06-27T17:15:21.073Z\",\n    \"modifiedAt\": \"2008-08-07T15:11:04.226Z\",\n    \"createdBy\": \"string\",\n    \"modifiedBy\": \"string\",\n    \"version\": 9382\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b76fe3b-1836-450d-9b61-f634dcb0d823",
+              "name": "Invalid cluster configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"cloudProvider\": {\n    \"type\": \"<string>\",\n    \"region\": \"<string>\",\n    \"cidr\": \"<string>\"\n  },\n  \"serviceGroups\": [\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 1818,\n          \"ram\": 2062\n        },\n        \"disk\": {\n          \"type\": \"P15\",\n          \"storage\": 3152,\n          \"iops\": 5519\n        }\n      },\n      \"numOfNodes\": 7035,\n      \"services\": [\n        \"index\",\n        \"analytics\"\n      ]\n    },\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 3324,\n          \"ram\": 8051\n        },\n        \"disk\": {\n          \"type\": \"P10\",\n          \"storage\": 8673,\n          \"iops\": 6410\n        }\n      },\n      \"numOfNodes\": 1145,\n      \"services\": [\n        \"query\",\n        \"index\"\n      ]\n    }\n  ],\n  \"availability\": {\n    \"type\": \"<string>\"\n  },\n  \"support\": {\n    \"plan\": \"<string>\",\n    \"timezone\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"couchbaseServer\": {\n    \"version\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7ede200a-cbb3-4bef-833b-3c080ee060e6",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"cloudProvider\": {\n    \"type\": \"<string>\",\n    \"region\": \"<string>\",\n    \"cidr\": \"<string>\"\n  },\n  \"serviceGroups\": [\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 1818,\n          \"ram\": 2062\n        },\n        \"disk\": {\n          \"type\": \"P15\",\n          \"storage\": 3152,\n          \"iops\": 5519\n        }\n      },\n      \"numOfNodes\": 7035,\n      \"services\": [\n        \"index\",\n        \"analytics\"\n      ]\n    },\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 3324,\n          \"ram\": 8051\n        },\n        \"disk\": {\n          \"type\": \"P10\",\n          \"storage\": 8673,\n          \"iops\": 6410\n        }\n      },\n      \"numOfNodes\": 1145,\n      \"services\": [\n        \"query\",\n        \"index\"\n      ]\n    }\n  ],\n  \"availability\": {\n    \"type\": \"<string>\"\n  },\n  \"support\": {\n    \"plan\": \"<string>\",\n    \"timezone\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"couchbaseServer\": {\n    \"version\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "48bc4b5c-ea6a-46b5-93c0-d258364a4a66",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"cloudProvider\": {\n    \"type\": \"<string>\",\n    \"region\": \"<string>\",\n    \"cidr\": \"<string>\"\n  },\n  \"serviceGroups\": [\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 1818,\n          \"ram\": 2062\n        },\n        \"disk\": {\n          \"type\": \"P15\",\n          \"storage\": 3152,\n          \"iops\": 5519\n        }\n      },\n      \"numOfNodes\": 7035,\n      \"services\": [\n        \"index\",\n        \"analytics\"\n      ]\n    },\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 3324,\n          \"ram\": 8051\n        },\n        \"disk\": {\n          \"type\": \"P10\",\n          \"storage\": 8673,\n          \"iops\": 6410\n        }\n      },\n      \"numOfNodes\": 1145,\n      \"services\": [\n        \"query\",\n        \"index\"\n      ]\n    }\n  ],\n  \"availability\": {\n    \"type\": \"<string>\"\n  },\n  \"support\": {\n    \"plan\": \"<string>\",\n    \"timezone\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"couchbaseServer\": {\n    \"version\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be93226f-8a20-4fd7-8c53-559201f2a4a6",
+          "name": "Get cluster details",
+          "request": {
+            "name": "Get cluster details",
+            "description": {
+              "content": "Returns detailed information about a specific cluster including its configuration, status, and connection string.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "organizations",
+                ":organizationId",
+                "projects",
+                ":projectId",
+                "clusters",
+                ":clusterId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) The UUID of the organization"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "projectId",
+                  "description": "(Required) The UUID of the project"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "clusterId",
+                  "description": "(Required) The UUID of the cluster"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "55eb3f0e-593c-48c6-8a71-04412cbb2394",
+              "name": "Successful retrieval of cluster details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters",
+                    ":clusterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "clusterId",
+                      "description": "(Required) The UUID of the cluster"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e8e5b1c7-161d-3ee4-f13e-c5718af27e1e\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"cloudProvider\": {\n    \"type\": \"azure\",\n    \"region\": \"string\",\n    \"cidr\": \"string\"\n  },\n  \"couchbaseServer\": {\n    \"version\": \"string\"\n  },\n  \"serviceGroups\": [\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 7564,\n          \"ram\": 3733\n        },\n        \"disk\": {\n          \"type\": \"P15\",\n          \"storage\": 9234,\n          \"iops\": 2098\n        }\n      },\n      \"numOfNodes\": 2329,\n      \"services\": [\n        \"analytics\",\n        \"query\"\n      ]\n    },\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 7115,\n          \"ram\": 9108\n        },\n        \"disk\": {\n          \"type\": \"P10\",\n          \"storage\": 6054,\n          \"iops\": 9514\n        }\n      },\n      \"numOfNodes\": 2399,\n      \"services\": [\n        \"data\",\n        \"query\"\n      ]\n    }\n  ],\n  \"availability\": {\n    \"type\": \"single\"\n  },\n  \"support\": {\n    \"plan\": \"enterprise\",\n    \"timezone\": \"string\"\n  },\n  \"currentState\": \"draft\",\n  \"connectionString\": \"string\",\n  \"audit\": {\n    \"createdAt\": \"1962-06-27T17:15:21.073Z\",\n    \"modifiedAt\": \"2008-08-07T15:11:04.226Z\",\n    \"createdBy\": \"string\",\n    \"modifiedBy\": \"string\",\n    \"version\": 9382\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "033f660d-875b-488f-9dec-2ce2a711b211",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters",
+                    ":clusterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "clusterId",
+                      "description": "(Required) The UUID of the cluster"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8a21ea6f-8ed7-46ee-9e28-239123b6fe6b",
+              "name": "Cluster not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters",
+                    ":clusterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "clusterId",
+                      "description": "(Required) The UUID of the cluster"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e4c98fee-67e9-4771-ba5f-bd6e6fda938c",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters",
+                    ":clusterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "clusterId",
+                      "description": "(Required) The UUID of the cluster"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c61692d1-1026-45c7-8502-472e66661b4f",
+          "name": "Update a cluster",
+          "request": {
+            "name": "Update a cluster",
+            "description": {
+              "content": "Updates the configuration of an existing cluster, such as scaling the number of nodes or changing the support plan.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "organizations",
+                ":organizationId",
+                "projects",
+                ":projectId",
+                "clusters",
+                ":clusterId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) The UUID of the organization"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "projectId",
+                  "description": "(Required) The UUID of the project"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "clusterId",
+                  "description": "(Required) The UUID of the cluster"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"serviceGroups\": [\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": \"<integer>\",\n          \"ram\": \"<integer>\"\n        },\n        \"disk\": {\n          \"type\": \"<string>\",\n          \"storage\": \"<integer>\",\n          \"iops\": \"<integer>\"\n        }\n      },\n      \"numOfNodes\": \"<integer>\",\n      \"services\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": \"<integer>\",\n          \"ram\": \"<integer>\"\n        },\n        \"disk\": {\n          \"type\": \"<string>\",\n          \"storage\": \"<integer>\",\n          \"iops\": \"<integer>\"\n        }\n      },\n      \"numOfNodes\": \"<integer>\",\n      \"services\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"support\": {\n    \"plan\": \"<string>\",\n    \"timezone\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6a3694db-f41e-4b81-ae16-bbe2ffa9ba1f",
+              "name": "Cluster update initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters",
+                    ":clusterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "clusterId",
+                      "description": "(Required) The UUID of the cluster"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"serviceGroups\": [\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 7231,\n          \"ram\": 7315\n        },\n        \"disk\": {\n          \"type\": \"P40\",\n          \"storage\": 5842,\n          \"iops\": 7747\n        }\n      },\n      \"numOfNodes\": 5429,\n      \"services\": [\n        \"eventing\",\n        \"eventing\"\n      ]\n    },\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 3512,\n          \"ram\": 2984\n        },\n        \"disk\": {\n          \"type\": \"io2\",\n          \"storage\": 9776,\n          \"iops\": 5352\n        }\n      },\n      \"numOfNodes\": 871,\n      \"services\": [\n        \"analytics\",\n        \"index\"\n      ]\n    }\n  ],\n  \"support\": {\n    \"plan\": \"<string>\",\n    \"timezone\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "464fe55a-b70e-4112-b3dc-578c8c92912d",
+              "name": "Invalid cluster configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters",
+                    ":clusterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "clusterId",
+                      "description": "(Required) The UUID of the cluster"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"serviceGroups\": [\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 7231,\n          \"ram\": 7315\n        },\n        \"disk\": {\n          \"type\": \"P40\",\n          \"storage\": 5842,\n          \"iops\": 7747\n        }\n      },\n      \"numOfNodes\": 5429,\n      \"services\": [\n        \"eventing\",\n        \"eventing\"\n      ]\n    },\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 3512,\n          \"ram\": 2984\n        },\n        \"disk\": {\n          \"type\": \"io2\",\n          \"storage\": 9776,\n          \"iops\": 5352\n        }\n      },\n      \"numOfNodes\": 871,\n      \"services\": [\n        \"analytics\",\n        \"index\"\n      ]\n    }\n  ],\n  \"support\": {\n    \"plan\": \"<string>\",\n    \"timezone\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "18b3e62f-7b1c-4ec6-9c2a-cf05ab489e67",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters",
+                    ":clusterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "clusterId",
+                      "description": "(Required) The UUID of the cluster"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"serviceGroups\": [\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 7231,\n          \"ram\": 7315\n        },\n        \"disk\": {\n          \"type\": \"P40\",\n          \"storage\": 5842,\n          \"iops\": 7747\n        }\n      },\n      \"numOfNodes\": 5429,\n      \"services\": [\n        \"eventing\",\n        \"eventing\"\n      ]\n    },\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 3512,\n          \"ram\": 2984\n        },\n        \"disk\": {\n          \"type\": \"io2\",\n          \"storage\": 9776,\n          \"iops\": 5352\n        }\n      },\n      \"numOfNodes\": 871,\n      \"services\": [\n        \"analytics\",\n        \"index\"\n      ]\n    }\n  ],\n  \"support\": {\n    \"plan\": \"<string>\",\n    \"timezone\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "85508dde-19ef-473d-adf2-f0cd900f8782",
+              "name": "Cluster not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters",
+                    ":clusterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "clusterId",
+                      "description": "(Required) The UUID of the cluster"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"serviceGroups\": [\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 7231,\n          \"ram\": 7315\n        },\n        \"disk\": {\n          \"type\": \"P40\",\n          \"storage\": 5842,\n          \"iops\": 7747\n        }\n      },\n      \"numOfNodes\": 5429,\n      \"services\": [\n        \"eventing\",\n        \"eventing\"\n      ]\n    },\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 3512,\n          \"ram\": 2984\n        },\n        \"disk\": {\n          \"type\": \"io2\",\n          \"storage\": 9776,\n          \"iops\": 5352\n        }\n      },\n      \"numOfNodes\": 871,\n      \"services\": [\n        \"analytics\",\n        \"index\"\n      ]\n    }\n  ],\n  \"support\": {\n    \"plan\": \"<string>\",\n    \"timezone\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7d521c1b-2006-41a2-a615-6dff36cf801e",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters",
+                    ":clusterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "clusterId",
+                      "description": "(Required) The UUID of the cluster"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"serviceGroups\": [\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 7231,\n          \"ram\": 7315\n        },\n        \"disk\": {\n          \"type\": \"P40\",\n          \"storage\": 5842,\n          \"iops\": 7747\n        }\n      },\n      \"numOfNodes\": 5429,\n      \"services\": [\n        \"eventing\",\n        \"eventing\"\n      ]\n    },\n    {\n      \"node\": {\n        \"compute\": {\n          \"cpu\": 3512,\n          \"ram\": 2984\n        },\n        \"disk\": {\n          \"type\": \"io2\",\n          \"storage\": 9776,\n          \"iops\": 5352\n        }\n      },\n      \"numOfNodes\": 871,\n      \"services\": [\n        \"analytics\",\n        \"index\"\n      ]\n    }\n  ],\n  \"support\": {\n    \"plan\": \"<string>\",\n    \"timezone\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "add46348-88f0-4940-ba63-7e0506dbdfe7",
+          "name": "Delete a cluster",
+          "request": {
+            "name": "Delete a cluster",
+            "description": {
+              "content": "Deletes the specified cluster and all its data. This action is irreversible.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "organizations",
+                ":organizationId",
+                "projects",
+                ":projectId",
+                "clusters",
+                ":clusterId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) The UUID of the organization"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "projectId",
+                  "description": "(Required) The UUID of the project"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "clusterId",
+                  "description": "(Required) The UUID of the cluster"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe8016f6-8e21-4eae-a1c6-f5885956726d",
+              "name": "Cluster deletion initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters",
+                    ":clusterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "clusterId",
+                      "description": "(Required) The UUID of the cluster"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2fcfcb2a-07bb-4aa2-a04f-8999d675f574",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters",
+                    ":clusterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "clusterId",
+                      "description": "(Required) The UUID of the cluster"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0de64c50-21a1-4cdc-9acb-d71b886cd33a",
+              "name": "Cluster not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters",
+                    ":clusterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "clusterId",
+                      "description": "(Required) The UUID of the cluster"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1e1471a8-9cb6-49ac-aae4-01700ddc6eca",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":organizationId",
+                    "projects",
+                    ":projectId",
+                    "clusters",
+                    ":clusterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) The UUID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) The UUID of the project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "clusterId",
+                      "description": "(Required) The UUID of the cluster"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://localhost:8095",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1fa64300-e6aa-409a-88f2-bde2eb5f1149",
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Clusters API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
+      "type": "text/plain"
+    }
+  }
+}

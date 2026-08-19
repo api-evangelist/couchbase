@@ -1,0 +1,505 @@
+{
+  "item": [
+    {
+      "id": "3e8daa75-dfab-47d5-b311-740df75efa33",
+      "name": "Changes",
+      "description": {
+        "content": "Endpoints for monitoring document changes and subscribing to change feeds.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b57579c4-6199-497f-9105-67c534133d0f",
+          "name": "Get changes feed",
+          "request": {
+            "name": "Get changes feed",
+            "description": {
+              "content": "Returns a list of changes made to documents in the database in sequence order. Supports long-polling, continuous, and one-shot modes for real-time synchronization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db",
+                "_changes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "since",
+                  "value": "<string>",
+                  "description": "Sequence number to start from"
+                },
+                {
+                  "disabled": false,
+                  "key": "feed",
+                  "value": "<string>",
+                  "description": "Type of changes feed"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "Filter function to apply"
+                },
+                {
+                  "disabled": false,
+                  "key": "channels",
+                  "value": "<string>",
+                  "description": "Comma-separated list of channel names to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_docs",
+                  "value": "<boolean>",
+                  "description": "Whether to include document bodies"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of changes to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "heartbeat",
+                  "value": "<integer>",
+                  "description": "Heartbeat interval in milliseconds for continuous feed"
+                },
+                {
+                  "disabled": false,
+                  "key": "timeout",
+                  "value": "<integer>",
+                  "description": "Timeout in milliseconds for longpoll feed"
+                },
+                {
+                  "disabled": false,
+                  "key": "style",
+                  "value": "<string>",
+                  "description": "Whether to return all leaf revisions"
+                },
+                {
+                  "disabled": false,
+                  "key": "active_only",
+                  "value": "<boolean>",
+                  "description": "Whether to exclude deleted documents"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database (keyspace)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c47304eb-bc9d-4159-88d0-77e16014304c",
+              "name": "Successful retrieval of changes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "since",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feed",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "channels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_docs",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "heartbeat",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "style",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active_only",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"seq\": {},\n      \"id\": \"string\",\n      \"changes\": [\n        {\n          \"rev\": \"string\"\n        },\n        {\n          \"rev\": \"string\"\n        }\n      ],\n      \"deleted\": false,\n      \"doc\": {}\n    },\n    {\n      \"seq\": {},\n      \"id\": \"string\",\n      \"changes\": [\n        {\n          \"rev\": \"string\"\n        },\n        {\n          \"rev\": \"string\"\n        }\n      ],\n      \"deleted\": false,\n      \"doc\": {}\n    }\n  ],\n  \"last_seq\": {},\n  \"pending\": 6592\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf67e7d6-cc5d-45c4-9ee7-49f3ce3cb18f",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "since",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feed",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "channels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_docs",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "heartbeat",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "style",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active_only",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "409f685e-51a0-4d66-8934-cee8a2009ce1",
+          "name": "Get changes feed via POST",
+          "request": {
+            "name": "Get changes feed via POST",
+            "description": {
+              "content": "Returns changes feed with parameters specified in the request body. Identical to the GET endpoint but allows for complex filter parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db",
+                "_changes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database (keyspace)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"since\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"channels\": \"<string>\",\n  \"include_docs\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"feed\": \"<string>\",\n  \"active_only\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5e476ca7-5e97-48cf-8235-2e264d4130b0",
+              "name": "Successful retrieval of changes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"since\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"channels\": \"<string>\",\n  \"include_docs\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"feed\": \"<string>\",\n  \"active_only\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"seq\": {},\n      \"id\": \"string\",\n      \"changes\": [\n        {\n          \"rev\": \"string\"\n        },\n        {\n          \"rev\": \"string\"\n        }\n      ],\n      \"deleted\": false,\n      \"doc\": {}\n    },\n    {\n      \"seq\": {},\n      \"id\": \"string\",\n      \"changes\": [\n        {\n          \"rev\": \"string\"\n        },\n        {\n          \"rev\": \"string\"\n        }\n      ],\n      \"deleted\": false,\n      \"doc\": {}\n    }\n  ],\n  \"last_seq\": {},\n  \"pending\": 6592\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9c00c8a-1a22-40a2-bcbb-e92ceb29f654",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database (keyspace)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"since\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"channels\": \"<string>\",\n  \"include_docs\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"feed\": \"<string>\",\n  \"active_only\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://localhost:8095",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "234813fa-f8b9-4384-b7ef-a6bdc0c0da0d",
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Changes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
+      "type": "text/plain"
+    }
+  }
+}

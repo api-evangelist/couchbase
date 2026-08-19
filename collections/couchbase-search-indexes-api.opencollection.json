@@ -1,0 +1,172 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Search Indexes API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search Indexes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all search index definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/api/index"
+          },
+          "docs": "Returns the definitions of all Full Text Search indexes configured on the cluster, including their type mappings, analyzers, and configuration parameters."
+        },
+        {
+          "info": {
+            "name": "Get a search index definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/api/index/:indexName",
+            "params": [
+              {
+                "name": "indexName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Full Text Search index"
+              }
+            ]
+          },
+          "docs": "Returns the definition of a specific Full Text Search index including its type mappings, analyzers, and configuration parameters."
+        },
+        {
+          "info": {
+            "name": "Create or update a search index",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:8095/api/index/:indexName",
+            "params": [
+              {
+                "name": "indexName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Full Text Search index"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Full Text Search index or updates an existing one with the provided index definition. The index name in the URL must match the name in the request body."
+        },
+        {
+          "info": {
+            "name": "Delete a search index",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8095/api/index/:indexName",
+            "params": [
+              {
+                "name": "indexName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Full Text Search index"
+              }
+            ]
+          },
+          "docs": "Deletes the specified Full Text Search index and all associated data."
+        },
+        {
+          "info": {
+            "name": "Control search index data ingestion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/api/index/:indexName/ingestControl/:operation",
+            "params": [
+              {
+                "name": "indexName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Full Text Search index"
+              },
+              {
+                "name": "operation",
+                "value": "",
+                "type": "path",
+                "description": "The ingestion control operation to perform"
+              }
+            ]
+          },
+          "docs": "Pauses or resumes data ingestion (DCP mutations) for the specified search index."
+        },
+        {
+          "info": {
+            "name": "Control search index query access",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/api/index/:indexName/queryControl/:operation",
+            "params": [
+              {
+                "name": "indexName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Full Text Search index"
+              },
+              {
+                "name": "operation",
+                "value": "",
+                "type": "path",
+                "description": "The query control operation to perform"
+              }
+            ]
+          },
+          "docs": "Allows or disallows queries on the specified search index."
+        },
+        {
+          "info": {
+            "name": "Control search index plan freeze",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/api/index/:indexName/planFreezeControl/:operation",
+            "params": [
+              {
+                "name": "indexName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Full Text Search index"
+              },
+              {
+                "name": "operation",
+                "value": "",
+                "type": "path",
+                "description": "The plan freeze control operation"
+              }
+            ]
+          },
+          "docs": "Freezes or unfreezes the assignment of index partitions to nodes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,362 @@
+{
+  "item": [
+    {
+      "id": "003954e7-d6e2-4ce1-8348-ca46f87ba8c6",
+      "name": "Query Settings",
+      "description": {
+        "content": "Endpoints for configuring Query service settings at the node and cluster level.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d1286fd6-11c7-4a8a-9e57-a5acce3df473",
+          "name": "Get query service settings",
+          "request": {
+            "name": "Get query service settings",
+            "description": {
+              "content": "Returns the current settings for the Query service node, including timeout values, memory quotas, and logging configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "admin",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a48f6e0-5f35-452c-be13-7c7acfa07b99",
+              "name": "Successful retrieval of query settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"queryTmpSpaceDir\": \"string\",\n  \"queryTmpSpaceSize\": 5846,\n  \"queryPipelineBatch\": 8020,\n  \"queryPipelineCap\": 7361,\n  \"queryScanCap\": 6354,\n  \"queryTimeout\": \"string\",\n  \"queryPreparedLimit\": 1173,\n  \"queryCompletedLimit\": 2109,\n  \"queryCompletedThreshold\": 6411,\n  \"queryLogLevel\": \"none\",\n  \"queryMaxParallelism\": 5336,\n  \"queryN1QLFeatCtrl\": 2805\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ece4fc01-46b7-40f0-a568-d35fabb7494e",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aac1e40d-546e-41b8-91f0-801561ba9229",
+          "name": "Update query service settings",
+          "request": {
+            "name": "Update query service settings",
+            "description": {
+              "content": "Updates the configuration settings for the Query service node.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "admin",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"queryTmpSpaceDir\": \"<string>\",\n  \"queryTmpSpaceSize\": \"<integer>\",\n  \"queryPipelineBatch\": \"<integer>\",\n  \"queryPipelineCap\": \"<integer>\",\n  \"queryScanCap\": \"<integer>\",\n  \"queryTimeout\": \"<string>\",\n  \"queryPreparedLimit\": \"<integer>\",\n  \"queryCompletedLimit\": \"<integer>\",\n  \"queryCompletedThreshold\": \"<integer>\",\n  \"queryLogLevel\": \"<string>\",\n  \"queryMaxParallelism\": \"<integer>\",\n  \"queryN1QLFeatCtrl\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "21236cb3-2105-4c7a-9399-0fa7ad7ae80c",
+              "name": "Query settings updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"queryTmpSpaceDir\": \"<string>\",\n  \"queryTmpSpaceSize\": \"<integer>\",\n  \"queryPipelineBatch\": \"<integer>\",\n  \"queryPipelineCap\": \"<integer>\",\n  \"queryScanCap\": \"<integer>\",\n  \"queryTimeout\": \"<string>\",\n  \"queryPreparedLimit\": \"<integer>\",\n  \"queryCompletedLimit\": \"<integer>\",\n  \"queryCompletedThreshold\": \"<integer>\",\n  \"queryLogLevel\": \"<string>\",\n  \"queryMaxParallelism\": \"<integer>\",\n  \"queryN1QLFeatCtrl\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"queryTmpSpaceDir\": \"string\",\n  \"queryTmpSpaceSize\": 5846,\n  \"queryPipelineBatch\": 8020,\n  \"queryPipelineCap\": 7361,\n  \"queryScanCap\": 6354,\n  \"queryTimeout\": \"string\",\n  \"queryPreparedLimit\": 1173,\n  \"queryCompletedLimit\": 2109,\n  \"queryCompletedThreshold\": 6411,\n  \"queryLogLevel\": \"none\",\n  \"queryMaxParallelism\": 5336,\n  \"queryN1QLFeatCtrl\": 2805\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c444963-9d38-4b2d-8b30-07c1a14ae98b",
+              "name": "Invalid settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"queryTmpSpaceDir\": \"<string>\",\n  \"queryTmpSpaceSize\": \"<integer>\",\n  \"queryPipelineBatch\": \"<integer>\",\n  \"queryPipelineCap\": \"<integer>\",\n  \"queryScanCap\": \"<integer>\",\n  \"queryTimeout\": \"<string>\",\n  \"queryPreparedLimit\": \"<integer>\",\n  \"queryCompletedLimit\": \"<integer>\",\n  \"queryCompletedThreshold\": \"<integer>\",\n  \"queryLogLevel\": \"<string>\",\n  \"queryMaxParallelism\": \"<integer>\",\n  \"queryN1QLFeatCtrl\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3ad466b7-85f8-4be9-b937-a30c1d01cdac",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"queryTmpSpaceDir\": \"<string>\",\n  \"queryTmpSpaceSize\": \"<integer>\",\n  \"queryPipelineBatch\": \"<integer>\",\n  \"queryPipelineCap\": \"<integer>\",\n  \"queryScanCap\": \"<integer>\",\n  \"queryTimeout\": \"<string>\",\n  \"queryPreparedLimit\": \"<integer>\",\n  \"queryCompletedLimit\": \"<integer>\",\n  \"queryCompletedThreshold\": \"<integer>\",\n  \"queryLogLevel\": \"<string>\",\n  \"queryMaxParallelism\": \"<integer>\",\n  \"queryN1QLFeatCtrl\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://localhost:8095",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3ff1c9f1-0636-45fa-891d-e377957fb2db",
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Query Settings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
+      "type": "text/plain"
+    }
+  }
+}

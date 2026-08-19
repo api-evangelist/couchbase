@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Repositories API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Repositories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List active backup repositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/api/v1/cluster/self/repository/active"
+          },
+          "docs": "Returns the list of active backup repositories configured for the cluster."
+        },
+        {
+          "info": {
+            "name": "Get active repository details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/api/v1/cluster/self/repository/active/:repositoryId",
+            "params": [
+              {
+                "name": "repositoryId",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup repository"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific active backup repository including backup names, dates, buckets, items, and mutations."
+        },
+        {
+          "info": {
+            "name": "Create an active backup repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/api/v1/cluster/self/repository/active/:repositoryId",
+            "params": [
+              {
+                "name": "repositoryId",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup repository"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new active backup repository with the specified configuration including the backup plan and storage location."
+        },
+        {
+          "info": {
+            "name": "Delete an active repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8095/api/v1/cluster/self/repository/active/:repositoryId",
+            "params": [
+              {
+                "name": "repositoryId",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup repository"
+              }
+            ]
+          },
+          "docs": "Deletes the specified active backup repository. The repository must not have any running tasks."
+        },
+        {
+          "info": {
+            "name": "List imported backup repositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/api/v1/cluster/self/repository/imported"
+          },
+          "docs": "Returns the list of imported backup repositories."
+        },
+        {
+          "info": {
+            "name": "List archived backup repositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/api/v1/cluster/self/repository/archived"
+          },
+          "docs": "Returns the list of archived backup repositories."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

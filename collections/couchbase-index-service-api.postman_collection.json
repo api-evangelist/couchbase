@@ -1,0 +1,503 @@
+{
+  "item": [
+    {
+      "id": "4bfe3717-e7b2-461b-a4f2-8a72c8cc665f",
+      "name": "Index Service",
+      "description": {
+        "content": "Endpoints for managing the Global Secondary Index service.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "601e395e-bc69-46de-a679-d6763441eabf",
+          "name": "Get index service settings",
+          "request": {
+            "name": "Get index service settings",
+            "description": {
+              "content": "Returns the current configuration settings for the Index service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "settings",
+                "indexes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c0d8ef4a-64ee-4dbd-b7da-7653628f0af9",
+              "name": "Successful retrieval of index settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "indexes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"storageMode\": \"plasma\",\n  \"indexerThreads\": 3637,\n  \"memorySnapshotInterval\": 1879,\n  \"stableSnapshotInterval\": 9053,\n  \"logLevel\": \"silent\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04197b90-3070-4810-ba89-a12b9cc023bd",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "indexes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8fa1eed-a37a-4a7f-8a68-089ebac6b23a",
+          "name": "Update index service settings",
+          "request": {
+            "name": "Update index service settings",
+            "description": {
+              "content": "Updates the configuration settings for the Index service including storage mode and memory allocation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "settings",
+                "indexes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "storageMode",
+                  "value": "<string>",
+                  "description": "Index storage mode"
+                },
+                {
+                  "disabled": false,
+                  "key": "indexerThreads",
+                  "value": "<integer>",
+                  "description": "Number of indexer threads"
+                },
+                {
+                  "disabled": false,
+                  "key": "memorySnapshotInterval",
+                  "value": "<integer>",
+                  "description": "Memory snapshot interval in milliseconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "stableSnapshotInterval",
+                  "value": "<integer>",
+                  "description": "Stable snapshot interval in milliseconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "logLevel",
+                  "value": "<string>",
+                  "description": "Log level for the index service"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c00c6fde-9c17-48a4-8f26-339cc0231402",
+              "name": "Index settings updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "indexes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Index storage mode",
+                        "type": "text/plain"
+                      },
+                      "key": "storageMode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of indexer threads",
+                        "type": "text/plain"
+                      },
+                      "key": "indexerThreads",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Memory snapshot interval in milliseconds",
+                        "type": "text/plain"
+                      },
+                      "key": "memorySnapshotInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Stable snapshot interval in milliseconds",
+                        "type": "text/plain"
+                      },
+                      "key": "stableSnapshotInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Log level for the index service",
+                        "type": "text/plain"
+                      },
+                      "key": "logLevel",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ae118c8f-9560-497f-9b4a-6b9197b633a2",
+              "name": "Invalid index settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "indexes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Index storage mode",
+                        "type": "text/plain"
+                      },
+                      "key": "storageMode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of indexer threads",
+                        "type": "text/plain"
+                      },
+                      "key": "indexerThreads",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Memory snapshot interval in milliseconds",
+                        "type": "text/plain"
+                      },
+                      "key": "memorySnapshotInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Stable snapshot interval in milliseconds",
+                        "type": "text/plain"
+                      },
+                      "key": "stableSnapshotInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Log level for the index service",
+                        "type": "text/plain"
+                      },
+                      "key": "logLevel",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8564755c-cf3b-4fcd-a308-7904c2b7a264",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "indexes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Index storage mode",
+                        "type": "text/plain"
+                      },
+                      "key": "storageMode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of indexer threads",
+                        "type": "text/plain"
+                      },
+                      "key": "indexerThreads",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Memory snapshot interval in milliseconds",
+                        "type": "text/plain"
+                      },
+                      "key": "memorySnapshotInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Stable snapshot interval in milliseconds",
+                        "type": "text/plain"
+                      },
+                      "key": "stableSnapshotInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Log level for the index service",
+                        "type": "text/plain"
+                      },
+                      "key": "logLevel",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://localhost:8095",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3418b334-e5a3-4a1d-b472-157b3a846510",
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Index Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
+      "type": "text/plain"
+    }
+  }
+}

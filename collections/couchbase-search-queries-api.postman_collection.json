@@ -1,0 +1,340 @@
+{
+  "item": [
+    {
+      "id": "b5a9a17f-ba92-42df-8d3f-a2b0fd7ea8ce",
+      "name": "Search Queries",
+      "description": {
+        "content": "Endpoints for executing full-text search queries against search indexes.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4e600602-3fd4-4af3-8bed-7cc89548c57d",
+          "name": "Query a search index",
+          "request": {
+            "name": "Query a search index",
+            "description": {
+              "content": "Executes a full-text search query against the specified index. Supports various query types including match, term, phrase, boolean, numeric range, date range, geospatial, and conjunction/disjunction queries. Results include relevance scores, highlighting, and faceted results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "index",
+                ":indexName",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "indexName",
+                  "description": "(Required) The name of the Full Text Search index"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": {\n    \"match\": \"<string>\",\n    \"field\": \"<string>\",\n    \"analyzer\": \"<string>\",\n    \"fuzziness\": \"<integer>\",\n    \"prefix_length\": \"<integer>\",\n    \"boost\": \"<number>\"\n  },\n  \"size\": 10,\n  \"from\": 0,\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"highlight\": {\n    \"style\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"facets\": {\n    \"key_0\": {\n      \"field\": \"<string>\",\n      \"size\": \"<integer>\"\n    }\n  },\n  \"sort\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"explain\": \"<boolean>\",\n  \"ctl\": {\n    \"timeout\": \"<integer>\",\n    \"consistency\": {\n      \"level\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9724f7df-3057-4f9c-ae6f-4d06d20b19e6",
+              "name": "Search query executed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": {\n    \"match\": \"<string>\",\n    \"field\": \"<string>\",\n    \"analyzer\": \"<string>\",\n    \"fuzziness\": \"<integer>\",\n    \"prefix_length\": \"<integer>\",\n    \"boost\": \"<number>\"\n  },\n  \"size\": 10,\n  \"from\": 0,\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"highlight\": {\n    \"style\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"facets\": {\n    \"key_0\": {\n      \"field\": \"<string>\",\n      \"size\": \"<integer>\"\n    },\n    \"key_1\": {\n      \"field\": \"<string>\",\n      \"size\": \"<integer>\"\n    }\n  },\n  \"sort\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"explain\": \"<boolean>\",\n  \"ctl\": {\n    \"timeout\": \"<integer>\",\n    \"consistency\": {\n      \"level\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"total\": 8458,\n    \"failed\": 8757,\n    \"successful\": 3695,\n    \"errors\": {}\n  },\n  \"total_hits\": 82,\n  \"max_score\": 2504.831833633372,\n  \"took\": 4416,\n  \"hits\": [\n    {\n      \"index\": \"string\",\n      \"id\": \"string\",\n      \"score\": 8122.858899779074,\n      \"fields\": {},\n      \"fragments\": {\n        \"key_0\": [\n          \"string\",\n          \"string\"\n        ],\n        \"key_1\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    },\n    {\n      \"index\": \"string\",\n      \"id\": \"string\",\n      \"score\": 9798.333953386598,\n      \"fields\": {},\n      \"fragments\": {\n        \"key_0\": [\n          \"string\",\n          \"string\"\n        ],\n        \"key_1\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    }\n  ],\n  \"facets\": {\n    \"key_0\": {\n      \"field\": \"string\",\n      \"total\": 8358,\n      \"missing\": 9549,\n      \"other\": 5572,\n      \"terms\": [\n        {\n          \"term\": \"string\",\n          \"count\": 3411\n        },\n        {\n          \"term\": \"string\",\n          \"count\": 3061\n        }\n      ]\n    },\n    \"key_1\": {\n      \"field\": \"string\",\n      \"total\": 5954,\n      \"missing\": 4014,\n      \"other\": 8301,\n      \"terms\": [\n        {\n          \"term\": \"string\",\n          \"count\": 5127\n        },\n        {\n          \"term\": \"string\",\n          \"count\": 7357\n        }\n      ]\n    },\n    \"key_2\": {\n      \"field\": \"string\",\n      \"total\": 124,\n      \"missing\": 8709,\n      \"other\": 9130,\n      \"terms\": [\n        {\n          \"term\": \"string\",\n          \"count\": 4343\n        },\n        {\n          \"term\": \"string\",\n          \"count\": 4454\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d857b2f5-0ded-4168-8f23-0dc6db91ebde",
+              "name": "Invalid search query",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": {\n    \"match\": \"<string>\",\n    \"field\": \"<string>\",\n    \"analyzer\": \"<string>\",\n    \"fuzziness\": \"<integer>\",\n    \"prefix_length\": \"<integer>\",\n    \"boost\": \"<number>\"\n  },\n  \"size\": 10,\n  \"from\": 0,\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"highlight\": {\n    \"style\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"facets\": {\n    \"key_0\": {\n      \"field\": \"<string>\",\n      \"size\": \"<integer>\"\n    },\n    \"key_1\": {\n      \"field\": \"<string>\",\n      \"size\": \"<integer>\"\n    }\n  },\n  \"sort\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"explain\": \"<boolean>\",\n  \"ctl\": {\n    \"timeout\": \"<integer>\",\n    \"consistency\": {\n      \"level\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a9ecae23-3c51-4dbe-a435-e6dc2c5d92b6",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": {\n    \"match\": \"<string>\",\n    \"field\": \"<string>\",\n    \"analyzer\": \"<string>\",\n    \"fuzziness\": \"<integer>\",\n    \"prefix_length\": \"<integer>\",\n    \"boost\": \"<number>\"\n  },\n  \"size\": 10,\n  \"from\": 0,\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"highlight\": {\n    \"style\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"facets\": {\n    \"key_0\": {\n      \"field\": \"<string>\",\n      \"size\": \"<integer>\"\n    },\n    \"key_1\": {\n      \"field\": \"<string>\",\n      \"size\": \"<integer>\"\n    }\n  },\n  \"sort\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"explain\": \"<boolean>\",\n  \"ctl\": {\n    \"timeout\": \"<integer>\",\n    \"consistency\": {\n      \"level\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b1144a34-fb03-4800-8360-d3d018bc040f",
+              "name": "Index not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": {\n    \"match\": \"<string>\",\n    \"field\": \"<string>\",\n    \"analyzer\": \"<string>\",\n    \"fuzziness\": \"<integer>\",\n    \"prefix_length\": \"<integer>\",\n    \"boost\": \"<number>\"\n  },\n  \"size\": 10,\n  \"from\": 0,\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"highlight\": {\n    \"style\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"facets\": {\n    \"key_0\": {\n      \"field\": \"<string>\",\n      \"size\": \"<integer>\"\n    },\n    \"key_1\": {\n      \"field\": \"<string>\",\n      \"size\": \"<integer>\"\n    }\n  },\n  \"sort\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"explain\": \"<boolean>\",\n  \"ctl\": {\n    \"timeout\": \"<integer>\",\n    \"consistency\": {\n      \"level\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://localhost:8095",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c7da5b92-c213-4744-9cbb-9c39406d524c",
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Search Queries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
+      "type": "text/plain"
+    }
+  }
+}

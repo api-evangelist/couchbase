@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Statistics API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Statistics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Eventing Service status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/api/v1/status"
+          },
+          "docs": "Returns the deployment status and processing status of all Eventing Functions."
+        },
+        {
+          "info": {
+            "name": "Get Eventing Function statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/api/v1/stats"
+          },
+          "docs": "Returns execution statistics for all Eventing Functions including mutation processing counts, failure counts, and timing information."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Functions API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Functions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all Eventing Functions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/api/v1/functions"
+          },
+          "docs": "Returns the definitions of all Eventing Functions including their source code, bindings, and deployment settings."
+        },
+        {
+          "info": {
+            "name": "Get an Eventing Function",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/api/v1/functions/:functionName",
+            "params": [
+              {
+                "name": "functionName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Eventing Function"
+              }
+            ]
+          },
+          "docs": "Returns the definition of a specific Eventing Function including its source code, bindings, and deployment settings."
+        },
+        {
+          "info": {
+            "name": "Create or update an Eventing Function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/api/v1/functions/:functionName",
+            "params": [
+              {
+                "name": "functionName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Eventing Function"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Eventing Function or updates an existing one with the provided definition. The function name in the URL must match the appname in the request body."
+        },
+        {
+          "info": {
+            "name": "Delete an Eventing Function",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8095/api/v1/functions/:functionName",
+            "params": [
+              {
+                "name": "functionName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Eventing Function"
+              }
+            ]
+          },
+          "docs": "Deletes the specified Eventing Function. Only functions in undeployed state can be deleted."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

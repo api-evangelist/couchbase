@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Database API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Database",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get database information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/:db",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              }
+            ]
+          },
+          "docs": "Returns information about the specified database including its name, update sequence, and instance start time."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

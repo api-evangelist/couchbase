@@ -1,0 +1,787 @@
+{
+  "item": [
+    {
+      "id": "76039024-d047-494c-925c-9fb3591d886e",
+      "name": "Plans",
+      "description": {
+        "content": "Endpoints for managing backup plans that define backup schedules and data retention policies.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "725bd87d-ae4e-4d1d-afc7-af90142c7a06",
+          "name": "List backup plans",
+          "request": {
+            "name": "List backup plans",
+            "description": {
+              "content": "Returns the list of all backup plans configured for the cluster.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "plan"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae344b61-72c8-4c29-bfe4-c5a4dde28806",
+              "name": "Successful retrieval of backup plans",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "plan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"services\": [\n      \"eventing\",\n      \"gsi\"\n    ],\n    \"default\": false,\n    \"tasks\": [\n      {\n        \"name\": \"string\",\n        \"task_type\": \"BACKUP\",\n        \"full_backup\": true,\n        \"schedule\": {\n          \"job_type\": \"string\",\n          \"frequency\": 6603,\n          \"period\": \"HOURS\"\n        }\n      },\n      {\n        \"name\": \"string\",\n        \"task_type\": \"BACKUP\",\n        \"full_backup\": true,\n        \"schedule\": {\n          \"job_type\": \"string\",\n          \"frequency\": 4009,\n          \"period\": \"WEDNESDAY\"\n        }\n      }\n    ]\n  },\n  {\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"services\": [\n      \"views\",\n      \"views\"\n    ],\n    \"default\": true,\n    \"tasks\": [\n      {\n        \"name\": \"string\",\n        \"task_type\": \"MERGE\",\n        \"full_backup\": false,\n        \"schedule\": {\n          \"job_type\": \"string\",\n          \"frequency\": 1860,\n          \"period\": \"FRIDAY\"\n        }\n      },\n      {\n        \"name\": \"string\",\n        \"task_type\": \"MERGE\",\n        \"full_backup\": true,\n        \"schedule\": {\n          \"job_type\": \"string\",\n          \"frequency\": 5864,\n          \"period\": \"SUNDAY\"\n        }\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c05515a5-8544-4f00-be8f-63ae6558a5b9",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "plan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59d05232-cc3d-433d-bf04-e6093c75d672",
+          "name": "Get backup plan details",
+          "request": {
+            "name": "Get backup plan details",
+            "description": {
+              "content": "Returns information about a specific backup plan including the services for which data is backed up, and the scheduled tasks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "plan",
+                ":planName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planName",
+                  "description": "(Required) The name of the backup plan"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7204df46-ff02-47d9-bf9f-3a4abdb51e4a",
+              "name": "Successful retrieval of backup plan details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "plan",
+                    ":planName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planName",
+                      "description": "(Required) The name of the backup plan"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"services\": [\n    \"eventing\",\n    \"ft\"\n  ],\n  \"default\": true,\n  \"tasks\": [\n    {\n      \"name\": \"string\",\n      \"task_type\": \"MERGE\",\n      \"full_backup\": false,\n      \"schedule\": {\n        \"job_type\": \"string\",\n        \"frequency\": 4062,\n        \"period\": \"TUESDAY\"\n      }\n    },\n    {\n      \"name\": \"string\",\n      \"task_type\": \"BACKUP\",\n      \"full_backup\": false,\n      \"schedule\": {\n        \"job_type\": \"string\",\n        \"frequency\": 9563,\n        \"period\": \"FRIDAY\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c188c4f6-9f8d-427c-819b-f700fb04c870",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "plan",
+                    ":planName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planName",
+                      "description": "(Required) The name of the backup plan"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "60626323-5bef-4ae7-9c28-e094d1021bd4",
+              "name": "Plan not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "plan",
+                    ":planName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planName",
+                      "description": "(Required) The name of the backup plan"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49fc52a2-5c40-4910-8e87-621466ffe167",
+          "name": "Create or update a backup plan",
+          "request": {
+            "name": "Create or update a backup plan",
+            "description": {
+              "content": "Creates a new backup plan or updates an existing one with the specified schedule, services, and retention settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "plan",
+                ":planName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planName",
+                  "description": "(Required) The name of the backup plan"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"default\": \"<boolean>\",\n  \"tasks\": [\n    {\n      \"name\": \"<string>\",\n      \"task_type\": \"<string>\",\n      \"full_backup\": \"<boolean>\",\n      \"schedule\": {\n        \"job_type\": \"<string>\",\n        \"frequency\": \"<integer>\",\n        \"period\": \"<string>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"task_type\": \"<string>\",\n      \"full_backup\": \"<boolean>\",\n      \"schedule\": {\n        \"job_type\": \"<string>\",\n        \"frequency\": \"<integer>\",\n        \"period\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "83a56c93-7593-4407-9331-4bdcbbd26a5c",
+              "name": "Plan created or updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "plan",
+                    ":planName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planName",
+                      "description": "(Required) The name of the backup plan"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"default\": \"<boolean>\",\n  \"tasks\": [\n    {\n      \"name\": \"<string>\",\n      \"task_type\": \"<string>\",\n      \"full_backup\": \"<boolean>\",\n      \"schedule\": {\n        \"job_type\": \"<string>\",\n        \"frequency\": \"<integer>\",\n        \"period\": \"<string>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"task_type\": \"<string>\",\n      \"full_backup\": \"<boolean>\",\n      \"schedule\": {\n        \"job_type\": \"<string>\",\n        \"frequency\": \"<integer>\",\n        \"period\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ac200cc5-d73e-4861-b852-a6e6dd29265d",
+              "name": "Invalid plan configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "plan",
+                    ":planName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planName",
+                      "description": "(Required) The name of the backup plan"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"default\": \"<boolean>\",\n  \"tasks\": [\n    {\n      \"name\": \"<string>\",\n      \"task_type\": \"<string>\",\n      \"full_backup\": \"<boolean>\",\n      \"schedule\": {\n        \"job_type\": \"<string>\",\n        \"frequency\": \"<integer>\",\n        \"period\": \"<string>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"task_type\": \"<string>\",\n      \"full_backup\": \"<boolean>\",\n      \"schedule\": {\n        \"job_type\": \"<string>\",\n        \"frequency\": \"<integer>\",\n        \"period\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6dc6798c-2e18-464d-aca0-ddf83d8a5ff3",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "plan",
+                    ":planName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planName",
+                      "description": "(Required) The name of the backup plan"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"default\": \"<boolean>\",\n  \"tasks\": [\n    {\n      \"name\": \"<string>\",\n      \"task_type\": \"<string>\",\n      \"full_backup\": \"<boolean>\",\n      \"schedule\": {\n        \"job_type\": \"<string>\",\n        \"frequency\": \"<integer>\",\n        \"period\": \"<string>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"task_type\": \"<string>\",\n      \"full_backup\": \"<boolean>\",\n      \"schedule\": {\n        \"job_type\": \"<string>\",\n        \"frequency\": \"<integer>\",\n        \"period\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82758042-3e9a-40c5-9831-6a62a2a14f45",
+          "name": "Delete a backup plan",
+          "request": {
+            "name": "Delete a backup plan",
+            "description": {
+              "content": "Deletes the specified backup plan. The plan must not be in use by any active repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "plan",
+                ":planName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planName",
+                  "description": "(Required) The name of the backup plan"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2cfe8248-e7e7-40fd-9f71-ef24ac02e2a3",
+              "name": "Plan deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "plan",
+                    ":planName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planName",
+                      "description": "(Required) The name of the backup plan"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9a976757-f3aa-469c-9c17-a0b9a3e90ef8",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "plan",
+                    ":planName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planName",
+                      "description": "(Required) The name of the backup plan"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "51d705a6-64f8-4985-ba22-3f0b2fd0a86e",
+              "name": "Plan not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "plan",
+                    ":planName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planName",
+                      "description": "(Required) The name of the backup plan"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://localhost:8095",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4f36a559-e0c3-4118-a84f-b47e3522f6e7",
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Plans API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
+      "type": "text/plain"
+    }
+  }
+}

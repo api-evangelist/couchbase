@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Plans API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List backup plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/api/v1/plan"
+          },
+          "docs": "Returns the list of all backup plans configured for the cluster."
+        },
+        {
+          "info": {
+            "name": "Get backup plan details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/api/v1/plan/:planName",
+            "params": [
+              {
+                "name": "planName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup plan"
+              }
+            ]
+          },
+          "docs": "Returns information about a specific backup plan including the services for which data is backed up, and the scheduled tasks."
+        },
+        {
+          "info": {
+            "name": "Create or update a backup plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/api/v1/plan/:planName",
+            "params": [
+              {
+                "name": "planName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup plan"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new backup plan or updates an existing one with the specified schedule, services, and retention settings."
+        },
+        {
+          "info": {
+            "name": "Delete a backup plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8095/api/v1/plan/:planName",
+            "params": [
+              {
+                "name": "planName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup plan"
+              }
+            ]
+          },
+          "docs": "Deletes the specified backup plan. The plan must not be in use by any active repository."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

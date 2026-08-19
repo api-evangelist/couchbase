@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Authentication API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a user session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/:db/_session",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Authenticates a user and creates a new session. Returns a session cookie that can be used for subsequent requests."
+        },
+        {
+          "info": {
+            "name": "Delete current session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8095/:db/_session",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              }
+            ]
+          },
+          "docs": "Invalidates the current user session."
+        },
+        {
+          "info": {
+            "name": "Initiate OpenID Connect authentication",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/:db/_oidc",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query",
+                "description": "Name of the OIDC provider"
+              },
+              {
+                "name": "offline",
+                "value": "",
+                "type": "query",
+                "description": "Whether to request a refresh token"
+              }
+            ]
+          },
+          "docs": "Initiates the OpenID Connect authentication flow by redirecting the user to the configured identity provider."
+        },
+        {
+          "info": {
+            "name": "OpenID Connect callback",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/:db/_oidc_callback",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "Authorization code from the identity provider"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State parameter for CSRF protection"
+              }
+            ]
+          },
+          "docs": "Handles the callback from the identity provider after user authentication and creates a Sync Gateway session."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,128 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Allowed CIDRs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List allowed CIDRs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              }
+            ]
+          },
+          "docs": "Returns the list of allowed IP addresses and CIDR ranges for the specified cluster."
+        },
+        {
+          "info": {
+            "name": "Add an allowed CIDR",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds an allowed IP address or CIDR range for the specified cluster."
+        },
+        {
+          "info": {
+            "name": "Delete an allowed CIDR",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8095/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs/:allowedCIDRId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              },
+              {
+                "name": "allowedCIDRId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the allowed CIDR to delete"
+              }
+            ]
+          },
+          "docs": "Removes an allowed IP address or CIDR range from the specified cluster."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

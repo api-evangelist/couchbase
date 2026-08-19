@@ -1,0 +1,1096 @@
+{
+  "item": [
+    {
+      "id": "a3e1cb34-f4a7-4d3f-8e15-0cb797c296df",
+      "name": "Repositories",
+      "description": {
+        "content": "Endpoints for creating, managing, and querying backup repositories.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "49ed6094-d7d0-48fd-953d-1da3509cfdce",
+          "name": "List active backup repositories",
+          "request": {
+            "name": "List active backup repositories",
+            "description": {
+              "content": "Returns the list of active backup repositories configured for the cluster.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "cluster",
+                "self",
+                "repository",
+                "active"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "89fc1e6a-c26e-40af-ab09-900850570bbe",
+              "name": "Successful retrieval of active repositories",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "cluster",
+                    "self",
+                    "repository",
+                    "active"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"plan_name\": \"string\",\n    \"state\": \"paused\",\n    \"archive\": \"string\",\n    \"bucket\": {\n      \"name\": \"string\",\n      \"provider\": \"string\"\n    },\n    \"backups\": [\n      {\n        \"date\": \"2012-01-27T03:58:29.460Z\",\n        \"type\": \"FULL\",\n        \"complete\": false,\n        \"buckets\": [\n          {\n            \"name\": \"string\",\n            \"items\": 1382,\n            \"mutations\": 8986\n          },\n          {\n            \"name\": \"string\",\n            \"items\": 3793,\n            \"mutations\": 4277\n          }\n        ]\n      },\n      {\n        \"date\": \"2016-08-03T03:10:03.491Z\",\n        \"type\": \"FULL\",\n        \"complete\": false,\n        \"buckets\": [\n          {\n            \"name\": \"string\",\n            \"items\": 8333,\n            \"mutations\": 808\n          },\n          {\n            \"name\": \"string\",\n            \"items\": 7857,\n            \"mutations\": 9001\n          }\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": \"string\",\n    \"plan_name\": \"string\",\n    \"state\": \"imported\",\n    \"archive\": \"string\",\n    \"bucket\": {\n      \"name\": \"string\",\n      \"provider\": \"string\"\n    },\n    \"backups\": [\n      {\n        \"date\": \"2000-03-28T18:56:27.210Z\",\n        \"type\": \"FULL\",\n        \"complete\": false,\n        \"buckets\": [\n          {\n            \"name\": \"string\",\n            \"items\": 782,\n            \"mutations\": 2191\n          },\n          {\n            \"name\": \"string\",\n            \"items\": 9289,\n            \"mutations\": 1202\n          }\n        ]\n      },\n      {\n        \"date\": \"1952-05-10T10:46:43.645Z\",\n        \"type\": \"FULL\",\n        \"complete\": true,\n        \"buckets\": [\n          {\n            \"name\": \"string\",\n            \"items\": 9457,\n            \"mutations\": 4715\n          },\n          {\n            \"name\": \"string\",\n            \"items\": 3531,\n            \"mutations\": 5861\n          }\n        ]\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3ad7280c-227b-4d5f-a2f8-b0aca56d6c9b",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "cluster",
+                    "self",
+                    "repository",
+                    "active"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72d6ab0f-beb5-49ff-af17-876e4d5f76d2",
+          "name": "Get active repository details",
+          "request": {
+            "name": "Get active repository details",
+            "description": {
+              "content": "Returns detailed information about a specific active backup repository including backup names, dates, buckets, items, and mutations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "cluster",
+                "self",
+                "repository",
+                "active",
+                ":repositoryId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repositoryId",
+                  "description": "(Required) The name of the backup repository"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "185c5b44-0d72-44a9-abc1-0697f5e37e2c",
+              "name": "Successful retrieval of repository details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "cluster",
+                    "self",
+                    "repository",
+                    "active",
+                    ":repositoryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repositoryId",
+                      "description": "(Required) The name of the backup repository"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"plan_name\": \"string\",\n  \"state\": \"active\",\n  \"archive\": \"string\",\n  \"bucket\": {\n    \"name\": \"string\",\n    \"provider\": \"string\"\n  },\n  \"backups\": [\n    {\n      \"date\": \"1987-09-26T09:51:19.087Z\",\n      \"type\": \"FULL\",\n      \"complete\": true,\n      \"buckets\": [\n        {\n          \"name\": \"string\",\n          \"items\": 3282,\n          \"mutations\": 5624\n        },\n        {\n          \"name\": \"string\",\n          \"items\": 268,\n          \"mutations\": 2014\n        }\n      ]\n    },\n    {\n      \"date\": \"1980-03-08T00:28:08.478Z\",\n      \"type\": \"FULL\",\n      \"complete\": true,\n      \"buckets\": [\n        {\n          \"name\": \"string\",\n          \"items\": 7889,\n          \"mutations\": 6586\n        },\n        {\n          \"name\": \"string\",\n          \"items\": 6306,\n          \"mutations\": 6546\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "544a403f-851e-4ad4-ba6b-15e7436b9fd6",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "cluster",
+                    "self",
+                    "repository",
+                    "active",
+                    ":repositoryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repositoryId",
+                      "description": "(Required) The name of the backup repository"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ec4f8df6-24d7-4355-ba7e-86098a4b42c9",
+              "name": "Repository not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "cluster",
+                    "self",
+                    "repository",
+                    "active",
+                    ":repositoryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repositoryId",
+                      "description": "(Required) The name of the backup repository"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2fefc5ec-c63b-4bba-abba-9ede2d0db6f8",
+          "name": "Create an active backup repository",
+          "request": {
+            "name": "Create an active backup repository",
+            "description": {
+              "content": "Creates a new active backup repository with the specified configuration including the backup plan and storage location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "cluster",
+                "self",
+                "repository",
+                "active",
+                ":repositoryId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repositoryId",
+                  "description": "(Required) The name of the backup repository"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"plan\": \"<string>\",\n  \"archive\": \"<string>\",\n  \"bucket_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be4188fd-6b95-4b63-be84-8755404889c0",
+              "name": "Repository created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "cluster",
+                    "self",
+                    "repository",
+                    "active",
+                    ":repositoryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repositoryId",
+                      "description": "(Required) The name of the backup repository"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"plan\": \"<string>\",\n  \"archive\": \"<string>\",\n  \"bucket_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1c78af94-88d6-4fd6-925e-c7177937f822",
+              "name": "Invalid repository configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "cluster",
+                    "self",
+                    "repository",
+                    "active",
+                    ":repositoryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repositoryId",
+                      "description": "(Required) The name of the backup repository"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"plan\": \"<string>\",\n  \"archive\": \"<string>\",\n  \"bucket_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "43c927cb-86b9-427d-bbaa-f46cb91d90bc",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "cluster",
+                    "self",
+                    "repository",
+                    "active",
+                    ":repositoryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repositoryId",
+                      "description": "(Required) The name of the backup repository"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"plan\": \"<string>\",\n  \"archive\": \"<string>\",\n  \"bucket_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00b4002c-9e39-4cc9-9270-f849786c8a04",
+          "name": "Delete an active repository",
+          "request": {
+            "name": "Delete an active repository",
+            "description": {
+              "content": "Deletes the specified active backup repository. The repository must not have any running tasks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "cluster",
+                "self",
+                "repository",
+                "active",
+                ":repositoryId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repositoryId",
+                  "description": "(Required) The name of the backup repository"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8857bc90-5117-4036-a4da-c276b9c699a6",
+              "name": "Repository deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "cluster",
+                    "self",
+                    "repository",
+                    "active",
+                    ":repositoryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repositoryId",
+                      "description": "(Required) The name of the backup repository"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c3e8a27-c9be-4e21-b373-af12b78cf2f9",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "cluster",
+                    "self",
+                    "repository",
+                    "active",
+                    ":repositoryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repositoryId",
+                      "description": "(Required) The name of the backup repository"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9bc91596-ffd4-4d26-a191-6b1986862492",
+              "name": "Repository not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "cluster",
+                    "self",
+                    "repository",
+                    "active",
+                    ":repositoryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repositoryId",
+                      "description": "(Required) The name of the backup repository"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "867ba8ef-a93e-4a96-8554-975125feb0f3",
+          "name": "List imported backup repositories",
+          "request": {
+            "name": "List imported backup repositories",
+            "description": {
+              "content": "Returns the list of imported backup repositories.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "cluster",
+                "self",
+                "repository",
+                "imported"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e920a1e3-b1f8-4bdb-a0a7-d3e78917313f",
+              "name": "Successful retrieval of imported repositories",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "cluster",
+                    "self",
+                    "repository",
+                    "imported"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"plan_name\": \"string\",\n    \"state\": \"paused\",\n    \"archive\": \"string\",\n    \"bucket\": {\n      \"name\": \"string\",\n      \"provider\": \"string\"\n    },\n    \"backups\": [\n      {\n        \"date\": \"2012-01-27T03:58:29.460Z\",\n        \"type\": \"FULL\",\n        \"complete\": false,\n        \"buckets\": [\n          {\n            \"name\": \"string\",\n            \"items\": 1382,\n            \"mutations\": 8986\n          },\n          {\n            \"name\": \"string\",\n            \"items\": 3793,\n            \"mutations\": 4277\n          }\n        ]\n      },\n      {\n        \"date\": \"2016-08-03T03:10:03.491Z\",\n        \"type\": \"FULL\",\n        \"complete\": false,\n        \"buckets\": [\n          {\n            \"name\": \"string\",\n            \"items\": 8333,\n            \"mutations\": 808\n          },\n          {\n            \"name\": \"string\",\n            \"items\": 7857,\n            \"mutations\": 9001\n          }\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": \"string\",\n    \"plan_name\": \"string\",\n    \"state\": \"imported\",\n    \"archive\": \"string\",\n    \"bucket\": {\n      \"name\": \"string\",\n      \"provider\": \"string\"\n    },\n    \"backups\": [\n      {\n        \"date\": \"2000-03-28T18:56:27.210Z\",\n        \"type\": \"FULL\",\n        \"complete\": false,\n        \"buckets\": [\n          {\n            \"name\": \"string\",\n            \"items\": 782,\n            \"mutations\": 2191\n          },\n          {\n            \"name\": \"string\",\n            \"items\": 9289,\n            \"mutations\": 1202\n          }\n        ]\n      },\n      {\n        \"date\": \"1952-05-10T10:46:43.645Z\",\n        \"type\": \"FULL\",\n        \"complete\": true,\n        \"buckets\": [\n          {\n            \"name\": \"string\",\n            \"items\": 9457,\n            \"mutations\": 4715\n          },\n          {\n            \"name\": \"string\",\n            \"items\": 3531,\n            \"mutations\": 5861\n          }\n        ]\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6048a93d-977a-4ed3-a050-18a3ad7ca00d",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "cluster",
+                    "self",
+                    "repository",
+                    "imported"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8faf93ed-4279-4b4e-b17c-c042cda9b604",
+          "name": "List archived backup repositories",
+          "request": {
+            "name": "List archived backup repositories",
+            "description": {
+              "content": "Returns the list of archived backup repositories.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "cluster",
+                "self",
+                "repository",
+                "archived"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0eb3d43a-ac8f-42af-a657-3d3365cdb997",
+              "name": "Successful retrieval of archived repositories",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "cluster",
+                    "self",
+                    "repository",
+                    "archived"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"plan_name\": \"string\",\n    \"state\": \"paused\",\n    \"archive\": \"string\",\n    \"bucket\": {\n      \"name\": \"string\",\n      \"provider\": \"string\"\n    },\n    \"backups\": [\n      {\n        \"date\": \"2012-01-27T03:58:29.460Z\",\n        \"type\": \"FULL\",\n        \"complete\": false,\n        \"buckets\": [\n          {\n            \"name\": \"string\",\n            \"items\": 1382,\n            \"mutations\": 8986\n          },\n          {\n            \"name\": \"string\",\n            \"items\": 3793,\n            \"mutations\": 4277\n          }\n        ]\n      },\n      {\n        \"date\": \"2016-08-03T03:10:03.491Z\",\n        \"type\": \"FULL\",\n        \"complete\": false,\n        \"buckets\": [\n          {\n            \"name\": \"string\",\n            \"items\": 8333,\n            \"mutations\": 808\n          },\n          {\n            \"name\": \"string\",\n            \"items\": 7857,\n            \"mutations\": 9001\n          }\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": \"string\",\n    \"plan_name\": \"string\",\n    \"state\": \"imported\",\n    \"archive\": \"string\",\n    \"bucket\": {\n      \"name\": \"string\",\n      \"provider\": \"string\"\n    },\n    \"backups\": [\n      {\n        \"date\": \"2000-03-28T18:56:27.210Z\",\n        \"type\": \"FULL\",\n        \"complete\": false,\n        \"buckets\": [\n          {\n            \"name\": \"string\",\n            \"items\": 782,\n            \"mutations\": 2191\n          },\n          {\n            \"name\": \"string\",\n            \"items\": 9289,\n            \"mutations\": 1202\n          }\n        ]\n      },\n      {\n        \"date\": \"1952-05-10T10:46:43.645Z\",\n        \"type\": \"FULL\",\n        \"complete\": true,\n        \"buckets\": [\n          {\n            \"name\": \"string\",\n            \"items\": 9457,\n            \"mutations\": 4715\n          },\n          {\n            \"name\": \"string\",\n            \"items\": 3531,\n            \"mutations\": 5861\n          }\n        ]\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "499920c4-f45d-44b6-80d3-fcf2a4a75deb",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "cluster",
+                    "self",
+                    "repository",
+                    "archived"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://localhost:8095",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7c954c34-068c-4527-8506-9dfd1e73a1eb",
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Repositories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
+      "type": "text/plain"
+    }
+  }
+}

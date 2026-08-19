@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Replication Settings API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Replication Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get global XDCR settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/settings/replications"
+          },
+          "docs": "Returns the global default settings for all XDCR replications."
+        },
+        {
+          "info": {
+            "name": "Update global XDCR settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/settings/replications",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Updates the global default settings applied to all XDCR replications."
+        },
+        {
+          "info": {
+            "name": "Get replication-specific settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/settings/replications/:replicationId",
+            "params": [
+              {
+                "name": "replicationId",
+                "value": "",
+                "type": "path",
+                "description": "The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+              }
+            ]
+          },
+          "docs": "Returns the settings for a specific XDCR replication stream."
+        },
+        {
+          "info": {
+            "name": "Update replication-specific settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/settings/replications/:replicationId",
+            "params": [
+              {
+                "name": "replicationId",
+                "value": "",
+                "type": "path",
+                "description": "The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Updates the settings for a specific XDCR replication stream, overriding the global defaults."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

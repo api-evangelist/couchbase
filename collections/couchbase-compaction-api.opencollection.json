@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Compaction API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compaction",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get auto-compaction settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/settings/autoCompaction"
+          },
+          "docs": "Returns the current auto-compaction settings for the cluster."
+        },
+        {
+          "info": {
+            "name": "Update auto-compaction settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/settings/autoCompaction",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Updates the auto-compaction settings for the cluster including database and view fragmentation thresholds and compaction intervals."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

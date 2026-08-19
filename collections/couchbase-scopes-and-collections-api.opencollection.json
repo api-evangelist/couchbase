@@ -1,0 +1,184 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Scopes and Collections API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scopes and Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List scopes in a bucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId/scopes",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              },
+              {
+                "name": "bucketId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the bucket"
+              }
+            ]
+          },
+          "docs": "Returns the list of scopes within the specified bucket."
+        },
+        {
+          "info": {
+            "name": "Create a scope",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId/scopes",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              },
+              {
+                "name": "bucketId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the bucket"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new scope within the specified bucket."
+        },
+        {
+          "info": {
+            "name": "List scopes in a bucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/pools/default/buckets/:bucketName/scopes",
+            "params": [
+              {
+                "name": "bucketName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the bucket"
+              }
+            ]
+          },
+          "docs": "Returns the list of all scopes and their collections within the specified bucket."
+        },
+        {
+          "info": {
+            "name": "Create a scope",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/pools/default/buckets/:bucketName/scopes",
+            "params": [
+              {
+                "name": "bucketName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the bucket"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "name",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Creates a new scope within the specified bucket."
+        },
+        {
+          "info": {
+            "name": "Create a collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/pools/default/buckets/:bucketName/scopes/:scopeName/collections",
+            "params": [
+              {
+                "name": "bucketName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the bucket"
+              },
+              {
+                "name": "scopeName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the scope"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "name",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Creates a new collection within the specified scope and bucket."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

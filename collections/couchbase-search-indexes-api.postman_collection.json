@@ -1,0 +1,1446 @@
+{
+  "item": [
+    {
+      "id": "64565d5c-f83b-4890-b636-bb7c7e093d29",
+      "name": "Search Indexes",
+      "description": {
+        "content": "Endpoints for creating, retrieving, updating, and deleting Full Text Search index definitions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2f6a51b9-aa99-4634-a920-deaf1fb836b1",
+          "name": "List all search index definitions",
+          "request": {
+            "name": "List all search index definitions",
+            "description": {
+              "content": "Returns the definitions of all Full Text Search indexes configured on the cluster, including their type mappings, analyzers, and configuration parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "index"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c8c9ec3d-6218-484a-8175-01f7be810022",
+              "name": "Successful retrieval of search index list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"indexDefs\": {\n    \"uuid\": \"string\",\n    \"indexDefs\": {\n      \"key_0\": {\n        \"name\": \"string\",\n        \"type\": \"fulltext-alias\",\n        \"sourceName\": \"string\",\n        \"sourceType\": \"couchbase\",\n        \"sourceUUID\": \"string\",\n        \"planParams\": {\n          \"maxPartitionsPerPIndex\": 8370,\n          \"numReplicas\": 9175,\n          \"indexPartitions\": 2712\n        },\n        \"params\": {\n          \"mapping\": {\n            \"default_mapping\": {\n              \"enabled\": true,\n              \"dynamic\": false\n            },\n            \"types\": {\n              \"key_0\": {},\n              \"key_1\": {}\n            },\n            \"default_analyzer\": \"string\",\n            \"default_type\": \"string\"\n          },\n          \"doc_config\": {\n            \"mode\": \"scope.collection.type_field\"\n          },\n          \"store\": {\n            \"indexType\": \"scorch\"\n          }\n        },\n        \"uuid\": \"string\"\n      },\n      \"key_1\": {\n        \"name\": \"string\",\n        \"type\": \"fulltext-index\",\n        \"sourceName\": \"string\",\n        \"sourceType\": \"couchbase\",\n        \"sourceUUID\": \"string\",\n        \"planParams\": {\n          \"maxPartitionsPerPIndex\": 5896,\n          \"numReplicas\": 8306,\n          \"indexPartitions\": 444\n        },\n        \"params\": {\n          \"mapping\": {\n            \"default_mapping\": {\n              \"enabled\": true,\n              \"dynamic\": false\n            },\n            \"types\": {\n              \"key_0\": {},\n              \"key_1\": {}\n            },\n            \"default_analyzer\": \"string\",\n            \"default_type\": \"string\"\n          },\n          \"doc_config\": {\n            \"mode\": \"scope.collection.docid_prefix\"\n          },\n          \"store\": {\n            \"indexType\": \"scorch\"\n          }\n        },\n        \"uuid\": \"string\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94c7b1e3-9d52-4115-afa8-d8a79a0950d3",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "385e6024-7e02-48ac-b977-ed1f1947dfc3",
+          "name": "Get a search index definition",
+          "request": {
+            "name": "Get a search index definition",
+            "description": {
+              "content": "Returns the definition of a specific Full Text Search index including its type mappings, analyzers, and configuration parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "index",
+                ":indexName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "indexName",
+                  "description": "(Required) The name of the Full Text Search index"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "587e5cf3-3e6c-47f4-a42c-19e2868bb979",
+              "name": "Successful retrieval of search index definition",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"indexDef\": {\n    \"name\": \"string\",\n    \"type\": \"fulltext-index\",\n    \"sourceName\": \"string\",\n    \"sourceType\": \"couchbase\",\n    \"sourceUUID\": \"string\",\n    \"planParams\": {\n      \"maxPartitionsPerPIndex\": 6364,\n      \"numReplicas\": 5925,\n      \"indexPartitions\": 2694\n    },\n    \"params\": {\n      \"mapping\": {\n        \"default_mapping\": {\n          \"enabled\": true,\n          \"dynamic\": true\n        },\n        \"types\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"default_analyzer\": \"string\",\n        \"default_type\": \"string\"\n      },\n      \"doc_config\": {\n        \"mode\": \"scope.collection.docid_regexp\"\n      },\n      \"store\": {\n        \"indexType\": \"scorch\"\n      }\n    },\n    \"uuid\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "385d1af1-e241-49a4-b46b-070d6f661c85",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9ac42d79-4078-4ad2-8bac-237ef33d35da",
+              "name": "Index not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4509e237-764a-430e-acd9-8ffff490cea0",
+          "name": "Create or update a search index",
+          "request": {
+            "name": "Create or update a search index",
+            "description": {
+              "content": "Creates a new Full Text Search index or updates an existing one with the provided index definition. The index name in the URL must match the name in the request body.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "index",
+                ":indexName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "indexName",
+                  "description": "(Required) The name of the Full Text Search index"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"sourceName\": \"<string>\",\n  \"sourceType\": \"couchbase\",\n  \"sourceUUID\": \"<string>\",\n  \"planParams\": {\n    \"maxPartitionsPerPIndex\": \"<integer>\",\n    \"numReplicas\": \"<integer>\",\n    \"indexPartitions\": \"<integer>\"\n  },\n  \"params\": {\n    \"mapping\": {\n      \"default_mapping\": {\n        \"enabled\": \"<boolean>\",\n        \"dynamic\": \"<boolean>\"\n      },\n      \"types\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"default_analyzer\": \"<string>\",\n      \"default_type\": \"<string>\"\n    },\n    \"doc_config\": {\n      \"mode\": \"<string>\"\n    },\n    \"store\": {\n      \"indexType\": \"<string>\"\n    }\n  },\n  \"uuid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d97abce6-e826-41ec-b862-9b60ac5c251d",
+              "name": "Index created or updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"sourceName\": \"<string>\",\n  \"sourceType\": \"couchbase\",\n  \"sourceUUID\": \"<string>\",\n  \"planParams\": {\n    \"maxPartitionsPerPIndex\": \"<integer>\",\n    \"numReplicas\": \"<integer>\",\n    \"indexPartitions\": \"<integer>\"\n  },\n  \"params\": {\n    \"mapping\": {\n      \"default_mapping\": {\n        \"enabled\": \"<boolean>\",\n        \"dynamic\": \"<boolean>\"\n      },\n      \"types\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"default_analyzer\": \"<string>\",\n      \"default_type\": \"<string>\"\n    },\n    \"doc_config\": {\n      \"mode\": \"<string>\"\n    },\n    \"store\": {\n      \"indexType\": \"<string>\"\n    }\n  },\n  \"uuid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5295bc05-322e-4915-ae2b-9c4aa8e5f0e4",
+              "name": "Invalid index definition",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"sourceName\": \"<string>\",\n  \"sourceType\": \"couchbase\",\n  \"sourceUUID\": \"<string>\",\n  \"planParams\": {\n    \"maxPartitionsPerPIndex\": \"<integer>\",\n    \"numReplicas\": \"<integer>\",\n    \"indexPartitions\": \"<integer>\"\n  },\n  \"params\": {\n    \"mapping\": {\n      \"default_mapping\": {\n        \"enabled\": \"<boolean>\",\n        \"dynamic\": \"<boolean>\"\n      },\n      \"types\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"default_analyzer\": \"<string>\",\n      \"default_type\": \"<string>\"\n    },\n    \"doc_config\": {\n      \"mode\": \"<string>\"\n    },\n    \"store\": {\n      \"indexType\": \"<string>\"\n    }\n  },\n  \"uuid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "87db47f8-554b-4330-aa9a-f107474c1eae",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"sourceName\": \"<string>\",\n  \"sourceType\": \"couchbase\",\n  \"sourceUUID\": \"<string>\",\n  \"planParams\": {\n    \"maxPartitionsPerPIndex\": \"<integer>\",\n    \"numReplicas\": \"<integer>\",\n    \"indexPartitions\": \"<integer>\"\n  },\n  \"params\": {\n    \"mapping\": {\n      \"default_mapping\": {\n        \"enabled\": \"<boolean>\",\n        \"dynamic\": \"<boolean>\"\n      },\n      \"types\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"default_analyzer\": \"<string>\",\n      \"default_type\": \"<string>\"\n    },\n    \"doc_config\": {\n      \"mode\": \"<string>\"\n    },\n    \"store\": {\n      \"indexType\": \"<string>\"\n    }\n  },\n  \"uuid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ac6b160-b6cf-4542-8666-39e66a948e62",
+          "name": "Delete a search index",
+          "request": {
+            "name": "Delete a search index",
+            "description": {
+              "content": "Deletes the specified Full Text Search index and all associated data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "index",
+                ":indexName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "indexName",
+                  "description": "(Required) The name of the Full Text Search index"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0b1c1a08-b126-4a38-b4a3-90756c633188",
+              "name": "Index deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "86ca57c5-5d65-42f7-b98f-d5c07444b0c1",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bfbc0d49-165c-4431-9b7c-6bdb944f1f55",
+              "name": "Index not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1be8efff-6236-43e2-863e-713a5ed0aef8",
+          "name": "Control search index data ingestion",
+          "request": {
+            "name": "Control search index data ingestion",
+            "description": {
+              "content": "Pauses or resumes data ingestion (DCP mutations) for the specified search index.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "index",
+                ":indexName",
+                "ingestControl",
+                ":operation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "indexName",
+                  "description": "(Required) The name of the Full Text Search index"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "operation",
+                  "description": "(Required) The ingestion control operation to perform"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "645e1198-f394-40cb-acd1-4846f9f15af8",
+              "name": "Ingestion control operation successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName",
+                    "ingestControl",
+                    ":operation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "operation",
+                      "description": "(Required) The ingestion control operation to perform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e18c018c-7c76-4c7f-90a8-a793d5fce0f8",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName",
+                    "ingestControl",
+                    ":operation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "operation",
+                      "description": "(Required) The ingestion control operation to perform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ef464b33-991b-4533-9c80-0a1917dacdbc",
+              "name": "Index not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName",
+                    "ingestControl",
+                    ":operation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "operation",
+                      "description": "(Required) The ingestion control operation to perform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07542850-fec4-4dda-b5fd-9779b005e814",
+          "name": "Control search index query access",
+          "request": {
+            "name": "Control search index query access",
+            "description": {
+              "content": "Allows or disallows queries on the specified search index.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "index",
+                ":indexName",
+                "queryControl",
+                ":operation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "indexName",
+                  "description": "(Required) The name of the Full Text Search index"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "operation",
+                  "description": "(Required) The query control operation to perform"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4c588402-a039-4857-b03e-0a869fa6c028",
+              "name": "Query control operation successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName",
+                    "queryControl",
+                    ":operation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "operation",
+                      "description": "(Required) The query control operation to perform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2ad192ec-8d8a-4f4b-a08c-0b027428a2f0",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName",
+                    "queryControl",
+                    ":operation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "operation",
+                      "description": "(Required) The query control operation to perform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "75cbdd56-4964-4c2a-9d1d-ea55e5620242",
+              "name": "Index not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName",
+                    "queryControl",
+                    ":operation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "operation",
+                      "description": "(Required) The query control operation to perform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5295db9d-80b0-4e2a-953a-c90d4aa3e682",
+          "name": "Control search index plan freeze",
+          "request": {
+            "name": "Control search index plan freeze",
+            "description": {
+              "content": "Freezes or unfreezes the assignment of index partitions to nodes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "index",
+                ":indexName",
+                "planFreezeControl",
+                ":operation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "indexName",
+                  "description": "(Required) The name of the Full Text Search index"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "operation",
+                  "description": "(Required) The plan freeze control operation"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40e31c9f-d180-4af3-8bad-8aaef38be1dd",
+              "name": "Plan freeze control operation successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName",
+                    "planFreezeControl",
+                    ":operation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "operation",
+                      "description": "(Required) The plan freeze control operation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c52db002-2189-4a81-a018-ca54720a34c3",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName",
+                    "planFreezeControl",
+                    ":operation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "operation",
+                      "description": "(Required) The plan freeze control operation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c20d88f6-df30-48b2-8514-12962cf7a83b",
+              "name": "Index not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "index",
+                    ":indexName",
+                    "planFreezeControl",
+                    ":operation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) The name of the Full Text Search index"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "operation",
+                      "description": "(Required) The plan freeze control operation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://localhost:8095",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "33ef5875-5317-4162-ad85-4d08204890e8",
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Search Indexes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
+      "type": "text/plain"
+    }
+  }
+}

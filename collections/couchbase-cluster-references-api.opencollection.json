@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Cluster References API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cluster References",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List remote cluster references",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/pools/default/remoteClusters"
+          },
+          "docs": "Returns the list of all remote cluster references configured for XDCR replication."
+        },
+        {
+          "info": {
+            "name": "Create a remote cluster reference",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/pools/default/remoteClusters",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Creates a new remote cluster reference that can be used as a target for XDCR replications."
+        },
+        {
+          "info": {
+            "name": "Update a remote cluster reference",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:8095/pools/default/remoteClusters/:clusterName",
+            "params": [
+              {
+                "name": "clusterName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the remote cluster reference"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Updates the configuration of an existing remote cluster reference."
+        },
+        {
+          "info": {
+            "name": "Delete a remote cluster reference",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8095/pools/default/remoteClusters/:clusterName",
+            "params": [
+              {
+                "name": "clusterName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the remote cluster reference"
+              }
+            ]
+          },
+          "docs": "Deletes the specified remote cluster reference. All replications using this reference must be deleted first."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

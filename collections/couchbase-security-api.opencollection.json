@@ -1,0 +1,150 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Security API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Security",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/settings/rbac/users"
+          },
+          "docs": "Returns the list of all users configured in the cluster with their roles and authentication domains."
+        },
+        {
+          "info": {
+            "name": "Get user details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/settings/rbac/users/:domain/:username",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path",
+                "description": "The authentication domain (local or external)"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The username of the user"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific user including their roles and authentication configuration."
+        },
+        {
+          "info": {
+            "name": "Create or update a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:8095/settings/rbac/users/:domain/:username",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path",
+                "description": "The authentication domain (local or external)"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The username of the user"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "password",
+                  "value": ""
+                },
+                {
+                  "name": "roles",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Creates a new user or updates an existing user with the specified roles and authentication settings."
+        },
+        {
+          "info": {
+            "name": "Delete a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8095/settings/rbac/users/:domain/:username",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path",
+                "description": "The authentication domain (local or external)"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The username of the user"
+              }
+            ]
+          },
+          "docs": "Deletes the specified user from the cluster."
+        },
+        {
+          "info": {
+            "name": "List available roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/settings/rbac/roles"
+          },
+          "docs": "Returns the list of all available roles in the cluster that can be assigned to users."
+        },
+        {
+          "info": {
+            "name": "Get cluster certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/pools/default/certificate"
+          },
+          "docs": "Returns the cluster CA certificate in PEM format."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

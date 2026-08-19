@@ -1,0 +1,1172 @@
+{
+  "item": [
+    {
+      "id": "c7e9b8fd-6e49-4f2f-bdf8-b8206db885d0",
+      "name": "Replication",
+      "description": {
+        "content": "Endpoints for managing inter-Sync Gateway replications.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ead33508-a3c6-4cbe-a41b-b4cf434703f1",
+          "name": "List replications",
+          "request": {
+            "name": "List replications",
+            "description": {
+              "content": "Returns the list of all inter-Sync Gateway replications configured for the specified database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db",
+                "_replication",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1a03ee58-376b-47af-8289-ae664ba1b3c8",
+              "name": "Successful retrieval of replications",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_replication",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"replication_id\": \"string\",\n    \"remote\": \"string\",\n    \"direction\": \"pull\",\n    \"continuous\": true,\n    \"filter\": \"sync_gateway/bychannel\",\n    \"query_params\": {\n      \"channels\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"conflict_resolution_type\": \"default\",\n    \"custom_conflict_resolver\": \"string\",\n    \"max_backoff_time\": 1117,\n    \"initial_state\": \"running\",\n    \"state\": \"starting\"\n  },\n  {\n    \"replication_id\": \"string\",\n    \"remote\": \"string\",\n    \"direction\": \"push\",\n    \"continuous\": true,\n    \"filter\": \"sync_gateway/bychannel\",\n    \"query_params\": {\n      \"channels\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"conflict_resolution_type\": \"remoteWins\",\n    \"custom_conflict_resolver\": \"string\",\n    \"max_backoff_time\": 4350,\n    \"initial_state\": \"running\",\n    \"state\": \"error\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9af9b68-aef6-423c-9570-a7f0c43bf8f4",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_replication",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d017a2ef-b1d4-4fed-8134-7b3a607aa7c9",
+          "name": "Create a replication",
+          "request": {
+            "name": "Create a replication",
+            "description": {
+              "content": "Creates a new inter-Sync Gateway replication for the specified database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db",
+                "_replication",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"replication_id\": \"<string>\",\n  \"remote\": \"<string>\",\n  \"direction\": \"<string>\",\n  \"continuous\": \"<boolean>\",\n  \"filter\": \"<string>\",\n  \"query_params\": {\n    \"channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"conflict_resolution_type\": \"<string>\",\n  \"custom_conflict_resolver\": \"<string>\",\n  \"max_backoff_time\": \"<integer>\",\n  \"initial_state\": \"<string>\",\n  \"state\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c1c30372-5a19-4a48-b44a-10e1d5fc0128",
+              "name": "Replication created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_replication",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"replication_id\": \"<string>\",\n  \"remote\": \"<string>\",\n  \"direction\": \"<string>\",\n  \"continuous\": \"<boolean>\",\n  \"filter\": \"<string>\",\n  \"query_params\": {\n    \"channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"conflict_resolution_type\": \"<string>\",\n  \"custom_conflict_resolver\": \"<string>\",\n  \"max_backoff_time\": \"<integer>\",\n  \"initial_state\": \"<string>\",\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "92d95b16-91a8-40f0-980a-f1231113bee9",
+              "name": "Invalid replication configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_replication",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"replication_id\": \"<string>\",\n  \"remote\": \"<string>\",\n  \"direction\": \"<string>\",\n  \"continuous\": \"<boolean>\",\n  \"filter\": \"<string>\",\n  \"query_params\": {\n    \"channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"conflict_resolution_type\": \"<string>\",\n  \"custom_conflict_resolver\": \"<string>\",\n  \"max_backoff_time\": \"<integer>\",\n  \"initial_state\": \"<string>\",\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2756ea92-a3f4-48e5-b185-d05e78ce2758",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_replication",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"replication_id\": \"<string>\",\n  \"remote\": \"<string>\",\n  \"direction\": \"<string>\",\n  \"continuous\": \"<boolean>\",\n  \"filter\": \"<string>\",\n  \"query_params\": {\n    \"channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"conflict_resolution_type\": \"<string>\",\n  \"custom_conflict_resolver\": \"<string>\",\n  \"max_backoff_time\": \"<integer>\",\n  \"initial_state\": \"<string>\",\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b65eaa4-7c6c-44eb-866e-5c506852e04d",
+          "name": "Get replication details",
+          "request": {
+            "name": "Get replication details",
+            "description": {
+              "content": "Returns detailed information about a specific replication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db",
+                "_replication",
+                ":replicationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "replicationId",
+                  "description": "(Required) The replication identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cbf7442f-6f13-4453-abf2-e112fd118d9e",
+              "name": "Successful retrieval of replication details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_replication",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The replication identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"replication_id\": \"string\",\n  \"remote\": \"string\",\n  \"direction\": \"push\",\n  \"continuous\": true,\n  \"filter\": \"sync_gateway/bychannel\",\n  \"query_params\": {\n    \"channels\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"conflict_resolution_type\": \"default\",\n  \"custom_conflict_resolver\": \"string\",\n  \"max_backoff_time\": 6339,\n  \"initial_state\": \"stopped\",\n  \"state\": \"stopped\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3e599b8-9a14-4943-8501-c92699750291",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_replication",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The replication identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "618f29f6-0129-4ec7-aaad-a1ddc56a8f4b",
+              "name": "Replication not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_replication",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The replication identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63d428e3-47bb-4791-a2eb-c6ed30e9944d",
+          "name": "Update a replication",
+          "request": {
+            "name": "Update a replication",
+            "description": {
+              "content": "Updates the configuration of an existing replication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db",
+                "_replication",
+                ":replicationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "replicationId",
+                  "description": "(Required) The replication identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"replication_id\": \"<string>\",\n  \"remote\": \"<string>\",\n  \"direction\": \"<string>\",\n  \"continuous\": \"<boolean>\",\n  \"filter\": \"<string>\",\n  \"query_params\": {\n    \"channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"conflict_resolution_type\": \"<string>\",\n  \"custom_conflict_resolver\": \"<string>\",\n  \"max_backoff_time\": \"<integer>\",\n  \"initial_state\": \"<string>\",\n  \"state\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "769e785a-8b98-4afb-a582-5bdf4d44e9b0",
+              "name": "Replication updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_replication",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The replication identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"replication_id\": \"<string>\",\n  \"remote\": \"<string>\",\n  \"direction\": \"<string>\",\n  \"continuous\": \"<boolean>\",\n  \"filter\": \"<string>\",\n  \"query_params\": {\n    \"channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"conflict_resolution_type\": \"<string>\",\n  \"custom_conflict_resolver\": \"<string>\",\n  \"max_backoff_time\": \"<integer>\",\n  \"initial_state\": \"<string>\",\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8ee5796c-bca0-45cd-92bb-3cdc3d5f488e",
+              "name": "Invalid replication configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_replication",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The replication identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"replication_id\": \"<string>\",\n  \"remote\": \"<string>\",\n  \"direction\": \"<string>\",\n  \"continuous\": \"<boolean>\",\n  \"filter\": \"<string>\",\n  \"query_params\": {\n    \"channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"conflict_resolution_type\": \"<string>\",\n  \"custom_conflict_resolver\": \"<string>\",\n  \"max_backoff_time\": \"<integer>\",\n  \"initial_state\": \"<string>\",\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "473b17cb-2493-421c-8abe-c7c19fd58fc0",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_replication",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The replication identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"replication_id\": \"<string>\",\n  \"remote\": \"<string>\",\n  \"direction\": \"<string>\",\n  \"continuous\": \"<boolean>\",\n  \"filter\": \"<string>\",\n  \"query_params\": {\n    \"channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"conflict_resolution_type\": \"<string>\",\n  \"custom_conflict_resolver\": \"<string>\",\n  \"max_backoff_time\": \"<integer>\",\n  \"initial_state\": \"<string>\",\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e85ef97b-172f-42a5-b8e7-c49d46332da0",
+              "name": "Replication not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_replication",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The replication identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"replication_id\": \"<string>\",\n  \"remote\": \"<string>\",\n  \"direction\": \"<string>\",\n  \"continuous\": \"<boolean>\",\n  \"filter\": \"<string>\",\n  \"query_params\": {\n    \"channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"conflict_resolution_type\": \"<string>\",\n  \"custom_conflict_resolver\": \"<string>\",\n  \"max_backoff_time\": \"<integer>\",\n  \"initial_state\": \"<string>\",\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c4aa08d-74c4-407f-b9d2-e08b1d80cbf5",
+          "name": "Delete a replication",
+          "request": {
+            "name": "Delete a replication",
+            "description": {
+              "content": "Deletes the specified replication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":db",
+                "_replication",
+                ":replicationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "db",
+                  "description": "(Required) The name of the database"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "replicationId",
+                  "description": "(Required) The replication identifier"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4a34ee2-b97d-42cb-9616-6f80a7f1fc52",
+              "name": "Replication deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_replication",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The replication identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "97b5d242-5021-4e37-9cb1-088d4cc3314c",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_replication",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The replication identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "43386b5a-4776-405b-8d1c-c315643fb558",
+              "name": "Replication not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":db",
+                    "_replication",
+                    ":replicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "db",
+                      "description": "(Required) The name of the database"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "replicationId",
+                      "description": "(Required) The replication identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://localhost:8095",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "95fce1e5-6c89-41e6-bf5e-f58f3bd907a9",
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Replication API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
+      "type": "text/plain"
+    }
+  }
+}

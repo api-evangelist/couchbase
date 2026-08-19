@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Index Service API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Index Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get index service settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/settings/indexes"
+          },
+          "docs": "Returns the current configuration settings for the Index service."
+        },
+        {
+          "info": {
+            "name": "Update index service settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/settings/indexes",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Updates the configuration settings for the Index service including storage mode and memory allocation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

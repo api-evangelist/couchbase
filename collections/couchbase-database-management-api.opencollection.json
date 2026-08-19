@@ -1,0 +1,250 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Database Management API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Database Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get database configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/:db/_config",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ]
+          },
+          "docs": "Returns the complete configuration of the specified database including sync function, import filter, and security settings."
+        },
+        {
+          "info": {
+            "name": "Create a database",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/:db/_config",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new database with the specified configuration. The database name is taken from the URL path."
+        },
+        {
+          "info": {
+            "name": "Update database configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:8095/:db/_config",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration of the specified database."
+        },
+        {
+          "info": {
+            "name": "Delete a database",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8095/:db/_config",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ]
+          },
+          "docs": "Deletes the specified database configuration from Sync Gateway."
+        },
+        {
+          "info": {
+            "name": "Get sync function",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/:db/_config/sync",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ]
+          },
+          "docs": "Returns the current sync function for the database."
+        },
+        {
+          "info": {
+            "name": "Update sync function",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:8095/:db/_config/sync",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ]
+          },
+          "docs": "Updates the sync function for the database. The sync function controls channel routing and access grants for documents."
+        },
+        {
+          "info": {
+            "name": "Take database offline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/:db/_offline",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ]
+          },
+          "docs": "Takes the specified database offline, preventing client access."
+        },
+        {
+          "info": {
+            "name": "Bring database online",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/:db/_online",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Brings the specified database back online."
+        },
+        {
+          "info": {
+            "name": "Resync database",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/:db/_resync",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ]
+          },
+          "docs": "Reprocesses all documents through the sync function. Required after sync function changes to apply to existing documents."
+        },
+        {
+          "info": {
+            "name": "Compact database",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/:db/_compact",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ]
+          },
+          "docs": "Removes obsolete revision bodies and attachment data from the database to reclaim storage space."
+        },
+        {
+          "info": {
+            "name": "Purge documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/:db/_purge",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Permanently removes documents from the database. Unlike deletion, purged documents leave no tombstone and are not replicated."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

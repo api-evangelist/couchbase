@@ -1,0 +1,561 @@
+{
+  "item": [
+    {
+      "id": "e1767eaf-4efe-4aeb-9b30-a37abf7cc989",
+      "name": "Import Export",
+      "description": {
+        "content": "Endpoints for importing and exporting Eventing Function definitions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7ef99bbc-aa00-4460-92ed-712090e3d29f",
+          "name": "Export all Eventing Functions",
+          "request": {
+            "name": "Export all Eventing Functions",
+            "description": {
+              "content": "Exports all Eventing Function definitions. Exported functions are always set to undeployed state at the time of export.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26adc5fa-d5f9-45af-89e5-fb2d61eebc10",
+              "name": "Functions exported successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"appname\": \"string\",\n    \"appcode\": \"string\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"rw\"\n        },\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"rw\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"digest\",\n          \"allow_cookies\": true,\n          \"validate_ssl_certificate\": false\n        },\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"basic\",\n          \"allow_cookies\": true,\n          \"validate_ssl_certificate\": false\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        }\n      ],\n      \"source_bucket\": \"string\",\n      \"source_scope\": \"string\",\n      \"source_collection\": \"string\",\n      \"metadata_bucket\": \"string\",\n      \"metadata_scope\": \"string\",\n      \"metadata_collection\": \"string\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"everything\",\n      \"deployment_status\": false,\n      \"processing_status\": true,\n      \"log_level\": \"WARNING\",\n      \"language_compatibility\": \"string\",\n      \"execution_timeout\": 5116,\n      \"timer_context_size\": 2375,\n      \"worker_count\": 2204,\n      \"num_timer_partitions\": 2399\n    },\n    \"function_scope\": {\n      \"bucket\": \"string\",\n      \"scope\": \"string\"\n    }\n  },\n  {\n    \"appname\": \"string\",\n    \"appcode\": \"string\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"rw\"\n        },\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"r\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"no-auth\",\n          \"allow_cookies\": true,\n          \"validate_ssl_certificate\": true\n        },\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"no-auth\",\n          \"allow_cookies\": true,\n          \"validate_ssl_certificate\": true\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        }\n      ],\n      \"source_bucket\": \"string\",\n      \"source_scope\": \"string\",\n      \"source_collection\": \"string\",\n      \"metadata_bucket\": \"string\",\n      \"metadata_scope\": \"string\",\n      \"metadata_collection\": \"string\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"everything\",\n      \"deployment_status\": false,\n      \"processing_status\": false,\n      \"log_level\": \"WARNING\",\n      \"language_compatibility\": \"string\",\n      \"execution_timeout\": 1078,\n      \"timer_context_size\": 906,\n      \"worker_count\": 3539,\n      \"num_timer_partitions\": 6240\n    },\n    \"function_scope\": {\n      \"bucket\": \"string\",\n      \"scope\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ce14908-2eb6-4def-9923-73ed8ed0f3c9",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d23a7f89-25ee-4195-a2d1-faa3462d3a07",
+          "name": "Export a specific Eventing Function",
+          "request": {
+            "name": "Export a specific Eventing Function",
+            "description": {
+              "content": "Exports the definition of a specific Eventing Function in undeployed state.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "export",
+                ":functionName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "functionName",
+                  "description": "(Required) The name of the Eventing Function"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "16d45dd9-bc07-4940-9f3f-4d5a6cf3ddb2",
+              "name": "Function exported successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "export",
+                    ":functionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"appname\": \"string\",\n  \"appcode\": \"string\",\n  \"depcfg\": {\n    \"buckets\": [\n      {\n        \"alias\": \"string\",\n        \"bucket_name\": \"string\",\n        \"scope_name\": \"string\",\n        \"collection_name\": \"string\",\n        \"access\": \"rw\"\n      },\n      {\n        \"alias\": \"string\",\n        \"bucket_name\": \"string\",\n        \"scope_name\": \"string\",\n        \"collection_name\": \"string\",\n        \"access\": \"r\"\n      }\n    ],\n    \"curl\": [\n      {\n        \"hostname\": \"string\",\n        \"value\": \"string\",\n        \"auth_type\": \"no-auth\",\n        \"allow_cookies\": true,\n        \"validate_ssl_certificate\": true\n      },\n      {\n        \"hostname\": \"string\",\n        \"value\": \"string\",\n        \"auth_type\": \"digest\",\n        \"allow_cookies\": false,\n        \"validate_ssl_certificate\": true\n      }\n    ],\n    \"constants\": [\n      {\n        \"value\": \"string\",\n        \"literal\": \"string\"\n      },\n      {\n        \"value\": \"string\",\n        \"literal\": \"string\"\n      }\n    ],\n    \"source_bucket\": \"string\",\n    \"source_scope\": \"string\",\n    \"source_collection\": \"string\",\n    \"metadata_bucket\": \"string\",\n    \"metadata_scope\": \"string\",\n    \"metadata_collection\": \"string\"\n  },\n  \"settings\": {\n    \"dcp_stream_boundary\": \"from_now\",\n    \"deployment_status\": true,\n    \"processing_status\": false,\n    \"log_level\": \"DEBUG\",\n    \"language_compatibility\": \"string\",\n    \"execution_timeout\": 4024,\n    \"timer_context_size\": 1058,\n    \"worker_count\": 364,\n    \"num_timer_partitions\": 3472\n  },\n  \"function_scope\": {\n    \"bucket\": \"string\",\n    \"scope\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cdb0ab6d-bed1-421c-b626-86ad46ef29da",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "export",
+                    ":functionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8d24e11e-4dc8-45a8-854b-35d0b21d772e",
+              "name": "Function not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "export",
+                    ":functionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The name of the Eventing Function"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "355b484f-396e-4138-99c8-098c277d391e",
+          "name": "Import Eventing Functions",
+          "request": {
+            "name": "Import Eventing Functions",
+            "description": {
+              "content": "Imports Eventing Function definitions. Imported functions always start in undeployed state regardless of the setting values in the import data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "import"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"appname\": \"<string>\",\n    \"appcode\": \"<string>\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"<string>\",\n          \"bucket_name\": \"<string>\",\n          \"scope_name\": \"<string>\",\n          \"collection_name\": \"<string>\",\n          \"access\": \"<string>\"\n        },\n        {\n          \"alias\": \"<string>\",\n          \"bucket_name\": \"<string>\",\n          \"scope_name\": \"<string>\",\n          \"collection_name\": \"<string>\",\n          \"access\": \"<string>\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"<string>\",\n          \"value\": \"<string>\",\n          \"auth_type\": \"<string>\",\n          \"allow_cookies\": \"<boolean>\",\n          \"validate_ssl_certificate\": \"<boolean>\"\n        },\n        {\n          \"hostname\": \"<string>\",\n          \"value\": \"<string>\",\n          \"auth_type\": \"<string>\",\n          \"allow_cookies\": \"<boolean>\",\n          \"validate_ssl_certificate\": \"<boolean>\"\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"<string>\",\n          \"literal\": \"<string>\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"literal\": \"<string>\"\n        }\n      ],\n      \"source_bucket\": \"<string>\",\n      \"source_scope\": \"<string>\",\n      \"source_collection\": \"<string>\",\n      \"metadata_bucket\": \"<string>\",\n      \"metadata_scope\": \"<string>\",\n      \"metadata_collection\": \"<string>\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"<string>\",\n      \"deployment_status\": \"<boolean>\",\n      \"processing_status\": \"<boolean>\",\n      \"log_level\": \"<string>\",\n      \"language_compatibility\": \"<string>\",\n      \"execution_timeout\": \"<integer>\",\n      \"timer_context_size\": \"<integer>\",\n      \"worker_count\": \"<integer>\",\n      \"num_timer_partitions\": \"<integer>\"\n    },\n    \"function_scope\": {\n      \"bucket\": \"<string>\",\n      \"scope\": \"<string>\"\n    }\n  },\n  {\n    \"appname\": \"<string>\",\n    \"appcode\": \"<string>\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"<string>\",\n          \"bucket_name\": \"<string>\",\n          \"scope_name\": \"<string>\",\n          \"collection_name\": \"<string>\",\n          \"access\": \"<string>\"\n        },\n        {\n          \"alias\": \"<string>\",\n          \"bucket_name\": \"<string>\",\n          \"scope_name\": \"<string>\",\n          \"collection_name\": \"<string>\",\n          \"access\": \"<string>\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"<string>\",\n          \"value\": \"<string>\",\n          \"auth_type\": \"<string>\",\n          \"allow_cookies\": \"<boolean>\",\n          \"validate_ssl_certificate\": \"<boolean>\"\n        },\n        {\n          \"hostname\": \"<string>\",\n          \"value\": \"<string>\",\n          \"auth_type\": \"<string>\",\n          \"allow_cookies\": \"<boolean>\",\n          \"validate_ssl_certificate\": \"<boolean>\"\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"<string>\",\n          \"literal\": \"<string>\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"literal\": \"<string>\"\n        }\n      ],\n      \"source_bucket\": \"<string>\",\n      \"source_scope\": \"<string>\",\n      \"source_collection\": \"<string>\",\n      \"metadata_bucket\": \"<string>\",\n      \"metadata_scope\": \"<string>\",\n      \"metadata_collection\": \"<string>\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"<string>\",\n      \"deployment_status\": \"<boolean>\",\n      \"processing_status\": \"<boolean>\",\n      \"log_level\": \"<string>\",\n      \"language_compatibility\": \"<string>\",\n      \"execution_timeout\": \"<integer>\",\n      \"timer_context_size\": \"<integer>\",\n      \"worker_count\": \"<integer>\",\n      \"num_timer_partitions\": \"<integer>\"\n    },\n    \"function_scope\": {\n      \"bucket\": \"<string>\",\n      \"scope\": \"<string>\"\n    }\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "538434b0-55ba-499f-802b-0e792f2459b0",
+              "name": "Functions imported successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"appname\": \"string\",\n    \"appcode\": \"string\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"rw\"\n        },\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"r\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"basic\",\n          \"allow_cookies\": true,\n          \"validate_ssl_certificate\": true\n        },\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"bearer\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": true\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        }\n      ],\n      \"source_bucket\": \"string\",\n      \"source_scope\": \"string\",\n      \"source_collection\": \"string\",\n      \"metadata_bucket\": \"string\",\n      \"metadata_scope\": \"string\",\n      \"metadata_collection\": \"string\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"everything\",\n      \"deployment_status\": false,\n      \"processing_status\": false,\n      \"log_level\": \"INFO\",\n      \"language_compatibility\": \"string\",\n      \"execution_timeout\": 5231,\n      \"timer_context_size\": 3777,\n      \"worker_count\": 637,\n      \"num_timer_partitions\": 4376\n    },\n    \"function_scope\": {\n      \"bucket\": \"string\",\n      \"scope\": \"string\"\n    }\n  },\n  {\n    \"appname\": \"string\",\n    \"appcode\": \"string\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"rw\"\n        },\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"rw\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"no-auth\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": false\n        },\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"no-auth\",\n          \"allow_cookies\": true,\n          \"validate_ssl_certificate\": true\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        }\n      ],\n      \"source_bucket\": \"string\",\n      \"source_scope\": \"string\",\n      \"source_collection\": \"string\",\n      \"metadata_bucket\": \"string\",\n      \"metadata_scope\": \"string\",\n      \"metadata_collection\": \"string\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"everything\",\n      \"deployment_status\": true,\n      \"processing_status\": true,\n      \"log_level\": \"INFO\",\n      \"language_compatibility\": \"string\",\n      \"execution_timeout\": 4883,\n      \"timer_context_size\": 8230,\n      \"worker_count\": 2702,\n      \"num_timer_partitions\": 3406\n    },\n    \"function_scope\": {\n      \"bucket\": \"string\",\n      \"scope\": \"string\"\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a4695ea6-5927-4128-b2f5-1fc1c40aac9d",
+              "name": "Invalid function definitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"appname\": \"string\",\n    \"appcode\": \"string\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"rw\"\n        },\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"r\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"basic\",\n          \"allow_cookies\": true,\n          \"validate_ssl_certificate\": true\n        },\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"bearer\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": true\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        }\n      ],\n      \"source_bucket\": \"string\",\n      \"source_scope\": \"string\",\n      \"source_collection\": \"string\",\n      \"metadata_bucket\": \"string\",\n      \"metadata_scope\": \"string\",\n      \"metadata_collection\": \"string\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"everything\",\n      \"deployment_status\": false,\n      \"processing_status\": false,\n      \"log_level\": \"INFO\",\n      \"language_compatibility\": \"string\",\n      \"execution_timeout\": 5231,\n      \"timer_context_size\": 3777,\n      \"worker_count\": 637,\n      \"num_timer_partitions\": 4376\n    },\n    \"function_scope\": {\n      \"bucket\": \"string\",\n      \"scope\": \"string\"\n    }\n  },\n  {\n    \"appname\": \"string\",\n    \"appcode\": \"string\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"rw\"\n        },\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"rw\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"no-auth\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": false\n        },\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"no-auth\",\n          \"allow_cookies\": true,\n          \"validate_ssl_certificate\": true\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        }\n      ],\n      \"source_bucket\": \"string\",\n      \"source_scope\": \"string\",\n      \"source_collection\": \"string\",\n      \"metadata_bucket\": \"string\",\n      \"metadata_scope\": \"string\",\n      \"metadata_collection\": \"string\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"everything\",\n      \"deployment_status\": true,\n      \"processing_status\": true,\n      \"log_level\": \"INFO\",\n      \"language_compatibility\": \"string\",\n      \"execution_timeout\": 4883,\n      \"timer_context_size\": 8230,\n      \"worker_count\": 2702,\n      \"num_timer_partitions\": 3406\n    },\n    \"function_scope\": {\n      \"bucket\": \"string\",\n      \"scope\": \"string\"\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "03e461e5-c6b0-40a5-86dd-5fc2a0fef8d8",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"appname\": \"string\",\n    \"appcode\": \"string\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"rw\"\n        },\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"r\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"basic\",\n          \"allow_cookies\": true,\n          \"validate_ssl_certificate\": true\n        },\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"bearer\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": true\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        }\n      ],\n      \"source_bucket\": \"string\",\n      \"source_scope\": \"string\",\n      \"source_collection\": \"string\",\n      \"metadata_bucket\": \"string\",\n      \"metadata_scope\": \"string\",\n      \"metadata_collection\": \"string\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"everything\",\n      \"deployment_status\": false,\n      \"processing_status\": false,\n      \"log_level\": \"INFO\",\n      \"language_compatibility\": \"string\",\n      \"execution_timeout\": 5231,\n      \"timer_context_size\": 3777,\n      \"worker_count\": 637,\n      \"num_timer_partitions\": 4376\n    },\n    \"function_scope\": {\n      \"bucket\": \"string\",\n      \"scope\": \"string\"\n    }\n  },\n  {\n    \"appname\": \"string\",\n    \"appcode\": \"string\",\n    \"depcfg\": {\n      \"buckets\": [\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"rw\"\n        },\n        {\n          \"alias\": \"string\",\n          \"bucket_name\": \"string\",\n          \"scope_name\": \"string\",\n          \"collection_name\": \"string\",\n          \"access\": \"rw\"\n        }\n      ],\n      \"curl\": [\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"no-auth\",\n          \"allow_cookies\": false,\n          \"validate_ssl_certificate\": false\n        },\n        {\n          \"hostname\": \"string\",\n          \"value\": \"string\",\n          \"auth_type\": \"no-auth\",\n          \"allow_cookies\": true,\n          \"validate_ssl_certificate\": true\n        }\n      ],\n      \"constants\": [\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"literal\": \"string\"\n        }\n      ],\n      \"source_bucket\": \"string\",\n      \"source_scope\": \"string\",\n      \"source_collection\": \"string\",\n      \"metadata_bucket\": \"string\",\n      \"metadata_scope\": \"string\",\n      \"metadata_collection\": \"string\"\n    },\n    \"settings\": {\n      \"dcp_stream_boundary\": \"everything\",\n      \"deployment_status\": true,\n      \"processing_status\": true,\n      \"log_level\": \"INFO\",\n      \"language_compatibility\": \"string\",\n      \"execution_timeout\": 4883,\n      \"timer_context_size\": 8230,\n      \"worker_count\": 2702,\n      \"num_timer_partitions\": 3406\n    },\n    \"function_scope\": {\n      \"bucket\": \"string\",\n      \"scope\": \"string\"\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://localhost:8095",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b73a92fa-68b0-44e5-a4d0-ec252eef294f",
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Import Export API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
+      "type": "text/plain"
+    }
+  }
+}

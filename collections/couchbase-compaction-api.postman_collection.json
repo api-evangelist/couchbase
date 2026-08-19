@@ -1,0 +1,451 @@
+{
+  "item": [
+    {
+      "id": "5bd278d1-428a-48a0-b852-b8ff348fc699",
+      "name": "Compaction",
+      "description": {
+        "content": "Endpoints for managing auto-compaction settings and triggering compaction operations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fe0b6ca3-9990-4aff-b4ba-48b6ff2f634f",
+          "name": "Get auto-compaction settings",
+          "request": {
+            "name": "Get auto-compaction settings",
+            "description": {
+              "content": "Returns the current auto-compaction settings for the cluster.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "settings",
+                "autoCompaction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a7844b8-b0aa-46d7-aa59-156435fb34ce",
+              "name": "Successful retrieval of auto-compaction settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "autoCompaction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"databaseFragmentationThreshold\": {\n    \"percentage\": 1007,\n    \"size\": 1943\n  },\n  \"viewFragmentationThreshold\": {\n    \"percentage\": 8799,\n    \"size\": 9447\n  },\n  \"parallelDBAndViewCompaction\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b492b89a-bdb2-4042-a632-3857bf089b8c",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "autoCompaction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54619d76-f382-4cc0-a82f-56b4d46058f0",
+          "name": "Update auto-compaction settings",
+          "request": {
+            "name": "Update auto-compaction settings",
+            "description": {
+              "content": "Updates the auto-compaction settings for the cluster including database and view fragmentation thresholds and compaction intervals.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "settings",
+                "autoCompaction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "percentage",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "percentage",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "parallelDBAndViewCompaction",
+                  "value": "<boolean>",
+                  "description": "Whether to run database and view compaction in parallel"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6a7ee9e9-a95a-40f7-97dd-80bd36ac4f93",
+              "name": "Auto-compaction settings updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "autoCompaction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "percentage",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "percentage",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to run database and view compaction in parallel",
+                        "type": "text/plain"
+                      },
+                      "key": "parallelDBAndViewCompaction",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0cfb7331-9644-4a9e-8512-ee31cb91c9e3",
+              "name": "Invalid compaction settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "autoCompaction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "percentage",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "percentage",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to run database and view compaction in parallel",
+                        "type": "text/plain"
+                      },
+                      "key": "parallelDBAndViewCompaction",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d9fb8b2a-aba6-467a-885e-ceaf8dd50dfb",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings",
+                    "autoCompaction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "percentage",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "percentage",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to run database and view compaction in parallel",
+                        "type": "text/plain"
+                      },
+                      "key": "parallelDBAndViewCompaction",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://localhost:8095",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "66d5ef19-9b2e-4b52-9382-7948e46c55fb",
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Compaction API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
+      "type": "text/plain"
+    }
+  }
+}

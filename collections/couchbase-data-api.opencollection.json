@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Data API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Trigger an immediate backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/api/v1/cluster/self/repository/active/:repositoryId/backup",
+            "params": [
+              {
+                "name": "repositoryId",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup repository"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Triggers an immediate one-off backup for the specified active repository, independent of the scheduled backup plan."
+        },
+        {
+          "info": {
+            "name": "Restore from a backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/api/v1/cluster/self/repository/active/:repositoryId/restore",
+            "params": [
+              {
+                "name": "repositoryId",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup repository"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates a restore operation from the specified backup repository, allowing you to restore specific buckets or all data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

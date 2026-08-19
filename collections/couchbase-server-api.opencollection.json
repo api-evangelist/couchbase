@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Server API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Server",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all databases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/_all_dbs"
+          },
+          "docs": "Returns the names of all databases configured on the Sync Gateway instance."
+        },
+        {
+          "info": {
+            "name": "Get server configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/_config"
+          },
+          "docs": "Returns the complete Sync Gateway server configuration."
+        },
+        {
+          "info": {
+            "name": "Get server information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/"
+          },
+          "docs": "Returns information about the Sync Gateway server instance."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

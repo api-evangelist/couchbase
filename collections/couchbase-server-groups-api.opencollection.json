@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Server Groups API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Server Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List server groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/pools/default/serverGroups"
+          },
+          "docs": "Returns the list of server groups and their member nodes for rack-zone awareness configuration."
+        },
+        {
+          "info": {
+            "name": "Create a server group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/pools/default/serverGroups",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "name",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Creates a new server group for rack-zone awareness."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

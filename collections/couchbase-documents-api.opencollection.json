@@ -1,0 +1,253 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Documents API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/:db/_all_docs",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              },
+              {
+                "name": "include_docs",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include document bodies in the response"
+              },
+              {
+                "name": "channels",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by channel name"
+              },
+              {
+                "name": "keys",
+                "value": "",
+                "type": "query",
+                "description": "Array of document IDs to retrieve"
+              },
+              {
+                "name": "startkey",
+                "value": "",
+                "type": "query",
+                "description": "Start key for the range to return"
+              },
+              {
+                "name": "endkey",
+                "value": "",
+                "type": "query",
+                "description": "End key for the range to return"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return"
+              }
+            ]
+          },
+          "docs": "Returns all documents in the database. By default, only the document ID and revision are included. Use include_docs=true to include the full document body."
+        },
+        {
+          "info": {
+            "name": "Get a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/:db/:docId",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              },
+              {
+                "name": "docId",
+                "value": "",
+                "type": "path",
+                "description": "The document ID"
+              },
+              {
+                "name": "rev",
+                "value": "",
+                "type": "query",
+                "description": "Specific revision to retrieve"
+              },
+              {
+                "name": "revs",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include revision history"
+              },
+              {
+                "name": "open_revs",
+                "value": "",
+                "type": "query",
+                "description": "Array of revision IDs or \"all\" to get all leaf revisions"
+              },
+              {
+                "name": "attachments",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include attachment data"
+              }
+            ]
+          },
+          "docs": "Retrieves a document from the database by its document ID."
+        },
+        {
+          "info": {
+            "name": "Create or update a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:8095/:db/:docId",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              },
+              {
+                "name": "docId",
+                "value": "",
+                "type": "path",
+                "description": "The document ID"
+              },
+              {
+                "name": "rev",
+                "value": "",
+                "type": "query",
+                "description": "Current revision for updates"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new document or updates an existing document. For updates, the current revision ID must be included in the request body as _rev."
+        },
+        {
+          "info": {
+            "name": "Delete a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8095/:db/:docId",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              },
+              {
+                "name": "docId",
+                "value": "",
+                "type": "path",
+                "description": "The document ID"
+              },
+              {
+                "name": "rev",
+                "value": "",
+                "type": "query",
+                "description": "Current revision of the document"
+              }
+            ]
+          },
+          "docs": "Deletes a document by creating a tombstone revision. The current revision must be specified."
+        },
+        {
+          "info": {
+            "name": "Create or update multiple documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/:db/_bulk_docs",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates multiple documents in a single request. This is the primary endpoint used by Couchbase Lite for push replication."
+        },
+        {
+          "info": {
+            "name": "Get multiple documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/:db/_bulk_get",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              },
+              {
+                "name": "attachments",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include attachments"
+              },
+              {
+                "name": "revs",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include revision history"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves multiple documents by ID in a single request. This is the primary endpoint used by Couchbase Lite for pull replication."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

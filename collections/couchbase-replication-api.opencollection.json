@@ -1,0 +1,146 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Replication API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Replication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List replications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/:db/_replication/",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database"
+              }
+            ]
+          },
+          "docs": "Returns the list of all inter-Sync Gateway replications configured for the specified database."
+        },
+        {
+          "info": {
+            "name": "Create a replication",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/:db/_replication/",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new inter-Sync Gateway replication for the specified database."
+        },
+        {
+          "info": {
+            "name": "Get replication details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/:db/_replication/:replicationId",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database"
+              },
+              {
+                "name": "replicationId",
+                "value": "",
+                "type": "path",
+                "description": "The replication identifier"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific replication."
+        },
+        {
+          "info": {
+            "name": "Update a replication",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:8095/:db/_replication/:replicationId",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database"
+              },
+              {
+                "name": "replicationId",
+                "value": "",
+                "type": "path",
+                "description": "The replication identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration of an existing replication."
+        },
+        {
+          "info": {
+            "name": "Delete a replication",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8095/:db/_replication/:replicationId",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database"
+              },
+              {
+                "name": "replicationId",
+                "value": "",
+                "type": "path",
+                "description": "The replication identifier"
+              }
+            ]
+          },
+          "docs": "Deletes the specified replication."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

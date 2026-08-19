@@ -1,0 +1,291 @@
+{
+  "item": [
+    {
+      "id": "2eb8469d-0bd6-42a4-a966-c8c9ae7b58b2",
+      "name": "Statistics",
+      "description": {
+        "content": "Endpoints for monitoring Eventing Function execution statistics and status.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "332c0684-04c3-492e-ae4d-588b5b739fef",
+          "name": "Get Eventing Service status",
+          "request": {
+            "name": "Get Eventing Service status",
+            "description": {
+              "content": "Returns the deployment status and processing status of all Eventing Functions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f351dcf3-51c7-4c0b-940b-f4640998fdde",
+              "name": "Successful retrieval of Eventing status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"num_eventing_nodes\": 870,\n  \"apps\": [\n    {\n      \"name\": \"string\",\n      \"composite_status\": \"deployed\",\n      \"deployment_status\": true,\n      \"processing_status\": true,\n      \"num_deployed_nodes\": 9877,\n      \"function_scope\": {\n        \"bucket\": \"string\",\n        \"scope\": \"string\"\n      }\n    },\n    {\n      \"name\": \"string\",\n      \"composite_status\": \"deploying\",\n      \"deployment_status\": false,\n      \"processing_status\": false,\n      \"num_deployed_nodes\": 1617,\n      \"function_scope\": {\n        \"bucket\": \"string\",\n        \"scope\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62474226-fe03-498b-805e-5acc5617bb94",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00f19d47-f740-420b-8d76-6ebc2b239a54",
+          "name": "Get Eventing Function statistics",
+          "request": {
+            "name": "Get Eventing Function statistics",
+            "description": {
+              "content": "Returns execution statistics for all Eventing Functions including mutation processing counts, failure counts, and timing information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "80aa591b-db8c-4a01-b5c2-6743a74aa7f2",
+              "name": "Successful retrieval of function statistics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"function_name\": \"string\",\n    \"execution_stats\": {\n      \"on_update_success\": 9464,\n      \"on_update_failure\": 1565,\n      \"on_delete_success\": 8431,\n      \"on_delete_failure\": 3703,\n      \"timer_callback_success\": 7636,\n      \"timer_callback_failure\": 930\n    },\n    \"failure_stats\": {\n      \"timeout_count\": 5857,\n      \"n1ql_op_exception_count\": 5205\n    }\n  },\n  {\n    \"function_name\": \"string\",\n    \"execution_stats\": {\n      \"on_update_success\": 4100,\n      \"on_update_failure\": 5024,\n      \"on_delete_success\": 5399,\n      \"on_delete_failure\": 7520,\n      \"timer_callback_success\": 9485,\n      \"timer_callback_failure\": 2972\n    },\n    \"failure_stats\": {\n      \"timeout_count\": 1426,\n      \"n1ql_op_exception_count\": 7369\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0fca9f4e-8ca1-43bf-8237-6423058311f1",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://localhost:8095",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7bd6d532-dfb4-47d1-bd98-f1f8a1074390",
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Statistics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs User Management API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/:db/_user/",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database"
+              }
+            ]
+          },
+          "docs": "Returns the list of all users configured for the specified database."
+        },
+        {
+          "info": {
+            "name": "Create a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/:db/_user/",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new user for the specified database with the given credentials and channel assignments."
+        },
+        {
+          "info": {
+            "name": "Get user details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/:db/_user/:userName",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database"
+              },
+              {
+                "name": "userName",
+                "value": "",
+                "type": "path",
+                "description": "The username"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific user including their roles, channels, and admin channels."
+        },
+        {
+          "info": {
+            "name": "Update a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:8095/:db/_user/:userName",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database"
+              },
+              {
+                "name": "userName",
+                "value": "",
+                "type": "path",
+                "description": "The username"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration of an existing user including their password, roles, and channel assignments."
+        },
+        {
+          "info": {
+            "name": "Delete a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8095/:db/_user/:userName",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database"
+              },
+              {
+                "name": "userName",
+                "value": "",
+                "type": "path",
+                "description": "The username"
+              }
+            ]
+          },
+          "docs": "Deletes the specified user from the database."
+        },
+        {
+          "info": {
+            "name": "Create a session for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/:db/_user/:userName/_session",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The database name"
+              },
+              {
+                "name": "userName",
+                "value": "",
+                "type": "path",
+                "description": "The username"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new session for the specified user with an optional expiration time and channel override."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

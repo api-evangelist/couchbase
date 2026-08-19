@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Import Export API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Import Export",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Export all Eventing Functions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/api/v1/export"
+          },
+          "docs": "Exports all Eventing Function definitions. Exported functions are always set to undeployed state at the time of export."
+        },
+        {
+          "info": {
+            "name": "Export a specific Eventing Function",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/api/v1/export/:functionName",
+            "params": [
+              {
+                "name": "functionName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Eventing Function"
+              }
+            ]
+          },
+          "docs": "Exports the definition of a specific Eventing Function in undeployed state."
+        },
+        {
+          "info": {
+            "name": "Import Eventing Functions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/api/v1/import",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Imports Eventing Function definitions. Imported functions always start in undeployed state regardless of the setting values in the import data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Query Execution API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Query Execution",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute a SQL++ query via GET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/query/service",
+            "params": [
+              {
+                "name": "statement",
+                "value": "",
+                "type": "query",
+                "description": "The SQL++ statement to execute"
+              },
+              {
+                "name": "timeout",
+                "value": "",
+                "type": "query",
+                "description": "Maximum execution time for the query (e.g., 10s, 5m)"
+              },
+              {
+                "name": "readonly",
+                "value": "",
+                "type": "query",
+                "description": "Whether to restrict the query to read-only operations"
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Whether to format the query results with indentation"
+              }
+            ]
+          },
+          "docs": "Executes a SQL++ query specified as a query parameter. This endpoint is intended for situations where use of the POST method is restricted."
+        },
+        {
+          "info": {
+            "name": "Execute a SQL++ query via POST",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/query/service",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes a SQL++ query specified in the request body. Supports both application/json and application/x-www-form-urlencoded content types. This is the primary method for executing queries and supports all query parameters including named and positional parameters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

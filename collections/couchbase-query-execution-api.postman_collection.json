@@ -1,0 +1,759 @@
+{
+  "item": [
+    {
+      "id": "59a302f0-100e-4ac4-b5f7-2a66968362e2",
+      "name": "Query Execution",
+      "description": {
+        "content": "Endpoints for executing SQL++ queries and managing query results.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e2212156-5359-439a-b42d-5e7da4fe1b88",
+          "name": "Execute a SQL++ query via GET",
+          "request": {
+            "name": "Execute a SQL++ query via GET",
+            "description": {
+              "content": "Executes a SQL++ query specified as a query parameter. This endpoint is intended for situations where use of the POST method is restricted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query",
+                "service"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "statement",
+                  "value": "<string>",
+                  "description": "(Required) The SQL++ statement to execute"
+                },
+                {
+                  "disabled": false,
+                  "key": "timeout",
+                  "value": "<string>",
+                  "description": "Maximum execution time for the query (e.g., 10s, 5m)"
+                },
+                {
+                  "disabled": false,
+                  "key": "readonly",
+                  "value": "<boolean>",
+                  "description": "Whether to restrict the query to read-only operations"
+                },
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "<boolean>",
+                  "description": "Whether to format the query results with indentation"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5e445a44-fb0d-495e-b210-94994cea0a4b",
+              "name": "Query executed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "statement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "readonly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestID\": \"string\",\n  \"clientContextID\": \"string\",\n  \"signature\": {},\n  \"status\": \"running\",\n  \"metrics\": {\n    \"elapsedTime\": \"string\",\n    \"executionTime\": \"string\",\n    \"resultCount\": 7958,\n    \"resultSize\": 6715,\n    \"mutationCount\": 7437,\n    \"errorCount\": 3299,\n    \"warningCount\": 4491\n  },\n  \"errors\": [\n    {\n      \"code\": 891,\n      \"msg\": \"string\"\n    },\n    {\n      \"code\": 5758,\n      \"msg\": \"string\"\n    }\n  ],\n  \"warnings\": [\n    {\n      \"code\": 7201,\n      \"msg\": \"string\"\n    },\n    {\n      \"code\": 7027,\n      \"msg\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5662652-03bb-4928-bc9a-12e2835d4c99",
+              "name": "Invalid query syntax or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "statement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "readonly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c10dcc07-eddc-497b-91fc-abb3563276c7",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "statement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "readonly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbaea707-c7ba-41b8-a14d-91b6734521dc",
+          "name": "Execute a SQL++ query via POST",
+          "request": {
+            "name": "Execute a SQL++ query via POST",
+            "description": {
+              "content": "Executes a SQL++ query specified in the request body. Supports both application/json and application/x-www-form-urlencoded content types. This is the primary method for executing queries and supports all query parameters including named and positional parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query",
+                "service"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "statement",
+                  "value": "<string>",
+                  "description": "(Required) The SQL++ statement to execute"
+                },
+                {
+                  "disabled": false,
+                  "key": "timeout",
+                  "value": "<string>",
+                  "description": "Maximum execution time (e.g., 10s, 5m)"
+                },
+                {
+                  "disabled": false,
+                  "key": "readonly",
+                  "value": "<boolean>",
+                  "description": "Whether to restrict to read-only operations"
+                },
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "<boolean>",
+                  "description": "Whether to format results with indentation"
+                },
+                {
+                  "disabled": false,
+                  "key": "scan_consistency",
+                  "value": "<string>",
+                  "description": "Consistency requirement for the query"
+                },
+                {
+                  "disabled": false,
+                  "key": "prepared",
+                  "value": "<string>",
+                  "description": "Name of a prepared statement to execute"
+                },
+                {
+                  "disabled": false,
+                  "key": "client_context_id",
+                  "value": "<string>",
+                  "description": "Client-provided context identifier for tracking"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_parallelism",
+                  "value": "<string>",
+                  "description": "Maximum parallelism for the query"
+                },
+                {
+                  "disabled": false,
+                  "key": "metrics",
+                  "value": "<boolean>",
+                  "description": "Whether to include metrics in the response"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "60b89140-4e65-4fb6-a3b8-8fcd1e7c8fc2",
+              "name": "Query executed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The SQL++ statement to execute",
+                        "type": "text/plain"
+                      },
+                      "key": "statement",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Maximum execution time (e.g., 10s, 5m)",
+                        "type": "text/plain"
+                      },
+                      "key": "timeout",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to restrict to read-only operations",
+                        "type": "text/plain"
+                      },
+                      "key": "readonly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to format results with indentation",
+                        "type": "text/plain"
+                      },
+                      "key": "pretty",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Consistency requirement for the query",
+                        "type": "text/plain"
+                      },
+                      "key": "scan_consistency",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Name of a prepared statement to execute",
+                        "type": "text/plain"
+                      },
+                      "key": "prepared",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Client-provided context identifier for tracking",
+                        "type": "text/plain"
+                      },
+                      "key": "client_context_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Maximum parallelism for the query",
+                        "type": "text/plain"
+                      },
+                      "key": "max_parallelism",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to include metrics in the response",
+                        "type": "text/plain"
+                      },
+                      "key": "metrics",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestID\": \"string\",\n  \"clientContextID\": \"string\",\n  \"signature\": {},\n  \"status\": \"running\",\n  \"metrics\": {\n    \"elapsedTime\": \"string\",\n    \"executionTime\": \"string\",\n    \"resultCount\": 7958,\n    \"resultSize\": 6715,\n    \"mutationCount\": 7437,\n    \"errorCount\": 3299,\n    \"warningCount\": 4491\n  },\n  \"errors\": [\n    {\n      \"code\": 891,\n      \"msg\": \"string\"\n    },\n    {\n      \"code\": 5758,\n      \"msg\": \"string\"\n    }\n  ],\n  \"warnings\": [\n    {\n      \"code\": 7201,\n      \"msg\": \"string\"\n    },\n    {\n      \"code\": 7027,\n      \"msg\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "605624cb-20aa-484a-ae05-eb425d0d26ed",
+              "name": "Invalid query syntax or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The SQL++ statement to execute",
+                        "type": "text/plain"
+                      },
+                      "key": "statement",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Maximum execution time (e.g., 10s, 5m)",
+                        "type": "text/plain"
+                      },
+                      "key": "timeout",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to restrict to read-only operations",
+                        "type": "text/plain"
+                      },
+                      "key": "readonly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to format results with indentation",
+                        "type": "text/plain"
+                      },
+                      "key": "pretty",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Consistency requirement for the query",
+                        "type": "text/plain"
+                      },
+                      "key": "scan_consistency",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Name of a prepared statement to execute",
+                        "type": "text/plain"
+                      },
+                      "key": "prepared",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Client-provided context identifier for tracking",
+                        "type": "text/plain"
+                      },
+                      "key": "client_context_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Maximum parallelism for the query",
+                        "type": "text/plain"
+                      },
+                      "key": "max_parallelism",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to include metrics in the response",
+                        "type": "text/plain"
+                      },
+                      "key": "metrics",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "21b9734d-90b5-441e-92f3-cc2ccfef12eb",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The SQL++ statement to execute",
+                        "type": "text/plain"
+                      },
+                      "key": "statement",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Maximum execution time (e.g., 10s, 5m)",
+                        "type": "text/plain"
+                      },
+                      "key": "timeout",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to restrict to read-only operations",
+                        "type": "text/plain"
+                      },
+                      "key": "readonly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to format results with indentation",
+                        "type": "text/plain"
+                      },
+                      "key": "pretty",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Consistency requirement for the query",
+                        "type": "text/plain"
+                      },
+                      "key": "scan_consistency",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Name of a prepared statement to execute",
+                        "type": "text/plain"
+                      },
+                      "key": "prepared",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Client-provided context identifier for tracking",
+                        "type": "text/plain"
+                      },
+                      "key": "client_context_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Maximum parallelism for the query",
+                        "type": "text/plain"
+                      },
+                      "key": "max_parallelism",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether to include metrics in the response",
+                        "type": "text/plain"
+                      },
+                      "key": "metrics",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://localhost:8095",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7b7034c9-baea-4ac0-9698-ac5d9a16d49b",
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Query Execution API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
+      "type": "text/plain"
+    }
+  }
+}

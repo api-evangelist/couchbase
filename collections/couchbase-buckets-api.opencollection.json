@@ -1,0 +1,293 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Buckets API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Buckets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List buckets in a cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              }
+            ]
+          },
+          "docs": "Returns the list of buckets within the specified Capella cluster."
+        },
+        {
+          "info": {
+            "name": "Create a bucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new bucket within the specified Capella cluster."
+        },
+        {
+          "info": {
+            "name": "Get bucket details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              },
+              {
+                "name": "bucketId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the bucket"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific bucket in a Capella cluster."
+        },
+        {
+          "info": {
+            "name": "Update a bucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:8095/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              },
+              {
+                "name": "bucketId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the bucket"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration of an existing bucket in a Capella cluster."
+        },
+        {
+          "info": {
+            "name": "Delete a bucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8095/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the organization"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project"
+              },
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the cluster"
+              },
+              {
+                "name": "bucketId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the bucket"
+              }
+            ]
+          },
+          "docs": "Deletes the specified bucket and all its data from the Capella cluster."
+        },
+        {
+          "info": {
+            "name": "List all buckets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/pools/default/buckets"
+          },
+          "docs": "Returns a list of all buckets in the cluster with their configuration details, including RAM quotas, replica settings, and item counts."
+        },
+        {
+          "info": {
+            "name": "Create a new bucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/pools/default/buckets",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Creates a new bucket with the specified configuration including name, type, RAM quota, replica count, and other settings."
+        },
+        {
+          "info": {
+            "name": "Get bucket details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/pools/default/buckets/:bucketName",
+            "params": [
+              {
+                "name": "bucketName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the bucket"
+              }
+            ]
+          },
+          "docs": "Returns detailed configuration and statistics for a specific bucket."
+        },
+        {
+          "info": {
+            "name": "Update bucket settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/pools/default/buckets/:bucketName",
+            "params": [
+              {
+                "name": "bucketName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the bucket"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Updates the configuration of an existing bucket, such as RAM quota, authentication type, and replica settings."
+        },
+        {
+          "info": {
+            "name": "Delete a bucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://localhost:8095/pools/default/buckets/:bucketName",
+            "params": [
+              {
+                "name": "bucketName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the bucket"
+              }
+            ]
+          },
+          "docs": "Deletes the specified bucket and all of its data from the cluster."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

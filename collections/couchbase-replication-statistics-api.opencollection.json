@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Replication Statistics API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Replication Statistics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get XDCR replication statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/pools/default/buckets/:bucketName/stats/:statName",
+            "params": [
+              {
+                "name": "bucketName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the source bucket"
+              },
+              {
+                "name": "statName",
+                "value": "",
+                "type": "path",
+                "description": "The specific statistic to retrieve (e.g., replications/{replicationId}/docs_written)"
+              }
+            ]
+          },
+          "docs": "Returns statistics for XDCR replications on a specific bucket, including items replicated, replication latency, and bandwidth usage."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

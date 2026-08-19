@@ -1,0 +1,166 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Database Administration API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Database Administration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get database configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/:db/_config",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database"
+              }
+            ]
+          },
+          "docs": "Returns the full configuration of the specified database including sync function, import filter, and other settings."
+        },
+        {
+          "info": {
+            "name": "Update database configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:8095/:db/_config",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration of the specified database. This can include changes to the sync function, import filter, and other settings."
+        },
+        {
+          "info": {
+            "name": "Get sync function",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/:db/_config/sync",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database"
+              }
+            ]
+          },
+          "docs": "Returns the current sync function for the specified database."
+        },
+        {
+          "info": {
+            "name": "Update sync function",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://localhost:8095/:db/_config/sync",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database"
+              }
+            ]
+          },
+          "docs": "Updates the sync function for the specified database. The sync function controls document routing to channels and access grants."
+        },
+        {
+          "info": {
+            "name": "Take database offline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/:db/_offline",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database"
+              }
+            ]
+          },
+          "docs": "Takes the specified database offline, preventing any client access."
+        },
+        {
+          "info": {
+            "name": "Bring database online",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/:db/_online",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Brings the specified database back online after being taken offline."
+        },
+        {
+          "info": {
+            "name": "Resync database",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/:db/_resync",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database"
+              }
+            ]
+          },
+          "docs": "Reprocesses all documents through the sync function. This is required after updating the sync function to apply changes to existing documents."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

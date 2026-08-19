@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Nodes API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Nodes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get nodes information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/pools/nodes"
+          },
+          "docs": "Returns information about all nodes in the cluster, including their services, status, and system resources."
+        },
+        {
+          "info": {
+            "name": "Add a node to the cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/controller/addNode",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "hostname",
+                  "value": ""
+                },
+                {
+                  "name": "services",
+                  "value": ""
+                },
+                {
+                  "name": "user",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Adds a new node to the cluster. The node must be configured and reachable before it can be added."
+        },
+        {
+          "info": {
+            "name": "Rebalance the cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/controller/rebalance",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "knownNodes",
+                  "value": ""
+                },
+                {
+                  "name": "ejectedNodes",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Initiates a rebalance operation to redistribute data across the cluster nodes after adding or removing nodes."
+        },
+        {
+          "info": {
+            "name": "Fail over a node",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/controller/failOver",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "otpNode",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Initiates a hard failover for the specified node, removing it from the cluster immediately."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

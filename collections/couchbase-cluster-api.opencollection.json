@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Cluster API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cluster",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get backup cluster information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/api/v1/cluster/self"
+          },
+          "docs": "Returns information about the current cluster from the perspective of the Backup Service, including the list of repositories and plans."
+        },
+        {
+          "info": {
+            "name": "Get cluster information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/pools"
+          },
+          "docs": "Returns basic information about the cluster including the list of pools, UUID, and implementation version."
+        },
+        {
+          "info": {
+            "name": "Get default pool details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/pools/default"
+          },
+          "docs": "Returns detailed information about the default pool including cluster name, storage totals, RAM quotas, node list, and bucket information."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

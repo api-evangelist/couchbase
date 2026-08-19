@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Monitoring API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Monitoring",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get runtime statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/_expvar"
+          },
+          "docs": "Returns runtime expvar statistics for the Sync Gateway instance including memory usage, goroutine counts, and database statistics."
+        },
+        {
+          "info": {
+            "name": "Get server status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/_status"
+          },
+          "docs": "Returns the status of the Sync Gateway server including version information and database states."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

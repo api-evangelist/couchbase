@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Tasks API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get repository task history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/api/v1/cluster/self/repository/active/:repositoryId/taskHistory",
+            "params": [
+              {
+                "name": "repositoryId",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup repository"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The earliest date for returned tasks"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of tasks to return"
+              },
+              {
+                "name": "task_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by task name"
+              }
+            ]
+          },
+          "docs": "Returns the history of backup and restore tasks for the specified active repository, including task types, statuses, and timing."
+        },
+        {
+          "info": {
+            "name": "Pause repository tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/api/v1/cluster/self/repository/active/:repositoryId/pause",
+            "params": [
+              {
+                "name": "repositoryId",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup repository"
+              }
+            ]
+          },
+          "docs": "Pauses all scheduled tasks for the specified active repository."
+        },
+        {
+          "info": {
+            "name": "Resume repository tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/api/v1/cluster/self/repository/active/:repositoryId/resume",
+            "params": [
+              {
+                "name": "repositoryId",
+                "value": "",
+                "type": "path",
+                "description": "The name of the backup repository"
+              }
+            ]
+          },
+          "docs": "Resumes all paused tasks for the specified active repository."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

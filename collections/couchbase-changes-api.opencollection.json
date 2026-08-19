@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Couchbase Analytics Service REST Allowed CIDRs Changes API",
+    "version": "7.6"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Changes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get changes feed",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:8095/:db/_changes",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Sequence number to start from"
+              },
+              {
+                "name": "feed",
+                "value": "",
+                "type": "query",
+                "description": "Type of changes feed"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter function to apply"
+              },
+              {
+                "name": "channels",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of channel names to filter by"
+              },
+              {
+                "name": "include_docs",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include document bodies"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of changes to return"
+              },
+              {
+                "name": "heartbeat",
+                "value": "",
+                "type": "query",
+                "description": "Heartbeat interval in milliseconds for continuous feed"
+              },
+              {
+                "name": "timeout",
+                "value": "",
+                "type": "query",
+                "description": "Timeout in milliseconds for longpoll feed"
+              },
+              {
+                "name": "style",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return all leaf revisions"
+              },
+              {
+                "name": "active_only",
+                "value": "",
+                "type": "query",
+                "description": "Whether to exclude deleted documents"
+              }
+            ]
+          },
+          "docs": "Returns a list of changes made to documents in the database in sequence order. Supports long-polling, continuous, and one-shot modes for real-time synchronization."
+        },
+        {
+          "info": {
+            "name": "Get changes feed via POST",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:8095/:db/_changes",
+            "params": [
+              {
+                "name": "db",
+                "value": "",
+                "type": "path",
+                "description": "The name of the database (keyspace)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns changes feed with parameters specified in the request body. Identical to the GET endpoint but allows for complex filter parameters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
