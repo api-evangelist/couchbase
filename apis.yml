@@ -47,7 +47,7 @@ tags:
   - XDCR
 created: '2025-03-01'
 modified: '2026-05-19'
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 apis:
 - aid: couchbase:couchbase-allowed-cidrs-api
   name: Couchbase Allowed CIDRs API
