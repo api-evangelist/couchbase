@@ -33,6 +33,25 @@ tags:
   - Capella
   - Cloud
   - Database
+  - Database-as-a-Service
+  - Eventing
+  - Full-Text Search
+  - Gateway
+  - JSON
+  - Mobile
+  - NoSQL
+  - Replication
+  - SQL++
+  - Sync
+  - Vector Search
+  - XDCR
+tags_raw:
+  - Analytics
+  - App Services
+  - Backup
+  - Capella
+  - Cloud
+  - Database
   - DBaaS
   - Eventing
   - Full-Text Search
@@ -319,6 +338,8 @@ apis:
   humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   baseURL: https://localhost:8091
   tags:
+  - APIKeys
+  tags_raw:
   - API Keys
   properties:
   - type: OpenAPI
@@ -583,6 +604,8 @@ apis:
   humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   baseURL: https://localhost:8091
   tags:
+  - Cluster
+  tags_raw:
   - Clusters
   properties:
   - type: OpenAPI
@@ -1377,6 +1400,8 @@ apis:
   humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   baseURL: https://localhost:8091
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
@@ -1466,6 +1491,8 @@ apis:
   humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   baseURL: https://localhost:8091
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -2306,6 +2333,8 @@ apis:
   humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   baseURL: https://localhost:8091
   tags:
+  - Task
+  tags_raw:
   - Tasks
   properties:
   - type: OpenAPI
@@ -2394,6 +2423,8 @@ apis:
   humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   baseURL: https://localhost:8091
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
