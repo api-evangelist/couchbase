@@ -2478,6 +2478,9 @@ apis:
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 common:
+  - type: CapabilityMap
+    url: capabilities/couchbase-capability-edges.yml
+    name: Couchbase Business Capability Map
   - type: AgenticAccess
     url: agentic-access/couchbase-agentic-access.yml
   - type: DomainSecurity

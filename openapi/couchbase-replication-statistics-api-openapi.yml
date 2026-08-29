@@ -1,17 +1,17 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Couchbase Analytics Service REST Allowed CIDRs Replication Statistics API
-  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  title: Couchbase XDCR REST Replication Statistics API
+  description: The Couchbase XDCR (Cross Data Center Replication) REST API enables configuration and management of data replication between Couchbase clusters across different data centers. It provides endpoints for creating replication references, configuring replication streams, monitoring replication statistics, and managing replication settings. XDCR supports both unidirectional and bidirectional replication for high availability and disaster recovery scenarios.
   version: '7.6'
   contact:
     name: Couchbase Support
     url: https://support.couchbase.com
   termsOfService: https://www.couchbase.com/terms-of-use
 servers:
-- url: https://localhost:8095
-  description: Analytics Service (default port)
-- url: https://localhost:18095
-  description: Analytics Service (SSL)
+- url: https://localhost:8091
+  description: Couchbase Server (default port)
+- url: https://localhost:18091
+  description: Couchbase Server (SSL)
 security:
 - basicAuth: []
 tags:
@@ -54,7 +54,7 @@ components:
     basicAuth:
       type: http
       scheme: basic
-      description: HTTP Basic Authentication using Couchbase Server credentials.
+      description: HTTP Basic Authentication using Couchbase Server administrator credentials.
 externalDocs:
-  description: Couchbase Analytics Service REST API Documentation
-  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  description: Couchbase XDCR REST API Documentation
+  url: https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html

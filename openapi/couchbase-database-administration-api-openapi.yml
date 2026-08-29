@@ -1,17 +1,19 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Couchbase Analytics Service REST Allowed CIDRs Database Administration API
-  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
-  version: '7.6'
+  title: Couchbase Capella App Services Admin Database Administration API
+  description: The Couchbase Capella App Services Admin API provides administrative REST endpoints for managing Sync Gateway configurations within Couchbase Capella. It enables administrators to manage databases, users, roles, sync functions, and replication settings for mobile data synchronization. The API supports full administrative control over App Services deployments, including user provisioning, access control, and monitoring of sync operations.
+  version: '3.0'
   contact:
     name: Couchbase Support
     url: https://support.couchbase.com
   termsOfService: https://www.couchbase.com/terms-of-use
 servers:
-- url: https://localhost:8095
-  description: Analytics Service (default port)
-- url: https://localhost:18095
-  description: Analytics Service (SSL)
+- url: https://{appEndpoint}:4985
+  description: Capella App Services Admin endpoint
+  variables:
+    appEndpoint:
+      default: example.apps.cloud.couchbase.com
+      description: The App Services admin endpoint URL
 security:
 - basicAuth: []
 tags:
@@ -172,6 +174,14 @@ paths:
         '404':
           description: Database not found
 components:
+  parameters:
+    db:
+      name: db
+      in: path
+      required: true
+      description: The name of the database
+      schema:
+        type: string
   schemas:
     DatabaseConfig:
       type: object
@@ -220,19 +230,11 @@ components:
               description: Admin channels for the guest user
               items:
                 type: string
-  parameters:
-    db:
-      name: db
-      in: path
-      required: true
-      description: The name of the database
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http
       scheme: basic
-      description: HTTP Basic Authentication using Couchbase Server credentials.
+      description: HTTP Basic Authentication using App Services admin credentials.
 externalDocs:
-  description: Couchbase Analytics Service REST API Documentation
-  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  description: Couchbase Capella App Services Admin API Documentation
+  url: https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html

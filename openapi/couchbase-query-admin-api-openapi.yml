@@ -1,17 +1,17 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Couchbase Analytics Service REST Allowed CIDRs Query Admin API
-  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  title: Couchbase Query Service REST Query Admin API
+  description: The Couchbase Query Service REST API enables developers to execute SQL++ (formerly N1QL) queries against Couchbase Server and manage query service settings. It supports ad-hoc queries, prepared statements, and request-level parameter configuration. The API provides endpoints for query execution, monitoring active requests, and managing query service configuration across cluster nodes.
   version: '7.6'
   contact:
     name: Couchbase Support
     url: https://support.couchbase.com
   termsOfService: https://www.couchbase.com/terms-of-use
 servers:
-- url: https://localhost:8095
-  description: Analytics Service (default port)
-- url: https://localhost:18095
-  description: Analytics Service (SSL)
+- url: https://localhost:8093
+  description: Query Service (default port)
+- url: https://localhost:18093
+  description: Query Service (SSL)
 security:
 - basicAuth: []
 tags:
@@ -187,35 +187,43 @@ paths:
         '401':
           description: Unauthorized access
 components:
+  parameters:
+    requestId:
+      name: requestId
+      in: path
+      required: true
+      description: The unique identifier of the query request
+      schema:
+        type: string
   schemas:
-    CompletedRequest:
+    ActiveRequest:
       type: object
-      description: A completed query request
+      description: An active query request
       properties:
         requestId:
           type: string
           description: Unique identifier for the request
         statement:
           type: string
-          description: The SQL++ statement that was executed
+          description: The SQL++ statement being executed
         requestTime:
           type: string
           description: Time when the request was received
         elapsedTime:
           type: string
-          description: Total elapsed time for the request
-        resultCount:
-          type: integer
-          description: Number of results returned
-        resultSize:
-          type: integer
-          description: Size of results in bytes
-        errorCount:
-          type: integer
-          description: Number of errors encountered
+          description: Time elapsed since the request started
+        executionTime:
+          type: string
+          description: Time spent executing the query
         state:
           type: string
-          description: Final state of the request
+          description: Current state of the request
+        scanConsistency:
+          type: string
+          description: Consistency level of the query
+        clientContextID:
+          type: string
+          description: Client-provided context identifier
     QueryVitals:
       type: object
       description: Query service vital statistics
@@ -281,47 +289,39 @@ components:
         lastUse:
           type: string
           description: Time of last use
-    ActiveRequest:
+    CompletedRequest:
       type: object
-      description: An active query request
+      description: A completed query request
       properties:
         requestId:
           type: string
           description: Unique identifier for the request
         statement:
           type: string
-          description: The SQL++ statement being executed
+          description: The SQL++ statement that was executed
         requestTime:
           type: string
           description: Time when the request was received
         elapsedTime:
           type: string
-          description: Time elapsed since the request started
-        executionTime:
-          type: string
-          description: Time spent executing the query
+          description: Total elapsed time for the request
+        resultCount:
+          type: integer
+          description: Number of results returned
+        resultSize:
+          type: integer
+          description: Size of results in bytes
+        errorCount:
+          type: integer
+          description: Number of errors encountered
         state:
           type: string
-          description: Current state of the request
-        scanConsistency:
-          type: string
-          description: Consistency level of the query
-        clientContextID:
-          type: string
-          description: Client-provided context identifier
-  parameters:
-    requestId:
-      name: requestId
-      in: path
-      required: true
-      description: The unique identifier of the query request
-      schema:
-        type: string
+          description: Final state of the request
   securitySchemes:
     basicAuth:
       type: http
       scheme: basic
       description: HTTP Basic Authentication using Couchbase Server credentials.
 externalDocs:
-  description: Couchbase Analytics Service REST API Documentation
-  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  description: Couchbase Query Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html

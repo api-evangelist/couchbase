@@ -1,17 +1,17 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Couchbase Analytics Service REST Allowed CIDRs Search Indexes API
-  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+  title: Couchbase Search Service REST Search Indexes API
+  description: The Couchbase Search Service REST API allows developers to create, manage, and query Full Text Indexes on Couchbase Server. It supports full-text search queries with features like fuzzy matching, faceted search, highlighting, and geospatial queries. The API provides endpoints for index definition, index management, and executing search queries across JSON documents stored in Couchbase buckets.
   version: '7.6'
   contact:
     name: Couchbase Support
     url: https://support.couchbase.com
   termsOfService: https://www.couchbase.com/terms-of-use
 servers:
-- url: https://localhost:8095
-  description: Analytics Service (default port)
-- url: https://localhost:18095
-  description: Analytics Service (SSL)
+- url: https://localhost:8094
+  description: Search Service (default port)
+- url: https://localhost:18094
+  description: Search Service (SSL)
 security:
 - basicAuth: []
 tags:
@@ -175,25 +175,6 @@ paths:
           description: Index not found
 components:
   schemas:
-    SearchIndexList:
-      type: object
-      description: List of all search index definitions
-      properties:
-        status:
-          type: string
-          description: Response status
-        indexDefs:
-          type: object
-          description: Container for index definitions
-          properties:
-            uuid:
-              type: string
-              description: UUID of the index definitions set
-            indexDefs:
-              type: object
-              description: Map of index name to index definition
-              additionalProperties:
-                $ref: '#/components/schemas/SearchIndexDefinition'
     SearchIndexDefinition:
       type: object
       description: Full Text Search index definition
@@ -290,6 +271,25 @@ components:
         uuid:
           type: string
           description: UUID of the index
+    SearchIndexList:
+      type: object
+      description: List of all search index definitions
+      properties:
+        status:
+          type: string
+          description: Response status
+        indexDefs:
+          type: object
+          description: Container for index definitions
+          properties:
+            uuid:
+              type: string
+              description: UUID of the index definitions set
+            indexDefs:
+              type: object
+              description: Map of index name to index definition
+              additionalProperties:
+                $ref: '#/components/schemas/SearchIndexDefinition'
     SearchIndexResponse:
       type: object
       description: Single search index definition response
@@ -313,5 +313,5 @@ components:
       scheme: basic
       description: HTTP Basic Authentication using Couchbase Server credentials.
 externalDocs:
-  description: Couchbase Analytics Service REST API Documentation
-  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  description: Couchbase Search Service REST API Documentation
+  url: https://docs.couchbase.com/server/current/rest-api/rest-fts.html

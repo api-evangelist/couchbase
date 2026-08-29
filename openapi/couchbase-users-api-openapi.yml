@@ -1,19 +1,17 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Couchbase Analytics Service REST Allowed CIDRs Users API
-  description: The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
-  version: '7.6'
+  title: Couchbase Capella Management Users API
+  description: The Couchbase Capella Management API is a REST API for provisioning, deploying, and configuring Couchbase Capella database-as-a-service deployments across AWS, Azure, and Google Cloud. It enables programmatic management of clusters, buckets, users, and organizations using API key authentication. The API supports automation of cloud database operations including scaling, configuration changes, and access management, with requests limited to 100 per minute per API key.
+  version: '4.0'
   contact:
     name: Couchbase Support
     url: https://support.couchbase.com
   termsOfService: https://www.couchbase.com/terms-of-use
 servers:
-- url: https://localhost:8095
-  description: Analytics Service (default port)
-- url: https://localhost:18095
-  description: Analytics Service (SSL)
+- url: https://cloudapi.cloud.couchbase.com
+  description: Couchbase Capella Cloud API
 security:
-- basicAuth: []
+- bearerAuth: []
 tags:
 - name: Users
   description: Endpoints for managing users within a Capella organization.
@@ -42,15 +40,6 @@ paths:
           description: Rate limit exceeded
 components:
   parameters:
-    page:
-      name: page
-      in: query
-      required: false
-      description: Page number for pagination
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
     perPage:
       name: perPage
       in: query
@@ -69,6 +58,15 @@ components:
       schema:
         type: string
         format: uuid
+    page:
+      name: page
+      in: query
+      required: false
+      description: Page number for pagination
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
   schemas:
     PaginatedResponse:
       type: object
@@ -104,10 +102,10 @@ components:
           description: List of items
           items: {}
   securitySchemes:
-    basicAuth:
+    bearerAuth:
       type: http
-      scheme: basic
-      description: HTTP Basic Authentication using Couchbase Server credentials.
+      scheme: bearer
+      description: Bearer token authentication using a Capella API key secret.
 externalDocs:
-  description: Couchbase Analytics Service REST API Documentation
-  url: https://docs.couchbase.com/server/current/analytics/rest-analytics.html
+  description: Couchbase Capella Management API Documentation
+  url: https://docs.couchbase.com/cloud/management-api-reference/index.html
