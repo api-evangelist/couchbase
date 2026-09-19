@@ -50,7 +50,7 @@ tags:
   - Database-as-a-Service
   - Eventing
   - Full-Text Search
-  - Gateway
+  - Gateways
   - JSON
   - Mobile
   - NoSQL
@@ -1326,6 +1326,8 @@ apis:
   humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   baseURL: https://localhost:8091
   tags:
+  - Node
+  tags_raw:
   - Nodes
   properties:
   - type: OpenAPI
@@ -2127,6 +2129,8 @@ apis:
   humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   baseURL: https://localhost:8091
   tags:
+  - Servers
+  tags_raw:
   - Server
   properties:
   - type: OpenAPI
