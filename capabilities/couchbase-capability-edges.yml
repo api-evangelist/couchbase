@@ -1,0 +1,91 @@
+slug: couchbase
+provider: Couchbase
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 8
+edges:
+- tag: Security
+  spec_file: couchbase-security-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.88
+  evidence: PUT /settings/rbac/users/{domain}/{username} createOrUpdateUser Create or update a user; GET
+    /settings/rbac/roles listRoles
+  reason: Operations administer RBAC users and roles and retrieve the cluster certificate — user account
+    lifecycle and access-rights administration, which is squarely Identity & Access Management.
+- tag: Clusters
+  spec_file: couchbase-clusters-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: POST /v4/organizations/{organizationId}/projects/{projectId}/clusters createCluster "Create
+    a cluster"
+  reason: Provisioning and lifecycle of database clusters in a managed cloud DBaaS is compute/storage
+    infrastructure management.
+- tag: Database Credentials
+  spec_file: couchbase-database-credentials-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.75
+  evidence: POST .../clusters/{clusterId}/users createDatabaseCredential "Create database credentials"
+  reason: Issuance and listing of database user credentials is identity and access management.
+- tag: Nodes
+  spec_file: couchbase-nodes-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: POST /controller/addNode  Add a node to the cluster; POST /controller/rebalance  Rebalance
+    the cluster; POST /controller/failOver  Fail over a node
+  reason: Adding, rebalancing and failing over cluster nodes is management of compute/data infrastructure
+    topology — IT Infrastructure Management.
+- tag: User Management
+  spec_file: couchbase-user-management-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.75
+  evidence: POST /{db}/_user/ createUser 'Create a user'; DELETE /{db}/_user/{userName} 'Delete a user';
+    POST /{db}/_user/{userName}/_session 'Create a session for a user'; schemas UserInfo, UserConfig
+  reason: Full CRUD over database/app-service user accounts plus session creation is identity and access
+    administration, not HR employee records.
+- tag: Cluster References
+  spec_file: couchbase-cluster-references-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: POST /pools/default/remoteClusters createRemoteCluster "Create a remote cluster reference"
+  reason: Managing references to remote database clusters (for replication) is database/infrastructure
+    administration — IT Infrastructure Management. No business capability beyond IT.
+- tag: Database Administration
+  spec_file: couchbase-database-administration-api-openapi.yml
+  capability_id: BC-600.40
+  capability_id_l1: BC-600
+  capability_name: IT Operations Management
+  confidence: 0.7
+  evidence: PUT /{db}/_config updateDatabaseConfig; POST /{db}/_offline takeDatabaseOffline "Take database
+    offline"
+  reason: Administrative operations on databases (config, offline/online, resync) are day-to-day IT operations
+    of a data platform.
+- tag: Database Management
+  spec_file: couchbase-database-management-api-openapi.yml
+  capability_id: BC-600.40
+  capability_id_l1: BC-600
+  capability_name: IT Operations Management
+  confidence: 0.7
+  evidence: POST /{db}/_config createDatabase "Create a database"; POST /{db}/_compact "Compact database"
+  reason: Database lifecycle and maintenance operations — IT operations of the data platform, not a data
+    governance business capability.
