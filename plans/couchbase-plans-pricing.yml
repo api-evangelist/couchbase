@@ -10,6 +10,12 @@ provenance:
   grounding: every price_text was found verbatim in the fetched page text
 audience: business-product
 pricing_basis: usage-other
+delivery:
+  delivery: managed+licensed
+  method: page
+  read: '2026-09-20'
+  evidence: Enterprise clusters run in your cloud from $0.66/hr per node via cloud marketplaces
+  managed_tier: Basic
 published: true
 note: Node-hour/credit-based pricing with detailed per-instance tables for AWS/GCP/Azure; backup storage
   e.g. "Backup costs $0.07/GB per month". Mobile and AI Data Plane Dev Pro require a quote.
