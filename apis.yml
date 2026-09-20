@@ -2438,6 +2438,8 @@ apis:
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 common:
+  - type: Plans
+    url: plans/couchbase-plans-pricing.yml
   - type: CapabilityMap
     url: capabilities/couchbase-capability-edges.yml
     name: Couchbase Business Capability Map
