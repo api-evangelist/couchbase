@@ -279,61 +279,46 @@ paths:
     - url: https://localhost:18091
       description: Couchbase Server (SSL)
 components:
+  parameters:
+    bucketId:
+      name: bucketId
+      in: path
+      required: true
+      description: The ID of the bucket
+      schema:
+        type: string
+    organizationId:
+      name: organizationId
+      in: path
+      required: true
+      description: The UUID of the organization
+      schema:
+        type: string
+        format: uuid
+    clusterId:
+      name: clusterId
+      in: path
+      required: true
+      description: The UUID of the cluster
+      schema:
+        type: string
+        format: uuid
+    projectId:
+      name: projectId
+      in: path
+      required: true
+      description: The UUID of the project
+      schema:
+        type: string
+        format: uuid
+    bucketName:
+      name: bucketName
+      in: path
+      required: true
+      description: The name of the bucket
+      schema:
+        type: string
   schemas:
-    CapellaBucket:
-      type: object
-      description: Bucket in a Capella cluster
-      properties:
-        id:
-          type: string
-          description: Bucket ID
-        name:
-          type: string
-          description: Bucket name
-        type:
-          type: string
-          description: Bucket type
-          enum:
-          - couchbase
-          - ephemeral
-        memoryAllocationInMb:
-          type: integer
-          description: Memory allocation in megabytes
-        bucketConflictResolution:
-          type: string
-          description: Conflict resolution type
-          enum:
-          - seqno
-          - lww
-        durabilityLevel:
-          type: string
-          description: Minimum durability level
-          enum:
-          - none
-          - majority
-          - majorityAndPersistActive
-          - persistToMajority
-        replicas:
-          type: integer
-          description: Number of replicas
-          minimum: 1
-          maximum: 3
-        flush:
-          type: boolean
-          description: Whether flush is enabled
-        timeToLiveInSeconds:
-          type: integer
-          description: Default TTL in seconds (0 for no expiry)
-        stats:
-          type: object
-          description: Bucket statistics
-          properties:
-            itemCount:
-              type: integer
-              description: Number of items
-            memoryUsedInMib:
-              type: integer
-              description: Memory used in MiB
     CapellaBucketUpdateRequest:
       type: object
       description: Request to update a Capella bucket
@@ -402,57 +387,60 @@ components:
         timeToLiveInSeconds:
           type: integer
           default: 0
-    BucketCreateRequest:
+    CapellaBucket:
       type: object
-      description: Request body for creating a new bucket
-      required:
-      - name
-      - ramQuota
+      description: Bucket in a Capella cluster
       properties:
+        id:
+          type: string
+          description: Bucket ID
         name:
           type: string
-          description: Name of the bucket
-          maxLength: 100
-        bucketType:
+          description: Bucket name
+        type:
           type: string
-          description: Type of the bucket
+          description: Bucket type
           enum:
           - couchbase
-          - memcached
           - ephemeral
-          default: couchbase
-        ramQuota:
+        memoryAllocationInMb:
           type: integer
-          description: RAM quota in megabytes
-          minimum: 100
-        replicaNumber:
-          type: integer
-          description: Number of replicas
-          minimum: 0
-          maximum: 3
-          default: 1
-        conflictResolutionType:
+          description: Memory allocation in megabytes
+        bucketConflictResolution:
           type: string
-          description: Conflict resolution mechanism
+          description: Conflict resolution type
           enum:
           - seqno
           - lww
-          default: seqno
-        evictionPolicy:
+        durabilityLevel:
           type: string
-          description: Eviction policy
+          description: Minimum durability level
           enum:
-          - valueOnly
-          - fullEviction
-          - noEviction
-          - nruEviction
-        flushEnabled:
+          - none
+          - majority
+          - majorityAndPersistActive
+          - persistToMajority
+        replicas:
           type: integer
-          description: Whether flush is enabled (0 or 1)
-          enum:
-          - 0
-          - 1
-          default: 0
+          description: Number of replicas
+          minimum: 1
+          maximum: 3
+        flush:
+          type: boolean
+          description: Whether flush is enabled
+        timeToLiveInSeconds:
+          type: integer
+          description: Default TTL in seconds (0 for no expiry)
+        stats:
+          type: object
+          description: Bucket statistics
+          properties:
+            itemCount:
+              type: integer
+              description: Number of items
+            memoryUsedInMib:
+              type: integer
+              description: Memory used in MiB
     BucketUpdateRequest:
       type: object
       description: Request body for updating a bucket
@@ -525,45 +513,57 @@ components:
         itemCount:
           type: integer
           description: Number of items in the bucket
-  parameters:
-    clusterId:
-      name: clusterId
-      in: path
-      required: true
-      description: The UUID of the cluster
-      schema:
-        type: string
-        format: uuid
-    projectId:
-      name: projectId
-      in: path
-      required: true
-      description: The UUID of the project
-      schema:
-        type: string
-        format: uuid
-    bucketId:
-      name: bucketId
-      in: path
-      required: true
-      description: The ID of the bucket
-      schema:
-        type: string
-    organizationId:
-      name: organizationId
-      in: path
-      required: true
-      description: The UUID of the organization
-      schema:
-        type: string
-        format: uuid
-    bucketName:
-      name: bucketName
-      in: path
-      required: true
-      description: The name of the bucket
-      schema:
-        type: string
+    BucketCreateRequest:
+      type: object
+      description: Request body for creating a new bucket
+      required:
+      - name
+      - ramQuota
+      properties:
+        name:
+          type: string
+          description: Name of the bucket
+          maxLength: 100
+        bucketType:
+          type: string
+          description: Type of the bucket
+          enum:
+          - couchbase
+          - memcached
+          - ephemeral
+          default: couchbase
+        ramQuota:
+          type: integer
+          description: RAM quota in megabytes
+          minimum: 100
+        replicaNumber:
+          type: integer
+          description: Number of replicas
+          minimum: 0
+          maximum: 3
+          default: 1
+        conflictResolutionType:
+          type: string
+          description: Conflict resolution mechanism
+          enum:
+          - seqno
+          - lww
+          default: seqno
+        evictionPolicy:
+          type: string
+          description: Eviction policy
+          enum:
+          - valueOnly
+          - fullEviction
+          - noEviction
+          - nruEviction
+        flushEnabled:
+          type: integer
+          description: Whether flush is enabled (0 or 1)
+          enum:
+          - 0
+          - 1
+          default: 0
   securitySchemes:
     bearerAuth:
       type: http

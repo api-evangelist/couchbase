@@ -63,25 +63,6 @@ paths:
           description: Rate limit exceeded
 components:
   schemas:
-    Organization:
-      type: object
-      description: Capella organization
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Organization UUID
-        name:
-          type: string
-          description: Organization name
-        description:
-          type: string
-          description: Organization description
-        preferences:
-          type: object
-          description: Organization preferences
-        audit:
-          $ref: '#/components/schemas/AuditInfo'
     AuditInfo:
       type: object
       description: Audit timestamps
@@ -103,6 +84,25 @@ components:
         version:
           type: integer
           description: Resource version number
+    Organization:
+      type: object
+      description: Capella organization
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Organization UUID
+        name:
+          type: string
+          description: Organization name
+        description:
+          type: string
+          description: Organization description
+        preferences:
+          type: object
+          description: Organization preferences
+        audit:
+          $ref: '#/components/schemas/AuditInfo'
   parameters:
     organizationId:
       name: organizationId

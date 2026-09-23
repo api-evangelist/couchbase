@@ -146,11 +146,11 @@ components:
         minimum: 1
         maximum: 100
         default: 25
-    projectId:
-      name: projectId
+    organizationId:
+      name: organizationId
       in: path
       required: true
-      description: The UUID of the project
+      description: The UUID of the organization
       schema:
         type: string
         format: uuid
@@ -163,11 +163,11 @@ components:
         type: integer
         minimum: 1
         default: 1
-    organizationId:
-      name: organizationId
+    projectId:
+      name: projectId
       in: path
       required: true
-      description: The UUID of the organization
+      description: The UUID of the project
       schema:
         type: string
         format: uuid
@@ -205,6 +205,20 @@ components:
           type: array
           description: List of items
           items: {}
+    ProjectCreateRequest:
+      type: object
+      description: Request to create or update a project
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Project name
+          maxLength: 128
+        description:
+          type: string
+          description: Project description
+          maxLength: 1024
     AuditInfo:
       type: object
       description: Audit timestamps
@@ -226,20 +240,6 @@ components:
         version:
           type: integer
           description: Resource version number
-    ProjectCreateRequest:
-      type: object
-      description: Request to create or update a project
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Project name
-          maxLength: 128
-        description:
-          type: string
-          description: Project description
-          maxLength: 1024
     Project:
       type: object
       description: Capella project within an organization

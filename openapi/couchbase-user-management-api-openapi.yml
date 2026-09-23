@@ -1,32 +1,26 @@
 openapi: 3.2.0
 info:
-  title: Couchbase User Management API
+  title: Couchbase Sync Gateway Admin REST User Management API
+  description: The Couchbase Sync Gateway Admin REST API provides administrative endpoints for configuring and managing Sync Gateway instances. It supports database management, user and role administration, sync function configuration, and replication setup. The API is intended for server-side administration and is typically bound to localhost for security, enabling full control over Sync Gateway behavior, access control policies, and data synchronization rules.
+  version: '3.1'
   contact:
     name: Couchbase Support
     url: https://support.couchbase.com
   termsOfService: https://www.couchbase.com/terms-of-use
-  version: '1.0'
-  description: 'Operations tagged User Management across 2 of this provider''s published API definitions: couchbase-capella-app-services-admin-api-openapi.yml, couchbase-sync-gateway-admin-rest-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://{appEndpoint}:4985
-  description: Capella App Services Admin endpoint
-  variables:
-    appEndpoint:
-      default: example.apps.cloud.couchbase.com
-      description: The App Services admin endpoint URL
 - url: https://localhost:4985
   description: Sync Gateway Admin REST API (default port)
 security:
 - basicAuth: []
 tags:
 - name: User Management
-  description: Endpoints for managing users and their access permissions.
+  description: Endpoints for managing Sync Gateway users and their access permissions.
 paths:
   /{db}/_user/:
     get:
       operationId: listUsers
       summary: List all users
-      description: Returns the list of all users configured for the specified database.
+      description: Returns the list of all users configured for the database.
       tags:
       - User Management
       parameters:
@@ -45,7 +39,7 @@ paths:
     post:
       operationId: createUser
       summary: Create a user
-      description: Creates a new user for the specified database with the given credentials and channel assignments.
+      description: Creates a new user with the specified credentials, roles, and channel assignments.
       tags:
       - User Management
       parameters:
@@ -65,18 +59,11 @@ paths:
           description: Unauthorized access
         '409':
           description: User already exists
-    servers:
-    - url: https://{appEndpoint}:4985
-      description: Capella App Services Admin endpoint
-      variables:
-        appEndpoint:
-          default: example.apps.cloud.couchbase.com
-          description: The App Services admin endpoint URL
   /{db}/_user/{userName}:
     get:
       operationId: getUser
       summary: Get user details
-      description: Returns detailed information about a specific user including their roles, channels, and admin channels.
+      description: Returns detailed information about a user including their roles, channels, and admin channels.
       tags:
       - User Management
       parameters:
@@ -96,7 +83,7 @@ paths:
     put:
       operationId: updateUser
       summary: Update a user
-      description: Updates the configuration of an existing user including their password, roles, and channel assignments.
+      description: Updates a user's configuration including password, roles, and channels.
       tags:
       - User Management
       parameters:
@@ -111,8 +98,6 @@ paths:
       responses:
         '200':
           description: User updated successfully
-        '400':
-          description: Invalid user configuration
         '401':
           description: Unauthorized access
         '404':
@@ -120,7 +105,7 @@ paths:
     delete:
       operationId: deleteUser
       summary: Delete a user
-      description: Deletes the specified user from the database.
+      description: Deletes the specified user.
       tags:
       - User Management
       parameters:
@@ -133,13 +118,6 @@ paths:
           description: Unauthorized access
         '404':
           description: User not found
-    servers:
-    - url: https://{appEndpoint}:4985
-      description: Capella App Services Admin endpoint
-      variables:
-        appEndpoint:
-          default: example.apps.cloud.couchbase.com
-          description: The App Services admin endpoint URL
   /{db}/_user/{userName}/_session:
     post:
       operationId: createUserSession
@@ -148,7 +126,7 @@ paths:
       tags:
       - User Management
       parameters:
-      - $ref: '#/components/parameters/db_2'
+      - $ref: '#/components/parameters/db'
       - $ref: '#/components/parameters/userName'
       requestBody:
         required: false
@@ -179,9 +157,6 @@ paths:
           description: Unauthorized access
         '404':
           description: User not found
-    servers:
-    - url: https://localhost:4985
-      description: Sync Gateway Admin REST API (default port)
 components:
   parameters:
     userName:
@@ -195,13 +170,6 @@ components:
       name: db
       in: path
       required: true
-      description: The name of the database
-      schema:
-        type: string
-    db_2:
-      name: db
-      in: path
-      required: true
       description: The database name
       schema:
         type: string
@@ -212,89 +180,27 @@ components:
       properties:
         name:
           type: string
-          description: Username
         admin_channels:
           type: array
-          description: Admin-assigned channels
           items:
             type: string
         admin_roles:
           type: array
-          description: Admin-assigned roles
           items:
             type: string
         all_channels:
           type: array
-          description: All channels accessible by the user
           items:
             type: string
         roles:
           type: array
-          description: All roles assigned to the user
           items:
             type: string
         email:
           type: string
-          description: User email address
         disabled:
           type: boolean
-          description: Whether the user account is disabled
     UserConfig:
-      type: object
-      description: User configuration for creation or update
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Username
-        password:
-          type: string
-          description: User password
-        admin_channels:
-          type: array
-          description: Admin-assigned channels
-          items:
-            type: string
-        admin_roles:
-          type: array
-          description: Admin-assigned roles
-          items:
-            type: string
-        email:
-          type: string
-          format: email
-          description: User email address
-        disabled:
-          type: boolean
-          description: Whether the user account is disabled
-    UserInfo_2:
-      type: object
-      description: User information
-      properties:
-        name:
-          type: string
-        admin_channels:
-          type: array
-          items:
-            type: string
-        admin_roles:
-          type: array
-          items:
-            type: string
-        all_channels:
-          type: array
-          items:
-            type: string
-        roles:
-          type: array
-          items:
-            type: string
-        email:
-          type: string
-        disabled:
-          type: boolean
-    UserConfig_2:
       type: object
       description: User configuration
       required:
@@ -327,7 +233,7 @@ components:
     basicAuth:
       type: http
       scheme: basic
-      description: HTTP Basic Authentication using App Services admin credentials.
-x-refined-from:
-- couchbase-capella-app-services-admin-api-openapi.yml
-- couchbase-sync-gateway-admin-rest-api-openapi.yml
+      description: HTTP Basic Authentication with admin credentials or RBAC user with appropriate roles.
+externalDocs:
+  description: Couchbase Sync Gateway Admin REST API Documentation
+  url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html

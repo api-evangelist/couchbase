@@ -271,6 +271,15 @@ components:
         uuid:
           type: string
           description: UUID of the index
+    SearchIndexResponse:
+      type: object
+      description: Single search index definition response
+      properties:
+        status:
+          type: string
+          description: Response status
+        indexDef:
+          $ref: '#/components/schemas/SearchIndexDefinition'
     SearchIndexList:
       type: object
       description: List of all search index definitions
@@ -290,15 +299,6 @@ components:
               description: Map of index name to index definition
               additionalProperties:
                 $ref: '#/components/schemas/SearchIndexDefinition'
-    SearchIndexResponse:
-      type: object
-      description: Single search index definition response
-      properties:
-        status:
-          type: string
-          description: Response status
-        indexDef:
-          $ref: '#/components/schemas/SearchIndexDefinition'
   parameters:
     indexName:
       name: indexName

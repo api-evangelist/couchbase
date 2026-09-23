@@ -95,47 +95,7 @@ paths:
         '404':
           description: Remote cluster reference not found
 components:
-  parameters:
-    clusterName:
-      name: clusterName
-      in: path
-      required: true
-      description: The name of the remote cluster reference
-      schema:
-        type: string
   schemas:
-    RemoteClusterReference:
-      type: object
-      description: Remote cluster reference for XDCR
-      properties:
-        name:
-          type: string
-          description: Name of the remote cluster reference
-        uuid:
-          type: string
-          description: UUID of the remote cluster
-        hostname:
-          type: string
-          description: Hostname and port of the remote cluster
-        username:
-          type: string
-          description: Administrator username for the remote cluster
-        uri:
-          type: string
-          description: URI for accessing this cluster reference
-        deleted:
-          type: boolean
-          description: Whether the reference is marked for deletion
-        demandEncryption:
-          type: boolean
-          description: Whether encryption is required
-        encryptionType:
-          type: string
-          description: Type of encryption used
-          enum:
-          - none
-          - half
-          - full
     RemoteClusterCreateRequest:
       type: object
       description: Request to create or update a remote cluster reference
@@ -173,6 +133,46 @@ components:
         certificate:
           type: string
           description: CA certificate for the remote cluster in PEM format
+    RemoteClusterReference:
+      type: object
+      description: Remote cluster reference for XDCR
+      properties:
+        name:
+          type: string
+          description: Name of the remote cluster reference
+        uuid:
+          type: string
+          description: UUID of the remote cluster
+        hostname:
+          type: string
+          description: Hostname and port of the remote cluster
+        username:
+          type: string
+          description: Administrator username for the remote cluster
+        uri:
+          type: string
+          description: URI for accessing this cluster reference
+        deleted:
+          type: boolean
+          description: Whether the reference is marked for deletion
+        demandEncryption:
+          type: boolean
+          description: Whether encryption is required
+        encryptionType:
+          type: string
+          description: Type of encryption used
+          enum:
+          - none
+          - half
+          - full
+  parameters:
+    clusterName:
+      name: clusterName
+      in: path
+      required: true
+      description: The name of the remote cluster reference
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

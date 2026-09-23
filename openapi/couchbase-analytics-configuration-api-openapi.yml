@@ -90,19 +90,6 @@ paths:
           description: Unauthorized access
 components:
   schemas:
-    AnalyticsNodeConfig:
-      type: object
-      description: Analytics node-level configuration
-      properties:
-        storageBuffercachePagesize:
-          type: integer
-          description: Buffer cache page size in bytes
-        storageBuffercacheSize:
-          type: integer
-          description: Buffer cache size in bytes
-        storageMemorycomponentNumcomponents:
-          type: integer
-          description: Number of memory components
     AnalyticsServiceConfig:
       type: object
       description: Analytics service configuration
@@ -141,6 +128,19 @@ components:
           - WARN
           - ERROR
           - FATAL
+    AnalyticsNodeConfig:
+      type: object
+      description: Analytics node-level configuration
+      properties:
+        storageBuffercachePagesize:
+          type: integer
+          description: Buffer cache page size in bytes
+        storageBuffercacheSize:
+          type: integer
+          description: Buffer cache size in bytes
+        storageMemorycomponentNumcomponents:
+          type: integer
+          description: Number of memory components
   securitySchemes:
     basicAuth:
       type: http

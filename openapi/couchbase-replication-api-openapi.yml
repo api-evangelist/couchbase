@@ -1,32 +1,26 @@
 openapi: 3.2.0
 info:
-  title: Couchbase Replication API
+  title: Couchbase Sync Gateway Admin REST Replication API
+  description: The Couchbase Sync Gateway Admin REST API provides administrative endpoints for configuring and managing Sync Gateway instances. It supports database management, user and role administration, sync function configuration, and replication setup. The API is intended for server-side administration and is typically bound to localhost for security, enabling full control over Sync Gateway behavior, access control policies, and data synchronization rules.
+  version: '3.1'
   contact:
     name: Couchbase Support
     url: https://support.couchbase.com
   termsOfService: https://www.couchbase.com/terms-of-use
-  version: '1.0'
-  description: 'Operations tagged Replication across 2 of this provider''s published API definitions: couchbase-capella-app-services-admin-api-openapi.yml, couchbase-sync-gateway-admin-rest-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://{appEndpoint}:4985
-  description: Capella App Services Admin endpoint
-  variables:
-    appEndpoint:
-      default: example.apps.cloud.couchbase.com
-      description: The App Services admin endpoint URL
 - url: https://localhost:4985
   description: Sync Gateway Admin REST API (default port)
 security:
 - basicAuth: []
 tags:
 - name: Replication
-  description: Endpoints for managing inter-Sync Gateway replications.
+  description: Endpoints for configuring inter-Sync Gateway replications.
 paths:
   /{db}/_replication/:
     get:
       operationId: listReplications
       summary: List replications
-      description: Returns the list of all inter-Sync Gateway replications configured for the specified database.
+      description: Returns all configured inter-Sync Gateway replications.
       tags:
       - Replication
       parameters:
@@ -45,7 +39,7 @@ paths:
     post:
       operationId: createReplication
       summary: Create a replication
-      description: Creates a new inter-Sync Gateway replication for the specified database.
+      description: Creates a new inter-Sync Gateway replication.
       tags:
       - Replication
       parameters:
@@ -63,18 +57,11 @@ paths:
           description: Invalid replication configuration
         '401':
           description: Unauthorized access
-    servers:
-    - url: https://{appEndpoint}:4985
-      description: Capella App Services Admin endpoint
-      variables:
-        appEndpoint:
-          default: example.apps.cloud.couchbase.com
-          description: The App Services admin endpoint URL
   /{db}/_replication/{replicationId}:
     get:
       operationId: getReplication
       summary: Get replication details
-      description: Returns detailed information about a specific replication.
+      description: Returns the configuration and status of a specific replication.
       tags:
       - Replication
       parameters:
@@ -82,7 +69,7 @@ paths:
       - $ref: '#/components/parameters/replicationId'
       responses:
         '200':
-          description: Successful retrieval of replication details
+          description: Successful retrieval of replication
           content:
             application/json:
               schema:
@@ -109,8 +96,6 @@ paths:
       responses:
         '200':
           description: Replication updated successfully
-        '400':
-          description: Invalid replication configuration
         '401':
           description: Unauthorized access
         '404':
@@ -131,101 +116,9 @@ paths:
           description: Unauthorized access
         '404':
           description: Replication not found
-    servers:
-    - url: https://{appEndpoint}:4985
-      description: Capella App Services Admin endpoint
-      variables:
-        appEndpoint:
-          default: example.apps.cloud.couchbase.com
-          description: The App Services admin endpoint URL
 components:
-  parameters:
-    db:
-      name: db
-      in: path
-      required: true
-      description: The name of the database
-      schema:
-        type: string
-    replicationId:
-      name: replicationId
-      in: path
-      required: true
-      description: The replication identifier
-      schema:
-        type: string
-    db_2:
-      name: db
-      in: path
-      required: true
-      description: The database name
-      schema:
-        type: string
   schemas:
     ReplicationConfig:
-      type: object
-      description: Inter-Sync Gateway replication configuration
-      properties:
-        replication_id:
-          type: string
-          description: Replication identifier
-        remote:
-          type: string
-          description: URL of the remote Sync Gateway
-        direction:
-          type: string
-          description: Replication direction
-          enum:
-          - push
-          - pull
-          - pushAndPull
-        continuous:
-          type: boolean
-          description: Whether the replication runs continuously
-        filter:
-          type: string
-          description: Filter function for the replication
-          enum:
-          - sync_gateway/bychannel
-        query_params:
-          type: object
-          description: Parameters for the filter function
-          properties:
-            channels:
-              type: array
-              description: Channel names to replicate
-              items:
-                type: string
-        conflict_resolution_type:
-          type: string
-          description: Conflict resolution strategy
-          enum:
-          - default
-          - localWins
-          - remoteWins
-          - custom
-        custom_conflict_resolver:
-          type: string
-          description: JavaScript custom conflict resolver function
-        max_backoff_time:
-          type: integer
-          description: Maximum backoff time for retries in minutes
-        initial_state:
-          type: string
-          description: Initial state of the replication
-          enum:
-          - running
-          - stopped
-        state:
-          type: string
-          description: Current state of the replication
-          enum:
-          - running
-          - stopped
-          - error
-          - reconnecting
-          - starting
-    ReplicationConfig_2:
       type: object
       description: Inter-Sync Gateway replication
       properties:
@@ -276,11 +169,26 @@ components:
           - stopped
           - error
           - reconnecting
+  parameters:
+    db:
+      name: db
+      in: path
+      required: true
+      description: The database name
+      schema:
+        type: string
+    replicationId:
+      name: replicationId
+      in: path
+      required: true
+      description: The replication identifier
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http
       scheme: basic
-      description: HTTP Basic Authentication using App Services admin credentials.
-x-refined-from:
-- couchbase-capella-app-services-admin-api-openapi.yml
-- couchbase-sync-gateway-admin-rest-api-openapi.yml
+      description: HTTP Basic Authentication with admin credentials or RBAC user with appropriate roles.
+externalDocs:
+  description: Couchbase Sync Gateway Admin REST API Documentation
+  url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html

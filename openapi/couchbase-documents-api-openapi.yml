@@ -305,37 +305,6 @@ paths:
           description: The App Services endpoint URL
 components:
   schemas:
-    AllDocsResponse:
-      type: object
-      description: Response for _all_docs request
-      properties:
-        rows:
-          type: array
-          description: Array of document entries
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                description: Document ID
-              key:
-                type: string
-                description: Document key
-              value:
-                type: object
-                properties:
-                  rev:
-                    type: string
-                    description: Current revision ID
-              doc:
-                type: object
-                description: Full document body (if include_docs=true)
-        total_rows:
-          type: integer
-          description: Total number of rows
-        update_seq:
-          type: integer
-          description: Current update sequence
     Document:
       type: object
       description: A Sync Gateway document
@@ -394,6 +363,67 @@ components:
         ok:
           type: boolean
           description: Whether the operation succeeded
+    AllDocsResponse:
+      type: object
+      description: Response for _all_docs request
+      properties:
+        rows:
+          type: array
+          description: Array of document entries
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: Document ID
+              key:
+                type: string
+                description: Document key
+              value:
+                type: object
+                properties:
+                  rev:
+                    type: string
+                    description: Current revision ID
+              doc:
+                type: object
+                description: Full document body (if include_docs=true)
+        total_rows:
+          type: integer
+          description: Total number of rows
+        update_seq:
+          type: integer
+          description: Current update sequence
+    Document_2:
+      type: object
+      description: A Sync Gateway document
+      properties:
+        _id:
+          type: string
+          description: Document ID
+        _rev:
+          type: string
+          description: Revision ID
+        _deleted:
+          type: boolean
+          description: Whether the document is deleted
+        _exp:
+          type: string
+          description: Document expiry time
+      additionalProperties: true
+    DocumentWriteResponse:
+      type: object
+      description: Response from a document write operation
+      properties:
+        id:
+          type: string
+          description: Document ID
+        rev:
+          type: string
+          description: New revision ID
+        ok:
+          type: boolean
+          description: Whether the operation succeeded
     AllDocsResponse_2:
       type: object
       description: Response from _all_docs
@@ -418,36 +448,6 @@ components:
           type: integer
         update_seq:
           type: integer
-    DocumentWriteResponse:
-      type: object
-      description: Response from a document write operation
-      properties:
-        id:
-          type: string
-          description: Document ID
-        rev:
-          type: string
-          description: New revision ID
-        ok:
-          type: boolean
-          description: Whether the operation succeeded
-    Document_2:
-      type: object
-      description: A Sync Gateway document
-      properties:
-        _id:
-          type: string
-          description: Document ID
-        _rev:
-          type: string
-          description: Revision ID
-        _deleted:
-          type: boolean
-          description: Whether the document is deleted
-        _exp:
-          type: string
-          description: Document expiry time
-      additionalProperties: true
   parameters:
     db:
       name: db

@@ -187,43 +187,7 @@ paths:
         '401':
           description: Unauthorized access
 components:
-  parameters:
-    requestId:
-      name: requestId
-      in: path
-      required: true
-      description: The unique identifier of the query request
-      schema:
-        type: string
   schemas:
-    ActiveRequest:
-      type: object
-      description: An active query request
-      properties:
-        requestId:
-          type: string
-          description: Unique identifier for the request
-        statement:
-          type: string
-          description: The SQL++ statement being executed
-        requestTime:
-          type: string
-          description: Time when the request was received
-        elapsedTime:
-          type: string
-          description: Time elapsed since the request started
-        executionTime:
-          type: string
-          description: Time spent executing the query
-        state:
-          type: string
-          description: Current state of the request
-        scanConsistency:
-          type: string
-          description: Consistency level of the query
-        clientContextID:
-          type: string
-          description: Client-provided context identifier
     QueryVitals:
       type: object
       description: Query service vital statistics
@@ -273,6 +237,34 @@ components:
         request.per.sec.15min:
           type: number
           description: Requests per second over the last 15 minutes
+    ActiveRequest:
+      type: object
+      description: An active query request
+      properties:
+        requestId:
+          type: string
+          description: Unique identifier for the request
+        statement:
+          type: string
+          description: The SQL++ statement being executed
+        requestTime:
+          type: string
+          description: Time when the request was received
+        elapsedTime:
+          type: string
+          description: Time elapsed since the request started
+        executionTime:
+          type: string
+          description: Time spent executing the query
+        state:
+          type: string
+          description: Current state of the request
+        scanConsistency:
+          type: string
+          description: Consistency level of the query
+        clientContextID:
+          type: string
+          description: Client-provided context identifier
     PreparedStatement:
       type: object
       description: A cached prepared statement
@@ -317,6 +309,14 @@ components:
         state:
           type: string
           description: Final state of the request
+  parameters:
+    requestId:
+      name: requestId
+      in: path
+      required: true
+      description: The unique identifier of the query request
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

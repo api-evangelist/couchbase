@@ -1,55 +1,42 @@
 openapi: 3.2.0
 info:
-  title: Couchbase Monitoring API
+  title: Couchbase Sync Gateway Admin REST Monitoring API
+  description: The Couchbase Sync Gateway Admin REST API provides administrative endpoints for configuring and managing Sync Gateway instances. It supports database management, user and role administration, sync function configuration, and replication setup. The API is intended for server-side administration and is typically bound to localhost for security, enabling full control over Sync Gateway behavior, access control policies, and data synchronization rules.
+  version: '3.1'
   contact:
     name: Couchbase Support
     url: https://support.couchbase.com
   termsOfService: https://www.couchbase.com/terms-of-use
-  version: '1.0'
-  description: 'Operations tagged Monitoring across 2 of this provider''s published API definitions: couchbase-capella-app-services-admin-api-openapi.yml, couchbase-sync-gateway-admin-rest-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://{appEndpoint}:4985
-  description: Capella App Services Admin endpoint
-  variables:
-    appEndpoint:
-      default: example.apps.cloud.couchbase.com
-      description: The App Services admin endpoint URL
 - url: https://localhost:4985
   description: Sync Gateway Admin REST API (default port)
 security:
 - basicAuth: []
 tags:
 - name: Monitoring
-  description: Endpoints for monitoring App Services health and performance.
+  description: Endpoints for monitoring Sync Gateway health and performance.
 paths:
   /_expvar:
     get:
       operationId: getExpvar
       summary: Get runtime statistics
-      description: Returns runtime expvar statistics for the Sync Gateway instance including memory usage, goroutine counts, and database statistics.
+      description: Returns runtime statistics for the Sync Gateway instance.
       tags:
       - Monitoring
       responses:
         '200':
-          description: Successful retrieval of runtime statistics
+          description: Successful retrieval of statistics
           content:
             application/json:
               schema:
                 type: object
         '401':
           description: Unauthorized access
-    servers:
-    - url: https://{appEndpoint}:4985
-      description: Capella App Services Admin endpoint
-      variables:
-        appEndpoint:
-          default: example.apps.cloud.couchbase.com
-          description: The App Services admin endpoint URL
   /_status:
     get:
-      operationId: getStatus
+      operationId: getServerStatus
       summary: Get server status
-      description: Returns the status of the Sync Gateway server including version information and database states.
+      description: Returns the status of the Sync Gateway server and its databases.
       tags:
       - Monitoring
       responses:
@@ -58,58 +45,27 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ServerStatus'
+                type: object
+                properties:
+                  version:
+                    type: string
+                  databases:
+                    type: object
+                    additionalProperties:
+                      type: object
+                      properties:
+                        state:
+                          type: string
+                        name:
+                          type: string
         '401':
           description: Unauthorized access
-    servers:
-    - url: https://{appEndpoint}:4985
-      description: Capella App Services Admin endpoint
-      variables:
-        appEndpoint:
-          default: example.apps.cloud.couchbase.com
-          description: The App Services admin endpoint URL
 components:
-  schemas:
-    ServerStatus:
-      type: object
-      description: Sync Gateway server status
-      properties:
-        couchdb:
-          type: string
-          description: CouchDB compatibility string
-        vendor:
-          type: object
-          description: Vendor information
-          properties:
-            name:
-              type: string
-              description: Vendor name
-            version:
-              type: string
-              description: Sync Gateway version
-        version:
-          type: string
-          description: Full version string
-        databases:
-          type: object
-          description: Database states
-          additionalProperties:
-            type: object
-            properties:
-              state:
-                type: string
-                description: Database state
-                enum:
-                - Online
-                - Offline
-              name:
-                type: string
-                description: Database name
   securitySchemes:
     basicAuth:
       type: http
       scheme: basic
-      description: HTTP Basic Authentication using App Services admin credentials.
-x-refined-from:
-- couchbase-capella-app-services-admin-api-openapi.yml
-- couchbase-sync-gateway-admin-rest-api-openapi.yml
+      description: HTTP Basic Authentication with admin credentials or RBAC user with appropriate roles.
+externalDocs:
+  description: Couchbase Sync Gateway Admin REST API Documentation
+  url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html

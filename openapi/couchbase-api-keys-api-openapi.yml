@@ -77,6 +77,14 @@ components:
         minimum: 1
         maximum: 100
         default: 25
+    organizationId:
+      name: organizationId
+      in: path
+      required: true
+      description: The UUID of the organization
+      schema:
+        type: string
+        format: uuid
     page:
       name: page
       in: query
@@ -86,14 +94,6 @@ components:
         type: integer
         minimum: 1
         default: 1
-    organizationId:
-      name: organizationId
-      in: path
-      required: true
-      description: The UUID of the organization
-      schema:
-        type: string
-        format: uuid
   schemas:
     PaginatedResponse:
       type: object
@@ -128,17 +128,6 @@ components:
           type: array
           description: List of items
           items: {}
-    ApiKeyCreateResponse:
-      type: object
-      description: Response after creating an API key
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: API key UUID
-        token:
-          type: string
-          description: The API key secret token (only returned once at creation time)
     ApiKeyCreateRequest:
       type: object
       description: Request to create an API key
@@ -189,6 +178,17 @@ components:
           description: CIDRs allowed to use this API key
           items:
             type: string
+    ApiKeyCreateResponse:
+      type: object
+      description: Response after creating an API key
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: API key UUID
+        token:
+          type: string
+          description: The API key secret token (only returned once at creation time)
   securitySchemes:
     bearerAuth:
       type: http

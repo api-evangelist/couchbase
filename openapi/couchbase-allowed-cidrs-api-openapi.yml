@@ -96,6 +96,31 @@ paths:
         '429':
           description: Rate limit exceeded
 components:
+  parameters:
+    organizationId:
+      name: organizationId
+      in: path
+      required: true
+      description: The UUID of the organization
+      schema:
+        type: string
+        format: uuid
+    clusterId:
+      name: clusterId
+      in: path
+      required: true
+      description: The UUID of the cluster
+      schema:
+        type: string
+        format: uuid
+    projectId:
+      name: projectId
+      in: path
+      required: true
+      description: The UUID of the project
+      schema:
+        type: string
+        format: uuid
   schemas:
     AllowedCIDR:
       type: object
@@ -120,6 +145,22 @@ components:
           description: Status of the allowed CIDR
         audit:
           $ref: '#/components/schemas/AuditInfo'
+    AllowedCIDRCreateRequest:
+      type: object
+      description: Request to add an allowed CIDR
+      required:
+      - cidr
+      properties:
+        cidr:
+          type: string
+          description: IP address or CIDR range to allow
+        comment:
+          type: string
+          description: Optional comment describing the entry
+        expiresAt:
+          type: string
+          format: date-time
+          description: Optional expiration for temporary access
     AuditInfo:
       type: object
       description: Audit timestamps
@@ -141,47 +182,6 @@ components:
         version:
           type: integer
           description: Resource version number
-    AllowedCIDRCreateRequest:
-      type: object
-      description: Request to add an allowed CIDR
-      required:
-      - cidr
-      properties:
-        cidr:
-          type: string
-          description: IP address or CIDR range to allow
-        comment:
-          type: string
-          description: Optional comment describing the entry
-        expiresAt:
-          type: string
-          format: date-time
-          description: Optional expiration for temporary access
-  parameters:
-    clusterId:
-      name: clusterId
-      in: path
-      required: true
-      description: The UUID of the cluster
-      schema:
-        type: string
-        format: uuid
-    projectId:
-      name: projectId
-      in: path
-      required: true
-      description: The UUID of the project
-      schema:
-        type: string
-        format: uuid
-    organizationId:
-      name: organizationId
-      in: path
-      required: true
-      description: The UUID of the organization
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     bearerAuth:
       type: http
