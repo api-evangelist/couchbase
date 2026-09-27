@@ -170,18 +170,18 @@ components:
           - error
           - reconnecting
   parameters:
-    db:
-      name: db
-      in: path
-      required: true
-      description: The database name
-      schema:
-        type: string
     replicationId:
       name: replicationId
       in: path
       required: true
       description: The replication identifier
+      schema:
+        type: string
+    db:
+      name: db
+      in: path
+      required: true
+      description: The database name
       schema:
         type: string
   securitySchemes:

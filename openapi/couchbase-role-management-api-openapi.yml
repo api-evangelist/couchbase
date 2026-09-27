@@ -119,35 +119,6 @@ paths:
         '404':
           description: Role not found
 components:
-  schemas:
-    RoleConfig:
-      type: object
-      description: Role configuration
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Role name
-        admin_channels:
-          type: array
-          description: Admin-assigned channels
-          items:
-            type: string
-    RoleInfo:
-      type: object
-      description: Role information
-      properties:
-        name:
-          type: string
-        admin_channels:
-          type: array
-          items:
-            type: string
-        all_channels:
-          type: array
-          items:
-            type: string
   parameters:
     roleName:
       name: roleName
@@ -163,6 +134,35 @@ components:
       description: The database name
       schema:
         type: string
+  schemas:
+    RoleInfo:
+      type: object
+      description: Role information
+      properties:
+        name:
+          type: string
+        admin_channels:
+          type: array
+          items:
+            type: string
+        all_channels:
+          type: array
+          items:
+            type: string
+    RoleConfig:
+      type: object
+      description: Role configuration
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Role name
+        admin_channels:
+          type: array
+          description: Admin-assigned channels
+          items:
+            type: string
   securitySchemes:
     basicAuth:
       type: http

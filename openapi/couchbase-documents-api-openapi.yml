@@ -305,6 +305,19 @@ paths:
           description: The App Services endpoint URL
 components:
   schemas:
+    DocumentResponse:
+      type: object
+      description: Response after creating or updating a document
+      properties:
+        id:
+          type: string
+          description: Document ID
+        rev:
+          type: string
+          description: New revision ID
+        ok:
+          type: boolean
+          description: Whether the operation succeeded
     Document:
       type: object
       description: A Sync Gateway document
@@ -350,19 +363,6 @@ components:
                 type: boolean
                 description: Whether this is a stub reference
       additionalProperties: true
-    DocumentResponse:
-      type: object
-      description: Response after creating or updating a document
-      properties:
-        id:
-          type: string
-          description: Document ID
-        rev:
-          type: string
-          description: New revision ID
-        ok:
-          type: boolean
-          description: Whether the operation succeeded
     AllDocsResponse:
       type: object
       description: Response for _all_docs request
@@ -411,19 +411,6 @@ components:
           type: string
           description: Document expiry time
       additionalProperties: true
-    DocumentWriteResponse:
-      type: object
-      description: Response from a document write operation
-      properties:
-        id:
-          type: string
-          description: Document ID
-        rev:
-          type: string
-          description: New revision ID
-        ok:
-          type: boolean
-          description: Whether the operation succeeded
     AllDocsResponse_2:
       type: object
       description: Response from _all_docs
@@ -448,6 +435,19 @@ components:
           type: integer
         update_seq:
           type: integer
+    DocumentWriteResponse:
+      type: object
+      description: Response from a document write operation
+      properties:
+        id:
+          type: string
+          description: Document ID
+        rev:
+          type: string
+          description: New revision ID
+        ok:
+          type: boolean
+          description: Whether the operation succeeded
   parameters:
     db:
       name: db

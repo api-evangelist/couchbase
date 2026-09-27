@@ -93,6 +93,14 @@ paths:
         '404':
           description: Plan not found
 components:
+  parameters:
+    planName:
+      name: planName
+      in: path
+      required: true
+      description: The name of the backup plan
+      schema:
+        type: string
   schemas:
     BackupPlan:
       type: object
@@ -162,14 +170,6 @@ components:
                     - FRIDAY
                     - SATURDAY
                     - SUNDAY
-  parameters:
-    planName:
-      name: planName
-      in: path
-      required: true
-      description: The name of the backup plan
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http

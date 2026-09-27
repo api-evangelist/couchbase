@@ -40,6 +40,15 @@ paths:
           description: Rate limit exceeded
 components:
   parameters:
+    page:
+      name: page
+      in: query
+      required: false
+      description: Page number for pagination
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
     perPage:
       name: perPage
       in: query
@@ -58,15 +67,6 @@ components:
       schema:
         type: string
         format: uuid
-    page:
-      name: page
-      in: query
-      required: false
-      description: Page number for pagination
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
   schemas:
     PaginatedResponse:
       type: object

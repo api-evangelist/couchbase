@@ -40,6 +40,9 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/couchbase.
 type: Index
 access: Public
 position: Producing
+x-docs-platform: mintlify
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-24
 tags:
   - Analytics
   - App Services

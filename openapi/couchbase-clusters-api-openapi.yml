@@ -139,6 +139,14 @@ paths:
           description: Rate limit exceeded
 components:
   parameters:
+    clusterId:
+      name: clusterId
+      in: path
+      required: true
+      description: The UUID of the cluster
+      schema:
+        type: string
+        format: uuid
     perPage:
       name: perPage
       in: query
@@ -149,19 +157,19 @@ components:
         minimum: 1
         maximum: 100
         default: 25
-    clusterId:
-      name: clusterId
-      in: path
-      required: true
-      description: The UUID of the cluster
-      schema:
-        type: string
-        format: uuid
     organizationId:
       name: organizationId
       in: path
       required: true
       description: The UUID of the organization
+      schema:
+        type: string
+        format: uuid
+    projectId:
+      name: projectId
+      in: path
+      required: true
+      description: The UUID of the project
       schema:
         type: string
         format: uuid
@@ -174,222 +182,7 @@ components:
         type: integer
         minimum: 1
         default: 1
-    projectId:
-      name: projectId
-      in: path
-      required: true
-      description: The UUID of the project
-      schema:
-        type: string
-        format: uuid
   schemas:
-    ServiceGroup:
-      type: object
-      description: Service group within a cluster
-      properties:
-        node:
-          type: object
-          description: Node configuration
-          properties:
-            compute:
-              type: object
-              description: Compute instance configuration
-              properties:
-                cpu:
-                  type: integer
-                  description: Number of CPU cores
-                ram:
-                  type: integer
-                  description: RAM in gigabytes
-            disk:
-              type: object
-              description: Disk storage configuration
-              properties:
-                type:
-                  type: string
-                  description: Disk type
-                  enum:
-                  - gp3
-                  - io2
-                  - P6
-                  - P10
-                  - P15
-                  - P20
-                  - P30
-                  - P40
-                  - P50
-                  - pd-ssd
-                storage:
-                  type: integer
-                  description: Storage size in gigabytes
-                iops:
-                  type: integer
-                  description: IOPS for the disk
-        numOfNodes:
-          type: integer
-          description: Number of nodes in the service group
-          minimum: 3
-        services:
-          type: array
-          description: Services enabled on the nodes
-          items:
-            type: string
-            enum:
-            - data
-            - index
-            - query
-            - search
-            - analytics
-            - eventing
-    PaginatedResponse:
-      type: object
-      description: Paginated response wrapper
-      properties:
-        cursor:
-          type: object
-          description: Pagination cursor information
-          properties:
-            pages:
-              type: object
-              properties:
-                page:
-                  type: integer
-                  description: Current page number
-                next:
-                  type: integer
-                  description: Next page number
-                previous:
-                  type: integer
-                  description: Previous page number
-                last:
-                  type: integer
-                  description: Last page number
-                perPage:
-                  type: integer
-                  description: Items per page
-                totalItems:
-                  type: integer
-                  description: Total number of items
-        data:
-          type: array
-          description: List of items
-          items: {}
-    ClusterCreateRequest:
-      type: object
-      description: Request to create a new cluster
-      required:
-      - name
-      - cloudProvider
-      - serviceGroups
-      - availability
-      - support
-      properties:
-        name:
-          type: string
-          description: Cluster name
-          maxLength: 256
-        description:
-          type: string
-          description: Cluster description
-        cloudProvider:
-          type: object
-          required:
-          - type
-          - region
-          - cidr
-          properties:
-            type:
-              type: string
-              enum:
-              - aws
-              - azure
-              - gcp
-            region:
-              type: string
-              description: Cloud region identifier
-            cidr:
-              type: string
-              description: CIDR block for the cluster
-        couchbaseServer:
-          type: object
-          properties:
-            version:
-              type: string
-              description: Desired Couchbase Server version
-        serviceGroups:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceGroup'
-        availability:
-          type: object
-          required:
-          - type
-          properties:
-            type:
-              type: string
-              enum:
-              - single
-              - multi
-        support:
-          type: object
-          required:
-          - plan
-          - timezone
-          properties:
-            plan:
-              type: string
-              enum:
-              - basic
-              - developer pro
-              - enterprise
-            timezone:
-              type: string
-    ClusterUpdateRequest:
-      type: object
-      description: Request to update an existing cluster
-      properties:
-        name:
-          type: string
-          description: Cluster name
-        description:
-          type: string
-          description: Cluster description
-        serviceGroups:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceGroup'
-        support:
-          type: object
-          properties:
-            plan:
-              type: string
-              enum:
-              - basic
-              - developer pro
-              - enterprise
-            timezone:
-              type: string
-    AuditInfo:
-      type: object
-      description: Audit timestamps
-      properties:
-        createdAt:
-          type: string
-          format: date-time
-          description: Creation timestamp
-        modifiedAt:
-          type: string
-          format: date-time
-          description: Last modification timestamp
-        createdBy:
-          type: string
-          description: User who created the resource
-        modifiedBy:
-          type: string
-          description: User who last modified the resource
-        version:
-          type: integer
-          description: Resource version number
     Cluster:
       type: object
       description: Capella database cluster
@@ -476,6 +269,213 @@ components:
           description: Connection string for the cluster
         audit:
           $ref: '#/components/schemas/AuditInfo'
+    PaginatedResponse:
+      type: object
+      description: Paginated response wrapper
+      properties:
+        cursor:
+          type: object
+          description: Pagination cursor information
+          properties:
+            pages:
+              type: object
+              properties:
+                page:
+                  type: integer
+                  description: Current page number
+                next:
+                  type: integer
+                  description: Next page number
+                previous:
+                  type: integer
+                  description: Previous page number
+                last:
+                  type: integer
+                  description: Last page number
+                perPage:
+                  type: integer
+                  description: Items per page
+                totalItems:
+                  type: integer
+                  description: Total number of items
+        data:
+          type: array
+          description: List of items
+          items: {}
+    ClusterUpdateRequest:
+      type: object
+      description: Request to update an existing cluster
+      properties:
+        name:
+          type: string
+          description: Cluster name
+        description:
+          type: string
+          description: Cluster description
+        serviceGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceGroup'
+        support:
+          type: object
+          properties:
+            plan:
+              type: string
+              enum:
+              - basic
+              - developer pro
+              - enterprise
+            timezone:
+              type: string
+    ClusterCreateRequest:
+      type: object
+      description: Request to create a new cluster
+      required:
+      - name
+      - cloudProvider
+      - serviceGroups
+      - availability
+      - support
+      properties:
+        name:
+          type: string
+          description: Cluster name
+          maxLength: 256
+        description:
+          type: string
+          description: Cluster description
+        cloudProvider:
+          type: object
+          required:
+          - type
+          - region
+          - cidr
+          properties:
+            type:
+              type: string
+              enum:
+              - aws
+              - azure
+              - gcp
+            region:
+              type: string
+              description: Cloud region identifier
+            cidr:
+              type: string
+              description: CIDR block for the cluster
+        couchbaseServer:
+          type: object
+          properties:
+            version:
+              type: string
+              description: Desired Couchbase Server version
+        serviceGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceGroup'
+        availability:
+          type: object
+          required:
+          - type
+          properties:
+            type:
+              type: string
+              enum:
+              - single
+              - multi
+        support:
+          type: object
+          required:
+          - plan
+          - timezone
+          properties:
+            plan:
+              type: string
+              enum:
+              - basic
+              - developer pro
+              - enterprise
+            timezone:
+              type: string
+    AuditInfo:
+      type: object
+      description: Audit timestamps
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        modifiedAt:
+          type: string
+          format: date-time
+          description: Last modification timestamp
+        createdBy:
+          type: string
+          description: User who created the resource
+        modifiedBy:
+          type: string
+          description: User who last modified the resource
+        version:
+          type: integer
+          description: Resource version number
+    ServiceGroup:
+      type: object
+      description: Service group within a cluster
+      properties:
+        node:
+          type: object
+          description: Node configuration
+          properties:
+            compute:
+              type: object
+              description: Compute instance configuration
+              properties:
+                cpu:
+                  type: integer
+                  description: Number of CPU cores
+                ram:
+                  type: integer
+                  description: RAM in gigabytes
+            disk:
+              type: object
+              description: Disk storage configuration
+              properties:
+                type:
+                  type: string
+                  description: Disk type
+                  enum:
+                  - gp3
+                  - io2
+                  - P6
+                  - P10
+                  - P15
+                  - P20
+                  - P30
+                  - P40
+                  - P50
+                  - pd-ssd
+                storage:
+                  type: integer
+                  description: Storage size in gigabytes
+                iops:
+                  type: integer
+                  description: IOPS for the disk
+        numOfNodes:
+          type: integer
+          description: Number of nodes in the service group
+          minimum: 3
+        services:
+          type: array
+          description: Services enabled on the nodes
+          items:
+            type: string
+            enum:
+            - data
+            - index
+            - query
+            - search
+            - analytics
+            - eventing
   securitySchemes:
     bearerAuth:
       type: http

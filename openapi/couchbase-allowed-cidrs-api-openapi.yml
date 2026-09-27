@@ -97,19 +97,19 @@ paths:
           description: Rate limit exceeded
 components:
   parameters:
-    organizationId:
-      name: organizationId
-      in: path
-      required: true
-      description: The UUID of the organization
-      schema:
-        type: string
-        format: uuid
     clusterId:
       name: clusterId
       in: path
       required: true
       description: The UUID of the cluster
+      schema:
+        type: string
+        format: uuid
+    organizationId:
+      name: organizationId
+      in: path
+      required: true
+      description: The UUID of the organization
       schema:
         type: string
         format: uuid
@@ -122,6 +122,27 @@ components:
         type: string
         format: uuid
   schemas:
+    AuditInfo:
+      type: object
+      description: Audit timestamps
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        modifiedAt:
+          type: string
+          format: date-time
+          description: Last modification timestamp
+        createdBy:
+          type: string
+          description: User who created the resource
+        modifiedBy:
+          type: string
+          description: User who last modified the resource
+        version:
+          type: integer
+          description: Resource version number
     AllowedCIDR:
       type: object
       description: Allowed IP/CIDR for cluster access
@@ -161,27 +182,6 @@ components:
           type: string
           format: date-time
           description: Optional expiration for temporary access
-    AuditInfo:
-      type: object
-      description: Audit timestamps
-      properties:
-        createdAt:
-          type: string
-          format: date-time
-          description: Creation timestamp
-        modifiedAt:
-          type: string
-          format: date-time
-          description: Last modification timestamp
-        createdBy:
-          type: string
-          description: User who created the resource
-        modifiedBy:
-          type: string
-          description: User who last modified the resource
-        version:
-          type: integer
-          description: Resource version number
   securitySchemes:
     bearerAuth:
       type: http
