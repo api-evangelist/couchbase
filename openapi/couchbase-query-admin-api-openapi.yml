@@ -187,31 +187,35 @@ paths:
         '401':
           description: Unauthorized access
 components:
-  parameters:
-    requestId:
-      name: requestId
-      in: path
-      required: true
-      description: The unique identifier of the query request
-      schema:
-        type: string
   schemas:
-    PreparedStatement:
+    ActiveRequest:
       type: object
-      description: A cached prepared statement
+      description: An active query request
       properties:
-        name:
+        requestId:
           type: string
-          description: Name of the prepared statement
+          description: Unique identifier for the request
         statement:
           type: string
-          description: The original SQL++ statement
-        uses:
-          type: integer
-          description: Number of times the prepared statement has been used
-        lastUse:
+          description: The SQL++ statement being executed
+        requestTime:
           type: string
-          description: Time of last use
+          description: Time when the request was received
+        elapsedTime:
+          type: string
+          description: Time elapsed since the request started
+        executionTime:
+          type: string
+          description: Time spent executing the query
+        state:
+          type: string
+          description: Current state of the request
+        scanConsistency:
+          type: string
+          description: Consistency level of the query
+        clientContextID:
+          type: string
+          description: Client-provided context identifier
     CompletedRequest:
       type: object
       description: A completed query request
@@ -289,34 +293,30 @@ components:
         request.per.sec.15min:
           type: number
           description: Requests per second over the last 15 minutes
-    ActiveRequest:
+    PreparedStatement:
       type: object
-      description: An active query request
+      description: A cached prepared statement
       properties:
-        requestId:
+        name:
           type: string
-          description: Unique identifier for the request
+          description: Name of the prepared statement
         statement:
           type: string
-          description: The SQL++ statement being executed
-        requestTime:
+          description: The original SQL++ statement
+        uses:
+          type: integer
+          description: Number of times the prepared statement has been used
+        lastUse:
           type: string
-          description: Time when the request was received
-        elapsedTime:
-          type: string
-          description: Time elapsed since the request started
-        executionTime:
-          type: string
-          description: Time spent executing the query
-        state:
-          type: string
-          description: Current state of the request
-        scanConsistency:
-          type: string
-          description: Consistency level of the query
-        clientContextID:
-          type: string
-          description: Client-provided context identifier
+          description: Time of last use
+  parameters:
+    requestId:
+      name: requestId
+      in: path
+      required: true
+      description: The unique identifier of the query request
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

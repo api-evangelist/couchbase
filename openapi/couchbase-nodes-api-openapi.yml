@@ -124,15 +124,6 @@ paths:
           description: Unauthorized access
 components:
   schemas:
-    NodesInfo:
-      type: object
-      description: Information about cluster nodes
-      properties:
-        nodes:
-          type: array
-          description: List of nodes
-          items:
-            $ref: '#/components/schemas/Node'
     Node:
       type: object
       description: Information about a cluster node
@@ -179,6 +170,15 @@ components:
         memoryFree:
           type: integer
           description: Free memory on the node in bytes
+    NodesInfo:
+      type: object
+      description: Information about cluster nodes
+      properties:
+        nodes:
+          type: array
+          description: List of nodes
+          items:
+            $ref: '#/components/schemas/Node'
   securitySchemes:
     basicAuth:
       type: http

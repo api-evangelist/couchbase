@@ -129,7 +129,31 @@ paths:
         '401':
           description: Unauthorized access
 components:
+  parameters:
+    repositoryId:
+      name: repositoryId
+      in: path
+      required: true
+      description: The name of the backup repository
+      schema:
+        type: string
   schemas:
+    BackupRepositoryCreateRequest:
+      type: object
+      description: Request to create a backup repository
+      required:
+      - plan
+      - archive
+      properties:
+        plan:
+          type: string
+          description: Name of the backup plan to use
+        archive:
+          type: string
+          description: Path to the backup archive location
+        bucket_name:
+          type: string
+          description: Cloud storage bucket name (for cloud backups)
     BackupRepository:
       type: object
       description: Backup repository configuration and status
@@ -195,30 +219,6 @@ components:
                     mutations:
                       type: integer
                       description: Number of mutations backed up
-    BackupRepositoryCreateRequest:
-      type: object
-      description: Request to create a backup repository
-      required:
-      - plan
-      - archive
-      properties:
-        plan:
-          type: string
-          description: Name of the backup plan to use
-        archive:
-          type: string
-          description: Path to the backup archive location
-        bucket_name:
-          type: string
-          description: Cloud storage bucket name (for cloud backups)
-  parameters:
-    repositoryId:
-      name: repositoryId
-      in: path
-      required: true
-      description: The name of the backup repository
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http

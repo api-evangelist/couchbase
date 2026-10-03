@@ -138,23 +138,25 @@ paths:
               schema:
                 type: string
 components:
+  parameters:
+    domain:
+      name: domain
+      in: path
+      required: true
+      description: The authentication domain (local or external)
+      schema:
+        type: string
+        enum:
+        - local
+        - external
+    username:
+      name: username
+      in: path
+      required: true
+      description: The username of the user
+      schema:
+        type: string
   schemas:
-    Role:
-      type: object
-      description: Available role definition
-      properties:
-        role:
-          type: string
-          description: Role identifier
-        name:
-          type: string
-          description: Human-readable role name
-        desc:
-          type: string
-          description: Description of the role
-        bucket_name:
-          type: string
-          description: Bucket constraint for the role
     User:
       type: object
       description: User account information
@@ -189,24 +191,22 @@ components:
               collection_name:
                 type: string
                 description: Collection the role applies to
-  parameters:
-    domain:
-      name: domain
-      in: path
-      required: true
-      description: The authentication domain (local or external)
-      schema:
-        type: string
-        enum:
-        - local
-        - external
-    username:
-      name: username
-      in: path
-      required: true
-      description: The username of the user
-      schema:
-        type: string
+    Role:
+      type: object
+      description: Available role definition
+      properties:
+        role:
+          type: string
+          description: Role identifier
+        name:
+          type: string
+          description: Human-readable role name
+        desc:
+          type: string
+          description: Description of the role
+        bucket_name:
+          type: string
+          description: Bucket constraint for the role
   securitySchemes:
     basicAuth:
       type: http

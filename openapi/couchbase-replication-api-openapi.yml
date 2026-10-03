@@ -117,6 +117,21 @@ paths:
         '404':
           description: Replication not found
 components:
+  parameters:
+    replicationId:
+      name: replicationId
+      in: path
+      required: true
+      description: The replication identifier
+      schema:
+        type: string
+    db:
+      name: db
+      in: path
+      required: true
+      description: The database name
+      schema:
+        type: string
   schemas:
     ReplicationConfig:
       type: object
@@ -169,21 +184,6 @@ components:
           - stopped
           - error
           - reconnecting
-  parameters:
-    replicationId:
-      name: replicationId
-      in: path
-      required: true
-      description: The replication identifier
-      schema:
-        type: string
-    db:
-      name: db
-      in: path
-      required: true
-      description: The database name
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http

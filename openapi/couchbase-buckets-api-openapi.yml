@@ -279,46 +279,29 @@ paths:
     - url: https://localhost:18091
       description: Couchbase Server (SSL)
 components:
-  parameters:
-    clusterId:
-      name: clusterId
-      in: path
-      required: true
-      description: The UUID of the cluster
-      schema:
-        type: string
-        format: uuid
-    bucketId:
-      name: bucketId
-      in: path
-      required: true
-      description: The ID of the bucket
-      schema:
-        type: string
-    organizationId:
-      name: organizationId
-      in: path
-      required: true
-      description: The UUID of the organization
-      schema:
-        type: string
-        format: uuid
-    projectId:
-      name: projectId
-      in: path
-      required: true
-      description: The UUID of the project
-      schema:
-        type: string
-        format: uuid
-    bucketName:
-      name: bucketName
-      in: path
-      required: true
-      description: The name of the bucket
-      schema:
-        type: string
   schemas:
+    CapellaBucketUpdateRequest:
+      type: object
+      description: Request to update a Capella bucket
+      properties:
+        memoryAllocationInMb:
+          type: integer
+          description: Memory allocation in megabytes
+        durabilityLevel:
+          type: string
+          enum:
+          - none
+          - majority
+          - majorityAndPersistActive
+          - persistToMajority
+        replicas:
+          type: integer
+          minimum: 1
+          maximum: 3
+        flush:
+          type: boolean
+        timeToLiveInSeconds:
+          type: integer
     CapellaBucket:
       type: object
       description: Bucket in a Capella cluster
@@ -373,28 +356,6 @@ components:
             memoryUsedInMib:
               type: integer
               description: Memory used in MiB
-    CapellaBucketUpdateRequest:
-      type: object
-      description: Request to update a Capella bucket
-      properties:
-        memoryAllocationInMb:
-          type: integer
-          description: Memory allocation in megabytes
-        durabilityLevel:
-          type: string
-          enum:
-          - none
-          - majority
-          - majorityAndPersistActive
-          - persistToMajority
-        replicas:
-          type: integer
-          minimum: 1
-          maximum: 3
-        flush:
-          type: boolean
-        timeToLiveInSeconds:
-          type: integer
     CapellaBucketCreateRequest:
       type: object
       description: Request to create a Capella bucket
@@ -441,25 +402,10 @@ components:
         timeToLiveInSeconds:
           type: integer
           default: 0
-    BucketCreateRequest:
+    BucketUpdateRequest:
       type: object
-      description: Request body for creating a new bucket
-      required:
-      - name
-      - ramQuota
+      description: Request body for updating a bucket
       properties:
-        name:
-          type: string
-          description: Name of the bucket
-          maxLength: 100
-        bucketType:
-          type: string
-          description: Type of the bucket
-          enum:
-          - couchbase
-          - memcached
-          - ephemeral
-          default: couchbase
         ramQuota:
           type: integer
           description: RAM quota in megabytes
@@ -469,29 +415,12 @@ components:
           description: Number of replicas
           minimum: 0
           maximum: 3
-          default: 1
-        conflictResolutionType:
-          type: string
-          description: Conflict resolution mechanism
-          enum:
-          - seqno
-          - lww
-          default: seqno
-        evictionPolicy:
-          type: string
-          description: Eviction policy
-          enum:
-          - valueOnly
-          - fullEviction
-          - noEviction
-          - nruEviction
         flushEnabled:
           type: integer
           description: Whether flush is enabled (0 or 1)
           enum:
           - 0
           - 1
-          default: 0
     Bucket:
       type: object
       description: Bucket configuration and statistics
@@ -545,10 +474,25 @@ components:
         itemCount:
           type: integer
           description: Number of items in the bucket
-    BucketUpdateRequest:
+    BucketCreateRequest:
       type: object
-      description: Request body for updating a bucket
+      description: Request body for creating a new bucket
+      required:
+      - name
+      - ramQuota
       properties:
+        name:
+          type: string
+          description: Name of the bucket
+          maxLength: 100
+        bucketType:
+          type: string
+          description: Type of the bucket
+          enum:
+          - couchbase
+          - memcached
+          - ephemeral
+          default: couchbase
         ramQuota:
           type: integer
           description: RAM quota in megabytes
@@ -558,12 +502,68 @@ components:
           description: Number of replicas
           minimum: 0
           maximum: 3
+          default: 1
+        conflictResolutionType:
+          type: string
+          description: Conflict resolution mechanism
+          enum:
+          - seqno
+          - lww
+          default: seqno
+        evictionPolicy:
+          type: string
+          description: Eviction policy
+          enum:
+          - valueOnly
+          - fullEviction
+          - noEviction
+          - nruEviction
         flushEnabled:
           type: integer
           description: Whether flush is enabled (0 or 1)
           enum:
           - 0
           - 1
+          default: 0
+  parameters:
+    organizationId:
+      name: organizationId
+      in: path
+      required: true
+      description: The UUID of the organization
+      schema:
+        type: string
+        format: uuid
+    projectId:
+      name: projectId
+      in: path
+      required: true
+      description: The UUID of the project
+      schema:
+        type: string
+        format: uuid
+    clusterId:
+      name: clusterId
+      in: path
+      required: true
+      description: The UUID of the cluster
+      schema:
+        type: string
+        format: uuid
+    bucketId:
+      name: bucketId
+      in: path
+      required: true
+      description: The ID of the bucket
+      schema:
+        type: string
+    bucketName:
+      name: bucketName
+      in: path
+      required: true
+      description: The name of the bucket
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

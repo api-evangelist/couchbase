@@ -239,21 +239,6 @@ components:
                       type: integer
                       description: Maximum TTL for documents in seconds
   parameters:
-    clusterId:
-      name: clusterId
-      in: path
-      required: true
-      description: The UUID of the cluster
-      schema:
-        type: string
-        format: uuid
-    bucketId:
-      name: bucketId
-      in: path
-      required: true
-      description: The ID of the bucket
-      schema:
-        type: string
     organizationId:
       name: organizationId
       in: path
@@ -267,6 +252,21 @@ components:
       in: path
       required: true
       description: The UUID of the project
+      schema:
+        type: string
+        format: uuid
+    bucketId:
+      name: bucketId
+      in: path
+      required: true
+      description: The ID of the bucket
+      schema:
+        type: string
+    clusterId:
+      name: clusterId
+      in: path
+      required: true
+      description: The UUID of the cluster
       schema:
         type: string
         format: uuid

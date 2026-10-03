@@ -244,14 +244,6 @@ paths:
         '401':
           description: Unauthorized access
 components:
-  parameters:
-    db:
-      name: db
-      in: path
-      required: true
-      description: The database name
-      schema:
-        type: string
   schemas:
     DatabaseConfig:
       type: object
@@ -294,6 +286,14 @@ components:
               type: array
               items:
                 type: string
+  parameters:
+    db:
+      name: db
+      in: path
+      required: true
+      description: The database name
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

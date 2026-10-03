@@ -92,6 +92,14 @@ paths:
         '404':
           description: Repository not found
 components:
+  parameters:
+    repositoryId:
+      name: repositoryId
+      in: path
+      required: true
+      description: The name of the backup repository
+      schema:
+        type: string
   schemas:
     BackupTask:
       type: object
@@ -128,14 +136,6 @@ components:
           description: Per-node execution details
           items:
             type: object
-  parameters:
-    repositoryId:
-      name: repositoryId
-      in: path
-      required: true
-      description: The name of the backup repository
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http

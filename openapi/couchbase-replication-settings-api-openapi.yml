@@ -97,14 +97,6 @@ paths:
         '404':
           description: Replication not found
 components:
-  parameters:
-    replicationId:
-      name: replicationId
-      in: path
-      required: true
-      description: The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}
-      schema:
-        type: string
   schemas:
     ReplicationSettings:
       type: object
@@ -174,6 +166,14 @@ components:
           - High
           - Medium
           - Low
+  parameters:
+    replicationId:
+      name: replicationId
+      in: path
+      required: true
+      description: The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http
