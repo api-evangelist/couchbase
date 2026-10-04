@@ -1,0 +1,254 @@
+generated: '2026-10-04'
+method: derived
+generator: derive-mcp-candidate.py
+source:
+- openapi/couchbase-allowed-cidrs-api-openapi.yml
+- openapi/couchbase-analytics-admin-api-openapi.yml
+- openapi/couchbase-analytics-configuration-api-openapi.yml
+- openapi/couchbase-analytics-library-api-openapi.yml
+- openapi/couchbase-analytics-query-api-openapi.yml
+- openapi/couchbase-analytics-settings-api-openapi.yml
+- openapi/couchbase-api-keys-api-openapi.yml
+- openapi/couchbase-authentication-api-openapi.yml
+- openapi/couchbase-buckets-api-openapi.yml
+- openapi/couchbase-changes-api-openapi.yml
+- openapi/couchbase-cluster-api-openapi.yml
+- openapi/couchbase-cluster-references-api-openapi.yml
+- openapi/couchbase-clusters-api-openapi.yml
+- openapi/couchbase-compaction-api-openapi.yml
+- openapi/couchbase-configuration-api-openapi.yml
+- openapi/couchbase-data-api-openapi.yml
+- openapi/couchbase-database-api-openapi.yml
+- openapi/couchbase-database-credentials-api-openapi.yml
+- openapi/couchbase-database-management-api-openapi.yml
+- openapi/couchbase-documents-api-openapi.yml
+- openapi/couchbase-functions-api-openapi.yml
+- openapi/couchbase-import-export-api-openapi.yml
+- openapi/couchbase-index-service-api-openapi.yml
+- openapi/couchbase-lifecycle-api-openapi.yml
+- openapi/couchbase-local-documents-api-openapi.yml
+- openapi/couchbase-logging-api-openapi.yml
+- openapi/couchbase-logs-api-openapi.yml
+- openapi/couchbase-monitoring-api-openapi.yml
+- openapi/couchbase-nodes-api-openapi.yml
+- openapi/couchbase-organizations-api-openapi.yml
+- openapi/couchbase-plans-api-openapi.yml
+- openapi/couchbase-projects-api-openapi.yml
+- openapi/couchbase-query-admin-api-openapi.yml
+- openapi/couchbase-query-execution-api-openapi.yml
+- openapi/couchbase-query-settings-api-openapi.yml
+- openapi/couchbase-replication-api-openapi.yml
+- openapi/couchbase-replication-settings-api-openapi.yml
+- openapi/couchbase-replication-statistics-api-openapi.yml
+- openapi/couchbase-repositories-api-openapi.yml
+- openapi/couchbase-role-management-api-openapi.yml
+status: candidate
+deployment:
+  mode: none
+  auth: unknown
+  verified: probed
+note: 'No MCP server was found. The pre-flight posted tools/list to /mcp on cloudapi.cloud.couchbase.com, api.couchbase.com, docs.couchbase.com,
+  www.couchbase.com; verdict opaque (https://docs.couchbase.com/mcp answered 403: the edge authenticates before it routes, which proves nothing
+  either way). Candidate tools below are derived from the 179 operation(s) in the provider''s own OpenAPI (40 listed); they describe what a server
+  WOULD expose, not one that exists.'
+tools:
+- name: list_allowed_cidrs
+  operationId: listAllowedCIDRs
+  method: GET
+  path: /v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/allowedCIDRs
+  description: List allowed CIDRs
+- name: get_analytics_remaining_mutations
+  operationId: getAnalyticsRemainingMutations
+  method: GET
+  path: /analytics/node/agg/stats/remaining
+  description: Get remaining mutations to be synced
+- name: get_analytics_service_config
+  operationId: getAnalyticsServiceConfig
+  method: GET
+  path: /analytics/config/service
+  description: Get analytics service configuration
+- name: create_or_update_library
+  operationId: createOrUpdateLibrary
+  method: PUT
+  path: /analytics/library/{scope}/{name}
+  description: Create or update a library
+- name: execute_analytics_query
+  operationId: executeAnalyticsQuery
+  method: POST
+  path: /analytics/service
+  description: Execute an analytics query
+- name: get_analytics_settings
+  operationId: getAnalyticsSettings
+  method: GET
+  path: /settings/analytics
+  description: Get analytics settings
+- name: list_api_keys
+  operationId: listApiKeys
+  method: GET
+  path: /v4/organizations/{organizationId}/apikeys
+  description: List API keys
+- name: create_session
+  operationId: createSession
+  method: POST
+  path: /{db}/_session
+  description: Create a user session
+- name: list_capella_buckets
+  operationId: listCapellaBuckets
+  method: GET
+  path: /v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/buckets
+  description: List buckets in a cluster
+- name: get_changes
+  operationId: getChanges
+  method: GET
+  path: /{db}/_changes
+  description: Get changes feed
+- name: get_backup_cluster_info
+  operationId: getBackupClusterInfo
+  method: GET
+  path: /api/v1/cluster/self
+  description: Get backup cluster information
+- name: list_remote_clusters
+  operationId: listRemoteClusters
+  method: GET
+  path: /pools/default/remoteClusters
+  description: List remote cluster references
+- name: list_clusters
+  operationId: listClusters
+  method: GET
+  path: /v4/organizations/{organizationId}/projects/{projectId}/clusters
+  description: List clusters
+- name: get_auto_compaction
+  operationId: getAutoCompaction
+  method: GET
+  path: /settings/autoCompaction
+  description: Get auto-compaction settings
+- name: get_eventing_config
+  operationId: getEventingConfig
+  method: GET
+  path: /api/v1/config
+  description: Get Eventing Service configuration
+- name: trigger_immediate_backup
+  operationId: triggerImmediateBackup
+  method: POST
+  path: /api/v1/cluster/self/repository/active/{repositoryId}/backup
+  description: Trigger an immediate backup
+- name: get_database_info
+  operationId: getDatabaseInfo
+  method: GET
+  path: /{db}
+  description: Get database information
+- name: list_database_credentials
+  operationId: listDatabaseCredentials
+  method: GET
+  path: /v4/organizations/{organizationId}/projects/{projectId}/clusters/{clusterId}/users
+  description: List database credentials
+- name: get_database_config
+  operationId: getDatabaseConfig
+  method: GET
+  path: /{db}/_config
+  description: Get database configuration
+- name: get_all_docs
+  operationId: getAllDocs
+  method: GET
+  path: /{db}/_all_docs
+  description: Get all documents
+- name: list_eventing_functions
+  operationId: listEventingFunctions
+  method: GET
+  path: /api/v1/functions
+  description: List all Eventing Functions
+- name: export_all_functions
+  operationId: exportAllFunctions
+  method: GET
+  path: /api/v1/export
+  description: Export all Eventing Functions
+- name: get_index_settings
+  operationId: getIndexSettings
+  method: GET
+  path: /settings/indexes
+  description: Get index service settings
+- name: deploy_eventing_function
+  operationId: deployEventingFunction
+  method: POST
+  path: /api/v1/functions/{functionName}/deploy
+  description: Deploy an Eventing Function
+- name: get_local_document
+  operationId: getLocalDocument
+  method: GET
+  path: /{db}/_local/{localDocId}
+  description: Get a local document
+- name: get_eventing_function_log
+  operationId: getEventingFunctionLog
+  method: GET
+  path: /api/v1/functions/{functionName}/applog
+  description: Get Eventing Function application log
+- name: get_diagnostics
+  operationId: getDiagnostics
+  method: GET
+  path: /diag
+  description: Get diagnostic information
+- name: get_expvar
+  operationId: getExpvar
+  method: GET
+  path: /_expvar
+  description: Get runtime statistics
+- name: get_nodes
+  operationId: getNodes
+  method: GET
+  path: /pools/nodes
+  description: Get nodes information
+- name: list_organizations
+  operationId: listOrganizations
+  method: GET
+  path: /v4/organizations
+  description: List organizations
+- name: list_backup_plans
+  operationId: listBackupPlans
+  method: GET
+  path: /api/v1/plan
+  description: List backup plans
+- name: list_projects
+  operationId: listProjects
+  method: GET
+  path: /v4/organizations/{organizationId}/projects
+  description: List projects
+- name: list_active_requests
+  operationId: listActiveRequests
+  method: GET
+  path: /admin/active_requests
+  description: List active query requests
+- name: execute_query_get
+  operationId: executeQueryGet
+  method: GET
+  path: /query/service
+  description: Execute a SQL++ query via GET
+- name: get_query_settings
+  operationId: getQuerySettings
+  method: GET
+  path: /admin/settings
+  description: Get query service settings
+- name: list_replications
+  operationId: listReplications
+  method: GET
+  path: /{db}/_replication/
+  description: List replications
+- name: get_global_replication_settings
+  operationId: getGlobalReplicationSettings
+  method: GET
+  path: /settings/replications
+  description: Get global XDCR settings
+- name: get_replication_stats
+  operationId: getReplicationStats
+  method: GET
+  path: /pools/default/buckets/{bucketName}/stats/{statName}
+  description: Get XDCR replication statistics
+- name: list_active_repositories
+  operationId: listActiveRepositories
+  method: GET
+  path: /api/v1/cluster/self/repository/active
+  description: List active backup repositories
+- name: list_roles
+  operationId: listRoles
+  method: GET
+  path: /{db}/_role/
+  description: List all roles

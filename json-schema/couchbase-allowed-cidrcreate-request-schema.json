@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-allowed-cidrcreate-request-schema.json",
+  "title": "AllowedCIDRCreateRequest",
+  "description": "Request to add an allowed CIDR",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-allowed-cidrs-api-openapi.yml#/components/schemas/AllowedCIDRCreateRequest",
+  "type": "object",
+  "required": [
+    "cidr"
+  ],
+  "properties": {
+    "cidr": {
+      "type": "string",
+      "description": "IP address or CIDR range to allow"
+    },
+    "comment": {
+      "type": "string",
+      "description": "Optional comment describing the entry"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Optional expiration for temporary access"
+    }
+  }
+}

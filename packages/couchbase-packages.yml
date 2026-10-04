@@ -1,0 +1,57 @@
+generated: '2026-10-04'
+method: probed
+generator: harvest-packages.py
+source: registry metadata endpoints (registry.npmjs.org, pypi.org, rubygems.org, api.nuget.org, packagist.org, crates.io)
+ownership_rule: 'official: true only when the registry metadata (homepage, repository, author, URLs) names the provider''s domain (agentic-access/couchbase-agentic-access.yml,
+  authentication/couchbase-authentication.yml, capabilities/couchbase-capability-edges.yml, couchbase.com, json-ld/couchbase-context.jsonld, json-schema/couchbase-bucket-schema.json,
+  json-schema/couchbase-cluster-schema.json, json-schema/couchbase-document-schema.json, linkedin.com, plans/couchbase-plans-pricing.yml, security/couchbase-domain-security.yml,
+  vocabulary/couchbase-vocabulary.yml) or its accepted GitHub org.'
+packages:
+- name: couchbase
+  registry: npm
+  url: https://www.npmjs.com/package/couchbase
+  language: JavaScript
+  official: true
+  version: 4.7.1
+  published: '2026-06-18'
+  evidence: metadata names couchbase.com
+- name: couchbase
+  registry: pypi
+  url: https://pypi.org/project/couchbase/
+  language: Python
+  official: true
+  version: 4.6.3
+  published: '2026-08-25'
+  evidence: metadata names couchbase.com
+- name: couchbase
+  registry: rubygems
+  url: https://rubygems.org/gems/couchbase
+  language: Ruby
+  official: true
+  version: 3.8.2
+  published: '2026-09-02'
+  evidence: metadata names couchbase.com
+- name: couchbase
+  registry: nuget
+  url: https://www.nuget.org/packages/couchbase
+  language: C#
+  official: false
+  version: 3.4.14-rc3
+  published: null
+  evidence: 'name match only: the metadata names neither the provider''s domain nor its GitHub org'
+- name: couchbase/couchbase
+  registry: packagist
+  url: https://packagist.org/packages/couchbase/couchbase
+  language: PHP
+  official: false
+  version: 4.5.0
+  published: '2026-04-01'
+  evidence: 'name match only: the metadata names neither the provider''s domain nor its GitHub org'
+- name: couchbase
+  registry: crates
+  url: https://crates.io/crates/couchbase
+  language: Rust
+  official: false
+  version: 1.0.3
+  published: '2026-09-15'
+  evidence: 'name match only: the metadata names neither the provider''s domain nor its GitHub org'

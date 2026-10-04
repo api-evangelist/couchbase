@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-role-info-schema.json",
+  "title": "RoleInfo",
+  "description": "Role information",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-role-management-api-openapi.yml#/components/schemas/RoleInfo",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "admin_channels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "all_channels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

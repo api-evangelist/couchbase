@@ -1,13 +1,11 @@
 aid: couchbase
 name: Couchbase
 kind: company
-description: >-
-  Couchbase is a distributed, document-oriented NoSQL cloud database platform that combines the flexibility of JSON, the
-  power of SQL++ querying, and the performance of an in-memory key-value store. The Couchbase product line includes
-  Couchbase Server (self-managed), Couchbase Capella (fully managed database-as-a-service across AWS, Azure, and Google
-  Cloud), Sync Gateway and App Services for mobile and edge synchronization, and Couchbase Lite embedded databases.
-  Couchbase exposes a comprehensive set of REST APIs covering cluster administration, SQL++ query execution, full-text
-  and vector search, analytics, eventing, backup, cross data center replication, and Capella management.
+description: Couchbase is a distributed, document-oriented NoSQL cloud database platform that combines the flexibility of JSON, the power of SQL++
+  querying, and the performance of an in-memory key-value store. The Couchbase product line includes Couchbase Server (self-managed), Couchbase
+  Capella (fully managed database-as-a-service across AWS, Azure, and Google Cloud), Sync Gateway and App Services for mobile and edge synchronization,
+  and Couchbase Lite embedded databases. Couchbase exposes a comprehensive set of REST APIs covering cluster administration, SQL++ query execution,
+  full-text and vector search, analytics, eventing, backup, cross data center replication, and Capella management.
 url: https://raw.githubusercontent.com/api-evangelist/couchbase/refs/heads/main/apis.yml
 deliveryModel:
   model: saas
@@ -44,46 +42,176 @@ x-docs-platform: mintlify
 x-docs-platform-confidence: medium
 x-docs-platform-checked: 2026-09-24
 tags:
-  - Analytics
-  - App Services
-  - Backup
-  - Capella
-  - Cloud
-  - Database
-  - Database-as-a-Service
-  - Eventing
-  - Full-Text Search
-  - Gateways
-  - JSON
-  - Mobile
-  - NoSQL
-  - Replication
-  - SQL++
-  - Sync
-  - Vector Search
-  - XDCR
+- Analytics
+- App Services
+- Backup
+- Capella
+- Cloud
+- Database
+- Database-as-a-Service
+- Eventing
+- Full-Text Search
+- Gateways
+- JSON
+- Mobile
+- NoSQL
+- Replication
+- SQL++
+- Sync
+- Vector Search
+- XDCR
 tags_raw:
-  - Analytics
-  - App Services
-  - Backup
-  - Capella
-  - Cloud
-  - Database
-  - DBaaS
-  - Eventing
-  - Full-Text Search
-  - Gateway
-  - JSON
-  - Mobile
-  - NoSQL
-  - Replication
-  - SQL++
-  - Sync
-  - Vector Search
-  - XDCR
+- Analytics
+- App Services
+- Backup
+- Capella
+- Cloud
+- Database
+- DBaaS
+- Eventing
+- Full-Text Search
+- Gateway
+- JSON
+- Mobile
+- NoSQL
+- Replication
+- SQL++
+- Sync
+- Vector Search
+- XDCR
 created: '2025-03-01'
 modified: '2026-05-19'
 specificationVersion: '0.23'
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+common:
+- type: FinOps
+  url: finops/couchbase-finops.yml
+- type: RateLimits
+  url: rate-limits/couchbase-rate-limits.yml
+- type: Spectral
+  url: rules/couchbase-sync-gateway-rules.yml
+- type: Spectral
+  url: rules/couchbase-server-rules.yml
+- type: Spectral
+  url: rules/couchbase-search-rules.yml
+- type: Spectral
+  url: rules/couchbase-rules.yml
+- type: Spectral
+  url: rules/couchbase-query-rules.yml
+- type: Spectral
+  url: rules/couchbase-jsonschema-spectral-rules.yml
+- type: Spectral
+  url: rules/couchbase-capella-management-rules.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DataModel
+  url: data-model/couchbase-data-model.yml
+- type: ErrorCatalog
+  url: errors/couchbase-problem-types.yml
+- type: Conformance
+  url: conformance/couchbase-conformance.yml
+- type: LLMsTxt
+  url: llms/couchbase-llms.txt
+- type: SecurityTxt
+  url: well-known/couchbase-status-security.txt
+- type: SecurityTxt
+  url: well-known/couchbase-learn-security.txt
+- type: WellKnown
+  url: well-known/couchbase-well-known.yml
+- type: Hosts
+  url: hosts/couchbase-hosts.yml
+- type: Vendors
+  url: vendors/couchbase-vendors.yml
+- type: SDKs
+  url: packages/couchbase-packages.yml
+- type: Packages
+  url: packages/couchbase-packages.yml
+- type: TrustCenter
+  url: https://www.couchbase.com/products/capella/trust/
+- type: Leadership
+  url: https://www.couchbase.com/leadership
+- type: DeveloperPortal
+  url: https://developer.couchbase.com
+- type: GettingStarted
+  url: https://docs.couchbase.com/elasticsearch-connector/current/getting-started.html
+- type: Plans
+  url: plans/couchbase-plans-pricing.yml
+- type: CapabilityMap
+  url: capabilities/couchbase-capability-edges.yml
+  name: Couchbase Business Capability Map
+- type: AgenticAccess
+  url: agentic-access/couchbase-agentic-access.yml
+- type: DomainSecurity
+  url: security/couchbase-domain-security.yml
+- type: Authentication
+  url: authentication/couchbase-authentication.yml
+- type: LinkedIn
+  url: https://www.linkedin.com/company/couchbase
+- type: Website
+  url: https://www.couchbase.com/
+- type: Documentation
+  url: https://docs.couchbase.com/
+- type: Capella
+  url: https://www.couchbase.com/products/capella/
+- type: Server
+  url: https://www.couchbase.com/products/server/
+- type: Mobile
+  url: https://www.couchbase.com/products/mobile/
+- type: Login
+  url: https://cloud.couchbase.com/sign-in
+- type: Pricing
+  url: https://www.couchbase.com/pricing/
+- type: Blog
+  url: https://www.couchbase.com/blog/
+- type: Forums
+  url: https://www.couchbase.com/forums/
+- type: Support
+  url: https://support.couchbase.com/
+- type: StatusPage
+  url: https://status.couchbase.com/
+- type: GitHubOrganization
+  url: https://github.com/couchbase
+- type: ChangeLog
+  url: https://docs.couchbase.com/server/current/release-notes/relnotes.html
+- type: PrivacyPolicy
+  url: https://www.couchbase.com/privacy-policy/
+- type: TermsOfService
+  url: https://www.couchbase.com/terms-of-use/
+- type: JSONLD
+  url: json-ld/couchbase-context.jsonld
+- type: JSONSchema
+  url: json-schema/couchbase-document-schema.json
+- type: JSONSchema
+  url: json-schema/couchbase-bucket-schema.json
+- type: JSONSchema
+  url: json-schema/couchbase-cluster-schema.json
+- type: Vocabulary
+  url: vocabulary/couchbase-vocabulary.yml
+- type: Features
+  data:
+  - 'Free: 1 node, 8 GB capacity'
+  - 'Basic from $0.15/hr/node: single AZ, 24h backup'
+  - 'Developer Pro from $0.35/hr/node: multi-AZ 3 nodes, 99.99% SLA'
+  - 'Enterprise from $0.49/hr/node: CMEK, 30-min response'
+  - 'Backup: $0.06-$0.07/GB monthly'
+  - Data transfer fees typically <10% of billing
+  - SQL++ (N1QL) query language
+  - Full-text search built-in
+  - Mobile sync via Sync Gateway
+  - 'Multi-cloud: AWS, GCP, Azure'
+  - 'Management API: 600 req/min/org'
+  - App Services for embedded apps
+  - Eventing service for triggers
+  - Analytics service for ad-hoc queries
+  - Multi-document ACID transactions
+  - Built-in caching (Memcached compatible)
+  sources:
+  - https://www.couchbase.com/pricing/
+  updated: '2026-05-04'
+- type: LlmsText
+  url: https://docs.couchbase.com/llms.txt
 apis:
 - aid: couchbase:couchbase-allowed-cidrs-api
   name: Couchbase Allowed CIDRs API
@@ -129,6 +257,10 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-allowed-cidr-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-allowed-cidrcreate-request-schema.json
 - aid: couchbase:couchbase-analytics-admin-api
   name: Couchbase Analytics Admin API
   description: Endpoints for administering and monitoring the Analytics service.
@@ -173,6 +305,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-analytics-cluster-status-schema.json
 - aid: couchbase:couchbase-analytics-configuration-api
   name: Couchbase Analytics Configuration API
   description: Endpoints for configuring Analytics nodes and clusters.
@@ -217,6 +351,10 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-analytics-service-config-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-analytics-node-config-schema.json
 - aid: couchbase:couchbase-analytics-library-api
   name: Couchbase Analytics Library API
   description: Endpoints for managing JavaScript libraries used for user-defined functions.
@@ -305,6 +443,10 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-analytics-query-result-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-analytics-query-request-schema.json
 - aid: couchbase:couchbase-analytics-settings-api
   name: Couchbase Analytics Settings API
   description: Endpoints for configuring Analytics service settings.
@@ -349,6 +491,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-analytics-settings-schema.json
 - aid: couchbase:couchbase-api-keys-api
   name: Couchbase API Keys API
   description: Endpoints for managing API keys used to authenticate with the Management API.
@@ -395,6 +539,12 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-api-key-create-request-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-paginated-response-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-api-key-create-response-schema.json
 - aid: couchbase:couchbase-authentication-api
   name: Couchbase Authentication API
   description: Endpoints for user authentication and session management.
@@ -439,6 +589,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-session-response-schema.json
 - aid: couchbase:couchbase-buckets-api
   name: Couchbase Buckets API
   description: Endpoints for managing buckets within Capella clusters.
@@ -483,6 +635,18 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-bucket-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-capella-bucket-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-bucket-create-request-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-capella-bucket-create-request-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-capella-bucket-update-request-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-bucket-update-request-schema.json
 - aid: couchbase:couchbase-changes-api
   name: Couchbase Changes API
   description: Endpoints for monitoring document changes and subscribing to change feeds.
@@ -527,6 +691,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-changes-response-schema.json
 - aid: couchbase:couchbase-cluster-api
   name: Couchbase Cluster API
   description: Endpoints for managing cluster-level backup configuration.
@@ -571,6 +737,12 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-pool-details-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-pools-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-backup-cluster-info-schema.json
 - aid: couchbase:couchbase-cluster-references-api
   name: Couchbase Cluster References API
   description: Endpoints for managing remote cluster references used as XDCR targets.
@@ -615,6 +787,10 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-remote-cluster-create-request-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-remote-cluster-reference-schema.json
 - aid: couchbase:couchbase-clusters-api
   name: Couchbase Clusters API
   description: Endpoints for provisioning, managing, and scaling Capella database clusters.
@@ -661,6 +837,14 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-cluster-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-cluster-create-request-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-paginated-response-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-cluster-update-request-schema.json
 - aid: couchbase:couchbase-compaction-api
   name: Couchbase Compaction API
   description: Endpoints for managing auto-compaction settings and triggering compaction operations.
@@ -705,6 +889,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-auto-compaction-settings-schema.json
 - aid: couchbase:couchbase-configuration-api
   name: Couchbase Configuration API
   description: Endpoints for configuring Eventing Service settings.
@@ -749,6 +935,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-eventing-config-schema.json
 - aid: couchbase:couchbase-data-api
   name: Couchbase Data API
   description: Endpoints for triggering backup and restore data operations.
@@ -793,6 +981,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-restore-request-schema.json
 - aid: couchbase:couchbase-database-api
   name: Couchbase Database API
   description: Endpoints for retrieving database information.
@@ -837,6 +1027,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-database-info-schema.json
 - aid: couchbase:couchbase-database-credentials-api
   name: Couchbase Database Credentials API
   description: Endpoints for managing database access credentials for clusters.
@@ -881,6 +1073,10 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-database-credential-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-database-credential-create-request-schema.json
 - aid: couchbase:couchbase-database-management-api
   name: Couchbase Database Management API
   description: Endpoints for creating, configuring, and managing databases.
@@ -925,6 +1121,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-database-config-schema.json
 - aid: couchbase:couchbase-documents-api
   name: Couchbase Documents API
   description: Endpoints for creating, reading, updating, and deleting documents.
@@ -969,6 +1167,12 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-document-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-all-docs-response-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-document-response-schema.json
 - aid: couchbase:couchbase-functions-api
   name: Couchbase Functions API
   description: Endpoints for creating, retrieving, updating, and deleting Eventing Functions.
@@ -1013,6 +1217,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-eventing-function-schema.json
 - aid: couchbase:couchbase-import-export-api
   name: Couchbase Import Export API
   description: Endpoints for importing and exporting Eventing Function definitions.
@@ -1057,6 +1263,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-eventing-function-schema.json
 - aid: couchbase:couchbase-index-service-api
   name: Couchbase Index Service API
   description: Endpoints for managing the Global Secondary Index service.
@@ -1101,6 +1309,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-index-settings-schema.json
 - aid: couchbase:couchbase-lifecycle-api
   name: Couchbase Lifecycle API
   description: Endpoints for deploying, undeploying, pausing, and resuming Eventing Functions.
@@ -1189,6 +1399,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-document-write-response-schema.json
 - aid: couchbase:couchbase-logging-api
   name: Couchbase Logging API
   description: Endpoints for retrieving Eventing Function application logs.
@@ -1323,9 +1535,7 @@ apis:
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
 - aid: couchbase:couchbase-nodes-api
   name: Couchbase Nodes API
-  description: >-
-    Endpoints for managing individual server nodes, including adding nodes, failover, recovery, and rebalance
-    operations.
+  description: Endpoints for managing individual server nodes, including adding nodes, failover, recovery, and rebalance operations.
   humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   baseURL: https://localhost:8091
   tags:
@@ -1369,6 +1579,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-nodes-info-schema.json
 - aid: couchbase:couchbase-organizations-api
   name: Couchbase Organizations API
   description: Endpoints for managing Capella organizations.
@@ -1415,10 +1627,11 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-organization-schema.json
 - aid: couchbase:couchbase-plans-api
   name: Couchbase Plans API
-  description: >-
-    Endpoints for managing backup plans that define backup schedules and data retention policies.
+  description: Endpoints for managing backup plans that define backup schedules and data retention policies.
   humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   baseURL: https://localhost:8091
   tags:
@@ -1460,6 +1673,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-backup-plan-schema.json
 - aid: couchbase:couchbase-projects-api
   name: Couchbase Projects API
   description: Endpoints for creating, listing, updating, and deleting projects within an organization.
@@ -1506,11 +1721,16 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-paginated-response-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-project-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-project-create-request-schema.json
 - aid: couchbase:couchbase-query-admin-api
   name: Couchbase Query Admin API
-  description: >-
-    Endpoints for administrative operations on the Query service including monitoring active requests,
-    completed requests, and prepared statements.
+  description: Endpoints for administrative operations on the Query service including monitoring active requests, completed requests, and prepared
+    statements.
   humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   baseURL: https://localhost:8091
   tags:
@@ -1552,6 +1772,14 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-query-vitals-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-active-request-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-completed-request-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-prepared-statement-schema.json
 - aid: couchbase:couchbase-query-execution-api
   name: Couchbase Query Execution API
   description: Endpoints for executing SQL++ queries and managing query results.
@@ -1596,6 +1824,10 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-query-result-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-query-request-schema.json
 - aid: couchbase:couchbase-query-settings-api
   name: Couchbase Query Settings API
   description: Endpoints for configuring Query service settings at the node and cluster level.
@@ -1640,6 +1872,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-query-settings-schema.json
 - aid: couchbase:couchbase-replication-api
   name: Couchbase Replication API
   description: Endpoints for managing inter-Sync Gateway replications.
@@ -1684,6 +1918,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-replication-config-schema.json
 - aid: couchbase:couchbase-replication-settings-api
   name: Couchbase Replication Settings API
   description: Endpoints for configuring replication-level and global XDCR settings.
@@ -1728,6 +1964,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-replication-settings-schema.json
 - aid: couchbase:couchbase-replication-statistics-api
   name: Couchbase Replication Statistics API
   description: Endpoints for monitoring replication progress and performance statistics.
@@ -1816,6 +2054,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-replication-create-request-schema.json
 - aid: couchbase:couchbase-repositories-api
   name: Couchbase Repositories API
   description: Endpoints for creating, managing, and querying backup repositories.
@@ -1860,6 +2100,10 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-backup-repository-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-backup-repository-create-request-schema.json
 - aid: couchbase:couchbase-role-management-api
   name: Couchbase Role Management API
   description: Endpoints for managing roles and their channel assignments.
@@ -1904,6 +2148,10 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-role-config-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-role-info-schema.json
 - aid: couchbase:couchbase-scopes-and-collections-api
   name: Couchbase Scopes and Collections API
   description: Endpoints for managing scopes and collections within Capella buckets.
@@ -1948,10 +2196,11 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-scopes-list-schema.json
 - aid: couchbase:couchbase-search-indexes-api
   name: Couchbase Search Indexes API
-  description: >-
-    Endpoints for creating, retrieving, updating, and deleting Full Text Search index definitions.
+  description: Endpoints for creating, retrieving, updating, and deleting Full Text Search index definitions.
   humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   baseURL: https://localhost:8091
   tags:
@@ -1993,6 +2242,12 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-search-index-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-search-index-list-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-search-index-response-schema.json
 - aid: couchbase:couchbase-search-monitoring-api
   name: Couchbase Search Monitoring API
   description: Endpoints for monitoring search index statistics and service status.
@@ -2081,10 +2336,13 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-search-query-request-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-search-query-result-schema.json
 - aid: couchbase:couchbase-security-api
   name: Couchbase Security API
-  description: >-
-    Endpoints for managing security settings, users, roles, certificates, and audit configurations.
+  description: Endpoints for managing security settings, users, roles, certificates, and audit configurations.
   humanURL: https://docs.couchbase.com/server/current/rest-api/rest-intro.html
   baseURL: https://localhost:8091
   tags:
@@ -2126,6 +2384,10 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-user-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-role-schema.json
 - aid: couchbase:couchbase-server-api
   name: Couchbase Server API
   description: Endpoints for managing the Sync Gateway server instance.
@@ -2216,6 +2478,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-server-groups-schema.json
 - aid: couchbase:couchbase-settings-api
   name: Couchbase Settings API
   description: Endpoints for managing server-wide settings and configuration parameters.
@@ -2304,6 +2568,10 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-eventing-function-stats-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-eventing-status-schema.json
 - aid: couchbase:couchbase-tasks-api
   name: Couchbase Tasks API
   description: Endpoints for monitoring and managing backup and restore tasks.
@@ -2350,6 +2618,8 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-backup-task-schema.json
 - aid: couchbase:couchbase-user-management-api
   name: Couchbase User Management API
   description: Endpoints for managing users and their access permissions.
@@ -2394,6 +2664,10 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
+  - type: JSONSchema
+    url: json-schema/couchbase-user-config-schema.json
+  - type: JSONSchema
+    url: json-schema/couchbase-user-info-schema.json
 - aid: couchbase:couchbase-users-api
   name: Couchbase Users API
   description: Endpoints for managing users within a Capella organization.
@@ -2440,83 +2714,11 @@ apis:
     url: rules/couchbase-sync-gateway-rules.yml
   - type: Documentation
     url: https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html
-common:
-  - type: Plans
-    url: plans/couchbase-plans-pricing.yml
-  - type: CapabilityMap
-    url: capabilities/couchbase-capability-edges.yml
-    name: Couchbase Business Capability Map
-  - type: AgenticAccess
-    url: agentic-access/couchbase-agentic-access.yml
-  - type: DomainSecurity
-    url: security/couchbase-domain-security.yml
-  - type: Authentication
-    url: authentication/couchbase-authentication.yml
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/couchbase
-  - type: Website
-    url: https://www.couchbase.com/
-  - type: Documentation
-    url: https://docs.couchbase.com/
-  - type: Capella
-    url: https://www.couchbase.com/products/capella/
-  - type: Server
-    url: https://www.couchbase.com/products/server/
-  - type: Mobile
-    url: https://www.couchbase.com/products/mobile/
-  - type: Login
-    url: https://cloud.couchbase.com/sign-in
-  - type: Pricing
-    url: https://www.couchbase.com/pricing/
-  - type: Blog
-    url: https://www.couchbase.com/blog/
-  - type: Forums
-    url: https://www.couchbase.com/forums/
-  - type: Support
-    url: https://support.couchbase.com/
-  - type: StatusPage
-    url: https://status.couchbase.com/
-  - type: GitHubOrganization
-    url: https://github.com/couchbase
-  - type: ChangeLog
-    url: https://docs.couchbase.com/server/current/release-notes/relnotes.html
-  - type: PrivacyPolicy
-    url: https://www.couchbase.com/privacy-policy/
-  - type: TermsOfService
-    url: https://www.couchbase.com/terms-of-use/
-  - type: JSONLD
-    url: json-ld/couchbase-context.jsonld
   - type: JSONSchema
-    url: json-schema/couchbase-document-schema.json
-  - type: JSONSchema
-    url: json-schema/couchbase-bucket-schema.json
-  - type: JSONSchema
-    url: json-schema/couchbase-cluster-schema.json
-  - type: Vocabulary
-    url: vocabulary/couchbase-vocabulary.yml
-  - type: Features
-    data:
-      - 'Free: 1 node, 8 GB capacity'
-      - 'Basic from $0.15/hr/node: single AZ, 24h backup'
-      - 'Developer Pro from $0.35/hr/node: multi-AZ 3 nodes, 99.99% SLA'
-      - 'Enterprise from $0.49/hr/node: CMEK, 30-min response'
-      - 'Backup: $0.06-$0.07/GB monthly'
-      - Data transfer fees typically <10% of billing
-      - SQL++ (N1QL) query language
-      - Full-text search built-in
-      - Mobile sync via Sync Gateway
-      - 'Multi-cloud: AWS, GCP, Azure'
-      - 'Management API: 600 req/min/org'
-      - App Services for embedded apps
-      - Eventing service for triggers
-      - Analytics service for ad-hoc queries
-      - Multi-document ACID transactions
-      - Built-in caching (Memcached compatible)
-    sources:
-      - https://www.couchbase.com/pricing/
-    updated: '2026-05-04'
-  - type: LlmsText
-    url: https://docs.couchbase.com/llms.txt
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+    url: json-schema/couchbase-paginated-response-schema.json
+x-enrichment:
+  date: '2026-10-04'
+  status: enriched
+  artifacts_added: 70
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

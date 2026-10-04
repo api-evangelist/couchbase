@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-database-info-schema.json",
+  "title": "DatabaseInfo",
+  "description": "Database information",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-database-api-openapi.yml#/components/schemas/DatabaseInfo",
+  "type": "object",
+  "properties": {
+    "db_name": {
+      "type": "string",
+      "description": "Name of the database"
+    },
+    "update_seq": {
+      "type": "integer",
+      "description": "Current update sequence number"
+    },
+    "committed_update_seq": {
+      "type": "integer",
+      "description": "Committed update sequence number"
+    },
+    "instance_start_time": {
+      "type": "integer",
+      "description": "Instance start time in microseconds since epoch"
+    },
+    "compact_running": {
+      "type": "boolean",
+      "description": "Whether compaction is currently running"
+    },
+    "state": {
+      "type": "string",
+      "description": "Database state",
+      "enum": [
+        "Online",
+        "Offline"
+      ]
+    }
+  }
+}

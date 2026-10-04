@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-replication-config-schema.json",
+  "title": "ReplicationConfig",
+  "description": "Inter-Sync Gateway replication",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-replication-api-openapi.yml#/components/schemas/ReplicationConfig",
+  "type": "object",
+  "properties": {
+    "replication_id": {
+      "type": "string",
+      "description": "Replication identifier"
+    },
+    "remote": {
+      "type": "string",
+      "description": "URL of the remote Sync Gateway"
+    },
+    "direction": {
+      "type": "string",
+      "enum": [
+        "push",
+        "pull",
+        "pushAndPull"
+      ]
+    },
+    "continuous": {
+      "type": "boolean",
+      "description": "Whether the replication runs continuously"
+    },
+    "filter": {
+      "type": "string",
+      "description": "Filter function"
+    },
+    "query_params": {
+      "type": "object",
+      "properties": {
+        "channels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "conflict_resolution_type": {
+      "type": "string",
+      "enum": [
+        "default",
+        "localWins",
+        "remoteWins",
+        "custom"
+      ]
+    },
+    "custom_conflict_resolver": {
+      "type": "string",
+      "description": "Custom conflict resolver function"
+    },
+    "initial_state": {
+      "type": "string",
+      "enum": [
+        "running",
+        "stopped"
+      ]
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "running",
+        "stopped",
+        "error",
+        "reconnecting"
+      ]
+    }
+  }
+}

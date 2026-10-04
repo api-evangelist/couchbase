@@ -79,6 +79,14 @@ paths:
         '401':
           description: Unauthorized access
 components:
+  parameters:
+    functionName:
+      name: functionName
+      in: path
+      required: true
+      description: The name of the Eventing Function
+      schema:
+        type: string
   schemas:
     EventingFunction:
       type: object
@@ -227,14 +235,6 @@ components:
             scope:
               type: string
               description: Scope name
-  parameters:
-    functionName:
-      name: functionName
-      in: path
-      required: true
-      description: The name of the Eventing Function
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http

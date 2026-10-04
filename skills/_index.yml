@@ -1,0 +1,17 @@
+generated: '2026-10-04'
+method: generated
+generator: extract-docs-artifacts.py skills (local)
+source: openapi/couchbase-buckets-api-openapi.yml
+skills:
+- file: skills/couchbase-create-and-get-bucket.md
+  name: couchbase-create-and-get-bucket
+  api: openapi/couchbase-buckets-api-openapi.yml
+  operations:
+  - createCapellaBucket
+  - getCapellaBucket
+- file: skills/couchbase-create-and-list-scopes.md
+  name: couchbase-create-and-list-scopes
+  api: openapi/couchbase-scopes-and-collections-api-openapi.yml
+  operations:
+  - createScope
+  - listScopes

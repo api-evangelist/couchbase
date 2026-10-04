@@ -184,6 +184,52 @@ paths:
     - url: https://localhost:18091
       description: Couchbase Server (SSL)
 components:
+  parameters:
+    bucketId:
+      name: bucketId
+      in: path
+      required: true
+      description: The ID of the bucket
+      schema:
+        type: string
+    clusterId:
+      name: clusterId
+      in: path
+      required: true
+      description: The UUID of the cluster
+      schema:
+        type: string
+        format: uuid
+    organizationId:
+      name: organizationId
+      in: path
+      required: true
+      description: The UUID of the organization
+      schema:
+        type: string
+        format: uuid
+    projectId:
+      name: projectId
+      in: path
+      required: true
+      description: The UUID of the project
+      schema:
+        type: string
+        format: uuid
+    scopeName:
+      name: scopeName
+      in: path
+      required: true
+      description: The name of the scope
+      schema:
+        type: string
+    bucketName:
+      name: bucketName
+      in: path
+      required: true
+      description: The name of the bucket
+      schema:
+        type: string
   schemas:
     CapellaScope:
       type: object
@@ -238,52 +284,6 @@ components:
                     maxTTL:
                       type: integer
                       description: Maximum TTL for documents in seconds
-  parameters:
-    organizationId:
-      name: organizationId
-      in: path
-      required: true
-      description: The UUID of the organization
-      schema:
-        type: string
-        format: uuid
-    projectId:
-      name: projectId
-      in: path
-      required: true
-      description: The UUID of the project
-      schema:
-        type: string
-        format: uuid
-    bucketId:
-      name: bucketId
-      in: path
-      required: true
-      description: The ID of the bucket
-      schema:
-        type: string
-    clusterId:
-      name: clusterId
-      in: path
-      required: true
-      description: The UUID of the cluster
-      schema:
-        type: string
-        format: uuid
-    scopeName:
-      name: scopeName
-      in: path
-      required: true
-      description: The name of the scope
-      schema:
-        type: string
-    bucketName:
-      name: bucketName
-      in: path
-      required: true
-      description: The name of the bucket
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http

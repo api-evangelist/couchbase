@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-capella-bucket-create-request-schema.json",
+  "title": "CapellaBucketCreateRequest",
+  "description": "Request to create a Capella bucket",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-buckets-api-openapi.yml#/components/schemas/CapellaBucketCreateRequest",
+  "type": "object",
+  "required": [
+    "name",
+    "memoryAllocationInMb"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Bucket name"
+    },
+    "type": {
+      "type": "string",
+      "description": "Bucket type",
+      "enum": [
+        "couchbase",
+        "ephemeral"
+      ],
+      "default": "couchbase"
+    },
+    "memoryAllocationInMb": {
+      "type": "integer",
+      "description": "Memory allocation in megabytes",
+      "minimum": 100
+    },
+    "bucketConflictResolution": {
+      "type": "string",
+      "enum": [
+        "seqno",
+        "lww"
+      ],
+      "default": "seqno"
+    },
+    "durabilityLevel": {
+      "type": "string",
+      "enum": [
+        "none",
+        "majority",
+        "majorityAndPersistActive",
+        "persistToMajority"
+      ],
+      "default": "none"
+    },
+    "replicas": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3,
+      "default": 1
+    },
+    "flush": {
+      "type": "boolean",
+      "default": false
+    },
+    "timeToLiveInSeconds": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

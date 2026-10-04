@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-all-docs-response-schema.json",
+  "title": "AllDocsResponse",
+  "description": "Response for _all_docs request",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-documents-api-openapi.yml#/components/schemas/AllDocsResponse",
+  "type": "object",
+  "properties": {
+    "rows": {
+      "type": "array",
+      "description": "Array of document entries",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Document ID"
+          },
+          "key": {
+            "type": "string",
+            "description": "Document key"
+          },
+          "value": {
+            "type": "object",
+            "properties": {
+              "rev": {
+                "type": "string",
+                "description": "Current revision ID"
+              }
+            }
+          },
+          "doc": {
+            "type": "object",
+            "description": "Full document body (if include_docs=true)"
+          }
+        }
+      }
+    },
+    "total_rows": {
+      "type": "integer",
+      "description": "Total number of rows"
+    },
+    "update_seq": {
+      "type": "integer",
+      "description": "Current update sequence"
+    }
+  }
+}

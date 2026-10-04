@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-role-config-schema.json",
+  "title": "RoleConfig",
+  "description": "Role configuration",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-role-management-api-openapi.yml#/components/schemas/RoleConfig",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Role name"
+    },
+    "admin_channels": {
+      "type": "array",
+      "description": "Admin-assigned channels",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

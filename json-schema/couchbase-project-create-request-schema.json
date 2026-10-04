@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-project-create-request-schema.json",
+  "title": "ProjectCreateRequest",
+  "description": "Request to create or update a project",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-projects-api-openapi.yml#/components/schemas/ProjectCreateRequest",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Project name",
+      "maxLength": 128
+    },
+    "description": {
+      "type": "string",
+      "description": "Project description",
+      "maxLength": 1024
+    }
+  }
+}

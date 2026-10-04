@@ -157,6 +157,22 @@ components:
       schema:
         type: string
   schemas:
+    Role:
+      type: object
+      description: Available role definition
+      properties:
+        role:
+          type: string
+          description: Role identifier
+        name:
+          type: string
+          description: Human-readable role name
+        desc:
+          type: string
+          description: Description of the role
+        bucket_name:
+          type: string
+          description: Bucket constraint for the role
     User:
       type: object
       description: User account information
@@ -191,22 +207,6 @@ components:
               collection_name:
                 type: string
                 description: Collection the role applies to
-    Role:
-      type: object
-      description: Available role definition
-      properties:
-        role:
-          type: string
-          description: Role identifier
-        name:
-          type: string
-          description: Human-readable role name
-        desc:
-          type: string
-          description: Description of the role
-        bucket_name:
-          type: string
-          description: Bucket constraint for the role
   securitySchemes:
     basicAuth:
       type: http

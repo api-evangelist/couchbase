@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-nodes-info-schema.json",
+  "title": "NodesInfo",
+  "description": "Information about cluster nodes",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-nodes-api-openapi.yml#/components/schemas/NodesInfo",
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "description": "List of nodes",
+      "items": {
+        "$ref": "#/$defs/Node"
+      }
+    }
+  },
+  "$defs": {
+    "Node": {
+      "type": "object",
+      "description": "Information about a cluster node",
+      "properties": {
+        "hostname": {
+          "type": "string",
+          "description": "Node hostname and port"
+        },
+        "status": {
+          "type": "string",
+          "description": "Node status",
+          "enum": [
+            "healthy",
+            "unhealthy",
+            "warmup"
+          ]
+        },
+        "clusterMembership": {
+          "type": "string",
+          "description": "Cluster membership status",
+          "enum": [
+            "active",
+            "inactiveAdded",
+            "inactiveFailed"
+          ]
+        },
+        "services": {
+          "type": "array",
+          "description": "List of services running on the node",
+          "items": {
+            "type": "string",
+            "enum": [
+              "kv",
+              "n1ql",
+              "index",
+              "fts",
+              "cbas",
+              "eventing",
+              "backup"
+            ]
+          }
+        },
+        "os": {
+          "type": "string",
+          "description": "Operating system of the node"
+        },
+        "version": {
+          "type": "string",
+          "description": "Couchbase Server version on the node"
+        },
+        "memoryTotal": {
+          "type": "integer",
+          "description": "Total memory on the node in bytes"
+        },
+        "memoryFree": {
+          "type": "integer",
+          "description": "Free memory on the node in bytes"
+        }
+      }
+    }
+  }
+}

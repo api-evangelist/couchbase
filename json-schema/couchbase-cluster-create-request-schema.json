@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-cluster-create-request-schema.json",
+  "title": "ClusterCreateRequest",
+  "description": "Request to create a new cluster",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-clusters-api-openapi.yml#/components/schemas/ClusterCreateRequest",
+  "type": "object",
+  "required": [
+    "name",
+    "cloudProvider",
+    "serviceGroups",
+    "availability",
+    "support"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Cluster name",
+      "maxLength": 256
+    },
+    "description": {
+      "type": "string",
+      "description": "Cluster description"
+    },
+    "cloudProvider": {
+      "type": "object",
+      "required": [
+        "type",
+        "region",
+        "cidr"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "aws",
+            "azure",
+            "gcp"
+          ]
+        },
+        "region": {
+          "type": "string",
+          "description": "Cloud region identifier"
+        },
+        "cidr": {
+          "type": "string",
+          "description": "CIDR block for the cluster"
+        }
+      }
+    },
+    "couchbaseServer": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "Desired Couchbase Server version"
+        }
+      }
+    },
+    "serviceGroups": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ServiceGroup"
+      }
+    },
+    "availability": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "single",
+            "multi"
+          ]
+        }
+      }
+    },
+    "support": {
+      "type": "object",
+      "required": [
+        "plan",
+        "timezone"
+      ],
+      "properties": {
+        "plan": {
+          "type": "string",
+          "enum": [
+            "basic",
+            "developer pro",
+            "enterprise"
+          ]
+        },
+        "timezone": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "ServiceGroup": {
+      "type": "object",
+      "description": "Service group within a cluster",
+      "properties": {
+        "node": {
+          "type": "object",
+          "description": "Node configuration",
+          "properties": {
+            "compute": {
+              "type": "object",
+              "description": "Compute instance configuration",
+              "properties": {
+                "cpu": {
+                  "type": "integer",
+                  "description": "Number of CPU cores"
+                },
+                "ram": {
+                  "type": "integer",
+                  "description": "RAM in gigabytes"
+                }
+              }
+            },
+            "disk": {
+              "type": "object",
+              "description": "Disk storage configuration",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "description": "Disk type",
+                  "enum": [
+                    "gp3",
+                    "io2",
+                    "P6",
+                    "P10",
+                    "P15",
+                    "P20",
+                    "P30",
+                    "P40",
+                    "P50",
+                    "pd-ssd"
+                  ]
+                },
+                "storage": {
+                  "type": "integer",
+                  "description": "Storage size in gigabytes"
+                },
+                "iops": {
+                  "type": "integer",
+                  "description": "IOPS for the disk"
+                }
+              }
+            }
+          }
+        },
+        "numOfNodes": {
+          "type": "integer",
+          "description": "Number of nodes in the service group",
+          "minimum": 3
+        },
+        "services": {
+          "type": "array",
+          "description": "Services enabled on the nodes",
+          "items": {
+            "type": "string",
+            "enum": [
+              "data",
+              "index",
+              "query",
+              "search",
+              "analytics",
+              "eventing"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

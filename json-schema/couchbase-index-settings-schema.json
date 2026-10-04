@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-index-settings-schema.json",
+  "title": "IndexSettings",
+  "description": "Index service configuration",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-index-service-api-openapi.yml#/components/schemas/IndexSettings",
+  "type": "object",
+  "properties": {
+    "storageMode": {
+      "type": "string",
+      "description": "Index storage mode",
+      "enum": [
+        "plasma",
+        "memory_optimized",
+        "forestdb"
+      ]
+    },
+    "indexerThreads": {
+      "type": "integer",
+      "description": "Number of indexer threads"
+    },
+    "memorySnapshotInterval": {
+      "type": "integer",
+      "description": "Memory snapshot interval in milliseconds"
+    },
+    "stableSnapshotInterval": {
+      "type": "integer",
+      "description": "Stable snapshot interval in milliseconds"
+    },
+    "logLevel": {
+      "type": "string",
+      "description": "Log level for the index service",
+      "enum": [
+        "silent",
+        "fatal",
+        "error",
+        "warn",
+        "info",
+        "verbose",
+        "timing",
+        "debug",
+        "trace"
+      ]
+    }
+  }
+}

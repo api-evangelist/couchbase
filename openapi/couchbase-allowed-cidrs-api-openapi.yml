@@ -97,22 +97,6 @@ paths:
           description: Rate limit exceeded
 components:
   schemas:
-    AllowedCIDRCreateRequest:
-      type: object
-      description: Request to add an allowed CIDR
-      required:
-      - cidr
-      properties:
-        cidr:
-          type: string
-          description: IP address or CIDR range to allow
-        comment:
-          type: string
-          description: Optional comment describing the entry
-        expiresAt:
-          type: string
-          format: date-time
-          description: Optional expiration for temporary access
     AuditInfo:
       type: object
       description: Audit timestamps
@@ -134,6 +118,22 @@ components:
         version:
           type: integer
           description: Resource version number
+    AllowedCIDRCreateRequest:
+      type: object
+      description: Request to add an allowed CIDR
+      required:
+      - cidr
+      properties:
+        cidr:
+          type: string
+          description: IP address or CIDR range to allow
+        comment:
+          type: string
+          description: Optional comment describing the entry
+        expiresAt:
+          type: string
+          format: date-time
+          description: Optional expiration for temporary access
     AllowedCIDR:
       type: object
       description: Allowed IP/CIDR for cluster access
@@ -158,6 +158,14 @@ components:
         audit:
           $ref: '#/components/schemas/AuditInfo'
   parameters:
+    clusterId:
+      name: clusterId
+      in: path
+      required: true
+      description: The UUID of the cluster
+      schema:
+        type: string
+        format: uuid
     organizationId:
       name: organizationId
       in: path
@@ -171,14 +179,6 @@ components:
       in: path
       required: true
       description: The UUID of the project
-      schema:
-        type: string
-        format: uuid
-    clusterId:
-      name: clusterId
-      in: path
-      required: true
-      description: The UUID of the cluster
       schema:
         type: string
         format: uuid

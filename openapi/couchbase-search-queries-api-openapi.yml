@@ -47,6 +47,14 @@ paths:
         '404':
           description: Index not found
 components:
+  parameters:
+    indexName:
+      name: indexName
+      in: path
+      required: true
+      description: The name of the Full Text Search index
+      schema:
+        type: string
   schemas:
     SearchQueryRequest:
       type: object
@@ -233,14 +241,6 @@ components:
                     count:
                       type: integer
                       description: Number of documents with this value
-  parameters:
-    indexName:
-      name: indexName
-      in: path
-      required: true
-      description: The name of the Full Text Search index
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http

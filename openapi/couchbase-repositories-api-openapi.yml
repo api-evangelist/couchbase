@@ -129,14 +129,6 @@ paths:
         '401':
           description: Unauthorized access
 components:
-  parameters:
-    repositoryId:
-      name: repositoryId
-      in: path
-      required: true
-      description: The name of the backup repository
-      schema:
-        type: string
   schemas:
     BackupRepositoryCreateRequest:
       type: object
@@ -219,6 +211,14 @@ components:
                     mutations:
                       type: integer
                       description: Number of mutations backed up
+  parameters:
+    repositoryId:
+      name: repositoryId
+      in: path
+      required: true
+      description: The name of the backup repository
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

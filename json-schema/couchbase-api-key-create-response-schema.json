@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-api-key-create-response-schema.json",
+  "title": "ApiKeyCreateResponse",
+  "description": "Response after creating an API key",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-api-keys-api-openapi.yml#/components/schemas/ApiKeyCreateResponse",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "API key UUID"
+    },
+    "token": {
+      "type": "string",
+      "description": "The API key secret token (only returned once at creation time)"
+    }
+  }
+}

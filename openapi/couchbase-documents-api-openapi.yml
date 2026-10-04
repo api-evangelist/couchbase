@@ -304,6 +304,28 @@ paths:
           default: example.apps.cloud.couchbase.com
           description: The App Services endpoint URL
 components:
+  parameters:
+    docId:
+      name: docId
+      in: path
+      required: true
+      description: The document ID
+      schema:
+        type: string
+    db:
+      name: db
+      in: path
+      required: true
+      description: The name of the database (keyspace)
+      schema:
+        type: string
+    db_2:
+      name: db
+      in: path
+      required: true
+      description: The database name
+      schema:
+        type: string
   schemas:
     Document:
       type: object
@@ -394,6 +416,19 @@ components:
         update_seq:
           type: integer
           description: Current update sequence
+    DocumentWriteResponse:
+      type: object
+      description: Response from a document write operation
+      properties:
+        id:
+          type: string
+          description: Document ID
+        rev:
+          type: string
+          description: New revision ID
+        ok:
+          type: boolean
+          description: Whether the operation succeeded
     Document_2:
       type: object
       description: A Sync Gateway document
@@ -411,19 +446,6 @@ components:
           type: string
           description: Document expiry time
       additionalProperties: true
-    DocumentWriteResponse:
-      type: object
-      description: Response from a document write operation
-      properties:
-        id:
-          type: string
-          description: Document ID
-        rev:
-          type: string
-          description: New revision ID
-        ok:
-          type: boolean
-          description: Whether the operation succeeded
     AllDocsResponse_2:
       type: object
       description: Response from _all_docs
@@ -448,28 +470,6 @@ components:
           type: integer
         update_seq:
           type: integer
-  parameters:
-    db:
-      name: db
-      in: path
-      required: true
-      description: The name of the database (keyspace)
-      schema:
-        type: string
-    docId:
-      name: docId
-      in: path
-      required: true
-      description: The document ID
-      schema:
-        type: string
-    db_2:
-      name: db
-      in: path
-      required: true
-      description: The database name
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http

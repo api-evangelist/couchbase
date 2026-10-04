@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-changes-response-schema.json",
+  "title": "ChangesResponse",
+  "description": "Changes feed response",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-changes-api-openapi.yml#/components/schemas/ChangesResponse",
+  "type": "object",
+  "properties": {
+    "results": {
+      "type": "array",
+      "description": "Array of changes",
+      "items": {
+        "type": "object",
+        "properties": {
+          "seq": {
+            "description": "Sequence number"
+          },
+          "id": {
+            "type": "string",
+            "description": "Document ID"
+          },
+          "changes": {
+            "type": "array",
+            "description": "List of revision changes",
+            "items": {
+              "type": "object",
+              "properties": {
+                "rev": {
+                  "type": "string",
+                  "description": "Revision ID"
+                }
+              }
+            }
+          },
+          "deleted": {
+            "type": "boolean",
+            "description": "Whether the document was deleted"
+          },
+          "doc": {
+            "type": "object",
+            "description": "Document body (if include_docs=true)"
+          }
+        }
+      }
+    },
+    "last_seq": {
+      "description": "Last sequence number in the response"
+    },
+    "pending": {
+      "type": "integer",
+      "description": "Number of pending changes"
+    }
+  }
+}

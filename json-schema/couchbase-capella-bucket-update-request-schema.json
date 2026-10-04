@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-capella-bucket-update-request-schema.json",
+  "title": "CapellaBucketUpdateRequest",
+  "description": "Request to update a Capella bucket",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-buckets-api-openapi.yml#/components/schemas/CapellaBucketUpdateRequest",
+  "type": "object",
+  "properties": {
+    "memoryAllocationInMb": {
+      "type": "integer",
+      "description": "Memory allocation in megabytes"
+    },
+    "durabilityLevel": {
+      "type": "string",
+      "enum": [
+        "none",
+        "majority",
+        "majorityAndPersistActive",
+        "persistToMajority"
+      ]
+    },
+    "replicas": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    },
+    "flush": {
+      "type": "boolean"
+    },
+    "timeToLiveInSeconds": {
+      "type": "integer"
+    }
+  }
+}

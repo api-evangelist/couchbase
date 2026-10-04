@@ -148,21 +148,6 @@ paths:
           default: example.apps.cloud.couchbase.com
           description: The App Services endpoint URL
 components:
-  parameters:
-    db:
-      name: db
-      in: path
-      required: true
-      description: The name of the database (keyspace)
-      schema:
-        type: string
-    db_2:
-      name: db
-      in: path
-      required: true
-      description: The database name
-      schema:
-        type: string
   schemas:
     SessionResponse:
       type: object
@@ -178,6 +163,21 @@ components:
         cookie_name:
           type: string
           description: Name of the session cookie
+  parameters:
+    db:
+      name: db
+      in: path
+      required: true
+      description: The name of the database (keyspace)
+      schema:
+        type: string
+    db_2:
+      name: db
+      in: path
+      required: true
+      description: The database name
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

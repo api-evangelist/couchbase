@@ -102,14 +102,6 @@ paths:
         '404':
           description: Local document not found
 components:
-  parameters:
-    db:
-      name: db
-      in: path
-      required: true
-      description: The database name
-      schema:
-        type: string
   schemas:
     DocumentWriteResponse:
       type: object
@@ -124,6 +116,14 @@ components:
         ok:
           type: boolean
           description: Whether the operation succeeded
+  parameters:
+    db:
+      name: db
+      in: path
+      required: true
+      description: The database name
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

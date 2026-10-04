@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-replication-create-request-schema.json",
+  "title": "ReplicationCreateRequest",
+  "description": "Request to create an XDCR replication",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-replications-api-openapi.yml#/components/schemas/ReplicationCreateRequest",
+  "type": "object",
+  "required": [
+    "fromBucket",
+    "toCluster",
+    "toBucket",
+    "replicationType"
+  ],
+  "properties": {
+    "fromBucket": {
+      "type": "string",
+      "description": "Name of the source bucket"
+    },
+    "toCluster": {
+      "type": "string",
+      "description": "Name of the remote cluster reference"
+    },
+    "toBucket": {
+      "type": "string",
+      "description": "Name of the target bucket on the remote cluster"
+    },
+    "replicationType": {
+      "type": "string",
+      "description": "Type of replication",
+      "enum": [
+        "continuous"
+      ]
+    },
+    "filterExpression": {
+      "type": "string",
+      "description": "Regular expression filter for document IDs"
+    },
+    "compressionType": {
+      "type": "string",
+      "description": "Compression type for replication data",
+      "enum": [
+        "None",
+        "Auto",
+        "Snappy"
+      ]
+    },
+    "priority": {
+      "type": "string",
+      "description": "Replication priority",
+      "enum": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    }
+  }
+}

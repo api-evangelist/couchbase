@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-active-request-schema.json",
+  "title": "ActiveRequest",
+  "description": "An active query request",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-query-admin-api-openapi.yml#/components/schemas/ActiveRequest",
+  "type": "object",
+  "properties": {
+    "requestId": {
+      "type": "string",
+      "description": "Unique identifier for the request"
+    },
+    "statement": {
+      "type": "string",
+      "description": "The SQL++ statement being executed"
+    },
+    "requestTime": {
+      "type": "string",
+      "description": "Time when the request was received"
+    },
+    "elapsedTime": {
+      "type": "string",
+      "description": "Time elapsed since the request started"
+    },
+    "executionTime": {
+      "type": "string",
+      "description": "Time spent executing the query"
+    },
+    "state": {
+      "type": "string",
+      "description": "Current state of the request"
+    },
+    "scanConsistency": {
+      "type": "string",
+      "description": "Consistency level of the query"
+    },
+    "clientContextID": {
+      "type": "string",
+      "description": "Client-provided context identifier"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-user-info-schema.json",
+  "title": "UserInfo",
+  "description": "User information",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-user-management-api-openapi.yml#/components/schemas/UserInfo",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "admin_channels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "admin_roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "all_channels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "email": {
+      "type": "string"
+    },
+    "disabled": {
+      "type": "boolean"
+    }
+  }
+}

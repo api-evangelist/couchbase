@@ -1,0 +1,72 @@
+generated: '2026-10-04'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/couchbase-allowed-cidrs-api-openapi.yml
+- openapi/couchbase-analytics-admin-api-openapi.yml
+- openapi/couchbase-analytics-configuration-api-openapi.yml
+- openapi/couchbase-analytics-library-api-openapi.yml
+- openapi/couchbase-analytics-query-api-openapi.yml
+- openapi/couchbase-analytics-settings-api-openapi.yml
+- openapi/couchbase-api-keys-api-openapi.yml
+- openapi/couchbase-authentication-api-openapi.yml
+- openapi/couchbase-buckets-api-openapi.yml
+- openapi/couchbase-changes-api-openapi.yml
+- openapi/couchbase-cluster-api-openapi.yml
+- openapi/couchbase-cluster-references-api-openapi.yml
+format: custom
+envelope:
+  media_type: null
+  schema: null
+coverage:
+  operations: 185
+  statuses_declared: 8
+problems:
+- status: 400
+  title: Bad Request
+  description: Invalid configuration
+  operations: 48
+  media_types: []
+  schema: null
+- status: 401
+  title: Unauthorized
+  description: Unauthorized access
+  operations: 182
+  media_types: []
+  schema: null
+- status: 404
+  title: Not Found
+  description: Bucket not found
+  operations: 75
+  media_types: []
+  schema: null
+- status: 409
+  title: Conflict
+  description: Conflict due to revision mismatch
+  operations: 5
+  media_types: []
+  schema: null
+- status: 412
+  title: Precondition Failed
+  description: Database already exists
+  operations: 1
+  media_types: []
+  schema: null
+- status: 422
+  title: Unprocessable Content
+  description: Function is deployed and cannot be deleted
+  operations: 2
+  media_types: []
+  schema: null
+- status: 429
+  title: Too Many Requests
+  description: Rate limit exceeded
+  operations: 27
+  media_types: []
+  schema: null
+- status: 500
+  title: Internal Server Error
+  description: OIDC not configured
+  operations: 1
+  media_types: []
+  schema: null

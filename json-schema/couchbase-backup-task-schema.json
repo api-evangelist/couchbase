@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-backup-task-schema.json",
+  "title": "BackupTask",
+  "description": "Backup or restore task record",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-tasks-api-openapi.yml#/components/schemas/BackupTask",
+  "type": "object",
+  "properties": {
+    "task_name": {
+      "type": "string",
+      "description": "Name of the task"
+    },
+    "status": {
+      "type": "string",
+      "description": "Task execution status",
+      "enum": [
+        "done",
+        "running",
+        "failed",
+        "cancelled"
+      ]
+    },
+    "start": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Task start time"
+    },
+    "end": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Task end time"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of task",
+      "enum": [
+        "BACKUP",
+        "MERGE",
+        "RESTORE"
+      ]
+    },
+    "node_runs": {
+      "type": "array",
+      "description": "Per-node execution details",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-allowed-cidr-schema.json",
+  "title": "AllowedCIDR",
+  "description": "Allowed IP/CIDR for cluster access",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-allowed-cidrs-api-openapi.yml#/components/schemas/AllowedCIDR",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Allowed CIDR UUID"
+    },
+    "cidr": {
+      "type": "string",
+      "description": "IP address or CIDR range"
+    },
+    "comment": {
+      "type": "string",
+      "description": "Optional comment"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Expiration date for temporary access"
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of the allowed CIDR"
+    },
+    "audit": {
+      "$ref": "#/$defs/AuditInfo"
+    }
+  },
+  "$defs": {
+    "AuditInfo": {
+      "type": "object",
+      "description": "Audit timestamps",
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp"
+        },
+        "modifiedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last modification timestamp"
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "User who created the resource"
+        },
+        "modifiedBy": {
+          "type": "string",
+          "description": "User who last modified the resource"
+        },
+        "version": {
+          "type": "integer",
+          "description": "Resource version number"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-completed-request-schema.json",
+  "title": "CompletedRequest",
+  "description": "A completed query request",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-query-admin-api-openapi.yml#/components/schemas/CompletedRequest",
+  "type": "object",
+  "properties": {
+    "requestId": {
+      "type": "string",
+      "description": "Unique identifier for the request"
+    },
+    "statement": {
+      "type": "string",
+      "description": "The SQL++ statement that was executed"
+    },
+    "requestTime": {
+      "type": "string",
+      "description": "Time when the request was received"
+    },
+    "elapsedTime": {
+      "type": "string",
+      "description": "Total elapsed time for the request"
+    },
+    "resultCount": {
+      "type": "integer",
+      "description": "Number of results returned"
+    },
+    "resultSize": {
+      "type": "integer",
+      "description": "Size of results in bytes"
+    },
+    "errorCount": {
+      "type": "integer",
+      "description": "Number of errors encountered"
+    },
+    "state": {
+      "type": "string",
+      "description": "Final state of the request"
+    }
+  }
+}

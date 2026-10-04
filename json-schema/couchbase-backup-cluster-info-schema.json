@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-backup-cluster-info-schema.json",
+  "title": "BackupClusterInfo",
+  "description": "Cluster backup information",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-cluster-api-openapi.yml#/components/schemas/BackupClusterInfo",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Cluster name"
+    },
+    "repositories": {
+      "type": "array",
+      "description": "List of repository names",
+      "items": {
+        "type": "string"
+      }
+    },
+    "plans": {
+      "type": "array",
+      "description": "List of plan names",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

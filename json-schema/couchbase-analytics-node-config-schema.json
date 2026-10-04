@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/couchbase/main/json-schema/couchbase-analytics-node-config-schema.json",
+  "title": "AnalyticsNodeConfig",
+  "description": "Analytics node-level configuration",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/couchbase-analytics-configuration-api-openapi.yml#/components/schemas/AnalyticsNodeConfig",
+  "type": "object",
+  "properties": {
+    "storageBuffercachePagesize": {
+      "type": "integer",
+      "description": "Buffer cache page size in bytes"
+    },
+    "storageBuffercacheSize": {
+      "type": "integer",
+      "description": "Buffer cache size in bytes"
+    },
+    "storageMemorycomponentNumcomponents": {
+      "type": "integer",
+      "description": "Number of memory components"
+    }
+  }
+}
