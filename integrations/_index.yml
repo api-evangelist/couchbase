@@ -12,7 +12,7 @@
   channel: distribution
   evidence: https://aws.amazon.com/marketplace/seller-profile?id=1a064a14-5ac2-4980-9167-15746aabde72
   source: edge
-  relationship: platform-app
+  relationship: distribution-channel
   status: not-a-workflow
   arazzo: null
 - slug: couchbase-microsoft-azure-marketplace
@@ -24,6 +24,6 @@
   channel: distribution
   evidence: https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=Couchbase
   source: edge
-  relationship: platform-app
+  relationship: distribution-channel
   status: not-a-workflow
   arazzo: null
