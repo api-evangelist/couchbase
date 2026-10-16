@@ -2,6 +2,10 @@
   "repo": "couchbase",
   "feeds": [
     {
+      "source": "https://www.couchbase.com/blog/",
+      "error": "HTTPError"
+    },
+    {
       "source": "https://www.couchbase.com/pricing/",
       "feed_url": "https://www.couchbase.com/pricing/",
       "title": "",
@@ -9,6 +13,6 @@
       "method": "none"
     }
   ],
-  "fetched": "2026-10-03T12:30:02Z",
+  "fetched": "2026-10-10T13:15:00Z",
   "post_count": 0
 }
