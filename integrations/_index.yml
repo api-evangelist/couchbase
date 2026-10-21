@@ -118,19 +118,6 @@
     builder: unknown (community connector; contributor not in the record)
   status: not-a-workflow
   arazzo: null
-- slug: couchbase-tableau-own
-  label: Tableau (own)
-  partner: tableau
-  partner_name: Tableau (own)
-  category: connector
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://exchange.tableau.com/products/627
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: couchbase-aws-marketplace
   label: AWS Marketplace
   partner: amazon-web-services
@@ -187,5 +174,44 @@
       categories, tier and projects are CONTEXT, never read (breadth is not credit)'
     detected_by: sweep-cloud-native.py
     detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: couchbase-tableau-own
+  label: Tableau (own)
+  partner: tableau
+  partner_name: Tableau (own)
+  category: connector
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://exchange.tableau.com/products/627
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: couchbase-eclipse-foundation-open-vsx
+  label: Eclipse Foundation (open-vsx)
+  partner: eclipse
+  partner_name: Eclipse Foundation (open-vsx)
+  category: IDE / developer extension marketplace listing
+  type: marketplace
+  marketplace: open-vsx
+  channel: partner-built
+  evidence: https://open-vsx.org/namespace/couchbase
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: couchbase-vs-code-marketplace-vs-code-marketplace
+  label: VS Code Marketplace (vs-code-marketplace)
+  partner: vs-code-marketplace
+  partner_name: VS Code Marketplace (vs-code-marketplace)
+  category: IDE / developer extension marketplace listing
+  type: marketplace
+  marketplace: vs-code-marketplace
+  channel: partner-built
+  evidence: https://marketplace.visualstudio.com/publishers/Couchbase
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
