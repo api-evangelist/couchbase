@@ -20,6 +20,8 @@ checked:
 - tableau/integrations/tableau-integration-edges.yml
 - eclipse/integrations/eclipse-integration-edges.yml
 - vs-code-marketplace/integrations/vs-code-marketplace-integration-edges.yml
+- netlify/integrations/netlify-integration-edges.yml
+- vercel/integrations/vercel-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: JetBrains Marketplace
@@ -272,5 +274,42 @@ edges:
   badges:
   - Verified publisher
   - Verified domain
+- partner_name: Netlify (own)
+  partner: netlify
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.netlify.com/integrations/couchbase/
+  mirror_of: netlify/integrations/netlify-integration-edges.yml
+  apps:
+  - Couchbase
+  - Couchbase Setup Guide
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: Database
+  partner_tier: listing
+- partner_name: Vercel (own)
+  partner: vercel
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://vercel.com/marketplace/couchbase-capella
+  mirror_of: vercel/integrations/vercel-integration-edges.yml
+  apps:
+  - Couchbase Capella
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: Storage
+  partner_tier: third-party
 source:
 - https://plugins.jetbrains.com/
