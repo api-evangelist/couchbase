@@ -27,6 +27,9 @@ checked:
 - https://catalog.redhat.com/api/containers/v1/vendors/label/
 - https://catalog.redhat.com/software/partners
 - artifact-hub/integrations/artifact-hub-integration-edges.yml
+- https://hex.pm/api
+- https://packagist.org/packages
+- https://pub.dev/api
 marketplace_apps: []
 edges:
 - partner_name: JetBrains Marketplace
@@ -389,5 +392,53 @@ edges:
   category: Artifact Hub listing (Helm chart)
   badges:
   - 'Verified publisher (Artifact Hub verified publisher: repository ownership proven)'
+- partner_name: Packagist
+  partner: packagist
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (PHP)
+  evidence: https://packagist.org/packages/couchbase/couchbase
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: Packagist (public registry JSON)
+    spec_file: null
+    language: PHP
+    packages:
+    - name: couchbase/couchbase
+      version: 4.5.0
+      released: '2026-04-01'
+      released_field: time
+      lapsed: false
+      page: https://packagist.org/packages/couchbase/couchbase
+      repo_leg: github-org:couchbase
+      publisher_leg: org:couchbase
+      matched_by: github-org
+    - name: couchbase/couchbase-encryption
+      version: 0.8.0
+      released: '2018-06-11'
+      released_field: time
+      lapsed: true
+      page: https://packagist.org/packages/couchbase/couchbase-encryption
+      repo_leg: github-org:couchbase
+      publisher_leg: email:couchbase.com
+      matched_by: domain
+    - name: couchbase/couchbase-opentelemetry
+      version: 4.5.0
+      released: '2026-04-02'
+      released_field: time
+      lapsed: false
+      page: https://packagist.org/packages/couchbase/couchbase-opentelemetry
+      repo_leg: github-org:couchbase
+      publisher_leg: email:couchbase.com
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-php-dart-elixir-package-registries.py
+    detected: '2026-10-22'
+  detected_by: sweep-php-dart-elixir-package-registries.py
+  first_seen: '2026-10-22'
 source:
 - https://plugins.jetbrains.com/
