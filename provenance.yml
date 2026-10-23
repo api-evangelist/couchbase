@@ -408,25 +408,73 @@ artifacts:
   collections/couchbase-xdcr-rest-api.postman_collection.json:
     method: unknown
     evidence: no authorship recorded
+  conformance/couchbase-conformance.yml:
+    method: derived
+    evidence: declared in the artifact
+  data-model/couchbase-data-model.yml:
+    method: derived
+    evidence: declared in the artifact
+  errors/couchbase-problem-types.yml:
+    method: derived
+    evidence: declared in the artifact
   finops/couchbase-finops.yml:
     method: generated
     evidence: declared in the artifact
   front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
+  hosts/couchbase-hosts.yml:
+    method: derived
+    evidence: declared in the artifact
+  integrations/_index.yml:
+    method: generated
+    evidence: carries an API Evangelist house phrase
+  integrations/couchbase-integration-edges.yml:
+    method: searched
+    evidence: declared in the artifact
   json-ld/couchbase-context.jsonld:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-active-request-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-activerequest-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/couchbase-all-docs-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/couchbase-alldocsresponse-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-allowed-cidr-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-allowed-cidrcreate-request-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-allowedcidr-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-allowedcidrcreaterequest-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-analytics-cluster-status-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-analytics-node-config-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-analytics-query-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-analytics-query-result-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-analytics-service-config-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-analytics-settings-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-analyticsclusterstatus-schema.json:
@@ -447,6 +495,12 @@ artifacts:
   json-schema/couchbase-analyticssettings-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/couchbase-api-key-create-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-api-key-create-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/couchbase-apikeycreaterequest-schema.json:
     method: unknown
     evidence: no authorship recorded
@@ -456,7 +510,25 @@ artifacts:
   json-schema/couchbase-auditinfo-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/couchbase-auto-compaction-settings-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/couchbase-autocompactionsettings-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-backup-cluster-info-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-backup-plan-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-backup-repository-create-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-backup-repository-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-backup-task-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-backupclusterinfo-schema.json:
@@ -474,13 +546,28 @@ artifacts:
   json-schema/couchbase-backuptask-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/couchbase-bucket-create-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/couchbase-bucket-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-bucket-update-request-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-bucketcreaterequest-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-bucketupdaterequest-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-capella-bucket-create-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-capella-bucket-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-capella-bucket-update-request-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-capellabucket-schema.json:
@@ -495,10 +582,19 @@ artifacts:
   json-schema/couchbase-capellascope-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/couchbase-changes-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/couchbase-changesresponse-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/couchbase-cluster-create-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/couchbase-cluster-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-cluster-update-request-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-clustercreaterequest-schema.json:
@@ -507,7 +603,22 @@ artifacts:
   json-schema/couchbase-clusterupdaterequest-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/couchbase-completed-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/couchbase-completedrequest-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-database-config-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-database-credential-create-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-database-credential-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-database-info-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-databaseconfig-schema.json:
@@ -522,13 +633,31 @@ artifacts:
   json-schema/couchbase-databaseinfo-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/couchbase-document-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/couchbase-document-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-document-write-response-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-documentresponse-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-documentwriteresponse-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-eventing-config-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-eventing-function-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-eventing-function-stats-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-eventing-status-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-eventingconfig-schema.json:
@@ -543,10 +672,16 @@ artifacts:
   json-schema/couchbase-eventingstatus-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/couchbase-index-settings-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/couchbase-indexsettings-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-node-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-nodes-info-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-nodesinfo-schema.json:
@@ -555,7 +690,13 @@ artifacts:
   json-schema/couchbase-organization-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/couchbase-paginated-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/couchbase-paginatedresponse-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-pool-details-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-pooldetails-schema.json:
@@ -564,13 +705,31 @@ artifacts:
   json-schema/couchbase-pools-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/couchbase-prepared-statement-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/couchbase-preparedstatement-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-project-create-request-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-project-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-projectcreaterequest-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-query-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-query-result-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-query-settings-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-query-vitals-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-queryrequest-schema.json:
@@ -585,10 +744,25 @@ artifacts:
   json-schema/couchbase-queryvitals-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/couchbase-remote-cluster-create-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-remote-cluster-reference-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/couchbase-remoteclustercreaterequest-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-remoteclusterreference-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-replication-config-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-replication-create-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-replication-settings-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-replicationconfig-schema.json:
@@ -600,7 +774,16 @@ artifacts:
   json-schema/couchbase-replicationsettings-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/couchbase-restore-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/couchbase-restorerequest-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-role-config-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-role-info-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-role-schema.json:
@@ -612,7 +795,25 @@ artifacts:
   json-schema/couchbase-roleinfo-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/couchbase-scopes-list-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/couchbase-scopeslist-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-search-index-definition-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-search-index-list-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-search-index-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-search-query-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-search-query-result-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-searchindexdefinition-schema.json:
@@ -630,6 +831,9 @@ artifacts:
   json-schema/couchbase-searchqueryresult-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/couchbase-server-groups-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/couchbase-servergroups-schema.json:
     method: unknown
     evidence: no authorship recorded
@@ -639,7 +843,16 @@ artifacts:
   json-schema/couchbase-servicegroup-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/couchbase-session-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/couchbase-sessionresponse-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-user-config-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/couchbase-user-info-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/couchbase-user-schema.json:
@@ -654,127 +867,7 @@ artifacts:
   json-structure/couchbase-structure.json:
     method: unknown
     evidence: no authorship recorded
-  kin/checks-2026-09-24T161608.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T125852.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T133943.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T143147.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T154045.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-26T215308.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T094438.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T103455.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T123021.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T132314.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T140727.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-28T221322.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T213958.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T230545.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T203505.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T220315.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-31T223420.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T063623.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T210448.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T222808.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T224043.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T161828.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T174231.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T062714.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T212454.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T224856.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T055819.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T072335.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T144739.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T195450.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T211839.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T011047.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T224210.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T200636.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T213054.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T214843.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T232836.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T204815.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T222408.yml:
+  kin/checks-2026-10-11T110117.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-12T062655.yml:
@@ -858,9 +951,30 @@ artifacts:
   kin/score-2026-09-24T161608.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T210408.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T232841.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T000835.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T024842.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-11T110117.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  llms/couchbase-llms-provenance.yml:
+    method: searched
+    evidence: 'derive-llms-provenance.py: harvested'
   llms/couchbase-llms.txt:
     method: searched
     evidence: 'derive-llms-provenance.py: harvested'
+  mcp/couchbase-mcp.yml:
+    method: derived
+    evidence: declared in the artifact
   openapi/_original/couchbase-analytics-service-rest-api-openapi.yml:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
@@ -1068,6 +1182,9 @@ artifacts:
   openapi/couchbase-users-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  packages/couchbase-packages.yml:
+    method: unknown
+    evidence: no authorship recorded
   plans/couchbase-plans-pricing.yml:
     method: searched
     evidence: declared in the artifact
@@ -1083,6 +1200,9 @@ artifacts:
   rules/couchbase-query-rules.yml:
     method: unknown
     evidence: no authorship recorded
+  rules/couchbase-rules.yml:
+    method: generated
+    evidence: declared in the artifact
   rules/couchbase-search-rules.yml:
     method: unknown
     evidence: no authorship recorded
@@ -1095,6 +1215,15 @@ artifacts:
   security/couchbase-domain-security.yml:
     method: unknown
     evidence: no authorship recorded
+  skills/_index.yml:
+    method: generated
+    evidence: declared in the artifact
+  skills/couchbase-create-and-get-bucket.md:
+    method: generated
+    evidence: declared in the artifact
+  skills/couchbase-create-and-list-scopes.md:
+    method: generated
+    evidence: declared in the artifact
   subway/build-map.py:
     method: unknown
     evidence: no authorship recorded
@@ -1110,6 +1239,21 @@ artifacts:
   subway/couchbase-subway-map.svg:
     method: unknown
     evidence: no authorship recorded
+  vendors/couchbase-vendors.yml:
+    method: unknown
+    evidence: no authorship recorded
   vocabulary/couchbase-vocabulary.yml:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/couchbase-learn-oauth-authorization-server.json:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/couchbase-learn-security.txt:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/couchbase-status-security.txt:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/couchbase-well-known.yml:
     method: unknown
     evidence: no authorship recorded
