@@ -86,6 +86,8 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/couchbase/overview
 - type: FinOps
   url: finops/couchbase-finops.yml
 - type: RateLimits
