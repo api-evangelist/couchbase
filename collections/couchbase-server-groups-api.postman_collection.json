@@ -1,356 +1,343 @@
 {
+  "info": {
+    "_postman_id": "b00b8197-6ab3-4d4e-9b1e-4ae028a7fe6c",
+    "name": "Couchbase Server REST Server Groups API",
+    "description": "The Couchbase Server REST API provides programmatic access to manage and configure Couchbase Server clusters. It includes endpoints for cluster management, bucket operations, node administration, security settings, and server configuration. The API enables automation of deployment, monitoring, and maintenance tasks for Couchbase Server instances across distributed environments.\n\nContact Support:\n Name: Couchbase Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:59:10.000Z",
+    "updatedAt": "2026-10-21T19:59:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b00b8197-6ab3-4d4e-9b1e-4ae028a7fe6c"
+  },
   "item": [
     {
-      "id": "361fa6c9-c69a-418b-b480-05f43bb9d7b3",
-      "name": "Server Groups",
-      "description": {
-        "content": "Endpoints for managing server groups for rack-zone awareness.",
-        "type": "text/plain"
-      },
+      "name": "pools",
       "item": [
         {
-          "id": "1ebe422a-39db-426b-9b0d-ad0b87ee40fa",
-          "name": "List server groups",
-          "request": {
-            "name": "List server groups",
-            "description": {
-              "content": "Returns the list of server groups and their member nodes for rack-zone awareness configuration.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "pools",
-                "default",
-                "serverGroups"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "default",
+          "item": [
             {
-              "id": "750b45cd-3ceb-4108-8626-375400bc2c49",
-              "name": "Successful retrieval of server groups",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "serverGroups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+              "name": "serverGroups",
+              "item": [
+                {
+                  "name": "List server groups",
+                  "id": "5e176d4a-c33b-4607-99bd-ef952681f859",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"groups\": [\n    {\n      \"name\": \"string\",\n      \"uri\": \"string\",\n      \"nodes\": [\n        {\n          \"hostname\": \"string\",\n          \"status\": \"healthy\",\n          \"clusterMembership\": \"inactiveAdded\",\n          \"services\": [\n            \"fts\",\n            \"index\"\n          ],\n          \"os\": \"string\",\n          \"version\": \"string\",\n          \"memoryTotal\": 4784,\n          \"memoryFree\": 9246\n        },\n        {\n          \"hostname\": \"string\",\n          \"status\": \"healthy\",\n          \"clusterMembership\": \"inactiveAdded\",\n          \"services\": [\n            \"backup\",\n            \"n1ql\"\n          ],\n          \"os\": \"string\",\n          \"version\": \"string\",\n          \"memoryTotal\": 430,\n          \"memoryFree\": 7164\n        }\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"uri\": \"string\",\n      \"nodes\": [\n        {\n          \"hostname\": \"string\",\n          \"status\": \"warmup\",\n          \"clusterMembership\": \"inactiveFailed\",\n          \"services\": [\n            \"cbas\",\n            \"cbas\"\n          ],\n          \"os\": \"string\",\n          \"version\": \"string\",\n          \"memoryTotal\": 5112,\n          \"memoryFree\": 3999\n        },\n        {\n          \"hostname\": \"string\",\n          \"status\": \"unhealthy\",\n          \"clusterMembership\": \"inactiveFailed\",\n          \"services\": [\n            \"backup\",\n            \"eventing\"\n          ],\n          \"os\": \"string\",\n          \"version\": \"string\",\n          \"memoryTotal\": 2151,\n          \"memoryFree\": 143\n        }\n      ]\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "65927269-601a-457b-a0f2-3bc7a3c6df28",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "serverGroups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pools/default/serverGroups",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pools",
+                        "default",
+                        "serverGroups"
+                      ]
                     },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+                    "description": "Returns the list of server groups and their member nodes for rack-zone awareness configuration."
+                  },
+                  "response": [
+                    {
+                      "id": "84fa8da4-a96c-4be2-9675-45308b040513",
+                      "name": "Successful retrieval of server groups",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/pools/default/serverGroups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pools",
+                            "default",
+                            "serverGroups"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"groups\": [\n    {\n      \"name\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"nodes\": [\n        {\n          \"hostname\": \"<string>\",\n          \"status\": \"unhealthy\",\n          \"clusterMembership\": \"inactiveAdded\",\n          \"services\": [\n            \"index\",\n            \"cbas\"\n          ],\n          \"os\": \"<string>\",\n          \"version\": \"<string>\",\n          \"memoryTotal\": \"<integer>\",\n          \"memoryFree\": \"<integer>\"\n        },\n        {\n          \"hostname\": \"<string>\",\n          \"status\": \"healthy\",\n          \"clusterMembership\": \"inactiveAdded\",\n          \"services\": [\n            \"index\",\n            \"kv\"\n          ],\n          \"os\": \"<string>\",\n          \"version\": \"<string>\",\n          \"memoryTotal\": \"<integer>\",\n          \"memoryFree\": \"<integer>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"nodes\": [\n        {\n          \"hostname\": \"<string>\",\n          \"status\": \"unhealthy\",\n          \"clusterMembership\": \"active\",\n          \"services\": [\n            \"index\",\n            \"n1ql\"\n          ],\n          \"os\": \"<string>\",\n          \"version\": \"<string>\",\n          \"memoryTotal\": \"<integer>\",\n          \"memoryFree\": \"<integer>\"\n        },\n        {\n          \"hostname\": \"<string>\",\n          \"status\": \"unhealthy\",\n          \"clusterMembership\": \"inactiveFailed\",\n          \"services\": [\n            \"eventing\",\n            \"kv\"\n          ],\n          \"os\": \"<string>\",\n          \"version\": \"<string>\",\n          \"memoryTotal\": \"<integer>\",\n          \"memoryFree\": \"<integer>\"\n        }\n      ]\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T19:59:11.000Z",
+                      "updatedAt": "2026-10-21T19:59:11.000Z",
+                      "uid": "35240-84fa8da4-a96c-4be2-9675-45308b040513"
+                    },
+                    {
+                      "id": "dd1340c2-f23a-49d2-be4b-d597e91b555e",
+                      "name": "Unauthorized access",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/pools/default/serverGroups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pools",
+                            "default",
+                            "serverGroups"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:59:11.000Z",
+                      "updatedAt": "2026-10-21T19:59:11.000Z",
+                      "uid": "35240-dd1340c2-f23a-49d2-be4b-d597e91b555e"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:59:11.000Z",
+                  "updatedAt": "2026-10-21T19:59:11.000Z",
+                  "uid": "35240-5e176d4a-c33b-4607-99bd-ef952681f859"
+                },
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "Create a server group",
+                  "id": "7d7f6e9b-ed10-4c62-8b49-033d5ac3140c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The name of the server group",
+                          "key": "name",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pools/default/serverGroups",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pools",
+                        "default",
+                        "serverGroups"
+                      ]
+                    },
+                    "description": "Creates a new server group for rack-zone awareness."
+                  },
+                  "response": [
+                    {
+                      "id": "9f899fce-ef70-441f-8c57-3451a85cb407",
+                      "name": "Server group created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) The name of the server group",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pools/default/serverGroups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pools",
+                            "default",
+                            "serverGroups"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:59:11.000Z",
+                      "updatedAt": "2026-10-21T19:59:11.000Z",
+                      "uid": "35240-9f899fce-ef70-441f-8c57-3451a85cb407"
+                    },
+                    {
+                      "id": "e7781c0d-ffa7-401f-801b-e508f33c981a",
+                      "name": "Invalid server group name",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) The name of the server group",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pools/default/serverGroups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pools",
+                            "default",
+                            "serverGroups"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:59:11.000Z",
+                      "updatedAt": "2026-10-21T19:59:11.000Z",
+                      "uid": "35240-e7781c0d-ffa7-401f-801b-e508f33c981a"
+                    },
+                    {
+                      "id": "bee84ff3-5f96-4370-b7a9-c6ac8ed09efe",
+                      "name": "Unauthorized access",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) The name of the server group",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pools/default/serverGroups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pools",
+                            "default",
+                            "serverGroups"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:59:11.000Z",
+                      "updatedAt": "2026-10-21T19:59:11.000Z",
+                      "uid": "35240-bee84ff3-5f96-4370-b7a9-c6ac8ed09efe"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:59:11.000Z",
+                  "updatedAt": "2026-10-21T19:59:11.000Z",
+                  "uid": "35240-7d7f6e9b-ed10-4c62-8b49-033d5ac3140c"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "8c28f8e6-21b6-4eea-849d-0a1b293f158d",
+              "createdAt": "2026-10-21T19:59:11.000Z",
+              "updatedAt": "2026-10-21T19:59:11.000Z",
+              "uid": "35240-8c28f8e6-21b6-4eea-849d-0a1b293f158d"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "0defb0e5-356f-4f6c-bc24-4462026a3be3",
-          "name": "Create a server group",
-          "request": {
-            "name": "Create a server group",
-            "description": {
-              "content": "Creates a new server group for rack-zone awareness.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "pools",
-                "default",
-                "serverGroups"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "name",
-                  "value": "<string>",
-                  "description": "(Required) The name of the server group"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "101c0fec-ed82-4e9f-bd13-1092a9ab2930",
-              "name": "Server group created successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "serverGroups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The name of the server group",
-                        "type": "text/plain"
-                      },
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "182fbb50-a1a5-4eff-bb8c-af16fd7ec595",
-              "name": "Invalid server group name",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "serverGroups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The name of the server group",
-                        "type": "text/plain"
-                      },
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b74eddd6-47f8-466c-afe2-777078f75640",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "serverGroups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The name of the server group",
-                        "type": "text/plain"
-                      },
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "0e1b994e-0df0-43be-b85c-6ad3dd412df6",
+          "createdAt": "2026-10-21T19:59:11.000Z",
+          "updatedAt": "2026-10-21T19:59:11.000Z",
+          "uid": "35240-0e1b994e-0df0-43be-b85c-6ad3dd412df6"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://localhost:8095",
-      "key": "baseUrl"
+      "id": "b2476090-86f9-4e24-aa8a-4d93afe24eb7",
+      "createdAt": "2026-10-21T19:59:11.000Z",
+      "updatedAt": "2026-10-21T19:59:11.000Z",
+      "uid": "35240-b2476090-86f9-4e24-aa8a-4d93afe24eb7"
     }
   ],
   "auth": {
@@ -358,21 +345,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "ce151a5a-b9b6-4c5e-9689-181296aeb0cd",
-    "name": "Couchbase Analytics Service REST Allowed CIDRs Server Groups API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:8091"
     }
-  }
+  ]
 }

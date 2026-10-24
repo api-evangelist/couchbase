@@ -1,1064 +1,939 @@
 {
+  "info": {
+    "_postman_id": "69aaed45-763e-4e32-b502-eb866c6d55d1",
+    "name": "Couchbase Capella Management Allowed CIDRs API",
+    "description": "The Couchbase Capella Management API is a REST API for provisioning, deploying, and configuring Couchbase Capella database-as-a-service deployments across AWS, Azure, and Google Cloud. It enables programmatic management of clusters, buckets, users, and organizations using API key authentication. The API supports automation of cloud database operations including scaling, configuration changes, and access management, with requests limited to 100 per minute per API key.\n\nContact Support:\n Name: Couchbase Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:55:36.000Z",
+    "updatedAt": "2026-10-21T19:55:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-69aaed45-763e-4e32-b502-eb866c6d55d1"
+  },
   "item": [
     {
-      "id": "e82dcd9c-b9d7-481d-83e0-c84121bd605d",
-      "name": "Allowed CIDRs",
-      "description": {
-        "content": "Endpoints for managing allowed IP addresses and CIDR ranges for cluster access.",
-        "type": "text/plain"
-      },
+      "name": "v4",
       "item": [
         {
-          "id": "d68afb0c-99c5-409c-868d-4ed00e505881",
-          "name": "List allowed CIDRs",
-          "request": {
-            "name": "List allowed CIDRs",
-            "description": {
-              "content": "Returns the list of allowed IP addresses and CIDR ranges for the specified cluster.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v4",
-                "organizations",
-                ":organizationId",
-                "projects",
-                ":projectId",
-                "clusters",
-                ":clusterId",
-                "allowedCIDRs"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "organizationId",
-                  "description": "(Required) The UUID of the organization"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "projectId",
-                  "description": "(Required) The UUID of the project"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "clusterId",
-                  "description": "(Required) The UUID of the cluster"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "organizations",
+          "item": [
             {
-              "id": "a37c4ba4-bd5b-4510-ab58-2e726ff71591",
-              "name": "Successful retrieval of allowed CIDRs",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v4",
-                    "organizations",
-                    ":organizationId",
-                    "projects",
-                    ":projectId",
-                    "clusters",
-                    ":clusterId",
-                    "allowedCIDRs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "organizationId",
-                      "description": "(Required) The UUID of the organization"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "projectId",
-                      "description": "(Required) The UUID of the project"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "clusterId",
-                      "description": "(Required) The UUID of the cluster"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{organizationId}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "projects",
+                  "item": [
+                    {
+                      "name": "{projectId}",
+                      "item": [
+                        {
+                          "name": "clusters",
+                          "item": [
+                            {
+                              "name": "{clusterId}",
+                              "item": [
+                                {
+                                  "name": "allowedCIDRs",
+                                  "item": [
+                                    {
+                                      "name": "{allowedCIDRId}",
+                                      "item": [
+                                        {
+                                          "name": "Delete an allowed CIDR",
+                                          "id": "a39b1dc2-a879-4f3c-b0a3-a99d9537828e",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "method": "DELETE",
+                                            "header": [],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs/:allowedCIDRId",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v4",
+                                                "organizations",
+                                                ":organizationId",
+                                                "projects",
+                                                ":projectId",
+                                                "clusters",
+                                                ":clusterId",
+                                                "allowedCIDRs",
+                                                ":allowedCIDRId"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "bac9a247-e9c8-446b-a108-43a5d38612c1",
+                                                  "key": "organizationId",
+                                                  "value": "<uuid>",
+                                                  "description": "(Required) The UUID of the organization"
+                                                },
+                                                {
+                                                  "id": "9ef12209-13f5-4de1-8dc6-06fc63558a65",
+                                                  "key": "projectId",
+                                                  "value": "<uuid>",
+                                                  "description": "(Required) The UUID of the project"
+                                                },
+                                                {
+                                                  "id": "b85d777d-d210-44cf-99d4-78b8081bf726",
+                                                  "key": "clusterId",
+                                                  "value": "<uuid>",
+                                                  "description": "(Required) The UUID of the cluster"
+                                                },
+                                                {
+                                                  "id": "08bd2627-ec8f-4383-ab84-fb841602bcf4",
+                                                  "key": "allowedCIDRId",
+                                                  "value": "<uuid>",
+                                                  "description": "(Required) The ID of the allowed CIDR to delete"
+                                                }
+                                              ]
+                                            },
+                                            "description": "Removes an allowed IP address or CIDR range from the specified cluster."
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "d8ecc61d-1b84-417a-8158-07e8bfffe70b",
+                                              "name": "Allowed CIDR deleted successfully",
+                                              "originalRequest": {
+                                                "method": "DELETE",
+                                                "header": [
+                                                  {
+                                                    "description": "Added as a part of security scheme: bearer",
+                                                    "key": "Authorization",
+                                                    "value": "Bearer <token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs/:allowedCIDRId",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "v4",
+                                                    "organizations",
+                                                    ":organizationId",
+                                                    "projects",
+                                                    ":projectId",
+                                                    "clusters",
+                                                    ":clusterId",
+                                                    "allowedCIDRs",
+                                                    ":allowedCIDRId"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "organizationId"
+                                                    },
+                                                    {
+                                                      "key": "projectId"
+                                                    },
+                                                    {
+                                                      "key": "clusterId"
+                                                    },
+                                                    {
+                                                      "key": "allowedCIDRId"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "No Content",
+                                              "code": 204,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-10-21T19:55:36.000Z",
+                                              "updatedAt": "2026-10-21T19:55:36.000Z",
+                                              "uid": "35240-d8ecc61d-1b84-417a-8158-07e8bfffe70b"
+                                            },
+                                            {
+                                              "id": "64d521fe-8160-4d65-bb4a-29a4cced74e5",
+                                              "name": "Unauthorized access",
+                                              "originalRequest": {
+                                                "method": "DELETE",
+                                                "header": [
+                                                  {
+                                                    "description": "Added as a part of security scheme: bearer",
+                                                    "key": "Authorization",
+                                                    "value": "Bearer <token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs/:allowedCIDRId",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "v4",
+                                                    "organizations",
+                                                    ":organizationId",
+                                                    "projects",
+                                                    ":projectId",
+                                                    "clusters",
+                                                    ":clusterId",
+                                                    "allowedCIDRs",
+                                                    ":allowedCIDRId"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "organizationId"
+                                                    },
+                                                    {
+                                                      "key": "projectId"
+                                                    },
+                                                    {
+                                                      "key": "clusterId"
+                                                    },
+                                                    {
+                                                      "key": "allowedCIDRId"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Unauthorized",
+                                              "code": 401,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-10-21T19:55:36.000Z",
+                                              "updatedAt": "2026-10-21T19:55:36.000Z",
+                                              "uid": "35240-64d521fe-8160-4d65-bb4a-29a4cced74e5"
+                                            },
+                                            {
+                                              "id": "6fb9affa-a3bf-4f21-9ebe-d0793d49449f",
+                                              "name": "Allowed CIDR not found",
+                                              "originalRequest": {
+                                                "method": "DELETE",
+                                                "header": [
+                                                  {
+                                                    "description": "Added as a part of security scheme: bearer",
+                                                    "key": "Authorization",
+                                                    "value": "Bearer <token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs/:allowedCIDRId",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "v4",
+                                                    "organizations",
+                                                    ":organizationId",
+                                                    "projects",
+                                                    ":projectId",
+                                                    "clusters",
+                                                    ":clusterId",
+                                                    "allowedCIDRs",
+                                                    ":allowedCIDRId"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "organizationId"
+                                                    },
+                                                    {
+                                                      "key": "projectId"
+                                                    },
+                                                    {
+                                                      "key": "clusterId"
+                                                    },
+                                                    {
+                                                      "key": "allowedCIDRId"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Not Found",
+                                              "code": 404,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-10-21T19:55:36.000Z",
+                                              "updatedAt": "2026-10-21T19:55:36.000Z",
+                                              "uid": "35240-6fb9affa-a3bf-4f21-9ebe-d0793d49449f"
+                                            },
+                                            {
+                                              "id": "aadf5bc3-14db-44ff-80f1-e6b7af9cfd48",
+                                              "name": "Rate limit exceeded",
+                                              "originalRequest": {
+                                                "method": "DELETE",
+                                                "header": [
+                                                  {
+                                                    "description": "Added as a part of security scheme: bearer",
+                                                    "key": "Authorization",
+                                                    "value": "Bearer <token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs/:allowedCIDRId",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "v4",
+                                                    "organizations",
+                                                    ":organizationId",
+                                                    "projects",
+                                                    ":projectId",
+                                                    "clusters",
+                                                    ":clusterId",
+                                                    "allowedCIDRs",
+                                                    ":allowedCIDRId"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "organizationId"
+                                                    },
+                                                    {
+                                                      "key": "projectId"
+                                                    },
+                                                    {
+                                                      "key": "clusterId"
+                                                    },
+                                                    {
+                                                      "key": "allowedCIDRId"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Too Many Requests",
+                                              "code": 429,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-10-21T19:55:36.000Z",
+                                              "updatedAt": "2026-10-21T19:55:36.000Z",
+                                              "uid": "35240-aadf5bc3-14db-44ff-80f1-e6b7af9cfd48"
+                                            }
+                                          ],
+                                          "createdAt": "2026-10-21T19:55:36.000Z",
+                                          "updatedAt": "2026-10-21T19:55:36.000Z",
+                                          "uid": "35240-a39b1dc2-a879-4f3c-b0a3-a99d9537828e"
+                                        }
+                                      ],
+                                      "id": "9b9d1f63-05bf-4335-83ce-771a54df2114",
+                                      "createdAt": "2026-10-21T19:55:36.000Z",
+                                      "updatedAt": "2026-10-21T19:55:36.000Z",
+                                      "uid": "35240-9b9d1f63-05bf-4335-83ce-771a54df2114"
+                                    },
+                                    {
+                                      "name": "List allowed CIDRs",
+                                      "id": "663426db-5757-4171-93cf-72f3f8aa523e",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v4",
+                                            "organizations",
+                                            ":organizationId",
+                                            "projects",
+                                            ":projectId",
+                                            "clusters",
+                                            ":clusterId",
+                                            "allowedCIDRs"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "a2e8638d-4217-4bf3-948c-59ea6ae7b186",
+                                              "key": "organizationId",
+                                              "value": "<uuid>",
+                                              "description": "(Required) The UUID of the organization"
+                                            },
+                                            {
+                                              "id": "be160ca0-2398-4ac3-a146-1e5ec3d276d2",
+                                              "key": "projectId",
+                                              "value": "<uuid>",
+                                              "description": "(Required) The UUID of the project"
+                                            },
+                                            {
+                                              "id": "1201ff80-e920-4136-aa7a-01d7bae9fe7e",
+                                              "key": "clusterId",
+                                              "value": "<uuid>",
+                                              "description": "(Required) The UUID of the cluster"
+                                            }
+                                          ]
+                                        },
+                                        "description": "Returns the list of allowed IP addresses and CIDR ranges for the specified cluster."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "992a71fd-b4c8-4e22-835d-725c5adb6445",
+                                          "name": "Successful retrieval of allowed CIDRs",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: bearer",
+                                                "key": "Authorization",
+                                                "value": "Bearer <token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v4",
+                                                "organizations",
+                                                ":organizationId",
+                                                "projects",
+                                                ":projectId",
+                                                "clusters",
+                                                ":clusterId",
+                                                "allowedCIDRs"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "organizationId"
+                                                },
+                                                {
+                                                  "key": "projectId"
+                                                },
+                                                {
+                                                  "key": "clusterId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"data\": [\n    {\n      \"id\": \"<uuid>\",\n      \"cidr\": \"<string>\",\n      \"comment\": \"<string>\",\n      \"expiresAt\": \"<dateTime>\",\n      \"status\": \"<string>\",\n      \"audit\": {\n        \"createdAt\": \"<dateTime>\",\n        \"modifiedAt\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"modifiedBy\": \"<string>\",\n        \"version\": \"<integer>\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"cidr\": \"<string>\",\n      \"comment\": \"<string>\",\n      \"expiresAt\": \"<dateTime>\",\n      \"status\": \"<string>\",\n      \"audit\": {\n        \"createdAt\": \"<dateTime>\",\n        \"modifiedAt\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"modifiedBy\": \"<string>\",\n        \"version\": \"<integer>\"\n      }\n    }\n  ]\n}",
+                                          "createdAt": "2026-10-21T19:55:36.000Z",
+                                          "updatedAt": "2026-10-21T19:55:36.000Z",
+                                          "uid": "35240-992a71fd-b4c8-4e22-835d-725c5adb6445"
+                                        },
+                                        {
+                                          "id": "6a954421-2f43-4f37-adb8-6276ca0a043a",
+                                          "name": "Unauthorized access",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: bearer",
+                                                "key": "Authorization",
+                                                "value": "Bearer <token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v4",
+                                                "organizations",
+                                                ":organizationId",
+                                                "projects",
+                                                ":projectId",
+                                                "clusters",
+                                                ":clusterId",
+                                                "allowedCIDRs"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "organizationId"
+                                                },
+                                                {
+                                                  "key": "projectId"
+                                                },
+                                                {
+                                                  "key": "clusterId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Unauthorized",
+                                          "code": 401,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-10-21T19:55:36.000Z",
+                                          "updatedAt": "2026-10-21T19:55:36.000Z",
+                                          "uid": "35240-6a954421-2f43-4f37-adb8-6276ca0a043a"
+                                        },
+                                        {
+                                          "id": "f5c885a1-f68e-4757-8b4c-409a9e370ada",
+                                          "name": "Rate limit exceeded",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: bearer",
+                                                "key": "Authorization",
+                                                "value": "Bearer <token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v4",
+                                                "organizations",
+                                                ":organizationId",
+                                                "projects",
+                                                ":projectId",
+                                                "clusters",
+                                                ":clusterId",
+                                                "allowedCIDRs"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "organizationId"
+                                                },
+                                                {
+                                                  "key": "projectId"
+                                                },
+                                                {
+                                                  "key": "clusterId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Too Many Requests",
+                                          "code": 429,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-10-21T19:55:36.000Z",
+                                          "updatedAt": "2026-10-21T19:55:36.000Z",
+                                          "uid": "35240-f5c885a1-f68e-4757-8b4c-409a9e370ada"
+                                        }
+                                      ],
+                                      "createdAt": "2026-10-21T19:55:36.000Z",
+                                      "updatedAt": "2026-10-21T19:55:36.000Z",
+                                      "uid": "35240-663426db-5757-4171-93cf-72f3f8aa523e"
+                                    },
+                                    {
+                                      "name": "Add an allowed CIDR",
+                                      "id": "35a79a1b-67a7-4a27-819a-8ce481757d62",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"cidr\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v4",
+                                            "organizations",
+                                            ":organizationId",
+                                            "projects",
+                                            ":projectId",
+                                            "clusters",
+                                            ":clusterId",
+                                            "allowedCIDRs"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "62f4158f-1beb-4bb7-8d82-5bdd30549a65",
+                                              "key": "organizationId",
+                                              "value": "<uuid>",
+                                              "description": "(Required) The UUID of the organization"
+                                            },
+                                            {
+                                              "id": "90d08173-0995-40e9-a119-51e94564e5f1",
+                                              "key": "projectId",
+                                              "value": "<uuid>",
+                                              "description": "(Required) The UUID of the project"
+                                            },
+                                            {
+                                              "id": "a4b771af-1645-49a1-93bd-f385fa5c0bb1",
+                                              "key": "clusterId",
+                                              "value": "<uuid>",
+                                              "description": "(Required) The UUID of the cluster"
+                                            }
+                                          ]
+                                        },
+                                        "description": "Adds an allowed IP address or CIDR range for the specified cluster."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "7771f15d-c751-41e4-bb89-4ae32f48d378",
+                                          "name": "Allowed CIDR added successfully",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: bearer",
+                                                "key": "Authorization",
+                                                "value": "Bearer <token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "{\n  \"cidr\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\"\n}",
+                                              "options": {
+                                                "raw": {
+                                                  "headerFamily": "json",
+                                                  "language": "json"
+                                                }
+                                              }
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v4",
+                                                "organizations",
+                                                ":organizationId",
+                                                "projects",
+                                                ":projectId",
+                                                "clusters",
+                                                ":clusterId",
+                                                "allowedCIDRs"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "organizationId"
+                                                },
+                                                {
+                                                  "key": "projectId"
+                                                },
+                                                {
+                                                  "key": "clusterId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Created",
+                                          "code": 201,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-10-21T19:55:36.000Z",
+                                          "updatedAt": "2026-10-21T19:55:36.000Z",
+                                          "uid": "35240-7771f15d-c751-41e4-bb89-4ae32f48d378"
+                                        },
+                                        {
+                                          "id": "4cafc216-7617-413b-97e0-695d09ee9c5a",
+                                          "name": "Invalid CIDR configuration",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: bearer",
+                                                "key": "Authorization",
+                                                "value": "Bearer <token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "{\n  \"cidr\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\"\n}",
+                                              "options": {
+                                                "raw": {
+                                                  "headerFamily": "json",
+                                                  "language": "json"
+                                                }
+                                              }
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v4",
+                                                "organizations",
+                                                ":organizationId",
+                                                "projects",
+                                                ":projectId",
+                                                "clusters",
+                                                ":clusterId",
+                                                "allowedCIDRs"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "organizationId"
+                                                },
+                                                {
+                                                  "key": "projectId"
+                                                },
+                                                {
+                                                  "key": "clusterId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Bad Request",
+                                          "code": 400,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-10-21T19:55:36.000Z",
+                                          "updatedAt": "2026-10-21T19:55:36.000Z",
+                                          "uid": "35240-4cafc216-7617-413b-97e0-695d09ee9c5a"
+                                        },
+                                        {
+                                          "id": "d2d84a88-b0f1-47e2-8520-72e889137fb8",
+                                          "name": "Unauthorized access",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: bearer",
+                                                "key": "Authorization",
+                                                "value": "Bearer <token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "{\n  \"cidr\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\"\n}",
+                                              "options": {
+                                                "raw": {
+                                                  "headerFamily": "json",
+                                                  "language": "json"
+                                                }
+                                              }
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v4",
+                                                "organizations",
+                                                ":organizationId",
+                                                "projects",
+                                                ":projectId",
+                                                "clusters",
+                                                ":clusterId",
+                                                "allowedCIDRs"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "organizationId"
+                                                },
+                                                {
+                                                  "key": "projectId"
+                                                },
+                                                {
+                                                  "key": "clusterId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Unauthorized",
+                                          "code": 401,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-10-21T19:55:36.000Z",
+                                          "updatedAt": "2026-10-21T19:55:36.000Z",
+                                          "uid": "35240-d2d84a88-b0f1-47e2-8520-72e889137fb8"
+                                        },
+                                        {
+                                          "id": "e7674730-3b1f-4fec-bd6e-ff2505dac350",
+                                          "name": "Rate limit exceeded",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: bearer",
+                                                "key": "Authorization",
+                                                "value": "Bearer <token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "{\n  \"cidr\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\"\n}",
+                                              "options": {
+                                                "raw": {
+                                                  "headerFamily": "json",
+                                                  "language": "json"
+                                                }
+                                              }
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/allowedCIDRs",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v4",
+                                                "organizations",
+                                                ":organizationId",
+                                                "projects",
+                                                ":projectId",
+                                                "clusters",
+                                                ":clusterId",
+                                                "allowedCIDRs"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "organizationId"
+                                                },
+                                                {
+                                                  "key": "projectId"
+                                                },
+                                                {
+                                                  "key": "clusterId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Too Many Requests",
+                                          "code": 429,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-10-21T19:55:36.000Z",
+                                          "updatedAt": "2026-10-21T19:55:36.000Z",
+                                          "uid": "35240-e7674730-3b1f-4fec-bd6e-ff2505dac350"
+                                        }
+                                      ],
+                                      "createdAt": "2026-10-21T19:55:36.000Z",
+                                      "updatedAt": "2026-10-21T19:55:36.000Z",
+                                      "uid": "35240-35a79a1b-67a7-4a27-819a-8ce481757d62"
+                                    }
+                                  ],
+                                  "id": "bebb5f37-f64a-4bfc-9571-5f82edbe36db",
+                                  "createdAt": "2026-10-21T19:55:36.000Z",
+                                  "updatedAt": "2026-10-21T19:55:36.000Z",
+                                  "uid": "35240-bebb5f37-f64a-4bfc-9571-5f82edbe36db"
+                                }
+                              ],
+                              "id": "17387ce3-2ea3-4a6d-b30b-842fac69ec9a",
+                              "createdAt": "2026-10-21T19:55:36.000Z",
+                              "updatedAt": "2026-10-21T19:55:36.000Z",
+                              "uid": "35240-17387ce3-2ea3-4a6d-b30b-842fac69ec9a"
+                            }
+                          ],
+                          "id": "0c46385d-743e-47ec-b012-4327a5175526",
+                          "createdAt": "2026-10-21T19:55:36.000Z",
+                          "updatedAt": "2026-10-21T19:55:36.000Z",
+                          "uid": "35240-0c46385d-743e-47ec-b012-4327a5175526"
+                        }
+                      ],
+                      "id": "d75141d3-e9c2-48dd-a9a7-128e844bafad",
+                      "createdAt": "2026-10-21T19:55:36.000Z",
+                      "updatedAt": "2026-10-21T19:55:36.000Z",
+                      "uid": "35240-d75141d3-e9c2-48dd-a9a7-128e844bafad"
+                    }
+                  ],
+                  "id": "33bd9c7a-5511-4186-9ebb-3c2c5bad11e9",
+                  "createdAt": "2026-10-21T19:55:36.000Z",
+                  "updatedAt": "2026-10-21T19:55:36.000Z",
+                  "uid": "35240-33bd9c7a-5511-4186-9ebb-3c2c5bad11e9"
                 }
               ],
-              "body": "{\n  \"data\": [\n    {\n      \"id\": \"f1d98b9e-d463-11c6-cb72-58ceffeba953\",\n      \"cidr\": \"string\",\n      \"comment\": \"string\",\n      \"expiresAt\": \"2003-11-24T21:45:06.433Z\",\n      \"status\": \"string\",\n      \"audit\": {\n        \"createdAt\": \"1983-10-27T14:43:28.761Z\",\n        \"modifiedAt\": \"2004-03-29T02:52:47.425Z\",\n        \"createdBy\": \"string\",\n        \"modifiedBy\": \"string\",\n        \"version\": 4982\n      }\n    },\n    {\n      \"id\": \"a0125629-6fd2-3880-20cf-51bd5eb84315\",\n      \"cidr\": \"string\",\n      \"comment\": \"string\",\n      \"expiresAt\": \"1993-01-26T10:32:02.965Z\",\n      \"status\": \"string\",\n      \"audit\": {\n        \"createdAt\": \"2024-07-14T22:51:32.963Z\",\n        \"modifiedAt\": \"1994-07-14T03:53:55.357Z\",\n        \"createdBy\": \"string\",\n        \"modifiedBy\": \"string\",\n        \"version\": 4458\n      }\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5facc9d2-7998-4aca-8efa-6135c8dda2b5",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v4",
-                    "organizations",
-                    ":organizationId",
-                    "projects",
-                    ":projectId",
-                    "clusters",
-                    ":clusterId",
-                    "allowedCIDRs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "organizationId",
-                      "description": "(Required) The UUID of the organization"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "projectId",
-                      "description": "(Required) The UUID of the project"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "clusterId",
-                      "description": "(Required) The UUID of the cluster"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "5a640080-75f1-4aa0-82a4-6a6a5a604969",
-              "name": "Rate limit exceeded",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v4",
-                    "organizations",
-                    ":organizationId",
-                    "projects",
-                    ":projectId",
-                    "clusters",
-                    ":clusterId",
-                    "allowedCIDRs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "organizationId",
-                      "description": "(Required) The UUID of the organization"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "projectId",
-                      "description": "(Required) The UUID of the project"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "clusterId",
-                      "description": "(Required) The UUID of the cluster"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "c8ca059a-3a20-4a2f-960a-f826b5768e35",
+              "createdAt": "2026-10-21T19:55:36.000Z",
+              "updatedAt": "2026-10-21T19:55:36.000Z",
+              "uid": "35240-c8ca059a-3a20-4a2f-960a-f826b5768e35"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "59bb45eb-b6af-451d-8ca8-ecfc401c530e",
-          "name": "Add an allowed CIDR",
-          "request": {
-            "name": "Add an allowed CIDR",
-            "description": {
-              "content": "Adds an allowed IP address or CIDR range for the specified cluster.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v4",
-                "organizations",
-                ":organizationId",
-                "projects",
-                ":projectId",
-                "clusters",
-                ":clusterId",
-                "allowedCIDRs"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "organizationId",
-                  "description": "(Required) The UUID of the organization"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "projectId",
-                  "description": "(Required) The UUID of the project"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "clusterId",
-                  "description": "(Required) The UUID of the cluster"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"cidr\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "b2a1995d-09ea-4ff1-94b1-b68987c0a829",
-              "name": "Allowed CIDR added successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v4",
-                    "organizations",
-                    ":organizationId",
-                    "projects",
-                    ":projectId",
-                    "clusters",
-                    ":clusterId",
-                    "allowedCIDRs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "organizationId",
-                      "description": "(Required) The UUID of the organization"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "projectId",
-                      "description": "(Required) The UUID of the project"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "clusterId",
-                      "description": "(Required) The UUID of the cluster"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"cidr\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "14bef3f6-9ad8-4820-9ee8-850f6e07c62e",
-              "name": "Invalid CIDR configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v4",
-                    "organizations",
-                    ":organizationId",
-                    "projects",
-                    ":projectId",
-                    "clusters",
-                    ":clusterId",
-                    "allowedCIDRs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "organizationId",
-                      "description": "(Required) The UUID of the organization"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "projectId",
-                      "description": "(Required) The UUID of the project"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "clusterId",
-                      "description": "(Required) The UUID of the cluster"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"cidr\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "e10112bc-2fbc-4490-82e2-88bf990810f4",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v4",
-                    "organizations",
-                    ":organizationId",
-                    "projects",
-                    ":projectId",
-                    "clusters",
-                    ":clusterId",
-                    "allowedCIDRs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "organizationId",
-                      "description": "(Required) The UUID of the organization"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "projectId",
-                      "description": "(Required) The UUID of the project"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "clusterId",
-                      "description": "(Required) The UUID of the cluster"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"cidr\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3d9ff439-8f0b-4b07-8552-8928f1200c47",
-              "name": "Rate limit exceeded",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v4",
-                    "organizations",
-                    ":organizationId",
-                    "projects",
-                    ":projectId",
-                    "clusters",
-                    ":clusterId",
-                    "allowedCIDRs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "organizationId",
-                      "description": "(Required) The UUID of the organization"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "projectId",
-                      "description": "(Required) The UUID of the project"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "clusterId",
-                      "description": "(Required) The UUID of the cluster"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"cidr\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4ed347b5-8956-43ab-98ed-d547bdd3da75",
-          "name": "Delete an allowed CIDR",
-          "request": {
-            "name": "Delete an allowed CIDR",
-            "description": {
-              "content": "Removes an allowed IP address or CIDR range from the specified cluster.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v4",
-                "organizations",
-                ":organizationId",
-                "projects",
-                ":projectId",
-                "clusters",
-                ":clusterId",
-                "allowedCIDRs",
-                ":allowedCIDRId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "organizationId",
-                  "description": "(Required) The UUID of the organization"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "projectId",
-                  "description": "(Required) The UUID of the project"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "clusterId",
-                  "description": "(Required) The UUID of the cluster"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "allowedCIDRId",
-                  "description": "(Required) The ID of the allowed CIDR to delete"
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "4e627fad-e813-4c5b-9b32-dd8343a9b56c",
-              "name": "Allowed CIDR deleted successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v4",
-                    "organizations",
-                    ":organizationId",
-                    "projects",
-                    ":projectId",
-                    "clusters",
-                    ":clusterId",
-                    "allowedCIDRs",
-                    ":allowedCIDRId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "organizationId",
-                      "description": "(Required) The UUID of the organization"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "projectId",
-                      "description": "(Required) The UUID of the project"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "clusterId",
-                      "description": "(Required) The UUID of the cluster"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "allowedCIDRId",
-                      "description": "(Required) The ID of the allowed CIDR to delete"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6f716159-fd39-4f79-bdb1-e0b101fa5b4a",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v4",
-                    "organizations",
-                    ":organizationId",
-                    "projects",
-                    ":projectId",
-                    "clusters",
-                    ":clusterId",
-                    "allowedCIDRs",
-                    ":allowedCIDRId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "organizationId",
-                      "description": "(Required) The UUID of the organization"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "projectId",
-                      "description": "(Required) The UUID of the project"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "clusterId",
-                      "description": "(Required) The UUID of the cluster"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "allowedCIDRId",
-                      "description": "(Required) The ID of the allowed CIDR to delete"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3075f613-d6f6-4d11-abe2-76cac8e71dbc",
-              "name": "Allowed CIDR not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v4",
-                    "organizations",
-                    ":organizationId",
-                    "projects",
-                    ":projectId",
-                    "clusters",
-                    ":clusterId",
-                    "allowedCIDRs",
-                    ":allowedCIDRId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "organizationId",
-                      "description": "(Required) The UUID of the organization"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "projectId",
-                      "description": "(Required) The UUID of the project"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "clusterId",
-                      "description": "(Required) The UUID of the cluster"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "allowedCIDRId",
-                      "description": "(Required) The ID of the allowed CIDR to delete"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "79b4a682-8507-40b4-adbe-0b75f4adffef",
-              "name": "Rate limit exceeded",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v4",
-                    "organizations",
-                    ":organizationId",
-                    "projects",
-                    ":projectId",
-                    "clusters",
-                    ":clusterId",
-                    "allowedCIDRs",
-                    ":allowedCIDRId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "organizationId",
-                      "description": "(Required) The UUID of the organization"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "projectId",
-                      "description": "(Required) The UUID of the project"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "clusterId",
-                      "description": "(Required) The UUID of the cluster"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "allowedCIDRId",
-                      "description": "(Required) The ID of the allowed CIDR to delete"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "d4b842c8-5ddc-4e4f-ba24-4572c5ec30f0",
+          "createdAt": "2026-10-21T19:55:36.000Z",
+          "updatedAt": "2026-10-21T19:55:36.000Z",
+          "uid": "35240-d4b842c8-5ddc-4e4f-ba24-4572c5ec30f0"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://localhost:8095",
-      "key": "baseUrl"
+      "id": "e4517275-4b53-464d-a3fb-b4a9b5834b23",
+      "createdAt": "2026-10-21T19:55:36.000Z",
+      "updatedAt": "2026-10-21T19:55:36.000Z",
+      "uid": "35240-e4517275-4b53-464d-a3fb-b4a9b5834b23"
     }
   ],
   "auth": {
-    "type": "basic",
-    "basic": [
+    "type": "bearer",
+    "bearer": [
       {
-        "key": "username",
-        "value": "{{basicAuthUsername}}"
-      },
-      {
-        "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "ef871c01-b075-452d-a84f-58573c05df0c",
-    "name": "Couchbase Analytics Service REST Allowed CIDRs API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cloudapi.cloud.couchbase.com"
     }
-  }
+  ]
 }

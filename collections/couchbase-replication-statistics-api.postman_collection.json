@@ -1,259 +1,265 @@
 {
+  "info": {
+    "_postman_id": "7148a162-c750-4516-bcb1-c2b3a658ac24",
+    "name": "Couchbase XDCR REST Replication Statistics API",
+    "description": "The Couchbase XDCR (Cross Data Center Replication) REST API enables configuration and management of data replication between Couchbase clusters across different data centers. It provides endpoints for creating replication references, configuring replication streams, monitoring replication statistics, and managing replication settings. XDCR supports both unidirectional and bidirectional replication for high availability and disaster recovery scenarios.\n\nContact Support:\n Name: Couchbase Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:58:37.000Z",
+    "updatedAt": "2026-10-21T19:58:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7148a162-c750-4516-bcb1-c2b3a658ac24"
+  },
   "item": [
     {
-      "id": "9ab09a78-7f5a-456b-bce8-a061d8a7ad98",
-      "name": "Replication Statistics",
-      "description": {
-        "content": "Endpoints for monitoring replication progress and performance statistics.",
-        "type": "text/plain"
-      },
+      "name": "pools",
       "item": [
         {
-          "id": "421ae5f1-fbcc-4a3e-85b9-f24b13b1957a",
-          "name": "Get XDCR replication statistics",
-          "request": {
-            "name": "Get XDCR replication statistics",
-            "description": {
-              "content": "Returns statistics for XDCR replications on a specific bucket, including items replicated, replication latency, and bandwidth usage.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "pools",
-                "default",
-                "buckets",
-                ":bucketName",
-                "stats",
-                ":statName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "bucketName",
-                  "description": "(Required) The name of the source bucket"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "statName",
-                  "description": "(Required) The specific statistic to retrieve (e.g., replications/{replicationId}/docs_written)"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "default",
+          "item": [
             {
-              "id": "bf9589a6-da8d-455b-ad30-75b3ce5883eb",
-              "name": "Successful retrieval of replication statistics",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "buckets",
-                    ":bucketName",
-                    "stats",
-                    ":statName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketName",
-                      "description": "(Required) The name of the source bucket"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "statName",
-                      "description": "(Required) The specific statistic to retrieve (e.g., replications/{replicationId}/docs_written)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "buckets",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "{bucketName}",
+                  "item": [
+                    {
+                      "name": "stats",
+                      "item": [
+                        {
+                          "name": "{statName}",
+                          "item": [
+                            {
+                              "name": "Get XDCR replication statistics",
+                              "id": "4888f23b-32b9-4f72-94ff-cee7d0190d19",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/pools/default/buckets/:bucketName/stats/:statName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "pools",
+                                    "default",
+                                    "buckets",
+                                    ":bucketName",
+                                    "stats",
+                                    ":statName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "f165d9d6-69cf-4523-b288-6ee1e47d8362",
+                                      "key": "bucketName",
+                                      "value": "<string>",
+                                      "description": "(Required) The name of the source bucket"
+                                    },
+                                    {
+                                      "id": "1145673c-adae-4fd6-a438-2a637d3f1f87",
+                                      "key": "statName",
+                                      "value": "<string>",
+                                      "description": "(Required) The specific statistic to retrieve (e.g., replications/{replicationId}/docs_written)"
+                                    }
+                                  ]
+                                },
+                                "description": "Returns statistics for XDCR replications on a specific bucket, including items replicated, replication latency, and bandwidth usage."
+                              },
+                              "response": [
+                                {
+                                  "id": "abf1a3e4-8378-4e81-8866-e54063e513a8",
+                                  "name": "Successful retrieval of replication statistics",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: basic",
+                                        "key": "Authorization",
+                                        "value": "Basic <credentials>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/pools/default/buckets/:bucketName/stats/:statName",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "pools",
+                                        "default",
+                                        "buckets",
+                                        ":bucketName",
+                                        "stats",
+                                        ":statName"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucketName"
+                                        },
+                                        {
+                                          "key": "statName"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{}",
+                                  "createdAt": "2026-10-21T19:58:38.000Z",
+                                  "updatedAt": "2026-10-21T19:58:38.000Z",
+                                  "uid": "35240-abf1a3e4-8378-4e81-8866-e54063e513a8"
+                                },
+                                {
+                                  "id": "2b8d1ff9-4aa0-4484-adc0-17578204d2d0",
+                                  "name": "Unauthorized access",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: basic",
+                                        "key": "Authorization",
+                                        "value": "Basic <credentials>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/pools/default/buckets/:bucketName/stats/:statName",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "pools",
+                                        "default",
+                                        "buckets",
+                                        ":bucketName",
+                                        "stats",
+                                        ":statName"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucketName"
+                                        },
+                                        {
+                                          "key": "statName"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T19:58:38.000Z",
+                                  "updatedAt": "2026-10-21T19:58:38.000Z",
+                                  "uid": "35240-2b8d1ff9-4aa0-4484-adc0-17578204d2d0"
+                                },
+                                {
+                                  "id": "9245c596-ea28-4dc1-b7fc-b69593dc39cf",
+                                  "name": "Bucket or statistic not found",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: basic",
+                                        "key": "Authorization",
+                                        "value": "Basic <credentials>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/pools/default/buckets/:bucketName/stats/:statName",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "pools",
+                                        "default",
+                                        "buckets",
+                                        ":bucketName",
+                                        "stats",
+                                        ":statName"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucketName"
+                                        },
+                                        {
+                                          "key": "statName"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T19:58:38.000Z",
+                                  "updatedAt": "2026-10-21T19:58:38.000Z",
+                                  "uid": "35240-9245c596-ea28-4dc1-b7fc-b69593dc39cf"
+                                }
+                              ],
+                              "createdAt": "2026-10-21T19:58:38.000Z",
+                              "updatedAt": "2026-10-21T19:58:38.000Z",
+                              "uid": "35240-4888f23b-32b9-4f72-94ff-cee7d0190d19"
+                            }
+                          ],
+                          "id": "314add5d-42db-4d11-a1a9-e531ee4b8587",
+                          "createdAt": "2026-10-21T19:58:38.000Z",
+                          "updatedAt": "2026-10-21T19:58:38.000Z",
+                          "uid": "35240-314add5d-42db-4d11-a1a9-e531ee4b8587"
+                        }
+                      ],
+                      "id": "addc441f-12df-48de-bf23-8a4125eeec70",
+                      "createdAt": "2026-10-21T19:58:38.000Z",
+                      "updatedAt": "2026-10-21T19:58:38.000Z",
+                      "uid": "35240-addc441f-12df-48de-bf23-8a4125eeec70"
+                    }
+                  ],
+                  "id": "8592eb64-fa99-4693-897b-7fe2d482cb25",
+                  "createdAt": "2026-10-21T19:58:38.000Z",
+                  "updatedAt": "2026-10-21T19:58:38.000Z",
+                  "uid": "35240-8592eb64-fa99-4693-897b-7fe2d482cb25"
                 }
               ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ef299b2b-6d46-4189-8032-81c38595b5c1",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "buckets",
-                    ":bucketName",
-                    "stats",
-                    ":statName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketName",
-                      "description": "(Required) The name of the source bucket"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "statName",
-                      "description": "(Required) The specific statistic to retrieve (e.g., replications/{replicationId}/docs_written)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "433da112-ca50-4f8e-8431-6bb94b666fe6",
-              "name": "Bucket or statistic not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "buckets",
-                    ":bucketName",
-                    "stats",
-                    ":statName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketName",
-                      "description": "(Required) The name of the source bucket"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "statName",
-                      "description": "(Required) The specific statistic to retrieve (e.g., replications/{replicationId}/docs_written)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "d8a8d86a-c6c4-4262-9505-638bf158382c",
+              "createdAt": "2026-10-21T19:58:38.000Z",
+              "updatedAt": "2026-10-21T19:58:38.000Z",
+              "uid": "35240-d8a8d86a-c6c4-4262-9505-638bf158382c"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "c0973a06-482b-4917-af60-ea3215c68a1d",
+          "createdAt": "2026-10-21T19:58:38.000Z",
+          "updatedAt": "2026-10-21T19:58:38.000Z",
+          "uid": "35240-c0973a06-482b-4917-af60-ea3215c68a1d"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://localhost:8095",
-      "key": "baseUrl"
+      "id": "f2ef4a2a-71f8-45fe-9af8-1360c381ac12",
+      "createdAt": "2026-10-21T19:58:38.000Z",
+      "updatedAt": "2026-10-21T19:58:38.000Z",
+      "uid": "35240-f2ef4a2a-71f8-45fe-9af8-1360c381ac12"
     }
   ],
   "auth": {
@@ -261,21 +267,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "872d05d8-edef-4d59-8ee4-6a8b2d001fb9",
-    "name": "Couchbase Analytics Service REST Allowed CIDRs Replication Statistics API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:8091"
     }
-  }
+  ]
 }

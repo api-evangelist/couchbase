@@ -1,709 +1,714 @@
 {
+  "info": {
+    "_postman_id": "b53228e3-b511-4cf6-a0b5-9235831cf628",
+    "name": "Couchbase Backup Service REST Tasks API",
+    "description": "The Couchbase Backup Service REST API supports management of the Backup Service for Couchbase Server, providing endpoints for cluster configuration, repository management, backup plans, task scheduling, and data operations. It enables automated backup and restore workflows for Couchbase data, allowing administrators to define backup policies, monitor backup tasks, and manage backup repositories programmatically.\n\nContact Support:\n Name: Couchbase Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:59:20.000Z",
+    "updatedAt": "2026-10-21T19:59:20.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b53228e3-b511-4cf6-a0b5-9235831cf628"
+  },
   "item": [
     {
-      "id": "bf9cc1d6-83b2-4d77-9569-5e178d384097",
-      "name": "Tasks",
-      "description": {
-        "content": "Endpoints for monitoring and managing backup and restore tasks.",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "1127fe0e-a352-43d1-8088-f1e723656713",
-          "name": "Get repository task history",
-          "request": {
-            "name": "Get repository task history",
-            "description": {
-              "content": "Returns the history of backup and restore tasks for the specified active repository, including task types, statuses, and timing.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "cluster",
-                "self",
-                "repository",
-                "active",
-                ":repositoryId",
-                "taskHistory"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "<dateTime>",
-                  "description": "The earliest date for returned tasks"
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "<integer>",
-                  "description": "Maximum number of tasks to return"
-                },
-                {
-                  "disabled": false,
-                  "key": "task_name",
-                  "value": "<string>",
-                  "description": "Filter by task name"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "repositoryId",
-                  "description": "(Required) The name of the backup repository"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "17a1f977-c87f-4350-8efc-d256278f7157",
-              "name": "Successful retrieval of task history",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "cluster",
-                    "self",
-                    "repository",
-                    "active",
-                    ":repositoryId",
-                    "taskHistory"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "offset",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "task_name",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "repositoryId",
-                      "description": "(Required) The name of the backup repository"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "cluster",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "self",
+                  "item": [
+                    {
+                      "name": "repository",
+                      "item": [
+                        {
+                          "name": "active",
+                          "item": [
+                            {
+                              "name": "{repositoryId}",
+                              "item": [
+                                {
+                                  "name": "taskHistory",
+                                  "item": [
+                                    {
+                                      "name": "Get repository task history",
+                                      "id": "33eabc1b-ff56-47e4-96b5-707221a8a6f1",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v1/cluster/self/repository/active/:repositoryId/taskHistory?offset=<dateTime>&limit=<integer>&task_name=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v1",
+                                            "cluster",
+                                            "self",
+                                            "repository",
+                                            "active",
+                                            ":repositoryId",
+                                            "taskHistory"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "The earliest date for returned tasks",
+                                              "key": "offset",
+                                              "value": "<dateTime>"
+                                            },
+                                            {
+                                              "description": "Maximum number of tasks to return",
+                                              "key": "limit",
+                                              "value": "<integer>"
+                                            },
+                                            {
+                                              "description": "Filter by task name",
+                                              "key": "task_name",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "69c92853-c05d-4062-acaa-d47f63b5ab22",
+                                              "key": "repositoryId",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the backup repository"
+                                            }
+                                          ]
+                                        },
+                                        "description": "Returns the history of backup and restore tasks for the specified active repository, including task types, statuses, and timing."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "559d4fc5-aacf-4495-aed4-e805c6d5a017",
+                                          "name": "Successful retrieval of task history",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: basic",
+                                                "key": "Authorization",
+                                                "value": "Basic <credentials>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/v1/cluster/self/repository/active/:repositoryId/taskHistory?offset=<dateTime>&limit=<integer>&task_name=<string>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "v1",
+                                                "cluster",
+                                                "self",
+                                                "repository",
+                                                "active",
+                                                ":repositoryId",
+                                                "taskHistory"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "The earliest date for returned tasks",
+                                                  "key": "offset",
+                                                  "value": "<dateTime>"
+                                                },
+                                                {
+                                                  "description": "Maximum number of tasks to return",
+                                                  "key": "limit",
+                                                  "value": "<integer>"
+                                                },
+                                                {
+                                                  "description": "Filter by task name",
+                                                  "key": "task_name",
+                                                  "value": "<string>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "repositoryId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "[\n  {\n    \"task_name\": \"<string>\",\n    \"status\": \"cancelled\",\n    \"start\": \"<dateTime>\",\n    \"end\": \"<dateTime>\",\n    \"type\": \"BACKUP\"\n  },\n  {\n    \"task_name\": \"<string>\",\n    \"status\": \"running\",\n    \"start\": \"<dateTime>\",\n    \"end\": \"<dateTime>\",\n    \"type\": \"MERGE\"\n  }\n]",
+                                          "createdAt": "2026-10-21T19:59:20.000Z",
+                                          "updatedAt": "2026-10-21T19:59:20.000Z",
+                                          "uid": "35240-559d4fc5-aacf-4495-aed4-e805c6d5a017"
+                                        },
+                                        {
+                                          "id": "f4b026c6-34a0-468f-a7d9-b59cefcfb25e",
+                                          "name": "Unauthorized access",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: basic",
+                                                "key": "Authorization",
+                                                "value": "Basic <credentials>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/v1/cluster/self/repository/active/:repositoryId/taskHistory?offset=<dateTime>&limit=<integer>&task_name=<string>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "v1",
+                                                "cluster",
+                                                "self",
+                                                "repository",
+                                                "active",
+                                                ":repositoryId",
+                                                "taskHistory"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "The earliest date for returned tasks",
+                                                  "key": "offset",
+                                                  "value": "<dateTime>"
+                                                },
+                                                {
+                                                  "description": "Maximum number of tasks to return",
+                                                  "key": "limit",
+                                                  "value": "<integer>"
+                                                },
+                                                {
+                                                  "description": "Filter by task name",
+                                                  "key": "task_name",
+                                                  "value": "<string>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "repositoryId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Unauthorized",
+                                          "code": 401,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-10-21T19:59:20.000Z",
+                                          "updatedAt": "2026-10-21T19:59:20.000Z",
+                                          "uid": "35240-f4b026c6-34a0-468f-a7d9-b59cefcfb25e"
+                                        },
+                                        {
+                                          "id": "da910d0e-2c55-48ef-ada2-a9def139f150",
+                                          "name": "Repository not found",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: basic",
+                                                "key": "Authorization",
+                                                "value": "Basic <credentials>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/v1/cluster/self/repository/active/:repositoryId/taskHistory?offset=<dateTime>&limit=<integer>&task_name=<string>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "v1",
+                                                "cluster",
+                                                "self",
+                                                "repository",
+                                                "active",
+                                                ":repositoryId",
+                                                "taskHistory"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "The earliest date for returned tasks",
+                                                  "key": "offset",
+                                                  "value": "<dateTime>"
+                                                },
+                                                {
+                                                  "description": "Maximum number of tasks to return",
+                                                  "key": "limit",
+                                                  "value": "<integer>"
+                                                },
+                                                {
+                                                  "description": "Filter by task name",
+                                                  "key": "task_name",
+                                                  "value": "<string>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "repositoryId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Not Found",
+                                          "code": 404,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-10-21T19:59:20.000Z",
+                                          "updatedAt": "2026-10-21T19:59:20.000Z",
+                                          "uid": "35240-da910d0e-2c55-48ef-ada2-a9def139f150"
+                                        }
+                                      ],
+                                      "createdAt": "2026-10-21T19:59:20.000Z",
+                                      "updatedAt": "2026-10-21T19:59:20.000Z",
+                                      "uid": "35240-33eabc1b-ff56-47e4-96b5-707221a8a6f1"
+                                    }
+                                  ],
+                                  "id": "33c85a73-58b9-47b8-a3c7-3d3030fd2556",
+                                  "createdAt": "2026-10-21T19:59:20.000Z",
+                                  "updatedAt": "2026-10-21T19:59:20.000Z",
+                                  "uid": "35240-33c85a73-58b9-47b8-a3c7-3d3030fd2556"
+                                },
+                                {
+                                  "name": "pause",
+                                  "item": [
+                                    {
+                                      "name": "Pause repository tasks",
+                                      "id": "82a3d837-f901-4c61-9c23-6b00953f0e02",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v1/cluster/self/repository/active/:repositoryId/pause",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v1",
+                                            "cluster",
+                                            "self",
+                                            "repository",
+                                            "active",
+                                            ":repositoryId",
+                                            "pause"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "3d3eec31-c7dd-487d-a9fb-cc8b5c927d21",
+                                              "key": "repositoryId",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the backup repository"
+                                            }
+                                          ]
+                                        },
+                                        "description": "Pauses all scheduled tasks for the specified active repository."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "f6771f33-667e-4ae6-b06c-dfd251c59864",
+                                          "name": "Repository tasks paused successfully",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: basic",
+                                                "key": "Authorization",
+                                                "value": "Basic <credentials>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/v1/cluster/self/repository/active/:repositoryId/pause",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "v1",
+                                                "cluster",
+                                                "self",
+                                                "repository",
+                                                "active",
+                                                ":repositoryId",
+                                                "pause"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "repositoryId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-10-21T19:59:20.000Z",
+                                          "updatedAt": "2026-10-21T19:59:20.000Z",
+                                          "uid": "35240-f6771f33-667e-4ae6-b06c-dfd251c59864"
+                                        },
+                                        {
+                                          "id": "696b3a22-a3eb-4ab3-ba71-2c69cf692f5a",
+                                          "name": "Unauthorized access",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: basic",
+                                                "key": "Authorization",
+                                                "value": "Basic <credentials>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/v1/cluster/self/repository/active/:repositoryId/pause",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "v1",
+                                                "cluster",
+                                                "self",
+                                                "repository",
+                                                "active",
+                                                ":repositoryId",
+                                                "pause"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "repositoryId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Unauthorized",
+                                          "code": 401,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-10-21T19:59:20.000Z",
+                                          "updatedAt": "2026-10-21T19:59:20.000Z",
+                                          "uid": "35240-696b3a22-a3eb-4ab3-ba71-2c69cf692f5a"
+                                        },
+                                        {
+                                          "id": "9e7ad0b9-e4aa-4d85-9419-1a392307811c",
+                                          "name": "Repository not found",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: basic",
+                                                "key": "Authorization",
+                                                "value": "Basic <credentials>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/v1/cluster/self/repository/active/:repositoryId/pause",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "v1",
+                                                "cluster",
+                                                "self",
+                                                "repository",
+                                                "active",
+                                                ":repositoryId",
+                                                "pause"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "repositoryId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Not Found",
+                                          "code": 404,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-10-21T19:59:20.000Z",
+                                          "updatedAt": "2026-10-21T19:59:20.000Z",
+                                          "uid": "35240-9e7ad0b9-e4aa-4d85-9419-1a392307811c"
+                                        }
+                                      ],
+                                      "createdAt": "2026-10-21T19:59:20.000Z",
+                                      "updatedAt": "2026-10-21T19:59:20.000Z",
+                                      "uid": "35240-82a3d837-f901-4c61-9c23-6b00953f0e02"
+                                    }
+                                  ],
+                                  "id": "dd3160f5-e84b-4137-b235-42896a05f818",
+                                  "createdAt": "2026-10-21T19:59:20.000Z",
+                                  "updatedAt": "2026-10-21T19:59:20.000Z",
+                                  "uid": "35240-dd3160f5-e84b-4137-b235-42896a05f818"
+                                },
+                                {
+                                  "name": "resume",
+                                  "item": [
+                                    {
+                                      "name": "Resume repository tasks",
+                                      "id": "7bcf8ac9-d181-401e-8e1d-0cf0ddcedf8c",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v1/cluster/self/repository/active/:repositoryId/resume",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v1",
+                                            "cluster",
+                                            "self",
+                                            "repository",
+                                            "active",
+                                            ":repositoryId",
+                                            "resume"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "01c4abd9-7a57-4f26-8710-00b68cef27cc",
+                                              "key": "repositoryId",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the backup repository"
+                                            }
+                                          ]
+                                        },
+                                        "description": "Resumes all paused tasks for the specified active repository."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "239b8fc5-cac4-422e-9c41-a33287b626c8",
+                                          "name": "Repository tasks resumed successfully",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: basic",
+                                                "key": "Authorization",
+                                                "value": "Basic <credentials>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/v1/cluster/self/repository/active/:repositoryId/resume",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "v1",
+                                                "cluster",
+                                                "self",
+                                                "repository",
+                                                "active",
+                                                ":repositoryId",
+                                                "resume"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "repositoryId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-10-21T19:59:20.000Z",
+                                          "updatedAt": "2026-10-21T19:59:20.000Z",
+                                          "uid": "35240-239b8fc5-cac4-422e-9c41-a33287b626c8"
+                                        },
+                                        {
+                                          "id": "db3fb245-6136-4b15-859d-4496c3a92407",
+                                          "name": "Unauthorized access",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: basic",
+                                                "key": "Authorization",
+                                                "value": "Basic <credentials>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/v1/cluster/self/repository/active/:repositoryId/resume",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "v1",
+                                                "cluster",
+                                                "self",
+                                                "repository",
+                                                "active",
+                                                ":repositoryId",
+                                                "resume"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "repositoryId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Unauthorized",
+                                          "code": 401,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-10-21T19:59:20.000Z",
+                                          "updatedAt": "2026-10-21T19:59:20.000Z",
+                                          "uid": "35240-db3fb245-6136-4b15-859d-4496c3a92407"
+                                        },
+                                        {
+                                          "id": "dcbb048c-2b3a-421f-8f7b-05dfa561ea79",
+                                          "name": "Repository not found",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: basic",
+                                                "key": "Authorization",
+                                                "value": "Basic <credentials>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/v1/cluster/self/repository/active/:repositoryId/resume",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "v1",
+                                                "cluster",
+                                                "self",
+                                                "repository",
+                                                "active",
+                                                ":repositoryId",
+                                                "resume"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "repositoryId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Not Found",
+                                          "code": 404,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-10-21T19:59:20.000Z",
+                                          "updatedAt": "2026-10-21T19:59:20.000Z",
+                                          "uid": "35240-dcbb048c-2b3a-421f-8f7b-05dfa561ea79"
+                                        }
+                                      ],
+                                      "createdAt": "2026-10-21T19:59:20.000Z",
+                                      "updatedAt": "2026-10-21T19:59:20.000Z",
+                                      "uid": "35240-7bcf8ac9-d181-401e-8e1d-0cf0ddcedf8c"
+                                    }
+                                  ],
+                                  "id": "250d9303-cfb3-49bf-96b2-eebfa11512e6",
+                                  "createdAt": "2026-10-21T19:59:20.000Z",
+                                  "updatedAt": "2026-10-21T19:59:20.000Z",
+                                  "uid": "35240-250d9303-cfb3-49bf-96b2-eebfa11512e6"
+                                }
+                              ],
+                              "id": "d8c31615-0d56-45fa-a195-9f7079b9376e",
+                              "createdAt": "2026-10-21T19:59:20.000Z",
+                              "updatedAt": "2026-10-21T19:59:20.000Z",
+                              "uid": "35240-d8c31615-0d56-45fa-a195-9f7079b9376e"
+                            }
+                          ],
+                          "id": "243fe462-4c63-48d2-8b07-682df34aa91b",
+                          "createdAt": "2026-10-21T19:59:20.000Z",
+                          "updatedAt": "2026-10-21T19:59:20.000Z",
+                          "uid": "35240-243fe462-4c63-48d2-8b07-682df34aa91b"
+                        }
+                      ],
+                      "id": "49a50bec-5780-450d-922c-6d403ed3c15b",
+                      "createdAt": "2026-10-21T19:59:20.000Z",
+                      "updatedAt": "2026-10-21T19:59:20.000Z",
+                      "uid": "35240-49a50bec-5780-450d-922c-6d403ed3c15b"
+                    }
+                  ],
+                  "id": "369331da-de2f-4c0f-abfd-7190ac1e22e9",
+                  "createdAt": "2026-10-21T19:59:20.000Z",
+                  "updatedAt": "2026-10-21T19:59:20.000Z",
+                  "uid": "35240-369331da-de2f-4c0f-abfd-7190ac1e22e9"
                 }
               ],
-              "body": "[\n  {\n    \"task_name\": \"string\",\n    \"status\": \"cancelled\",\n    \"start\": \"1969-11-30T10:23:44.069Z\",\n    \"end\": \"1963-08-22T23:15:19.420Z\",\n    \"type\": \"RESTORE\"\n  },\n  {\n    \"task_name\": \"string\",\n    \"status\": \"running\",\n    \"start\": \"1974-03-17T02:35:35.313Z\",\n    \"end\": \"1952-12-29T11:29:37.442Z\",\n    \"type\": \"BACKUP\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "231b1435-9af8-4177-927d-09554f2f9163",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "cluster",
-                    "self",
-                    "repository",
-                    "active",
-                    ":repositoryId",
-                    "taskHistory"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "offset",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "task_name",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "repositoryId",
-                      "description": "(Required) The name of the backup repository"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "919d78fc-c013-4c24-91f2-afa8a30a566b",
-              "name": "Repository not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "cluster",
-                    "self",
-                    "repository",
-                    "active",
-                    ":repositoryId",
-                    "taskHistory"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "offset",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "task_name",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "repositoryId",
-                      "description": "(Required) The name of the backup repository"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "1547f56c-0b86-4f2e-9c60-8b735c4c25a7",
+              "createdAt": "2026-10-21T19:59:20.000Z",
+              "updatedAt": "2026-10-21T19:59:20.000Z",
+              "uid": "35240-1547f56c-0b86-4f2e-9c60-8b735c4c25a7"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c5887e9c-7bbb-4629-87b9-e9aa5ef58250",
-          "name": "Pause repository tasks",
-          "request": {
-            "name": "Pause repository tasks",
-            "description": {
-              "content": "Pauses all scheduled tasks for the specified active repository.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "cluster",
-                "self",
-                "repository",
-                "active",
-                ":repositoryId",
-                "pause"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "repositoryId",
-                  "description": "(Required) The name of the backup repository"
-                }
-              ]
-            },
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "7218cfd6-617d-4fc9-a1dc-a3689fc40619",
-              "name": "Repository tasks paused successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "cluster",
-                    "self",
-                    "repository",
-                    "active",
-                    ":repositoryId",
-                    "pause"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "repositoryId",
-                      "description": "(Required) The name of the backup repository"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "c5b6bdce-69e4-4422-9e11-7d1e17d0e2ae",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "cluster",
-                    "self",
-                    "repository",
-                    "active",
-                    ":repositoryId",
-                    "pause"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "repositoryId",
-                      "description": "(Required) The name of the backup repository"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "2f77a1e9-f9f1-4326-834d-112f713a3862",
-              "name": "Repository not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "cluster",
-                    "self",
-                    "repository",
-                    "active",
-                    ":repositoryId",
-                    "pause"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "repositoryId",
-                      "description": "(Required) The name of the backup repository"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d78a68be-a772-47bc-ade1-f4c36e98525a",
-          "name": "Resume repository tasks",
-          "request": {
-            "name": "Resume repository tasks",
-            "description": {
-              "content": "Resumes all paused tasks for the specified active repository.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "cluster",
-                "self",
-                "repository",
-                "active",
-                ":repositoryId",
-                "resume"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "repositoryId",
-                  "description": "(Required) The name of the backup repository"
-                }
-              ]
-            },
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "5cd9ce00-d2ed-4cea-9a54-48baa542c0b8",
-              "name": "Repository tasks resumed successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "cluster",
-                    "self",
-                    "repository",
-                    "active",
-                    ":repositoryId",
-                    "resume"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "repositoryId",
-                      "description": "(Required) The name of the backup repository"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "131f461f-3d6c-4dbb-ac3f-79ff39f5d355",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "cluster",
-                    "self",
-                    "repository",
-                    "active",
-                    ":repositoryId",
-                    "resume"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "repositoryId",
-                      "description": "(Required) The name of the backup repository"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "4ec6fad6-801d-420f-a34d-1014602ab4fb",
-              "name": "Repository not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "cluster",
-                    "self",
-                    "repository",
-                    "active",
-                    ":repositoryId",
-                    "resume"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "repositoryId",
-                      "description": "(Required) The name of the backup repository"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "d477ec20-362b-4daa-84e5-51686df97b1a",
+          "createdAt": "2026-10-21T19:59:20.000Z",
+          "updatedAt": "2026-10-21T19:59:20.000Z",
+          "uid": "35240-d477ec20-362b-4daa-84e5-51686df97b1a"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://localhost:8095",
-      "key": "baseUrl"
+      "id": "2c6f1650-a31c-48d9-8f4b-94d3d4687ab9",
+      "createdAt": "2026-10-21T19:59:20.000Z",
+      "updatedAt": "2026-10-21T19:59:20.000Z",
+      "uid": "35240-2c6f1650-a31c-48d9-8f4b-94d3d4687ab9"
     }
   ],
   "auth": {
@@ -711,21 +716,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "276c1b98-1d94-4ee2-8e06-e930065c3629",
-    "name": "Couchbase Analytics Service REST Allowed CIDRs Tasks API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:8097"
     }
-  }
+  ]
 }

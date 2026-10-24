@@ -1,799 +1,742 @@
 {
+  "info": {
+    "_postman_id": "711cd317-abe6-4a93-9a85-acb269e771e3",
+    "name": "Couchbase Eventing Service REST Lifecycle API",
+    "description": "The Couchbase Eventing Service REST API provides methods for deploying and managing Eventing Functions that respond to data changes in real time. Eventing Functions allow developers to write server-side JavaScript logic triggered by document mutations, timers, or external events. The API supports creating, deploying, pausing, and undeploying functions, as well as monitoring their execution status and statistics.\n\nContact Support:\n Name: Couchbase Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:57:51.000Z",
+    "updatedAt": "2026-10-21T19:57:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-711cd317-abe6-4a93-9a85-acb269e771e3"
+  },
   "item": [
     {
-      "id": "93ed39f9-06df-4d94-8e62-648af036fb41",
-      "name": "Lifecycle",
-      "description": {
-        "content": "Endpoints for deploying, undeploying, pausing, and resuming Eventing Functions.",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "4aabacea-8b03-4dc4-a789-6e030f9f45ca",
-          "name": "Deploy an Eventing Function",
-          "request": {
-            "name": "Deploy an Eventing Function",
-            "description": {
-              "content": "Deploys an undeployed Eventing Function, starting it to process document mutations and execute its handler code.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "functions",
-                ":functionName",
-                "deploy"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "functionName",
-                  "description": "(Required) The name of the Eventing Function"
-                }
-              ]
-            },
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "bad2422f-0d10-44af-9880-43dd63d57ba6",
-              "name": "Function deployment initiated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "functions",
-                    ":functionName",
-                    "deploy"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "functionName",
-                      "description": "(Required) The name of the Eventing Function"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "functions",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "{functionName}",
+                  "item": [
+                    {
+                      "name": "deploy",
+                      "item": [
+                        {
+                          "name": "Deploy an Eventing Function",
+                          "id": "124335f7-861e-41f9-859e-6b34e7802ca5",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/functions/:functionName/deploy",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "functions",
+                                ":functionName",
+                                "deploy"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "e521f63c-55b7-49bf-8078-70c6596364af",
+                                  "key": "functionName",
+                                  "value": "<string>",
+                                  "description": "(Required) The name of the Eventing Function"
+                                }
+                              ]
+                            },
+                            "description": "Deploys an undeployed Eventing Function, starting it to process document mutations and execute its handler code."
+                          },
+                          "response": [
+                            {
+                              "id": "51060c10-6187-4680-b800-15ed171f2b28",
+                              "name": "Function deployment initiated",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/functions/:functionName/deploy",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "functions",
+                                    ":functionName",
+                                    "deploy"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "functionName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:57:51.000Z",
+                              "updatedAt": "2026-10-21T19:57:51.000Z",
+                              "uid": "35240-51060c10-6187-4680-b800-15ed171f2b28"
+                            },
+                            {
+                              "id": "df6db64c-3a9f-430c-b4d8-b09f450db6c4",
+                              "name": "Unauthorized access",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/functions/:functionName/deploy",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "functions",
+                                    ":functionName",
+                                    "deploy"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "functionName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:57:51.000Z",
+                              "updatedAt": "2026-10-21T19:57:51.000Z",
+                              "uid": "35240-df6db64c-3a9f-430c-b4d8-b09f450db6c4"
+                            },
+                            {
+                              "id": "eaefbbe5-af68-4cec-9c0f-fd6daad21960",
+                              "name": "Function not found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/functions/:functionName/deploy",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "functions",
+                                    ":functionName",
+                                    "deploy"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "functionName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:57:51.000Z",
+                              "updatedAt": "2026-10-21T19:57:51.000Z",
+                              "uid": "35240-eaefbbe5-af68-4cec-9c0f-fd6daad21960"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T19:57:51.000Z",
+                          "updatedAt": "2026-10-21T19:57:51.000Z",
+                          "uid": "35240-124335f7-861e-41f9-859e-6b34e7802ca5"
+                        }
+                      ],
+                      "id": "562dca20-aa11-4d5b-bbe5-0941b6558edd",
+                      "createdAt": "2026-10-21T19:57:51.000Z",
+                      "updatedAt": "2026-10-21T19:57:51.000Z",
+                      "uid": "35240-562dca20-aa11-4d5b-bbe5-0941b6558edd"
+                    },
+                    {
+                      "name": "undeploy",
+                      "item": [
+                        {
+                          "name": "Undeploy an Eventing Function",
+                          "id": "1f150145-8b22-4312-8cad-9a17248f32b5",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/functions/:functionName/undeploy",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "functions",
+                                ":functionName",
+                                "undeploy"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "9a795708-de04-49f5-abe7-166f785f7ad3",
+                                  "key": "functionName",
+                                  "value": "<string>",
+                                  "description": "(Required) The name of the Eventing Function"
+                                }
+                              ]
+                            },
+                            "description": "Undeploys a deployed Eventing Function, stopping it from processing document mutations."
+                          },
+                          "response": [
+                            {
+                              "id": "94e9591c-e4e2-454b-8a91-5a4c8a439377",
+                              "name": "Function undeployment initiated",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/functions/:functionName/undeploy",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "functions",
+                                    ":functionName",
+                                    "undeploy"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "functionName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:57:51.000Z",
+                              "updatedAt": "2026-10-21T19:57:51.000Z",
+                              "uid": "35240-94e9591c-e4e2-454b-8a91-5a4c8a439377"
+                            },
+                            {
+                              "id": "3d50549b-c1c3-4500-be71-9540979d54d4",
+                              "name": "Unauthorized access",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/functions/:functionName/undeploy",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "functions",
+                                    ":functionName",
+                                    "undeploy"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "functionName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:57:51.000Z",
+                              "updatedAt": "2026-10-21T19:57:51.000Z",
+                              "uid": "35240-3d50549b-c1c3-4500-be71-9540979d54d4"
+                            },
+                            {
+                              "id": "461f585b-dafd-4a8f-9074-52f645dbba63",
+                              "name": "Function not found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/functions/:functionName/undeploy",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "functions",
+                                    ":functionName",
+                                    "undeploy"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "functionName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:57:51.000Z",
+                              "updatedAt": "2026-10-21T19:57:51.000Z",
+                              "uid": "35240-461f585b-dafd-4a8f-9074-52f645dbba63"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T19:57:51.000Z",
+                          "updatedAt": "2026-10-21T19:57:51.000Z",
+                          "uid": "35240-1f150145-8b22-4312-8cad-9a17248f32b5"
+                        }
+                      ],
+                      "id": "3fa43177-f9ee-4163-940d-b160af050737",
+                      "createdAt": "2026-10-21T19:57:51.000Z",
+                      "updatedAt": "2026-10-21T19:57:51.000Z",
+                      "uid": "35240-3fa43177-f9ee-4163-940d-b160af050737"
+                    },
+                    {
+                      "name": "pause",
+                      "item": [
+                        {
+                          "name": "Pause an Eventing Function",
+                          "id": "0d73660c-9dab-4b3f-9c6f-bd6aaad683c8",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/functions/:functionName/pause",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "functions",
+                                ":functionName",
+                                "pause"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "02a26d7a-9674-4574-84cd-185fc5a48606",
+                                  "key": "functionName",
+                                  "value": "<string>",
+                                  "description": "(Required) The name of the Eventing Function"
+                                }
+                              ]
+                            },
+                            "description": "Pauses a deployed Eventing Function and creates a DCP checkpoint so that on a subsequent resume no mutations will be lost."
+                          },
+                          "response": [
+                            {
+                              "id": "a9a54385-262c-4777-aa5e-f840bf272ac2",
+                              "name": "Function paused successfully",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/functions/:functionName/pause",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "functions",
+                                    ":functionName",
+                                    "pause"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "functionName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:57:51.000Z",
+                              "updatedAt": "2026-10-21T19:57:51.000Z",
+                              "uid": "35240-a9a54385-262c-4777-aa5e-f840bf272ac2"
+                            },
+                            {
+                              "id": "528df0eb-32b4-48d1-b69b-3f82e9b1780e",
+                              "name": "Unauthorized access",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/functions/:functionName/pause",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "functions",
+                                    ":functionName",
+                                    "pause"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "functionName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:57:51.000Z",
+                              "updatedAt": "2026-10-21T19:57:51.000Z",
+                              "uid": "35240-528df0eb-32b4-48d1-b69b-3f82e9b1780e"
+                            },
+                            {
+                              "id": "c7f1499c-6125-475d-9615-909e82966607",
+                              "name": "Function not found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/functions/:functionName/pause",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "functions",
+                                    ":functionName",
+                                    "pause"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "functionName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:57:51.000Z",
+                              "updatedAt": "2026-10-21T19:57:51.000Z",
+                              "uid": "35240-c7f1499c-6125-475d-9615-909e82966607"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T19:57:51.000Z",
+                          "updatedAt": "2026-10-21T19:57:51.000Z",
+                          "uid": "35240-0d73660c-9dab-4b3f-9c6f-bd6aaad683c8"
+                        }
+                      ],
+                      "id": "d88cf80e-e569-4828-abc3-800c5b411354",
+                      "createdAt": "2026-10-21T19:57:51.000Z",
+                      "updatedAt": "2026-10-21T19:57:51.000Z",
+                      "uid": "35240-d88cf80e-e569-4828-abc3-800c5b411354"
+                    },
+                    {
+                      "name": "resume",
+                      "item": [
+                        {
+                          "name": "Resume an Eventing Function",
+                          "id": "3d0b2969-f46a-4e49-8119-bdf3138fbb6d",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/functions/:functionName/resume",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "functions",
+                                ":functionName",
+                                "resume"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "14f8bf97-58e0-4884-9977-1b6b051dc3f4",
+                                  "key": "functionName",
+                                  "value": "<string>",
+                                  "description": "(Required) The name of the Eventing Function"
+                                }
+                              ]
+                            },
+                            "description": "Resumes a paused Eventing Function from its DCP checkpoint, continuing to process mutations from where it left off."
+                          },
+                          "response": [
+                            {
+                              "id": "114d8fd7-fc71-4984-846b-9a90dd248cee",
+                              "name": "Function resumed successfully",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/functions/:functionName/resume",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "functions",
+                                    ":functionName",
+                                    "resume"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "functionName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:57:51.000Z",
+                              "updatedAt": "2026-10-21T19:57:51.000Z",
+                              "uid": "35240-114d8fd7-fc71-4984-846b-9a90dd248cee"
+                            },
+                            {
+                              "id": "f6fdd679-8c81-482d-8dcd-3114f4257888",
+                              "name": "Unauthorized access",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/functions/:functionName/resume",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "functions",
+                                    ":functionName",
+                                    "resume"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "functionName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:57:51.000Z",
+                              "updatedAt": "2026-10-21T19:57:51.000Z",
+                              "uid": "35240-f6fdd679-8c81-482d-8dcd-3114f4257888"
+                            },
+                            {
+                              "id": "a764c0f7-d33f-4a29-80f9-eda318188a64",
+                              "name": "Function not found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/functions/:functionName/resume",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "functions",
+                                    ":functionName",
+                                    "resume"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "functionName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:57:51.000Z",
+                              "updatedAt": "2026-10-21T19:57:51.000Z",
+                              "uid": "35240-a764c0f7-d33f-4a29-80f9-eda318188a64"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T19:57:51.000Z",
+                          "updatedAt": "2026-10-21T19:57:51.000Z",
+                          "uid": "35240-3d0b2969-f46a-4e49-8119-bdf3138fbb6d"
+                        }
+                      ],
+                      "id": "735018d2-1c40-4192-8006-f2f31f5fc7cd",
+                      "createdAt": "2026-10-21T19:57:51.000Z",
+                      "updatedAt": "2026-10-21T19:57:51.000Z",
+                      "uid": "35240-735018d2-1c40-4192-8006-f2f31f5fc7cd"
+                    }
+                  ],
+                  "id": "21877569-def7-410b-a1c3-465883e9c7f4",
+                  "createdAt": "2026-10-21T19:57:51.000Z",
+                  "updatedAt": "2026-10-21T19:57:51.000Z",
+                  "uid": "35240-21877569-def7-410b-a1c3-465883e9c7f4"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f22029ab-2763-4e5b-bdde-e9389f547901",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "functions",
-                    ":functionName",
-                    "deploy"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "functionName",
-                      "description": "(Required) The name of the Eventing Function"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "47d53fe6-76ff-4d72-9be4-a73943c715a8",
-              "name": "Function not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "functions",
-                    ":functionName",
-                    "deploy"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "functionName",
-                      "description": "(Required) The name of the Eventing Function"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "b9af1e62-8c0c-401b-8b3e-bf2e701a451e",
+              "createdAt": "2026-10-21T19:57:51.000Z",
+              "updatedAt": "2026-10-21T19:57:51.000Z",
+              "uid": "35240-b9af1e62-8c0c-401b-8b3e-bf2e701a451e"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c8136db2-f2ef-4168-9c3b-ace62a322583",
-          "name": "Undeploy an Eventing Function",
-          "request": {
-            "name": "Undeploy an Eventing Function",
-            "description": {
-              "content": "Undeploys a deployed Eventing Function, stopping it from processing document mutations.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "functions",
-                ":functionName",
-                "undeploy"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "functionName",
-                  "description": "(Required) The name of the Eventing Function"
-                }
-              ]
-            },
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "386e902f-bee1-44e7-a256-2ad12167f99a",
-              "name": "Function undeployment initiated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "functions",
-                    ":functionName",
-                    "undeploy"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "functionName",
-                      "description": "(Required) The name of the Eventing Function"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b2e30b59-4f5a-48ae-b91a-ec3bd2fdc9ef",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "functions",
-                    ":functionName",
-                    "undeploy"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "functionName",
-                      "description": "(Required) The name of the Eventing Function"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "2a005570-998e-44bb-a08a-5e6b30bbafec",
-              "name": "Function not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "functions",
-                    ":functionName",
-                    "undeploy"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "functionName",
-                      "description": "(Required) The name of the Eventing Function"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e4fb75d4-1ca1-4a53-91c0-93177cdc993e",
-          "name": "Pause an Eventing Function",
-          "request": {
-            "name": "Pause an Eventing Function",
-            "description": {
-              "content": "Pauses a deployed Eventing Function and creates a DCP checkpoint so that on a subsequent resume no mutations will be lost.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "functions",
-                ":functionName",
-                "pause"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "functionName",
-                  "description": "(Required) The name of the Eventing Function"
-                }
-              ]
-            },
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "669a9c93-d48a-4ef4-b88e-d69b40ab5a2f",
-              "name": "Function paused successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "functions",
-                    ":functionName",
-                    "pause"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "functionName",
-                      "description": "(Required) The name of the Eventing Function"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "519a42fb-40d2-410a-99ec-2ee26cf31330",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "functions",
-                    ":functionName",
-                    "pause"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "functionName",
-                      "description": "(Required) The name of the Eventing Function"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "95b0e7b0-f3ca-46e1-ad96-ad6cf75f5b4e",
-              "name": "Function not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "functions",
-                    ":functionName",
-                    "pause"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "functionName",
-                      "description": "(Required) The name of the Eventing Function"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "802112ce-5620-4f4d-b3f4-2e1827e51d9f",
-          "name": "Resume an Eventing Function",
-          "request": {
-            "name": "Resume an Eventing Function",
-            "description": {
-              "content": "Resumes a paused Eventing Function from its DCP checkpoint, continuing to process mutations from where it left off.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "functions",
-                ":functionName",
-                "resume"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "functionName",
-                  "description": "(Required) The name of the Eventing Function"
-                }
-              ]
-            },
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "7c1fe3b9-00ba-4d8b-bb24-100fd8a0a393",
-              "name": "Function resumed successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "functions",
-                    ":functionName",
-                    "resume"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "functionName",
-                      "description": "(Required) The name of the Eventing Function"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ba2b0a4c-b604-4789-afc6-f3e5b5bccd85",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "functions",
-                    ":functionName",
-                    "resume"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "functionName",
-                      "description": "(Required) The name of the Eventing Function"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "7147a1a9-304f-450a-8cee-7930ac42c1df",
-              "name": "Function not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "functions",
-                    ":functionName",
-                    "resume"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "functionName",
-                      "description": "(Required) The name of the Eventing Function"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "103cb618-b65a-4b6a-b31b-f38e83e5e8d6",
+          "createdAt": "2026-10-21T19:57:51.000Z",
+          "updatedAt": "2026-10-21T19:57:51.000Z",
+          "uid": "35240-103cb618-b65a-4b6a-b31b-f38e83e5e8d6"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://localhost:8095",
-      "key": "baseUrl"
+      "id": "9137d97e-471b-465d-a90b-afdcc608d510",
+      "createdAt": "2026-10-21T19:57:51.000Z",
+      "updatedAt": "2026-10-21T19:57:51.000Z",
+      "uid": "35240-9137d97e-471b-465d-a90b-afdcc608d510"
     }
   ],
   "auth": {
@@ -801,21 +744,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "1ab175be-4452-4162-8613-3668476da396",
-    "name": "Couchbase Analytics Service REST Allowed CIDRs Lifecycle API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:8096"
     }
-  }
+  ]
 }

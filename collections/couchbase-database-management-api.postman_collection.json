@@ -1,1997 +1,1872 @@
 {
+  "info": {
+    "_postman_id": "ab7c49c0-56a7-4d53-9c8a-8fa20afd0d23",
+    "name": "Couchbase Sync Gateway Admin REST Database Management API",
+    "description": "The Couchbase Sync Gateway Admin REST API provides administrative endpoints for configuring and managing Sync Gateway instances. It supports database management, user and role administration, sync function configuration, and replication setup. The API is intended for server-side administration and is typically bound to localhost for security, enabling full control over Sync Gateway behavior, access control policies, and data synchronization rules.\n\nContact Support:\n Name: Couchbase Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:57:34.000Z",
+    "updatedAt": "2026-10-21T19:57:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ab7c49c0-56a7-4d53-9c8a-8fa20afd0d23"
+  },
   "item": [
     {
-      "id": "8263c418-1de3-4e94-bd47-d7316c471f50",
-      "name": "Database Management",
-      "description": {
-        "content": "Endpoints for creating, configuring, and managing databases.",
-        "type": "text/plain"
-      },
+      "name": "{db}",
       "item": [
         {
-          "id": "2a433d2b-f1ab-46e1-bbbb-24d53b9ac7b0",
-          "name": "Get database configuration",
-          "request": {
-            "name": "Get database configuration",
-            "description": {
-              "content": "Returns the complete configuration of the specified database including sync function, import filter, and security settings.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_config"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The database name"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "_config",
+          "item": [
             {
-              "id": "664b94f2-ece5-454b-810b-9ba5bb38e2c2",
-              "name": "Successful retrieval of database configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+              "name": "sync",
+              "item": [
+                {
+                  "name": "Get sync function",
+                  "id": "0925c4fc-f735-4de0-b653-1cc827a025c0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_config/sync",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_config",
+                        "sync"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e43d336c-d151-4d2d-8be6-380637322444",
+                          "key": "db",
+                          "value": "<string>",
+                          "description": "(Required) The database name"
+                        }
+                      ]
+                    },
+                    "description": "Returns the current sync function for the database."
+                  },
+                  "response": [
+                    {
+                      "id": "afbd9a9d-9aa6-45b1-a09b-cf3eaa190d85",
+                      "name": "Successful retrieval of sync function",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/:db/_config/sync",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":db",
+                            "_config",
+                            "sync"
+                          ],
+                          "variable": [
+                            {
+                              "key": "db"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T19:57:35.000Z",
+                      "updatedAt": "2026-10-21T19:57:35.000Z",
+                      "uid": "35240-afbd9a9d-9aa6-45b1-a09b-cf3eaa190d85"
+                    },
+                    {
+                      "id": "43b6041a-c950-49d3-97bc-5e2f20f3b412",
+                      "name": "Unauthorized access",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/:db/_config/sync",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":db",
+                            "_config",
+                            "sync"
+                          ],
+                          "variable": [
+                            {
+                              "key": "db"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:57:35.000Z",
+                      "updatedAt": "2026-10-21T19:57:35.000Z",
+                      "uid": "35240-43b6041a-c950-49d3-97bc-5e2f20f3b412"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-0925c4fc-f735-4de0-b653-1cc827a025c0"
+                },
+                {
+                  "name": "Update sync function",
+                  "id": "22a98f29-9eb5-4574-9d8f-7af2726a7153",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<string>"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_config/sync",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_config",
+                        "sync"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4129723c-a52e-4d7e-8352-fbcd218fe1f3",
+                          "key": "db",
+                          "value": "<string>",
+                          "description": "(Required) The database name"
+                        }
+                      ]
+                    },
+                    "description": "Updates the sync function for the database. The sync function controls channel routing and access grants for documents."
+                  },
+                  "response": [
+                    {
+                      "id": "72def59c-920b-4166-9950-10e0a8f9edf9",
+                      "name": "Sync function updated",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/:db/_config/sync",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":db",
+                            "_config",
+                            "sync"
+                          ],
+                          "variable": [
+                            {
+                              "key": "db"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:57:35.000Z",
+                      "updatedAt": "2026-10-21T19:57:35.000Z",
+                      "uid": "35240-72def59c-920b-4166-9950-10e0a8f9edf9"
+                    },
+                    {
+                      "id": "0815da2d-52d4-4571-b940-261142e8906c",
+                      "name": "Invalid sync function",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/:db/_config/sync",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":db",
+                            "_config",
+                            "sync"
+                          ],
+                          "variable": [
+                            {
+                              "key": "db"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:57:35.000Z",
+                      "updatedAt": "2026-10-21T19:57:35.000Z",
+                      "uid": "35240-0815da2d-52d4-4571-b940-261142e8906c"
+                    },
+                    {
+                      "id": "bfcad743-7f73-4ea3-a53a-c42cd72858b3",
+                      "name": "Unauthorized access",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/:db/_config/sync",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":db",
+                            "_config",
+                            "sync"
+                          ],
+                          "variable": [
+                            {
+                              "key": "db"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:57:35.000Z",
+                      "updatedAt": "2026-10-21T19:57:35.000Z",
+                      "uid": "35240-bfcad743-7f73-4ea3-a53a-c42cd72858b3"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-22a98f29-9eb5-4574-9d8f-7af2726a7153"
+                }
+              ],
+              "id": "836a209b-c1ba-4b1f-ae6c-4957c218719f",
+              "createdAt": "2026-10-21T19:57:35.000Z",
+              "updatedAt": "2026-10-21T19:57:35.000Z",
+              "uid": "35240-836a209b-c1ba-4b1f-ae6c-4957c218719f"
+            },
+            {
+              "name": "Get database configuration",
+              "id": "795ee321-e526-4477-be01-3a59e59085eb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"name\": \"string\",\n  \"bucket\": \"string\",\n  \"sync\": \"string\",\n  \"import_filter\": \"string\",\n  \"enable_shared_bucket_access\": false,\n  \"import_docs\": false,\n  \"num_index_replicas\": 9538,\n  \"delta_sync\": {\n    \"enabled\": true,\n    \"rev_max_age_seconds\": 6495\n  },\n  \"guest\": {\n    \"disabled\": false,\n    \"admin_channels\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "bd0910a1-38f9-4c9c-9c36-37c7c3380706",
-              "name": "Unauthorized access",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/:db/_config",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     ":db",
                     "_config"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "e71e5dd1-c5cf-4a11-9a2c-061f996d89d1",
                       "key": "db",
+                      "value": "<string>",
                       "description": "(Required) The database name"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Returns the complete configuration of the specified database including sync function, import filter, and security settings."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b0189173-d6ed-4962-abff-844fd28be1f1",
-              "name": "Database not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
+                  "id": "e9efd7c7-dcf8-4486-84c2-ebfabd869e92",
+                  "name": "Successful retrieval of database configuration",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_config",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_config"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "78d39ea7-bd25-4df4-ba88-beb811162762",
-          "name": "Update database configuration",
-          "request": {
-            "name": "Update database configuration",
-            "description": {
-              "content": "Updates the configuration of the specified database.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_config"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The database name"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"sync\": \"<string>\",\n  \"import_filter\": \"<string>\",\n  \"enable_shared_bucket_access\": \"<boolean>\",\n  \"import_docs\": \"<boolean>\",\n  \"num_index_replicas\": \"<integer>\",\n  \"delta_sync\": {\n    \"enabled\": \"<boolean>\",\n    \"rev_max_age_seconds\": \"<integer>\"\n  },\n  \"guest\": {\n    \"disabled\": \"<boolean>\",\n    \"admin_channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "21b2986b-8c75-4034-8d70-5699b9fb325e",
-              "name": "Database configuration updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"sync\": \"<string>\",\n  \"import_filter\": \"<string>\",\n  \"enable_shared_bucket_access\": \"<boolean>\",\n  \"import_docs\": \"<boolean>\",\n  \"num_index_replicas\": \"<integer>\",\n  \"delta_sync\": {\n    \"enabled\": \"<boolean>\",\n    \"rev_max_age_seconds\": \"<integer>\"\n  },\n  \"guest\": {\n    \"disabled\": \"<boolean>\",\n    \"admin_channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f9cf7c96-19f7-4a3b-828a-4794d949e0b7",
-              "name": "Invalid configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"sync\": \"<string>\",\n  \"import_filter\": \"<string>\",\n  \"enable_shared_bucket_access\": \"<boolean>\",\n  \"import_docs\": \"<boolean>\",\n  \"num_index_replicas\": \"<integer>\",\n  \"delta_sync\": {\n    \"enabled\": \"<boolean>\",\n    \"rev_max_age_seconds\": \"<integer>\"\n  },\n  \"guest\": {\n    \"disabled\": \"<boolean>\",\n    \"admin_channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ad61483d-feaa-4762-bd21-08b90181b1db",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"sync\": \"<string>\",\n  \"import_filter\": \"<string>\",\n  \"enable_shared_bucket_access\": \"<boolean>\",\n  \"import_docs\": \"<boolean>\",\n  \"num_index_replicas\": \"<integer>\",\n  \"delta_sync\": {\n    \"enabled\": \"<boolean>\",\n    \"rev_max_age_seconds\": \"<integer>\"\n  },\n  \"guest\": {\n    \"disabled\": \"<boolean>\",\n    \"admin_channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "de91b9c6-0378-4f25-8026-9ebbbb409fbb",
-          "name": "Create a database",
-          "request": {
-            "name": "Create a database",
-            "description": {
-              "content": "Creates a new database with the specified configuration. The database name is taken from the URL path.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_config"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The database name"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"sync\": \"<string>\",\n  \"import_filter\": \"<string>\",\n  \"enable_shared_bucket_access\": \"<boolean>\",\n  \"import_docs\": \"<boolean>\",\n  \"num_index_replicas\": \"<integer>\",\n  \"delta_sync\": {\n    \"enabled\": \"<boolean>\",\n    \"rev_max_age_seconds\": \"<integer>\"\n  },\n  \"guest\": {\n    \"disabled\": \"<boolean>\",\n    \"admin_channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "874755a9-1102-4e4f-8000-bb246c25ec0c",
-              "name": "Database created successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"sync\": \"<string>\",\n  \"import_filter\": \"<string>\",\n  \"enable_shared_bucket_access\": \"<boolean>\",\n  \"import_docs\": \"<boolean>\",\n  \"num_index_replicas\": \"<integer>\",\n  \"delta_sync\": {\n    \"enabled\": \"<boolean>\",\n    \"rev_max_age_seconds\": \"<integer>\"\n  },\n  \"guest\": {\n    \"disabled\": \"<boolean>\",\n    \"admin_channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f7042990-2908-49ac-8987-44b00cbff647",
-              "name": "Invalid configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"sync\": \"<string>\",\n  \"import_filter\": \"<string>\",\n  \"enable_shared_bucket_access\": \"<boolean>\",\n  \"import_docs\": \"<boolean>\",\n  \"num_index_replicas\": \"<integer>\",\n  \"delta_sync\": {\n    \"enabled\": \"<boolean>\",\n    \"rev_max_age_seconds\": \"<integer>\"\n  },\n  \"guest\": {\n    \"disabled\": \"<boolean>\",\n    \"admin_channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "8a6f3150-4118-44ac-b4bd-9ece20e9cf5e",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"sync\": \"<string>\",\n  \"import_filter\": \"<string>\",\n  \"enable_shared_bucket_access\": \"<boolean>\",\n  \"import_docs\": \"<boolean>\",\n  \"num_index_replicas\": \"<integer>\",\n  \"delta_sync\": {\n    \"enabled\": \"<boolean>\",\n    \"rev_max_age_seconds\": \"<integer>\"\n  },\n  \"guest\": {\n    \"disabled\": \"<boolean>\",\n    \"admin_channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ae0cef4f-9e98-405e-83f9-e7d8b1424356",
-              "name": "Database already exists",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"sync\": \"<string>\",\n  \"import_filter\": \"<string>\",\n  \"enable_shared_bucket_access\": \"<boolean>\",\n  \"import_docs\": \"<boolean>\",\n  \"num_index_replicas\": \"<integer>\",\n  \"delta_sync\": {\n    \"enabled\": \"<boolean>\",\n    \"rev_max_age_seconds\": \"<integer>\"\n  },\n  \"guest\": {\n    \"disabled\": \"<boolean>\",\n    \"admin_channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Precondition Failed",
-              "code": 412,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "29d65986-d9e1-406a-8e90-19fa95a4ec6d",
-          "name": "Delete a database",
-          "request": {
-            "name": "Delete a database",
-            "description": {
-              "content": "Deletes the specified database configuration from Sync Gateway.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_config"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The database name"
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "a54b0c8a-5f45-4c47-9fb8-fef78e80f83e",
-              "name": "Database deleted successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3efb8fac-33c6-46b8-9ef3-f081ee8e146a",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "5ef24680-9623-4675-be27-899ec34ee2af",
-              "name": "Database not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "7c8e1156-dad1-4040-b047-faebf8d101c6",
-          "name": "Get sync function",
-          "request": {
-            "name": "Get sync function",
-            "description": {
-              "content": "Returns the current sync function for the database.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_config",
-                "sync"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The database name"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "text/plain"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "177051c2-3974-4b58-876c-4168eab9da34",
-              "name": "Successful retrieval of sync function",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_config",
-                    "sync"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
                   },
-                  {
-                    "key": "Accept",
-                    "value": "text/plain"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"name\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"sync\": \"<string>\",\n  \"import_filter\": \"<string>\",\n  \"enable_shared_bucket_access\": \"<boolean>\",\n  \"import_docs\": \"<boolean>\",\n  \"num_index_replicas\": \"<integer>\",\n  \"delta_sync\": {\n    \"enabled\": \"<boolean>\",\n    \"rev_max_age_seconds\": \"<integer>\"\n  },\n  \"guest\": {\n    \"disabled\": \"<boolean>\",\n    \"admin_channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-e9efd7c7-dcf8-4486-84c2-ebfabd869e92"
+                },
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "64e030bb-d9c3-479b-a354-80b5c5cc0901",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_config",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_config"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-64e030bb-d9c3-479b-a354-80b5c5cc0901"
+                },
+                {
+                  "id": "0fe3e756-84be-4953-a608-6cd32eaf912d",
+                  "name": "Database not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_config",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_config"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-0fe3e756-84be-4953-a608-6cd32eaf912d"
                 }
               ],
-              "body": "string",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T19:57:35.000Z",
+              "updatedAt": "2026-10-21T19:57:35.000Z",
+              "uid": "35240-795ee321-e526-4477-be01-3a59e59085eb"
             },
             {
-              "id": "3b9baa9b-250a-4a3a-8360-3567d9544a3a",
-              "name": "Unauthorized access",
-              "originalRequest": {
+              "name": "Update database configuration",
+              "id": "e1b3e4b3-709d-434c-8c54-f3a29e53cc36",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"sync\": \"<string>\",\n  \"import_filter\": \"<string>\",\n  \"enable_shared_bucket_access\": \"<boolean>\",\n  \"import_docs\": \"<boolean>\",\n  \"num_index_replicas\": \"<integer>\",\n  \"delta_sync\": {\n    \"enabled\": \"<boolean>\",\n    \"rev_max_age_seconds\": \"<integer>\"\n  },\n  \"guest\": {\n    \"disabled\": \"<boolean>\",\n    \"admin_channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
-                  "path": [
-                    ":db",
-                    "_config",
-                    "sync"
-                  ],
+                  "raw": "{{baseUrl}}/:db/_config",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
+                  "path": [
+                    ":db",
+                    "_config"
+                  ],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "083e7075-77c6-431a-a192-3d44991c63a9",
                       "key": "db",
+                      "value": "<string>",
                       "description": "(Required) The database name"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Updates the configuration of the specified database."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "441a12b0-a1d6-4965-9645-e70099b5e855",
+                  "name": "Database configuration updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"sync\": \"<string>\",\n  \"import_filter\": \"<string>\",\n  \"enable_shared_bucket_access\": \"<boolean>\",\n  \"import_docs\": \"<boolean>\",\n  \"num_index_replicas\": \"<integer>\",\n  \"delta_sync\": {\n    \"enabled\": \"<boolean>\",\n    \"rev_max_age_seconds\": \"<integer>\"\n  },\n  \"guest\": {\n    \"disabled\": \"<boolean>\",\n    \"admin_channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_config",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_config"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-441a12b0-a1d6-4965-9645-e70099b5e855"
+                },
+                {
+                  "id": "c1fe8d9f-f45c-4471-859c-829dc08a68cc",
+                  "name": "Invalid configuration",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"sync\": \"<string>\",\n  \"import_filter\": \"<string>\",\n  \"enable_shared_bucket_access\": \"<boolean>\",\n  \"import_docs\": \"<boolean>\",\n  \"num_index_replicas\": \"<integer>\",\n  \"delta_sync\": {\n    \"enabled\": \"<boolean>\",\n    \"rev_max_age_seconds\": \"<integer>\"\n  },\n  \"guest\": {\n    \"disabled\": \"<boolean>\",\n    \"admin_channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_config",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_config"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-c1fe8d9f-f45c-4471-859c-829dc08a68cc"
+                },
+                {
+                  "id": "b981bf20-3afb-4d15-8f7e-89e2946bce66",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"sync\": \"<string>\",\n  \"import_filter\": \"<string>\",\n  \"enable_shared_bucket_access\": \"<boolean>\",\n  \"import_docs\": \"<boolean>\",\n  \"num_index_replicas\": \"<integer>\",\n  \"delta_sync\": {\n    \"enabled\": \"<boolean>\",\n    \"rev_max_age_seconds\": \"<integer>\"\n  },\n  \"guest\": {\n    \"disabled\": \"<boolean>\",\n    \"admin_channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_config",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_config"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-b981bf20-3afb-4d15-8f7e-89e2946bce66"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T19:57:35.000Z",
+              "updatedAt": "2026-10-21T19:57:35.000Z",
+              "uid": "35240-e1b3e4b3-709d-434c-8c54-f3a29e53cc36"
+            },
+            {
+              "name": "Create a database",
+              "id": "b3441c6a-89e7-42c0-a48c-8eabf5709eb6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"sync\": \"<string>\",\n  \"import_filter\": \"<string>\",\n  \"enable_shared_bucket_access\": \"<boolean>\",\n  \"import_docs\": \"<boolean>\",\n  \"num_index_replicas\": \"<integer>\",\n  \"delta_sync\": {\n    \"enabled\": \"<boolean>\",\n    \"rev_max_age_seconds\": \"<integer>\"\n  },\n  \"guest\": {\n    \"disabled\": \"<boolean>\",\n    \"admin_channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:db/_config",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":db",
+                    "_config"
+                  ],
+                  "variable": [
+                    {
+                      "id": "fb66e81f-a2bb-4540-b851-d79b8d4b2793",
+                      "key": "db",
+                      "value": "<string>",
+                      "description": "(Required) The database name"
+                    }
+                  ]
+                },
+                "description": "Creates a new database with the specified configuration. The database name is taken from the URL path."
+              },
+              "response": [
+                {
+                  "id": "5c0ac724-19d5-46da-99d9-0905093d9e22",
+                  "name": "Database created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"sync\": \"<string>\",\n  \"import_filter\": \"<string>\",\n  \"enable_shared_bucket_access\": \"<boolean>\",\n  \"import_docs\": \"<boolean>\",\n  \"num_index_replicas\": \"<integer>\",\n  \"delta_sync\": {\n    \"enabled\": \"<boolean>\",\n    \"rev_max_age_seconds\": \"<integer>\"\n  },\n  \"guest\": {\n    \"disabled\": \"<boolean>\",\n    \"admin_channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_config",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_config"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-5c0ac724-19d5-46da-99d9-0905093d9e22"
+                },
+                {
+                  "id": "50b12705-90a1-40f6-b098-4a834ae2dd37",
+                  "name": "Invalid configuration",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"sync\": \"<string>\",\n  \"import_filter\": \"<string>\",\n  \"enable_shared_bucket_access\": \"<boolean>\",\n  \"import_docs\": \"<boolean>\",\n  \"num_index_replicas\": \"<integer>\",\n  \"delta_sync\": {\n    \"enabled\": \"<boolean>\",\n    \"rev_max_age_seconds\": \"<integer>\"\n  },\n  \"guest\": {\n    \"disabled\": \"<boolean>\",\n    \"admin_channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_config",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_config"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-50b12705-90a1-40f6-b098-4a834ae2dd37"
+                },
+                {
+                  "id": "8eaa8d96-99a2-41c1-ac0a-87a8b67a22c5",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"sync\": \"<string>\",\n  \"import_filter\": \"<string>\",\n  \"enable_shared_bucket_access\": \"<boolean>\",\n  \"import_docs\": \"<boolean>\",\n  \"num_index_replicas\": \"<integer>\",\n  \"delta_sync\": {\n    \"enabled\": \"<boolean>\",\n    \"rev_max_age_seconds\": \"<integer>\"\n  },\n  \"guest\": {\n    \"disabled\": \"<boolean>\",\n    \"admin_channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_config",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_config"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-8eaa8d96-99a2-41c1-ac0a-87a8b67a22c5"
+                },
+                {
+                  "id": "1261549f-90bd-4c8b-b453-5e2f20cbfc3b",
+                  "name": "Database already exists",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"sync\": \"<string>\",\n  \"import_filter\": \"<string>\",\n  \"enable_shared_bucket_access\": \"<boolean>\",\n  \"import_docs\": \"<boolean>\",\n  \"num_index_replicas\": \"<integer>\",\n  \"delta_sync\": {\n    \"enabled\": \"<boolean>\",\n    \"rev_max_age_seconds\": \"<integer>\"\n  },\n  \"guest\": {\n    \"disabled\": \"<boolean>\",\n    \"admin_channels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_config",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_config"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Precondition Failed",
+                  "code": 412,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-1261549f-90bd-4c8b-b453-5e2f20cbfc3b"
+                }
+              ],
+              "createdAt": "2026-10-21T19:57:35.000Z",
+              "updatedAt": "2026-10-21T19:57:35.000Z",
+              "uid": "35240-b3441c6a-89e7-42c0-a48c-8eabf5709eb6"
+            },
+            {
+              "name": "Delete a database",
+              "id": "14d16aec-69bc-4847-b23e-5deae2dc128c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/:db/_config",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":db",
+                    "_config"
+                  ],
+                  "variable": [
+                    {
+                      "id": "33b32599-8003-4aa1-91da-3981d2de57a4",
+                      "key": "db",
+                      "value": "<string>",
+                      "description": "(Required) The database name"
+                    }
+                  ]
+                },
+                "description": "Deletes the specified database configuration from Sync Gateway."
+              },
+              "response": [
+                {
+                  "id": "3af89265-ec68-43a3-8ee3-36ecf5e93e19",
+                  "name": "Database deleted successfully",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_config",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_config"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-3af89265-ec68-43a3-8ee3-36ecf5e93e19"
+                },
+                {
+                  "id": "0d528652-3497-495d-9bcc-25bb20290036",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_config",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_config"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-0d528652-3497-495d-9bcc-25bb20290036"
+                },
+                {
+                  "id": "e421d3a0-bc44-460f-8609-1994680f1741",
+                  "name": "Database not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_config",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_config"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-e421d3a0-bc44-460f-8609-1994680f1741"
+                }
+              ],
+              "createdAt": "2026-10-21T19:57:35.000Z",
+              "updatedAt": "2026-10-21T19:57:35.000Z",
+              "uid": "35240-14d16aec-69bc-4847-b23e-5deae2dc128c"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "b48779b0-e2c1-47b8-99f0-75bb02a472f2",
+          "createdAt": "2026-10-21T19:57:35.000Z",
+          "updatedAt": "2026-10-21T19:57:35.000Z",
+          "uid": "35240-b48779b0-e2c1-47b8-99f0-75bb02a472f2"
         },
         {
-          "id": "bc70619d-4c60-4d5a-9fa7-dfff7217c9af",
-          "name": "Update sync function",
-          "request": {
-            "name": "Update sync function",
-            "description": {
-              "content": "Updates the sync function for the database. The sync function controls channel routing and access grants for documents.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_config",
-                "sync"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The database name"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "text/plain"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "<string>"
-            }
-          },
-          "response": [
+          "name": "_offline",
+          "item": [
             {
-              "id": "f0f81e6d-c448-4ae7-a511-57dccb1ca41e",
-              "name": "Sync function updated",
-              "originalRequest": {
+              "name": "Take database offline",
+              "id": "dfb094d1-9afb-4e39-a6c1-db41f92fe7e7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [],
                 "url": {
-                  "path": [
-                    ":db",
-                    "_config",
-                    "sync"
-                  ],
+                  "raw": "{{baseUrl}}/:db/_offline",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<string>"
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6b62a217-4007-4557-990a-636703b0751e",
-              "name": "Invalid sync function",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_config",
-                    "sync"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<string>"
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "74ca2cfa-e36d-4939-8b03-e2c3a98bc727",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_config",
-                    "sync"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<string>"
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "0f261b5f-6a10-4c73-8d7c-fc267d147699",
-          "name": "Take database offline",
-          "request": {
-            "name": "Take database offline",
-            "description": {
-              "content": "Takes the specified database offline, preventing client access.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_offline"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The database name"
-                }
-              ]
-            },
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "a79e0886-d06c-4f6f-9a58-f54d1fd52032",
-              "name": "Database taken offline",
-              "originalRequest": {
-                "url": {
                   "path": [
                     ":db",
                     "_offline"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "351c42f7-0d1b-4157-a3b3-0c2aebf7d99a",
                       "key": "db",
+                      "value": "<string>",
                       "description": "(Required) The database name"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
+                "description": "Takes the specified database offline, preventing client access."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "87387a86-6c4a-4983-83ac-4da73434073f",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_offline"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
+                  "id": "ebe1c89d-b6ee-4030-b834-4ba0621c3c31",
+                  "name": "Database taken offline",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_offline",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_offline"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
                     }
-                  ]
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-ebe1c89d-b6ee-4030-b834-4ba0621c3c31"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "8cb0b0d2-28eb-4027-95fc-759003c1c072",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_offline",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_offline"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-8cb0b0d2-28eb-4027-95fc-759003c1c072"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T19:57:35.000Z",
+              "updatedAt": "2026-10-21T19:57:35.000Z",
+              "uid": "35240-dfb094d1-9afb-4e39-a6c1-db41f92fe7e7"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "89e88486-55bd-47c3-9adf-763c4dd0b613",
+          "createdAt": "2026-10-21T19:57:35.000Z",
+          "updatedAt": "2026-10-21T19:57:35.000Z",
+          "uid": "35240-89e88486-55bd-47c3-9adf-763c4dd0b613"
         },
         {
-          "id": "07bb9d4b-2a5b-4ad2-b3d5-a76939e395d9",
-          "name": "Bring database online",
-          "request": {
-            "name": "Bring database online",
-            "description": {
-              "content": "Brings the specified database back online.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_online"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The database name"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"delay\": \"<integer>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "_online",
+          "item": [
             {
-              "id": "7e8dd83e-6f20-439c-9ce7-8a2c61500185",
-              "name": "Database brought online",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_online"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    }
-                  ]
-                },
+              "name": "Bring database online",
+              "id": "cf78e32e-fae3-40e7-9b4f-df550397b038",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"delay\": \"<integer>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "90df3b97-41ec-4525-9b49-8ca7b925eee6",
-              "name": "Unauthorized access",
-              "originalRequest": {
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/:db/_online",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     ":db",
                     "_online"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "29f33e59-00b9-4596-a677-7baec93c940d",
                       "key": "db",
+                      "value": "<string>",
                       "description": "(Required) The database name"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"delay\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
+                "description": "Brings the specified database back online."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "5c1cd79c-925d-46fe-b9cc-8b199313b64e",
+                  "name": "Database brought online",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"delay\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_online",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_online"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-5c1cd79c-925d-46fe-b9cc-8b199313b64e"
+                },
+                {
+                  "id": "f9e3fbd2-acf5-4323-a2d5-99491a8324dc",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"delay\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_online",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_online"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-f9e3fbd2-acf5-4323-a2d5-99491a8324dc"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T19:57:35.000Z",
+              "updatedAt": "2026-10-21T19:57:35.000Z",
+              "uid": "35240-cf78e32e-fae3-40e7-9b4f-df550397b038"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "22e45027-de8a-48a0-a32b-aa68e2df952f",
+          "createdAt": "2026-10-21T19:57:35.000Z",
+          "updatedAt": "2026-10-21T19:57:35.000Z",
+          "uid": "35240-22e45027-de8a-48a0-a32b-aa68e2df952f"
         },
         {
-          "id": "2d8d0bd4-30bf-4001-b2b2-4b4899e3bd9e",
-          "name": "Resync database",
-          "request": {
-            "name": "Resync database",
-            "description": {
-              "content": "Reprocesses all documents through the sync function. Required after sync function changes to apply to existing documents.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_resync"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The database name"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
+          "name": "_resync",
+          "item": [
             {
-              "id": "01449a88-a348-45db-b0a6-24d2d2cdbd88",
-              "name": "Resync completed",
-              "originalRequest": {
+              "name": "Resync database",
+              "id": "a005c5df-7105-409f-87df-22d8b3c80a95",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/:db/_resync",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     ":db",
                     "_resync"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "07f3ac28-e058-40f1-ba4d-2292e2c9c8f7",
                       "key": "db",
+                      "value": "<string>",
                       "description": "(Required) The database name"
                     }
                   ]
                 },
+                "description": "Reprocesses all documents through the sync function. Required after sync function changes to apply to existing documents."
+              },
+              "response": [
+                {
+                  "id": "a8fd5903-1c71-4e3e-8808-ba2eac932e76",
+                  "name": "Resync completed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_resync",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_resync"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"changes_processed\": \"<integer>\"\n}",
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-a8fd5903-1c71-4e3e-8808-ba2eac932e76"
+                },
+                {
+                  "id": "46c2c5e2-6274-4fa4-8ae2-75c67884430f",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_resync",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_resync"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-46c2c5e2-6274-4fa4-8ae2-75c67884430f"
+                }
+              ],
+              "createdAt": "2026-10-21T19:57:35.000Z",
+              "updatedAt": "2026-10-21T19:57:35.000Z",
+              "uid": "35240-a005c5df-7105-409f-87df-22d8b3c80a95"
+            }
+          ],
+          "id": "43e03c7a-59c3-41a5-95aa-16a888a16006",
+          "createdAt": "2026-10-21T19:57:35.000Z",
+          "updatedAt": "2026-10-21T19:57:35.000Z",
+          "uid": "35240-43e03c7a-59c3-41a5-95aa-16a888a16006"
+        },
+        {
+          "name": "_compact",
+          "item": [
+            {
+              "name": "Compact database",
+              "id": "2440f5fd-aac3-48da-9ec4-ed9b4f55759b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/:db/_compact",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":db",
+                    "_compact"
+                  ],
+                  "variable": [
+                    {
+                      "id": "631ac5dd-450e-4a8c-929a-7331fd779b35",
+                      "key": "db",
+                      "value": "<string>",
+                      "description": "(Required) The database name"
+                    }
+                  ]
+                },
+                "description": "Removes obsolete revision bodies and attachment data from the database to reclaim storage space."
+              },
+              "response": [
+                {
+                  "id": "f4c59377-343c-4097-bae6-b48d5b237559",
+                  "name": "Compaction started",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_compact",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_compact"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-f4c59377-343c-4097-bae6-b48d5b237559"
+                },
+                {
+                  "id": "e6d6e4c7-c26d-465c-93f5-c2bcd90733b1",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_compact",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_compact"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-e6d6e4c7-c26d-465c-93f5-c2bcd90733b1"
+                }
+              ],
+              "createdAt": "2026-10-21T19:57:35.000Z",
+              "updatedAt": "2026-10-21T19:57:35.000Z",
+              "uid": "35240-2440f5fd-aac3-48da-9ec4-ed9b4f55759b"
+            }
+          ],
+          "id": "d0e09b12-57e7-4c28-8918-81ec794e4a96",
+          "createdAt": "2026-10-21T19:57:35.000Z",
+          "updatedAt": "2026-10-21T19:57:35.000Z",
+          "uid": "35240-d0e09b12-57e7-4c28-8918-81ec794e4a96"
+        },
+        {
+          "name": "_purge",
+          "item": [
+            {
+              "name": "Purge documents",
+              "id": "73126472-de94-4293-8e85-b4dcc720a69a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"changes_processed\": 6865\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9d9468e5-3204-42b0-adcb-c1694d41e752",
-              "name": "Unauthorized access",
-              "originalRequest": {
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"culpa_fd2\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"nisi_51c\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
-                  "path": [
-                    ":db",
-                    "_resync"
-                  ],
+                  "raw": "{{baseUrl}}/:db/_purge",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "2422c68b-dc24-4c0e-9bd3-9237f5d84ebe",
-          "name": "Compact database",
-          "request": {
-            "name": "Compact database",
-            "description": {
-              "content": "Removes obsolete revision bodies and attachment data from the database to reclaim storage space.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_compact"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The database name"
-                }
-              ]
-            },
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "343cbb40-bd27-4ab4-89b4-683f80bc90e4",
-              "name": "Compaction started",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_compact"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "9f1c3da0-bf36-480f-b362-6367d97fa972",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_compact"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b57803fe-abc9-4a9c-90d9-75662bc18e82",
-          "name": "Purge documents",
-          "request": {
-            "name": "Purge documents",
-            "description": {
-              "content": "Permanently removes documents from the database. Unlike deletion, purged documents leave no tombstone and are not replicated.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_purge"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The database name"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"key_0\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"key_1\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "df2c652a-8300-43a1-84ac-31945a8ca029",
-              "name": "Documents purged successfully",
-              "originalRequest": {
-                "url": {
                   "path": [
                     ":db",
                     "_purge"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "34778f11-11aa-4e25-b927-580d8bed59ca",
                       "key": "db",
+                      "value": "<string>",
                       "description": "(Required) The database name"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
+                "description": "Permanently removes documents from the database. Unlike deletion, purged documents leave no tombstone and are not replicated."
+              },
+              "response": [
+                {
+                  "id": "16a88e3e-28e0-4af5-8dd7-4feb622a91cb",
+                  "name": "Documents purged successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"culpa_fd2\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"nisi_51c\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_purge",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_purge"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"key_0\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"key_1\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"key_2\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"key_3\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"purged\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "02b9ce85-2019-440c-a11e-2677b72c6c7a",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_purge"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
-                  ]
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"purged\": {\n    \"inf\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-16a88e3e-28e0-4af5-8dd7-4feb622a91cb"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"key_0\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"key_1\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"key_2\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"key_3\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "b4275cad-ab06-4c71-b967-945129206b3c",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"culpa_fd2\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"nisi_51c\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_purge",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_purge"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:35.000Z",
+                  "updatedAt": "2026-10-21T19:57:35.000Z",
+                  "uid": "35240-b4275cad-ab06-4c71-b967-945129206b3c"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T19:57:35.000Z",
+              "updatedAt": "2026-10-21T19:57:35.000Z",
+              "uid": "35240-73126472-de94-4293-8e85-b4dcc720a69a"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "5f15862d-683b-4aea-9bf9-20d65e658ba1",
+          "createdAt": "2026-10-21T19:57:35.000Z",
+          "updatedAt": "2026-10-21T19:57:35.000Z",
+          "uid": "35240-5f15862d-683b-4aea-9bf9-20d65e658ba1"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://localhost:8095",
-      "key": "baseUrl"
+      "id": "d51ca044-2ecf-4084-b8f0-f11420dbb706",
+      "createdAt": "2026-10-21T19:57:35.000Z",
+      "updatedAt": "2026-10-21T19:57:35.000Z",
+      "uid": "35240-d51ca044-2ecf-4084-b8f0-f11420dbb706"
     }
   ],
   "auth": {
@@ -1999,21 +1874,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "1a6553cd-9c6f-41c8-8e71-96cdb37f4a16",
-    "name": "Couchbase Analytics Service REST Allowed CIDRs Database Management API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:4985"
     }
-  }
+  ]
 }

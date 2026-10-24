@@ -1,893 +1,815 @@
 {
+  "info": {
+    "_postman_id": "33674b84-2f97-448c-a79f-cfb356a14890",
+    "name": "Couchbase Server REST Nodes API",
+    "description": "The Couchbase Server REST API provides programmatic access to manage and configure Couchbase Server clusters. It includes endpoints for cluster management, bucket operations, node administration, security settings, and server configuration. The API enables automation of deployment, monitoring, and maintenance tasks for Couchbase Server instances across distributed environments.\n\nContact Support:\n Name: Couchbase Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:58:08.000Z",
+    "updatedAt": "2026-10-21T19:58:08.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-33674b84-2f97-448c-a79f-cfb356a14890"
+  },
   "item": [
     {
-      "id": "cc12e9b7-2c41-4342-af0e-fe9c0fe90f57",
-      "name": "Nodes",
-      "description": {
-        "content": "Endpoints for managing individual server nodes, including adding nodes, failover, recovery, and rebalance operations.",
-        "type": "text/plain"
-      },
+      "name": "pools",
       "item": [
         {
-          "id": "c39cb702-fc5f-43fa-8f16-f43aa59b0431",
-          "name": "Get nodes information",
-          "request": {
-            "name": "Get nodes information",
-            "description": {
-              "content": "Returns information about all nodes in the cluster, including their services, status, and system resources.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "pools",
-                "nodes"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "nodes",
+          "item": [
             {
-              "id": "00b088f9-2fb8-4270-b13c-5a9ee37736a3",
-              "name": "Successful retrieval of node information",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "nodes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Get nodes information",
+              "id": "d816f817-b486-4b28-b7de-f590aa644600",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"nodes\": [\n    {\n      \"hostname\": \"string\",\n      \"status\": \"unhealthy\",\n      \"clusterMembership\": \"active\",\n      \"services\": [\n        \"eventing\",\n        \"eventing\"\n      ],\n      \"os\": \"string\",\n      \"version\": \"string\",\n      \"memoryTotal\": 4993,\n      \"memoryFree\": 3578\n    },\n    {\n      \"hostname\": \"string\",\n      \"status\": \"healthy\",\n      \"clusterMembership\": \"inactiveFailed\",\n      \"services\": [\n        \"n1ql\",\n        \"kv\"\n      ],\n      \"os\": \"string\",\n      \"version\": \"string\",\n      \"memoryTotal\": 7669,\n      \"memoryFree\": 9242\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a271336a-d8b9-4aad-ac97-8401b78080ea",
-              "name": "Unauthorized access",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/pools/nodes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "pools",
                     "nodes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Returns information about all nodes in the cluster, including their services, status, and system resources."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "b07d6142-9638-4391-a320-fc800e872c84",
+                  "name": "Successful retrieval of node information",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pools/nodes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pools",
+                        "nodes"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"nodes\": [\n    {\n      \"hostname\": \"<string>\",\n      \"status\": \"healthy\",\n      \"clusterMembership\": \"inactiveAdded\",\n      \"services\": [\n        \"cbas\",\n        \"n1ql\"\n      ],\n      \"os\": \"<string>\",\n      \"version\": \"<string>\",\n      \"memoryTotal\": \"<integer>\",\n      \"memoryFree\": \"<integer>\"\n    },\n    {\n      \"hostname\": \"<string>\",\n      \"status\": \"healthy\",\n      \"clusterMembership\": \"active\",\n      \"services\": [\n        \"n1ql\",\n        \"kv\"\n      ],\n      \"os\": \"<string>\",\n      \"version\": \"<string>\",\n      \"memoryTotal\": \"<integer>\",\n      \"memoryFree\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T19:58:09.000Z",
+                  "updatedAt": "2026-10-21T19:58:09.000Z",
+                  "uid": "35240-b07d6142-9638-4391-a320-fc800e872c84"
+                },
+                {
+                  "id": "dcf8b533-3a03-4c14-92e9-57ab89b15a3d",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pools/nodes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pools",
+                        "nodes"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:58:09.000Z",
+                  "updatedAt": "2026-10-21T19:58:09.000Z",
+                  "uid": "35240-dcf8b533-3a03-4c14-92e9-57ab89b15a3d"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T19:58:08.000Z",
+              "updatedAt": "2026-10-21T19:58:08.000Z",
+              "uid": "35240-d816f817-b486-4b28-b7de-f590aa644600"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "791689fd-0b9c-4211-95f7-22e9cd5570a2",
-          "name": "Add a node to the cluster",
-          "request": {
-            "name": "Add a node to the cluster",
-            "description": {
-              "content": "Adds a new node to the cluster. The node must be configured and reachable before it can be added.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "controller",
-                "addNode"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "hostname",
-                  "value": "<string>",
-                  "description": "(Required) The hostname or IP address of the node to add"
-                },
-                {
-                  "disabled": false,
-                  "key": "services",
-                  "value": "<string>",
-                  "description": "Comma-separated list of services to enable on the node (kv, n1ql, index, fts, cbas, eventing, backup)"
-                },
-                {
-                  "disabled": false,
-                  "key": "user",
-                  "value": "<string>",
-                  "description": "Administrator username for the node"
-                },
-                {
-                  "disabled": false,
-                  "key": "password",
-                  "value": "<string>",
-                  "description": "Administrator password for the node"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "09edb478-de72-4f16-b740-3a6d2662e35c",
-              "name": "Node added successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "controller",
-                    "addNode"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The hostname or IP address of the node to add",
-                        "type": "text/plain"
-                      },
-                      "key": "hostname",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Comma-separated list of services to enable on the node (kv, n1ql, index, fts, cbas, eventing, backup)",
-                        "type": "text/plain"
-                      },
-                      "key": "services",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Administrator username for the node",
-                        "type": "text/plain"
-                      },
-                      "key": "user",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Administrator password for the node",
-                        "type": "text/plain"
-                      },
-                      "key": "password",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "43608101-1d1c-455e-bb59-64030902ecae",
-              "name": "Invalid node configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "controller",
-                    "addNode"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The hostname or IP address of the node to add",
-                        "type": "text/plain"
-                      },
-                      "key": "hostname",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Comma-separated list of services to enable on the node (kv, n1ql, index, fts, cbas, eventing, backup)",
-                        "type": "text/plain"
-                      },
-                      "key": "services",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Administrator username for the node",
-                        "type": "text/plain"
-                      },
-                      "key": "user",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Administrator password for the node",
-                        "type": "text/plain"
-                      },
-                      "key": "password",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3dd19ee3-7665-4930-8f8c-e45b20f09b7b",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "controller",
-                    "addNode"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The hostname or IP address of the node to add",
-                        "type": "text/plain"
-                      },
-                      "key": "hostname",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Comma-separated list of services to enable on the node (kv, n1ql, index, fts, cbas, eventing, backup)",
-                        "type": "text/plain"
-                      },
-                      "key": "services",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Administrator username for the node",
-                        "type": "text/plain"
-                      },
-                      "key": "user",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Administrator password for the node",
-                        "type": "text/plain"
-                      },
-                      "key": "password",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f2673849-31f7-41b7-909b-05bf2e4c7aa1",
-          "name": "Rebalance the cluster",
-          "request": {
-            "name": "Rebalance the cluster",
-            "description": {
-              "content": "Initiates a rebalance operation to redistribute data across the cluster nodes after adding or removing nodes.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "controller",
-                "rebalance"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "knownNodes",
-                  "value": "<string>",
-                  "description": "Comma-separated list of known node OTP names"
-                },
-                {
-                  "disabled": false,
-                  "key": "ejectedNodes",
-                  "value": "<string>",
-                  "description": "Comma-separated list of node OTP names to eject"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "31d7d640-a128-404b-9893-bf7b04881e0d",
-              "name": "Rebalance initiated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "controller",
-                    "rebalance"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Comma-separated list of known node OTP names",
-                        "type": "text/plain"
-                      },
-                      "key": "knownNodes",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Comma-separated list of node OTP names to eject",
-                        "type": "text/plain"
-                      },
-                      "key": "ejectedNodes",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3cf1c1cf-2c61-4005-a63f-efd1a8404318",
-              "name": "Invalid rebalance configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "controller",
-                    "rebalance"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Comma-separated list of known node OTP names",
-                        "type": "text/plain"
-                      },
-                      "key": "knownNodes",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Comma-separated list of node OTP names to eject",
-                        "type": "text/plain"
-                      },
-                      "key": "ejectedNodes",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "5065dd10-acbb-4d3c-bb9b-acb2e9b6a08d",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "controller",
-                    "rebalance"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Comma-separated list of known node OTP names",
-                        "type": "text/plain"
-                      },
-                      "key": "knownNodes",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Comma-separated list of node OTP names to eject",
-                        "type": "text/plain"
-                      },
-                      "key": "ejectedNodes",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "31136617-6065-4dc8-8a90-3982b6ee8cb9",
-          "name": "Fail over a node",
-          "request": {
-            "name": "Fail over a node",
-            "description": {
-              "content": "Initiates a hard failover for the specified node, removing it from the cluster immediately.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "controller",
-                "failOver"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "otpNode",
-                  "value": "<string>",
-                  "description": "(Required) The OTP name of the node to fail over"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "ace03d58-da0d-49b4-bcad-33574ce3f057",
-              "name": "Failover initiated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "controller",
-                    "failOver"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The OTP name of the node to fail over",
-                        "type": "text/plain"
-                      },
-                      "key": "otpNode",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "19475f60-3798-4cfd-a9d1-64568a171258",
-              "name": "Invalid failover request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "controller",
-                    "failOver"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The OTP name of the node to fail over",
-                        "type": "text/plain"
-                      },
-                      "key": "otpNode",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b89578e5-a2c7-4118-9c18-77c588d27bda",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "controller",
-                    "failOver"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The OTP name of the node to fail over",
-                        "type": "text/plain"
-                      },
-                      "key": "otpNode",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "13ec49c9-df66-48e6-a537-8e5c38301928",
+          "createdAt": "2026-10-21T19:58:08.000Z",
+          "updatedAt": "2026-10-21T19:58:08.000Z",
+          "uid": "35240-13ec49c9-df66-48e6-a537-8e5c38301928"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
+      "id": "1399ba06-8d04-4607-9425-70f176bdcd8a",
+      "createdAt": "2026-10-21T19:58:08.000Z",
+      "updatedAt": "2026-10-21T19:58:08.000Z",
+      "uid": "35240-1399ba06-8d04-4607-9425-70f176bdcd8a"
+    },
     {
-      "type": "string",
-      "value": "https://localhost:8095",
-      "key": "baseUrl"
+      "name": "controller",
+      "item": [
+        {
+          "name": "addNode",
+          "item": [
+            {
+              "name": "Add a node to the cluster",
+              "id": "76493a73-9aee-4ecb-b2e4-a8b96b7b9ecf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The hostname or IP address of the node to add",
+                      "key": "hostname",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of services to enable on the node (kv, n1ql, index, fts, cbas, eventing, backup)",
+                      "key": "services",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Administrator username for the node",
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Administrator password for the node",
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/controller/addNode",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "controller",
+                    "addNode"
+                  ]
+                },
+                "description": "Adds a new node to the cluster. The node must be configured and reachable before it can be added."
+              },
+              "response": [
+                {
+                  "id": "4f64be2e-e394-4ba6-8c94-988e58fadd0c",
+                  "name": "Node added successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The hostname or IP address of the node to add",
+                          "key": "hostname",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of services to enable on the node (kv, n1ql, index, fts, cbas, eventing, backup)",
+                          "key": "services",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Administrator username for the node",
+                          "key": "user",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Administrator password for the node",
+                          "key": "password",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/controller/addNode",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "controller",
+                        "addNode"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:58:09.000Z",
+                  "updatedAt": "2026-10-21T19:58:09.000Z",
+                  "uid": "35240-4f64be2e-e394-4ba6-8c94-988e58fadd0c"
+                },
+                {
+                  "id": "564584d7-5adc-44c4-8233-ad0c6899a8dc",
+                  "name": "Invalid node configuration",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The hostname or IP address of the node to add",
+                          "key": "hostname",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of services to enable on the node (kv, n1ql, index, fts, cbas, eventing, backup)",
+                          "key": "services",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Administrator username for the node",
+                          "key": "user",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Administrator password for the node",
+                          "key": "password",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/controller/addNode",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "controller",
+                        "addNode"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:58:09.000Z",
+                  "updatedAt": "2026-10-21T19:58:09.000Z",
+                  "uid": "35240-564584d7-5adc-44c4-8233-ad0c6899a8dc"
+                },
+                {
+                  "id": "3c12edfa-cb67-4b3b-96f8-3afe96fbd858",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The hostname or IP address of the node to add",
+                          "key": "hostname",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of services to enable on the node (kv, n1ql, index, fts, cbas, eventing, backup)",
+                          "key": "services",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Administrator username for the node",
+                          "key": "user",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Administrator password for the node",
+                          "key": "password",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/controller/addNode",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "controller",
+                        "addNode"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:58:09.000Z",
+                  "updatedAt": "2026-10-21T19:58:09.000Z",
+                  "uid": "35240-3c12edfa-cb67-4b3b-96f8-3afe96fbd858"
+                }
+              ],
+              "createdAt": "2026-10-21T19:58:08.000Z",
+              "updatedAt": "2026-10-21T19:58:08.000Z",
+              "uid": "35240-76493a73-9aee-4ecb-b2e4-a8b96b7b9ecf"
+            }
+          ],
+          "id": "0b99577a-2bcc-435d-a3f6-296338cbe433",
+          "createdAt": "2026-10-21T19:58:08.000Z",
+          "updatedAt": "2026-10-21T19:58:08.000Z",
+          "uid": "35240-0b99577a-2bcc-435d-a3f6-296338cbe433"
+        },
+        {
+          "name": "rebalance",
+          "item": [
+            {
+              "name": "Rebalance the cluster",
+              "id": "50d0076b-3f8d-4029-832e-678b4d26dfc1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "Comma-separated list of known node OTP names",
+                      "key": "knownNodes",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of node OTP names to eject",
+                      "key": "ejectedNodes",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/controller/rebalance",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "controller",
+                    "rebalance"
+                  ]
+                },
+                "description": "Initiates a rebalance operation to redistribute data across the cluster nodes after adding or removing nodes."
+              },
+              "response": [
+                {
+                  "id": "75a91ba5-71e5-476a-8243-4695525dc13a",
+                  "name": "Rebalance initiated successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "Comma-separated list of known node OTP names",
+                          "key": "knownNodes",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of node OTP names to eject",
+                          "key": "ejectedNodes",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/controller/rebalance",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "controller",
+                        "rebalance"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:58:09.000Z",
+                  "updatedAt": "2026-10-21T19:58:09.000Z",
+                  "uid": "35240-75a91ba5-71e5-476a-8243-4695525dc13a"
+                },
+                {
+                  "id": "e7ee4644-3251-4aa9-81ce-a619bcca81b1",
+                  "name": "Invalid rebalance configuration",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "Comma-separated list of known node OTP names",
+                          "key": "knownNodes",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of node OTP names to eject",
+                          "key": "ejectedNodes",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/controller/rebalance",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "controller",
+                        "rebalance"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:58:09.000Z",
+                  "updatedAt": "2026-10-21T19:58:09.000Z",
+                  "uid": "35240-e7ee4644-3251-4aa9-81ce-a619bcca81b1"
+                },
+                {
+                  "id": "7c710b5e-c282-44d8-ba20-72bb4083561d",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "Comma-separated list of known node OTP names",
+                          "key": "knownNodes",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of node OTP names to eject",
+                          "key": "ejectedNodes",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/controller/rebalance",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "controller",
+                        "rebalance"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:58:09.000Z",
+                  "updatedAt": "2026-10-21T19:58:09.000Z",
+                  "uid": "35240-7c710b5e-c282-44d8-ba20-72bb4083561d"
+                }
+              ],
+              "createdAt": "2026-10-21T19:58:08.000Z",
+              "updatedAt": "2026-10-21T19:58:08.000Z",
+              "uid": "35240-50d0076b-3f8d-4029-832e-678b4d26dfc1"
+            }
+          ],
+          "id": "97072791-ac7f-4915-81cd-ef6efd91c4b7",
+          "createdAt": "2026-10-21T19:58:08.000Z",
+          "updatedAt": "2026-10-21T19:58:08.000Z",
+          "uid": "35240-97072791-ac7f-4915-81cd-ef6efd91c4b7"
+        },
+        {
+          "name": "failOver",
+          "item": [
+            {
+              "name": "Fail over a node",
+              "id": "bab0764b-100e-42be-8ef5-97288eb7961a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The OTP name of the node to fail over",
+                      "key": "otpNode",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/controller/failOver",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "controller",
+                    "failOver"
+                  ]
+                },
+                "description": "Initiates a hard failover for the specified node, removing it from the cluster immediately."
+              },
+              "response": [
+                {
+                  "id": "b3e780c1-e3fd-4b2f-8273-00573f12ca9e",
+                  "name": "Failover initiated successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The OTP name of the node to fail over",
+                          "key": "otpNode",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/controller/failOver",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "controller",
+                        "failOver"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:58:09.000Z",
+                  "updatedAt": "2026-10-21T19:58:09.000Z",
+                  "uid": "35240-b3e780c1-e3fd-4b2f-8273-00573f12ca9e"
+                },
+                {
+                  "id": "5a106a25-6663-4a71-86de-2da42d7dd51c",
+                  "name": "Invalid failover request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The OTP name of the node to fail over",
+                          "key": "otpNode",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/controller/failOver",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "controller",
+                        "failOver"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:58:09.000Z",
+                  "updatedAt": "2026-10-21T19:58:09.000Z",
+                  "uid": "35240-5a106a25-6663-4a71-86de-2da42d7dd51c"
+                },
+                {
+                  "id": "2d13c4e1-d749-481d-a85f-c85fa4cac971",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The OTP name of the node to fail over",
+                          "key": "otpNode",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/controller/failOver",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "controller",
+                        "failOver"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:58:09.000Z",
+                  "updatedAt": "2026-10-21T19:58:09.000Z",
+                  "uid": "35240-2d13c4e1-d749-481d-a85f-c85fa4cac971"
+                }
+              ],
+              "createdAt": "2026-10-21T19:58:08.000Z",
+              "updatedAt": "2026-10-21T19:58:08.000Z",
+              "uid": "35240-bab0764b-100e-42be-8ef5-97288eb7961a"
+            }
+          ],
+          "id": "ca43d317-1229-4dfe-acb0-6506ed59e4b1",
+          "createdAt": "2026-10-21T19:58:08.000Z",
+          "updatedAt": "2026-10-21T19:58:08.000Z",
+          "uid": "35240-ca43d317-1229-4dfe-acb0-6506ed59e4b1"
+        }
+      ],
+      "id": "142697dd-7823-461a-af2a-c3649d034dc0",
+      "createdAt": "2026-10-21T19:58:08.000Z",
+      "updatedAt": "2026-10-21T19:58:08.000Z",
+      "uid": "35240-142697dd-7823-461a-af2a-c3649d034dc0"
     }
   ],
   "auth": {
@@ -895,21 +817,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "98b67fe4-d84d-456b-b806-d1e260fc1bcd",
-    "name": "Couchbase Analytics Service REST Allowed CIDRs Nodes API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:8091"
     }
-  }
+  ]
 }

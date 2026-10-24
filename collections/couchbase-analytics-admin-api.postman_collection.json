@@ -1,508 +1,532 @@
 {
+  "info": {
+    "_postman_id": "e94dbb50-9412-46da-8ce0-5eacc25017d1",
+    "name": "Couchbase Analytics Service REST Analytics Admin API",
+    "description": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:55:43.000Z",
+    "updatedAt": "2026-10-21T19:55:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e94dbb50-9412-46da-8ce0-5eacc25017d1"
+  },
   "item": [
     {
-      "id": "936e9d9e-2e64-4a34-b816-3d930838a3b4",
-      "name": "Analytics Admin",
-      "description": {
-        "content": "Endpoints for administering and monitoring the Analytics service.",
-        "type": "text/plain"
-      },
+      "name": "analytics",
       "item": [
         {
-          "id": "0f7b560d-9741-48ae-997e-fd1fa058cfaa",
-          "name": "Get remaining mutations to be synced",
-          "request": {
-            "name": "Get remaining mutations to be synced",
-            "description": {
-              "content": "Returns the number of mutations that have not yet been synced to the Analytics service from the Data service. Useful for monitoring data ingestion progress.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "analytics",
-                "node",
-                "agg",
-                "stats",
-                "remaining"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "node",
+          "item": [
             {
-              "id": "5fb6c7ba-6c06-4042-a3a9-b92f789ffd21",
-              "name": "Successful retrieval of remaining mutation counts",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "node",
-                    "agg",
-                    "stats",
-                    "remaining"
+              "name": "agg",
+              "item": [
+                {
+                  "name": "stats",
+                  "item": [
+                    {
+                      "name": "remaining",
+                      "item": [
+                        {
+                          "name": "Get remaining mutations to be synced",
+                          "id": "71d4586d-5659-4f8a-9204-21338b2d61a1",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/analytics/node/agg/stats/remaining",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "analytics",
+                                "node",
+                                "agg",
+                                "stats",
+                                "remaining"
+                              ]
+                            },
+                            "description": "Returns the number of mutations that have not yet been synced to the Analytics service from the Data service. Useful for monitoring data ingestion progress."
+                          },
+                          "response": [
+                            {
+                              "id": "770c652e-0ac1-43ea-854a-9a277c1ac4fc",
+                              "name": "Successful retrieval of remaining mutation counts",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/analytics/node/agg/stats/remaining",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "analytics",
+                                    "node",
+                                    "agg",
+                                    "stats",
+                                    "remaining"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id_e\": \"<integer>\"\n}",
+                              "createdAt": "2026-10-21T19:55:44.000Z",
+                              "updatedAt": "2026-10-21T19:55:44.000Z",
+                              "uid": "35240-770c652e-0ac1-43ea-854a-9a277c1ac4fc"
+                            },
+                            {
+                              "id": "d23a0754-804e-447e-9b66-ffd32fac5085",
+                              "name": "Unauthorized access",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/analytics/node/agg/stats/remaining",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "analytics",
+                                    "node",
+                                    "agg",
+                                    "stats",
+                                    "remaining"
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:55:44.000Z",
+                              "updatedAt": "2026-10-21T19:55:44.000Z",
+                              "uid": "35240-d23a0754-804e-447e-9b66-ffd32fac5085"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T19:55:44.000Z",
+                          "updatedAt": "2026-10-21T19:55:44.000Z",
+                          "uid": "35240-71d4586d-5659-4f8a-9204-21338b2d61a1"
+                        }
+                      ],
+                      "id": "2fbcbd99-38e0-44ca-b838-56111c9a1296",
+                      "createdAt": "2026-10-21T19:55:44.000Z",
+                      "updatedAt": "2026-10-21T19:55:44.000Z",
+                      "uid": "35240-2fbcbd99-38e0-44ca-b838-56111c9a1296"
+                    }
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                  "id": "94ec529f-fc07-4eb1-86f6-743f5224ef17",
+                  "createdAt": "2026-10-21T19:55:44.000Z",
+                  "updatedAt": "2026-10-21T19:55:44.000Z",
+                  "uid": "35240-94ec529f-fc07-4eb1-86f6-743f5224ef17"
+                }
+              ],
+              "id": "1358ba2b-896f-4cc2-9145-4bfa3a91a6f2",
+              "createdAt": "2026-10-21T19:55:44.000Z",
+              "updatedAt": "2026-10-21T19:55:44.000Z",
+              "uid": "35240-1358ba2b-896f-4cc2-9145-4bfa3a91a6f2"
+            }
+          ],
+          "id": "c03308b2-196e-48e6-8fa7-d375fd7aa0b2",
+          "createdAt": "2026-10-21T19:55:44.000Z",
+          "updatedAt": "2026-10-21T19:55:44.000Z",
+          "uid": "35240-c03308b2-196e-48e6-8fa7-d375fd7aa0b2"
+        },
+        {
+          "name": "status",
+          "item": [
+            {
+              "name": "ingestion",
+              "item": [
+                {
+                  "name": "Get analytics data ingestion status",
+                  "id": "8e18bb68-4c41-40c1-ad6e-d26f50b09b43",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/analytics/status/ingestion",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "analytics",
+                        "status",
+                        "ingestion"
+                      ]
+                    },
+                    "description": "Returns the current status of data ingestion from Couchbase Server into the Analytics service, including details about each dataset and its synchronization state."
+                  },
+                  "response": [
+                    {
+                      "id": "c556a3ea-9c32-4962-8e02-2a768b6cca70",
+                      "name": "Successful retrieval of ingestion status",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/status/ingestion",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "status",
+                            "ingestion"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-10-21T19:55:44.000Z",
+                      "updatedAt": "2026-10-21T19:55:44.000Z",
+                      "uid": "35240-c556a3ea-9c32-4962-8e02-2a768b6cca70"
+                    },
+                    {
+                      "id": "ae619744-432f-4aca-9a57-5ca255a0f40a",
+                      "name": "Unauthorized access",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/status/ingestion",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "status",
+                            "ingestion"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:55:44.000Z",
+                      "updatedAt": "2026-10-21T19:55:44.000Z",
+                      "uid": "35240-ae619744-432f-4aca-9a57-5ca255a0f40a"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:55:44.000Z",
+                  "updatedAt": "2026-10-21T19:55:44.000Z",
+                  "uid": "35240-8e18bb68-4c41-40c1-ad6e-d26f50b09b43"
+                }
+              ],
+              "id": "d3b5c703-5e75-402a-8159-6eee76b75d46",
+              "createdAt": "2026-10-21T19:55:44.000Z",
+              "updatedAt": "2026-10-21T19:55:44.000Z",
+              "uid": "35240-d3b5c703-5e75-402a-8159-6eee76b75d46"
+            }
+          ],
+          "id": "332f99d1-fb79-43fb-b698-e8bad76c905b",
+          "createdAt": "2026-10-21T19:55:44.000Z",
+          "updatedAt": "2026-10-21T19:55:44.000Z",
+          "uid": "35240-332f99d1-fb79-43fb-b698-e8bad76c905b"
+        },
+        {
+          "name": "cluster",
+          "item": [
+            {
+              "name": "restart",
+              "item": [
+                {
+                  "name": "Restart analytics cluster",
+                  "id": "22c23970-84c5-4136-bbf7-5aa0b2a7c891",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/analytics/cluster/restart",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "analytics",
+                        "cluster",
+                        "restart"
+                      ]
+                    },
+                    "description": "Restarts the Analytics service across all nodes in the cluster."
+                  },
+                  "response": [
+                    {
+                      "id": "eb06f535-f274-4e9a-95ec-d953097b67e5",
+                      "name": "Restart initiated successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/cluster/restart",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "cluster",
+                            "restart"
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:55:44.000Z",
+                      "updatedAt": "2026-10-21T19:55:44.000Z",
+                      "uid": "35240-eb06f535-f274-4e9a-95ec-d953097b67e5"
+                    },
+                    {
+                      "id": "5c47b5f7-9092-4c77-a531-6fbca779a8df",
+                      "name": "Unauthorized access",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/cluster/restart",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "cluster",
+                            "restart"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:55:44.000Z",
+                      "updatedAt": "2026-10-21T19:55:44.000Z",
+                      "uid": "35240-5c47b5f7-9092-4c77-a531-6fbca779a8df"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:55:44.000Z",
+                  "updatedAt": "2026-10-21T19:55:44.000Z",
+                  "uid": "35240-22c23970-84c5-4136-bbf7-5aa0b2a7c891"
+                }
+              ],
+              "id": "5330b6da-5c3b-4302-be7b-d931c007b66f",
+              "createdAt": "2026-10-21T19:55:44.000Z",
+              "updatedAt": "2026-10-21T19:55:44.000Z",
+              "uid": "35240-5330b6da-5c3b-4302-be7b-d931c007b66f"
+            },
+            {
+              "name": "Get analytics cluster status",
+              "id": "852a01c3-2770-4515-9d01-2dd771467218",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"key_0\": 9194,\n  \"key_1\": 4842,\n  \"key_2\": 5395,\n  \"key_3\": 7750\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "fd208369-1246-4517-a0cf-090c155f2c0c",
-              "name": "Unauthorized access",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "analytics",
-                    "node",
-                    "agg",
-                    "stats",
-                    "remaining"
-                  ],
+                  "raw": "{{baseUrl}}/analytics/cluster",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "8a3273b3-ede1-4965-980f-3af825e75119",
-          "name": "Get analytics data ingestion status",
-          "request": {
-            "name": "Get analytics data ingestion status",
-            "description": {
-              "content": "Returns the current status of data ingestion from Couchbase Server into the Analytics service, including details about each dataset and its synchronization state.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "analytics",
-                "status",
-                "ingestion"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "a73dc948-022b-4074-95b0-e217db52f4bc",
-              "name": "Successful retrieval of ingestion status",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "status",
-                    "ingestion"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9f0a3a7d-5ba0-49ff-bb81-d93191a591b9",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "status",
-                    "ingestion"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "05386d6c-25b3-44a0-b317-aedbb3971f0c",
-          "name": "Get analytics cluster status",
-          "request": {
-            "name": "Get analytics cluster status",
-            "description": {
-              "content": "Returns the status of the Analytics cluster including information about all Analytics nodes and their states.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "analytics",
-                "cluster"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "4df093c7-68e3-4937-b3eb-c404bbe284fc",
-              "name": "Successful retrieval of cluster status",
-              "originalRequest": {
-                "url": {
                   "path": [
                     "analytics",
                     "cluster"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                "description": "Returns the status of the Analytics cluster including information about all Analytics nodes and their states."
+              },
+              "response": [
+                {
+                  "id": "02709b97-b959-49ea-b4be-d8832ed9254c",
+                  "name": "Successful retrieval of cluster status",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/analytics/cluster",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "analytics",
+                        "cluster"
+                      ]
+                    }
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"state\": \"RECOVERING\",\n  \"nodes\": [\n    {\n      \"nodeId\": \"string\",\n      \"state\": \"string\"\n    },\n    {\n      \"nodeId\": \"string\",\n      \"state\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "62e560c1-3451-4de5-9bfc-ab5257eb903d",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "cluster"
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"state\": \"RECOVERING\",\n  \"nodes\": [\n    {\n      \"nodeId\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    {\n      \"nodeId\": \"<string>\",\n      \"state\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T19:55:44.000Z",
+                  "updatedAt": "2026-10-21T19:55:44.000Z",
+                  "uid": "35240-02709b97-b959-49ea-b4be-d8832ed9254c"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "7e7ed3ee-31ed-459d-b700-fb69758b1d9d",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/analytics/cluster",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "analytics",
+                        "cluster"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:55:44.000Z",
+                  "updatedAt": "2026-10-21T19:55:44.000Z",
+                  "uid": "35240-7e7ed3ee-31ed-459d-b700-fb69758b1d9d"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T19:55:44.000Z",
+              "updatedAt": "2026-10-21T19:55:44.000Z",
+              "uid": "35240-852a01c3-2770-4515-9d01-2dd771467218"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "45ac6559-1537-4bac-9cdd-dbfca59f2079",
-          "name": "Restart analytics cluster",
-          "request": {
-            "name": "Restart analytics cluster",
-            "description": {
-              "content": "Restarts the Analytics service across all nodes in the cluster.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "analytics",
-                "cluster",
-                "restart"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "b14d48a6-25d5-4a76-8b75-4b2d11a2ae21",
-              "name": "Restart initiated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "cluster",
-                    "restart"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Accepted",
-              "code": 202,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6754f757-30e8-4a0b-971c-2359c2571cd8",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "cluster",
-                    "restart"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "afae35cf-3d69-4f35-b013-3b1ffb5fb830",
+          "createdAt": "2026-10-21T19:55:44.000Z",
+          "updatedAt": "2026-10-21T19:55:44.000Z",
+          "uid": "35240-afae35cf-3d69-4f35-b013-3b1ffb5fb830"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://localhost:8095",
-      "key": "baseUrl"
+      "id": "0c73490e-411f-4923-a0ce-841147adbfdf",
+      "createdAt": "2026-10-21T19:55:44.000Z",
+      "updatedAt": "2026-10-21T19:55:44.000Z",
+      "uid": "35240-0c73490e-411f-4923-a0ce-841147adbfdf"
     }
   ],
   "auth": {
@@ -510,21 +534,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "3a985d1d-8a69-4745-9584-6c5278245694",
-    "name": "Couchbase Analytics Service REST Allowed CIDRs Analytics Admin API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:8095"
     }
-  }
+  ]
 }

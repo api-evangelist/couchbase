@@ -1,1472 +1,1276 @@
 {
+  "info": {
+    "_postman_id": "5d50d5d6-18ea-454a-b629-5a47ebb502ab",
+    "name": "Couchbase Sync Gateway Admin REST User Management API",
+    "description": "The Couchbase Sync Gateway Admin REST API provides administrative endpoints for configuring and managing Sync Gateway instances. It supports database management, user and role administration, sync function configuration, and replication setup. The API is intended for server-side administration and is typically bound to localhost for security, enabling full control over Sync Gateway behavior, access control policies, and data synchronization rules.\n\nContact Support:\n Name: Couchbase Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:59:23.000Z",
+    "updatedAt": "2026-10-21T19:59:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5d50d5d6-18ea-454a-b629-5a47ebb502ab"
+  },
   "item": [
     {
-      "id": "a57ebaf3-7308-4352-b06b-c7060ba61a64",
-      "name": "User Management",
-      "description": {
-        "content": "Endpoints for managing users and their access permissions.",
-        "type": "text/plain"
-      },
+      "name": "{db}",
       "item": [
         {
-          "id": "64bacf71-b3db-45a1-9883-82eb3d7264aa",
-          "name": "List all users",
-          "request": {
-            "name": "List all users",
-            "description": {
-              "content": "Returns the list of all users configured for the specified database.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_user",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The name of the database"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "_user",
+          "item": [
             {
-              "id": "e7308904-2cd3-4bb2-b563-25af0f20920e",
-              "name": "Successful retrieval of user list",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_user",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+              "name": "{userName}",
+              "item": [
+                {
+                  "name": "_session",
+                  "item": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database"
+                      "name": "Create a session for a user",
+                      "id": "d9f79a7d-e5ab-435f-a661-a5bc87c3f6ff",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"ttl\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/:db/_user/:userName/_session",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":db",
+                            "_user",
+                            ":userName",
+                            "_session"
+                          ],
+                          "variable": [
+                            {
+                              "id": "a55ddaa8-8d4c-46f5-a447-8af2a07c5c01",
+                              "key": "db",
+                              "value": "<string>",
+                              "description": "(Required) The database name"
+                            },
+                            {
+                              "id": "a31b6382-685f-43c2-9f0e-14a9b34f7e50",
+                              "key": "userName",
+                              "value": "<string>",
+                              "description": "(Required) The username"
+                            }
+                          ]
+                        },
+                        "description": "Creates a new session for the specified user with an optional expiration time and channel override."
+                      },
+                      "response": [
+                        {
+                          "id": "45ba0c23-8cf2-4736-84e8-7f2344000950",
+                          "name": "Session created successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"ttl\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:db/_user/:userName/_session",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":db",
+                                "_user",
+                                ":userName",
+                                "_session"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "db"
+                                },
+                                {
+                                  "key": "userName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"session_id\": \"<string>\",\n  \"expires\": \"<dateTime>\",\n  \"cookie_name\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T19:59:24.000Z",
+                          "updatedAt": "2026-10-21T19:59:24.000Z",
+                          "uid": "35240-45ba0c23-8cf2-4736-84e8-7f2344000950"
+                        },
+                        {
+                          "id": "dfc5d5ed-21d0-40e1-8b8b-cb136a7ddf70",
+                          "name": "Unauthorized access",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"ttl\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:db/_user/:userName/_session",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":db",
+                                "_user",
+                                ":userName",
+                                "_session"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "db"
+                                },
+                                {
+                                  "key": "userName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T19:59:24.000Z",
+                          "updatedAt": "2026-10-21T19:59:24.000Z",
+                          "uid": "35240-dfc5d5ed-21d0-40e1-8b8b-cb136a7ddf70"
+                        },
+                        {
+                          "id": "38f30d4e-b258-4965-a11e-ea77c067b1b9",
+                          "name": "User not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"ttl\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:db/_user/:userName/_session",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":db",
+                                "_user",
+                                ":userName",
+                                "_session"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "db"
+                                },
+                                {
+                                  "key": "userName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T19:59:24.000Z",
+                          "updatedAt": "2026-10-21T19:59:24.000Z",
+                          "uid": "35240-38f30d4e-b258-4965-a11e-ea77c067b1b9"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T19:59:24.000Z",
+                      "updatedAt": "2026-10-21T19:59:24.000Z",
+                      "uid": "35240-d9f79a7d-e5ab-435f-a661-a5bc87c3f6ff"
                     }
-                  ]
+                  ],
+                  "id": "a8f2876f-23a8-4238-8c5a-014225ae2463",
+                  "createdAt": "2026-10-21T19:59:24.000Z",
+                  "updatedAt": "2026-10-21T19:59:24.000Z",
+                  "uid": "35240-a8f2876f-23a8-4238-8c5a-014225ae2463"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                {
+                  "name": "Get user details",
+                  "id": "93716aba-ac77-456c-8e35-5bd05a18c9d1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_user/:userName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_user",
+                        ":userName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "82927514-f94e-44c8-bae7-5c3b55808e6c",
+                          "key": "db",
+                          "value": "<string>",
+                          "description": "(Required) The database name"
+                        },
+                        {
+                          "id": "e0eb06b1-8a16-461c-9a62-41bc966f7652",
+                          "key": "userName",
+                          "value": "<string>",
+                          "description": "(Required) The username"
+                        }
+                      ]
+                    },
+                    "description": "Returns detailed information about a user including their roles, channels, and admin channels."
+                  },
+                  "response": [
+                    {
+                      "id": "3f7fc0f6-fc5c-4a3b-9c93-f53c625e3678",
+                      "name": "Successful retrieval of user details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/:db/_user/:userName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":db",
+                            "_user",
+                            ":userName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "db"
+                            },
+                            {
+                              "key": "userName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"<string>\",\n  \"admin_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admin_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"all_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<string>\",\n  \"disabled\": \"<boolean>\"\n}",
+                      "createdAt": "2026-10-21T19:59:24.000Z",
+                      "updatedAt": "2026-10-21T19:59:24.000Z",
+                      "uid": "35240-3f7fc0f6-fc5c-4a3b-9c93-f53c625e3678"
+                    },
+                    {
+                      "id": "b1fffdd8-fbc8-4003-930c-ed9d96382767",
+                      "name": "Unauthorized access",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/:db/_user/:userName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":db",
+                            "_user",
+                            ":userName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "db"
+                            },
+                            {
+                              "key": "userName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:59:24.000Z",
+                      "updatedAt": "2026-10-21T19:59:24.000Z",
+                      "uid": "35240-b1fffdd8-fbc8-4003-930c-ed9d96382767"
+                    },
+                    {
+                      "id": "f000aa61-9f37-4976-b048-48b1c0cd9884",
+                      "name": "User not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/:db/_user/:userName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":db",
+                            "_user",
+                            ":userName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "db"
+                            },
+                            {
+                              "key": "userName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:59:24.000Z",
+                      "updatedAt": "2026-10-21T19:59:24.000Z",
+                      "uid": "35240-f000aa61-9f37-4976-b048-48b1c0cd9884"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:59:24.000Z",
+                  "updatedAt": "2026-10-21T19:59:24.000Z",
+                  "uid": "35240-93716aba-ac77-456c-8e35-5bd05a18c9d1"
+                },
+                {
+                  "name": "Update a user",
+                  "id": "49702c65-47b3-4e5a-80a5-8ef1db3a1b07",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"admin_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admin_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<email>\",\n  \"disabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_user/:userName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_user",
+                        ":userName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a30657e2-b964-4bab-9ef3-9cfd32d2d45e",
+                          "key": "db",
+                          "value": "<string>",
+                          "description": "(Required) The database name"
+                        },
+                        {
+                          "id": "4c00df70-37ba-46e8-aa2d-46ec9b837f84",
+                          "key": "userName",
+                          "value": "<string>",
+                          "description": "(Required) The username"
+                        }
+                      ]
+                    },
+                    "description": "Updates a user's configuration including password, roles, and channels."
+                  },
+                  "response": [
+                    {
+                      "id": "4a3fe94b-75bb-4d87-813a-9d9324dcad32",
+                      "name": "User updated successfully",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"admin_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admin_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<email>\",\n  \"disabled\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/:db/_user/:userName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":db",
+                            "_user",
+                            ":userName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "db"
+                            },
+                            {
+                              "key": "userName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:59:24.000Z",
+                      "updatedAt": "2026-10-21T19:59:24.000Z",
+                      "uid": "35240-4a3fe94b-75bb-4d87-813a-9d9324dcad32"
+                    },
+                    {
+                      "id": "d8a422ba-0430-46cf-bf44-0de96aaad3a1",
+                      "name": "Unauthorized access",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"admin_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admin_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<email>\",\n  \"disabled\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/:db/_user/:userName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":db",
+                            "_user",
+                            ":userName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "db"
+                            },
+                            {
+                              "key": "userName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:59:24.000Z",
+                      "updatedAt": "2026-10-21T19:59:24.000Z",
+                      "uid": "35240-d8a422ba-0430-46cf-bf44-0de96aaad3a1"
+                    },
+                    {
+                      "id": "369cc388-c6ca-47e0-8817-bfe3a4d2f34e",
+                      "name": "User not found",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"admin_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admin_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<email>\",\n  \"disabled\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/:db/_user/:userName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":db",
+                            "_user",
+                            ":userName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "db"
+                            },
+                            {
+                              "key": "userName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:59:24.000Z",
+                      "updatedAt": "2026-10-21T19:59:24.000Z",
+                      "uid": "35240-369cc388-c6ca-47e0-8817-bfe3a4d2f34e"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:59:24.000Z",
+                  "updatedAt": "2026-10-21T19:59:24.000Z",
+                  "uid": "35240-49702c65-47b3-4e5a-80a5-8ef1db3a1b07"
+                },
+                {
+                  "name": "Delete a user",
+                  "id": "a73269bc-21a4-44f5-862c-0def304b120a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_user/:userName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_user",
+                        ":userName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "134bac83-2fd3-467f-b861-4ee687ea412f",
+                          "key": "db",
+                          "value": "<string>",
+                          "description": "(Required) The database name"
+                        },
+                        {
+                          "id": "f1aca2e0-aea2-458f-8a42-a83f6411b46d",
+                          "key": "userName",
+                          "value": "<string>",
+                          "description": "(Required) The username"
+                        }
+                      ]
+                    },
+                    "description": "Deletes the specified user."
+                  },
+                  "response": [
+                    {
+                      "id": "08cc61d7-e099-470d-9318-8ae333d9ddae",
+                      "name": "User deleted successfully",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/:db/_user/:userName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":db",
+                            "_user",
+                            ":userName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "db"
+                            },
+                            {
+                              "key": "userName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:59:24.000Z",
+                      "updatedAt": "2026-10-21T19:59:24.000Z",
+                      "uid": "35240-08cc61d7-e099-470d-9318-8ae333d9ddae"
+                    },
+                    {
+                      "id": "cf7f5b7d-7072-4290-a9ec-9ce0b74f6da8",
+                      "name": "Unauthorized access",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/:db/_user/:userName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":db",
+                            "_user",
+                            ":userName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "db"
+                            },
+                            {
+                              "key": "userName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:59:24.000Z",
+                      "updatedAt": "2026-10-21T19:59:24.000Z",
+                      "uid": "35240-cf7f5b7d-7072-4290-a9ec-9ce0b74f6da8"
+                    },
+                    {
+                      "id": "aa7118b8-37f0-4d8a-9e49-806776e7188f",
+                      "name": "User not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/:db/_user/:userName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":db",
+                            "_user",
+                            ":userName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "db"
+                            },
+                            {
+                              "key": "userName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:59:24.000Z",
+                      "updatedAt": "2026-10-21T19:59:24.000Z",
+                      "uid": "35240-aa7118b8-37f0-4d8a-9e49-806776e7188f"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:59:24.000Z",
+                  "updatedAt": "2026-10-21T19:59:24.000Z",
+                  "uid": "35240-a73269bc-21a4-44f5-862c-0def304b120a"
+                }
+              ],
+              "id": "42e48243-8b30-4a16-a78f-1b98ae80ea54",
+              "createdAt": "2026-10-21T19:59:24.000Z",
+              "updatedAt": "2026-10-21T19:59:24.000Z",
+              "uid": "35240-42e48243-8b30-4a16-a78f-1b98ae80ea54"
+            },
+            {
+              "name": "List all users",
+              "id": "58e73161-85f4-401f-9229-489edf3a3c29",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  \"string\",\n  \"string\"\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "58b040d5-90dc-4143-8137-e3d346a479c9",
-              "name": "Unauthorized access",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/:db/_user/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     ":db",
                     "_user",
                     ""
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "80e6b443-34f2-41c2-bbf3-45c6c9516786",
                       "key": "db",
-                      "description": "(Required) The name of the database"
+                      "value": "<string>",
+                      "description": "(Required) The database name"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Returns the list of all users configured for the database."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "89ba2bbd-11b0-4769-9c88-c95e1701ccfa",
-          "name": "Create a user",
-          "request": {
-            "name": "Create a user",
-            "description": {
-              "content": "Creates a new user for the specified database with the given credentials and channel assignments.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_user",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The name of the database"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"admin_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admin_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<email>\",\n  \"disabled\": \"<boolean>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "f81699e8-2534-4057-ac1e-eaf77f3363ff",
-              "name": "User created successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_user",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database"
+                  "id": "08c31323-e998-4fe5-a9ac-d5d0a78c5202",
+                  "name": "Successful retrieval of user list",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_user/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_user",
+                        ""
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"admin_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admin_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<email>\",\n  \"disabled\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "fe241a5a-80cb-487b-9121-9dfa50b44c66",
-              "name": "Invalid user configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_user",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"admin_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admin_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<email>\",\n  \"disabled\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ea5f926b-3b90-4978-b19f-9d6779ce51f5",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_user",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"admin_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admin_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<email>\",\n  \"disabled\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "93ba3cbc-7c08-41cc-9165-14a00f3c3955",
-              "name": "User already exists",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_user",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"admin_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admin_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<email>\",\n  \"disabled\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "2ac66b9e-7fe8-4d1d-bf83-8e00a7fc4059",
-          "name": "Get user details",
-          "request": {
-            "name": "Get user details",
-            "description": {
-              "content": "Returns detailed information about a specific user including their roles, channels, and admin channels.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_user",
-                ":userName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The name of the database"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "userName",
-                  "description": "(Required) The username"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "af92da66-f8aa-42bb-9e47-1efd95bf9008",
-              "name": "Successful retrieval of user details",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_user",
-                    ":userName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userName",
-                      "description": "(Required) The username"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
                   },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "createdAt": "2026-10-21T19:59:24.000Z",
+                  "updatedAt": "2026-10-21T19:59:24.000Z",
+                  "uid": "35240-08c31323-e998-4fe5-a9ac-d5d0a78c5202"
+                },
+                {
+                  "id": "87e2bead-18cb-4dfe-aa24-fce364910380",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_user/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_user",
+                        ""
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:59:24.000Z",
+                  "updatedAt": "2026-10-21T19:59:24.000Z",
+                  "uid": "35240-87e2bead-18cb-4dfe-aa24-fce364910380"
+                }
+              ],
+              "createdAt": "2026-10-21T19:59:24.000Z",
+              "updatedAt": "2026-10-21T19:59:24.000Z",
+              "uid": "35240-58e73161-85f4-401f-9229-489edf3a3c29"
+            },
+            {
+              "name": "Create a user",
+              "id": "f3ea6acf-41eb-4e40-bd9c-9333a6586a22",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
                   {
-                    "key": "Accept",
+                    "key": "Content-Type",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"name\": \"string\",\n  \"admin_channels\": [\n    \"string\",\n    \"string\"\n  ],\n  \"admin_roles\": [\n    \"string\",\n    \"string\"\n  ],\n  \"all_channels\": [\n    \"string\",\n    \"string\"\n  ],\n  \"roles\": [\n    \"string\",\n    \"string\"\n  ],\n  \"email\": \"string\",\n  \"disabled\": true\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4c861a77-b71d-4c70-b45f-29d77c2dcda8",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_user",
-                    ":userName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userName",
-                      "description": "(Required) The username"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "e768d7b5-4061-4c0b-82aa-786980f2f983",
-              "name": "User not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_user",
-                    ":userName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userName",
-                      "description": "(Required) The username"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "a500e546-be13-4c40-a790-9dab71a69871",
-          "name": "Update a user",
-          "request": {
-            "name": "Update a user",
-            "description": {
-              "content": "Updates the configuration of an existing user including their password, roles, and channel assignments.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_user",
-                ":userName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The name of the database"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "userName",
-                  "description": "(Required) The username"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"admin_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admin_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<email>\",\n  \"disabled\": \"<boolean>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "0f2f5814-a9d5-4310-bd59-2a864f253c9e",
-              "name": "User updated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_user",
-                    ":userName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userName",
-                      "description": "(Required) The username"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"admin_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admin_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<email>\",\n  \"disabled\": \"<boolean>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "511ac3c9-2e87-4483-909f-84f36d323ad2",
-              "name": "Invalid user configuration",
-              "originalRequest": {
+                },
                 "url": {
-                  "path": [
-                    ":db",
-                    "_user",
-                    ":userName"
-                  ],
+                  "raw": "{{baseUrl}}/:db/_user/",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userName",
-                      "description": "(Required) The username"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"admin_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admin_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<email>\",\n  \"disabled\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "4f126e4e-5839-42e6-ae9d-33a5906e73bf",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
                   "path": [
                     ":db",
                     "_user",
-                    ":userName"
+                    ""
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "5bcaee6a-eff2-4503-9ce9-10f85d1c22f1",
                       "key": "db",
-                      "description": "(Required) The name of the database"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
                       "value": "<string>",
-                      "key": "userName",
-                      "description": "(Required) The username"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"admin_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admin_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<email>\",\n  \"disabled\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "a5cb3a2b-43bb-459e-b6b8-3464c0ff19b9",
-              "name": "User not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_user",
-                    ":userName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userName",
-                      "description": "(Required) The username"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"admin_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admin_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<email>\",\n  \"disabled\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "0949b0d6-ea57-43df-8307-6f474ff46000",
-          "name": "Delete a user",
-          "request": {
-            "name": "Delete a user",
-            "description": {
-              "content": "Deletes the specified user from the database.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_user",
-                ":userName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The name of the database"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "userName",
-                  "description": "(Required) The username"
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "77b76ee7-aeb7-4636-a8ff-19900e85efa5",
-              "name": "User deleted successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_user",
-                    ":userName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userName",
-                      "description": "(Required) The username"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "a63976dd-2eb7-498f-bc9b-411d3e4bb317",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_user",
-                    ":userName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userName",
-                      "description": "(Required) The username"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "60e4952f-5781-4907-82f1-20da6c25c9d3",
-              "name": "User not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_user",
-                    ":userName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userName",
-                      "description": "(Required) The username"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ea350264-1cb3-43dc-b7d6-12fe0a9972d1",
-          "name": "Create a session for a user",
-          "request": {
-            "name": "Create a session for a user",
-            "description": {
-              "content": "Creates a new session for the specified user with an optional expiration time and channel override.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_user",
-                ":userName",
-                "_session"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The database name"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "userName",
-                  "description": "(Required) The username"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"ttl\": \"<integer>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "a802d0e8-14d3-433c-8232-465862535b8b",
-              "name": "Session created successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_user",
-                    ":userName",
-                    "_session"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
                       "description": "(Required) The database name"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userName",
-                      "description": "(Required) The username"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
+                "description": "Creates a new user with the specified credentials, roles, and channel assignments."
+              },
+              "response": [
+                {
+                  "id": "c4b66e2d-8db6-4ca5-844e-087fd8bd84a6",
+                  "name": "User created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"admin_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admin_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<email>\",\n  \"disabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_user/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_user",
+                        ""
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"ttl\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"session_id\": \"string\",\n  \"expires\": \"1951-12-23T15:24:51.300Z\",\n  \"cookie_name\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "47751bd6-2aa5-4b60-9cde-266a72b0e894",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_user",
-                    ":userName",
-                    "_session"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userName",
-                      "description": "(Required) The username"
-                    }
-                  ]
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:59:24.000Z",
+                  "updatedAt": "2026-10-21T19:59:24.000Z",
+                  "uid": "35240-c4b66e2d-8db6-4ca5-844e-087fd8bd84a6"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"ttl\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "321777df-c78c-476e-93ac-b35340a69e2d",
-              "name": "User not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_user",
-                    ":userName",
-                    "_session"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The database name"
+                  "id": "c00ef206-3ceb-4ed6-acb1-c76fddf90b35",
+                  "name": "Invalid user configuration",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"admin_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admin_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<email>\",\n  \"disabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userName",
-                      "description": "(Required) The username"
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_user/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_user",
+                        ""
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
                     }
-                  ]
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:59:24.000Z",
+                  "updatedAt": "2026-10-21T19:59:24.000Z",
+                  "uid": "35240-c00ef206-3ceb-4ed6-acb1-c76fddf90b35"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"ttl\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "b9d77579-9e65-4f03-be89-32670903470c",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"admin_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admin_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<email>\",\n  \"disabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_user/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_user",
+                        ""
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:59:24.000Z",
+                  "updatedAt": "2026-10-21T19:59:24.000Z",
+                  "uid": "35240-b9d77579-9e65-4f03-be89-32670903470c"
+                },
+                {
+                  "id": "3c25c50d-48e6-45ae-9f52-f7f89408ee2a",
+                  "name": "User already exists",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"admin_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admin_roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email\": \"<email>\",\n  \"disabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_user/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_user",
+                        ""
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:59:24.000Z",
+                  "updatedAt": "2026-10-21T19:59:24.000Z",
+                  "uid": "35240-3c25c50d-48e6-45ae-9f52-f7f89408ee2a"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T19:59:24.000Z",
+              "updatedAt": "2026-10-21T19:59:24.000Z",
+              "uid": "35240-f3ea6acf-41eb-4e40-bd9c-9333a6586a22"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "28ce4a79-bf37-4098-8883-f18d5417beda",
+          "createdAt": "2026-10-21T19:59:24.000Z",
+          "updatedAt": "2026-10-21T19:59:24.000Z",
+          "uid": "35240-28ce4a79-bf37-4098-8883-f18d5417beda"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://localhost:8095",
-      "key": "baseUrl"
+      "id": "95e45149-2a75-41e0-9db1-ea750da31413",
+      "createdAt": "2026-10-21T19:59:24.000Z",
+      "updatedAt": "2026-10-21T19:59:24.000Z",
+      "uid": "35240-95e45149-2a75-41e0-9db1-ea750da31413"
     }
   ],
   "auth": {
@@ -1474,21 +1278,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "2d9eab62-13fc-4df6-bedc-42f53223d064",
-    "name": "Couchbase Analytics Service REST Allowed CIDRs User Management API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:4985"
     }
-  }
+  ]
 }

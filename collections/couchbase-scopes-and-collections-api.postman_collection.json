@@ -1,1729 +1,1653 @@
 {
+  "info": {
+    "_postman_id": "aa8f8cf8-5203-4202-86b5-71b81792fd8c",
+    "name": "Couchbase Scopes and Collections API",
+    "description": "Operations tagged Scopes and Collections across 2 of this provider's published API definitions: couchbase-capella-management-api-openapi.yml, couchbase-server-rest-api-openapi.yml. Each path carries the servers of the definition it was published in.\n\nContact Support:\n Name: Couchbase Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:58:50.000Z",
+    "updatedAt": "2026-10-21T19:58:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-aa8f8cf8-5203-4202-86b5-71b81792fd8c"
+  },
   "item": [
     {
-      "id": "8e76fcbc-2dba-496f-aab1-2b72fa95fd5f",
-      "name": "Scopes and Collections",
-      "description": {
-        "content": "Endpoints for managing scopes and collections within Capella buckets.",
-        "type": "text/plain"
-      },
+      "name": "v4",
       "item": [
         {
-          "id": "ce4145b3-5339-497c-a907-3d384a0eebf5",
-          "name": "List scopes in a bucket",
-          "request": {
-            "name": "List scopes in a bucket",
-            "description": {
-              "content": "Returns the list of scopes within the specified bucket.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v4",
-                "organizations",
-                ":organizationId",
-                "projects",
-                ":projectId",
-                "clusters",
-                ":clusterId",
-                "buckets",
-                ":bucketId",
-                "scopes"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "organizationId",
-                  "description": "(Required) The UUID of the organization"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "projectId",
-                  "description": "(Required) The UUID of the project"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "clusterId",
-                  "description": "(Required) The UUID of the cluster"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "bucketId",
-                  "description": "(Required) The ID of the bucket"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "organizations",
+          "item": [
             {
-              "id": "bdff972b-25b2-41e2-925d-2f0e6e3e5e1e",
-              "name": "Successful retrieval of scopes",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v4",
-                    "organizations",
-                    ":organizationId",
-                    "projects",
-                    ":projectId",
-                    "clusters",
-                    ":clusterId",
-                    "buckets",
-                    ":bucketId",
-                    "scopes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "organizationId",
-                      "description": "(Required) The UUID of the organization"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "projectId",
-                      "description": "(Required) The UUID of the project"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "clusterId",
-                      "description": "(Required) The UUID of the cluster"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketId",
-                      "description": "(Required) The ID of the bucket"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{organizationId}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "projects",
+                  "item": [
+                    {
+                      "name": "{projectId}",
+                      "item": [
+                        {
+                          "name": "clusters",
+                          "item": [
+                            {
+                              "name": "{clusterId}",
+                              "item": [
+                                {
+                                  "name": "buckets",
+                                  "item": [
+                                    {
+                                      "name": "{bucketId}",
+                                      "item": [
+                                        {
+                                          "name": "scopes",
+                                          "item": [
+                                            {
+                                              "name": "List scopes in a bucket",
+                                              "id": "5f69a0dc-a1f1-4ed0-b04d-940a115a4249",
+                                              "protocolProfileBehavior": {
+                                                "disableBodyPruning": true
+                                              },
+                                              "request": {
+                                                "auth": {
+                                                  "type": "bearer",
+                                                  "bearer": [
+                                                    {
+                                                      "key": "token",
+                                                      "value": "{{bearerToken}}",
+                                                      "type": "string"
+                                                    }
+                                                  ]
+                                                },
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId/scopes",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "v4",
+                                                    "organizations",
+                                                    ":organizationId",
+                                                    "projects",
+                                                    ":projectId",
+                                                    "clusters",
+                                                    ":clusterId",
+                                                    "buckets",
+                                                    ":bucketId",
+                                                    "scopes"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "id": "9cfcb4a4-8ca8-44a7-9fd6-b4d8ab31865a",
+                                                      "key": "organizationId",
+                                                      "value": "<uuid>",
+                                                      "description": "(Required) The UUID of the organization"
+                                                    },
+                                                    {
+                                                      "id": "4d5e3e3d-a380-412b-936e-31047b19e060",
+                                                      "key": "projectId",
+                                                      "value": "<uuid>",
+                                                      "description": "(Required) The UUID of the project"
+                                                    },
+                                                    {
+                                                      "id": "3d0a58b5-fe48-445d-b60e-477bff7f432b",
+                                                      "key": "clusterId",
+                                                      "value": "<uuid>",
+                                                      "description": "(Required) The UUID of the cluster"
+                                                    },
+                                                    {
+                                                      "id": "eb31389d-4557-470e-8b9d-4eec55a7c624",
+                                                      "key": "bucketId",
+                                                      "value": "<string>",
+                                                      "description": "(Required) The ID of the bucket"
+                                                    }
+                                                  ]
+                                                },
+                                                "description": "Returns the list of scopes within the specified bucket."
+                                              },
+                                              "response": [
+                                                {
+                                                  "id": "7fb09066-9985-40b1-9264-65dd660f54bc",
+                                                  "name": "Successful retrieval of scopes",
+                                                  "originalRequest": {
+                                                    "method": "GET",
+                                                    "header": [
+                                                      {
+                                                        "key": "Accept",
+                                                        "value": "application/json"
+                                                      },
+                                                      {
+                                                        "description": "Added as a part of security scheme: bearer",
+                                                        "key": "Authorization",
+                                                        "value": "Bearer <token>"
+                                                      }
+                                                    ],
+                                                    "url": {
+                                                      "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId/scopes",
+                                                      "host": [
+                                                        "{{baseUrl}}"
+                                                      ],
+                                                      "path": [
+                                                        "v4",
+                                                        "organizations",
+                                                        ":organizationId",
+                                                        "projects",
+                                                        ":projectId",
+                                                        "clusters",
+                                                        ":clusterId",
+                                                        "buckets",
+                                                        ":bucketId",
+                                                        "scopes"
+                                                      ],
+                                                      "variable": [
+                                                        {
+                                                          "key": "organizationId"
+                                                        },
+                                                        {
+                                                          "key": "projectId"
+                                                        },
+                                                        {
+                                                          "key": "clusterId"
+                                                        },
+                                                        {
+                                                          "key": "bucketId"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "status": "OK",
+                                                  "code": 200,
+                                                  "_postman_previewlanguage": "json",
+                                                  "header": [
+                                                    {
+                                                      "key": "Content-Type",
+                                                      "value": "application/json"
+                                                    }
+                                                  ],
+                                                  "cookie": [],
+                                                  "responseTime": null,
+                                                  "body": "{\n  \"data\": [\n    {\n      \"name\": \"<string>\",\n      \"collections\": [\n        {\n          \"name\": \"<string>\",\n          \"maxTTL\": \"<integer>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"maxTTL\": \"<integer>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"collections\": [\n        {\n          \"name\": \"<string>\",\n          \"maxTTL\": \"<integer>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"maxTTL\": \"<integer>\"\n        }\n      ]\n    }\n  ]\n}",
+                                                  "createdAt": "2026-10-21T19:58:51.000Z",
+                                                  "updatedAt": "2026-10-21T19:58:51.000Z",
+                                                  "uid": "35240-7fb09066-9985-40b1-9264-65dd660f54bc"
+                                                },
+                                                {
+                                                  "id": "fd71f426-e959-4af3-9d74-5f95c549ba52",
+                                                  "name": "Unauthorized access",
+                                                  "originalRequest": {
+                                                    "method": "GET",
+                                                    "header": [
+                                                      {
+                                                        "description": "Added as a part of security scheme: bearer",
+                                                        "key": "Authorization",
+                                                        "value": "Bearer <token>"
+                                                      }
+                                                    ],
+                                                    "url": {
+                                                      "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId/scopes",
+                                                      "host": [
+                                                        "{{baseUrl}}"
+                                                      ],
+                                                      "path": [
+                                                        "v4",
+                                                        "organizations",
+                                                        ":organizationId",
+                                                        "projects",
+                                                        ":projectId",
+                                                        "clusters",
+                                                        ":clusterId",
+                                                        "buckets",
+                                                        ":bucketId",
+                                                        "scopes"
+                                                      ],
+                                                      "variable": [
+                                                        {
+                                                          "key": "organizationId"
+                                                        },
+                                                        {
+                                                          "key": "projectId"
+                                                        },
+                                                        {
+                                                          "key": "clusterId"
+                                                        },
+                                                        {
+                                                          "key": "bucketId"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "status": "Unauthorized",
+                                                  "code": 401,
+                                                  "_postman_previewlanguage": "text",
+                                                  "header": [],
+                                                  "cookie": [],
+                                                  "responseTime": null,
+                                                  "body": null,
+                                                  "createdAt": "2026-10-21T19:58:51.000Z",
+                                                  "updatedAt": "2026-10-21T19:58:51.000Z",
+                                                  "uid": "35240-fd71f426-e959-4af3-9d74-5f95c549ba52"
+                                                },
+                                                {
+                                                  "id": "c15f9cb9-5fe0-4379-873e-9b0bf8e5f2ff",
+                                                  "name": "Bucket not found",
+                                                  "originalRequest": {
+                                                    "method": "GET",
+                                                    "header": [
+                                                      {
+                                                        "description": "Added as a part of security scheme: bearer",
+                                                        "key": "Authorization",
+                                                        "value": "Bearer <token>"
+                                                      }
+                                                    ],
+                                                    "url": {
+                                                      "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId/scopes",
+                                                      "host": [
+                                                        "{{baseUrl}}"
+                                                      ],
+                                                      "path": [
+                                                        "v4",
+                                                        "organizations",
+                                                        ":organizationId",
+                                                        "projects",
+                                                        ":projectId",
+                                                        "clusters",
+                                                        ":clusterId",
+                                                        "buckets",
+                                                        ":bucketId",
+                                                        "scopes"
+                                                      ],
+                                                      "variable": [
+                                                        {
+                                                          "key": "organizationId"
+                                                        },
+                                                        {
+                                                          "key": "projectId"
+                                                        },
+                                                        {
+                                                          "key": "clusterId"
+                                                        },
+                                                        {
+                                                          "key": "bucketId"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "status": "Not Found",
+                                                  "code": 404,
+                                                  "_postman_previewlanguage": "text",
+                                                  "header": [],
+                                                  "cookie": [],
+                                                  "responseTime": null,
+                                                  "body": null,
+                                                  "createdAt": "2026-10-21T19:58:51.000Z",
+                                                  "updatedAt": "2026-10-21T19:58:51.000Z",
+                                                  "uid": "35240-c15f9cb9-5fe0-4379-873e-9b0bf8e5f2ff"
+                                                },
+                                                {
+                                                  "id": "d231d975-60eb-4a27-af22-3580064d2871",
+                                                  "name": "Rate limit exceeded",
+                                                  "originalRequest": {
+                                                    "method": "GET",
+                                                    "header": [
+                                                      {
+                                                        "description": "Added as a part of security scheme: bearer",
+                                                        "key": "Authorization",
+                                                        "value": "Bearer <token>"
+                                                      }
+                                                    ],
+                                                    "url": {
+                                                      "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId/scopes",
+                                                      "host": [
+                                                        "{{baseUrl}}"
+                                                      ],
+                                                      "path": [
+                                                        "v4",
+                                                        "organizations",
+                                                        ":organizationId",
+                                                        "projects",
+                                                        ":projectId",
+                                                        "clusters",
+                                                        ":clusterId",
+                                                        "buckets",
+                                                        ":bucketId",
+                                                        "scopes"
+                                                      ],
+                                                      "variable": [
+                                                        {
+                                                          "key": "organizationId"
+                                                        },
+                                                        {
+                                                          "key": "projectId"
+                                                        },
+                                                        {
+                                                          "key": "clusterId"
+                                                        },
+                                                        {
+                                                          "key": "bucketId"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "status": "Too Many Requests",
+                                                  "code": 429,
+                                                  "_postman_previewlanguage": "text",
+                                                  "header": [],
+                                                  "cookie": [],
+                                                  "responseTime": null,
+                                                  "body": null,
+                                                  "createdAt": "2026-10-21T19:58:51.000Z",
+                                                  "updatedAt": "2026-10-21T19:58:51.000Z",
+                                                  "uid": "35240-d231d975-60eb-4a27-af22-3580064d2871"
+                                                }
+                                              ],
+                                              "createdAt": "2026-10-21T19:58:51.000Z",
+                                              "updatedAt": "2026-10-21T19:58:51.000Z",
+                                              "uid": "35240-5f69a0dc-a1f1-4ed0-b04d-940a115a4249"
+                                            },
+                                            {
+                                              "name": "Create a scope",
+                                              "id": "e8939ae0-0830-4055-8cfa-c92282d4f469",
+                                              "protocolProfileBehavior": {
+                                                "disableBodyPruning": true
+                                              },
+                                              "request": {
+                                                "auth": {
+                                                  "type": "bearer",
+                                                  "bearer": [
+                                                    {
+                                                      "key": "token",
+                                                      "value": "{{bearerToken}}",
+                                                      "type": "string"
+                                                    }
+                                                  ]
+                                                },
+                                                "method": "POST",
+                                                "header": [
+                                                  {
+                                                    "key": "Content-Type",
+                                                    "value": "application/json"
+                                                  }
+                                                ],
+                                                "body": {
+                                                  "mode": "raw",
+                                                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                                                  "options": {
+                                                    "raw": {
+                                                      "headerFamily": "json",
+                                                      "language": "json"
+                                                    }
+                                                  }
+                                                },
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId/scopes",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "v4",
+                                                    "organizations",
+                                                    ":organizationId",
+                                                    "projects",
+                                                    ":projectId",
+                                                    "clusters",
+                                                    ":clusterId",
+                                                    "buckets",
+                                                    ":bucketId",
+                                                    "scopes"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "id": "24c72ac8-9386-47cd-a4aa-f96bccc4aa4c",
+                                                      "key": "organizationId",
+                                                      "value": "<uuid>",
+                                                      "description": "(Required) The UUID of the organization"
+                                                    },
+                                                    {
+                                                      "id": "7443d175-8710-408d-a123-8ff3918a2572",
+                                                      "key": "projectId",
+                                                      "value": "<uuid>",
+                                                      "description": "(Required) The UUID of the project"
+                                                    },
+                                                    {
+                                                      "id": "83a95201-a1db-4836-b1cc-e566dcb44bbb",
+                                                      "key": "clusterId",
+                                                      "value": "<uuid>",
+                                                      "description": "(Required) The UUID of the cluster"
+                                                    },
+                                                    {
+                                                      "id": "5a66c2aa-15be-4091-9acf-6132009f9311",
+                                                      "key": "bucketId",
+                                                      "value": "<string>",
+                                                      "description": "(Required) The ID of the bucket"
+                                                    }
+                                                  ]
+                                                },
+                                                "description": "Creates a new scope within the specified bucket."
+                                              },
+                                              "response": [
+                                                {
+                                                  "id": "e18b9e66-8f99-449a-bd47-9a6934c7d766",
+                                                  "name": "Scope created successfully",
+                                                  "originalRequest": {
+                                                    "method": "POST",
+                                                    "header": [
+                                                      {
+                                                        "key": "Content-Type",
+                                                        "value": "application/json"
+                                                      },
+                                                      {
+                                                        "description": "Added as a part of security scheme: bearer",
+                                                        "key": "Authorization",
+                                                        "value": "Bearer <token>"
+                                                      }
+                                                    ],
+                                                    "body": {
+                                                      "mode": "raw",
+                                                      "raw": "{\n  \"name\": \"<string>\"\n}",
+                                                      "options": {
+                                                        "raw": {
+                                                          "headerFamily": "json",
+                                                          "language": "json"
+                                                        }
+                                                      }
+                                                    },
+                                                    "url": {
+                                                      "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId/scopes",
+                                                      "host": [
+                                                        "{{baseUrl}}"
+                                                      ],
+                                                      "path": [
+                                                        "v4",
+                                                        "organizations",
+                                                        ":organizationId",
+                                                        "projects",
+                                                        ":projectId",
+                                                        "clusters",
+                                                        ":clusterId",
+                                                        "buckets",
+                                                        ":bucketId",
+                                                        "scopes"
+                                                      ],
+                                                      "variable": [
+                                                        {
+                                                          "key": "organizationId"
+                                                        },
+                                                        {
+                                                          "key": "projectId"
+                                                        },
+                                                        {
+                                                          "key": "clusterId"
+                                                        },
+                                                        {
+                                                          "key": "bucketId"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "status": "Created",
+                                                  "code": 201,
+                                                  "_postman_previewlanguage": "text",
+                                                  "header": [],
+                                                  "cookie": [],
+                                                  "responseTime": null,
+                                                  "body": null,
+                                                  "createdAt": "2026-10-21T19:58:51.000Z",
+                                                  "updatedAt": "2026-10-21T19:58:51.000Z",
+                                                  "uid": "35240-e18b9e66-8f99-449a-bd47-9a6934c7d766"
+                                                },
+                                                {
+                                                  "id": "618a3ed6-77f7-4c20-9a21-c5bd1ab27872",
+                                                  "name": "Invalid scope configuration",
+                                                  "originalRequest": {
+                                                    "method": "POST",
+                                                    "header": [
+                                                      {
+                                                        "key": "Content-Type",
+                                                        "value": "application/json"
+                                                      },
+                                                      {
+                                                        "description": "Added as a part of security scheme: bearer",
+                                                        "key": "Authorization",
+                                                        "value": "Bearer <token>"
+                                                      }
+                                                    ],
+                                                    "body": {
+                                                      "mode": "raw",
+                                                      "raw": "{\n  \"name\": \"<string>\"\n}",
+                                                      "options": {
+                                                        "raw": {
+                                                          "headerFamily": "json",
+                                                          "language": "json"
+                                                        }
+                                                      }
+                                                    },
+                                                    "url": {
+                                                      "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId/scopes",
+                                                      "host": [
+                                                        "{{baseUrl}}"
+                                                      ],
+                                                      "path": [
+                                                        "v4",
+                                                        "organizations",
+                                                        ":organizationId",
+                                                        "projects",
+                                                        ":projectId",
+                                                        "clusters",
+                                                        ":clusterId",
+                                                        "buckets",
+                                                        ":bucketId",
+                                                        "scopes"
+                                                      ],
+                                                      "variable": [
+                                                        {
+                                                          "key": "organizationId"
+                                                        },
+                                                        {
+                                                          "key": "projectId"
+                                                        },
+                                                        {
+                                                          "key": "clusterId"
+                                                        },
+                                                        {
+                                                          "key": "bucketId"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "status": "Bad Request",
+                                                  "code": 400,
+                                                  "_postman_previewlanguage": "text",
+                                                  "header": [],
+                                                  "cookie": [],
+                                                  "responseTime": null,
+                                                  "body": null,
+                                                  "createdAt": "2026-10-21T19:58:51.000Z",
+                                                  "updatedAt": "2026-10-21T19:58:51.000Z",
+                                                  "uid": "35240-618a3ed6-77f7-4c20-9a21-c5bd1ab27872"
+                                                },
+                                                {
+                                                  "id": "ca70b9ac-272c-4cbb-ab11-045b56c636bf",
+                                                  "name": "Unauthorized access",
+                                                  "originalRequest": {
+                                                    "method": "POST",
+                                                    "header": [
+                                                      {
+                                                        "key": "Content-Type",
+                                                        "value": "application/json"
+                                                      },
+                                                      {
+                                                        "description": "Added as a part of security scheme: bearer",
+                                                        "key": "Authorization",
+                                                        "value": "Bearer <token>"
+                                                      }
+                                                    ],
+                                                    "body": {
+                                                      "mode": "raw",
+                                                      "raw": "{\n  \"name\": \"<string>\"\n}",
+                                                      "options": {
+                                                        "raw": {
+                                                          "headerFamily": "json",
+                                                          "language": "json"
+                                                        }
+                                                      }
+                                                    },
+                                                    "url": {
+                                                      "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId/scopes",
+                                                      "host": [
+                                                        "{{baseUrl}}"
+                                                      ],
+                                                      "path": [
+                                                        "v4",
+                                                        "organizations",
+                                                        ":organizationId",
+                                                        "projects",
+                                                        ":projectId",
+                                                        "clusters",
+                                                        ":clusterId",
+                                                        "buckets",
+                                                        ":bucketId",
+                                                        "scopes"
+                                                      ],
+                                                      "variable": [
+                                                        {
+                                                          "key": "organizationId"
+                                                        },
+                                                        {
+                                                          "key": "projectId"
+                                                        },
+                                                        {
+                                                          "key": "clusterId"
+                                                        },
+                                                        {
+                                                          "key": "bucketId"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "status": "Unauthorized",
+                                                  "code": 401,
+                                                  "_postman_previewlanguage": "text",
+                                                  "header": [],
+                                                  "cookie": [],
+                                                  "responseTime": null,
+                                                  "body": null,
+                                                  "createdAt": "2026-10-21T19:58:51.000Z",
+                                                  "updatedAt": "2026-10-21T19:58:51.000Z",
+                                                  "uid": "35240-ca70b9ac-272c-4cbb-ab11-045b56c636bf"
+                                                },
+                                                {
+                                                  "id": "103d4a88-9cec-489c-9418-dd3a957dd34a",
+                                                  "name": "Rate limit exceeded",
+                                                  "originalRequest": {
+                                                    "method": "POST",
+                                                    "header": [
+                                                      {
+                                                        "key": "Content-Type",
+                                                        "value": "application/json"
+                                                      },
+                                                      {
+                                                        "description": "Added as a part of security scheme: bearer",
+                                                        "key": "Authorization",
+                                                        "value": "Bearer <token>"
+                                                      }
+                                                    ],
+                                                    "body": {
+                                                      "mode": "raw",
+                                                      "raw": "{\n  \"name\": \"<string>\"\n}",
+                                                      "options": {
+                                                        "raw": {
+                                                          "headerFamily": "json",
+                                                          "language": "json"
+                                                        }
+                                                      }
+                                                    },
+                                                    "url": {
+                                                      "raw": "{{baseUrl}}/v4/organizations/:organizationId/projects/:projectId/clusters/:clusterId/buckets/:bucketId/scopes",
+                                                      "host": [
+                                                        "{{baseUrl}}"
+                                                      ],
+                                                      "path": [
+                                                        "v4",
+                                                        "organizations",
+                                                        ":organizationId",
+                                                        "projects",
+                                                        ":projectId",
+                                                        "clusters",
+                                                        ":clusterId",
+                                                        "buckets",
+                                                        ":bucketId",
+                                                        "scopes"
+                                                      ],
+                                                      "variable": [
+                                                        {
+                                                          "key": "organizationId"
+                                                        },
+                                                        {
+                                                          "key": "projectId"
+                                                        },
+                                                        {
+                                                          "key": "clusterId"
+                                                        },
+                                                        {
+                                                          "key": "bucketId"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "status": "Too Many Requests",
+                                                  "code": 429,
+                                                  "_postman_previewlanguage": "text",
+                                                  "header": [],
+                                                  "cookie": [],
+                                                  "responseTime": null,
+                                                  "body": null,
+                                                  "createdAt": "2026-10-21T19:58:51.000Z",
+                                                  "updatedAt": "2026-10-21T19:58:51.000Z",
+                                                  "uid": "35240-103d4a88-9cec-489c-9418-dd3a957dd34a"
+                                                }
+                                              ],
+                                              "createdAt": "2026-10-21T19:58:51.000Z",
+                                              "updatedAt": "2026-10-21T19:58:51.000Z",
+                                              "uid": "35240-e8939ae0-0830-4055-8cfa-c92282d4f469"
+                                            }
+                                          ],
+                                          "id": "1157102d-42ae-4f14-89b6-939a20678d74",
+                                          "createdAt": "2026-10-21T19:58:51.000Z",
+                                          "updatedAt": "2026-10-21T19:58:51.000Z",
+                                          "uid": "35240-1157102d-42ae-4f14-89b6-939a20678d74"
+                                        }
+                                      ],
+                                      "id": "ae668bed-658a-41ad-a9c0-e45e46dd11e0",
+                                      "createdAt": "2026-10-21T19:58:51.000Z",
+                                      "updatedAt": "2026-10-21T19:58:51.000Z",
+                                      "uid": "35240-ae668bed-658a-41ad-a9c0-e45e46dd11e0"
+                                    }
+                                  ],
+                                  "id": "d8888598-f667-4573-8562-4cbe5b8fcbf3",
+                                  "createdAt": "2026-10-21T19:58:51.000Z",
+                                  "updatedAt": "2026-10-21T19:58:51.000Z",
+                                  "uid": "35240-d8888598-f667-4573-8562-4cbe5b8fcbf3"
+                                }
+                              ],
+                              "id": "84b173da-fa10-431f-b1ef-fc422ee55851",
+                              "createdAt": "2026-10-21T19:58:51.000Z",
+                              "updatedAt": "2026-10-21T19:58:51.000Z",
+                              "uid": "35240-84b173da-fa10-431f-b1ef-fc422ee55851"
+                            }
+                          ],
+                          "id": "5a9ba3ef-c8a7-4f1e-8b6c-f9c03889be60",
+                          "createdAt": "2026-10-21T19:58:51.000Z",
+                          "updatedAt": "2026-10-21T19:58:51.000Z",
+                          "uid": "35240-5a9ba3ef-c8a7-4f1e-8b6c-f9c03889be60"
+                        }
+                      ],
+                      "id": "d7ac9a0b-632d-48d6-a8d8-c8c60c81d919",
+                      "createdAt": "2026-10-21T19:58:51.000Z",
+                      "updatedAt": "2026-10-21T19:58:51.000Z",
+                      "uid": "35240-d7ac9a0b-632d-48d6-a8d8-c8c60c81d919"
+                    }
+                  ],
+                  "id": "e5ae9b60-e4a3-4a58-b7ab-72c4ab43e760",
+                  "createdAt": "2026-10-21T19:58:51.000Z",
+                  "updatedAt": "2026-10-21T19:58:51.000Z",
+                  "uid": "35240-e5ae9b60-e4a3-4a58-b7ab-72c4ab43e760"
                 }
               ],
-              "body": "{\n  \"data\": [\n    {\n      \"name\": \"string\",\n      \"collections\": [\n        {\n          \"name\": \"string\",\n          \"maxTTL\": 1294\n        },\n        {\n          \"name\": \"string\",\n          \"maxTTL\": 1510\n        }\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"collections\": [\n        {\n          \"name\": \"string\",\n          \"maxTTL\": 9012\n        },\n        {\n          \"name\": \"string\",\n          \"maxTTL\": 9963\n        }\n      ]\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "af5b738a-3976-454f-bd87-316802b16177",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v4",
-                    "organizations",
-                    ":organizationId",
-                    "projects",
-                    ":projectId",
-                    "clusters",
-                    ":clusterId",
-                    "buckets",
-                    ":bucketId",
-                    "scopes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "organizationId",
-                      "description": "(Required) The UUID of the organization"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "projectId",
-                      "description": "(Required) The UUID of the project"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "clusterId",
-                      "description": "(Required) The UUID of the cluster"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketId",
-                      "description": "(Required) The ID of the bucket"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "26c78c58-f998-4a6a-84c2-8d358769ef57",
-              "name": "Bucket not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v4",
-                    "organizations",
-                    ":organizationId",
-                    "projects",
-                    ":projectId",
-                    "clusters",
-                    ":clusterId",
-                    "buckets",
-                    ":bucketId",
-                    "scopes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "organizationId",
-                      "description": "(Required) The UUID of the organization"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "projectId",
-                      "description": "(Required) The UUID of the project"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "clusterId",
-                      "description": "(Required) The UUID of the cluster"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketId",
-                      "description": "(Required) The ID of the bucket"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "78765241-cc73-4743-9c2c-fe93bbef18bc",
-              "name": "Rate limit exceeded",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v4",
-                    "organizations",
-                    ":organizationId",
-                    "projects",
-                    ":projectId",
-                    "clusters",
-                    ":clusterId",
-                    "buckets",
-                    ":bucketId",
-                    "scopes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "organizationId",
-                      "description": "(Required) The UUID of the organization"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "projectId",
-                      "description": "(Required) The UUID of the project"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "clusterId",
-                      "description": "(Required) The UUID of the cluster"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketId",
-                      "description": "(Required) The ID of the bucket"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "c8c83540-003f-45e1-9669-b8df8400ca1d",
+              "createdAt": "2026-10-21T19:58:51.000Z",
+              "updatedAt": "2026-10-21T19:58:51.000Z",
+              "uid": "35240-c8c83540-003f-45e1-9669-b8df8400ca1d"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "2f0a353b-3d6e-41d9-a810-37c9ab449080",
-          "name": "Create a scope",
-          "request": {
-            "name": "Create a scope",
-            "description": {
-              "content": "Creates a new scope within the specified bucket.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v4",
-                "organizations",
-                ":organizationId",
-                "projects",
-                ":projectId",
-                "clusters",
-                ":clusterId",
-                "buckets",
-                ":bucketId",
-                "scopes"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "organizationId",
-                  "description": "(Required) The UUID of the organization"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "projectId",
-                  "description": "(Required) The UUID of the project"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "clusterId",
-                  "description": "(Required) The UUID of the cluster"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "bucketId",
-                  "description": "(Required) The ID of the bucket"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "b161a207-a82e-4368-8941-11076b8dc73b",
-              "name": "Scope created successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v4",
-                    "organizations",
-                    ":organizationId",
-                    "projects",
-                    ":projectId",
-                    "clusters",
-                    ":clusterId",
-                    "buckets",
-                    ":bucketId",
-                    "scopes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "organizationId",
-                      "description": "(Required) The UUID of the organization"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "projectId",
-                      "description": "(Required) The UUID of the project"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "clusterId",
-                      "description": "(Required) The UUID of the cluster"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketId",
-                      "description": "(Required) The ID of the bucket"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "585b1c8d-c07c-4265-85c9-dae8172e77e3",
-              "name": "Invalid scope configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v4",
-                    "organizations",
-                    ":organizationId",
-                    "projects",
-                    ":projectId",
-                    "clusters",
-                    ":clusterId",
-                    "buckets",
-                    ":bucketId",
-                    "scopes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "organizationId",
-                      "description": "(Required) The UUID of the organization"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "projectId",
-                      "description": "(Required) The UUID of the project"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "clusterId",
-                      "description": "(Required) The UUID of the cluster"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketId",
-                      "description": "(Required) The ID of the bucket"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "89573a92-2b82-4ead-af23-c64479d35837",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v4",
-                    "organizations",
-                    ":organizationId",
-                    "projects",
-                    ":projectId",
-                    "clusters",
-                    ":clusterId",
-                    "buckets",
-                    ":bucketId",
-                    "scopes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "organizationId",
-                      "description": "(Required) The UUID of the organization"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "projectId",
-                      "description": "(Required) The UUID of the project"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "clusterId",
-                      "description": "(Required) The UUID of the cluster"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketId",
-                      "description": "(Required) The ID of the bucket"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "02163360-4cea-4c8b-81f6-264b6fa5e150",
-              "name": "Rate limit exceeded",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v4",
-                    "organizations",
-                    ":organizationId",
-                    "projects",
-                    ":projectId",
-                    "clusters",
-                    ":clusterId",
-                    "buckets",
-                    ":bucketId",
-                    "scopes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "organizationId",
-                      "description": "(Required) The UUID of the organization"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "projectId",
-                      "description": "(Required) The UUID of the project"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "clusterId",
-                      "description": "(Required) The UUID of the cluster"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketId",
-                      "description": "(Required) The ID of the bucket"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "80643eb6-20d5-4af3-bfb0-39a36f6ec6b6",
-          "name": "List scopes in a bucket",
-          "request": {
-            "name": "List scopes in a bucket",
-            "description": {
-              "content": "Returns the list of all scopes and their collections within the specified bucket.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "pools",
-                "default",
-                "buckets",
-                ":bucketName",
-                "scopes"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "bucketName",
-                  "description": "(Required) The name of the bucket"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "03ce8777-b201-4f75-853a-471c054d90c4",
-              "name": "Successful retrieval of scopes list",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "buckets",
-                    ":bucketName",
-                    "scopes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketName",
-                      "description": "(Required) The name of the bucket"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"uid\": \"string\",\n  \"scopes\": [\n    {\n      \"name\": \"string\",\n      \"uid\": \"string\",\n      \"collections\": [\n        {\n          \"name\": \"string\",\n          \"uid\": \"string\",\n          \"maxTTL\": 238\n        },\n        {\n          \"name\": \"string\",\n          \"uid\": \"string\",\n          \"maxTTL\": 4594\n        }\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"uid\": \"string\",\n      \"collections\": [\n        {\n          \"name\": \"string\",\n          \"uid\": \"string\",\n          \"maxTTL\": 6483\n        },\n        {\n          \"name\": \"string\",\n          \"uid\": \"string\",\n          \"maxTTL\": 3130\n        }\n      ]\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a6a4f301-842a-4259-af82-15ecf9b1a3ef",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "buckets",
-                    ":bucketName",
-                    "scopes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketName",
-                      "description": "(Required) The name of the bucket"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "efd90713-a106-41ce-a7c3-7b87d8e18102",
-              "name": "Bucket not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "buckets",
-                    ":bucketName",
-                    "scopes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketName",
-                      "description": "(Required) The name of the bucket"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "6e0b5d5f-9179-47e6-a7a7-6f79536e42a5",
-          "name": "Create a scope",
-          "request": {
-            "name": "Create a scope",
-            "description": {
-              "content": "Creates a new scope within the specified bucket.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "pools",
-                "default",
-                "buckets",
-                ":bucketName",
-                "scopes"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "bucketName",
-                  "description": "(Required) The name of the bucket"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "name",
-                  "value": "<string>",
-                  "description": "(Required) The name of the scope to create"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "84af00a7-ef05-4c1d-b294-b353b5cd1687",
-              "name": "Scope created successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "buckets",
-                    ":bucketName",
-                    "scopes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketName",
-                      "description": "(Required) The name of the bucket"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The name of the scope to create",
-                        "type": "text/plain"
-                      },
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "2f6fce7c-166a-49b8-b69e-6a0b5baf6bea",
-              "name": "Invalid scope name",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "buckets",
-                    ":bucketName",
-                    "scopes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketName",
-                      "description": "(Required) The name of the bucket"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The name of the scope to create",
-                        "type": "text/plain"
-                      },
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "155acc53-2c12-4611-a31a-683ee73355a6",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "buckets",
-                    ":bucketName",
-                    "scopes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketName",
-                      "description": "(Required) The name of the bucket"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The name of the scope to create",
-                        "type": "text/plain"
-                      },
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "26ef30fb-db31-4a78-976f-80934705ad63",
-              "name": "Bucket not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "buckets",
-                    ":bucketName",
-                    "scopes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketName",
-                      "description": "(Required) The name of the bucket"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The name of the scope to create",
-                        "type": "text/plain"
-                      },
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "08b8a348-2775-417c-a0f8-e0fe7a73ab45",
-          "name": "Create a collection",
-          "request": {
-            "name": "Create a collection",
-            "description": {
-              "content": "Creates a new collection within the specified scope and bucket.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "pools",
-                "default",
-                "buckets",
-                ":bucketName",
-                "scopes",
-                ":scopeName",
-                "collections"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "bucketName",
-                  "description": "(Required) The name of the bucket"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "scopeName",
-                  "description": "(Required) The name of the scope"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "name",
-                  "value": "<string>",
-                  "description": "(Required) The name of the collection to create"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "b0521d9c-0ca5-4ba3-bb65-6a858b61004e",
-              "name": "Collection created successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "buckets",
-                    ":bucketName",
-                    "scopes",
-                    ":scopeName",
-                    "collections"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketName",
-                      "description": "(Required) The name of the bucket"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "scopeName",
-                      "description": "(Required) The name of the scope"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The name of the collection to create",
-                        "type": "text/plain"
-                      },
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "380c8ae6-8372-4a67-86ba-9f87544bb5e4",
-              "name": "Invalid collection name",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "buckets",
-                    ":bucketName",
-                    "scopes",
-                    ":scopeName",
-                    "collections"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketName",
-                      "description": "(Required) The name of the bucket"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "scopeName",
-                      "description": "(Required) The name of the scope"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The name of the collection to create",
-                        "type": "text/plain"
-                      },
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "49ee816a-956a-4168-9ac2-ec23ab800746",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "buckets",
-                    ":bucketName",
-                    "scopes",
-                    ":scopeName",
-                    "collections"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketName",
-                      "description": "(Required) The name of the bucket"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "scopeName",
-                      "description": "(Required) The name of the scope"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The name of the collection to create",
-                        "type": "text/plain"
-                      },
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "48ff25c5-a5ad-4583-85fe-0163c7d3b9db",
-              "name": "Bucket or scope not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "buckets",
-                    ":bucketName",
-                    "scopes",
-                    ":scopeName",
-                    "collections"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "bucketName",
-                      "description": "(Required) The name of the bucket"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "scopeName",
-                      "description": "(Required) The name of the scope"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The name of the collection to create",
-                        "type": "text/plain"
-                      },
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "fc75c79a-dcf0-4db1-844d-885508e6af20",
+          "createdAt": "2026-10-21T19:58:51.000Z",
+          "updatedAt": "2026-10-21T19:58:51.000Z",
+          "uid": "35240-fc75c79a-dcf0-4db1-844d-885508e6af20"
         }
       ],
-      "event": []
+      "id": "1ed40371-1f82-409a-aa8d-4eabaa6fbac7",
+      "createdAt": "2026-10-21T19:58:51.000Z",
+      "updatedAt": "2026-10-21T19:58:51.000Z",
+      "uid": "35240-1ed40371-1f82-409a-aa8d-4eabaa6fbac7"
+    },
+    {
+      "name": "pools",
+      "item": [
+        {
+          "name": "default",
+          "item": [
+            {
+              "name": "buckets",
+              "item": [
+                {
+                  "name": "{bucketName}",
+                  "item": [
+                    {
+                      "name": "scopes",
+                      "item": [
+                        {
+                          "name": "{scopeName}",
+                          "item": [
+                            {
+                              "name": "collections",
+                              "item": [
+                                {
+                                  "name": "Create a collection",
+                                  "id": "c1cc4a5a-1ac4-4b38-9d20-419ba742a979",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "auth": {
+                                      "type": "basic",
+                                      "basic": [
+                                        {
+                                          "key": "username",
+                                          "value": "{{basicAuthUsername}}",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "password",
+                                          "value": "{{basicAuthPassword}}",
+                                          "type": "string"
+                                        }
+                                      ]
+                                    },
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/x-www-form-urlencoded"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "urlencoded",
+                                      "urlencoded": [
+                                        {
+                                          "description": "(Required) The name of the collection to create",
+                                          "key": "name",
+                                          "value": "<string>"
+                                        }
+                                      ]
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/pools/default/buckets/:bucketName/scopes/:scopeName/collections",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "pools",
+                                        "default",
+                                        "buckets",
+                                        ":bucketName",
+                                        "scopes",
+                                        ":scopeName",
+                                        "collections"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "856cfc03-b4f7-4847-89bc-546a5ba8b96f",
+                                          "key": "bucketName",
+                                          "value": "<string>",
+                                          "description": "(Required) The name of the bucket"
+                                        },
+                                        {
+                                          "id": "e6c8f1dc-1b91-4003-adcb-45395911a26d",
+                                          "key": "scopeName",
+                                          "value": "<string>",
+                                          "description": "(Required) The name of the scope"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Creates a new collection within the specified scope and bucket."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "1a38fd87-6f78-4f2c-a747-0534bfc511fb",
+                                      "name": "Collection created successfully",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/x-www-form-urlencoded"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: basic",
+                                            "key": "Authorization",
+                                            "value": "Basic <credentials>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "urlencoded",
+                                          "urlencoded": [
+                                            {
+                                              "description": "(Required) The name of the collection to create",
+                                              "key": "name",
+                                              "value": "<string>"
+                                            }
+                                          ]
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/pools/default/buckets/:bucketName/scopes/:scopeName/collections",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "pools",
+                                            "default",
+                                            "buckets",
+                                            ":bucketName",
+                                            "scopes",
+                                            ":scopeName",
+                                            "collections"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "bucketName"
+                                            },
+                                            {
+                                              "key": "scopeName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-21T19:58:51.000Z",
+                                      "updatedAt": "2026-10-21T19:58:51.000Z",
+                                      "uid": "35240-1a38fd87-6f78-4f2c-a747-0534bfc511fb"
+                                    },
+                                    {
+                                      "id": "a4f83280-7482-46b3-bc12-66a25c97ed5c",
+                                      "name": "Invalid collection name",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/x-www-form-urlencoded"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: basic",
+                                            "key": "Authorization",
+                                            "value": "Basic <credentials>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "urlencoded",
+                                          "urlencoded": [
+                                            {
+                                              "description": "(Required) The name of the collection to create",
+                                              "key": "name",
+                                              "value": "<string>"
+                                            }
+                                          ]
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/pools/default/buckets/:bucketName/scopes/:scopeName/collections",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "pools",
+                                            "default",
+                                            "buckets",
+                                            ":bucketName",
+                                            "scopes",
+                                            ":scopeName",
+                                            "collections"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "bucketName"
+                                            },
+                                            {
+                                              "key": "scopeName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-21T19:58:51.000Z",
+                                      "updatedAt": "2026-10-21T19:58:51.000Z",
+                                      "uid": "35240-a4f83280-7482-46b3-bc12-66a25c97ed5c"
+                                    },
+                                    {
+                                      "id": "f3fa0b10-6d33-42fe-ac28-dc2261407ef7",
+                                      "name": "Unauthorized access",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/x-www-form-urlencoded"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: basic",
+                                            "key": "Authorization",
+                                            "value": "Basic <credentials>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "urlencoded",
+                                          "urlencoded": [
+                                            {
+                                              "description": "(Required) The name of the collection to create",
+                                              "key": "name",
+                                              "value": "<string>"
+                                            }
+                                          ]
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/pools/default/buckets/:bucketName/scopes/:scopeName/collections",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "pools",
+                                            "default",
+                                            "buckets",
+                                            ":bucketName",
+                                            "scopes",
+                                            ":scopeName",
+                                            "collections"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "bucketName"
+                                            },
+                                            {
+                                              "key": "scopeName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-21T19:58:51.000Z",
+                                      "updatedAt": "2026-10-21T19:58:51.000Z",
+                                      "uid": "35240-f3fa0b10-6d33-42fe-ac28-dc2261407ef7"
+                                    },
+                                    {
+                                      "id": "4c4cf457-73e1-46ac-b96e-c8b60eb0dfa4",
+                                      "name": "Bucket or scope not found",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/x-www-form-urlencoded"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: basic",
+                                            "key": "Authorization",
+                                            "value": "Basic <credentials>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "urlencoded",
+                                          "urlencoded": [
+                                            {
+                                              "description": "(Required) The name of the collection to create",
+                                              "key": "name",
+                                              "value": "<string>"
+                                            }
+                                          ]
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/pools/default/buckets/:bucketName/scopes/:scopeName/collections",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "pools",
+                                            "default",
+                                            "buckets",
+                                            ":bucketName",
+                                            "scopes",
+                                            ":scopeName",
+                                            "collections"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "bucketName"
+                                            },
+                                            {
+                                              "key": "scopeName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-21T19:58:51.000Z",
+                                      "updatedAt": "2026-10-21T19:58:51.000Z",
+                                      "uid": "35240-4c4cf457-73e1-46ac-b96e-c8b60eb0dfa4"
+                                    }
+                                  ],
+                                  "createdAt": "2026-10-21T19:58:51.000Z",
+                                  "updatedAt": "2026-10-21T19:58:51.000Z",
+                                  "uid": "35240-c1cc4a5a-1ac4-4b38-9d20-419ba742a979"
+                                }
+                              ],
+                              "id": "42c3e6b4-dfe1-4161-b0e1-3cf925fd669d",
+                              "createdAt": "2026-10-21T19:58:51.000Z",
+                              "updatedAt": "2026-10-21T19:58:51.000Z",
+                              "uid": "35240-42c3e6b4-dfe1-4161-b0e1-3cf925fd669d"
+                            }
+                          ],
+                          "id": "c86ca7d5-de42-417b-8a7d-1b33dc502159",
+                          "createdAt": "2026-10-21T19:58:51.000Z",
+                          "updatedAt": "2026-10-21T19:58:51.000Z",
+                          "uid": "35240-c86ca7d5-de42-417b-8a7d-1b33dc502159"
+                        },
+                        {
+                          "name": "List scopes in a bucket",
+                          "id": "6caf3f48-4920-45a6-a320-7a6f81d4d915",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "basic",
+                              "basic": [
+                                {
+                                  "key": "username",
+                                  "value": "{{basicAuthUsername}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "password",
+                                  "value": "{{basicAuthPassword}}",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/pools/default/buckets/:bucketName/scopes",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "pools",
+                                "default",
+                                "buckets",
+                                ":bucketName",
+                                "scopes"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "d9af56dd-de11-4b29-a7e4-06f7c52ee8f9",
+                                  "key": "bucketName",
+                                  "value": "<string>",
+                                  "description": "(Required) The name of the bucket"
+                                }
+                              ]
+                            },
+                            "description": "Returns the list of all scopes and their collections within the specified bucket."
+                          },
+                          "response": [
+                            {
+                              "id": "79530e49-d6fe-4229-849f-0933885b609d",
+                              "name": "Successful retrieval of scopes list",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/pools/default/buckets/:bucketName/scopes",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "pools",
+                                    "default",
+                                    "buckets",
+                                    ":bucketName",
+                                    "scopes"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "bucketName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"uid\": \"<string>\",\n  \"scopes\": [\n    {\n      \"name\": \"<string>\",\n      \"uid\": \"<string>\",\n      \"collections\": [\n        {\n          \"name\": \"<string>\",\n          \"uid\": \"<string>\",\n          \"maxTTL\": \"<integer>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"uid\": \"<string>\",\n          \"maxTTL\": \"<integer>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"uid\": \"<string>\",\n      \"collections\": [\n        {\n          \"name\": \"<string>\",\n          \"uid\": \"<string>\",\n          \"maxTTL\": \"<integer>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"uid\": \"<string>\",\n          \"maxTTL\": \"<integer>\"\n        }\n      ]\n    }\n  ]\n}",
+                              "createdAt": "2026-10-21T19:58:51.000Z",
+                              "updatedAt": "2026-10-21T19:58:51.000Z",
+                              "uid": "35240-79530e49-d6fe-4229-849f-0933885b609d"
+                            },
+                            {
+                              "id": "772deb88-4384-4c23-9209-d78d8defae89",
+                              "name": "Unauthorized access",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/pools/default/buckets/:bucketName/scopes",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "pools",
+                                    "default",
+                                    "buckets",
+                                    ":bucketName",
+                                    "scopes"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "bucketName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:58:51.000Z",
+                              "updatedAt": "2026-10-21T19:58:51.000Z",
+                              "uid": "35240-772deb88-4384-4c23-9209-d78d8defae89"
+                            },
+                            {
+                              "id": "ae36e984-1140-4d6c-8246-46fa9e0c0898",
+                              "name": "Bucket not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/pools/default/buckets/:bucketName/scopes",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "pools",
+                                    "default",
+                                    "buckets",
+                                    ":bucketName",
+                                    "scopes"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "bucketName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:58:51.000Z",
+                              "updatedAt": "2026-10-21T19:58:51.000Z",
+                              "uid": "35240-ae36e984-1140-4d6c-8246-46fa9e0c0898"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T19:58:51.000Z",
+                          "updatedAt": "2026-10-21T19:58:51.000Z",
+                          "uid": "35240-6caf3f48-4920-45a6-a320-7a6f81d4d915"
+                        },
+                        {
+                          "name": "Create a scope",
+                          "id": "0e530c76-ef2e-4b8e-9aa6-e8717a27a7c1",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "basic",
+                              "basic": [
+                                {
+                                  "key": "username",
+                                  "value": "{{basicAuthUsername}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "password",
+                                  "value": "{{basicAuthPassword}}",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "description": "(Required) The name of the scope to create",
+                                  "key": "name",
+                                  "value": "<string>"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/pools/default/buckets/:bucketName/scopes",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "pools",
+                                "default",
+                                "buckets",
+                                ":bucketName",
+                                "scopes"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "5fb54c77-ca1a-43c9-8237-59e749eb4a4a",
+                                  "key": "bucketName",
+                                  "value": "<string>",
+                                  "description": "(Required) The name of the bucket"
+                                }
+                              ]
+                            },
+                            "description": "Creates a new scope within the specified bucket."
+                          },
+                          "response": [
+                            {
+                              "id": "9441019b-5b4e-423a-9a2a-81e8faddf82f",
+                              "name": "Scope created successfully",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/x-www-form-urlencoded"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "urlencoded",
+                                  "urlencoded": [
+                                    {
+                                      "description": "(Required) The name of the scope to create",
+                                      "key": "name",
+                                      "value": "<string>"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/pools/default/buckets/:bucketName/scopes",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "pools",
+                                    "default",
+                                    "buckets",
+                                    ":bucketName",
+                                    "scopes"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "bucketName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:58:51.000Z",
+                              "updatedAt": "2026-10-21T19:58:51.000Z",
+                              "uid": "35240-9441019b-5b4e-423a-9a2a-81e8faddf82f"
+                            },
+                            {
+                              "id": "53d6642b-ee56-48fe-9d1b-b9d0e961d930",
+                              "name": "Invalid scope name",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/x-www-form-urlencoded"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "urlencoded",
+                                  "urlencoded": [
+                                    {
+                                      "description": "(Required) The name of the scope to create",
+                                      "key": "name",
+                                      "value": "<string>"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/pools/default/buckets/:bucketName/scopes",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "pools",
+                                    "default",
+                                    "buckets",
+                                    ":bucketName",
+                                    "scopes"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "bucketName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:58:51.000Z",
+                              "updatedAt": "2026-10-21T19:58:51.000Z",
+                              "uid": "35240-53d6642b-ee56-48fe-9d1b-b9d0e961d930"
+                            },
+                            {
+                              "id": "3b27de45-9e79-43c2-8ae2-111271a85ad1",
+                              "name": "Unauthorized access",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/x-www-form-urlencoded"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "urlencoded",
+                                  "urlencoded": [
+                                    {
+                                      "description": "(Required) The name of the scope to create",
+                                      "key": "name",
+                                      "value": "<string>"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/pools/default/buckets/:bucketName/scopes",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "pools",
+                                    "default",
+                                    "buckets",
+                                    ":bucketName",
+                                    "scopes"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "bucketName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:58:51.000Z",
+                              "updatedAt": "2026-10-21T19:58:51.000Z",
+                              "uid": "35240-3b27de45-9e79-43c2-8ae2-111271a85ad1"
+                            },
+                            {
+                              "id": "31d2eda0-d435-45bf-9e3a-2c293c98f355",
+                              "name": "Bucket not found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/x-www-form-urlencoded"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "urlencoded",
+                                  "urlencoded": [
+                                    {
+                                      "description": "(Required) The name of the scope to create",
+                                      "key": "name",
+                                      "value": "<string>"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/pools/default/buckets/:bucketName/scopes",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "pools",
+                                    "default",
+                                    "buckets",
+                                    ":bucketName",
+                                    "scopes"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "bucketName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:58:51.000Z",
+                              "updatedAt": "2026-10-21T19:58:51.000Z",
+                              "uid": "35240-31d2eda0-d435-45bf-9e3a-2c293c98f355"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T19:58:51.000Z",
+                          "updatedAt": "2026-10-21T19:58:51.000Z",
+                          "uid": "35240-0e530c76-ef2e-4b8e-9aa6-e8717a27a7c1"
+                        }
+                      ],
+                      "id": "bbda5dfa-e7fd-4263-bc9d-c330530ea1aa",
+                      "createdAt": "2026-10-21T19:58:51.000Z",
+                      "updatedAt": "2026-10-21T19:58:51.000Z",
+                      "uid": "35240-bbda5dfa-e7fd-4263-bc9d-c330530ea1aa"
+                    }
+                  ],
+                  "id": "c0e39e15-4959-49d8-aefc-6e62cfd7b3b5",
+                  "createdAt": "2026-10-21T19:58:51.000Z",
+                  "updatedAt": "2026-10-21T19:58:51.000Z",
+                  "uid": "35240-c0e39e15-4959-49d8-aefc-6e62cfd7b3b5"
+                }
+              ],
+              "id": "19b8ace2-036d-4ac2-a768-78d575eb490f",
+              "createdAt": "2026-10-21T19:58:51.000Z",
+              "updatedAt": "2026-10-21T19:58:51.000Z",
+              "uid": "35240-19b8ace2-036d-4ac2-a768-78d575eb490f"
+            }
+          ],
+          "id": "76b76d6f-1eab-417a-9d46-d17134b81745",
+          "createdAt": "2026-10-21T19:58:51.000Z",
+          "updatedAt": "2026-10-21T19:58:51.000Z",
+          "uid": "35240-76b76d6f-1eab-417a-9d46-d17134b81745"
+        }
+      ],
+      "id": "48ffd019-dd1b-46d4-818f-9c195ab7544e",
+      "createdAt": "2026-10-21T19:58:51.000Z",
+      "updatedAt": "2026-10-21T19:58:51.000Z",
+      "uid": "35240-48ffd019-dd1b-46d4-818f-9c195ab7544e"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://localhost:8095",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://cloudapi.cloud.couchbase.com"
     }
-  ],
-  "auth": {
-    "type": "basic",
-    "basic": [
-      {
-        "key": "username",
-        "value": "{{basicAuthUsername}}"
-      },
-      {
-        "key": "password",
-        "value": "{{basicAuthPassword}}"
-      }
-    ]
-  },
-  "info": {
-    "_postman_id": "d81f868c-4751-4fd8-b60d-f4c908435104",
-    "name": "Couchbase Analytics Service REST Allowed CIDRs Scopes and Collections API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

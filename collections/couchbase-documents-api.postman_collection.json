@@ -1,1508 +1,1448 @@
 {
+  "info": {
+    "_postman_id": "d48c45ec-961e-43e6-8585-f5b6cac3ebc9",
+    "name": "Couchbase Documents API",
+    "description": "Operations tagged Documents across 2 of this provider's published API definitions: couchbase-capella-app-services-public-api-openapi.yml, couchbase-sync-gateway-public-rest-api-openapi.yml. Each path carries the servers of the definition it was published in.\n\nContact Support:\n Name: Couchbase Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:57:38.000Z",
+    "updatedAt": "2026-10-21T19:57:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d48c45ec-961e-43e6-8585-f5b6cac3ebc9"
+  },
   "item": [
     {
-      "id": "ab196bcd-45b6-47dc-a05e-dd999adc0bfb",
-      "name": "Documents",
-      "description": {
-        "content": "Endpoints for creating, reading, updating, and deleting documents.",
-        "type": "text/plain"
-      },
+      "name": "{db}",
       "item": [
         {
-          "id": "d2f02c16-093e-4bf4-a91b-0498121bbb67",
-          "name": "Get all documents",
-          "request": {
-            "name": "Get all documents",
-            "description": {
-              "content": "Returns all documents in the database. By default, only the document ID and revision are included. Use include_docs=true to include the full document body.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_all_docs"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "include_docs",
-                  "value": "false",
-                  "description": "Whether to include document bodies in the response"
-                },
-                {
-                  "disabled": false,
-                  "key": "channels",
-                  "value": "<string>",
-                  "description": "Filter results by channel name"
-                },
-                {
-                  "disabled": false,
-                  "key": "keys",
-                  "value": "<string>",
-                  "description": "Array of document IDs to retrieve"
-                },
-                {
-                  "disabled": false,
-                  "key": "startkey",
-                  "value": "<string>",
-                  "description": "Start key for the range to return"
-                },
-                {
-                  "disabled": false,
-                  "key": "endkey",
-                  "value": "<string>",
-                  "description": "End key for the range to return"
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "<integer>",
-                  "description": "Maximum number of results to return"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The name of the database (keyspace)"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "_all_docs",
+          "item": [
             {
-              "id": "24761719-c4db-4101-9c89-2432d9bea6f9",
-              "name": "Successful retrieval of documents",
-              "originalRequest": {
+              "name": "Get all documents",
+              "id": "1d9a105c-89a7-49eb-8e81-b52ff0dc13a3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/:db/_all_docs?include_docs=false&channels=<string>&keys=<string>&startkey=<string>&endkey=<string>&limit=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     ":db",
                     "_all_docs"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Whether to include document bodies in the response",
                       "key": "include_docs",
                       "value": "false"
                     },
                     {
+                      "description": "Filter results by channel name",
                       "key": "channels",
                       "value": "<string>"
                     },
                     {
+                      "description": "Array of document IDs to retrieve",
                       "key": "keys",
                       "value": "<string>"
                     },
                     {
+                      "description": "Start key for the range to return",
                       "key": "startkey",
                       "value": "<string>"
                     },
                     {
+                      "description": "End key for the range to return",
                       "key": "endkey",
                       "value": "<string>"
                     },
                     {
+                      "description": "Maximum number of results to return",
                       "key": "limit",
                       "value": "<integer>"
                     }
                   ],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "1593865f-f29e-4533-9b35-00bdd8482967",
                       "key": "db",
+                      "value": "<string>",
                       "description": "(Required) The name of the database (keyspace)"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                "description": "Returns all documents in the database. By default, only the document ID and revision are included. Use include_docs=true to include the full document body."
+              },
+              "response": [
+                {
+                  "id": "ae0b1d1a-e81d-4cba-960a-4b25e995523c",
+                  "name": "Successful retrieval of documents",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_all_docs?include_docs=false&channels=<string>&keys=<string>&startkey=<string>&endkey=<string>&limit=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_all_docs"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to include document bodies in the response",
+                          "key": "include_docs",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Filter results by channel name",
+                          "key": "channels",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Array of document IDs to retrieve",
+                          "key": "keys",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Start key for the range to return",
+                          "key": "startkey",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "End key for the range to return",
+                          "key": "endkey",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of results to return",
+                          "key": "limit",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
                   },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"rows\": [\n    {\n      \"id\": \"<string>\",\n      \"key\": \"<string>\",\n      \"value\": {\n        \"rev\": \"<string>\"\n      },\n      \"doc\": {}\n    },\n    {\n      \"id\": \"<string>\",\n      \"key\": \"<string>\",\n      \"value\": {\n        \"rev\": \"<string>\"\n      },\n      \"doc\": {}\n    }\n  ],\n  \"total_rows\": \"<integer>\",\n  \"update_seq\": \"<integer>\"\n}",
+                  "createdAt": "2026-10-21T19:57:38.000Z",
+                  "updatedAt": "2026-10-21T19:57:38.000Z",
+                  "uid": "35240-ae0b1d1a-e81d-4cba-960a-4b25e995523c"
+                },
+                {
+                  "id": "840f2b5f-a8a0-4986-9624-9652da599494",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_all_docs?include_docs=false&channels=<string>&keys=<string>&startkey=<string>&endkey=<string>&limit=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_all_docs"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to include document bodies in the response",
+                          "key": "include_docs",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Filter results by channel name",
+                          "key": "channels",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Array of document IDs to retrieve",
+                          "key": "keys",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Start key for the range to return",
+                          "key": "startkey",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "End key for the range to return",
+                          "key": "endkey",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of results to return",
+                          "key": "limit",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:38.000Z",
+                  "updatedAt": "2026-10-21T19:57:38.000Z",
+                  "uid": "35240-840f2b5f-a8a0-4986-9624-9652da599494"
+                }
+              ],
+              "createdAt": "2026-10-21T19:57:38.000Z",
+              "updatedAt": "2026-10-21T19:57:38.000Z",
+              "uid": "35240-1d9a105c-89a7-49eb-8e81-b52ff0dc13a3"
+            }
+          ],
+          "id": "69c0207b-0dfc-4b42-8f74-165aeb29590c",
+          "createdAt": "2026-10-21T19:57:38.000Z",
+          "updatedAt": "2026-10-21T19:57:38.000Z",
+          "uid": "35240-69c0207b-0dfc-4b42-8f74-165aeb29590c"
+        },
+        {
+          "name": "{docId}",
+          "item": [
+            {
+              "name": "Get a document",
+              "id": "033c3c94-9192-48f4-a53a-e0634b68ed70",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"key\": \"string\",\n      \"value\": {\n        \"rev\": \"string\"\n      },\n      \"doc\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"key\": \"string\",\n      \"value\": {\n        \"rev\": \"string\"\n      },\n      \"doc\": {}\n    }\n  ],\n  \"total_rows\": 6558,\n  \"update_seq\": 448\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c0bfef33-5df3-4665-bc6d-de8475bae188",
-              "name": "Unauthorized access",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    ":db",
-                    "_all_docs"
-                  ],
+                  "raw": "{{baseUrl}}/:db/:docId?rev=<string>&revs=<boolean>&open_revs=<string>&attachments=<boolean>",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [
-                    {
-                      "key": "include_docs",
-                      "value": "false"
-                    },
-                    {
-                      "key": "channels",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "keys",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "startkey",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "endkey",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database (keyspace)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "a8cc0cd4-744b-4d61-9a92-e99eb354db28",
-          "name": "Get a document",
-          "request": {
-            "name": "Get a document",
-            "description": {
-              "content": "Retrieves a document from the database by its document ID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                ":docId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "rev",
-                  "value": "<string>",
-                  "description": "Specific revision to retrieve"
-                },
-                {
-                  "disabled": false,
-                  "key": "revs",
-                  "value": "<boolean>",
-                  "description": "Whether to include revision history"
-                },
-                {
-                  "disabled": false,
-                  "key": "open_revs",
-                  "value": "<string>",
-                  "description": "Array of revision IDs or \"all\" to get all leaf revisions"
-                },
-                {
-                  "disabled": false,
-                  "key": "attachments",
-                  "value": "<boolean>",
-                  "description": "Whether to include attachment data"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The name of the database (keyspace)"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "docId",
-                  "description": "(Required) The document ID"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "22801c32-261b-4248-b90d-1ed488f81061",
-              "name": "Successful retrieval of the document",
-              "originalRequest": {
-                "url": {
                   "path": [
                     ":db",
                     ":docId"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Specific revision to retrieve",
                       "key": "rev",
                       "value": "<string>"
                     },
                     {
+                      "description": "Whether to include revision history",
                       "key": "revs",
                       "value": "<boolean>"
                     },
                     {
+                      "description": "Array of revision IDs or \"all\" to get all leaf revisions",
                       "key": "open_revs",
                       "value": "<string>"
                     },
                     {
+                      "description": "Whether to include attachment data",
                       "key": "attachments",
                       "value": "<boolean>"
                     }
                   ],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "b1844d1f-708f-4a17-897b-e307dfa59f10",
                       "key": "db",
+                      "value": "<string>",
                       "description": "(Required) The name of the database (keyspace)"
                     },
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "ab20718c-5579-4933-ad43-de35eb969973",
                       "key": "docId",
+                      "value": "<string>",
                       "description": "(Required) The document ID"
                     }
                   ]
                 },
+                "description": "Retrieves a document from the database by its document ID."
+              },
+              "response": [
+                {
+                  "id": "4ffb1309-7d25-4d88-8fe1-cc9175718347",
+                  "name": "Successful retrieval of the document",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/:docId?rev=<string>&revs=<boolean>&open_revs=<string>&attachments=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        ":docId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Specific revision to retrieve",
+                          "key": "rev",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to include revision history",
+                          "key": "revs",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Array of revision IDs or \"all\" to get all leaf revisions",
+                          "key": "open_revs",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to include attachment data",
+                          "key": "attachments",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        },
+                        {
+                          "key": "docId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"_id\": \"<string>\",\n  \"_rev\": \"<string>\",\n  \"_deleted\": \"<boolean>\",\n  \"_revisions\": {\n    \"ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"start\": \"<integer>\"\n  },\n  \"_attachments\": {\n    \"labore5\": {\n      \"content_type\": \"<string>\",\n      \"digest\": \"<string>\",\n      \"length\": \"<integer>\",\n      \"revpos\": \"<integer>\",\n      \"stub\": \"<boolean>\"\n    },\n    \"in_9f6\": {\n      \"content_type\": \"<string>\",\n      \"digest\": \"<string>\",\n      \"length\": \"<integer>\",\n      \"revpos\": \"<integer>\",\n      \"stub\": \"<boolean>\"\n    },\n    \"anim_0\": {\n      \"content_type\": \"<string>\",\n      \"digest\": \"<string>\",\n      \"length\": \"<integer>\",\n      \"revpos\": \"<integer>\",\n      \"stub\": \"<boolean>\"\n    }\n  }\n}",
+                  "createdAt": "2026-10-21T19:57:38.000Z",
+                  "updatedAt": "2026-10-21T19:57:38.000Z",
+                  "uid": "35240-4ffb1309-7d25-4d88-8fe1-cc9175718347"
+                },
+                {
+                  "id": "42527b8f-e5a8-4dd6-945f-9a8f16c4a4e5",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/:docId?rev=<string>&revs=<boolean>&open_revs=<string>&attachments=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        ":docId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Specific revision to retrieve",
+                          "key": "rev",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to include revision history",
+                          "key": "revs",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Array of revision IDs or \"all\" to get all leaf revisions",
+                          "key": "open_revs",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to include attachment data",
+                          "key": "attachments",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        },
+                        {
+                          "key": "docId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:38.000Z",
+                  "updatedAt": "2026-10-21T19:57:38.000Z",
+                  "uid": "35240-42527b8f-e5a8-4dd6-945f-9a8f16c4a4e5"
+                },
+                {
+                  "id": "a7bca5ee-7b30-4662-bcea-69bb7327c6a1",
+                  "name": "Document not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/:docId?rev=<string>&revs=<boolean>&open_revs=<string>&attachments=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        ":docId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Specific revision to retrieve",
+                          "key": "rev",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to include revision history",
+                          "key": "revs",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Array of revision IDs or \"all\" to get all leaf revisions",
+                          "key": "open_revs",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to include attachment data",
+                          "key": "attachments",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        },
+                        {
+                          "key": "docId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:38.000Z",
+                  "updatedAt": "2026-10-21T19:57:38.000Z",
+                  "uid": "35240-a7bca5ee-7b30-4662-bcea-69bb7327c6a1"
+                }
+              ],
+              "createdAt": "2026-10-21T19:57:38.000Z",
+              "updatedAt": "2026-10-21T19:57:38.000Z",
+              "uid": "35240-033c3c94-9192-48f4-a53a-e0634b68ed70"
+            },
+            {
+              "name": "Create or update a document",
+              "id": "363e2bde-dd3b-49de-a84b-36336e2f445d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"_id\": \"string\",\n  \"_rev\": \"string\",\n  \"_deleted\": false,\n  \"_revisions\": {\n    \"ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"start\": 5519\n  },\n  \"_attachments\": {\n    \"key_0\": {\n      \"content_type\": \"string\",\n      \"digest\": \"string\",\n      \"length\": 6370,\n      \"revpos\": 2537,\n      \"stub\": true\n    }\n  },\n  \"key_0\": false,\n  \"key_1\": true\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a2cc9dc2-37c3-4cee-9b4e-b283e6179a9f",
-              "name": "Unauthorized access",
-              "originalRequest": {
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/:db/:docId?rev=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     ":db",
                     ":docId"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Current revision for updates",
                       "key": "rev",
                       "value": "<string>"
-                    },
-                    {
-                      "key": "revs",
-                      "value": "<boolean>"
-                    },
-                    {
-                      "key": "open_revs",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "attachments",
-                      "value": "<boolean>"
                     }
                   ],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "a024b59f-8187-4bd3-a90a-fe3ea7f6742c",
                       "key": "db",
+                      "value": "<string>",
                       "description": "(Required) The name of the database (keyspace)"
                     },
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "04361275-7610-4f78-aff6-4469dc780786",
                       "key": "docId",
+                      "value": "<string>",
                       "description": "(Required) The document ID"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Creates a new document or updates an existing document. For updates, the current revision ID must be included in the request body as _rev."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "25fff6e5-9196-44fe-8173-4fde5b58011e",
+                  "name": "Document created or updated successfully",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/:docId?rev=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        ":docId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Current revision for updates",
+                          "key": "rev",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        },
+                        {
+                          "key": "docId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"rev\": \"<string>\",\n  \"ok\": \"<boolean>\"\n}",
+                  "createdAt": "2026-10-21T19:57:38.000Z",
+                  "updatedAt": "2026-10-21T19:57:38.000Z",
+                  "uid": "35240-25fff6e5-9196-44fe-8173-4fde5b58011e"
+                },
+                {
+                  "id": "f1e6156a-841b-4655-bcdb-50503ccf2801",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/:docId?rev=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        ":docId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Current revision for updates",
+                          "key": "rev",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        },
+                        {
+                          "key": "docId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:38.000Z",
+                  "updatedAt": "2026-10-21T19:57:38.000Z",
+                  "uid": "35240-f1e6156a-841b-4655-bcdb-50503ccf2801"
+                },
+                {
+                  "id": "b708b493-c7bb-4c07-9f8a-923efcd7475d",
+                  "name": "Conflict due to revision mismatch",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/:docId?rev=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        ":docId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Current revision for updates",
+                          "key": "rev",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        },
+                        {
+                          "key": "docId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:38.000Z",
+                  "updatedAt": "2026-10-21T19:57:38.000Z",
+                  "uid": "35240-b708b493-c7bb-4c07-9f8a-923efcd7475d"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T19:57:38.000Z",
+              "updatedAt": "2026-10-21T19:57:38.000Z",
+              "uid": "35240-363e2bde-dd3b-49de-a84b-36336e2f445d"
             },
             {
-              "id": "e7c23789-57fd-4b89-8eb8-5eb83ea70c3b",
-              "name": "Document not found",
-              "originalRequest": {
+              "name": "Delete a document",
+              "id": "c9e8aaf7-4b88-432f-ba63-3faf7cf6eee2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/:db/:docId?rev=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     ":db",
                     ":docId"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "(Required) Current revision of the document",
                       "key": "rev",
                       "value": "<string>"
-                    },
-                    {
-                      "key": "revs",
-                      "value": "<boolean>"
-                    },
-                    {
-                      "key": "open_revs",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "attachments",
-                      "value": "<boolean>"
                     }
                   ],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "e6741115-9d3f-4f8b-9bf6-51b1c7f195d4",
                       "key": "db",
+                      "value": "<string>",
                       "description": "(Required) The name of the database (keyspace)"
                     },
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "92f1181c-747d-47cd-b89f-0fa614bbe0f2",
                       "key": "docId",
+                      "value": "<string>",
                       "description": "(Required) The document ID"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Deletes a document by creating a tombstone revision. The current revision must be specified."
               },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "fb03fb8f-a1be-4abf-bf9a-6952fbb28c44",
+                  "name": "Document deleted successfully",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/:docId?rev=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        ":docId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Current revision of the document",
+                          "key": "rev",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        },
+                        {
+                          "key": "docId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"rev\": \"<string>\",\n  \"ok\": \"<boolean>\"\n}",
+                  "createdAt": "2026-10-21T19:57:38.000Z",
+                  "updatedAt": "2026-10-21T19:57:38.000Z",
+                  "uid": "35240-fb03fb8f-a1be-4abf-bf9a-6952fbb28c44"
+                },
+                {
+                  "id": "51679b0e-e429-4220-a970-2e8b11030dd3",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/:docId?rev=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        ":docId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Current revision of the document",
+                          "key": "rev",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        },
+                        {
+                          "key": "docId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:38.000Z",
+                  "updatedAt": "2026-10-21T19:57:38.000Z",
+                  "uid": "35240-51679b0e-e429-4220-a970-2e8b11030dd3"
+                },
+                {
+                  "id": "80a57921-3774-4fb5-bade-019b40771188",
+                  "name": "Document not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/:docId?rev=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        ":docId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Current revision of the document",
+                          "key": "rev",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        },
+                        {
+                          "key": "docId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:38.000Z",
+                  "updatedAt": "2026-10-21T19:57:38.000Z",
+                  "uid": "35240-80a57921-3774-4fb5-bade-019b40771188"
+                },
+                {
+                  "id": "12118da2-9849-4aa7-84a6-391bd8f1a03b",
+                  "name": "Conflict due to revision mismatch",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/:docId?rev=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        ":docId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Current revision of the document",
+                          "key": "rev",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        },
+                        {
+                          "key": "docId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:38.000Z",
+                  "updatedAt": "2026-10-21T19:57:38.000Z",
+                  "uid": "35240-12118da2-9849-4aa7-84a6-391bd8f1a03b"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T19:57:38.000Z",
+              "updatedAt": "2026-10-21T19:57:38.000Z",
+              "uid": "35240-c9e8aaf7-4b88-432f-ba63-3faf7cf6eee2"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "02010ff1-245c-4523-939f-693e7af83a99",
+          "createdAt": "2026-10-21T19:57:38.000Z",
+          "updatedAt": "2026-10-21T19:57:38.000Z",
+          "uid": "35240-02010ff1-245c-4523-939f-693e7af83a99"
         },
         {
-          "id": "de131409-2af8-4520-bb7f-3e5c32db0e3c",
-          "name": "Create or update a document",
-          "request": {
-            "name": "Create or update a document",
-            "description": {
-              "content": "Creates a new document or updates an existing document. For updates, the current revision ID must be included in the request body as _rev.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                ":docId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "rev",
-                  "value": "<string>",
-                  "description": "Current revision for updates"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The name of the database (keyspace)"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "docId",
-                  "description": "(Required) The document ID"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "<object>",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "_bulk_docs",
+          "item": [
             {
-              "id": "58ec8ae2-a84c-441b-861c-5dbbba23b87d",
-              "name": "Document created or updated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    ":docId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "rev",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database (keyspace)"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "docId",
-                      "description": "(Required) The document ID"
-                    }
-                  ]
-                },
+              "name": "Create or update multiple documents",
+              "id": "657c733f-8a59-4f01-9fad-694b2a39f188",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "<object>",
+                  "raw": "{\n  \"docs\": [],\n  \"new_edits\": true\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"rev\": \"string\",\n  \"ok\": true\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e6c27ece-4a2c-4206-b898-5c20a4c70a29",
-              "name": "Unauthorized access",
-              "originalRequest": {
+                },
                 "url": {
-                  "path": [
-                    ":db",
-                    ":docId"
-                  ],
+                  "raw": "{{baseUrl}}/:db/_bulk_docs",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [
-                    {
-                      "key": "rev",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database (keyspace)"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "docId",
-                      "description": "(Required) The document ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<object>",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f3600c8d-dd31-4227-8f2c-4b10023f8c8d",
-              "name": "Conflict due to revision mismatch",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    ":docId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "rev",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database (keyspace)"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "docId",
-                      "description": "(Required) The document ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<object>",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d772c6f7-0792-46ff-b629-c693731a8ab8",
-          "name": "Delete a document",
-          "request": {
-            "name": "Delete a document",
-            "description": {
-              "content": "Deletes a document by creating a tombstone revision. The current revision must be specified.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                ":docId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "rev",
-                  "value": "<string>",
-                  "description": "(Required) Current revision of the document"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The name of the database (keyspace)"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "docId",
-                  "description": "(Required) The document ID"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "3d6ed5a7-0185-4ac5-a2e2-e61c0e5a2625",
-              "name": "Document deleted successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    ":docId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "rev",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database (keyspace)"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "docId",
-                      "description": "(Required) The document ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"rev\": \"string\",\n  \"ok\": true\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0bc5556c-1335-4fe2-9b58-e5a7ea018395",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    ":docId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "rev",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database (keyspace)"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "docId",
-                      "description": "(Required) The document ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "2decd631-81b2-4566-ba6b-7c7e81b86c47",
-              "name": "Document not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    ":docId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "rev",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database (keyspace)"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "docId",
-                      "description": "(Required) The document ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f6c3d0df-e6e6-4d3c-a641-005dfe7eab6d",
-              "name": "Conflict due to revision mismatch",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    ":docId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "rev",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database (keyspace)"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "docId",
-                      "description": "(Required) The document ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "adb54912-f1a8-496f-92d2-c3442b8f939c",
-          "name": "Create or update multiple documents",
-          "request": {
-            "name": "Create or update multiple documents",
-            "description": {
-              "content": "Creates or updates multiple documents in a single request. This is the primary endpoint used by Couchbase Lite for push replication.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_bulk_docs"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The name of the database (keyspace)"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"docs\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"new_edits\": true\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "f4761320-a433-4793-83fd-7720a35a9378",
-              "name": "Documents processed successfully",
-              "originalRequest": {
-                "url": {
                   "path": [
                     ":db",
                     "_bulk_docs"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "dbdfee05-6972-4638-a870-681f16792b1e",
                       "key": "db",
+                      "value": "<string>",
                       "description": "(Required) The name of the database (keyspace)"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
+                "description": "Creates or updates multiple documents in a single request. This is the primary endpoint used by Couchbase Lite for push replication."
+              },
+              "response": [
+                {
+                  "id": "59b4fff1-d96b-4541-98a9-8a8fb1f1063b",
+                  "name": "Documents processed successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"docs\": [],\n  \"new_edits\": true\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_bulk_docs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_bulk_docs"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"docs\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"new_edits\": true\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"id\": \"string\",\n    \"rev\": \"string\",\n    \"ok\": false\n  },\n  {\n    \"id\": \"string\",\n    \"rev\": \"string\",\n    \"ok\": false\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a40e6fb6-e3be-4294-95b6-08f8c7125daf",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_bulk_docs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database (keyspace)"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
-                  ]
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": \"<string>\",\n    \"rev\": \"<string>\",\n    \"ok\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"rev\": \"<string>\",\n    \"ok\": \"<boolean>\"\n  }\n]",
+                  "createdAt": "2026-10-21T19:57:38.000Z",
+                  "updatedAt": "2026-10-21T19:57:38.000Z",
+                  "uid": "35240-59b4fff1-d96b-4541-98a9-8a8fb1f1063b"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"docs\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"new_edits\": true\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "cf32da0d-dee2-4b4e-b8c4-2512911dfb4b",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"docs\": [],\n  \"new_edits\": true\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_bulk_docs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_bulk_docs"
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:38.000Z",
+                  "updatedAt": "2026-10-21T19:57:38.000Z",
+                  "uid": "35240-cf32da0d-dee2-4b4e-b8c4-2512911dfb4b"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T19:57:38.000Z",
+              "updatedAt": "2026-10-21T19:57:38.000Z",
+              "uid": "35240-657c733f-8a59-4f01-9fad-694b2a39f188"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "f270cca1-5bb8-4b89-8298-e52fb3f412f3",
+          "createdAt": "2026-10-21T19:57:38.000Z",
+          "updatedAt": "2026-10-21T19:57:38.000Z",
+          "uid": "35240-f270cca1-5bb8-4b89-8298-e52fb3f412f3"
         },
         {
-          "id": "03bdb395-aab8-4a4d-be0b-464a5b6c5a87",
-          "name": "Get multiple documents",
-          "request": {
-            "name": "Get multiple documents",
-            "description": {
-              "content": "Retrieves multiple documents by ID in a single request. This is the primary endpoint used by Couchbase Lite for pull replication.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":db",
-                "_bulk_get"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "attachments",
-                  "value": "<boolean>",
-                  "description": "Whether to include attachments"
-                },
-                {
-                  "disabled": false,
-                  "key": "revs",
-                  "value": "<boolean>",
-                  "description": "Whether to include revision history"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "db",
-                  "description": "(Required) The name of the database (keyspace)"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"docs\": [\n    {\n      \"id\": \"<string>\",\n      \"rev\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"rev\": \"<string>\"\n    }\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "_bulk_get",
+          "item": [
             {
-              "id": "7723a745-61ea-4490-b4f5-c56ed4c2b27f",
-              "name": "Successful retrieval of documents",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":db",
-                    "_bulk_get"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "attachments",
-                      "value": "<boolean>"
-                    },
-                    {
-                      "key": "revs",
-                      "value": "<boolean>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "db",
-                      "description": "(Required) The name of the database (keyspace)"
-                    }
-                  ]
-                },
+              "name": "Get multiple documents",
+              "id": "55347f64-e2cc-4dcd-a46a-2cee5fc845a6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"docs\": [\n    {\n      \"id\": \"<string>\",\n      \"rev\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"rev\": \"<string>\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7e9cb246-479d-412d-aefb-997e95d144c5",
-              "name": "Unauthorized access",
-              "originalRequest": {
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/:db/_bulk_get?attachments=<boolean>&revs=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     ":db",
                     "_bulk_get"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Whether to include attachments",
                       "key": "attachments",
                       "value": "<boolean>"
                     },
                     {
+                      "description": "Whether to include revision history",
                       "key": "revs",
                       "value": "<boolean>"
                     }
                   ],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "15f6f5bb-c491-4871-98c8-b6250ef50ba9",
                       "key": "db",
+                      "value": "<string>",
                       "description": "(Required) The name of the database (keyspace)"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"docs\": [\n    {\n      \"id\": \"<string>\",\n      \"rev\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"rev\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
+                "description": "Retrieves multiple documents by ID in a single request. This is the primary endpoint used by Couchbase Lite for pull replication."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "d9fb2a05-37b1-4b38-b7da-94c9fe2075bf",
+                  "name": "Successful retrieval of documents",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"docs\": [\n    {\n      \"id\": \"<string>\",\n      \"rev\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"rev\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_bulk_get?attachments=<boolean>&revs=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_bulk_get"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to include attachments",
+                          "key": "attachments",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Whether to include revision history",
+                          "key": "revs",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-10-21T19:57:38.000Z",
+                  "updatedAt": "2026-10-21T19:57:38.000Z",
+                  "uid": "35240-d9fb2a05-37b1-4b38-b7da-94c9fe2075bf"
+                },
+                {
+                  "id": "50f5096d-d1b4-4498-b546-0855713be6a4",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"docs\": [\n    {\n      \"id\": \"<string>\",\n      \"rev\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"rev\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:db/_bulk_get?attachments=<boolean>&revs=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":db",
+                        "_bulk_get"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to include attachments",
+                          "key": "attachments",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Whether to include revision history",
+                          "key": "revs",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "db"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:57:38.000Z",
+                  "updatedAt": "2026-10-21T19:57:38.000Z",
+                  "uid": "35240-50f5096d-d1b4-4498-b546-0855713be6a4"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T19:57:38.000Z",
+              "updatedAt": "2026-10-21T19:57:38.000Z",
+              "uid": "35240-55347f64-e2cc-4dcd-a46a-2cee5fc845a6"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "a836fd45-b9ba-4a7e-b9fa-687f9d889761",
+          "createdAt": "2026-10-21T19:57:38.000Z",
+          "updatedAt": "2026-10-21T19:57:38.000Z",
+          "uid": "35240-a836fd45-b9ba-4a7e-b9fa-687f9d889761"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://localhost:8095",
-      "key": "baseUrl"
+      "id": "c2f3c7b1-c814-4225-b245-62135329d032",
+      "createdAt": "2026-10-21T19:57:38.000Z",
+      "updatedAt": "2026-10-21T19:57:38.000Z",
+      "uid": "35240-c2f3c7b1-c814-4225-b245-62135329d032"
     }
   ],
   "auth": {
@@ -1510,21 +1450,24 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "1fb89d89-bc74-46ed-bd60-5554ab23e04c",
-    "name": "Couchbase Analytics Service REST Allowed CIDRs Documents API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "appEndpoint",
+      "value": "example.apps.cloud.couchbase.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{appEndpoint}}"
     }
-  }
+  ]
 }

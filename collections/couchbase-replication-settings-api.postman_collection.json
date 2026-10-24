@@ -1,1674 +1,1268 @@
 {
+  "info": {
+    "_postman_id": "6784b7a8-5dab-465a-bb8d-d669c22c8d2c",
+    "name": "Couchbase XDCR REST Replication Settings API",
+    "description": "The Couchbase XDCR (Cross Data Center Replication) REST API enables configuration and management of data replication between Couchbase clusters across different data centers. It provides endpoints for creating replication references, configuring replication streams, monitoring replication statistics, and managing replication settings. XDCR supports both unidirectional and bidirectional replication for high availability and disaster recovery scenarios.\n\nContact Support:\n Name: Couchbase Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:58:34.000Z",
+    "updatedAt": "2026-10-21T19:58:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6784b7a8-5dab-465a-bb8d-d669c22c8d2c"
+  },
   "item": [
     {
-      "id": "68e20a89-1715-45b0-80b0-183ebdf1e9f3",
-      "name": "Replication Settings",
-      "description": {
-        "content": "Endpoints for configuring replication-level and global XDCR settings.",
-        "type": "text/plain"
-      },
+      "name": "settings",
       "item": [
         {
-          "id": "596d34b6-c935-48cd-aa5d-604b051801c8",
-          "name": "Get global XDCR settings",
-          "request": {
-            "name": "Get global XDCR settings",
-            "description": {
-              "content": "Returns the global default settings for all XDCR replications.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "settings",
-                "replications"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "replications",
+          "item": [
             {
-              "id": "0a1c94b1-9a1b-4df6-91d7-62a7ce585734",
-              "name": "Successful retrieval of global replication settings",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "replications"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+              "name": "{replicationId}",
+              "item": [
+                {
+                  "name": "Get replication-specific settings",
+                  "id": "4a754e4c-f10c-4869-9ecd-1d89da59885b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/replications/:replicationId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        "replications",
+                        ":replicationId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0162fcd0-4c5f-4776-983f-9dd220129a85",
+                          "key": "replicationId",
+                          "value": "<string>",
+                          "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+                        }
+                      ]
+                    },
+                    "description": "Returns the settings for a specific XDCR replication stream."
+                  },
+                  "response": [
+                    {
+                      "id": "90ce3107-54f6-4c9b-b936-b0cf05241704",
+                      "name": "Successful retrieval of replication settings",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/settings/replications/:replicationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "settings",
+                            "replications",
+                            ":replicationId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "replicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"checkpointInterval\": \"<integer>\",\n  \"docBatchSizeKb\": \"<integer>\",\n  \"failureRestartInterval\": \"<integer>\",\n  \"filterExpression\": \"<string>\",\n  \"logLevel\": \"Trace\",\n  \"networkUsageLimit\": \"<integer>\",\n  \"optimisticReplicationThreshold\": \"<integer>\",\n  \"sourceNozzlePerNode\": \"<integer>\",\n  \"targetNozzlePerNode\": \"<integer>\",\n  \"statsInterval\": \"<integer>\",\n  \"compressionType\": \"None\",\n  \"priority\": \"High\"\n}",
+                      "createdAt": "2026-10-21T19:58:34.000Z",
+                      "updatedAt": "2026-10-21T19:58:34.000Z",
+                      "uid": "35240-90ce3107-54f6-4c9b-b936-b0cf05241704"
+                    },
+                    {
+                      "id": "f9870823-06b1-4d76-8831-9f297f652d3b",
+                      "name": "Unauthorized access",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/settings/replications/:replicationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "settings",
+                            "replications",
+                            ":replicationId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "replicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:58:34.000Z",
+                      "updatedAt": "2026-10-21T19:58:34.000Z",
+                      "uid": "35240-f9870823-06b1-4d76-8831-9f297f652d3b"
+                    },
+                    {
+                      "id": "785daa30-8829-4bf6-9940-ef8246c1ca5b",
+                      "name": "Replication not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/settings/replications/:replicationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "settings",
+                            "replications",
+                            ":replicationId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "replicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:58:34.000Z",
+                      "updatedAt": "2026-10-21T19:58:34.000Z",
+                      "uid": "35240-785daa30-8829-4bf6-9940-ef8246c1ca5b"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:58:34.000Z",
+                  "updatedAt": "2026-10-21T19:58:34.000Z",
+                  "uid": "35240-4a754e4c-f10c-4869-9ecd-1d89da59885b"
+                },
+                {
+                  "name": "Update replication-specific settings",
+                  "id": "3dab5da1-d75b-4b25-947c-9e646754aec4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "Interval between checkpoints in seconds",
+                          "key": "checkpointInterval",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Document batch size in kilobytes",
+                          "key": "docBatchSizeKb",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Interval before restarting after failure in seconds",
+                          "key": "failureRestartInterval",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Regular expression filter for document IDs",
+                          "key": "filterExpression",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Log level for the replication",
+                          "key": "logLevel",
+                          "value": "Trace"
+                        },
+                        {
+                          "description": "Network usage limit in MB per second (0 for unlimited)",
+                          "key": "networkUsageLimit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Document size threshold in bytes for optimistic replication",
+                          "key": "optimisticReplicationThreshold",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of source nozzles per node",
+                          "key": "sourceNozzlePerNode",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of target nozzles per node",
+                          "key": "targetNozzlePerNode",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Interval for statistics updates in milliseconds",
+                          "key": "statsInterval",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Compression type for replicated data",
+                          "key": "compressionType",
+                          "value": "None"
+                        },
+                        {
+                          "description": "Replication priority",
+                          "key": "priority",
+                          "value": "High"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/replications/:replicationId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        "replications",
+                        ":replicationId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7e68f514-b283-4a49-af9f-76b2ff4f29f1",
+                          "key": "replicationId",
+                          "value": "<string>",
+                          "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+                        }
+                      ]
+                    },
+                    "description": "Updates the settings for a specific XDCR replication stream, overriding the global defaults."
+                  },
+                  "response": [
+                    {
+                      "id": "c4fb5df8-8c62-4fbf-87f2-854008ccedf9",
+                      "name": "Replication settings updated successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "Interval between checkpoints in seconds",
+                              "key": "checkpointInterval",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Document batch size in kilobytes",
+                              "key": "docBatchSizeKb",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Interval before restarting after failure in seconds",
+                              "key": "failureRestartInterval",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Regular expression filter for document IDs",
+                              "key": "filterExpression",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Log level for the replication",
+                              "key": "logLevel",
+                              "value": "Trace"
+                            },
+                            {
+                              "description": "Network usage limit in MB per second (0 for unlimited)",
+                              "key": "networkUsageLimit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Document size threshold in bytes for optimistic replication",
+                              "key": "optimisticReplicationThreshold",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of source nozzles per node",
+                              "key": "sourceNozzlePerNode",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of target nozzles per node",
+                              "key": "targetNozzlePerNode",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Interval for statistics updates in milliseconds",
+                              "key": "statsInterval",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Compression type for replicated data",
+                              "key": "compressionType",
+                              "value": "None"
+                            },
+                            {
+                              "description": "Replication priority",
+                              "key": "priority",
+                              "value": "High"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/settings/replications/:replicationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "settings",
+                            "replications",
+                            ":replicationId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "replicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:58:34.000Z",
+                      "updatedAt": "2026-10-21T19:58:34.000Z",
+                      "uid": "35240-c4fb5df8-8c62-4fbf-87f2-854008ccedf9"
+                    },
+                    {
+                      "id": "03400798-263e-4db8-b0d1-11ae9cf4609f",
+                      "name": "Invalid settings",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "Interval between checkpoints in seconds",
+                              "key": "checkpointInterval",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Document batch size in kilobytes",
+                              "key": "docBatchSizeKb",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Interval before restarting after failure in seconds",
+                              "key": "failureRestartInterval",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Regular expression filter for document IDs",
+                              "key": "filterExpression",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Log level for the replication",
+                              "key": "logLevel",
+                              "value": "Trace"
+                            },
+                            {
+                              "description": "Network usage limit in MB per second (0 for unlimited)",
+                              "key": "networkUsageLimit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Document size threshold in bytes for optimistic replication",
+                              "key": "optimisticReplicationThreshold",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of source nozzles per node",
+                              "key": "sourceNozzlePerNode",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of target nozzles per node",
+                              "key": "targetNozzlePerNode",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Interval for statistics updates in milliseconds",
+                              "key": "statsInterval",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Compression type for replicated data",
+                              "key": "compressionType",
+                              "value": "None"
+                            },
+                            {
+                              "description": "Replication priority",
+                              "key": "priority",
+                              "value": "High"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/settings/replications/:replicationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "settings",
+                            "replications",
+                            ":replicationId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "replicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:58:34.000Z",
+                      "updatedAt": "2026-10-21T19:58:34.000Z",
+                      "uid": "35240-03400798-263e-4db8-b0d1-11ae9cf4609f"
+                    },
+                    {
+                      "id": "23fe4827-b229-4580-9079-8b8c7cda3938",
+                      "name": "Unauthorized access",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "Interval between checkpoints in seconds",
+                              "key": "checkpointInterval",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Document batch size in kilobytes",
+                              "key": "docBatchSizeKb",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Interval before restarting after failure in seconds",
+                              "key": "failureRestartInterval",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Regular expression filter for document IDs",
+                              "key": "filterExpression",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Log level for the replication",
+                              "key": "logLevel",
+                              "value": "Trace"
+                            },
+                            {
+                              "description": "Network usage limit in MB per second (0 for unlimited)",
+                              "key": "networkUsageLimit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Document size threshold in bytes for optimistic replication",
+                              "key": "optimisticReplicationThreshold",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of source nozzles per node",
+                              "key": "sourceNozzlePerNode",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of target nozzles per node",
+                              "key": "targetNozzlePerNode",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Interval for statistics updates in milliseconds",
+                              "key": "statsInterval",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Compression type for replicated data",
+                              "key": "compressionType",
+                              "value": "None"
+                            },
+                            {
+                              "description": "Replication priority",
+                              "key": "priority",
+                              "value": "High"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/settings/replications/:replicationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "settings",
+                            "replications",
+                            ":replicationId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "replicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:58:34.000Z",
+                      "updatedAt": "2026-10-21T19:58:34.000Z",
+                      "uid": "35240-23fe4827-b229-4580-9079-8b8c7cda3938"
+                    },
+                    {
+                      "id": "aadbbafc-85c6-458f-b936-ef35d10f0b55",
+                      "name": "Replication not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "Interval between checkpoints in seconds",
+                              "key": "checkpointInterval",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Document batch size in kilobytes",
+                              "key": "docBatchSizeKb",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Interval before restarting after failure in seconds",
+                              "key": "failureRestartInterval",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Regular expression filter for document IDs",
+                              "key": "filterExpression",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Log level for the replication",
+                              "key": "logLevel",
+                              "value": "Trace"
+                            },
+                            {
+                              "description": "Network usage limit in MB per second (0 for unlimited)",
+                              "key": "networkUsageLimit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Document size threshold in bytes for optimistic replication",
+                              "key": "optimisticReplicationThreshold",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of source nozzles per node",
+                              "key": "sourceNozzlePerNode",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of target nozzles per node",
+                              "key": "targetNozzlePerNode",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Interval for statistics updates in milliseconds",
+                              "key": "statsInterval",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Compression type for replicated data",
+                              "key": "compressionType",
+                              "value": "None"
+                            },
+                            {
+                              "description": "Replication priority",
+                              "key": "priority",
+                              "value": "High"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/settings/replications/:replicationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "settings",
+                            "replications",
+                            ":replicationId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "replicationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:58:34.000Z",
+                      "updatedAt": "2026-10-21T19:58:34.000Z",
+                      "uid": "35240-aadbbafc-85c6-458f-b936-ef35d10f0b55"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:58:34.000Z",
+                  "updatedAt": "2026-10-21T19:58:34.000Z",
+                  "uid": "35240-3dab5da1-d75b-4b25-947c-9e646754aec4"
+                }
+              ],
+              "id": "16d6f61f-b17f-4168-aaed-92b588239eb2",
+              "createdAt": "2026-10-21T19:58:34.000Z",
+              "updatedAt": "2026-10-21T19:58:34.000Z",
+              "uid": "35240-16d6f61f-b17f-4168-aaed-92b588239eb2"
+            },
+            {
+              "name": "Get global XDCR settings",
+              "id": "f7599383-e133-4bdd-81af-930bd9003fbc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"checkpointInterval\": 1583,\n  \"docBatchSizeKb\": 9049,\n  \"failureRestartInterval\": 8,\n  \"filterExpression\": \"string\",\n  \"logLevel\": \"Trace\",\n  \"networkUsageLimit\": 6825,\n  \"optimisticReplicationThreshold\": 9321,\n  \"sourceNozzlePerNode\": 53,\n  \"targetNozzlePerNode\": 97,\n  \"statsInterval\": 450703,\n  \"compressionType\": \"None\",\n  \"priority\": \"High\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b618a848-6825-46e1-8a86-a3320f132b67",
-              "name": "Unauthorized access",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/settings/replications",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "settings",
                     "replications"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "9689ba16-0efb-4fd7-9257-4f126224f062",
-          "name": "Update global XDCR settings",
-          "request": {
-            "name": "Update global XDCR settings",
-            "description": {
-              "content": "Updates the global default settings applied to all XDCR replications.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "settings",
-                "replications"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "checkpointInterval",
-                  "value": "<integer>",
-                  "description": "Interval between checkpoints in seconds"
-                },
-                {
-                  "disabled": false,
-                  "key": "docBatchSizeKb",
-                  "value": "<integer>",
-                  "description": "Document batch size in kilobytes"
-                },
-                {
-                  "disabled": false,
-                  "key": "failureRestartInterval",
-                  "value": "<integer>",
-                  "description": "Interval before restarting after failure in seconds"
-                },
-                {
-                  "disabled": false,
-                  "key": "filterExpression",
-                  "value": "<string>",
-                  "description": "Regular expression filter for document IDs"
-                },
-                {
-                  "disabled": false,
-                  "key": "logLevel",
-                  "value": "<string>",
-                  "description": "Log level for the replication"
-                },
-                {
-                  "disabled": false,
-                  "key": "networkUsageLimit",
-                  "value": "<integer>",
-                  "description": "Network usage limit in MB per second (0 for unlimited)"
-                },
-                {
-                  "disabled": false,
-                  "key": "optimisticReplicationThreshold",
-                  "value": "<integer>",
-                  "description": "Document size threshold in bytes for optimistic replication"
-                },
-                {
-                  "disabled": false,
-                  "key": "sourceNozzlePerNode",
-                  "value": "<integer>",
-                  "description": "Number of source nozzles per node"
-                },
-                {
-                  "disabled": false,
-                  "key": "targetNozzlePerNode",
-                  "value": "<integer>",
-                  "description": "Number of target nozzles per node"
-                },
-                {
-                  "disabled": false,
-                  "key": "statsInterval",
-                  "value": "<integer>",
-                  "description": "Interval for statistics updates in milliseconds"
-                },
-                {
-                  "disabled": false,
-                  "key": "compressionType",
-                  "value": "<string>",
-                  "description": "Compression type for replicated data"
-                },
-                {
-                  "disabled": false,
-                  "key": "priority",
-                  "value": "<string>",
-                  "description": "Replication priority"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "a9d458b7-dd8d-461b-b113-17b380c922b4",
-              "name": "Global replication settings updated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "replications"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval between checkpoints in seconds",
-                        "type": "text/plain"
-                      },
-                      "key": "checkpointInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Document batch size in kilobytes",
-                        "type": "text/plain"
-                      },
-                      "key": "docBatchSizeKb",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval before restarting after failure in seconds",
-                        "type": "text/plain"
-                      },
-                      "key": "failureRestartInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Regular expression filter for document IDs",
-                        "type": "text/plain"
-                      },
-                      "key": "filterExpression",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Log level for the replication",
-                        "type": "text/plain"
-                      },
-                      "key": "logLevel",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Network usage limit in MB per second (0 for unlimited)",
-                        "type": "text/plain"
-                      },
-                      "key": "networkUsageLimit",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Document size threshold in bytes for optimistic replication",
-                        "type": "text/plain"
-                      },
-                      "key": "optimisticReplicationThreshold",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Number of source nozzles per node",
-                        "type": "text/plain"
-                      },
-                      "key": "sourceNozzlePerNode",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Number of target nozzles per node",
-                        "type": "text/plain"
-                      },
-                      "key": "targetNozzlePerNode",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval for statistics updates in milliseconds",
-                        "type": "text/plain"
-                      },
-                      "key": "statsInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Compression type for replicated data",
-                        "type": "text/plain"
-                      },
-                      "key": "compressionType",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Replication priority",
-                        "type": "text/plain"
-                      },
-                      "key": "priority",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "5fd62f9b-1a38-461a-b340-73088c9486a6",
-              "name": "Invalid settings",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "replications"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval between checkpoints in seconds",
-                        "type": "text/plain"
-                      },
-                      "key": "checkpointInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Document batch size in kilobytes",
-                        "type": "text/plain"
-                      },
-                      "key": "docBatchSizeKb",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval before restarting after failure in seconds",
-                        "type": "text/plain"
-                      },
-                      "key": "failureRestartInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Regular expression filter for document IDs",
-                        "type": "text/plain"
-                      },
-                      "key": "filterExpression",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Log level for the replication",
-                        "type": "text/plain"
-                      },
-                      "key": "logLevel",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Network usage limit in MB per second (0 for unlimited)",
-                        "type": "text/plain"
-                      },
-                      "key": "networkUsageLimit",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Document size threshold in bytes for optimistic replication",
-                        "type": "text/plain"
-                      },
-                      "key": "optimisticReplicationThreshold",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Number of source nozzles per node",
-                        "type": "text/plain"
-                      },
-                      "key": "sourceNozzlePerNode",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Number of target nozzles per node",
-                        "type": "text/plain"
-                      },
-                      "key": "targetNozzlePerNode",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval for statistics updates in milliseconds",
-                        "type": "text/plain"
-                      },
-                      "key": "statsInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Compression type for replicated data",
-                        "type": "text/plain"
-                      },
-                      "key": "compressionType",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Replication priority",
-                        "type": "text/plain"
-                      },
-                      "key": "priority",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "e78177e7-ac9c-42c7-b808-5fca332941d1",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "replications"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval between checkpoints in seconds",
-                        "type": "text/plain"
-                      },
-                      "key": "checkpointInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Document batch size in kilobytes",
-                        "type": "text/plain"
-                      },
-                      "key": "docBatchSizeKb",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval before restarting after failure in seconds",
-                        "type": "text/plain"
-                      },
-                      "key": "failureRestartInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Regular expression filter for document IDs",
-                        "type": "text/plain"
-                      },
-                      "key": "filterExpression",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Log level for the replication",
-                        "type": "text/plain"
-                      },
-                      "key": "logLevel",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Network usage limit in MB per second (0 for unlimited)",
-                        "type": "text/plain"
-                      },
-                      "key": "networkUsageLimit",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Document size threshold in bytes for optimistic replication",
-                        "type": "text/plain"
-                      },
-                      "key": "optimisticReplicationThreshold",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Number of source nozzles per node",
-                        "type": "text/plain"
-                      },
-                      "key": "sourceNozzlePerNode",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Number of target nozzles per node",
-                        "type": "text/plain"
-                      },
-                      "key": "targetNozzlePerNode",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval for statistics updates in milliseconds",
-                        "type": "text/plain"
-                      },
-                      "key": "statsInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Compression type for replicated data",
-                        "type": "text/plain"
-                      },
-                      "key": "compressionType",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Replication priority",
-                        "type": "text/plain"
-                      },
-                      "key": "priority",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ee35fab8-83c1-4d52-97ff-694aec791ff3",
-          "name": "Get replication-specific settings",
-          "request": {
-            "name": "Get replication-specific settings",
-            "description": {
-              "content": "Returns the settings for a specific XDCR replication stream.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "settings",
-                "replications",
-                ":replicationId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "replicationId",
-                  "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "7d793e0a-99e2-477a-8829-9bb9692d5443",
-              "name": "Successful retrieval of replication settings",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "replications",
-                    ":replicationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "replicationId",
-                      "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
-                    }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                "description": "Returns the global default settings for all XDCR replications."
+              },
+              "response": [
+                {
+                  "id": "ce5b73ab-4b3f-43ce-80af-97a6223d9334",
+                  "name": "Successful retrieval of global replication settings",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/replications",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        "replications"
+                      ]
+                    }
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"checkpointInterval\": \"<integer>\",\n  \"docBatchSizeKb\": \"<integer>\",\n  \"failureRestartInterval\": \"<integer>\",\n  \"filterExpression\": \"<string>\",\n  \"logLevel\": \"Trace\",\n  \"networkUsageLimit\": \"<integer>\",\n  \"optimisticReplicationThreshold\": \"<integer>\",\n  \"sourceNozzlePerNode\": \"<integer>\",\n  \"targetNozzlePerNode\": \"<integer>\",\n  \"statsInterval\": \"<integer>\",\n  \"compressionType\": \"None\",\n  \"priority\": \"High\"\n}",
+                  "createdAt": "2026-10-21T19:58:34.000Z",
+                  "updatedAt": "2026-10-21T19:58:34.000Z",
+                  "uid": "35240-ce5b73ab-4b3f-43ce-80af-97a6223d9334"
+                },
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "82c822bb-d2c3-4086-a85f-f922fe05e2ec",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/replications",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        "replications"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:58:34.000Z",
+                  "updatedAt": "2026-10-21T19:58:34.000Z",
+                  "uid": "35240-82c822bb-d2c3-4086-a85f-f922fe05e2ec"
                 }
               ],
-              "body": "{\n  \"checkpointInterval\": 1583,\n  \"docBatchSizeKb\": 9049,\n  \"failureRestartInterval\": 8,\n  \"filterExpression\": \"string\",\n  \"logLevel\": \"Trace\",\n  \"networkUsageLimit\": 6825,\n  \"optimisticReplicationThreshold\": 9321,\n  \"sourceNozzlePerNode\": 53,\n  \"targetNozzlePerNode\": 97,\n  \"statsInterval\": 450703,\n  \"compressionType\": \"None\",\n  \"priority\": \"High\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T19:58:34.000Z",
+              "updatedAt": "2026-10-21T19:58:34.000Z",
+              "uid": "35240-f7599383-e133-4bdd-81af-930bd9003fbc"
             },
             {
-              "id": "5c386e90-a94c-4808-9c13-994e15ff9b18",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "replications",
-                    ":replicationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+              "name": "Update global XDCR settings",
+              "id": "098d777b-0628-4cdd-9aa3-d578b810e189",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "replicationId",
-                      "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
+                      "description": "Interval between checkpoints in seconds",
+                      "key": "checkpointInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Document batch size in kilobytes",
+                      "key": "docBatchSizeKb",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Interval before restarting after failure in seconds",
+                      "key": "failureRestartInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Regular expression filter for document IDs",
+                      "key": "filterExpression",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Log level for the replication",
+                      "key": "logLevel",
+                      "value": "Trace"
+                    },
+                    {
+                      "description": "Network usage limit in MB per second (0 for unlimited)",
+                      "key": "networkUsageLimit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Document size threshold in bytes for optimistic replication",
+                      "key": "optimisticReplicationThreshold",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of source nozzles per node",
+                      "key": "sourceNozzlePerNode",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of target nozzles per node",
+                      "key": "targetNozzlePerNode",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Interval for statistics updates in milliseconds",
+                      "key": "statsInterval",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Compression type for replicated data",
+                      "key": "compressionType",
+                      "value": "None"
+                    },
+                    {
+                      "description": "Replication priority",
+                      "key": "priority",
+                      "value": "High"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "7369fe88-2315-4e67-9df9-e5f0e155223e",
-              "name": "Replication not found",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "settings",
-                    "replications",
-                    ":replicationId"
-                  ],
+                  "raw": "{{baseUrl}}/settings/replications",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "replicationId",
-                      "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
-                    }
+                  "path": [
+                    "settings",
+                    "replications"
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Updates the global default settings applied to all XDCR replications."
               },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "d2904241-71f2-4dac-8242-50d32d916f9c",
+                  "name": "Global replication settings updated successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "Interval between checkpoints in seconds",
+                          "key": "checkpointInterval",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Document batch size in kilobytes",
+                          "key": "docBatchSizeKb",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Interval before restarting after failure in seconds",
+                          "key": "failureRestartInterval",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Regular expression filter for document IDs",
+                          "key": "filterExpression",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Log level for the replication",
+                          "key": "logLevel",
+                          "value": "Trace"
+                        },
+                        {
+                          "description": "Network usage limit in MB per second (0 for unlimited)",
+                          "key": "networkUsageLimit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Document size threshold in bytes for optimistic replication",
+                          "key": "optimisticReplicationThreshold",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of source nozzles per node",
+                          "key": "sourceNozzlePerNode",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of target nozzles per node",
+                          "key": "targetNozzlePerNode",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Interval for statistics updates in milliseconds",
+                          "key": "statsInterval",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Compression type for replicated data",
+                          "key": "compressionType",
+                          "value": "None"
+                        },
+                        {
+                          "description": "Replication priority",
+                          "key": "priority",
+                          "value": "High"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/replications",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        "replications"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:58:34.000Z",
+                  "updatedAt": "2026-10-21T19:58:34.000Z",
+                  "uid": "35240-d2904241-71f2-4dac-8242-50d32d916f9c"
+                },
+                {
+                  "id": "a8325a2c-5fef-442c-88de-5f656e401bd4",
+                  "name": "Invalid settings",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "Interval between checkpoints in seconds",
+                          "key": "checkpointInterval",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Document batch size in kilobytes",
+                          "key": "docBatchSizeKb",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Interval before restarting after failure in seconds",
+                          "key": "failureRestartInterval",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Regular expression filter for document IDs",
+                          "key": "filterExpression",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Log level for the replication",
+                          "key": "logLevel",
+                          "value": "Trace"
+                        },
+                        {
+                          "description": "Network usage limit in MB per second (0 for unlimited)",
+                          "key": "networkUsageLimit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Document size threshold in bytes for optimistic replication",
+                          "key": "optimisticReplicationThreshold",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of source nozzles per node",
+                          "key": "sourceNozzlePerNode",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of target nozzles per node",
+                          "key": "targetNozzlePerNode",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Interval for statistics updates in milliseconds",
+                          "key": "statsInterval",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Compression type for replicated data",
+                          "key": "compressionType",
+                          "value": "None"
+                        },
+                        {
+                          "description": "Replication priority",
+                          "key": "priority",
+                          "value": "High"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/replications",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        "replications"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:58:34.000Z",
+                  "updatedAt": "2026-10-21T19:58:34.000Z",
+                  "uid": "35240-a8325a2c-5fef-442c-88de-5f656e401bd4"
+                },
+                {
+                  "id": "5e2fa342-7ed8-4772-9c2a-73e632a2e374",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "Interval between checkpoints in seconds",
+                          "key": "checkpointInterval",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Document batch size in kilobytes",
+                          "key": "docBatchSizeKb",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Interval before restarting after failure in seconds",
+                          "key": "failureRestartInterval",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Regular expression filter for document IDs",
+                          "key": "filterExpression",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Log level for the replication",
+                          "key": "logLevel",
+                          "value": "Trace"
+                        },
+                        {
+                          "description": "Network usage limit in MB per second (0 for unlimited)",
+                          "key": "networkUsageLimit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Document size threshold in bytes for optimistic replication",
+                          "key": "optimisticReplicationThreshold",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of source nozzles per node",
+                          "key": "sourceNozzlePerNode",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of target nozzles per node",
+                          "key": "targetNozzlePerNode",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Interval for statistics updates in milliseconds",
+                          "key": "statsInterval",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Compression type for replicated data",
+                          "key": "compressionType",
+                          "value": "None"
+                        },
+                        {
+                          "description": "Replication priority",
+                          "key": "priority",
+                          "value": "High"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/replications",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        "replications"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:58:34.000Z",
+                  "updatedAt": "2026-10-21T19:58:34.000Z",
+                  "uid": "35240-5e2fa342-7ed8-4772-9c2a-73e632a2e374"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T19:58:34.000Z",
+              "updatedAt": "2026-10-21T19:58:34.000Z",
+              "uid": "35240-098d777b-0628-4cdd-9aa3-d578b810e189"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "3d71d122-c6c1-4831-92da-08f3d2777de6",
-          "name": "Update replication-specific settings",
-          "request": {
-            "name": "Update replication-specific settings",
-            "description": {
-              "content": "Updates the settings for a specific XDCR replication stream, overriding the global defaults.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "settings",
-                "replications",
-                ":replicationId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "replicationId",
-                  "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "checkpointInterval",
-                  "value": "<integer>",
-                  "description": "Interval between checkpoints in seconds"
-                },
-                {
-                  "disabled": false,
-                  "key": "docBatchSizeKb",
-                  "value": "<integer>",
-                  "description": "Document batch size in kilobytes"
-                },
-                {
-                  "disabled": false,
-                  "key": "failureRestartInterval",
-                  "value": "<integer>",
-                  "description": "Interval before restarting after failure in seconds"
-                },
-                {
-                  "disabled": false,
-                  "key": "filterExpression",
-                  "value": "<string>",
-                  "description": "Regular expression filter for document IDs"
-                },
-                {
-                  "disabled": false,
-                  "key": "logLevel",
-                  "value": "<string>",
-                  "description": "Log level for the replication"
-                },
-                {
-                  "disabled": false,
-                  "key": "networkUsageLimit",
-                  "value": "<integer>",
-                  "description": "Network usage limit in MB per second (0 for unlimited)"
-                },
-                {
-                  "disabled": false,
-                  "key": "optimisticReplicationThreshold",
-                  "value": "<integer>",
-                  "description": "Document size threshold in bytes for optimistic replication"
-                },
-                {
-                  "disabled": false,
-                  "key": "sourceNozzlePerNode",
-                  "value": "<integer>",
-                  "description": "Number of source nozzles per node"
-                },
-                {
-                  "disabled": false,
-                  "key": "targetNozzlePerNode",
-                  "value": "<integer>",
-                  "description": "Number of target nozzles per node"
-                },
-                {
-                  "disabled": false,
-                  "key": "statsInterval",
-                  "value": "<integer>",
-                  "description": "Interval for statistics updates in milliseconds"
-                },
-                {
-                  "disabled": false,
-                  "key": "compressionType",
-                  "value": "<string>",
-                  "description": "Compression type for replicated data"
-                },
-                {
-                  "disabled": false,
-                  "key": "priority",
-                  "value": "<string>",
-                  "description": "Replication priority"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "67cf1001-a72a-45cf-8275-ad6bf6f18efb",
-              "name": "Replication settings updated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "replications",
-                    ":replicationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "replicationId",
-                      "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval between checkpoints in seconds",
-                        "type": "text/plain"
-                      },
-                      "key": "checkpointInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Document batch size in kilobytes",
-                        "type": "text/plain"
-                      },
-                      "key": "docBatchSizeKb",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval before restarting after failure in seconds",
-                        "type": "text/plain"
-                      },
-                      "key": "failureRestartInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Regular expression filter for document IDs",
-                        "type": "text/plain"
-                      },
-                      "key": "filterExpression",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Log level for the replication",
-                        "type": "text/plain"
-                      },
-                      "key": "logLevel",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Network usage limit in MB per second (0 for unlimited)",
-                        "type": "text/plain"
-                      },
-                      "key": "networkUsageLimit",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Document size threshold in bytes for optimistic replication",
-                        "type": "text/plain"
-                      },
-                      "key": "optimisticReplicationThreshold",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Number of source nozzles per node",
-                        "type": "text/plain"
-                      },
-                      "key": "sourceNozzlePerNode",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Number of target nozzles per node",
-                        "type": "text/plain"
-                      },
-                      "key": "targetNozzlePerNode",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval for statistics updates in milliseconds",
-                        "type": "text/plain"
-                      },
-                      "key": "statsInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Compression type for replicated data",
-                        "type": "text/plain"
-                      },
-                      "key": "compressionType",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Replication priority",
-                        "type": "text/plain"
-                      },
-                      "key": "priority",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "78a7423a-eb0a-4150-9ebf-5922d75b4475",
-              "name": "Invalid settings",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "replications",
-                    ":replicationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "replicationId",
-                      "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval between checkpoints in seconds",
-                        "type": "text/plain"
-                      },
-                      "key": "checkpointInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Document batch size in kilobytes",
-                        "type": "text/plain"
-                      },
-                      "key": "docBatchSizeKb",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval before restarting after failure in seconds",
-                        "type": "text/plain"
-                      },
-                      "key": "failureRestartInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Regular expression filter for document IDs",
-                        "type": "text/plain"
-                      },
-                      "key": "filterExpression",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Log level for the replication",
-                        "type": "text/plain"
-                      },
-                      "key": "logLevel",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Network usage limit in MB per second (0 for unlimited)",
-                        "type": "text/plain"
-                      },
-                      "key": "networkUsageLimit",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Document size threshold in bytes for optimistic replication",
-                        "type": "text/plain"
-                      },
-                      "key": "optimisticReplicationThreshold",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Number of source nozzles per node",
-                        "type": "text/plain"
-                      },
-                      "key": "sourceNozzlePerNode",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Number of target nozzles per node",
-                        "type": "text/plain"
-                      },
-                      "key": "targetNozzlePerNode",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval for statistics updates in milliseconds",
-                        "type": "text/plain"
-                      },
-                      "key": "statsInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Compression type for replicated data",
-                        "type": "text/plain"
-                      },
-                      "key": "compressionType",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Replication priority",
-                        "type": "text/plain"
-                      },
-                      "key": "priority",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "eab6b500-8fa9-4698-b9d9-f27df48c2af1",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "replications",
-                    ":replicationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "replicationId",
-                      "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval between checkpoints in seconds",
-                        "type": "text/plain"
-                      },
-                      "key": "checkpointInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Document batch size in kilobytes",
-                        "type": "text/plain"
-                      },
-                      "key": "docBatchSizeKb",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval before restarting after failure in seconds",
-                        "type": "text/plain"
-                      },
-                      "key": "failureRestartInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Regular expression filter for document IDs",
-                        "type": "text/plain"
-                      },
-                      "key": "filterExpression",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Log level for the replication",
-                        "type": "text/plain"
-                      },
-                      "key": "logLevel",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Network usage limit in MB per second (0 for unlimited)",
-                        "type": "text/plain"
-                      },
-                      "key": "networkUsageLimit",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Document size threshold in bytes for optimistic replication",
-                        "type": "text/plain"
-                      },
-                      "key": "optimisticReplicationThreshold",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Number of source nozzles per node",
-                        "type": "text/plain"
-                      },
-                      "key": "sourceNozzlePerNode",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Number of target nozzles per node",
-                        "type": "text/plain"
-                      },
-                      "key": "targetNozzlePerNode",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval for statistics updates in milliseconds",
-                        "type": "text/plain"
-                      },
-                      "key": "statsInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Compression type for replicated data",
-                        "type": "text/plain"
-                      },
-                      "key": "compressionType",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Replication priority",
-                        "type": "text/plain"
-                      },
-                      "key": "priority",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "e03267c4-6c6c-4163-9d93-cce112473fcb",
-              "name": "Replication not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "replications",
-                    ":replicationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "replicationId",
-                      "description": "(Required) The XDCR replication ID in the format {remoteClusterUUID}/{sourceBucket}/{targetBucket}"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval between checkpoints in seconds",
-                        "type": "text/plain"
-                      },
-                      "key": "checkpointInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Document batch size in kilobytes",
-                        "type": "text/plain"
-                      },
-                      "key": "docBatchSizeKb",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval before restarting after failure in seconds",
-                        "type": "text/plain"
-                      },
-                      "key": "failureRestartInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Regular expression filter for document IDs",
-                        "type": "text/plain"
-                      },
-                      "key": "filterExpression",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Log level for the replication",
-                        "type": "text/plain"
-                      },
-                      "key": "logLevel",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Network usage limit in MB per second (0 for unlimited)",
-                        "type": "text/plain"
-                      },
-                      "key": "networkUsageLimit",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Document size threshold in bytes for optimistic replication",
-                        "type": "text/plain"
-                      },
-                      "key": "optimisticReplicationThreshold",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Number of source nozzles per node",
-                        "type": "text/plain"
-                      },
-                      "key": "sourceNozzlePerNode",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Number of target nozzles per node",
-                        "type": "text/plain"
-                      },
-                      "key": "targetNozzlePerNode",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Interval for statistics updates in milliseconds",
-                        "type": "text/plain"
-                      },
-                      "key": "statsInterval",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Compression type for replicated data",
-                        "type": "text/plain"
-                      },
-                      "key": "compressionType",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Replication priority",
-                        "type": "text/plain"
-                      },
-                      "key": "priority",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "0b0eafaf-fe84-4d8c-b5ae-dcf96b52c3ad",
+          "createdAt": "2026-10-21T19:58:34.000Z",
+          "updatedAt": "2026-10-21T19:58:34.000Z",
+          "uid": "35240-0b0eafaf-fe84-4d8c-b5ae-dcf96b52c3ad"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://localhost:8095",
-      "key": "baseUrl"
+      "id": "f8f75e4b-c077-4dac-9226-52593369ed0e",
+      "createdAt": "2026-10-21T19:58:34.000Z",
+      "updatedAt": "2026-10-21T19:58:34.000Z",
+      "uid": "35240-f8f75e4b-c077-4dac-9226-52593369ed0e"
     }
   ],
   "auth": {
@@ -1676,21 +1270,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "3be29fd7-4a52-4ff8-afdc-83792cca5dfe",
-    "name": "Couchbase Analytics Service REST Allowed CIDRs Replication Settings API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:8091"
     }
-  }
+  ]
 }

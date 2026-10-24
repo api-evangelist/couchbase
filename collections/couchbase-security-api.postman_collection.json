@@ -1,1149 +1,1044 @@
 {
+  "info": {
+    "_postman_id": "56aaf0d3-234a-42f2-af50-5b4c33eb1e88",
+    "name": "Couchbase Server REST Security API",
+    "description": "The Couchbase Server REST API provides programmatic access to manage and configure Couchbase Server clusters. It includes endpoints for cluster management, bucket operations, node administration, security settings, and server configuration. The API enables automation of deployment, monitoring, and maintenance tasks for Couchbase Server instances across distributed environments.\n\nContact Support:\n Name: Couchbase Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:59:04.000Z",
+    "updatedAt": "2026-10-21T19:59:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-56aaf0d3-234a-42f2-af50-5b4c33eb1e88"
+  },
   "item": [
     {
-      "id": "326c2007-c858-4204-a49f-d42928053a38",
-      "name": "Security",
-      "description": {
-        "content": "Endpoints for managing security settings, users, roles, certificates, and audit configurations.",
-        "type": "text/plain"
-      },
+      "name": "settings",
       "item": [
         {
-          "id": "7d2084ec-5b72-4aaa-92fe-e2c78feba05f",
-          "name": "List all users",
-          "request": {
-            "name": "List all users",
-            "description": {
-              "content": "Returns the list of all users configured in the cluster with their roles and authentication domains.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "settings",
-                "rbac",
-                "users"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "rbac",
+          "item": [
             {
-              "id": "68ad135c-0165-4d64-bd96-bb18802d36ed",
-              "name": "Successful retrieval of user list",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "rbac",
-                    "users"
+              "name": "users",
+              "item": [
+                {
+                  "name": "{domain}",
+                  "item": [
+                    {
+                      "name": "{username}",
+                      "item": [
+                        {
+                          "name": "Get user details",
+                          "id": "1b07ead5-5378-40b6-b8cb-b62787080c35",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/settings/rbac/users/:domain/:username",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "settings",
+                                "rbac",
+                                "users",
+                                ":domain",
+                                ":username"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "bbaaf02d-e994-4108-a98c-67e2a86f83ce",
+                                  "key": "domain",
+                                  "value": "local",
+                                  "description": "(Required) The authentication domain (local or external)"
+                                },
+                                {
+                                  "id": "8d39cd0d-08e0-41ca-b91d-0fddeca66aed",
+                                  "key": "username",
+                                  "value": "<string>",
+                                  "description": "(Required) The username of the user"
+                                }
+                              ]
+                            },
+                            "description": "Returns detailed information about a specific user including their roles and authentication configuration."
+                          },
+                          "response": [
+                            {
+                              "id": "3f2b3382-c6f9-47a2-9d63-6245ac25e20e",
+                              "name": "Successful retrieval of user details",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/settings/rbac/users/:domain/:username",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "settings",
+                                    "rbac",
+                                    "users",
+                                    ":domain",
+                                    ":username"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "domain"
+                                    },
+                                    {
+                                      "key": "username"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"domain\": \"local\",\n  \"roles\": [\n    {\n      \"role\": \"<string>\",\n      \"bucket_name\": \"<string>\",\n      \"scope_name\": \"<string>\",\n      \"collection_name\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"bucket_name\": \"<string>\",\n      \"scope_name\": \"<string>\",\n      \"collection_name\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-10-21T19:59:04.000Z",
+                              "updatedAt": "2026-10-21T19:59:04.000Z",
+                              "uid": "35240-3f2b3382-c6f9-47a2-9d63-6245ac25e20e"
+                            },
+                            {
+                              "id": "55acb77c-58d4-496a-a4eb-13b3bdfdfcfd",
+                              "name": "Unauthorized access",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/settings/rbac/users/:domain/:username",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "settings",
+                                    "rbac",
+                                    "users",
+                                    ":domain",
+                                    ":username"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "domain"
+                                    },
+                                    {
+                                      "key": "username"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:59:04.000Z",
+                              "updatedAt": "2026-10-21T19:59:04.000Z",
+                              "uid": "35240-55acb77c-58d4-496a-a4eb-13b3bdfdfcfd"
+                            },
+                            {
+                              "id": "6fca1661-ba37-4c9e-bc1a-88ba7594462d",
+                              "name": "User not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/settings/rbac/users/:domain/:username",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "settings",
+                                    "rbac",
+                                    "users",
+                                    ":domain",
+                                    ":username"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "domain"
+                                    },
+                                    {
+                                      "key": "username"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:59:04.000Z",
+                              "updatedAt": "2026-10-21T19:59:04.000Z",
+                              "uid": "35240-6fca1661-ba37-4c9e-bc1a-88ba7594462d"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T19:59:04.000Z",
+                          "updatedAt": "2026-10-21T19:59:04.000Z",
+                          "uid": "35240-1b07ead5-5378-40b6-b8cb-b62787080c35"
+                        },
+                        {
+                          "name": "Create or update a user",
+                          "id": "b3dffec2-3b84-4d9b-896a-30907d18ff2f",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "description": "User password (required for local domain)",
+                                  "key": "password",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Comma-separated list of roles",
+                                  "key": "roles",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Full name of the user",
+                                  "key": "name",
+                                  "value": "<string>"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/settings/rbac/users/:domain/:username",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "settings",
+                                "rbac",
+                                "users",
+                                ":domain",
+                                ":username"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "45450f73-aa97-43a4-b8fd-35630ce1abc2",
+                                  "key": "domain",
+                                  "value": "local",
+                                  "description": "(Required) The authentication domain (local or external)"
+                                },
+                                {
+                                  "id": "75b88cab-1449-4abd-94c0-2fe99d534811",
+                                  "key": "username",
+                                  "value": "<string>",
+                                  "description": "(Required) The username of the user"
+                                }
+                              ]
+                            },
+                            "description": "Creates a new user or updates an existing user with the specified roles and authentication settings."
+                          },
+                          "response": [
+                            {
+                              "id": "bf67c147-eecb-4b25-9f4b-7e7d26e18a7a",
+                              "name": "User created or updated successfully",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/x-www-form-urlencoded"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "urlencoded",
+                                  "urlencoded": [
+                                    {
+                                      "description": "User password (required for local domain)",
+                                      "key": "password",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Comma-separated list of roles",
+                                      "key": "roles",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Full name of the user",
+                                      "key": "name",
+                                      "value": "<string>"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/settings/rbac/users/:domain/:username",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "settings",
+                                    "rbac",
+                                    "users",
+                                    ":domain",
+                                    ":username"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "domain"
+                                    },
+                                    {
+                                      "key": "username"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:59:04.000Z",
+                              "updatedAt": "2026-10-21T19:59:04.000Z",
+                              "uid": "35240-bf67c147-eecb-4b25-9f4b-7e7d26e18a7a"
+                            },
+                            {
+                              "id": "206f16dc-9ca2-402f-b006-ac5cb0ec7c29",
+                              "name": "Invalid user configuration",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/x-www-form-urlencoded"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "urlencoded",
+                                  "urlencoded": [
+                                    {
+                                      "description": "User password (required for local domain)",
+                                      "key": "password",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Comma-separated list of roles",
+                                      "key": "roles",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Full name of the user",
+                                      "key": "name",
+                                      "value": "<string>"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/settings/rbac/users/:domain/:username",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "settings",
+                                    "rbac",
+                                    "users",
+                                    ":domain",
+                                    ":username"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "domain"
+                                    },
+                                    {
+                                      "key": "username"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:59:04.000Z",
+                              "updatedAt": "2026-10-21T19:59:04.000Z",
+                              "uid": "35240-206f16dc-9ca2-402f-b006-ac5cb0ec7c29"
+                            },
+                            {
+                              "id": "10a56758-40b7-4efe-a7e1-90d4f63aaf73",
+                              "name": "Unauthorized access",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/x-www-form-urlencoded"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "urlencoded",
+                                  "urlencoded": [
+                                    {
+                                      "description": "User password (required for local domain)",
+                                      "key": "password",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Comma-separated list of roles",
+                                      "key": "roles",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Full name of the user",
+                                      "key": "name",
+                                      "value": "<string>"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/settings/rbac/users/:domain/:username",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "settings",
+                                    "rbac",
+                                    "users",
+                                    ":domain",
+                                    ":username"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "domain"
+                                    },
+                                    {
+                                      "key": "username"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:59:04.000Z",
+                              "updatedAt": "2026-10-21T19:59:04.000Z",
+                              "uid": "35240-10a56758-40b7-4efe-a7e1-90d4f63aaf73"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T19:59:04.000Z",
+                          "updatedAt": "2026-10-21T19:59:04.000Z",
+                          "uid": "35240-b3dffec2-3b84-4d9b-896a-30907d18ff2f"
+                        },
+                        {
+                          "name": "Delete a user",
+                          "id": "0cba4e69-d839-4349-8969-e3a482d27fb5",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/settings/rbac/users/:domain/:username",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "settings",
+                                "rbac",
+                                "users",
+                                ":domain",
+                                ":username"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "c879ceba-11be-4d3c-8aa1-a9d0c759caaa",
+                                  "key": "domain",
+                                  "value": "local",
+                                  "description": "(Required) The authentication domain (local or external)"
+                                },
+                                {
+                                  "id": "b7dd1a29-8493-438b-b0f3-c68ee782adcd",
+                                  "key": "username",
+                                  "value": "<string>",
+                                  "description": "(Required) The username of the user"
+                                }
+                              ]
+                            },
+                            "description": "Deletes the specified user from the cluster."
+                          },
+                          "response": [
+                            {
+                              "id": "61fc0e2f-0b2f-438e-b6d8-c0d6299dd6bb",
+                              "name": "User deleted successfully",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/settings/rbac/users/:domain/:username",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "settings",
+                                    "rbac",
+                                    "users",
+                                    ":domain",
+                                    ":username"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "domain"
+                                    },
+                                    {
+                                      "key": "username"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:59:04.000Z",
+                              "updatedAt": "2026-10-21T19:59:04.000Z",
+                              "uid": "35240-61fc0e2f-0b2f-438e-b6d8-c0d6299dd6bb"
+                            },
+                            {
+                              "id": "9fd7ce4d-c129-49d5-9ac9-1418560f24d5",
+                              "name": "Unauthorized access",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/settings/rbac/users/:domain/:username",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "settings",
+                                    "rbac",
+                                    "users",
+                                    ":domain",
+                                    ":username"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "domain"
+                                    },
+                                    {
+                                      "key": "username"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:59:04.000Z",
+                              "updatedAt": "2026-10-21T19:59:04.000Z",
+                              "uid": "35240-9fd7ce4d-c129-49d5-9ac9-1418560f24d5"
+                            },
+                            {
+                              "id": "e1d2451d-5048-44c4-bc94-56f84da13f58",
+                              "name": "User not found",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/settings/rbac/users/:domain/:username",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "settings",
+                                    "rbac",
+                                    "users",
+                                    ":domain",
+                                    ":username"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "domain"
+                                    },
+                                    {
+                                      "key": "username"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T19:59:04.000Z",
+                              "updatedAt": "2026-10-21T19:59:04.000Z",
+                              "uid": "35240-e1d2451d-5048-44c4-bc94-56f84da13f58"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T19:59:04.000Z",
+                          "updatedAt": "2026-10-21T19:59:04.000Z",
+                          "uid": "35240-0cba4e69-d839-4349-8969-e3a482d27fb5"
+                        }
+                      ],
+                      "id": "da1d2019-4843-4edd-9c96-4cb850dea876",
+                      "createdAt": "2026-10-21T19:59:04.000Z",
+                      "updatedAt": "2026-10-21T19:59:04.000Z",
+                      "uid": "35240-da1d2019-4843-4edd-9c96-4cb850dea876"
+                    }
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  "id": "120ce653-a88c-467d-9f5e-f18db9697d15",
+                  "createdAt": "2026-10-21T19:59:04.000Z",
+                  "updatedAt": "2026-10-21T19:59:04.000Z",
+                  "uid": "35240-120ce653-a88c-467d-9f5e-f18db9697d15"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                {
+                  "name": "List all users",
+                  "id": "e6e4e7c6-25cd-46e0-a97f-0e0239b63dc6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"domain\": \"local\",\n    \"roles\": [\n      {\n        \"role\": \"string\",\n        \"bucket_name\": \"string\",\n        \"scope_name\": \"string\",\n        \"collection_name\": \"string\"\n      },\n      {\n        \"role\": \"string\",\n        \"bucket_name\": \"string\",\n        \"scope_name\": \"string\",\n        \"collection_name\": \"string\"\n      }\n    ]\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"domain\": \"external\",\n    \"roles\": [\n      {\n        \"role\": \"string\",\n        \"bucket_name\": \"string\",\n        \"scope_name\": \"string\",\n        \"collection_name\": \"string\"\n      },\n      {\n        \"role\": \"string\",\n        \"bucket_name\": \"string\",\n        \"scope_name\": \"string\",\n        \"collection_name\": \"string\"\n      }\n    ]\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "fb184327-bcbd-48fa-9df2-599379e31538",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "rbac",
-                    "users"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/rbac/users",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        "rbac",
+                        "users"
+                      ]
                     },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f7844c0b-1011-4319-b76c-57c29e9c345c",
-          "name": "Get user details",
-          "request": {
-            "name": "Get user details",
-            "description": {
-              "content": "Returns detailed information about a specific user including their roles and authentication configuration.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "settings",
-                "rbac",
-                "users",
-                ":domain",
-                ":username"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "domain",
-                  "description": "(Required) The authentication domain (local or external)"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "username",
-                  "description": "(Required) The username of the user"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "5fd72189-e896-4bca-a981-ede3e680cab1",
-              "name": "Successful retrieval of user details",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "rbac",
-                    "users",
-                    ":domain",
-                    ":username"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "domain",
-                      "description": "(Required) The authentication domain (local or external)"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "username",
-                      "description": "(Required) The username of the user"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "description": "Returns the list of all users configured in the cluster with their roles and authentication domains."
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "response": [
+                    {
+                      "id": "ce1eee27-4ddf-4fca-8f65-f9b159d7d09c",
+                      "name": "Successful retrieval of user list",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/settings/rbac/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "settings",
+                            "rbac",
+                            "users"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"domain\": \"external\",\n    \"roles\": [\n      {\n        \"role\": \"<string>\",\n        \"bucket_name\": \"<string>\",\n        \"scope_name\": \"<string>\",\n        \"collection_name\": \"<string>\"\n      },\n      {\n        \"role\": \"<string>\",\n        \"bucket_name\": \"<string>\",\n        \"scope_name\": \"<string>\",\n        \"collection_name\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"domain\": \"local\",\n    \"roles\": [\n      {\n        \"role\": \"<string>\",\n        \"bucket_name\": \"<string>\",\n        \"scope_name\": \"<string>\",\n        \"collection_name\": \"<string>\"\n      },\n      {\n        \"role\": \"<string>\",\n        \"bucket_name\": \"<string>\",\n        \"scope_name\": \"<string>\",\n        \"collection_name\": \"<string>\"\n      }\n    ]\n  }\n]",
+                      "createdAt": "2026-10-21T19:59:04.000Z",
+                      "updatedAt": "2026-10-21T19:59:04.000Z",
+                      "uid": "35240-ce1eee27-4ddf-4fca-8f65-f9b159d7d09c"
+                    },
+                    {
+                      "id": "53b79e9f-95cc-4832-941c-8978f4196f83",
+                      "name": "Unauthorized access",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/settings/rbac/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "settings",
+                            "rbac",
+                            "users"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:59:04.000Z",
+                      "updatedAt": "2026-10-21T19:59:04.000Z",
+                      "uid": "35240-53b79e9f-95cc-4832-941c-8978f4196f83"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:59:04.000Z",
+                  "updatedAt": "2026-10-21T19:59:04.000Z",
+                  "uid": "35240-e6e4e7c6-25cd-46e0-a97f-0e0239b63dc6"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"domain\": \"external\",\n  \"roles\": [\n    {\n      \"role\": \"string\",\n      \"bucket_name\": \"string\",\n      \"scope_name\": \"string\",\n      \"collection_name\": \"string\"\n    },\n    {\n      \"role\": \"string\",\n      \"bucket_name\": \"string\",\n      \"scope_name\": \"string\",\n      \"collection_name\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "338ecd53-52ee-401a-821f-e4bc8cf34460",
+              "createdAt": "2026-10-21T19:59:04.000Z",
+              "updatedAt": "2026-10-21T19:59:04.000Z",
+              "uid": "35240-338ecd53-52ee-401a-821f-e4bc8cf34460"
             },
             {
-              "id": "97d5d1c8-8d6c-4020-b686-f83e5133358b",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "rbac",
-                    "users",
-                    ":domain",
-                    ":username"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "domain",
-                      "description": "(Required) The authentication domain (local or external)"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "username",
-                      "description": "(Required) The username of the user"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "name": "roles",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "43f1cd1b-416d-4579-a356-bf4d91384cdc",
-              "name": "User not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "rbac",
-                    "users",
-                    ":domain",
-                    ":username"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "domain",
-                      "description": "(Required) The authentication domain (local or external)"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "username",
-                      "description": "(Required) The username of the user"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e3715afc-157c-4429-b1ab-478f68b7e065",
-          "name": "Create or update a user",
-          "request": {
-            "name": "Create or update a user",
-            "description": {
-              "content": "Creates a new user or updates an existing user with the specified roles and authentication settings.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "settings",
-                "rbac",
-                "users",
-                ":domain",
-                ":username"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "domain",
-                  "description": "(Required) The authentication domain (local or external)"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "username",
-                  "description": "(Required) The username of the user"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "password",
-                  "value": "<string>",
-                  "description": "User password (required for local domain)"
-                },
-                {
-                  "disabled": false,
-                  "key": "roles",
-                  "value": "<string>",
-                  "description": "Comma-separated list of roles"
-                },
-                {
-                  "disabled": false,
-                  "key": "name",
-                  "value": "<string>",
-                  "description": "Full name of the user"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "d242e221-fff4-4dac-844d-364a56005a41",
-              "name": "User created or updated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "rbac",
-                    "users",
-                    ":domain",
-                    ":username"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "domain",
-                      "description": "(Required) The authentication domain (local or external)"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "username",
-                      "description": "(Required) The username of the user"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "User password (required for local domain)",
-                        "type": "text/plain"
-                      },
-                      "key": "password",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Comma-separated list of roles",
-                        "type": "text/plain"
-                      },
-                      "key": "roles",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Full name of the user",
-                        "type": "text/plain"
-                      },
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ca7d7235-0819-49d6-8889-1abeb8ab8e64",
-              "name": "Invalid user configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "rbac",
-                    "users",
-                    ":domain",
-                    ":username"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "domain",
-                      "description": "(Required) The authentication domain (local or external)"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "username",
-                      "description": "(Required) The username of the user"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "User password (required for local domain)",
-                        "type": "text/plain"
-                      },
-                      "key": "password",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Comma-separated list of roles",
-                        "type": "text/plain"
-                      },
-                      "key": "roles",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Full name of the user",
-                        "type": "text/plain"
-                      },
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "224b6170-6a5d-427b-8e31-8e1477e1ec16",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "rbac",
-                    "users",
-                    ":domain",
-                    ":username"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "domain",
-                      "description": "(Required) The authentication domain (local or external)"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "username",
-                      "description": "(Required) The username of the user"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "User password (required for local domain)",
-                        "type": "text/plain"
-                      },
-                      "key": "password",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Comma-separated list of roles",
-                        "type": "text/plain"
-                      },
-                      "key": "roles",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Full name of the user",
-                        "type": "text/plain"
-                      },
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c947e753-3978-4057-9207-a5bd51ebe9ab",
-          "name": "Delete a user",
-          "request": {
-            "name": "Delete a user",
-            "description": {
-              "content": "Deletes the specified user from the cluster.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "settings",
-                "rbac",
-                "users",
-                ":domain",
-                ":username"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "domain",
-                  "description": "(Required) The authentication domain (local or external)"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "username",
-                  "description": "(Required) The username of the user"
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "3f3a65af-e8f4-4fed-8de8-affa05de7ae7",
-              "name": "User deleted successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "rbac",
-                    "users",
-                    ":domain",
-                    ":username"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "domain",
-                      "description": "(Required) The authentication domain (local or external)"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "username",
-                      "description": "(Required) The username of the user"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "640d22e7-5889-4e9c-b8fe-f4a46334f02a",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "rbac",
-                    "users",
-                    ":domain",
-                    ":username"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "domain",
-                      "description": "(Required) The authentication domain (local or external)"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "username",
-                      "description": "(Required) The username of the user"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "2f5a2895-b168-41c1-b799-5c9e1a1589a3",
-              "name": "User not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "rbac",
-                    "users",
-                    ":domain",
-                    ":username"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "domain",
-                      "description": "(Required) The authentication domain (local or external)"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "username",
-                      "description": "(Required) The username of the user"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "31b65fba-d8de-41fc-9def-d15dca831396",
-          "name": "List available roles",
-          "request": {
-            "name": "List available roles",
-            "description": {
-              "content": "Returns the list of all available roles in the cluster that can be assigned to users.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "settings",
-                "rbac",
-                "roles"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "9317f637-d38b-4042-aa3f-02d498bedf14",
-              "name": "Successful retrieval of available roles",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "rbac",
-                    "roles"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                  "name": "List available roles",
+                  "id": "70936163-87e0-4bcd-9f52-a03069eb00b2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"role\": \"string\",\n    \"name\": \"string\",\n    \"desc\": \"string\",\n    \"bucket_name\": \"string\"\n  },\n  {\n    \"role\": \"string\",\n    \"name\": \"string\",\n    \"desc\": \"string\",\n    \"bucket_name\": \"string\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "018059af-4c44-4339-a808-ded77df25511",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "settings",
-                    "rbac",
-                    "roles"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/rbac/roles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        "rbac",
+                        "roles"
+                      ]
                     },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "bc9fd122-3a8d-4617-8d17-e2a14d4029b4",
-          "name": "Get cluster certificate",
-          "request": {
-            "name": "Get cluster certificate",
-            "description": {
-              "content": "Returns the cluster CA certificate in PEM format.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "pools",
-                "default",
-                "certificate"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "text/plain"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "7eb959bc-06c6-4b89-ab8c-1864f9df378d",
-              "name": "Successful retrieval of cluster certificate",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default",
-                    "certificate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "description": "Returns the list of all available roles in the cluster that can be assigned to users."
                   },
-                  {
-                    "key": "Accept",
-                    "value": "text/plain"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "response": [
+                    {
+                      "id": "216c1af3-402e-40b8-9bb3-1cda418b150a",
+                      "name": "Successful retrieval of available roles",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/settings/rbac/roles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "settings",
+                            "rbac",
+                            "roles"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"role\": \"<string>\",\n    \"name\": \"<string>\",\n    \"desc\": \"<string>\",\n    \"bucket_name\": \"<string>\"\n  },\n  {\n    \"role\": \"<string>\",\n    \"name\": \"<string>\",\n    \"desc\": \"<string>\",\n    \"bucket_name\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-10-21T19:59:04.000Z",
+                      "updatedAt": "2026-10-21T19:59:04.000Z",
+                      "uid": "35240-216c1af3-402e-40b8-9bb3-1cda418b150a"
+                    },
+                    {
+                      "id": "96aec9c0-fdf6-4115-b5e8-e8792a065484",
+                      "name": "Unauthorized access",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/settings/rbac/roles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "settings",
+                            "rbac",
+                            "roles"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:59:04.000Z",
+                      "updatedAt": "2026-10-21T19:59:04.000Z",
+                      "uid": "35240-96aec9c0-fdf6-4115-b5e8-e8792a065484"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:59:04.000Z",
+                  "updatedAt": "2026-10-21T19:59:04.000Z",
+                  "uid": "35240-70936163-87e0-4bcd-9f52-a03069eb00b2"
                 }
               ],
-              "body": "string",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "3b98ce84-63ca-4d6e-b363-4e7401559db8",
+              "createdAt": "2026-10-21T19:59:04.000Z",
+              "updatedAt": "2026-10-21T19:59:04.000Z",
+              "uid": "35240-3b98ce84-63ca-4d6e-b363-4e7401559db8"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "ae432a40-e1be-41de-b985-e7eaaff8641e",
+          "createdAt": "2026-10-21T19:59:04.000Z",
+          "updatedAt": "2026-10-21T19:59:04.000Z",
+          "uid": "35240-ae432a40-e1be-41de-b985-e7eaaff8641e"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
+      "id": "eb738e47-05c1-4de1-b0d6-9add6800825a",
+      "createdAt": "2026-10-21T19:59:04.000Z",
+      "updatedAt": "2026-10-21T19:59:04.000Z",
+      "uid": "35240-eb738e47-05c1-4de1-b0d6-9add6800825a"
+    },
     {
-      "type": "string",
-      "value": "https://localhost:8095",
-      "key": "baseUrl"
+      "name": "pools",
+      "item": [
+        {
+          "name": "default",
+          "item": [
+            {
+              "name": "certificate",
+              "item": [
+                {
+                  "name": "Get cluster certificate",
+                  "id": "8f28a21a-96aa-4203-bc69-0617b823747d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pools/default/certificate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pools",
+                        "default",
+                        "certificate"
+                      ]
+                    },
+                    "description": "Returns the cluster CA certificate in PEM format."
+                  },
+                  "response": [
+                    {
+                      "id": "ec46ba6b-5c45-46e6-95db-334939e8dd04",
+                      "name": "Successful retrieval of cluster certificate",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/pools/default/certificate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pools",
+                            "default",
+                            "certificate"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T19:59:04.000Z",
+                      "updatedAt": "2026-10-21T19:59:04.000Z",
+                      "uid": "35240-ec46ba6b-5c45-46e6-95db-334939e8dd04"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:59:04.000Z",
+                  "updatedAt": "2026-10-21T19:59:04.000Z",
+                  "uid": "35240-8f28a21a-96aa-4203-bc69-0617b823747d"
+                }
+              ],
+              "id": "6dd84b5f-da39-4645-9245-f7902629d0d2",
+              "createdAt": "2026-10-21T19:59:04.000Z",
+              "updatedAt": "2026-10-21T19:59:04.000Z",
+              "uid": "35240-6dd84b5f-da39-4645-9245-f7902629d0d2"
+            }
+          ],
+          "id": "b407961a-ff6e-4b2a-ad31-f4b17a0ade60",
+          "createdAt": "2026-10-21T19:59:04.000Z",
+          "updatedAt": "2026-10-21T19:59:04.000Z",
+          "uid": "35240-b407961a-ff6e-4b2a-ad31-f4b17a0ade60"
+        }
+      ],
+      "id": "e3f07eca-5fca-4660-9011-a8af6d2cd53e",
+      "createdAt": "2026-10-21T19:59:04.000Z",
+      "updatedAt": "2026-10-21T19:59:04.000Z",
+      "uid": "35240-e3f07eca-5fca-4660-9011-a8af6d2cd53e"
     }
   ],
   "auth": {
@@ -1151,21 +1046,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "77bc80b1-73e8-4605-9f1e-ddb3f2116943",
-    "name": "Couchbase Analytics Service REST Allowed CIDRs Security API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:8091"
     }
-  }
+  ]
 }

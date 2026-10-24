@@ -1,655 +1,654 @@
 {
+  "info": {
+    "_postman_id": "bb54f372-9354-4ad7-8b3d-01822c0fd7f1",
+    "name": "Couchbase Analytics Service REST Analytics Configuration API",
+    "description": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:55:49.000Z",
+    "updatedAt": "2026-10-21T19:55:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bb54f372-9354-4ad7-8b3d-01822c0fd7f1"
+  },
   "item": [
     {
-      "id": "fcce50a6-d5ee-442d-940c-8c5e51f62e16",
-      "name": "Analytics Configuration",
-      "description": {
-        "content": "Endpoints for configuring Analytics nodes and clusters.",
-        "type": "text/plain"
-      },
+      "name": "analytics",
       "item": [
         {
-          "id": "1d72fced-5690-43c6-8123-d4a89cc89c6e",
-          "name": "Get analytics service configuration",
-          "request": {
-            "name": "Get analytics service configuration",
-            "description": {
-              "content": "Returns the current configuration of the Analytics service.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "analytics",
-                "config",
-                "service"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "config",
+          "item": [
             {
-              "id": "a4ceb413-bea6-4342-a834-0970fd49976e",
-              "name": "Successful retrieval of service configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "config",
-                    "service"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+              "name": "service",
+              "item": [
+                {
+                  "name": "Get analytics service configuration",
+                  "id": "222a7a1f-6db8-428d-92cf-20d49a596b7a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"activeMemoryGlobalBudget\": 6323,\n  \"activeStopTimeout\": 1807,\n  \"activeSuspendTimeout\": 9120,\n  \"analyticsBroadcastDcpStateMutationCount\": 1927,\n  \"compilerFrameLimit\": 6138,\n  \"compilerGroupmemory\": 3069,\n  \"compilerJoinmemory\": 6684,\n  \"compilerSortmemory\": 3412,\n  \"logLevel\": \"DEBUG\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "077e618b-cc3e-445f-b25c-dfdb1ace3f39",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "config",
-                    "service"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/analytics/config/service",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "analytics",
+                        "config",
+                        "service"
+                      ]
                     },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e2ba1532-f626-4c3e-a856-6ceb205efed1",
-          "name": "Update analytics service configuration",
-          "request": {
-            "name": "Update analytics service configuration",
-            "description": {
-              "content": "Updates the configuration settings for the Analytics service.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "analytics",
-                "config",
-                "service"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"activeMemoryGlobalBudget\": \"<integer>\",\n  \"activeStopTimeout\": \"<integer>\",\n  \"activeSuspendTimeout\": \"<integer>\",\n  \"analyticsBroadcastDcpStateMutationCount\": \"<integer>\",\n  \"compilerFrameLimit\": \"<integer>\",\n  \"compilerGroupmemory\": \"<integer>\",\n  \"compilerJoinmemory\": \"<integer>\",\n  \"compilerSortmemory\": \"<integer>\",\n  \"logLevel\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "e384c2bf-13b3-49e4-87f8-aeb54be82708",
-              "name": "Configuration updated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "config",
-                    "service"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"activeMemoryGlobalBudget\": \"<integer>\",\n  \"activeStopTimeout\": \"<integer>\",\n  \"activeSuspendTimeout\": \"<integer>\",\n  \"analyticsBroadcastDcpStateMutationCount\": \"<integer>\",\n  \"compilerFrameLimit\": \"<integer>\",\n  \"compilerGroupmemory\": \"<integer>\",\n  \"compilerJoinmemory\": \"<integer>\",\n  \"compilerSortmemory\": \"<integer>\",\n  \"logLevel\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "bedca67e-e412-4a89-98f6-52fa69586177",
-              "name": "Invalid configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "config",
-                    "service"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"activeMemoryGlobalBudget\": \"<integer>\",\n  \"activeStopTimeout\": \"<integer>\",\n  \"activeSuspendTimeout\": \"<integer>\",\n  \"analyticsBroadcastDcpStateMutationCount\": \"<integer>\",\n  \"compilerFrameLimit\": \"<integer>\",\n  \"compilerGroupmemory\": \"<integer>\",\n  \"compilerJoinmemory\": \"<integer>\",\n  \"compilerSortmemory\": \"<integer>\",\n  \"logLevel\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "a3f62be1-0aee-4e09-8688-e35271bdb02e",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "config",
-                    "service"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"activeMemoryGlobalBudget\": \"<integer>\",\n  \"activeStopTimeout\": \"<integer>\",\n  \"activeSuspendTimeout\": \"<integer>\",\n  \"analyticsBroadcastDcpStateMutationCount\": \"<integer>\",\n  \"compilerFrameLimit\": \"<integer>\",\n  \"compilerGroupmemory\": \"<integer>\",\n  \"compilerJoinmemory\": \"<integer>\",\n  \"compilerSortmemory\": \"<integer>\",\n  \"logLevel\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "3a709671-dc2b-422c-9258-da177bafbe3c",
-          "name": "Get analytics node configuration",
-          "request": {
-            "name": "Get analytics node configuration",
-            "description": {
-              "content": "Returns the configuration of the current Analytics node.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "analytics",
-                "config",
-                "node"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "8007f991-6c62-4f47-b724-7c769bd67e02",
-              "name": "Successful retrieval of node configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "config",
-                    "node"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "description": "Returns the current configuration of the Analytics service."
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+                  "response": [
+                    {
+                      "id": "1c0777bd-84da-4b3e-a3bd-c78f2a21555d",
+                      "name": "Successful retrieval of service configuration",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/config/service",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "config",
+                            "service"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"activeMemoryGlobalBudget\": \"<integer>\",\n  \"activeStopTimeout\": \"<integer>\",\n  \"activeSuspendTimeout\": \"<integer>\",\n  \"analyticsBroadcastDcpStateMutationCount\": \"<integer>\",\n  \"compilerFrameLimit\": \"<integer>\",\n  \"compilerGroupmemory\": \"<integer>\",\n  \"compilerJoinmemory\": \"<integer>\",\n  \"compilerSortmemory\": \"<integer>\",\n  \"logLevel\": \"DEBUG\"\n}",
+                      "createdAt": "2026-10-21T19:55:49.000Z",
+                      "updatedAt": "2026-10-21T19:55:49.000Z",
+                      "uid": "35240-1c0777bd-84da-4b3e-a3bd-c78f2a21555d"
+                    },
+                    {
+                      "id": "90e6038d-6c92-43a9-ad2f-cfa0494071f4",
+                      "name": "Unauthorized access",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/config/service",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "config",
+                            "service"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:55:49.000Z",
+                      "updatedAt": "2026-10-21T19:55:49.000Z",
+                      "uid": "35240-90e6038d-6c92-43a9-ad2f-cfa0494071f4"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:55:49.000Z",
+                  "updatedAt": "2026-10-21T19:55:49.000Z",
+                  "uid": "35240-222a7a1f-6db8-428d-92cf-20d49a596b7a"
+                },
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Update analytics service configuration",
+                  "id": "69564a8a-fac4-4bda-9de3-40110623b3ab",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"activeMemoryGlobalBudget\": \"<integer>\",\n  \"activeStopTimeout\": \"<integer>\",\n  \"activeSuspendTimeout\": \"<integer>\",\n  \"analyticsBroadcastDcpStateMutationCount\": \"<integer>\",\n  \"compilerFrameLimit\": \"<integer>\",\n  \"compilerGroupmemory\": \"<integer>\",\n  \"compilerJoinmemory\": \"<integer>\",\n  \"compilerSortmemory\": \"<integer>\",\n  \"logLevel\": \"DEBUG\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/analytics/config/service",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "analytics",
+                        "config",
+                        "service"
+                      ]
+                    },
+                    "description": "Updates the configuration settings for the Analytics service."
+                  },
+                  "response": [
+                    {
+                      "id": "b5e7e1ed-5304-4cac-a324-15d1b0489042",
+                      "name": "Configuration updated successfully",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"activeMemoryGlobalBudget\": \"<integer>\",\n  \"activeStopTimeout\": \"<integer>\",\n  \"activeSuspendTimeout\": \"<integer>\",\n  \"analyticsBroadcastDcpStateMutationCount\": \"<integer>\",\n  \"compilerFrameLimit\": \"<integer>\",\n  \"compilerGroupmemory\": \"<integer>\",\n  \"compilerJoinmemory\": \"<integer>\",\n  \"compilerSortmemory\": \"<integer>\",\n  \"logLevel\": \"DEBUG\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/config/service",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "config",
+                            "service"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:55:49.000Z",
+                      "updatedAt": "2026-10-21T19:55:49.000Z",
+                      "uid": "35240-b5e7e1ed-5304-4cac-a324-15d1b0489042"
+                    },
+                    {
+                      "id": "371a6e2e-8f9f-4407-a9af-bf36ae9d737c",
+                      "name": "Invalid configuration",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"activeMemoryGlobalBudget\": \"<integer>\",\n  \"activeStopTimeout\": \"<integer>\",\n  \"activeSuspendTimeout\": \"<integer>\",\n  \"analyticsBroadcastDcpStateMutationCount\": \"<integer>\",\n  \"compilerFrameLimit\": \"<integer>\",\n  \"compilerGroupmemory\": \"<integer>\",\n  \"compilerJoinmemory\": \"<integer>\",\n  \"compilerSortmemory\": \"<integer>\",\n  \"logLevel\": \"DEBUG\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/config/service",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "config",
+                            "service"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:55:49.000Z",
+                      "updatedAt": "2026-10-21T19:55:49.000Z",
+                      "uid": "35240-371a6e2e-8f9f-4407-a9af-bf36ae9d737c"
+                    },
+                    {
+                      "id": "dacf594d-c77f-4f48-8042-533e02f78740",
+                      "name": "Unauthorized access",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"activeMemoryGlobalBudget\": \"<integer>\",\n  \"activeStopTimeout\": \"<integer>\",\n  \"activeSuspendTimeout\": \"<integer>\",\n  \"analyticsBroadcastDcpStateMutationCount\": \"<integer>\",\n  \"compilerFrameLimit\": \"<integer>\",\n  \"compilerGroupmemory\": \"<integer>\",\n  \"compilerJoinmemory\": \"<integer>\",\n  \"compilerSortmemory\": \"<integer>\",\n  \"logLevel\": \"DEBUG\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/config/service",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "config",
+                            "service"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:55:49.000Z",
+                      "updatedAt": "2026-10-21T19:55:49.000Z",
+                      "uid": "35240-dacf594d-c77f-4f48-8042-533e02f78740"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:55:49.000Z",
+                  "updatedAt": "2026-10-21T19:55:49.000Z",
+                  "uid": "35240-69564a8a-fac4-4bda-9de3-40110623b3ab"
                 }
               ],
-              "body": "{\n  \"storageBuffercachePagesize\": 2713,\n  \"storageBuffercacheSize\": 1673,\n  \"storageMemorycomponentNumcomponents\": 5338\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "0379db44-30c4-4a86-a6b6-5e55fa886c07",
+              "createdAt": "2026-10-21T19:55:49.000Z",
+              "updatedAt": "2026-10-21T19:55:49.000Z",
+              "uid": "35240-0379db44-30c4-4a86-a6b6-5e55fa886c07"
             },
             {
-              "id": "7192dc33-74db-493b-a877-a96800b2059a",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "config",
-                    "node"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "name": "node",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "Get analytics node configuration",
+                  "id": "e3d38f99-57b0-4263-8b08-1519b7c4fab0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/analytics/config/node",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "analytics",
+                        "config",
+                        "node"
+                      ]
+                    },
+                    "description": "Returns the configuration of the current Analytics node."
+                  },
+                  "response": [
+                    {
+                      "id": "204590b8-42d8-4b3f-9772-eb9e9274a477",
+                      "name": "Successful retrieval of node configuration",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/config/node",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "config",
+                            "node"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"storageBuffercachePagesize\": \"<integer>\",\n  \"storageBuffercacheSize\": \"<integer>\",\n  \"storageMemorycomponentNumcomponents\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T19:55:49.000Z",
+                      "updatedAt": "2026-10-21T19:55:49.000Z",
+                      "uid": "35240-204590b8-42d8-4b3f-9772-eb9e9274a477"
+                    },
+                    {
+                      "id": "2d735215-8371-4e65-bbbf-81b2e22becb0",
+                      "name": "Unauthorized access",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/config/node",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "config",
+                            "node"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:55:49.000Z",
+                      "updatedAt": "2026-10-21T19:55:49.000Z",
+                      "uid": "35240-2d735215-8371-4e65-bbbf-81b2e22becb0"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:55:49.000Z",
+                  "updatedAt": "2026-10-21T19:55:49.000Z",
+                  "uid": "35240-e3d38f99-57b0-4263-8b08-1519b7c4fab0"
+                },
+                {
+                  "name": "Update analytics node configuration",
+                  "id": "0132c17d-3c97-47ba-8976-a35b7bbe87cc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"storageBuffercachePagesize\": \"<integer>\",\n  \"storageBuffercacheSize\": \"<integer>\",\n  \"storageMemorycomponentNumcomponents\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/analytics/config/node",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "analytics",
+                        "config",
+                        "node"
+                      ]
+                    },
+                    "description": "Updates the configuration settings for the current Analytics node."
+                  },
+                  "response": [
+                    {
+                      "id": "3fc67931-7fe8-4b9a-b361-f223a63174d8",
+                      "name": "Node configuration updated successfully",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"storageBuffercachePagesize\": \"<integer>\",\n  \"storageBuffercacheSize\": \"<integer>\",\n  \"storageMemorycomponentNumcomponents\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/config/node",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "config",
+                            "node"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:55:49.000Z",
+                      "updatedAt": "2026-10-21T19:55:49.000Z",
+                      "uid": "35240-3fc67931-7fe8-4b9a-b361-f223a63174d8"
+                    },
+                    {
+                      "id": "cce2614d-96a7-4a21-b412-c6238474851c",
+                      "name": "Invalid configuration",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"storageBuffercachePagesize\": \"<integer>\",\n  \"storageBuffercacheSize\": \"<integer>\",\n  \"storageMemorycomponentNumcomponents\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/config/node",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "config",
+                            "node"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:55:49.000Z",
+                      "updatedAt": "2026-10-21T19:55:49.000Z",
+                      "uid": "35240-cce2614d-96a7-4a21-b412-c6238474851c"
+                    },
+                    {
+                      "id": "ce6458cb-c2b7-42f0-83f2-84b0738997f1",
+                      "name": "Unauthorized access",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"storageBuffercachePagesize\": \"<integer>\",\n  \"storageBuffercacheSize\": \"<integer>\",\n  \"storageMemorycomponentNumcomponents\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/config/node",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "config",
+                            "node"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T19:55:49.000Z",
+                      "updatedAt": "2026-10-21T19:55:49.000Z",
+                      "uid": "35240-ce6458cb-c2b7-42f0-83f2-84b0738997f1"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:55:49.000Z",
+                  "updatedAt": "2026-10-21T19:55:49.000Z",
+                  "uid": "35240-0132c17d-3c97-47ba-8976-a35b7bbe87cc"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "6087e5e3-cb31-441e-b2ff-94e214245ba5",
+              "createdAt": "2026-10-21T19:55:49.000Z",
+              "updatedAt": "2026-10-21T19:55:49.000Z",
+              "uid": "35240-6087e5e3-cb31-441e-b2ff-94e214245ba5"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "62c36f71-e30b-474a-8687-a2bcc2dc8238",
-          "name": "Update analytics node configuration",
-          "request": {
-            "name": "Update analytics node configuration",
-            "description": {
-              "content": "Updates the configuration settings for the current Analytics node.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "analytics",
-                "config",
-                "node"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"storageBuffercachePagesize\": \"<integer>\",\n  \"storageBuffercacheSize\": \"<integer>\",\n  \"storageMemorycomponentNumcomponents\": \"<integer>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "c6628ea8-959f-46e7-b92a-97489da24949",
-              "name": "Node configuration updated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "config",
-                    "node"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"storageBuffercachePagesize\": \"<integer>\",\n  \"storageBuffercacheSize\": \"<integer>\",\n  \"storageMemorycomponentNumcomponents\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "e03622e5-0a36-4224-9b39-106fd7f230a3",
-              "name": "Invalid configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "config",
-                    "node"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"storageBuffercachePagesize\": \"<integer>\",\n  \"storageBuffercacheSize\": \"<integer>\",\n  \"storageMemorycomponentNumcomponents\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "bff6a213-3030-4cea-8f23-22ae7adbf33d",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "config",
-                    "node"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"storageBuffercachePagesize\": \"<integer>\",\n  \"storageBuffercacheSize\": \"<integer>\",\n  \"storageMemorycomponentNumcomponents\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "2f11ae7e-05b0-49f5-914b-457be8ddd688",
+          "createdAt": "2026-10-21T19:55:49.000Z",
+          "updatedAt": "2026-10-21T19:55:49.000Z",
+          "uid": "35240-2f11ae7e-05b0-49f5-914b-457be8ddd688"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://localhost:8095",
-      "key": "baseUrl"
+      "id": "03293eaa-667a-4785-accc-8688602b3ab6",
+      "createdAt": "2026-10-21T19:55:49.000Z",
+      "updatedAt": "2026-10-21T19:55:49.000Z",
+      "uid": "35240-03293eaa-667a-4785-accc-8688602b3ab6"
     }
   ],
   "auth": {
@@ -657,21 +656,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "bed45dd2-6249-43ee-ab52-d179a4598e4c",
-    "name": "Couchbase Analytics Service REST Allowed CIDRs Analytics Configuration API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:8095"
     }
-  }
+  ]
 }

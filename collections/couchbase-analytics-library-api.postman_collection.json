@@ -1,478 +1,433 @@
 {
+  "info": {
+    "_postman_id": "b1af8a3f-d28e-4623-9c43-bf87be75801f",
+    "name": "Couchbase Analytics Service REST Analytics Library API",
+    "description": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:55:55.000Z",
+    "updatedAt": "2026-10-21T19:55:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b1af8a3f-d28e-4623-9c43-bf87be75801f"
+  },
   "item": [
     {
-      "id": "74e44099-9a04-4375-a5a2-64a966579a31",
-      "name": "Analytics Library",
-      "description": {
-        "content": "Endpoints for managing JavaScript libraries used for user-defined functions.",
-        "type": "text/plain"
-      },
+      "name": "analytics",
       "item": [
         {
-          "id": "3790198b-5d46-4a10-a186-e4280fe2d4cd",
-          "name": "Create or update a library",
-          "request": {
-            "name": "Create or update a library",
-            "description": {
-              "content": "Creates or updates a JavaScript library that can be used to define SQL++ user-defined functions in the Analytics service.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "analytics",
-                "library",
-                ":scope",
-                ":name"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "scope",
-                  "description": "(Required) The scope of the library"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) The name of the library"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/octet-stream"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "<binary>"
-            }
-          },
-          "response": [
+          "name": "library",
+          "item": [
             {
-              "id": "094be1e9-1db9-43b7-8a7f-c159d8a8dbaf",
-              "name": "Library created or updated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "library",
-                    ":scope",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+              "name": "{scope}",
+              "item": [
+                {
+                  "name": "{name}",
+                  "item": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "scope",
-                      "description": "(Required) The scope of the library"
+                      "name": "Create or update a library",
+                      "id": "de0d274c-3c85-4a3b-8ae9-ecc56685b0f8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/octet-stream"
+                          }
+                        ],
+                        "body": {
+                          "mode": "file",
+                          "file": {}
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/library/:scope/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "library",
+                            ":scope",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "id": "eaa78b69-fcd3-404a-9a4b-7fc5eb9e1079",
+                              "key": "scope",
+                              "value": "<string>",
+                              "description": "(Required) The scope of the library"
+                            },
+                            {
+                              "id": "e453e10e-a12f-431b-8f70-d0ecdf0ca6e6",
+                              "key": "name",
+                              "value": "<string>",
+                              "description": "(Required) The name of the library"
+                            }
+                          ]
+                        },
+                        "description": "Creates or updates a JavaScript library that can be used to define SQL++ user-defined functions in the Analytics service."
+                      },
+                      "response": [
+                        {
+                          "id": "99a110a9-43d9-46b0-8ad9-f7fb3b862dc3",
+                          "name": "Library created or updated successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/octet-stream"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "file",
+                              "file": {}
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/analytics/library/:scope/:name",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "analytics",
+                                "library",
+                                ":scope",
+                                ":name"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "scope"
+                                },
+                                {
+                                  "key": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T19:55:56.000Z",
+                          "updatedAt": "2026-10-21T19:55:56.000Z",
+                          "uid": "35240-99a110a9-43d9-46b0-8ad9-f7fb3b862dc3"
+                        },
+                        {
+                          "id": "42a094a4-2cad-4d3b-a9b3-d2cb063e0cae",
+                          "name": "Invalid library code",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/octet-stream"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "file",
+                              "file": {}
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/analytics/library/:scope/:name",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "analytics",
+                                "library",
+                                ":scope",
+                                ":name"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "scope"
+                                },
+                                {
+                                  "key": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T19:55:56.000Z",
+                          "updatedAt": "2026-10-21T19:55:56.000Z",
+                          "uid": "35240-42a094a4-2cad-4d3b-a9b3-d2cb063e0cae"
+                        },
+                        {
+                          "id": "8c473ac8-5035-4306-a991-ad61b5b82a9a",
+                          "name": "Unauthorized access",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/octet-stream"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "file",
+                              "file": {}
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/analytics/library/:scope/:name",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "analytics",
+                                "library",
+                                ":scope",
+                                ":name"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "scope"
+                                },
+                                {
+                                  "key": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T19:55:56.000Z",
+                          "updatedAt": "2026-10-21T19:55:56.000Z",
+                          "uid": "35240-8c473ac8-5035-4306-a991-ad61b5b82a9a"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T19:55:56.000Z",
+                      "updatedAt": "2026-10-21T19:55:56.000Z",
+                      "uid": "35240-de0d274c-3c85-4a3b-8ae9-ecc56685b0f8"
                     },
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) The name of the library"
+                      "name": "Delete a library",
+                      "id": "46906aaa-d5e3-4294-b0df-a1657fbde594",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/library/:scope/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "library",
+                            ":scope",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f977d300-3bab-40bc-8164-b056bc722881",
+                              "key": "scope",
+                              "value": "<string>",
+                              "description": "(Required) The scope of the library"
+                            },
+                            {
+                              "id": "ae202104-a6c8-48cf-abcc-8bdc113884d1",
+                              "key": "name",
+                              "value": "<string>",
+                              "description": "(Required) The name of the library"
+                            }
+                          ]
+                        },
+                        "description": "Deletes a JavaScript library from the Analytics service."
+                      },
+                      "response": [
+                        {
+                          "id": "af72f789-0f29-4938-a4b9-1885b331bb1b",
+                          "name": "Library deleted successfully",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/analytics/library/:scope/:name",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "analytics",
+                                "library",
+                                ":scope",
+                                ":name"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "scope"
+                                },
+                                {
+                                  "key": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T19:55:56.000Z",
+                          "updatedAt": "2026-10-21T19:55:56.000Z",
+                          "uid": "35240-af72f789-0f29-4938-a4b9-1885b331bb1b"
+                        },
+                        {
+                          "id": "af0a3673-ec65-4239-a842-d58d7e3c851f",
+                          "name": "Unauthorized access",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/analytics/library/:scope/:name",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "analytics",
+                                "library",
+                                ":scope",
+                                ":name"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "scope"
+                                },
+                                {
+                                  "key": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T19:55:56.000Z",
+                          "updatedAt": "2026-10-21T19:55:56.000Z",
+                          "uid": "35240-af0a3673-ec65-4239-a842-d58d7e3c851f"
+                        },
+                        {
+                          "id": "c8f4786c-eb54-4127-8c60-3149d81d9394",
+                          "name": "Library not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/analytics/library/:scope/:name",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "analytics",
+                                "library",
+                                ":scope",
+                                ":name"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "scope"
+                                },
+                                {
+                                  "key": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T19:55:56.000Z",
+                          "updatedAt": "2026-10-21T19:55:56.000Z",
+                          "uid": "35240-c8f4786c-eb54-4127-8c60-3149d81d9394"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T19:55:56.000Z",
+                      "updatedAt": "2026-10-21T19:55:56.000Z",
+                      "uid": "35240-46906aaa-d5e3-4294-b0df-a1657fbde594"
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<binary>"
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  ],
+                  "id": "faed4249-9d75-42a1-92a8-2e201efc3f65",
+                  "createdAt": "2026-10-21T19:55:56.000Z",
+                  "updatedAt": "2026-10-21T19:55:56.000Z",
+                  "uid": "35240-faed4249-9d75-42a1-92a8-2e201efc3f65"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "0353b80c-80d4-403d-aa18-3af8d2b6cf8c",
-              "name": "Invalid library code",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "library",
-                    ":scope",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "scope",
-                      "description": "(Required) The scope of the library"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) The name of the library"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<binary>"
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "712a6e56-6b78-498c-835c-5adc0c712c7b",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "library",
-                    ":scope",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "scope",
-                      "description": "(Required) The scope of the library"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) The name of the library"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<binary>"
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "66703ba9-2c99-486d-a71f-6fb756c1da50",
-          "name": "Delete a library",
-          "request": {
-            "name": "Delete a library",
-            "description": {
-              "content": "Deletes a JavaScript library from the Analytics service.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "analytics",
-                "library",
-                ":scope",
-                ":name"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "scope",
-                  "description": "(Required) The scope of the library"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) The name of the library"
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "51f10493-dcb0-46fa-a7da-a51cc2042711",
-              "name": "Library deleted successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "library",
-                    ":scope",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "scope",
-                      "description": "(Required) The scope of the library"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) The name of the library"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "fcabfdd4-04b9-4dc5-9aaa-e59e7dc601b0",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "library",
-                    ":scope",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "scope",
-                      "description": "(Required) The scope of the library"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) The name of the library"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "beed7a0c-f299-43ea-b932-e5f670777c14",
-              "name": "Library not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "analytics",
-                    "library",
-                    ":scope",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "scope",
-                      "description": "(Required) The scope of the library"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) The name of the library"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "6d26e9a8-9c3a-4b34-b96c-78eb51feae1d",
+              "createdAt": "2026-10-21T19:55:56.000Z",
+              "updatedAt": "2026-10-21T19:55:56.000Z",
+              "uid": "35240-6d26e9a8-9c3a-4b34-b96c-78eb51feae1d"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "12e424a0-d264-4f65-add9-9fa90af0119b",
+          "createdAt": "2026-10-21T19:55:56.000Z",
+          "updatedAt": "2026-10-21T19:55:56.000Z",
+          "uid": "35240-12e424a0-d264-4f65-add9-9fa90af0119b"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://localhost:8095",
-      "key": "baseUrl"
+      "id": "e1c62f30-06b4-4215-86b7-86371f62fb59",
+      "createdAt": "2026-10-21T19:55:56.000Z",
+      "updatedAt": "2026-10-21T19:55:56.000Z",
+      "uid": "35240-e1c62f30-06b4-4215-86b7-86371f62fb59"
     }
   ],
   "auth": {
@@ -480,21 +435,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "fdcdcf82-cd39-4199-aa7a-89948cb5b442",
-    "name": "Couchbase Analytics Service REST Allowed CIDRs Analytics Library API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:8095"
     }
-  }
+  ]
 }

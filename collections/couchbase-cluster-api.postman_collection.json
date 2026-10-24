@@ -1,386 +1,398 @@
 {
+  "info": {
+    "_postman_id": "8e724190-664f-4897-b9c1-dcb40f7a9879",
+    "name": "Couchbase Cluster API",
+    "description": "Operations tagged Cluster across 2 of this provider's published API definitions: couchbase-backup-service-rest-api-openapi.yml, couchbase-server-rest-api-openapi.yml. Each path carries the servers of the definition it was published in.\n\nContact Support:\n Name: Couchbase Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:56:46.000Z",
+    "updatedAt": "2026-10-21T19:56:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8e724190-664f-4897-b9c1-dcb40f7a9879"
+  },
   "item": [
     {
-      "id": "525f9a22-d885-4910-b4f6-f81ddf327a14",
-      "name": "Cluster",
-      "description": {
-        "content": "Endpoints for managing cluster-level backup configuration.",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "d0e24a89-d166-40fb-8235-95da26b34105",
-          "name": "Get backup cluster information",
-          "request": {
-            "name": "Get backup cluster information",
-            "description": {
-              "content": "Returns information about the current cluster from the perspective of the Backup Service, including the list of repositories and plans.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "cluster",
-                "self"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "95ca81b2-5181-4620-88d1-90eb4283f6af",
-              "name": "Successful retrieval of cluster backup information",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "cluster",
-                    "self"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "cluster",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "self",
+                  "item": [
+                    {
+                      "name": "Get backup cluster information",
+                      "id": "892055a6-b6af-40fb-b8a2-9b436c6fbc68",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/cluster/self",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "cluster",
+                            "self"
+                          ]
+                        },
+                        "description": "Returns information about the current cluster from the perspective of the Backup Service, including the list of repositories and plans."
+                      },
+                      "response": [
+                        {
+                          "id": "af9a7711-8601-4d1e-b32f-3b23ee43dac1",
+                          "name": "Successful retrieval of cluster backup information",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/cluster/self",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "cluster",
+                                "self"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"name\": \"<string>\",\n  \"repositories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"plans\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "createdAt": "2026-10-21T19:56:47.000Z",
+                          "updatedAt": "2026-10-21T19:56:47.000Z",
+                          "uid": "35240-af9a7711-8601-4d1e-b32f-3b23ee43dac1"
+                        },
+                        {
+                          "id": "c24bc4f8-e727-4a5b-bbdc-da704bf684ca",
+                          "name": "Unauthorized access",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/cluster/self",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "cluster",
+                                "self"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T19:56:47.000Z",
+                          "updatedAt": "2026-10-21T19:56:47.000Z",
+                          "uid": "35240-c24bc4f8-e727-4a5b-bbdc-da704bf684ca"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T19:56:47.000Z",
+                      "updatedAt": "2026-10-21T19:56:47.000Z",
+                      "uid": "35240-892055a6-b6af-40fb-b8a2-9b436c6fbc68"
+                    }
+                  ],
+                  "id": "af67bbd8-7baa-46dc-9c17-09b5d1d73e0f",
+                  "createdAt": "2026-10-21T19:56:47.000Z",
+                  "updatedAt": "2026-10-21T19:56:47.000Z",
+                  "uid": "35240-af67bbd8-7baa-46dc-9c17-09b5d1d73e0f"
                 }
               ],
-              "body": "{\n  \"name\": \"string\",\n  \"repositories\": [\n    \"string\",\n    \"string\"\n  ],\n  \"plans\": [\n    \"string\",\n    \"string\"\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "08743da4-1d80-41fe-b0fd-31482f4921fd",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "cluster",
-                    "self"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "0362e5ec-99fb-4751-b91f-3673cea152cb",
+              "createdAt": "2026-10-21T19:56:47.000Z",
+              "updatedAt": "2026-10-21T19:56:47.000Z",
+              "uid": "35240-0362e5ec-99fb-4751-b91f-3673cea152cb"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "bd2740b1-d64b-4c3c-bd8b-a248647cd26e",
-          "name": "Get cluster information",
-          "request": {
-            "name": "Get cluster information",
-            "description": {
-              "content": "Returns basic information about the cluster including the list of pools, UUID, and implementation version.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "pools"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "5fe9c311-4c61-4e8d-bd48-abf87838e555",
-              "name": "Successful retrieval of cluster pool information",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"isAdminCreds\": true,\n  \"isROAdminCreds\": true,\n  \"isEnterprise\": true,\n  \"implementationVersion\": \"string\",\n  \"uuid\": \"string\",\n  \"pools\": [\n    {\n      \"name\": \"string\",\n      \"uri\": \"string\",\n      \"streamingUri\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"uri\": \"string\",\n      \"streamingUri\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "495dd73b-28dc-4cdb-8c1e-5e8afd91eb8e",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "9292484d-c4da-4f3c-a090-766839d7efaf",
-          "name": "Get default pool details",
-          "request": {
-            "name": "Get default pool details",
-            "description": {
-              "content": "Returns detailed information about the default pool including cluster name, storage totals, RAM quotas, node list, and bucket information.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "pools",
-                "default"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "383b76b2-7728-49b4-b02e-6f5475203850",
-              "name": "Successful retrieval of default pool details",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"name\": \"string\",\n  \"clusterName\": \"string\",\n  \"nodes\": [\n    {\n      \"hostname\": \"string\",\n      \"status\": \"unhealthy\",\n      \"clusterMembership\": \"inactiveAdded\",\n      \"services\": [\n        \"backup\",\n        \"index\"\n      ],\n      \"os\": \"string\",\n      \"version\": \"string\",\n      \"memoryTotal\": 7317,\n      \"memoryFree\": 2820\n    },\n    {\n      \"hostname\": \"string\",\n      \"status\": \"warmup\",\n      \"clusterMembership\": \"inactiveAdded\",\n      \"services\": [\n        \"index\",\n        \"index\"\n      ],\n      \"os\": \"string\",\n      \"version\": \"string\",\n      \"memoryTotal\": 7555,\n      \"memoryFree\": 7152\n    }\n  ],\n  \"storageTotals\": {\n    \"ram\": {\n      \"total\": 4252,\n      \"used\": 6235\n    },\n    \"hdd\": {\n      \"total\": 2368,\n      \"used\": 8139\n    }\n  },\n  \"rebalanceStatus\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8aac25eb-b490-403d-a41c-06a1fafc8735",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pools",
-                    "default"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "94c1172f-cd5d-4caf-ae6c-ce6f440320d5",
+          "createdAt": "2026-10-21T19:56:47.000Z",
+          "updatedAt": "2026-10-21T19:56:47.000Z",
+          "uid": "35240-94c1172f-cd5d-4caf-ae6c-ce6f440320d5"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
+      "id": "87ef3ebc-70fb-4b46-8c17-89dfba126600",
+      "createdAt": "2026-10-21T19:56:47.000Z",
+      "updatedAt": "2026-10-21T19:56:47.000Z",
+      "uid": "35240-87ef3ebc-70fb-4b46-8c17-89dfba126600"
+    },
     {
-      "type": "string",
-      "value": "https://localhost:8095",
-      "key": "baseUrl"
+      "name": "pools",
+      "item": [
+        {
+          "name": "default",
+          "item": [
+            {
+              "name": "Get default pool details",
+              "id": "7351858c-ea90-40a5-8663-0ed1e8d9aa9d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pools/default",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pools",
+                    "default"
+                  ]
+                },
+                "description": "Returns detailed information about the default pool including cluster name, storage totals, RAM quotas, node list, and bucket information."
+              },
+              "response": [
+                {
+                  "id": "d1c33179-1fa7-488a-b3e3-c778e9aaabdb",
+                  "name": "Successful retrieval of default pool details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pools/default",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pools",
+                        "default"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"name\": \"<string>\",\n  \"clusterName\": \"<string>\",\n  \"nodes\": [\n    {\n      \"hostname\": \"<string>\",\n      \"status\": \"unhealthy\",\n      \"clusterMembership\": \"inactiveAdded\",\n      \"services\": [\n        \"index\",\n        \"cbas\"\n      ],\n      \"os\": \"<string>\",\n      \"version\": \"<string>\",\n      \"memoryTotal\": \"<integer>\",\n      \"memoryFree\": \"<integer>\"\n    },\n    {\n      \"hostname\": \"<string>\",\n      \"status\": \"unhealthy\",\n      \"clusterMembership\": \"active\",\n      \"services\": [\n        \"eventing\",\n        \"n1ql\"\n      ],\n      \"os\": \"<string>\",\n      \"version\": \"<string>\",\n      \"memoryTotal\": \"<integer>\",\n      \"memoryFree\": \"<integer>\"\n    }\n  ],\n  \"storageTotals\": {\n    \"ram\": {\n      \"total\": \"<integer>\",\n      \"used\": \"<integer>\"\n    },\n    \"hdd\": {\n      \"total\": \"<integer>\",\n      \"used\": \"<integer>\"\n    }\n  },\n  \"rebalanceStatus\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T19:56:47.000Z",
+                  "updatedAt": "2026-10-21T19:56:47.000Z",
+                  "uid": "35240-d1c33179-1fa7-488a-b3e3-c778e9aaabdb"
+                },
+                {
+                  "id": "1b86a99c-7f8d-45c1-a5c1-46ddbbb86cf5",
+                  "name": "Unauthorized access",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pools/default",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pools",
+                        "default"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:56:47.000Z",
+                  "updatedAt": "2026-10-21T19:56:47.000Z",
+                  "uid": "35240-1b86a99c-7f8d-45c1-a5c1-46ddbbb86cf5"
+                }
+              ],
+              "createdAt": "2026-10-21T19:56:47.000Z",
+              "updatedAt": "2026-10-21T19:56:47.000Z",
+              "uid": "35240-7351858c-ea90-40a5-8663-0ed1e8d9aa9d"
+            }
+          ],
+          "id": "e5ad13ca-7dff-44b9-931f-16650f3746d1",
+          "createdAt": "2026-10-21T19:56:47.000Z",
+          "updatedAt": "2026-10-21T19:56:47.000Z",
+          "uid": "35240-e5ad13ca-7dff-44b9-931f-16650f3746d1"
+        },
+        {
+          "name": "Get cluster information",
+          "id": "d2c8fcf2-0888-4c0b-b0e5-8202fb7dd80e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/pools",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pools"
+              ]
+            },
+            "description": "Returns basic information about the cluster including the list of pools, UUID, and implementation version."
+          },
+          "response": [
+            {
+              "id": "740ae09c-a6ad-486f-abdb-e1065d4592c3",
+              "name": "Successful retrieval of cluster pool information",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pools",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pools"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"isAdminCreds\": \"<boolean>\",\n  \"isROAdminCreds\": \"<boolean>\",\n  \"isEnterprise\": \"<boolean>\",\n  \"implementationVersion\": \"<string>\",\n  \"uuid\": \"<string>\",\n  \"pools\": [\n    {\n      \"name\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"streamingUri\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"streamingUri\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T19:56:47.000Z",
+              "updatedAt": "2026-10-21T19:56:47.000Z",
+              "uid": "35240-740ae09c-a6ad-486f-abdb-e1065d4592c3"
+            },
+            {
+              "id": "0f7e80da-a1c4-46a0-92d1-ece63cc85cd7",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pools",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pools"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T19:56:47.000Z",
+              "updatedAt": "2026-10-21T19:56:47.000Z",
+              "uid": "35240-0f7e80da-a1c4-46a0-92d1-ece63cc85cd7"
+            }
+          ],
+          "createdAt": "2026-10-21T19:56:47.000Z",
+          "updatedAt": "2026-10-21T19:56:47.000Z",
+          "uid": "35240-d2c8fcf2-0888-4c0b-b0e5-8202fb7dd80e"
+        }
+      ],
+      "id": "451a79e7-a16e-427e-947c-1918d0a7eba3",
+      "createdAt": "2026-10-21T19:56:47.000Z",
+      "updatedAt": "2026-10-21T19:56:47.000Z",
+      "uid": "35240-451a79e7-a16e-427e-947c-1918d0a7eba3"
     }
   ],
   "auth": {
@@ -388,21 +400,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "4e9dca8a-319d-4977-9d54-91bb1cbaea71",
-    "name": "Couchbase Analytics Service REST Allowed CIDRs Cluster API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:8097"
     }
-  }
+  ]
 }

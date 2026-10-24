@@ -1,357 +1,357 @@
 {
+  "info": {
+    "_postman_id": "93ef3f91-52ed-48c3-9ec2-08963a996445",
+    "name": "Couchbase Server API",
+    "description": "Operations tagged Server across 2 of this provider's published API definitions: couchbase-sync-gateway-admin-rest-api-openapi.yml, couchbase-sync-gateway-public-rest-api-openapi.yml. Each path carries the servers of the definition it was published in.\n\nContact Support:\n Name: Couchbase Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:59:07.000Z",
+    "updatedAt": "2026-10-21T19:59:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-93ef3f91-52ed-48c3-9ec2-08963a996445"
+  },
   "item": [
     {
-      "id": "98b530e0-c6f5-4a59-966e-4e14e335b127",
-      "name": "Server",
-      "description": {
-        "content": "Endpoints for managing the Sync Gateway server instance.",
-        "type": "text/plain"
-      },
+      "name": "_all_dbs",
       "item": [
         {
-          "id": "a6eee976-aed1-468b-abf5-c85cffccd44e",
           "name": "List all databases",
+          "id": "a45df227-dba7-42c3-b747-591e43a7a210",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "List all databases",
-            "description": {
-              "content": "Returns the names of all databases configured on the Sync Gateway instance.",
-              "type": "text/plain"
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}",
+                  "type": "string"
+                }
+              ]
             },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
+              "raw": "{{baseUrl}}/_all_dbs",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "_all_dbs"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
+              ]
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
+            "description": "Returns the names of all databases configured on the Sync Gateway instance."
           },
           "response": [
             {
-              "id": "48797a68-2999-4af5-b24f-6b0a7b788d90",
+              "id": "88b7008d-e677-4f5b-848c-9a9770632e28",
               "name": "Successful retrieval of database list",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "_all_dbs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/_all_dbs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "_all_dbs"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "[\n  \"string\",\n  \"string\"\n]",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "[\n  \"<string>\",\n  \"<string>\"\n]",
+              "createdAt": "2026-10-21T19:59:08.000Z",
+              "updatedAt": "2026-10-21T19:59:08.000Z",
+              "uid": "35240-88b7008d-e677-4f5b-848c-9a9770632e28"
             },
             {
-              "id": "cca58834-049b-450a-8541-92a040b8d732",
+              "id": "29364306-934d-449e-ba43-6815b90daae4",
               "name": "Unauthorized access",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "_all_dbs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: basic",
                     "key": "Authorization",
                     "value": "Basic <credentials>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/_all_dbs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "_all_dbs"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T19:59:08.000Z",
+              "updatedAt": "2026-10-21T19:59:08.000Z",
+              "uid": "35240-29364306-934d-449e-ba43-6815b90daae4"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "9df0a23f-8651-4580-ab57-a67069fd8461",
-          "name": "Get server configuration",
-          "request": {
-            "name": "Get server configuration",
-            "description": {
-              "content": "Returns the complete Sync Gateway server configuration.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "_config"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "578692dd-7eef-409d-afbd-9f2b741bd01e",
-              "name": "Successful retrieval of server configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "_config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "02b5422a-93b8-4e9a-913d-795ded9e8eb3",
-              "name": "Unauthorized access",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "_config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e98d8d28-a275-419f-a51c-b4c19494438f",
-          "name": "Get server information",
-          "request": {
-            "name": "Get server information",
-            "description": {
-              "content": "Returns information about the Sync Gateway server instance.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "bdacbf02-9820-408f-9324-af8072234570",
-              "name": "Successful retrieval of server information",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"couchdb\": \"string\",\n  \"vendor\": {\n    \"name\": \"string\",\n    \"version\": \"string\"\n  },\n  \"version\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T19:59:08.000Z",
+          "updatedAt": "2026-10-21T19:59:08.000Z",
+          "uid": "35240-a45df227-dba7-42c3-b747-591e43a7a210"
         }
       ],
-      "event": []
+      "id": "a295375b-bc2d-4cd6-ba17-e1617ac835d3",
+      "createdAt": "2026-10-21T19:59:08.000Z",
+      "updatedAt": "2026-10-21T19:59:08.000Z",
+      "uid": "35240-a295375b-bc2d-4cd6-ba17-e1617ac835d3"
+    },
+    {
+      "name": "_config",
+      "item": [
+        {
+          "name": "Get server configuration",
+          "id": "6c804b86-dfc9-46e9-89aa-5f061de7264a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/_config",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "_config"
+              ]
+            },
+            "description": "Returns the complete Sync Gateway server configuration."
+          },
+          "response": [
+            {
+              "id": "3431309e-b55c-47d4-88d1-88d728fd71ca",
+              "name": "Successful retrieval of server configuration",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/_config",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "_config"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-10-21T19:59:08.000Z",
+              "updatedAt": "2026-10-21T19:59:08.000Z",
+              "uid": "35240-3431309e-b55c-47d4-88d1-88d728fd71ca"
+            },
+            {
+              "id": "9ece12b7-8cef-4d5f-a5aa-c35a02441992",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/_config",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "_config"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T19:59:08.000Z",
+              "updatedAt": "2026-10-21T19:59:08.000Z",
+              "uid": "35240-9ece12b7-8cef-4d5f-a5aa-c35a02441992"
+            }
+          ],
+          "createdAt": "2026-10-21T19:59:08.000Z",
+          "updatedAt": "2026-10-21T19:59:08.000Z",
+          "uid": "35240-6c804b86-dfc9-46e9-89aa-5f061de7264a"
+        }
+      ],
+      "id": "60d82139-a952-4667-b2f9-e7d94fd8a872",
+      "createdAt": "2026-10-21T19:59:08.000Z",
+      "updatedAt": "2026-10-21T19:59:08.000Z",
+      "uid": "35240-60d82139-a952-4667-b2f9-e7d94fd8a872"
+    },
+    {
+      "name": "/",
+      "item": [
+        {
+          "name": "Get server information",
+          "id": "21a5d44c-6db5-4735-bf69-3b188dd67620",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ]
+            },
+            "description": "Returns information about the Sync Gateway server instance."
+          },
+          "response": [
+            {
+              "id": "146d2566-d1ad-4572-9a7a-37fc7dbd51c8",
+              "name": "Successful retrieval of server information",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"couchdb\": \"<string>\",\n  \"vendor\": {\n    \"name\": \"<string>\",\n    \"version\": \"<string>\"\n  },\n  \"version\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T19:59:08.000Z",
+              "updatedAt": "2026-10-21T19:59:08.000Z",
+              "uid": "35240-146d2566-d1ad-4572-9a7a-37fc7dbd51c8"
+            }
+          ],
+          "createdAt": "2026-10-21T19:59:08.000Z",
+          "updatedAt": "2026-10-21T19:59:08.000Z",
+          "uid": "35240-21a5d44c-6db5-4735-bf69-3b188dd67620"
+        }
+      ],
+      "id": "9d25173d-d9c2-4900-a82e-2f9543722cd5",
+      "createdAt": "2026-10-21T19:59:08.000Z",
+      "updatedAt": "2026-10-21T19:59:08.000Z",
+      "uid": "35240-9d25173d-d9c2-4900-a82e-2f9543722cd5"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://localhost:8095",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://localhost:4985"
     }
-  ],
-  "auth": {
-    "type": "basic",
-    "basic": [
-      {
-        "key": "username",
-        "value": "{{basicAuthUsername}}"
-      },
-      {
-        "key": "password",
-        "value": "{{basicAuthPassword}}"
-      }
-    ]
-  },
-  "info": {
-    "_postman_id": "348eeb9d-a04d-4823-b663-646082126e32",
-    "name": "Couchbase Analytics Service REST Allowed CIDRs Server API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.\n\nContact Support:\n Name: Couchbase Support",
-      "type": "text/plain"
-    }
-  }
+  ]
 }
