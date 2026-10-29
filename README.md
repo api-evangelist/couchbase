@@ -1,4 +1,4 @@
-# Couchbase (couchbase)
+# Couchbase
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,340 +66,269 @@
 
 Couchbase is a distributed, document-oriented NoSQL cloud database platform that combines the flexibility of JSON, the power of SQL++ querying, and the performance of an in-memory key-value store. The Couchbase product line includes Couchbase Server (self-managed), Couchbase Capella (fully managed database-as-a-service across AWS, Azure, and Google Cloud), Sync Gateway and App Services for mobile and edge synchronization, and Couchbase Lite embedded databases. Couchbase exposes a comprehensive set of REST APIs covering cluster administration, SQL++ query execution, full-text and vector search, analytics, eventing, backup, cross data center replication, and Capella management.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/couchbase/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/couchbase/refs/heads/main/apis.yml)
+**Areas:** Analytics · App Services · Backup · Capella · Cloud · Database · Database-as-a-Service · Eventing · Full-Text Search · Gateways · JSON · Mobile
+
+## Couchbase on APIs.io
+
+Everything profiled for Couchbase is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/couchbase/](https://apis.io/providers/couchbase/)** — or go straight to one of the APIs or properties below.
+
+### APIs (53)
+
+- [Couchbase Allowed CIDRs API](https://apis.io/apis/couchbase/couchbase-allowed-cidrs-api/) — Endpoints for managing allowed IP addresses and CIDR ranges for cluster access.
+- [Couchbase Analytics Admin API](https://apis.io/apis/couchbase/couchbase-analytics-admin-api/) — Endpoints for administering and monitoring the Analytics service.
+- [Couchbase Analytics Configuration API](https://apis.io/apis/couchbase/couchbase-analytics-configuration-api/) — Endpoints for configuring Analytics nodes and clusters.
+- [Couchbase Analytics Library API](https://apis.io/apis/couchbase/couchbase-analytics-library-api/) — Endpoints for managing JavaScript libraries used for user-defined functions.
+- [Couchbase Analytics Query API](https://apis.io/apis/couchbase/couchbase-analytics-query-api/) — Endpoints for executing SQL++ analytics queries and retrieving results.
+- [Couchbase Analytics Settings API](https://apis.io/apis/couchbase/couchbase-analytics-settings-api/) — Endpoints for configuring Analytics service settings.
+- [Couchbase API Keys API](https://apis.io/apis/couchbase/couchbase-api-keys-api/) — Endpoints for managing API keys used to authenticate with the Management API.
+- [Couchbase Authentication API](https://apis.io/apis/couchbase/couchbase-authentication-api/) — Endpoints for user authentication and session management.
+- [Couchbase Buckets API](https://apis.io/apis/couchbase/couchbase-buckets-api/) — Endpoints for managing buckets within Capella clusters.
+- [Couchbase Changes API](https://apis.io/apis/couchbase/couchbase-changes-api/) — Endpoints for monitoring document changes and subscribing to change feeds.
+- [Couchbase Cluster API](https://apis.io/apis/couchbase/couchbase-cluster-api/) — Endpoints for managing cluster-level backup configuration.
+- [Couchbase Cluster References API](https://apis.io/apis/couchbase/couchbase-cluster-references-api/) — Endpoints for managing remote cluster references used as XDCR targets.
+- [Couchbase Clusters API](https://apis.io/apis/couchbase/couchbase-clusters-api/) — Endpoints for provisioning, managing, and scaling Capella database clusters.
+- [Couchbase Compaction API](https://apis.io/apis/couchbase/couchbase-compaction-api/) — Endpoints for managing auto-compaction settings and triggering compaction operations.
+- [Couchbase Configuration API](https://apis.io/apis/couchbase/couchbase-configuration-api/) — Endpoints for configuring Eventing Service settings.
+- [Couchbase Data API](https://apis.io/apis/couchbase/couchbase-data-api/) — Endpoints for triggering backup and restore data operations.
+- [Couchbase Database API](https://apis.io/apis/couchbase/couchbase-database-api/) — Endpoints for retrieving database information.
+- [Couchbase Database Credentials API](https://apis.io/apis/couchbase/couchbase-database-credentials-api/) — Endpoints for managing database access credentials for clusters.
+- [Couchbase Database Management API](https://apis.io/apis/couchbase/couchbase-database-management-api/) — Endpoints for creating, configuring, and managing databases.
+- [Couchbase Documents API](https://apis.io/apis/couchbase/couchbase-documents-api/) — Endpoints for creating, reading, updating, and deleting documents.
+- [Couchbase Functions API](https://apis.io/apis/couchbase/couchbase-functions-api/) — Endpoints for creating, retrieving, updating, and deleting Eventing Functions.
+- [Couchbase Import Export API](https://apis.io/apis/couchbase/couchbase-import-export-api/) — Endpoints for importing and exporting Eventing Function definitions.
+- [Couchbase Index Service API](https://apis.io/apis/couchbase/couchbase-index-service-api/) — Endpoints for managing the Global Secondary Index service.
+- [Couchbase Lifecycle API](https://apis.io/apis/couchbase/couchbase-lifecycle-api/) — Endpoints for deploying, undeploying, pausing, and resuming Eventing Functions.
+- [Couchbase Local Documents API](https://apis.io/apis/couchbase/couchbase-local-documents-api/) — Endpoints for managing local documents used by replication checkpoints.
+- [Couchbase Logging API](https://apis.io/apis/couchbase/couchbase-logging-api/) — Endpoints for retrieving Eventing Function application logs.
+- [Couchbase Logs API](https://apis.io/apis/couchbase/couchbase-logs-api/) — Endpoints for collecting and managing diagnostic logs.
+- [Couchbase Monitoring API](https://apis.io/apis/couchbase/couchbase-monitoring-api/) — Endpoints for monitoring App Services health and performance.
+- [Couchbase Nodes API](https://apis.io/apis/couchbase/couchbase-nodes-api/) — Endpoints for managing individual server nodes, including adding nodes, failover, recovery, and rebalance operations.
+- [Couchbase Organizations API](https://apis.io/apis/couchbase/couchbase-organizations-api/) — Endpoints for managing Capella organizations.
+- [Couchbase Plans API](https://apis.io/apis/couchbase/couchbase-plans-api/) — Endpoints for managing backup plans that define backup schedules and data retention policies.
+- [Couchbase Projects API](https://apis.io/apis/couchbase/couchbase-projects-api/) — Endpoints for creating, listing, updating, and deleting projects within an organization.
+- [Couchbase Query Admin API](https://apis.io/apis/couchbase/couchbase-query-admin-api/) — Endpoints for administrative operations on the Query service including monitoring active requests, completed requests, and prepared statements.
+- [Couchbase Query Execution API](https://apis.io/apis/couchbase/couchbase-query-execution-api/) — Endpoints for executing SQL++ queries and managing query results.
+- [Couchbase Query Settings API](https://apis.io/apis/couchbase/couchbase-query-settings-api/) — Endpoints for configuring Query service settings at the node and cluster level.
+- [Couchbase Replication API](https://apis.io/apis/couchbase/couchbase-replication-api/) — Endpoints for managing inter-Sync Gateway replications.
+- [Couchbase Replication Settings API](https://apis.io/apis/couchbase/couchbase-replication-settings-api/) — Endpoints for configuring replication-level and global XDCR settings.
+- [Couchbase Replication Statistics API](https://apis.io/apis/couchbase/couchbase-replication-statistics-api/) — Endpoints for monitoring replication progress and performance statistics.
+- [Couchbase Replications API](https://apis.io/apis/couchbase/couchbase-replications-api/) — Endpoints for creating, managing, and deleting XDCR replication streams.
+- [Couchbase Repositories API](https://apis.io/apis/couchbase/couchbase-repositories-api/) — Endpoints for creating, managing, and querying backup repositories.
+- [Couchbase Role Management API](https://apis.io/apis/couchbase/couchbase-role-management-api/) — Endpoints for managing roles and their channel assignments.
+- [Couchbase Scopes and Collections API](https://apis.io/apis/couchbase/couchbase-scopes-and-collections-api/) — Endpoints for managing scopes and collections within Capella buckets.
+- [Couchbase Search Indexes API](https://apis.io/apis/couchbase/couchbase-search-indexes-api/) — Endpoints for creating, retrieving, updating, and deleting Full Text Search index definitions.
+- [Couchbase Search Monitoring API](https://apis.io/apis/couchbase/couchbase-search-monitoring-api/) — Endpoints for monitoring search index statistics and service status.
+- [Couchbase Search Queries API](https://apis.io/apis/couchbase/couchbase-search-queries-api/) — Endpoints for executing full-text search queries against search indexes.
+- [Couchbase Security API](https://apis.io/apis/couchbase/couchbase-security-api/) — Endpoints for managing security settings, users, roles, certificates, and audit configurations.
+- [Couchbase Server API](https://apis.io/apis/couchbase/couchbase-server-api/) — Endpoints for managing the Sync Gateway server instance.
+- [Couchbase Server Groups API](https://apis.io/apis/couchbase/couchbase-server-groups-api/) — Endpoints for managing server groups for rack-zone awareness.
+- [Couchbase Settings API](https://apis.io/apis/couchbase/couchbase-settings-api/) — Endpoints for managing server-wide settings and configuration parameters.
+- [Couchbase Statistics API](https://apis.io/apis/couchbase/couchbase-statistics-api/) — Endpoints for monitoring Eventing Function execution statistics and status.
+- [Couchbase Tasks API](https://apis.io/apis/couchbase/couchbase-tasks-api/) — Endpoints for monitoring and managing backup and restore tasks.
+- [Couchbase User Management API](https://apis.io/apis/couchbase/couchbase-user-management-api/) — Endpoints for managing users and their access permissions.
+- [Couchbase Users API](https://apis.io/apis/couchbase/couchbase-users-api/) — Endpoints for managing users within a Capella organization.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [couchbase-mcp.yml](https://apis.io/servers/couchbase/couchbase-mcp-yml/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Couchbase Agentic Access](https://apis.io/agentic-access/couchbase/couchbase-agentic-access/)
+
+#### JSON Schema (143)
+
+The data models the API reads and writes.
+
+- [ActiveRequest](https://apis.io/schemas/couchbase/couchbase-active-request/)
+- [ActiveRequest](https://apis.io/schemas/couchbase/couchbase-activerequest/)
+- [AllDocsResponse](https://apis.io/schemas/couchbase/couchbase-all-docs-response/)
+- [AllDocsResponse](https://apis.io/schemas/couchbase/couchbase-alldocsresponse/)
+- [AllowedCIDR](https://apis.io/schemas/couchbase/couchbase-allowed-cidr/)
+- [AllowedCIDRCreateRequest](https://apis.io/schemas/couchbase/couchbase-allowed-cidrcreate-request/)
+- [AllowedCIDR](https://apis.io/schemas/couchbase/couchbase-allowedcidr/)
+- [AllowedCIDRCreateRequest](https://apis.io/schemas/couchbase/couchbase-allowedcidrcreaterequest/)
+- [AnalyticsClusterStatus](https://apis.io/schemas/couchbase/couchbase-analytics-cluster-status/)
+- [AnalyticsNodeConfig](https://apis.io/schemas/couchbase/couchbase-analytics-node-config/)
+- [AnalyticsQueryRequest](https://apis.io/schemas/couchbase/couchbase-analytics-query-request/)
+- [AnalyticsQueryResult](https://apis.io/schemas/couchbase/couchbase-analytics-query-result/)
+- [AnalyticsServiceConfig](https://apis.io/schemas/couchbase/couchbase-analytics-service-config/)
+- [AnalyticsSettings](https://apis.io/schemas/couchbase/couchbase-analytics-settings/)
+- [AnalyticsClusterStatus](https://apis.io/schemas/couchbase/couchbase-analyticsclusterstatus/)
+- [AnalyticsNodeConfig](https://apis.io/schemas/couchbase/couchbase-analyticsnodeconfig/)
+- [AnalyticsQueryRequest](https://apis.io/schemas/couchbase/couchbase-analyticsqueryrequest/)
+- [AnalyticsQueryResult](https://apis.io/schemas/couchbase/couchbase-analyticsqueryresult/)
+- [AnalyticsServiceConfig](https://apis.io/schemas/couchbase/couchbase-analyticsserviceconfig/)
+- [AnalyticsSettings](https://apis.io/schemas/couchbase/couchbase-analyticssettings/)
+- [ApiKeyCreateRequest](https://apis.io/schemas/couchbase/couchbase-api-key-create-request/)
+- [ApiKeyCreateResponse](https://apis.io/schemas/couchbase/couchbase-api-key-create-response/)
+- [ApiKeyCreateRequest](https://apis.io/schemas/couchbase/couchbase-apikeycreaterequest/)
+- [ApiKeyCreateResponse](https://apis.io/schemas/couchbase/couchbase-apikeycreateresponse/)
+- [AuditInfo](https://apis.io/schemas/couchbase/couchbase-auditinfo/)
+- …and 118 more published on APIs.io
 
-## Scope
+#### JSON Structure (1)
 
-- **Type:** Index
-- **Position:** Provider
-- **Access:** Public
+Data models expressed in JSON Structure.
 
-## Tags
+- [Couchbase Structure](https://apis.io/json-structure/couchbase/couchbase-structure/)
 
-- Analytics
-- App Services
-- Backup
-- Capella
-- Cloud
-- Database
-- DBaaS
-- Eventing
-- Full-Text Search
-- Gateway
-- JSON
-- Mobile
-- NoSQL
-- Replication
-- SQL++
-- Sync
-- Vector Search
-- XDCR
+#### JSON-LD (1)
 
-## Timestamps
+Linked-data contexts for the provider's vocabulary.
 
-- **Created:** 2025-03-01
-- **Modified:** 2026-05-19
+- [Couchbase Context](https://apis.io/jsonld/couchbase/couchbase-context/)
 
-## APIs
+#### Vocabulary (1)
 
-### Couchbase Server REST API
+The provider's domain terms, defined.
 
-The Couchbase Server REST API provides programmatic access to manage and configure Couchbase Server clusters. It includes endpoints for cluster management, bucket operations, node administration, security settings, and server configuration. The API enables automation of deployment, monitoring, and maintenance tasks for Couchbase Server instances across distributed environments.
+- [Couchbase Vocabulary](https://apis.io/vocabularies/couchbase/couchbase-vocabulary/)
 
-- **Human URL:** [https://docs.couchbase.com/server/current/rest-api/rest-intro.html](https://docs.couchbase.com/server/current/rest-api/rest-intro.html)
-- **Base URL:** `https://localhost:8091`
+#### Collections (66)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Administration
-- Buckets
-- Clusters
-- Database
-- NoSQL
+- [Couchbase Analytics Service REST Allowed CIDRs API](https://apis.io/collections/couchbase/open-couchbase-allowed-cidrs-api/)
+- [Couchbase Analytics Service REST Allowed CIDRs Analytics Admin API](https://apis.io/collections/couchbase/open-couchbase-analytics-admin-api/)
+- [Couchbase Analytics Service REST Allowed CIDRs Analytics Configuration API](https://apis.io/collections/couchbase/open-couchbase-analytics-configuration-api/)
+- [Couchbase Analytics Service REST Allowed CIDRs Analytics Library API](https://apis.io/collections/couchbase/open-couchbase-analytics-library-api/)
+- [Couchbase Analytics Service REST Allowed CIDRs Analytics Query API](https://apis.io/collections/couchbase/open-couchbase-analytics-query-api/)
+- [Couchbase Analytics Service REST API](https://apis.io/collections/couchbase/open-couchbase-analytics-service-rest-api/)
+- [Couchbase Analytics Service REST Allowed CIDRs Analytics Settings API](https://apis.io/collections/couchbase/open-couchbase-analytics-settings-api/)
+- [Couchbase Analytics Service REST Allowed CIDRs API Keys API](https://apis.io/collections/couchbase/open-couchbase-api-keys-api/)
+- [Couchbase Analytics Service REST Allowed CIDRs Authentication API](https://apis.io/collections/couchbase/open-couchbase-authentication-api/)
+- [Couchbase Backup Service REST API](https://apis.io/collections/couchbase/open-couchbase-backup-service-rest-api/)
+- [Couchbase Analytics Service REST Allowed CIDRs Buckets API](https://apis.io/collections/couchbase/open-couchbase-buckets-api/)
+- [Couchbase Capella App Services Admin API](https://apis.io/collections/couchbase/open-couchbase-capella-app-services-admin-api/)
+- [Couchbase Capella App Services Public API](https://apis.io/collections/couchbase/open-couchbase-capella-app-services-public-api/)
+- [Couchbase Capella Management API](https://apis.io/collections/couchbase/open-couchbase-capella-management-api/)
+- [Couchbase Analytics Service REST Allowed CIDRs Changes API](https://apis.io/collections/couchbase/open-couchbase-changes-api/)
+- [Couchbase Analytics Service REST Allowed CIDRs Cluster API](https://apis.io/collections/couchbase/open-couchbase-cluster-api/)
+- [Couchbase Analytics Service REST Allowed CIDRs Cluster References API](https://apis.io/collections/couchbase/open-couchbase-cluster-references-api/)
+- [Couchbase Analytics Service REST Allowed CIDRs Clusters API](https://apis.io/collections/couchbase/open-couchbase-clusters-api/)
+- [Couchbase Analytics Service REST Allowed CIDRs Compaction API](https://apis.io/collections/couchbase/open-couchbase-compaction-api/)
+- [Couchbase Analytics Service REST Allowed CIDRs Configuration API](https://apis.io/collections/couchbase/open-couchbase-configuration-api/)
+- [Couchbase Analytics Service REST Allowed CIDRs Data API](https://apis.io/collections/couchbase/open-couchbase-data-api/)
+- [Couchbase Analytics Service REST Allowed CIDRs Database Administration API](https://apis.io/collections/couchbase/open-couchbase-database-administration-api/)
+- [Couchbase Analytics Service REST Allowed CIDRs Database API](https://apis.io/collections/couchbase/open-couchbase-database-api/)
+- [Couchbase Analytics Service REST Allowed CIDRs Database Credentials API](https://apis.io/collections/couchbase/open-couchbase-database-credentials-api/)
+- [Couchbase Analytics Service REST Allowed CIDRs Database Management API](https://apis.io/collections/couchbase/open-couchbase-database-management-api/)
+- …and 41 more published on APIs.io
 
-#### Properties
+#### Governance rules (7)
 
-- [Documentation](https://docs.couchbase.com/server/current/rest-api/rest-intro.html)
-- [OpenAPI](openapi/couchbase-server-rest-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/couchbase-server-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/couchbase-server-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Rules](rules/couchbase-server-rules.yml)
-- [Capabilities](capabilities/couchbase-server-capabilities.yml)
+Spectral rulesets for the provider's contracts.
 
-### Couchbase Query Service REST API
+- [Couchbase — capella management rules](https://apis.io/rules/couchbase/couchbase-capella-management-rules/)
+- [Couchbase — jsonschema rules](https://apis.io/rules/couchbase/couchbase-jsonschema-spectral-rules/)
+- [Couchbase — query rules](https://apis.io/rules/couchbase/couchbase-query-rules/)
+- [Couchbase API Rules](https://apis.io/rules/couchbase/couchbase-rules/)
+- [Couchbase — search rules](https://apis.io/rules/couchbase/couchbase-search-rules/)
+- [Couchbase — server rules](https://apis.io/rules/couchbase/couchbase-server-rules/)
+- [Couchbase — sync gateway rules](https://apis.io/rules/couchbase/couchbase-sync-gateway-rules/)
 
-The Couchbase Query Service REST API enables developers to execute SQL++ (formerly N1QL) queries against Couchbase Server and manage query service settings. It supports ad-hoc queries, prepared statements, and request-level parameter configuration. The API provides endpoints for query execution, monitoring active requests, and managing query service configuration across cluster nodes.
+#### Security (2)
 
-- **Human URL:** [https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html](https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html)
-- **Base URL:** `https://localhost:8093`
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags
+- [Couchbase Authentication](https://apis.io/security/couchbase/couchbase-authentication/)
+- [Couchbase Domain Security](https://apis.io/security/couchbase/couchbase-domain-security/)
 
-- Database
-- N1QL
-- NoSQL
-- Query
-- SQL++
+#### Plans and pricing (1)
 
-#### Properties
+Published plans, tiers and prices.
 
-- [Documentation](https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html)
-- [OpenAPI](openapi/couchbase-query-service-rest-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/couchbase-query-service-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/couchbase-query-service-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Rules](rules/couchbase-query-rules.yml)
-- [Capabilities](capabilities/couchbase-query-capabilities.yml)
+- [Couchbase Plans Pricing](https://apis.io/plans/couchbase/couchbase-plans-pricing/)
 
-### Couchbase Analytics Service REST API
+#### Rate limits (1)
 
-The Couchbase Analytics Service REST API provides access to the Analytics service for running complex analytical queries on operational data without impacting performance of key-value operations. It supports SQL++ queries for analytics, management of links to external data sources, and configuration of user-defined libraries. The service enables real-time analytics on JSON data alongside transactional workloads.
+Published request limits.
 
-- **Human URL:** [https://docs.couchbase.com/server/current/analytics/rest-analytics.html](https://docs.couchbase.com/server/current/analytics/rest-analytics.html)
-- **Base URL:** `https://localhost:8095`
+- [Couchbase Rate Limits](https://apis.io/rate-limits/couchbase/couchbase-rate-limits/)
 
-#### Tags
+#### FinOps (1)
 
-- Analytics
-- Database
-- NoSQL
-- SQL++
+What the API costs to run, by operation.
 
-#### Properties
+- [Couchbase Finops](https://apis.io/finops/couchbase/couchbase-finops/)
 
-- [Documentation](https://docs.couchbase.com/server/current/analytics/rest-analytics.html)
-- [OpenAPI](openapi/couchbase-analytics-service-rest-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/couchbase-analytics-service-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/couchbase-analytics-service-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+## Where to find this API
 
-### Couchbase Search Service REST API
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-The Couchbase Search Service REST API allows developers to create, manage, and query Full Text Indexes on Couchbase Server. It supports full-text search queries with features like fuzzy matching, faceted search, highlighting, and geospatial queries. The API provides endpoints for index definition, index management, and executing search queries across JSON documents stored in Couchbase buckets.
-
-- **Human URL:** [https://docs.couchbase.com/server/current/rest-api/rest-fts.html](https://docs.couchbase.com/server/current/rest-api/rest-fts.html)
-- **Base URL:** `https://localhost:8094`
-
-#### Tags
-
-- Database
-- Full-Text Search
-- Indexing
-- NoSQL
-- Vector Search
-
-#### Properties
-
-- [Documentation](https://docs.couchbase.com/server/current/rest-api/rest-fts.html)
-- [OpenAPI](openapi/couchbase-search-service-rest-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/couchbase-search-service-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/couchbase-search-service-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Rules](rules/couchbase-search-rules.yml)
-- [Capabilities](capabilities/couchbase-search-capabilities.yml)
-
-### Couchbase Eventing Service REST API
-
-The Couchbase Eventing Service REST API provides methods for deploying and managing Eventing Functions that respond to data changes in real time. Eventing Functions allow developers to write server-side JavaScript logic triggered by document mutations, timers, or external events.
-
-- **Human URL:** [https://docs.couchbase.com/server/current/eventing/eventing-api.html](https://docs.couchbase.com/server/current/eventing/eventing-api.html)
-- **Base URL:** `https://localhost:8096`
-
-#### Tags
-
-- Database
-- Eventing
-- NoSQL
-- Serverless Functions
-
-#### Properties
-
-- [Documentation](https://docs.couchbase.com/server/current/eventing/eventing-api.html)
-- [OpenAPI](openapi/couchbase-eventing-service-rest-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/couchbase-eventing-service-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/couchbase-eventing-service-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Couchbase Backup Service REST API
-
-The Couchbase Backup Service REST API supports management of the Backup Service for Couchbase Server, providing endpoints for cluster configuration, repository management, backup plans, task scheduling, and data operations.
-
-- **Human URL:** [https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html](https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html)
-- **Base URL:** `https://localhost:8097`
-
-#### Tags
-
-- Backup
-- Database
-- Disaster Recovery
-- NoSQL
-
-#### Properties
-
-- [Documentation](https://docs.couchbase.com/server/current/rest-api/backup-rest-api.html)
-- [OpenAPI](openapi/couchbase-backup-service-rest-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/couchbase-backup-service-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/couchbase-backup-service-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Couchbase XDCR REST API
-
-The Couchbase XDCR (Cross Data Center Replication) REST API enables configuration and management of data replication between Couchbase clusters across different data centers. It provides endpoints for creating replication references, configuring replication streams, monitoring replication statistics, and managing replication settings.
-
-- **Human URL:** [https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html](https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html)
-- **Base URL:** `https://localhost:8091`
-
-#### Tags
-
-- Cross Data Center
-- Database
-- NoSQL
-- Replication
-
-#### Properties
-
-- [Documentation](https://docs.couchbase.com/server/current/rest-api/rest-xdcr-intro.html)
-- [OpenAPI](openapi/couchbase-xdcr-rest-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/couchbase-xdcr-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/couchbase-xdcr-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Couchbase Capella Management API
-
-The Couchbase Capella Management API is a REST API for provisioning, deploying, and configuring Couchbase Capella database-as-a-service deployments across AWS, Azure, and Google Cloud. It enables programmatic management of clusters, buckets, users, and organizations using API key authentication.
-
-- **Human URL:** [https://docs.couchbase.com/cloud/management-api-reference/index.html](https://docs.couchbase.com/cloud/management-api-reference/index.html)
-- **Base URL:** `https://cloudapi.cloud.couchbase.com`
-
-#### Tags
-
-- Capella
-- Cloud
-- Database
-- DBaaS
-- Management
-- NoSQL
-
-#### Properties
-
-- [Documentation](https://docs.couchbase.com/cloud/management-api-reference/index.html)
-- [OpenAPI](openapi/couchbase-capella-management-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/couchbase-capella-management-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/couchbase-capella-management-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Rules](rules/couchbase-capella-management-rules.yml)
-- [Capabilities](capabilities/couchbase-capella-management-capabilities.yml)
-
-### Couchbase Capella App Services Public API
-
-The Couchbase Capella App Services Public API provides REST endpoints for mobile and edge application data synchronization with Couchbase Capella. It enables developers to manage document access, handle user authentication, and synchronize data between mobile devices and the cloud database.
-
-- **Human URL:** [https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html](https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html)
-
-#### Tags
-
-- App Services
-- Capella
-- Cloud
-- Mobile
-- NoSQL
-- Sync
-
-#### Properties
-
-- [Documentation](https://docs.couchbase.com/cloud/app-services/references/rest_api_public.html)
-- [OpenAPI](openapi/couchbase-capella-app-services-public-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/couchbase-capella-app-services-public-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/couchbase-capella-app-services-public-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Couchbase Capella App Services Admin API
-
-The Couchbase Capella App Services Admin API provides administrative REST endpoints for managing Sync Gateway configurations within Couchbase Capella. It enables administrators to manage databases, users, roles, sync functions, and replication settings for mobile data synchronization.
-
-- **Human URL:** [https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html](https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html)
-
-#### Tags
-
-- Administration
-- App Services
-- Capella
-- Cloud
-- Mobile
-- NoSQL
-
-#### Properties
-
-- [Documentation](https://docs.couchbase.com/cloud/app-services/references/rest_api_admin.html)
-- [OpenAPI](openapi/couchbase-capella-app-services-admin-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/couchbase-capella-app-services-admin-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/couchbase-capella-app-services-admin-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Couchbase Sync Gateway Public REST API
-
-The Couchbase Sync Gateway Public REST API provides endpoints for mobile and edge clients to synchronize data with Couchbase Server through the Sync Gateway middleware. It supports document CRUD operations, changes feeds for real-time data synchronization, and user authentication.
-
-- **Human URL:** [https://docs.couchbase.com/sync-gateway/current/rest-api.html](https://docs.couchbase.com/sync-gateway/current/rest-api.html)
-- **Base URL:** `https://localhost:4984`
-
-#### Tags
-
-- Database
-- Gateway
-- Mobile
-- NoSQL
-- Sync
-
-#### Properties
-
-- [Documentation](https://docs.couchbase.com/sync-gateway/current/rest-api.html)
-- [OpenAPI](openapi/couchbase-sync-gateway-public-rest-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/couchbase-sync-gateway-public-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/couchbase-sync-gateway-public-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Rules](rules/couchbase-sync-gateway-rules.yml)
-- [Capabilities](capabilities/couchbase-sync-gateway-capabilities.yml)
-
-### Couchbase Sync Gateway Admin REST API
-
-The Couchbase Sync Gateway Admin REST API provides administrative endpoints for configuring and managing Sync Gateway instances. It supports database management, user and role administration, sync function configuration, and replication setup.
-
-- **Human URL:** [https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html](https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html)
-- **Base URL:** `https://localhost:4985`
-
-#### Tags
-
-- Administration
-- Database
-- Mobile
-- NoSQL
-- Sync
-
-#### Properties
-
-- [Documentation](https://docs.couchbase.com/sync-gateway/current/rest-api-admin.html)
-- [OpenAPI](openapi/couchbase-sync-gateway-admin-rest-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/couchbase-sync-gateway-admin-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/couchbase-sync-gateway-admin-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/couchbase)
 - [Website](https://www.couchbase.com/)
 - [Documentation](https://docs.couchbase.com/)
-- [Capella](https://www.couchbase.com/products/capella/)
-- [Server](https://www.couchbase.com/products/server/)
-- [Mobile](https://www.couchbase.com/products/mobile/)
-- [Login](https://cloud.couchbase.com/sign-in)
+- [Getting started](https://docs.couchbase.com/elasticsearch-connector/current/getting-started.html)
 - [Pricing](https://www.couchbase.com/pricing/)
-- [Blog](https://www.couchbase.com/blog/)
-- [Forums](https://www.couchbase.com/forums/)
 - [Support](https://support.couchbase.com/)
-- [Status Page](https://status.couchbase.com/)
-- [GitHub Organization](https://github.com/couchbase)
 - [Changelog](https://docs.couchbase.com/server/current/release-notes/relnotes.html)
-- [Privacy Policy](https://www.couchbase.com/privacy-policy/)
-- [Terms of Service](https://www.couchbase.com/terms-of-use/)
-- [JSON-LD](json-ld/couchbase-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [JSON Schema](json-schema/couchbase-document-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/couchbase-bucket-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/couchbase-cluster-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Vocabulary](vocabulary/couchbase-vocabulary.yml)
-- [Features](undefined)
-- [L L Ms Txt](https://docs.couchbase.com/llms.txt)
+- [Blog](https://www.couchbase.com/blog/)
+- [Trust centre](https://www.couchbase.com/products/capella/trust/)
+- [Terms of service](https://www.couchbase.com/terms-of-use/)
+- [Privacy policy](https://www.couchbase.com/privacy-policy/)
+- [GitHub](https://github.com/couchbase)
+- [Status](https://status.couchbase.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 64.4** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 62.5 |
+| Contract governance | 31.8 |
+| Operational transparency | 52.6 |
+| Developer ergonomics | 58.9 |
+| Access clarity | 77.6 |
+
+**Agent readiness 28.9** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | mostly |
+
+**Regulatory alignment 29.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/couchbase/](https://apis.io/providers/couchbase/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Couchbase: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/couchbase/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
